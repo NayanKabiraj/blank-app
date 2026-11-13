@@ -19,8 +19,8 @@ from pydantic import BaseModel, Field, ValidationError
 class Scene(BaseModel):
     text: str = Field(description="Narration for this scene, 1-2 short spoken sentences.")
     visual_query: str = Field(
-        description="2-4 ENGLISH keywords describing concrete, filmable stock footage for "
-        "this scene (e.g. 'city traffic night', 'hands counting money')."
+        description="2-3 ENGLISH keywords for filmable stock footage of scenery, nature, "
+        "objects or space (e.g. 'meteor timelapse', 'ocean waves'); never people or news."
     )
 
 

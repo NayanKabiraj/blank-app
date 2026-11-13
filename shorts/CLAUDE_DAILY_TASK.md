@@ -38,7 +38,12 @@ To change how Claude picks topics or writes scripts, edit this file.
    - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
-   - `visual_query` is always 2–4 concrete **English** keywords for stock footage.
+   - `visual_query` is always 2–3 concrete **English** keywords for stock footage. The
+     footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
+     scenery, nature, objects, animals, space imagery or time-lapses (for example
+     `meteor timelapse`, `milky way timelapse`, `earth from orbit`, `ocean waves`). Never
+     ask for people, faces, celebrities, politicians, brands or news events. Use different
+     queries for different scenes.
    - Use only facts you verified. Never make up numbers.
 4. **Validate the plan.** If the repo is checked out, run
    `pip install -q pydantic && python -m shorts.plan validate plan.json` and fix anything it

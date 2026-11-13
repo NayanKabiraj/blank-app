@@ -98,10 +98,39 @@ def _strip_html(s: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", "", s or "")).strip()
 
 
+# Footage of real people, politics, news or talking heads is never what a faceless fact
+# Short needs, and could misrepresent someone. Skip anything whose title suggests it.
+BLOCK_WORDS = {
+    "interview", "president", "obama", "trump", "biden", "modi", "minister", "senator",
+    "congress", "parliament", "white house", "west wing", "speech", "press", "briefing",
+    "conference", "news", "election", "campaign", "protest", "police", "war", "military",
+    "army", "attack", "accident", "crash", "fire", "funeral", "lecture", "talk", "podcast",
+    "tutorial", "how to", "trailer", "advert", "commercial", "episode", "week", "update",
+    "q&a", "panel", "ceremony", "rally", "court", "person of interest", "gun",
+}
+WEAK_WORDS = {"night", "day", "sky", "space", "person", "people", "time", "view", "close",
+              "up", "of", "the", "a", "and", "in", "on", "with", "from", "slow", "motion"}
+
+
+def _blocked(title: str) -> bool:
+    t = title.lower()
+    if "shooting star" not in t and re.search(r"\bshooting\b", t):
+        return True
+    return any(re.search(rf"\b{re.escape(w)}\b", t) for w in BLOCK_WORDS)
+
+
+def _relevant(title: str, query: str) -> bool:
+    t = title.lower()
+    keys = [w for w in query.lower().split() if w not in WEAK_WORDS]
+    hits = sum(k.rstrip("s") in t for k in keys)
+    return not keys or hits >= (2 if len(keys) >= 3 else 1)
+
+
 def _commons(query: str, used: set[str]) -> list[tuple[str, str, str | None]]:
+    negatives = " ".join(f"-{w}" for w in ("interview", "president", "speech", "news", "lecture", "conference"))
     params = {
         "action": "query", "format": "json", "generator": "search", "gsrnamespace": 6,
-        "gsrlimit": 20, "gsrsearch": f"filetype:video {query}",
+        "gsrlimit": 20, "gsrsearch": f"filetype:video {query} {negatives}",
         "prop": "videoinfo", "viprop": "url|size|mime|extmetadata|derivatives",
         "viextmetadatafilter": "LicenseShortName|Artist|Credit",
     }
@@ -112,7 +141,7 @@ def _commons(query: str, used: set[str]) -> list[tuple[str, str, str | None]]:
         title = p.get("title", "")
         info = (p.get("videoinfo") or [{}])[0]
         key = f"commons:{title}"
-        if key in used or not info.get("url"):
+        if key in used or not info.get("url") or _blocked(title) or not _relevant(title, query):
             continue
         if info.get("height", 0) < 480 or not 3 <= info.get("duration", 0) <= 1800:
             continue
@@ -146,8 +175,12 @@ def _gradient(out: Path, duration: float) -> Path:
 
 
 def _queries(query: str) -> list[str]:
+    """The full query, then two-word parts. Never single generic words like "night"."""
     words = query.split()
-    qs = [query, " ".join(words[:2]), words[-1], words[0]]
+    qs = [query, " ".join(words[:2]), " ".join(words[-2:])]
+    strong = [w for w in words if w.lower() not in WEAK_WORDS]
+    if len(strong) == 1:
+        qs.append(strong[0])
     return list(dict.fromkeys(q for q in qs if q))
 
 
