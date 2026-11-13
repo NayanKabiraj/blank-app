@@ -25,19 +25,15 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals.** By default it draws **motion graphics in code** with
-   [Manim Community](https://www.manim.community) (MIT licence): a dark animated dot-field
-   backdrop, glowing headlines and key terms, count-up numbers, flow diagrams and comparison
-   bars, a niche label and a progress bar (`shorts/motion.py`). Each scene's `graphic` in the
-   plan says what to draw. Up to two scenes per video can instead use a **free AI-generated clip**
-   (`shorts/ai_video.py`). With no setup, clips come from **LTX-Video** text-to-video on
-   a free Hugging Face ZeroGPU Space. With a free `POLLINATIONS_KEY`, the pipeline first
-   makes a still image (Z-Image Turbo), animates it with **Wan 2.2** image-to-video on a
-   free ZeroGPU Space, and can fall back to a slow zoom over that image. A free `HF_TOKEN`
-   gives the Space calls your own daily GPU quota. If every step fails, the scene keeps
-   its graphic. Set `VISUAL_STYLE=footage` to use real stock footage instead:
-   Pexels clips when you set a `PEXELS_API_KEY`, otherwise freely licensed Wikimedia Commons
-   clips, credited in the description.
+5. **Builds the visuals in code.** By default every Short is a **3D cartoon explainer**
+   (`VISUAL_STYLE=cartoon3d`). A three.js toon-shaded world with black outlines, a mascot
+   that bobs, waves and hops, and procedural 3D props (bank, chip, planet, brain…) is
+   rendered frame by frame in headless Chromium on the CPU (`shorts/cartoon3d/`,
+   `shorts/cartoon.py`), with bold cartoon cards for the text. Each scene's `graphic` and
+   `prop` in the plan say what to show. The `cartoon-explainer` skill in
+   `.claude/skills/` explains how to plan and extend it. Other styles: `motion` (2D Manim
+   graphics, optionally with free AI clips from Wan 2.2 / LTX-Video for scenes with an
+   `ai_prompt`) and `footage` (Pexels or Wikimedia Commons stock video).
 6. **Edits the video with FFmpeg.** 1080×1920, 30 fps, captions burned in word by word,
    a hook title, loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
 7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts, and the AI
@@ -78,7 +74,7 @@ task starts the workflow on `main`.
 | `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Overrides the niche rotation, e.g. `only How Tech Works and AI Explained this week` |
 | `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
-| `VISUAL_STYLE` | variable | `motion` (default, Manim motion graphics) or `footage` (stock video). Can also be picked per run |
+| `VISUAL_STYLE` | variable | `cartoon3d` (default, 3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
 | `HF_TOKEN` | secret | Free Hugging Face access token (huggingface.co/settings/tokens, "read" is enough). Gives the AI clips your free account's daily GPU quota |
 | `POLLINATIONS_KEY` | secret | Key from a free account at enter.pollinations.ai/keys (a secret `sk_` key). Turns on AI still images, which feed Wan 2.2 image-to-video and the zoom fallback. Its video models are paid, so they're only used if you add `pollinations` to `AI_VIDEO_PROVIDERS` |
 | `AI_VIDEO` | variable | `on` (default) or `off` |

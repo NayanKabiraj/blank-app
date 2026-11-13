@@ -1,0 +1,8 @@
+{
+  "name": "shorts-cartoon3d",
+  "private": true,
+  "description": "Renders the 3D cartoon explainer track (three.js toon scene in headless Chromium)",
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

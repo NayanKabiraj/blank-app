@@ -7,7 +7,7 @@ import subprocess
 import wave
 from pathlib import Path
 
-from . import ai_video, config, motion, music, tts, visuals
+from . import ai_video, cartoon, config, motion, music, tts, visuals
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -213,11 +213,14 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
 
     credits: list[str] = []
-    if config.VISUAL_STYLE == "motion":
-        motion.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4
+    if config.VISUAL_STYLE == "cartoon3d":
+        cartoon.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4
+    elif config.VISUAL_STYLE == "motion":
+        motion.render(script, lang, niche, timeline, total, work)
     else:
         credits = _footage_track(script, timeline, total, work)
-    credits += _ai_clips(script, timeline, total, work)
+    if config.VISUAL_STYLE != "cartoon3d":  # realistic AI clips would clash with the cartoon look
+        credits += _ai_clips(script, timeline, total, work)
 
     # Music
     track = music.pick_track(mood)
