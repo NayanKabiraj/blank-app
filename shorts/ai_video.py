@@ -1,8 +1,8 @@
 """AI-generated video clips for selected scenes, using free models.
 
 Pipeline for one clip (each step falls back to the next):
-  1. A still image from Pollinations (`gen.pollinations.ai`, free model
-     tongyi-mai/z-image-turbo, works without a key; POLLINATIONS_KEY raises the limits).
+  1. A still image from Pollinations (`gen.pollinations.ai`, model tongyi-mai/z-image-turbo,
+     which is not paid-only). It needs a key from a free account: set POLLINATIONS_KEY.
   2. "wan": animate that image with Wan 2.2 image-to-video on a free Hugging Face ZeroGPU
      Space (HF_TOKEN gives your free account's daily GPU quota).
   3. "ltx": text-to-video with LTX-Video on a free Hugging Face ZeroGPU Space.
@@ -36,9 +36,12 @@ POLLINATIONS_VIDEO_MODEL = os.getenv("AI_POLLINATIONS_VIDEO_MODEL", "alibaba/wan
 PROVIDERS = [p.strip() for p in os.getenv("AI_VIDEO_PROVIDERS", "wan,ltx,image").split(",") if p.strip()]
 MAX_CLIPS = int(os.getenv("AI_VIDEO_MAX_CLIPS", "2"))
 HF_TIMEOUT = float(os.getenv("AI_HF_TIMEOUT", "300"))
-STYLE = ("cinematic, highly detailed, dramatic lighting, vertical 9:16 composition, "
-         "no text, no letters, no watermark, no people's faces")
-NEGATIVE = "text, letters, watermark, logo, blurry, distorted, low quality, deformed, jittery"
+# Positive prompts must not contain negations ("no text"): video models often draw what
+# they read. Everything to avoid goes in NEGATIVE instead.
+STYLE = "photorealistic, cinematic, highly detailed, natural lighting, vertical 9:16 composition"
+NEGATIVE = ("text, letters, words, numbers, subtitles, captions, watermark, logo, user interface, "
+            "HUD, screen, display, dashboard, people, faces, hands, blurry, distorted, low quality, "
+            "deformed, jittery, inconsistent motion")
 
 CREDITS = {
     "wan": "Wan 2.2 (Alibaba, Apache-2.0) image-to-video via a Hugging Face ZeroGPU Space",
@@ -61,6 +64,8 @@ def _pollinations_headers() -> dict:
 
 
 def _image(prompt: str, out: Path) -> Path | None:
+    if not os.getenv("POLLINATIONS_KEY"):
+        return None  # Pollinations images need a (free) key; without one, LTX text-to-video is used
     url = (f"{POLLINATIONS}/image/{urllib.parse.quote(prompt + ', ' + STYLE)}?"
            + urllib.parse.urlencode({"model": IMAGE_MODEL, "width": 576, "height": 1024,
                                      "seed": random.randint(1, 2**31 - 1)}))
@@ -107,7 +112,8 @@ def _hf(space: str, api_name: str, **kwargs) -> Path | None:
 def _wan(prompt: str, image: Path, seconds: float) -> Path | None:
     from gradio_client import handle_file
     return _hf(WAN_SPACE, "/generate_video", input_image=handle_file(str(image)),
-               prompt=f"{prompt}, smooth cinematic camera motion", steps=6,
+               prompt=f"{prompt}, smooth cinematic camera motion",
+               negative_prompt=NEGATIVE, steps=6,
                duration_seconds=max(2.0, min(5.0, seconds)), randomize_seed=True)
 
 

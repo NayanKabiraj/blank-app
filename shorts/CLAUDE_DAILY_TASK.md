@@ -77,6 +77,10 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      a smartphone chip with tiny glowing circuits"). Never ask for people, faces, text,
      logos or real brands. Use the **same** `ai_prompt` for the matching English and Hindi
      scene, so the clip is generated once and reused.
+     Write it as a plain description of what is in the frame, as if seen from the ground
+     or from nearby, in one sentence. Don't write negations like "no text" (the model reads
+     them as requests), and never mention screens, dashboards, spacecraft cockpits, signs
+     or anything with a display, because the model fills those with made-up text.
    - `visual_query` is always 2–3 concrete **English** keywords for stock footage. The
      footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
      scenery, nature, objects, animals, space imagery or time-lapses (for example
