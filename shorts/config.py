@@ -31,7 +31,7 @@ VOICES = {
 }
 FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
-# --- Stock footage (optional; procedural backgrounds are used without a key) ---
+# --- Stock footage: Pexels if a key is set, else Wikimedia Commons (no key needed) ---
 PEXELS_API_KEY = os.getenv("PEXELS_API_KEY", "")
 
 # --- YouTube upload ---

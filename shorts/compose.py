@@ -114,29 +114,44 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 
 
 # ---------------------------------------------------------------- video
+def _probe_duration(path: Path) -> float:
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                        "-of", "csv=p=0", str(path)], capture_output=True, text=True)
+    try:
+        return float(r.stdout.strip())
+    except ValueError:
+        return 0.0
+
+
 def _scene_clip(src: Path, duration: float, out: Path):
+    # Long source videos often open with titles or black frames: start a bit in
+    src_dur = _probe_duration(src)
+    offset = min(src_dur * 0.15, 8.0) if src_dur > duration + 6 else 0.0
     vf = (f"scale={config.WIDTH}:{config.HEIGHT}:force_original_aspect_ratio=increase,"
           f"crop={config.WIDTH}:{config.HEIGHT},setsar=1,fps={config.FPS},"
           f"eq=brightness=-0.06:saturation=1.1,format=yuv420p")
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", src,
-          "-t", f"{duration:.3f}", "-vf", vf, "-an", "-c:v", "libx264", "-preset", "veryfast",
-          "-crf", "21", out])
+    _run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{offset:.2f}", "-stream_loop", "-1",
+          "-i", src, "-t", f"{duration:.3f}", "-vf", vf, "-an", "-c:v", "libx264",
+          "-preset", "veryfast", "-crf", "21", out])
 
 
-def build(script: LangScript, lang: str, mood: str, work: Path) -> Path:
+def build(script: LangScript, lang: str, mood: str, work: Path) -> tuple[Path, list[str]]:
+    """Render one Short. Returns (video path, footage credits to add to the description)."""
     work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
     work.mkdir(parents=True, exist_ok=True)
     voice, timeline, voice_end = _voice_track(script, lang, work)
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
 
     # Footage: each scene's clip runs until the next scene starts; last one to the end
-    used: set[int] = set()
-    clips = []
+    used: set[str] = set()
+    clips, credits = [], []
     for i, (start, _end, _t) in enumerate(timeline):
         seg_start = 0.0 if i == 0 else start
         seg_end = timeline[i + 1][0] if i + 1 < len(timeline) else total
         dur = seg_end - seg_start
-        src = visuals.fetch(script.scenes[i].visual_query, work / f"src_{i}.mp4", dur, used)
+        src, credit = visuals.fetch(script.scenes[i].visual_query, work / f"src_{i}.mp4", dur, used)
+        if credit:
+            credits.append(credit)
         clip = work / f"clip_{i}.mp4"
         _scene_clip(src, dur, clip)
         clips.append(clip)
@@ -170,4 +185,4 @@ def build(script: LangScript, lang: str, mood: str, work: Path) -> Path:
           "-r", str(config.FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
           "-movflags", "+faststart", out.name], cwd=work)
     log.info("Rendered %s (%.1fs)", out, total)
-    return out
+    return out, credits

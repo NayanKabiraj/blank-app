@@ -40,6 +40,7 @@ jobs:
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
+      WIKIMEDIA_CONTACT: ${{ vars.WIKIMEDIA_CONTACT }}
     steps:
       - uses: actions/checkout@v4
 
