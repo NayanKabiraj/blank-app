@@ -7,7 +7,7 @@ import subprocess
 import wave
 from pathlib import Path
 
-from . import config, motion, music, tts, visuals
+from . import ai_video, config, motion, music, tts, visuals
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -156,6 +156,55 @@ def _footage_track(script: LangScript, timeline, total: float, work: Path) -> li
     return credits
 
 
+def _segments(timeline, total: float):
+    """(start, end) of each scene's picture: scene i shows until scene i+1 starts."""
+    return [(0.0 if i == 0 else start, timeline[i + 1][0] if i + 1 < len(timeline) else total)
+            for i, (start, _e, _t) in enumerate(timeline)]
+
+
+def _fit_clip(clip: Path, duration: float, out: Path):
+    """Scale/crop an AI clip to 1080x1920 and stretch (up to 1.6x slower) or loop it to fill."""
+    length = _probe_duration(clip) or duration
+    slow = min(1.6, max(1.0, duration / length))
+    vf = (f"setpts={slow:.3f}*PTS,scale={config.WIDTH}:{config.HEIGHT}:force_original_aspect_ratio=increase,"
+          f"crop={config.WIDTH}:{config.HEIGHT},setsar=1,fps={config.FPS},eq=brightness=-0.05,format=yuv420p")
+    _run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", clip, "-t", f"{duration:.3f}",
+          "-vf", vf, "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", out])
+
+
+def _ai_clips(script: LangScript, timeline, total: float, work: Path) -> list[str]:
+    """Swap the picture of up to AI_VIDEO_MAX_CLIPS scenes (those with an ai_prompt) for
+    AI-generated clips. Scenes without a clip keep their original picture."""
+    wanted = [i for i, sc in enumerate(script.scenes) if sc.ai_prompt][:ai_video.MAX_CLIPS]
+    if not wanted or not ai_video.enabled():
+        return []
+    segs = _segments(timeline, total)
+    clips, credits = {}, []
+    for i in wanted:
+        made = ai_video.make_clip(script.scenes[i].ai_prompt, work / "ai", i, segs[i][1] - segs[i][0])
+        if made:
+            clips[i] = made[0]
+            credit = f"Scene {i + 1}: AI-generated with {ai_video.CREDITS[made[1]]}"
+            credits.append(credit)
+    if not clips:
+        return []
+    pieces = []
+    for i, (s0, s1) in enumerate(segs):
+        piece = work / f"piece_{i}.mp4"
+        if i in clips:
+            _fit_clip(clips[i], s1 - s0, piece)
+        else:
+            _run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{s0:.3f}", "-i", "video.mp4",
+                  "-t", f"{s1 - s0:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
+                  "-r", str(config.FPS), "-pix_fmt", "yuv420p", piece.name], cwd=work)
+        pieces.append(piece)
+    (work / "pieces.txt").write_text("".join(f"file '{p.name}'\n" for p in pieces))
+    _run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "pieces.txt",
+          "-c", "copy", "video_ai.mp4"], cwd=work)
+    (work / "video_ai.mp4").replace(work / "video.mp4")
+    return credits
+
+
 def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "") -> tuple[Path, list[str]]:
     """Render one Short. Returns (video path, footage credits to add to the description)."""
     work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
@@ -168,6 +217,7 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
         motion.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4
     else:
         credits = _footage_track(script, timeline, total, work)
+    credits += _ai_clips(script, timeline, total, work)
 
     # Music
     track = music.pick_track(mood)

@@ -69,6 +69,14 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      - `compare`: two things, with exactly 2 `items` and optionally 2 `values` drawn as bars.
      Keep `headline` ≤ 24 characters, `caption` ≤ 40 and each item ≤ 18. Vary the kinds
      across scenes, and use at least one `stat` when the topic has a good number.
+   - `ai_prompt` (optional, **at most 2 scenes**): an English visual description for a free
+     AI-generated video clip that replaces that scene's graphic. Use it where a real-looking
+     shot beats a diagram: usually the hook and the analogy scene, never a `stat` or `steps`
+     scene. Describe one concrete, cinematic shot of scenery, objects, nature, machines or
+     space ("a glowing comet with a long dust tail crossing a starry sky", "macro shot of
+     a smartphone chip with tiny glowing circuits"). Never ask for people, faces, text,
+     logos or real brands. Use the **same** `ai_prompt` for the matching English and Hindi
+     scene, so the clip is generated once and reused.
    - `visual_query` is always 2–3 concrete **English** keywords for stock footage. The
      footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
      scenery, nature, objects, animals, space imagery or time-lapses (for example

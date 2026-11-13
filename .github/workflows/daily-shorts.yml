@@ -47,6 +47,14 @@ jobs:
       WIKIMEDIA_CONTACT: ${{ vars.WIKIMEDIA_CONTACT }}
       # motion = Manim motion graphics (default), footage = real stock footage
       VISUAL_STYLE: ${{ inputs.visual_style || vars.VISUAL_STYLE || 'motion' }}
+      # Free AI clips for scenes with an ai_prompt (see shorts/ai_video.py). All optional:
+      # HF_TOKEN = your free Hugging Face account's GPU quota for Wan 2.2 / LTX-Video Spaces;
+      # POLLINATIONS_KEY = higher image limits (and paid video models if you enable them).
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      POLLINATIONS_KEY: ${{ secrets.POLLINATIONS_KEY }}
+      AI_VIDEO: ${{ vars.AI_VIDEO || 'on' }}
+      AI_VIDEO_PROVIDERS: ${{ vars.AI_VIDEO_PROVIDERS || 'wan,ltx,image' }}
+      AI_VIDEO_MAX_CLIPS: ${{ vars.AI_VIDEO_MAX_CLIPS || '2' }}
     steps:
       - uses: actions/checkout@v4
 

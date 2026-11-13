@@ -35,6 +35,11 @@ class Graphic(BaseModel):
 class Scene(BaseModel):
     text: str = Field(description="Narration for this scene, 1-2 short spoken sentences.")
     graphic: Optional[Graphic] = Field(default=None, description="Motion graphic for this scene.")
+    ai_prompt: Optional[str] = Field(default=None, description=(
+        "Optional, at most 2 scenes per video: an ENGLISH visual description for an "
+        "AI-generated clip that replaces this scene's graphic (e.g. 'a glowing comet with a "
+        "long dust tail crossing a starry sky'). Scenery, objects, nature or space only: no "
+        "people, faces, text, logos or real brands."))
     visual_query: str = Field(
         description="2-3 ENGLISH keywords for filmable stock footage of scenery, nature, "
         "objects or space (e.g. 'meteor timelapse', 'ocean waves'); never people or news."
@@ -79,6 +84,9 @@ def validate(plan: Plan) -> list[str]:
                 problems.append(f"{lang} scene {i}: steps needs 2-4 items")
             elif g.kind == "compare" and len(g.items) != 2:
                 problems.append(f"{lang} scene {i}: compare needs exactly 2 items")
+        n_ai = sum(1 for sc in s.scenes if sc.ai_prompt)
+        if n_ai > 2:
+            problems.append(f"{lang}: {n_ai} scenes have ai_prompt, at most 2 are used")
     from .niches import NAMES
     if plan.niche not in NAMES:
         problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
