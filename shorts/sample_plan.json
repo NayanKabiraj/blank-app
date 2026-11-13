@@ -22,7 +22,8 @@
         "graphic": {
           "kind": "title",
           "headline": "A day longer than a year",
-          "caption": ""
+          "caption": "",
+          "prop": "star"
         }
       },
       {
@@ -31,7 +32,8 @@
         "graphic": {
           "kind": "keyword",
           "headline": "Venus",
-          "caption": "our closest neighbour"
+          "caption": "our closest neighbour",
+          "prop": "planet"
         }
       },
       {
@@ -66,7 +68,8 @@
         "graphic": {
           "kind": "keyword",
           "headline": "Spins backwards",
-          "caption": "sunrise in the west"
+          "caption": "sunrise in the west",
+          "prop": "clock"
         }
       },
       {
@@ -89,7 +92,8 @@
         "graphic": {
           "kind": "stat",
           "headline": "465 °C",
-          "caption": "surface temperature"
+          "caption": "surface temperature",
+          "prop": "star"
         }
       },
       {
@@ -121,7 +125,8 @@
         "graphic": {
           "kind": "title",
           "headline": "दिन, साल से लंबा",
-          "caption": ""
+          "caption": "",
+          "prop": "star"
         }
       },
       {
@@ -130,7 +135,8 @@
         "graphic": {
           "kind": "keyword",
           "headline": "शुक्र ग्रह",
-          "caption": "हमारा सबसे क़रीबी पड़ोसी"
+          "caption": "हमारा सबसे क़रीबी पड़ोसी",
+          "prop": "planet"
         }
       },
       {
@@ -165,7 +171,8 @@
         "graphic": {
           "kind": "keyword",
           "headline": "उल्टा घूमना",
-          "caption": "पश्चिम में सूर्योदय"
+          "caption": "पश्चिम में सूर्योदय",
+          "prop": "clock"
         }
       },
       {
@@ -188,7 +195,8 @@
         "graphic": {
           "kind": "title",
           "headline": "रोज़ एक नया फ़ैक्ट",
-          "caption": "फ़ॉलो करें"
+          "caption": "फ़ॉलो करें",
+          "prop": "star"
         }
       }
     ]

@@ -16,6 +16,11 @@ from typing import List, Literal, Optional
 from pydantic import BaseModel, Field, ValidationError
 
 
+# Procedural 3D props available in the cartoon style (shorts/cartoon3d/scene.js)
+PROPS = ["star", "bulb", "coin", "planet", "globe", "phone", "bank", "rocket", "brain", "chip",
+         "heart", "clock", "gear", "atom", "book", "magnet", "cloud"]
+
+
 class Graphic(BaseModel):
     """What the motion-graphics renderer (shorts/motion.py) draws for a scene. Text is in
     the video's language; keep it short, it is shown big on a phone screen."""
@@ -30,6 +35,8 @@ class Graphic(BaseModel):
                              "compare: exactly 2 labels. Max 18 characters each.")
     values: List[float] = Field(default_factory=list, description="compare only: 2 numbers "
                                 "for the bar lengths (optional).")
+    prop: Optional[str] = Field(default=None, description="3D cartoon style only: a 3D prop for "
+                                "title/keyword/stat scenes. One of: " + ", ".join(PROPS) + ".")
 
 
 class Scene(BaseModel):
@@ -84,6 +91,8 @@ def validate(plan: Plan) -> list[str]:
                 problems.append(f"{lang} scene {i}: steps needs 2-4 items")
             elif g.kind == "compare" and len(g.items) != 2:
                 problems.append(f"{lang} scene {i}: compare needs exactly 2 items")
+            if g is not None and g.prop and g.prop not in PROPS:
+                problems.append(f"{lang} scene {i}: unknown prop {g.prop!r} (choose from {', '.join(PROPS)})")
         n_ai = sum(1 for sc in s.scenes if sc.ai_prompt)
         if n_ai > 2:
             problems.append(f"{lang}: {n_ai} scenes have ai_prompt, at most 2 are used")
