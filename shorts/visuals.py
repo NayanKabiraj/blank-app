@@ -1,13 +1,17 @@
-"""Background footage per scene.
+"""Background footage per scene. Sources, in order:
 
-Uses free vertical stock video from Pexels when PEXELS_API_KEY is set; otherwise (or if no
-match is found) renders an animated gradient background with FFmpeg.
+1. Pexels (free stock video, best quality) when PEXELS_API_KEY is set.
+2. Wikimedia Commons: freely licensed real footage, no API key needed. The clip's
+   author and license are returned so they can be credited in the video description.
+3. An animated gradient rendered with FFmpeg, only if nothing usable is found.
 """
 from __future__ import annotations
 
+import html
 import json
 import logging
 import random
+import re
 import subprocess
 import urllib.parse
 import urllib.request
@@ -16,6 +20,9 @@ from pathlib import Path
 from . import config
 
 log = logging.getLogger(__name__)
+UA = "daily-shorts-bot/1.0 (open-source GitHub Actions pipeline)"
+COMMONS_API = "https://commons.wikimedia.org/w/api.php"
+MAX_BYTES = 150 * 1024 * 1024
 
 PALETTES = [
     ("0x0f2027", "0x2c5364"), ("0x1d2b64", "0x8e44ad"), ("0x232526", "0x414345"),
@@ -24,27 +31,87 @@ PALETTES = [
 ]
 
 
-def _pexels(query: str, used: set[int]) -> str | None:
-    url = "https://api.pexels.com/videos/search?" + urllib.parse.urlencode(
-        {"query": query, "orientation": "portrait", "size": "medium", "per_page": 15}
-    )
-    req = urllib.request.Request(url, headers={"Authorization": config.PEXELS_API_KEY,
-                                               "User-Agent": "shorts-bot"})
+def _get_json(url: str, headers: dict | None = None) -> dict:
+    req = urllib.request.Request(url, headers={"User-Agent": UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=30) as r:
-        videos = json.load(r).get("videos", [])
+        return json.load(r)
+
+
+def _download(url: str, out: Path) -> bool:
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=180) as r, open(out, "wb") as f:
+        size = 0
+        while chunk := r.read(1 << 20):
+            size += len(chunk)
+            if size > MAX_BYTES:
+                return False
+            f.write(chunk)
+    # Make sure FFmpeg can actually decode it
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0",
+                            "-show_entries", "stream=width,height", "-of", "csv=p=0", str(out)],
+                           capture_output=True, text=True)
+    return probe.returncode == 0 and "," in probe.stdout
+
+
+# ------------------------------------------------------------------ Pexels
+def _pexels(query: str, used: set[str]) -> list[tuple[str, str, str | None]]:
+    url = "https://api.pexels.com/videos/search?" + urllib.parse.urlencode(
+        {"query": query, "orientation": "portrait", "size": "medium", "per_page": 15})
+    videos = _get_json(url, {"Authorization": config.PEXELS_API_KEY}).get("videos", [])
+    out = []
     for v in videos:
-        if v["id"] in used or v.get("duration", 0) < 3:
+        key = f"pexels:{v['id']}"
+        if key in used or v.get("duration", 0) < 3:
             continue
         files = [f for f in v["video_files"]
                  if f.get("height") and f.get("width") and f["height"] > f["width"] and f["height"] >= 1280]
-        if not files:
+        if files:
+            best = min(files, key=lambda f: abs(f["height"] - config.HEIGHT))
+            out.append((key, best["link"], None))  # Pexels license: no attribution required
+    return out
+
+
+# ------------------------------------------------------------------ Wikimedia Commons
+def _strip_html(s: str) -> str:
+    return html.unescape(re.sub(r"<[^>]+>", "", s or "")).strip()
+
+
+def _commons(query: str, used: set[str]) -> list[tuple[str, str, str | None]]:
+    params = {
+        "action": "query", "format": "json", "generator": "search", "gsrnamespace": 6,
+        "gsrlimit": 20, "gsrsearch": f"filetype:video {query}",
+        "prop": "videoinfo", "viprop": "url|size|mime|extmetadata|derivatives",
+        "viextmetadatafilter": "LicenseShortName|Artist|Credit",
+    }
+    pages = _get_json(COMMONS_API + "?" + urllib.parse.urlencode(params)).get("query", {}).get("pages", {})
+    ranked = sorted(pages.values(), key=lambda p: p.get("index", 99))
+    out = []
+    for p in ranked:
+        title = p.get("title", "")
+        info = (p.get("videoinfo") or [{}])[0]
+        key = f"commons:{title}"
+        if key in used or not info.get("url"):
             continue
-        best = min(files, key=lambda f: abs(f["height"] - config.HEIGHT))
-        used.add(v["id"])
-        return best["link"]
-    return None
+        if info.get("height", 0) < 480 or not 3 <= info.get("duration", 0) <= 1800:
+            continue
+        # Prefer a transcode around 720-1080p to keep downloads small
+        url = info["url"]
+        derivs = [d for d in info.get("derivatives", [])
+                  if d.get("height") and 720 <= d["height"] <= 1080 and "src" in d]
+        if derivs:
+            url = min(derivs, key=lambda d: abs(d["height"] - 1080))["src"]
+        elif info.get("size", 0) > MAX_BYTES:
+            continue
+        meta = info.get("extmetadata", {})
+        artist = _strip_html(meta.get("Artist", {}).get("value", "")) or "unknown author"
+        lic = _strip_html(meta.get("LicenseShortName", {}).get("value", "")) or "see source"
+        name = title.removeprefix("File:")
+        credit = f"\"{name}\" by {artist[:80]}, {lic}, via Wikimedia Commons ({info.get('descriptionurl', '')})"
+        out.append((key, url, credit))
+    return out
 
 
+# ------------------------------------------------------------------ fallback
 def _gradient(out: Path, duration: float) -> Path:
     c0, c1 = random.choice(PALETTES)
     src = (f"gradients=s={config.WIDTH}x{config.HEIGHT}:c0={c0}:c1={c1}:"
@@ -55,17 +122,32 @@ def _gradient(out: Path, duration: float) -> Path:
     return out
 
 
-def fetch(query: str, out: Path, duration: float, used: set[int]) -> Path:
+def _queries(query: str) -> list[str]:
+    words = query.split()
+    qs = [query, " ".join(words[:2]), words[-1], words[0]]
+    return list(dict.fromkeys(q for q in qs if q))
+
+
+def fetch(query: str, out: Path, duration: float, used: set[str]) -> tuple[Path, str | None]:
+    """Download footage for one scene. Returns (path, attribution or None)."""
+    sources = []
     if config.PEXELS_API_KEY:
-        for q in (query, " ".join(query.split()[:2]), query.split()[0]):
+        sources.append(("Pexels", _pexels))
+    sources.append(("Wikimedia Commons", _commons))
+    for name, search in sources:
+        for q in _queries(query):
             try:
-                link = _pexels(q, used)
-                if link:
-                    req = urllib.request.Request(link, headers={"User-Agent": "shorts-bot"})
-                    with urllib.request.urlopen(req, timeout=120) as r, open(out, "wb") as f:
-                        f.write(r.read())
-                    return out
+                candidates = search(q, used)
             except Exception as e:  # noqa: BLE001
-                log.warning("Pexels lookup failed for %r: %s", q, e)
-    log.info("Using generated background for %r", query)
-    return _gradient(out, duration)
+                log.warning("%s search failed for %r: %s", name, q, e)
+                break
+            for key, url, credit in candidates[:3]:
+                try:
+                    if _download(url, out):
+                        used.add(key)
+                        log.info("Footage for %r from %s (%s)", query, name, key)
+                        return out, credit
+                except Exception as e:  # noqa: BLE001
+                    log.warning("Download failed %s: %s", url, e)
+    log.info("No footage found for %r, using generated background", query)
+    return _gradient(out, duration), None

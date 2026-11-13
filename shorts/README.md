@@ -18,8 +18,10 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals.** It uses free vertical stock clips from Pexels for each scene,
-   or animated gradient backgrounds when you don't set a Pexels key.
+5. **Builds the visuals.** It uses real footage for each scene. With a `PEXELS_API_KEY` it
+   uses free vertical stock clips from Pexels. Without one it uses freely licensed
+   videos from Wikimedia Commons, which need no key, and adds their authors and licenses
+   to the video description. An animated gradient is used only when nothing matches.
 6. **Edits the video with FFmpeg.** 1080×1920, 30 fps, captions burned in word by word,
    a hook title, loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
 7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts, and the AI
@@ -57,7 +59,7 @@ task starts the workflow on `main`.
 ### 3. Optional
 | Name | Type | Purpose |
 |---|---|---|
-| `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for real stock footage (recommended) |
+| `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Steers Claude's research, e.g. `science, space, history, psychology` |
 | `YT_PRIVACY` | variable | `public` (default), `unlisted` or `private` |
 | `PIPER_VOICE_EN` / `PIPER_VOICE_HI` | variable | Any voice from <https://huggingface.co/rhasspy/piper-voices>, e.g. `hi_IN-priyamvada-medium` for a female Hindi voice |
