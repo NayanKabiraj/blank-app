@@ -62,7 +62,7 @@ def main() -> int:
     results, failures = {}, []
     for lang in [l.strip() for l in args.langs.split(",") if l.strip()]:
         try:
-            video, credits = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}")
+            video, credits = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}", plan.niche)
             if credits:  # freely licensed footage must be credited
                 scripts[lang] = scripts[lang].model_copy(update={
                     "description": scripts[lang].description + "\n\nFootage credits:\n"

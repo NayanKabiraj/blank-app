@@ -6,32 +6,191 @@
   "english": {
     "title": "A Day on Venus Is Longer Than Its Year",
     "description": "Venus spins so slowly that one day there outlasts a whole Venus year. #space #venus #facts",
-    "tags": ["venus", "space facts", "planets", "astronomy", "solar system", "science"],
+    "tags": [
+      "venus",
+      "space facts",
+      "planets",
+      "astronomy",
+      "solar system",
+      "science"
+    ],
     "hook_text": "This planet breaks time",
     "scenes": [
-      {"text": "On one planet, your birthday comes before tomorrow.", "visual_query": "planet space orbit"},
-      {"text": "That planet is Venus, our closest neighbour. It takes two hundred and twenty five Earth days to circle the Sun.", "visual_query": "venus planet"},
-      {"text": "But it spins so slowly that one full day there lasts two hundred and forty three Earth days.", "visual_query": "planet rotating slowly"},
-      {"text": "So a single day on Venus is longer than its entire year.", "visual_query": "sunrise clouds timelapse"},
-      {"text": "And it spins backwards, so the Sun rises in the west and sets in the east.", "visual_query": "sunset horizon"},
-      {"text": "Scientists think a giant collision or its thick atmosphere slowed it down over billions of years.", "visual_query": "asteroid impact space"},
-      {"text": "Its clouds of sulfuric acid trap so much heat that the surface could melt lead.", "visual_query": "volcano lava"},
-      {"text": "Follow for one mind blowing fact every single day.", "visual_query": "night sky stars"}
+      {
+        "text": "On one planet, your birthday comes before tomorrow.",
+        "visual_query": "planet space orbit",
+        "graphic": {
+          "kind": "title",
+          "headline": "A day longer than a year",
+          "caption": ""
+        }
+      },
+      {
+        "text": "That planet is Venus, our closest neighbour. It takes two hundred and twenty five Earth days to circle the Sun.",
+        "visual_query": "venus planet",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Venus",
+          "caption": "our closest neighbour"
+        }
+      },
+      {
+        "text": "But it spins so slowly that one full day there lasts two hundred and forty three Earth days.",
+        "visual_query": "planet rotating slowly",
+        "graphic": {
+          "kind": "stat",
+          "headline": "243 days",
+          "caption": "one day on Venus"
+        }
+      },
+      {
+        "text": "So a single day on Venus is longer than its entire year.",
+        "visual_query": "sunrise clouds timelapse",
+        "graphic": {
+          "kind": "compare",
+          "headline": "Venus: day vs year",
+          "caption": "",
+          "items": [
+            "Day",
+            "Year"
+          ],
+          "values": [
+            243,
+            225
+          ]
+        }
+      },
+      {
+        "text": "And it spins backwards, so the Sun rises in the west and sets in the east.",
+        "visual_query": "sunset horizon",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Spins backwards",
+          "caption": "sunrise in the west"
+        }
+      },
+      {
+        "text": "Scientists think a giant collision or its thick atmosphere slowed it down over billions of years.",
+        "visual_query": "asteroid impact space",
+        "graphic": {
+          "kind": "steps",
+          "headline": "Why so slow?",
+          "caption": "",
+          "items": [
+            "Giant collision",
+            "Thick atmosphere",
+            "Billions of years"
+          ]
+        }
+      },
+      {
+        "text": "Its clouds of sulfuric acid trap so much heat that the surface could melt lead.",
+        "visual_query": "volcano lava",
+        "graphic": {
+          "kind": "stat",
+          "headline": "465 °C",
+          "caption": "surface temperature"
+        }
+      },
+      {
+        "text": "Follow for one mind blowing fact every single day.",
+        "visual_query": "night sky stars",
+        "graphic": {
+          "kind": "title",
+          "headline": "Follow for a fact a day",
+          "caption": ""
+        }
+      }
     ]
   },
   "hindi": {
     "title": "शुक्र ग्रह पर एक दिन, एक साल से भी लंबा",
     "description": "शुक्र इतना धीरे घूमता है कि वहाँ का एक दिन पूरे साल से लंबा होता है। #space #venus #facts",
-    "tags": ["शुक्र ग्रह", "venus", "space facts hindi", "अंतरिक्ष", "science"],
+    "tags": [
+      "शुक्र ग्रह",
+      "venus",
+      "space facts hindi",
+      "अंतरिक्ष",
+      "science"
+    ],
     "hook_text": "यह ग्रह समय तोड़ देता है",
     "scenes": [
-      {"text": "एक ऐसा ग्रह है जहाँ आपका जन्मदिन, कल से पहले आ जाता है।", "visual_query": "planet space orbit"},
-      {"text": "वो ग्रह है शुक्र। सूरज का एक चक्कर लगाने में इसे दो सौ पच्चीस दिन लगते हैं।", "visual_query": "venus planet"},
-      {"text": "लेकिन यह इतना धीरे घूमता है कि वहाँ एक दिन दो सौ तैंतालीस दिन का होता है।", "visual_query": "planet rotating slowly"},
-      {"text": "यानी शुक्र पर एक दिन, उसके पूरे साल से भी लंबा है।", "visual_query": "sunrise clouds timelapse"},
-      {"text": "और यह उल्टा घूमता है, इसलिए वहाँ सूरज पश्चिम से निकलता है।", "visual_query": "sunset horizon"},
-      {"text": "वैज्ञानिक मानते हैं कि किसी बड़ी टक्कर या घने वातावरण ने इसकी रफ़्तार धीमी कर दी।", "visual_query": "asteroid impact space"},
-      {"text": "ऐसे ही रोज़ एक नया फ़ैक्ट जानने के लिए फ़ॉलो करें।", "visual_query": "night sky stars"}
+      {
+        "text": "एक ऐसा ग्रह है जहाँ आपका जन्मदिन, कल से पहले आ जाता है।",
+        "visual_query": "planet space orbit",
+        "graphic": {
+          "kind": "title",
+          "headline": "दिन, साल से लंबा",
+          "caption": ""
+        }
+      },
+      {
+        "text": "वो ग्रह है शुक्र। सूरज का एक चक्कर लगाने में इसे दो सौ पच्चीस दिन लगते हैं।",
+        "visual_query": "venus planet",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "शुक्र ग्रह",
+          "caption": "हमारा सबसे क़रीबी पड़ोसी"
+        }
+      },
+      {
+        "text": "लेकिन यह इतना धीरे घूमता है कि वहाँ एक दिन दो सौ तैंतालीस दिन का होता है।",
+        "visual_query": "planet rotating slowly",
+        "graphic": {
+          "kind": "stat",
+          "headline": "243 दिन",
+          "caption": "शुक्र पर एक दिन"
+        }
+      },
+      {
+        "text": "यानी शुक्र पर एक दिन, उसके पूरे साल से भी लंबा है।",
+        "visual_query": "sunrise clouds timelapse",
+        "graphic": {
+          "kind": "compare",
+          "headline": "शुक्र: दिन बनाम साल",
+          "caption": "",
+          "items": [
+            "दिन",
+            "साल"
+          ],
+          "values": [
+            243,
+            225
+          ]
+        }
+      },
+      {
+        "text": "और यह उल्टा घूमता है, इसलिए वहाँ सूरज पश्चिम से निकलता है।",
+        "visual_query": "sunset horizon",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "उल्टा घूमना",
+          "caption": "पश्चिम में सूर्योदय"
+        }
+      },
+      {
+        "text": "वैज्ञानिक मानते हैं कि किसी बड़ी टक्कर या घने वातावरण ने इसकी रफ़्तार धीमी कर दी।",
+        "visual_query": "asteroid impact space",
+        "graphic": {
+          "kind": "steps",
+          "headline": "इतना धीमा क्यों?",
+          "caption": "",
+          "items": [
+            "बड़ी टक्कर",
+            "घना वातावरण",
+            "अरबों साल"
+          ]
+        }
+      },
+      {
+        "text": "ऐसे ही रोज़ एक नया फ़ैक्ट जानने के लिए फ़ॉलो करें।",
+        "visual_query": "night sky stars",
+        "graphic": {
+          "kind": "title",
+          "headline": "रोज़ एक नया फ़ैक्ट",
+          "caption": "फ़ॉलो करें"
+        }
+      }
     ]
   }
 }

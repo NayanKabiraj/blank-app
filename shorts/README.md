@@ -18,10 +18,13 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals.** It uses real footage for each scene. With a `PEXELS_API_KEY` it
-   uses free vertical stock clips from Pexels. Without one it uses freely licensed
-   videos from Wikimedia Commons, which need no key, and adds their authors and licenses
-   to the video description. An animated gradient is used only when nothing matches.
+5. **Builds the visuals.** By default it draws **motion graphics in code** with
+   [Manim Community](https://www.manim.community) (MIT licence): a dark animated dot-field
+   backdrop, glowing headlines and key terms, count-up numbers, flow diagrams and comparison
+   bars, a niche label and a progress bar (`shorts/motion.py`). Each scene's `graphic` in the
+   plan says what to draw. Set `VISUAL_STYLE=footage` to use real stock footage instead:
+   Pexels clips when you set a `PEXELS_API_KEY`, otherwise freely licensed Wikimedia Commons
+   clips, credited in the description.
 6. **Edits the video with FFmpeg.** 1080×1920, 30 fps, captions burned in word by word,
    a hook title, loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
 7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts, and the AI
@@ -62,6 +65,7 @@ task starts the workflow on `main`.
 | `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Steers Claude's research, e.g. `science, space, history, psychology` |
 | `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
+| `VISUAL_STYLE` | variable | `motion` (default, Manim motion graphics) or `footage` (stock video). Can also be picked per run |
 | `YT_PRIVACY` | variable | `public` (default), `unlisted` or `private` |
 | `PIPER_VOICE_EN` / `PIPER_VOICE_HI` | variable | Any voice from <https://huggingface.co/rhasspy/piper-voices>, e.g. `hi_IN-priyamvada-medium` for a female Hindi voice |
 

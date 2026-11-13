@@ -7,7 +7,7 @@ import subprocess
 import wave
 from pathlib import Path
 
-from . import config, music, tts, visuals
+from . import config, motion, music, tts, visuals
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -135,13 +135,8 @@ def _scene_clip(src: Path, duration: float, out: Path):
           "-preset", "veryfast", "-crf", "21", out])
 
 
-def build(script: LangScript, lang: str, mood: str, work: Path) -> tuple[Path, list[str]]:
-    """Render one Short. Returns (video path, footage credits to add to the description)."""
-    work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
-    work.mkdir(parents=True, exist_ok=True)
-    voice, timeline, voice_end = _voice_track(script, lang, work)
-    total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
-
+def _footage_track(script: LangScript, timeline, total: float, work: Path) -> list[str]:
+    """Stock footage per scene, concatenated into work/video.mp4. Returns footage credits."""
     # Footage: each scene's clip runs until the next scene starts; last one to the end
     used: set[str] = set()
     clips, credits = [], []
@@ -158,6 +153,21 @@ def build(script: LangScript, lang: str, mood: str, work: Path) -> tuple[Path, l
     (work / "clips.txt").write_text("".join(f"file '{c.name}'\n" for c in clips))
     _run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "clips.txt",
           "-c", "copy", "video.mp4"], cwd=work)
+    return credits
+
+
+def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "") -> tuple[Path, list[str]]:
+    """Render one Short. Returns (video path, footage credits to add to the description)."""
+    work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
+    work.mkdir(parents=True, exist_ok=True)
+    voice, timeline, voice_end = _voice_track(script, lang, work)
+    total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
+
+    credits: list[str] = []
+    if config.VISUAL_STYLE == "motion":
+        motion.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4
+    else:
+        credits = _footage_track(script, timeline, total, work)
 
     # Music
     track = music.pick_track(mood)
