@@ -1,19 +1,7 @@
-# 🎈 Blank app template
+# Daily YouTube Shorts bot
 
-A simple Streamlit app template for you to modify!
+A GitHub Actions workflow that researches a niche every day, writes an English and a Hindi script, and generates the voice-over, music and video with open-source tools. It then publishes both videos as YouTube Shorts (40–60 seconds each).
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+➡️ **Setup and usage: [shorts/README.md](shorts/README.md)**
 
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+(The original Streamlit template is still in `streamlit_app.py`.)
