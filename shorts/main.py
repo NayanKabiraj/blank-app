@@ -20,6 +20,20 @@ from .plan import Plan, validate
 log = logging.getLogger("shorts")
 
 
+def _store(video: Path, script, lang: str) -> str:
+    """Keep a video that was not uploaded in videos/<date>/, together with the title,
+    description and tags, so it can be uploaded by hand later."""
+    day = config.VIDEOS_DIR / dt.date.today().isoformat()
+    day.mkdir(parents=True, exist_ok=True)
+    dest = day / f"{lang}.mp4"
+    shutil.copy2(video, dest)
+    (day / f"{lang}_youtube.txt").write_text(
+        f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{script.description}\n\n"
+        f"TAGS:\n{', '.join(script.tags)}\n", encoding="utf-8")
+    log.info("Saved %s for manual upload", dest)
+    return str(dest.relative_to(config.ROOT))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="render videos but do not upload")
@@ -58,12 +72,14 @@ def main() -> int:
                 log.warning("YouTube secrets missing for %s; skipping upload", lang)
             else:
                 entry["video_id"] = upload.upload(final, scripts[lang], lang)
+            if "video_id" not in entry:
+                entry["saved_to"] = _store(final, scripts[lang], lang)
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so one language can still publish
             log.exception("Failed to produce the %s Short", lang)
             failures.append(lang)
 
-    if not args.dry_run and any("video_id" in r for r in results.values()):
+    if not args.dry_run and results:
         config.DATA_DIR.mkdir(exist_ok=True)
         hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []
         hist.append({"date": dt.date.today().isoformat(), "niche": plan.niche,
