@@ -237,7 +237,8 @@ function buildSegment(seg, i) {
       const c = PROPS.coin(); c.scale.setScalar(0.62); c.rotation.x = -Math.PI / 2; c.position.set(0.65, 0.12 + k * 0.16, 0); root.add(c); s.coins.push(c);
     }
   } else if (kind === 'steps' && g.items?.length >= 2) {
-    card.append(el('div', 'head', g.headline)); card.querySelector('.head').style.fontSize = '64px';
+    card.append(el('div', 'head', g.headline)); card.querySelector('.head').style.fontSize = '56px';
+    card.style.top = '340px'; card.style.padding = '26px 34px';
     const list = el('div', 'steps'); s.items = g.items.slice(0, 4).map(txt => { const d = el('div', 'step', txt); list.append(d); return d; });
     card.append(list);
     const n = s.items.length;
