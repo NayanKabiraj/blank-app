@@ -113,6 +113,8 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
     chars = 13 if lang == "en" else 16  # Devanagari strings count matras as characters
 
     class Short(Scene):
+        first = False
+
         def construct(self):
             clock = {"t": 0.0}
 
@@ -148,6 +150,7 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
             self.add(track, bar, hud)
 
             for i, (seg_start, seg_end, g) in enumerate(segments):
+                self.first = i == 0 and bool(script.hook_text)  # the yellow hook sits at the top
                 group, intro, hold = self.build(g, i)
                 self.play(*intro, run_time=INTRO)
                 remaining = seg_end - self.renderer.time - OUTRO
@@ -205,28 +208,36 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
 
         def stat(self, g):
             prefix, value, suffix, decimals, commas = _parse_number(g.headline)
-            tracker = ValueTracker(0)
+            k = 0.8 if self.first else 1.0          # smaller under the opening hook
+            cy = 2.3 if self.first else 2.9
+            # A year should appear as-is: counting up from 0 to 1966 looks wrong
+            is_year = not suffix.strip() and not prefix.strip() and decimals == 0 and 1000 <= value <= 2100
+            tracker = ValueTracker(value if is_year else 0)
 
             def number():
                 n = T(prefix + _fmt(tracker.get_value(), decimals, commas), 3.4, PURPLE_SOFT)
                 u = T(suffix.strip(), 1.2, WHITE) if suffix.strip() else None
                 grp = VGroup(n, u).arrange(DOWN, buff=0.3) if u else VGroup(n)
-                return fit(grp, 5.6, 4.2).move_to([0, 2.9, 0])
+                return fit(grp, 5.6 * k, 4.2 * k).move_to([0, cy, 0])
             num = always_redraw(number)
-            ring = Circle(radius=3.25, stroke_color=PURPLE, stroke_width=7).move_to([0, 2.9, 0])
-            dash = DashedVMobject(Circle(radius=3.65, stroke_color=PURPLE_SOFT, stroke_width=3),
-                                  num_dashes=40).move_to([0, 2.9, 0])
+            ring = Circle(radius=3.25 * k, stroke_color=PURPLE, stroke_width=7).move_to([0, cy, 0])
+            dash = DashedVMobject(Circle(radius=3.65 * k, stroke_color=PURPLE_SOFT, stroke_width=3),
+                                  num_dashes=40).move_to([0, cy, 0])
             halo = glow(ring)
             parts = [halo, ring, dash, num]
             cap = None
             if g.caption:
                 cap = fit(T(_wrap(g.caption, 22), 0.8, WHITE, bold=False), 8.0, 1.6)
-                cap.move_to([0, -1.25, 0])
+                cap.next_to(dash, DOWN, buff=0.15)
                 parts.append(cap)
             group = VGroup(*parts)
-            intro = [Create(ring), FadeIn(halo), FadeIn(dash),
-                     tracker.animate(rate_func=smooth).set_value(value)]
-            self.add(num)
+            intro = [Create(ring), FadeIn(halo), FadeIn(dash)]
+            if not is_year:
+                intro.append(tracker.animate(rate_func=smooth).set_value(value))
+            else:
+                intro.append(FadeIn(num, scale=1.15))
+            if not is_year:
+                self.add(num)
             if cap:
                 intro.append(FadeIn(cap, shift=UP * 0.2))
 
@@ -283,8 +294,10 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
                                    fill_color=color, fill_opacity=0.15 if k == 0 else 0.05)
                 lab = fit(T(_wrap(label, 10), 0.8, WHITE), 3.8, 1.6)
                 cols.add(VGroup(shape, lab).arrange(DOWN, buff=0.35))
-            cols.arrange(RIGHT, buff=1.2, aligned_edge=DOWN)
-            vs = T("vs" if lang == "en" else "बनाम", 0.9, GREY).move_to(cols)
+            vs = T("vs" if lang == "en" else "बनाम", 0.9, GREY)
+            cols.arrange(RIGHT, buff=vs.width + 0.8, aligned_edge=DOWN)
+            fit(cols, 8.4, 6.0)
+            vs.move_to(cols)
             group = VGroup(head, VGroup(cols, vs)).arrange(DOWN, buff=0.7).move_to([0, 1.7, 0])
             intro = [FadeIn(head, shift=DOWN * 0.2),
                      LaggedStart(*[FadeIn(c, shift=UP * 0.4) for c in cols], lag_ratio=0.35),
