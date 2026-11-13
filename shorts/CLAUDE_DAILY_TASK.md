@@ -27,7 +27,7 @@ To change how Claude picks topics or writes scripts, edit this file.
      and `mood`, which must be one of `calm`, `upbeat`, `dramatic`, `inspiring`, `mysterious`.
    - `english` and `hindi`, each with `title` (80 characters max, no hashtags),
      `description` (2–3 sentences plus 3–5 hashtags), `tags` (8–12), `hook_text`
-     (6 words max) and `scenes` (6–9 of them, each with `text` and `visual_query`).
+     (6 words max) and `scenes` (6–9 of them, each with `text`, `graphic` and `visual_query`).
    - Length: the English narration is 120–140 words in total and the Hindi narration is
      105–125 words, which gives 45–55 seconds of speech.
    - Scene 1 is a hook that grabs attention in under 3 seconds. Then tell the facts as a
@@ -38,6 +38,16 @@ To change how Claude picks topics or writes scripts, edit this file.
    - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
+   - `graphic` is what the motion-graphics renderer draws for the scene, written in the
+     **video's language** (Hindi graphics in Devanagari). Pick the `kind` that fits the line:
+     - `title`: a big headline (use it for the hook and the closing line).
+     - `stat`: one striking number with its unit in `headline` (`"71 km/s"`, `"1966"`,
+       `"243 दिन"`). The number counts up on screen, so only use numbers you verified.
+     - `keyword`: a key term in `headline` with a one-line explanation in `caption`.
+     - `steps`: a process, with a short `headline` and 2–4 `items` in order.
+     - `compare`: two things, with exactly 2 `items` and optionally 2 `values` drawn as bars.
+     Keep `headline` ≤ 24 characters, `caption` ≤ 40 and each item ≤ 18. Vary the kinds
+     across scenes, and use at least one `stat` when the topic has a good number.
    - `visual_query` is always 2–3 concrete **English** keywords for stock footage. The
      footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
      scenery, nature, objects, animals, space imagery or time-lapses (for example

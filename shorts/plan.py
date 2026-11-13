@@ -11,13 +11,30 @@ from __future__ import annotations
 import json
 import sys
 from pathlib import Path
-from typing import List, Literal
+from typing import List, Literal, Optional
 
 from pydantic import BaseModel, Field, ValidationError
 
 
+class Graphic(BaseModel):
+    """What the motion-graphics renderer (shorts/motion.py) draws for a scene. Text is in
+    the video's language; keep it short, it is shown big on a phone screen."""
+    kind: Literal["title", "stat", "keyword", "steps", "compare"] = Field(
+        description="title: a big headline. stat: one big number with a label. keyword: a "
+        "key term with a one-line explanation. steps: 2-4 stages of a process. compare: two "
+        "things side by side, optionally with values drawn as bars.")
+    headline: str = Field(description="Main text: the headline, the number with its unit "
+                          "(e.g. '71 km/s', '1966'), or the key term. Max 24 characters.")
+    caption: str = Field(default="", description="Optional smaller line under the headline, max 40 characters.")
+    items: List[str] = Field(default_factory=list, description="steps: 2-4 short labels in order. "
+                             "compare: exactly 2 labels. Max 18 characters each.")
+    values: List[float] = Field(default_factory=list, description="compare only: 2 numbers "
+                                "for the bar lengths (optional).")
+
+
 class Scene(BaseModel):
     text: str = Field(description="Narration for this scene, 1-2 short spoken sentences.")
+    graphic: Optional[Graphic] = Field(default=None, description="Motion graphic for this scene.")
     visual_query: str = Field(
         description="2-3 ENGLISH keywords for filmable stock footage of scenery, nature, "
         "objects or space (e.g. 'meteor timelapse', 'ocean waves'); never people or news."
@@ -52,6 +69,16 @@ def validate(plan: Plan) -> list[str]:
             problems.append(f"{lang}: {len(s.scenes)} scenes, expected 6-9")
         if len(s.title) > 90:
             problems.append(f"{lang}: title longer than 90 characters")
+        for i, sc in enumerate(s.scenes, 1):
+            g = sc.graphic
+            if g is None:
+                problems.append(f"{lang} scene {i}: no graphic (a keyword card will be used)")
+            elif len(g.headline) > 28:
+                problems.append(f"{lang} scene {i}: graphic headline longer than 28 characters")
+            elif g.kind == "steps" and not 2 <= len(g.items) <= 4:
+                problems.append(f"{lang} scene {i}: steps needs 2-4 items")
+            elif g.kind == "compare" and len(g.items) != 2:
+                problems.append(f"{lang} scene {i}: compare needs exactly 2 items")
     if not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
         problems.append("hindi: narration is not in Devanagari script")
     return problems

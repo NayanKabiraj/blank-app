@@ -13,6 +13,10 @@ on:
         description: "Render only, do not upload"
         type: boolean
         default: false
+      visual_style:
+        description: "Visuals: motion (Manim graphics) or footage (stock video). Empty = repo default"
+        type: string
+        default: ""
       langs:
         description: "Languages to produce"
         type: string
@@ -41,6 +45,8 @@ jobs:
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
       WIKIMEDIA_CONTACT: ${{ vars.WIKIMEDIA_CONTACT }}
+      # motion = Manim motion graphics (default), footage = real stock footage
+      VISUAL_STYLE: ${{ inputs.visual_style || vars.VISUAL_STYLE || 'motion' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -53,7 +59,8 @@ jobs:
       - name: Install FFmpeg and fonts (English + Devanagari)
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core
+          # libpango1.0-dev + pkg-config: needed to build manimpango (Manim's text renderer)
+          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core libpango1.0-dev pkg-config
           fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
 
       - name: Cache Piper voices

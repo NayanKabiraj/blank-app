@@ -31,6 +31,11 @@ VOICES = {
 }
 FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
+# --- Visual style ---
+# "motion": motion graphics drawn in code with Manim (shorts/motion.py), the default
+# "footage": real stock footage per scene (shorts/visuals.py)
+VISUAL_STYLE = os.getenv("VISUAL_STYLE", "motion").strip().lower() or "motion"
+
 # --- Stock footage: Pexels if a key is set, else Wikimedia Commons (no key needed) ---
 PEXELS_API_KEY = os.getenv("PEXELS_API_KEY", "")
 
