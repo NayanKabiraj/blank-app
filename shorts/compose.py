@@ -124,6 +124,7 @@ def _scene_clip(src: Path, duration: float, out: Path):
 
 
 def build(script: LangScript, lang: str, mood: str, work: Path) -> Path:
+    work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
     work.mkdir(parents=True, exist_ok=True)
     voice, timeline, voice_end = _voice_track(script, lang, work)
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
