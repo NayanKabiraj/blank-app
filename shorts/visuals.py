@@ -9,10 +9,14 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import logging
 import random
 import re
+import shutil
 import subprocess
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -20,7 +24,14 @@ from pathlib import Path
 from . import config
 
 log = logging.getLogger(__name__)
-UA = "daily-shorts-bot/1.0 (open-source GitHub Actions pipeline)"
+# Wikimedia asks bots for a descriptive User-Agent with a way to contact the operator:
+# set the WIKIMEDIA_CONTACT variable (an email or URL) to include one.
+_contact = os.getenv("WIKIMEDIA_CONTACT", "")
+UA = "daily-shorts-bot/1.1 (GitHub Actions; python-urllib)" + (f" contact: {_contact}" if _contact else "")
+COMMONS_DELAY = 3.0          # seconds between requests to Wikimedia (be polite)
+_last_commons = 0.0
+_commons_blocked = False     # set after a 429 so we stop asking for the rest of the run
+_cache: dict[str, tuple[Path, str | None]] = {}  # query -> footage, reused across languages
 COMMONS_API = "https://commons.wikimedia.org/w/api.php"
 MAX_BYTES = 150 * 1024 * 1024
 
@@ -32,12 +43,23 @@ PALETTES = [
 
 
 def _get_json(url: str, headers: dict | None = None) -> dict:
+    _throttle(url)
     req = urllib.request.Request(url, headers={"User-Agent": UA, **(headers or {})})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r)
 
 
+def _throttle(url: str) -> None:
+    global _last_commons
+    if "wikimedia.org" in url:
+        wait = COMMONS_DELAY - (time.monotonic() - _last_commons)
+        if wait > 0:
+            time.sleep(wait)
+        _last_commons = time.monotonic()
+
+
 def _download(url: str, out: Path) -> bool:
+    _throttle(url)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=180) as r, open(out, "wb") as f:
         size = 0
@@ -97,16 +119,17 @@ def _commons(query: str, used: set[str]) -> list[tuple[str, str, str | None]]:
         # Prefer a transcode around 720-1080p to keep downloads small
         url = info["url"]
         derivs = [d for d in info.get("derivatives", [])
-                  if d.get("height") and 720 <= d["height"] <= 1080 and "src" in d]
-        if derivs:
-            url = min(derivs, key=lambda d: abs(d["height"] - 1080))["src"]
+                  if d.get("height") and 480 <= d["height"] <= 1080 and "src" in d]
+        if derivs:  # ~720p is plenty after the vertical crop and keeps downloads small
+            url = min(derivs, key=lambda d: abs(d["height"] - 720))["src"]
         elif info.get("size", 0) > MAX_BYTES:
             continue
         meta = info.get("extmetadata", {})
         artist = _strip_html(meta.get("Artist", {}).get("value", "")) or "unknown author"
         lic = _strip_html(meta.get("LicenseShortName", {}).get("value", "")) or "see source"
         name = title.removeprefix("File:")
-        credit = f"\"{name}\" by {artist[:80]}, {lic}, via Wikimedia Commons ({info.get('descriptionurl', '')})"
+        artist = " ".join(artist.split())[:80]
+        credit = f"\"{name}\" by {artist}, {lic}, via Wikimedia Commons ({info.get('descriptionurl', '')})"
         out.append((key, url, credit))
     return out
 
@@ -130,24 +153,44 @@ def _queries(query: str) -> list[str]:
 
 def fetch(query: str, out: Path, duration: float, used: set[str]) -> tuple[Path, str | None]:
     """Download footage for one scene. Returns (path, attribution or None)."""
+    global _commons_blocked
+    if query in _cache and _cache[query][0].exists():  # e.g. the Hindi video reusing English footage
+        src, credit = _cache[query]
+        shutil.copyfile(src, out)
+        return out, credit
     sources = []
     if config.PEXELS_API_KEY:
         sources.append(("Pexels", _pexels))
     sources.append(("Wikimedia Commons", _commons))
     for name, search in sources:
-        for q in _queries(query):
+        for q in _queries(query)[:3]:
+            if name == "Wikimedia Commons" and _commons_blocked:
+                break
             try:
                 candidates = search(q, used)
             except Exception as e:  # noqa: BLE001
                 log.warning("%s search failed for %r: %s", name, q, e)
                 break
-            for key, url, credit in candidates[:3]:
+            for key, url, credit in candidates[:2]:
                 try:
                     if _download(url, out):
                         used.add(key)
+                        _cache[query] = (out, credit)
                         log.info("Footage for %r from %s (%s)", query, name, key)
                         return out, credit
+                except urllib.error.HTTPError as e:
+                    log.warning("Download failed (%s) %s", e.code, url)
+                    if e.code == 429 and "wikimedia" in url:
+                        retry = int(e.headers.get("Retry-After") or 0)
+                        if 0 < retry <= 30:
+                            time.sleep(retry)
+                        else:
+                            log.warning("Wikimedia is rate limiting; no more Commons requests this run")
+                            _commons_blocked = True
+                            break
                 except Exception as e:  # noqa: BLE001
                     log.warning("Download failed %s: %s", url, e)
+            if _commons_blocked and name == "Wikimedia Commons":
+                break
     log.info("No footage found for %r, using generated background", query)
     return _gradient(out, duration), None
