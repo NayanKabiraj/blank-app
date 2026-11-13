@@ -1,8 +1,8 @@
 """Daily entry point: research -> scripts -> render (EN + HI) -> upload -> log history.
 
-    python -m shorts.main                 # full run
-    python -m shorts.main --dry-run       # render only, no upload
-    python -m shorts.main --plan-file p.json --dry-run   # skip research, reuse a plan
+    python -m shorts.main --plan-file plan.json            # render + upload (normal use)
+    python -m shorts.main --plan-file plan.json --dry-run  # render only
+    python -m shorts.main                                  # optional: research via Claude API
 """
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 from . import compose, config, upload
-from .research import Plan, make_plan
+from .plan import Plan, validate
 
 log = logging.getLogger("shorts")
 
@@ -35,8 +35,13 @@ def main() -> int:
         shutil.rmtree(out)
     out.mkdir(parents=True)
 
-    plan = (Plan.model_validate_json(Path(args.plan_file).read_text())
-            if args.plan_file else make_plan(args.niche))
+    if args.plan_file:
+        plan = Plan.model_validate_json(Path(args.plan_file).read_text(encoding="utf-8"))
+        for problem in validate(plan):
+            log.warning("Plan check: %s", problem)
+    else:  # optional: research via the Claude API inside the pipeline
+        from .research import make_plan
+        plan = make_plan(args.niche)
     (out / "plan.json").write_text(plan.model_dump_json(indent=2), encoding="utf-8")
 
     scripts = {"en": plan.english, "hi": plan.hindi}
@@ -63,6 +68,10 @@ def main() -> int:
         hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []
         hist.append({"date": dt.date.today().isoformat(), "niche": plan.niche,
                      "topic": plan.topic, "mood": plan.mood, "videos": results})
+        plans_dir = config.DATA_DIR / "plans"
+        plans_dir.mkdir(exist_ok=True)
+        (plans_dir / f"{dt.date.today().isoformat()}.json").write_text(
+            plan.model_dump_json(indent=2), encoding="utf-8")
         config.HISTORY_FILE.write_text(json.dumps(hist[-365:], ensure_ascii=False, indent=2) + "\n",
                                        encoding="utf-8")
     log.info("Done: %s", json.dumps(results, ensure_ascii=False))

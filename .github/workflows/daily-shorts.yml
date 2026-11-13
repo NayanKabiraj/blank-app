@@ -1,19 +1,18 @@
 name: Daily YouTube Shorts
 
+# Triggered every day by a scheduled Claude task, which does the niche research and writes
+# the scripts, then calls this workflow with the plan. This job only renders and uploads.
 on:
-  schedule:
-    # 03:17 UTC = 08:47 IST, every day
-    - cron: "17 3 * * *"
   workflow_dispatch:
     inputs:
+      plan_json:
+        description: "Video plan JSON (schema: python -m shorts.plan schema). Empty = sample plan"
+        type: string
+        default: ""
       dry_run:
         description: "Render only, do not upload"
         type: boolean
         default: false
-      niche:
-        description: "Force a niche (leave empty to let Claude research one)"
-        type: string
-        default: ""
       langs:
         description: "Languages to produce"
         type: string
@@ -31,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -39,8 +37,6 @@ jobs:
       YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
       # Optional repository variables (Settings > Secrets and variables > Actions > Variables)
       YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
-      NICHE_HINT: ${{ vars.NICHE_HINT }}
-      CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL || 'claude-opus-5-5' }}
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
@@ -68,15 +64,25 @@ jobs:
       - name: Install Python packages
         run: pip install -r shorts/requirements.txt
 
-      - name: Research, render and publish
+      - name: Read the plan sent by Claude
+        env:
+          IN_PLAN: ${{ inputs.plan_json }}
+        run: |
+          if [ -n "$IN_PLAN" ]; then
+            printf '%s' "$IN_PLAN" > "$RUNNER_TEMP/plan.json"
+          else
+            echo "::warning::No plan_json given, using shorts/sample_plan.json"
+            cp shorts/sample_plan.json "$RUNNER_TEMP/plan.json"
+          fi
+          python -m shorts.plan validate "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
+
+      - name: Render and publish
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
-          IN_NICHE: ${{ inputs.niche }}
         run: |
-          ARGS=(--langs "$IN_LANGS")
+          ARGS=(--plan-file "$RUNNER_TEMP/plan.json" --langs "$IN_LANGS")
           if [ "$IN_DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
-          if [ -n "$IN_NICHE" ]; then ARGS+=(--niche "$IN_NICHE"); fi
           python -m shorts.main "${ARGS[@]}"
 
       - name: Keep videos as a workflow artifact
@@ -96,7 +102,8 @@ jobs:
           if [ -n "$(git status --porcelain data/)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add data/history.json
+            git add data/
             git commit -m "chore: log today's Shorts [skip ci]"
+            git pull --rebase -q
             git push
           fi

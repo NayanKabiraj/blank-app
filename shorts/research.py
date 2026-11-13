@@ -1,4 +1,8 @@
-"""Daily niche research + bilingual script writing with Claude.
+"""OPTIONAL: run the research inside the pipeline via the Claude API (needs
+ANTHROPIC_API_KEY and `pip install anthropic`). The default setup does not use this file:
+a scheduled Claude task does the research and passes the plan to GitHub Actions.
+
+Daily niche research + bilingual script writing with Claude.
 
 Step 1: Claude researches today's trends on the web (web search tool), seeded with
         free trend signals (Google Trends RSS) and the channel's recent history, and
@@ -13,41 +17,14 @@ import json
 import logging
 import urllib.request
 import xml.etree.ElementTree as ET
-from typing import List, Literal
-
 import anthropic
-from pydantic import BaseModel, Field
 
 from . import config
+from .plan import LangScript, Plan  # noqa: F401
 
 log = logging.getLogger(__name__)
 
 FALLBACK_BETA = "server-side-fallback-2026-07-01"
-
-
-class Scene(BaseModel):
-    text: str = Field(description="Narration for this scene, 1-2 short spoken sentences.")
-    visual_query: str = Field(
-        description="2-4 ENGLISH keywords describing concrete, filmable stock footage for "
-        "this scene (e.g. 'city traffic night', 'hands counting money')."
-    )
-
-
-class LangScript(BaseModel):
-    title: str = Field(description="Catchy YouTube title, max 80 characters, no hashtags.")
-    description: str = Field(description="2-3 sentence YouTube description plus 3-5 hashtags.")
-    tags: List[str] = Field(description="8-12 search tags.")
-    hook_text: str = Field(description="On-screen hook shown in the first 3 seconds, max 6 words.")
-    scenes: List[Scene] = Field(description="6-9 scenes; first is the hook, last is a call to follow.")
-
-
-class Plan(BaseModel):
-    niche: str
-    topic: str
-    research_summary: str = Field(description="Why this niche/topic today, with the key facts used.")
-    mood: Literal["calm", "upbeat", "dramatic", "inspiring", "mysterious"]
-    english: LangScript
-    hindi: LangScript
 
 
 def _trend_signals() -> str:

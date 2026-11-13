@@ -8,7 +8,7 @@ import wave
 from pathlib import Path
 
 from . import config, music, tts, visuals
-from .research import LangScript
+from .plan import LangScript
 
 log = logging.getLogger(__name__)
 
