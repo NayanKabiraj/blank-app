@@ -60,24 +60,28 @@ def _check(msg) -> None:
 
 
 def research_brief(client: anthropic.Anthropic, today: str) -> str:
+    from .niches import next_niche
+    niche = next_niche()
+    covered = [h["topic"] for h in (json.loads(config.HISTORY_FILE.read_text())
+               if config.HISTORY_FILE.exists() else []) if h.get("niche") == niche.name]
     prompt = f"""Today is {today}. You run research for a faceless YouTube Shorts channel that
 publishes one English and one Hindi Short every day for an audience mainly in India plus a
 global English audience.
 
-Pick TODAY's niche and a single specific video topic. Use web search to check what is
-trending right now and what is performing on YouTube Shorts, and to collect 4-6 accurate,
-surprising, verifiable facts for the video.
+The channel is an explainer channel: every Short answers one "how does X work?" or
+"why does X happen?" question in simple words. Today's niche is fixed by the rotation:
 
-Selection criteria:
-- High curiosity / retention potential for a 40-60 second Short.
-- Evergreen-safe or timely, but NOT breaking tragedies, politics, elections, medical or
-  financial advice, or anything about real private individuals.
-- Easy to illustrate with generic stock footage (no specific celebrities or brands needed).
-- Works equally well in English and Hindi.
-- Do not repeat a topic from the recent history; vary the niche across days
-  (e.g. science, space, history, psychology, tech, nature, money habits, geography,
-  inventions, human body, animals, productivity).
-{f"- Owner preference for niches: {config.NICHE_HINT}" if config.NICHE_HINT else ""}
+Niche: {niche.name}
+Angle: {niche.angle}
+Example questions: {"; ".join(niche.examples)}
+Already covered in this niche (don't repeat): {"; ".join(covered) or "nothing yet"}
+{f"Owner preference: {config.NICHE_HINT}" if config.NICHE_HINT else ""}
+
+Pick one explainer question in this niche. Use web search to find a timely angle (what
+people are searching for this week) if one fits, otherwise pick an evergreen question.
+Avoid breaking tragedies, politics, elections, medical or investment advice and real
+private individuals. Research how it actually works: the 3-4 step mechanism, one striking
+verified number and one everyday analogy, each checked against a reliable source.
 
 Free trend signals fetched this morning:
 {_trend_signals()}
@@ -85,8 +89,9 @@ Free trend signals fetched this morning:
 Recent channel history (avoid repeats):
 {_recent_history()}
 
-Finish with a research brief: chosen niche, topic, why it should perform today, the facts
-(with source names), and the emotional mood of the video."""
+Finish with a research brief: the niche (exactly "{niche.name}"), the question, why it fits
+today, how it works step by step, the facts (with source names), the analogy, and the
+mood of the video."""
     messages = [{"role": "user", "content": prompt}]
     for _ in range(5):  # handle pause_turn from long server-side tool turns
         msg = client.beta.messages.create(
@@ -117,9 +122,11 @@ def write_scripts(client: anthropic.Anthropic, brief: str) -> Plan:
 
 Rules for both versions:
 - Spoken length 45-55 seconds: English 120-140 words total; Hindi 105-125 words total.
-- Scene 1 is a hook that creates curiosity in under 3 seconds. Then deliver the facts
-  as a mini-story with one idea per scene. The last scene asks viewers to follow for a
-  new fact every day.
+- Explainer structure: hook question (title graphic), one-sentence answer (keyword),
+  how it works step by step (a steps graphic), one verified number (stat), an everyday
+  analogy or comparison, then a takeaway and "Follow to understand one new thing every
+  day". Use the niche name from the brief exactly. Fill every scene's graphic in the
+  video's language.
 - Short, punchy, conversational sentences that sound natural when read aloud by TTS.
 - Write numbers, years and symbols as words (e.g. "nineteen sixty-nine", "fifty percent")
   so the voice pronounces them correctly. No emojis, no hashtags inside narration.

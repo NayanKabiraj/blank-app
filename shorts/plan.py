@@ -79,6 +79,9 @@ def validate(plan: Plan) -> list[str]:
                 problems.append(f"{lang} scene {i}: steps needs 2-4 items")
             elif g.kind == "compare" and len(g.items) != 2:
                 problems.append(f"{lang} scene {i}: compare needs exactly 2 items")
+    from .niches import NAMES
+    if plan.niche not in NAMES:
+        problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
     if not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
         problems.append("hindi: narration is not in Devanagari script")
     return problems

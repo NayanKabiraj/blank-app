@@ -6,33 +6,54 @@ To change how Claude picks topics or writes scripts, edit this file.
 
 ## Steps
 
-1. **Read the channel's memory.** In `NayanKabiraj/blank-app` on branch `main`, read
-   `data/history.json`, which lists past videos. If `NICHE_HINT.txt` exists at the repo
-   root, read it too: it holds the owner's niche preferences.
-2. **Research today's niche.** Use web search to see what is trending today in India and
-   worldwide (Google Trends, news, YouTube Shorts trends) and pick **one niche and one
-   specific topic**:
-   - It should make people curious enough to watch a 40–60 second Short to the end.
-   - Avoid breaking tragedies, politics, elections, medical or financial advice, and real
-     private individuals.
-   - It must be easy to show with generic stock footage (no celebrities or brands needed).
-   - It must work in both English and Hindi.
-   - Don't repeat a topic from `history.json`, and rotate the niche from day to day
-     (science, space, history, psychology, tech, nature, money habits, geography,
-     inventions, human body, animals, productivity, and so on).
-   - Collect 4–6 accurate, surprising facts and check each one against a reliable source.
+The channel is an **explainer channel**: every Short answers one clear "how does X work?"
+or "why does X happen?" question, in simple words, with motion graphics. It sticks to a
+fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
+
+1. **Get today's niche.** In `NayanKabiraj/blank-app` on branch `main`, run
+   `python -m shorts.niches next` (or read `shorts/niches.py` and `data/history.json`
+   yourself). It prints the niche that has gone longest without a video, its angle,
+   example topics, and the topics already covered in that niche. Use exactly that niche,
+   and copy its `name` into the plan's `niche` field unchanged. If `NICHE_HINT.txt` exists
+   at the repo root, it holds the owner's preferences and overrides the rotation.
+2. **Pick and research one explainer topic in that niche.**
+   - Phrase the topic as a single question a curious 15-year-old would ask ("How does
+     UPI move money in two seconds?"). The examples are a starting point, not a list to
+     work through in order.
+   - Prefer a timely angle: use web search to check what people in India and worldwide are
+     searching for or talking about this week, and pick a topic in today's niche that ties
+     into it (a launch, a season, an event in the sky, a festival). If nothing fits, choose
+     an evergreen question.
+   - Don't repeat anything in `already_covered` or `data/history.json`.
+   - Avoid breaking tragedies, politics, elections, medical or investment advice, brands
+     in a promotional way, and real private individuals.
+   - Find out how it actually works: the 3–4 step mechanism, one striking verified number,
+     and one everyday analogy that makes it click. Check every fact against a reliable
+     source (official sites, encyclopedias, universities, established science outlets).
 3. **Write the plan** as JSON following `shorts/sample_plan.json` exactly (the full schema
    is in `shorts/plan.py`):
-   - `niche`, `topic`, `research_summary` (why this topic today, the facts and their sources),
+   - `niche` (exactly the name from step 1), `topic` (the question), `research_summary`
+     (why this topic today, how it works, the facts and their sources),
      and `mood`, which must be one of `calm`, `upbeat`, `dramatic`, `inspiring`, `mysterious`.
    - `english` and `hindi`, each with `title` (80 characters max, no hashtags),
      `description` (2–3 sentences plus 3–5 hashtags), `tags` (8–12), `hook_text`
      (6 words max) and `scenes` (6–9 of them, each with `text`, `graphic` and `visual_query`).
    - Length: the English narration is 120–140 words in total and the Hindi narration is
      105–125 words, which gives 45–55 seconds of speech.
-   - Scene 1 is a hook that grabs attention in under 3 seconds. Then tell the facts as a
-     short story, one idea per scene. The last scene asks viewers to follow for a new fact
-     every day.
+   - Follow the explainer structure:
+     1. **Hook** (scene 1): the question, or a surprising claim that makes viewers want the
+        answer, in under 3 seconds. `graphic.kind`: `title`.
+     2. **Short answer** (scene 2): the answer in one sentence. Usually a `keyword`.
+     3. **How it works** (2–3 scenes): the mechanism step by step, one idea per scene.
+        Use a `steps` graphic for the sequence.
+     4. **The number** (1 scene): one striking verified number that shows the scale.
+        `stat`.
+     5. **Make it click** (1 scene): an everyday analogy or a before/after comparison.
+        `compare` or `keyword`.
+     6. **Close** (last scene): a one-line takeaway, then "Follow to understand one new
+        thing every day" (Hindi: "रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें"). `title`.
+   - Explain like a good teacher: plain words, define any technical term the first time
+     you use it, and no jargon left unexplained.
    - Use short, natural spoken sentences. Write numbers and years as words, for example
      "nineteen sixty-nine". No emojis, and no hashtags in the narration.
    - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
@@ -63,5 +84,5 @@ To change how Claude picks topics or writes scripts, edit this file.
    `workflow_id: daily-shorts.yml`, `ref: main`, and
    `inputs: {"plan_json": "<the whole plan as one compact JSON string>"}`.
    Leave out the other inputs.
-6. **Report back** in 3–4 lines: the niche, the topic, both titles, and whether the
+6. **Report back** in 3–4 lines: the niche, the topic question, both titles, and whether the
    workflow started. Don't commit or push anything. The workflow records history on its own.
