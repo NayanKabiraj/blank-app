@@ -96,5 +96,14 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
    `workflow_id: daily-shorts.yml`, `ref: main`, and
    `inputs: {"plan_json": "<the whole plan as one compact JSON string>"}`.
    Leave out the other inputs.
-6. **Report back** in 3–4 lines: the niche, the topic question, both titles, and whether the
-   workflow started. Don't commit or push anything. The workflow records history on its own.
+6. **Check the render.** It takes about 8–10 minutes. Then find the newest
+   `daily-shorts.yml` run with `actions_list` (`method: list_workflow_runs`,
+   `resource_id: daily-shorts.yml`, `perPage: 1`) and check that it finished with
+   `conclusion: success`. If it's still running, check again a few minutes later. If it
+   failed, read the failed job's log with `get_job_logs` (`run_id`, `failed_only: true`,
+   `return_content: true`) and include the error in your report. Don't try to fix code.
+7. **Report back** in a few lines: the niche, the question, both titles, which scenes got
+   AI clips (from "Visual credits" in `videos/<date>/en_youtube.txt` on `main`), whether
+   the run succeeded, and where the videos are: YouTube links if they were uploaded,
+   otherwise `videos/<date>/` on `main`. Don't commit or push anything. The workflow
+   records history on its own.
