@@ -65,7 +65,7 @@ def main() -> int:
             video, credits = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}", plan.niche)
             if credits:  # freely licensed footage must be credited
                 scripts[lang] = scripts[lang].model_copy(update={
-                    "description": scripts[lang].description + "\n\nFootage credits:\n"
+                    "description": scripts[lang].description + "\n\nVisual credits:\n"
                     + "\n".join(f"- {c}" for c in credits)})
             final = out / f"{dt.date.today().isoformat()}_{lang}.mp4"
             shutil.move(video, final)
