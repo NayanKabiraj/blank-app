@@ -21,8 +21,8 @@ log = logging.getLogger("shorts")
 
 
 def _store(video: Path, script, lang: str) -> str:
-    """Keep a video that was not uploaded in videos/<date>/, together with the title,
-    description and tags, so it can be uploaded by hand later."""
+    """Keep every video in videos/<date>/ (uploaded or not), together with the title,
+    description and tags, so it can be re-used or uploaded by hand."""
     day = config.VIDEOS_DIR / dt.date.today().isoformat()
     day.mkdir(parents=True, exist_ok=True)
     dest = day / f"{lang}.mp4"
@@ -30,7 +30,7 @@ def _store(video: Path, script, lang: str) -> str:
     (day / f"{lang}_youtube.txt").write_text(
         f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{script.description}\n\n"
         f"TAGS:\n{', '.join(script.tags)}\n", encoding="utf-8")
-    log.info("Saved %s for manual upload", dest)
+    log.info("Saved %s", dest)
     return str(dest.relative_to(config.ROOT))
 
 
@@ -65,15 +65,14 @@ def main() -> int:
             video = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}")
             final = out / f"{dt.date.today().isoformat()}_{lang}.mp4"
             shutil.move(video, final)
-            entry = {"file": final.name}
+            # Always keep a copy first, so the video is saved even if the upload fails
+            entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang)}
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
             elif not upload.can_upload(lang):
                 log.warning("YouTube secrets missing for %s; skipping upload", lang)
             else:
                 entry["video_id"] = upload.upload(final, scripts[lang], lang)
-            if "video_id" not in entry:
-                entry["saved_to"] = _store(final, scripts[lang], lang)
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so one language can still publish
             log.exception("Failed to produce the %s Short", lang)

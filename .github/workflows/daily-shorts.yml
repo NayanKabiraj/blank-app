@@ -96,7 +96,7 @@ jobs:
           retention-days: 14
           if-no-files-found: ignore
 
-      - name: Save topic history and videos that were not uploaded
+      - name: Save topic history and videos
         if: always()
         run: |
           if [ -n "$(git status --porcelain data/ videos/)" ]; then

@@ -9,7 +9,7 @@ ASSETS_DIR = ROOT / "assets"
 MUSIC_DIR = ASSETS_DIR / "music"
 VOICES_DIR = Path(os.getenv("VOICES_DIR", ROOT / ".cache" / "voices"))
 HISTORY_FILE = DATA_DIR / "history.json"
-VIDEOS_DIR = ROOT / "videos"  # videos that were not uploaded (e.g. no YouTube secrets yet)
+VIDEOS_DIR = ROOT / "videos"  # every rendered video is kept here
 
 # --- Research / script writing (Claude) ---
 CLAUDE_MODEL = os.getenv("CLAUDE_MODEL", "claude-opus-5-5")
