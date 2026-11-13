@@ -162,7 +162,7 @@ def build(script: LangScript, lang: str, mood: str, work: Path) -> Path:
         "[mu][sc]sidechaincompress=threshold=0.02:ratio=6:attack=20:release=400[duck];"
         "[vo][duck]amix=inputs=2:duration=longest:normalize=0,"
         "loudnorm=I=-14:TP=-1.5:LRA=11[a];"
-        "[0:v]subtitles=captions.ass[v]"
+        "[0:v]ass=captions.ass:shaping=complex[v]"  # complex shaping for Devanagari
     )
     _run(["ffmpeg", "-y", "-loglevel", "error", "-i", "video.mp4", "-i", voice.name, *music_in,
           "-filter_complex", filt, "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
