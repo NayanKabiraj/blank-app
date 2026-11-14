@@ -1,8 +1,8 @@
 TITLE:
-How Noise Cancelling Headphones Erase Sound #Shorts
+How Face Unlock Recognises You in the Dark #Shorts
 
 DESCRIPTION:
-Noise cancelling headphones do not just block sound, they add an opposite sound that cancels it. Here is how a tiny mic, a chip and a speaker create silence. #tech #howitworks #headphones #science
+Your phone does not look at your face like a photo. It measures its shape with invisible light and turns it into numbers. Here is how face unlock works. #ai #tech #faceunlock #howitworks
 
 TAGS:
-noise cancelling, how noise cancelling works, ANC, headphones, earbuds, sound waves, how tech works, science explained, physics, technology
+face unlock, face id, how face id works, artificial intelligence, neural network, infrared, AI explained, how tech works, smartphone, science explained

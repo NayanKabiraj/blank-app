@@ -14,5 +14,21 @@
         "saved_to": "videos/2026-11-14/hi.mp4"
       }
     }
+  },
+  {
+    "date": "2026-11-14",
+    "niche": "AI Explained",
+    "topic": "How does face unlock recognise you, even in the dark?",
+    "mood": "mysterious",
+    "videos": {
+      "en": {
+        "file": "2026-11-14_en.mp4",
+        "saved_to": "videos/2026-11-14/en.mp4"
+      },
+      "hi": {
+        "file": "2026-11-14_hi.mp4",
+        "saved_to": "videos/2026-11-14/hi.mp4"
+      }
+    }
   }
 ]

@@ -1,297 +1,289 @@
 {
-  "niche": "How Tech Works",
-  "topic": "How do noise-cancelling headphones erase sound?",
-  "research_summary": "Noise-cancelling earbuds are a popular everyday gadget in India, so a clear explainer of how they work is evergreen. How it works: a microphone on the earcup samples outside noise, a chip generates a wave of equal amplitude but inverted phase (antiphase), and the speaker plays it; the two waves interfere destructively and cancel, mostly for low, steady sounds like engine hum, since short high-frequency waves need timing too precise to match. Verified number: Paul Lueg received US patent 2,043,416 for the first noise-control system in 1936 (Wikipedia, Active noise control; Rosenhouse, WIT Press COMAC95 paper). Analogy: two equal pushes from opposite sides cancel, like a swing that does not move.",
-  "mood": "calm",
+  "niche": "AI Explained",
+  "topic": "How does face unlock recognise you, even in the dark?",
+  "research_summary": "Evergreen AI explainer: face unlock is the AI most people use dozens of times a day without thinking about it. How it works (Apple Face ID Security Guide, Nov 2017): the TrueDepth camera floods the face with invisible infrared light (so it works in the dark), a dot projector casts more than 30,000 infrared dots, and the camera reads how the pattern lands to build a depth map plus a 2D infrared image. These go to the Secure Enclave, where neural networks turn them into a mathematical representation and compare it with the one saved at enrolment; face data stays on the device. Apple states the chance a random person could unlock it is about 1 in 1,000,000 (also cited by Kaspersky). Analogy: saved numbers are the lock, today's face is the key. Many cheaper phones use the ordinary front camera only (2D), which is less secure; not covered to keep it simple.",
+  "mood": "mysterious",
   "english": {
-    "title": "How Noise Cancelling Headphones Erase Sound",
-    "description": "Noise cancelling headphones do not just block sound, they add an opposite sound that cancels it. Here is how a tiny mic, a chip and a speaker create silence. #tech #howitworks #headphones #science",
+    "title": "How Face Unlock Recognises You in the Dark",
+    "description": "Your phone does not look at your face like a photo. It measures its shape with invisible light and turns it into numbers. Here is how face unlock works. #ai #tech #faceunlock #howitworks",
     "tags": [
-      "noise cancelling",
-      "how noise cancelling works",
-      "ANC",
-      "headphones",
-      "earbuds",
-      "sound waves",
+      "face unlock",
+      "face id",
+      "how face id works",
+      "artificial intelligence",
+      "neural network",
+      "infrared",
+      "AI explained",
       "how tech works",
-      "science explained",
-      "physics",
-      "technology"
+      "smartphone",
+      "science explained"
     ],
-    "hook_text": "Adding sound to make silence",
+    "hook_text": "It sees you in the dark",
     "scenes": [
       {
-        "text": "Your headphones can erase a plane's roar by adding more sound.",
+        "text": "Your phone can recognise your face in total darkness. How?",
         "graphic": {
           "kind": "title",
-          "headline": "Sound that erases sound",
+          "headline": "It sees you in the dark",
           "caption": "",
           "items": [],
           "values": [],
-          "prop": "bulb"
-        },
-        "ai_prompt": "a passenger jet flying above golden clouds at sunset",
-        "visual_query": "airplane above clouds"
-      },
-      {
-        "text": "The trick is called active noise cancelling. It fights sound with its exact opposite.",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "Noise cancelling",
-          "caption": "fights sound with its opposite",
-          "items": [],
-          "values": [],
-          "prop": "magnet"
+          "prop": "phone",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "headphones on table"
+        "visual_query": "smartphone dark room"
       },
       {
-        "text": "Sound is a wave of air with high points called peaks and low points called dips.",
+        "text": "It does not look at your face like a photo. It measures its shape, in three dimensions.",
         "graphic": {
           "kind": "keyword",
-          "headline": "Sound is a wave",
-          "caption": "peaks and dips in the air",
+          "headline": "Shape, not photo",
+          "caption": "it measures your face in 3D",
           "items": [],
           "values": [],
-          "prop": "atom"
+          "prop": "globe",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "water ripples"
+        "visual_query": "sculpture face"
       },
       {
-        "text": "First, a tiny microphone on the earcup listens to the noise outside.",
+        "text": "First, invisible infrared light washes over your face, so it even works in the dark.",
         "graphic": {
           "kind": "steps",
           "headline": "How it works",
           "caption": "",
           "items": [
-            "Mic listens",
-            "Chip flips wave",
-            "Speaker plays it"
+            "Infrared light",
+            "Dot pattern",
+            "Depth map",
+            "Number match"
           ],
           "values": [],
-          "prop": null
+          "prop": null,
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "city traffic timelapse"
+        "visual_query": "infrared light"
       },
       {
-        "text": "Then a chip creates a mirror wave, with a dip wherever the noise has a peak, and the speaker plays it.",
+        "text": "Then a projector throws thousands of invisible dots onto your skin, and the pattern bends around your nose and cheeks.",
         "graphic": {
           "kind": "keyword",
-          "headline": "Mirror wave",
-          "caption": "a dip for every peak",
+          "headline": "Dot projector",
+          "caption": "invisible dots map your face",
           "items": [],
           "values": [],
-          "prop": "chip"
+          "prop": "bulb",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "circuit board macro"
+        "visual_query": "laser dots pattern"
       },
       {
-        "text": "When the two waves meet, they cancel out, and your ear hears almost silence.",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "Waves cancel",
-          "caption": "your ear hears near silence",
-          "items": [],
-          "values": [],
-          "prop": "brain"
-        },
-        "ai_prompt": null,
-        "visual_query": "calm lake morning"
-      },
-      {
-        "text": "This idea is old. A German inventor, Paul Lueg, got a patent for it in nineteen thirty-six.",
+        "text": "On iPhones with Face ID, that is more than thirty thousand dots, turned into a depth map.",
         "graphic": {
           "kind": "stat",
-          "headline": "1936",
-          "caption": "first noise control patent",
+          "headline": "30,000 dots",
+          "caption": "projected onto your face",
           "items": [],
           "values": [],
-          "prop": "book"
+          "prop": null,
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "old books library"
+        "visual_query": "dots grid pattern"
       },
       {
-        "text": "Think of two kids pushing a swing from opposite sides at the same moment. The swing barely moves.",
+        "text": "A neural network, a program trained on many faces, turns that map into a list of numbers.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Neural network",
+          "caption": "turns your face into numbers",
+          "items": [],
+          "values": [],
+          "prop": "brain",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "computer code screen abstract"
+      },
+      {
+        "text": "It is like a lock and key. Your saved numbers are the lock, and today's face is the key.",
         "graphic": {
           "kind": "compare",
-          "headline": "Like a swing",
+          "headline": "Lock and key",
           "caption": "",
           "items": [
-            "Push left",
-            "Push right"
+            "Saved face",
+            "Today's face"
           ],
           "values": [
-            50.0,
-            50.0
+            100.0,
+            97.0
           ],
-          "prop": null
+          "prop": null,
+          "pose": "point"
         },
-        "ai_prompt": "an empty wooden swing hanging still in a quiet park at dawn",
-        "visual_query": "empty swing park"
+        "ai_prompt": null,
+        "visual_query": "old key lock"
       },
       {
-        "text": "It works best on steady hums like engines. Follow to understand one new thing every day.",
+        "text": "Apple says a random stranger has about a one in a million chance of unlocking it. Follow to understand one new thing every day.",
         "graphic": {
           "kind": "title",
-          "headline": "Best on steady hums",
+          "headline": "1 in a million",
           "caption": "Follow for more",
           "items": [],
           "values": [],
-          "prop": "clock"
+          "prop": "chip",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "night sky stars"
+        "visual_query": "night city lights"
       }
     ]
   },
   "hindi": {
-    "title": "नॉइज़ कैंसलिंग हेडफ़ोन शोर कैसे मिटाते हैं?",
-    "description": "नॉइज़ कैंसलिंग हेडफ़ोन शोर को सिर्फ़ रोकते नहीं, उसकी उल्टी आवाज़ बजाकर उसे मिटा देते हैं। जानिए माइक, चिप और स्पीकर मिलकर सन्नाटा कैसे बनाते हैं। #tech #science #headphones #hindi",
+    "title": "फ़ेस अनलॉक अंधेरे में भी आपको कैसे पहचानता है?",
+    "description": "आपका फ़ोन चेहरे को फ़ोटो की तरह नहीं देखता। वह अदृश्य रोशनी से उसका आकार नापता है और उसे संख्याओं में बदल देता है। #ai #tech #faceunlock #hindi",
     "tags": [
-      "नॉइज़ कैंसलिंग",
-      "noise cancelling hindi",
-      "ANC",
-      "हेडफ़ोन",
-      "earbuds",
-      "आवाज़ की लहर",
+      "फ़ेस अनलॉक",
+      "face unlock hindi",
+      "face id",
+      "आर्टिफ़िशियल इंटेलिजेंस",
+      "न्यूरल नेटवर्क",
+      "इन्फ्रारेड",
+      "AI hindi",
       "टेक्नोलॉजी",
-      "science in hindi",
-      "how tech works",
+      "स्मार्टफ़ोन",
       "विज्ञान"
     ],
-    "hook_text": "आवाज़ से आवाज़ मिटाओ",
+    "hook_text": "अंधेरे में भी पहचान",
     "scenes": [
       {
-        "text": "आपके हेडफ़ोन, और आवाज़ जोड़कर, हवाई जहाज़ का शोर मिटा सकते हैं।",
+        "text": "आपका फ़ोन अंधेरे में भी आपका चेहरा पहचान लेता है। कैसे?",
         "graphic": {
           "kind": "title",
-          "headline": "आवाज़ से आवाज़ मिटाओ",
+          "headline": "अंधेरे में भी पहचान",
           "caption": "",
           "items": [],
           "values": [],
-          "prop": "bulb"
-        },
-        "ai_prompt": "a passenger jet flying above golden clouds at sunset",
-        "visual_query": "airplane above clouds"
-      },
-      {
-        "text": "इसे कहते हैं एक्टिव नॉइज़ कैंसलिंग। यह आवाज़ को उल्टी आवाज़ से हराता है।",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "नॉइज़ कैंसलिंग",
-          "caption": "उल्टी आवाज़ से शोर ख़त्म",
-          "items": [],
-          "values": [],
-          "prop": "magnet"
+          "prop": "phone",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "headphones on table"
+        "visual_query": "smartphone dark room"
       },
       {
-        "text": "आवाज़ हवा की एक लहर है, जिसमें ऊँचे हिस्से और नीचे हिस्से होते हैं।",
+        "text": "वह चेहरे को फ़ोटो की तरह नहीं, उसके आकार को तीन आयामों में नापता है।",
         "graphic": {
           "kind": "keyword",
-          "headline": "आवाज़ एक लहर है",
-          "caption": "हवा में ऊपर और नीचे",
+          "headline": "फ़ोटो नहीं, आकार",
+          "caption": "चेहरे को 3D में नापता है",
           "items": [],
           "values": [],
-          "prop": "atom"
+          "prop": "globe",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "water ripples"
+        "visual_query": "sculpture face"
       },
       {
-        "text": "पहले, ईयरकप में लगा छोटा माइक बाहर का शोर सुनता है।",
+        "text": "पहले, अदृश्य इन्फ्रारेड रोशनी चेहरे पर पड़ती है, इसलिए अंधेरे में भी काम होता है।",
         "graphic": {
           "kind": "steps",
           "headline": "कैसे काम करता है",
           "caption": "",
           "items": [
-            "माइक सुनता है",
-            "चिप लहर पलटती है",
-            "स्पीकर बजाता है"
+            "इन्फ्रारेड रोशनी",
+            "बिंदुओं का जाल",
+            "गहराई का नक्शा",
+            "संख्याओं का मिलान"
           ],
           "values": [],
-          "prop": null
+          "prop": null,
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "city traffic timelapse"
+        "visual_query": "infrared light"
       },
       {
-        "text": "फिर एक चिप उसकी उल्टी लहर बनाती है, और स्पीकर उसे बजाता है।",
+        "text": "फिर हज़ारों अदृश्य बिंदु आपकी त्वचा पर डाले जाते हैं।",
         "graphic": {
           "kind": "keyword",
-          "headline": "उल्टी लहर",
-          "caption": "हर ऊँचाई के लिए गहराई",
+          "headline": "डॉट प्रोजेक्टर",
+          "caption": "अदृश्य बिंदु चेहरा नापते हैं",
           "items": [],
           "values": [],
-          "prop": "chip"
+          "prop": "bulb",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "circuit board macro"
+        "visual_query": "laser dots pattern"
       },
       {
-        "text": "दोनों लहरें मिलकर मिट जाती हैं, और कान को लगभग सन्नाटा सुनाई देता है।",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "लहरें मिट गईं",
-          "caption": "कान को लगभग सन्नाटा",
-          "items": [],
-          "values": [],
-          "prop": "brain"
-        },
-        "ai_prompt": null,
-        "visual_query": "calm lake morning"
-      },
-      {
-        "text": "जर्मन आविष्कारक पॉल लुएग को इसका पेटेंट उन्नीस सौ छत्तीस में मिला।",
+        "text": "आईफ़ोन में ये तीस हज़ार से ज़्यादा होते हैं, और इनसे गहराई का नक्शा बनता है।",
         "graphic": {
           "kind": "stat",
-          "headline": "1936",
-          "caption": "पहला नॉइज़ कंट्रोल पेटेंट",
+          "headline": "30,000 बिंदु",
+          "caption": "चेहरे पर डाले जाते हैं",
           "items": [],
           "values": [],
-          "prop": "book"
+          "prop": null,
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "old books library"
+        "visual_query": "dots grid pattern"
       },
       {
-        "text": "दो बच्चे झूले को एक साथ उल्टी तरफ़ से धकेलें, तो झूला नहीं हिलता।",
+        "text": "फिर एक न्यूरल नेटवर्क, यानी चेहरों से सीखा हुआ प्रोग्राम, इस नक्शे को संख्याओं में बदल देता है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "न्यूरल नेटवर्क",
+          "caption": "चेहरा बनता है संख्याएँ",
+          "items": [],
+          "values": [],
+          "prop": "brain",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "computer code screen abstract"
+      },
+      {
+        "text": "जैसे ताला और चाबी: सेव की हुई संख्याएँ ताला हैं, और आज का चेहरा चाबी।",
         "graphic": {
           "kind": "compare",
-          "headline": "झूले की तरह",
+          "headline": "ताला और चाबी",
           "caption": "",
           "items": [
-            "बाएँ से धक्का",
-            "दाएँ से धक्का"
+            "सेव चेहरा",
+            "आज का चेहरा"
           ],
           "values": [
-            50.0,
-            50.0
+            100.0,
+            97.0
           ],
-          "prop": null
+          "prop": null,
+          "pose": "point"
         },
-        "ai_prompt": "an empty wooden swing hanging still in a quiet park at dawn",
-        "visual_query": "empty swing park"
+        "ai_prompt": null,
+        "visual_query": "old key lock"
       },
       {
-        "text": "यह इंजन की गूँज पर सबसे अच्छा चलता है। रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "text": "ऐपल के मुताबिक़ किसी अनजान के अनलॉक करने की संभावना लगभग दस लाख में एक है। रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
         "graphic": {
           "kind": "title",
-          "headline": "लगातार गूँज पर बेस्ट",
+          "headline": "दस लाख में एक",
           "caption": "फ़ॉलो करें",
           "items": [],
           "values": [],
-          "prop": "clock"
+          "prop": "chip",
+          "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "night sky stars"
+        "visual_query": "night city lights"
       }
     ]
   }
