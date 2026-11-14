@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "date": "2026-11-14",
+    "niche": "How Tech Works",
+    "topic": "How do noise-cancelling headphones erase sound?",
+    "mood": "calm",
+    "videos": {
+      "en": {
+        "file": "2026-11-14_en.mp4",
+        "saved_to": "videos/2026-11-14/en.mp4"
+      },
+      "hi": {
+        "file": "2026-11-14_hi.mp4",
+        "saved_to": "videos/2026-11-14/hi.mp4"
+      }
+    }
+  }
+]

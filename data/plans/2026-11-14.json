@@ -1,0 +1,298 @@
+{
+  "niche": "How Tech Works",
+  "topic": "How do noise-cancelling headphones erase sound?",
+  "research_summary": "Noise-cancelling earbuds are a popular everyday gadget in India, so a clear explainer of how they work is evergreen. How it works: a microphone on the earcup samples outside noise, a chip generates a wave of equal amplitude but inverted phase (antiphase), and the speaker plays it; the two waves interfere destructively and cancel, mostly for low, steady sounds like engine hum, since short high-frequency waves need timing too precise to match. Verified number: Paul Lueg received US patent 2,043,416 for the first noise-control system in 1936 (Wikipedia, Active noise control; Rosenhouse, WIT Press COMAC95 paper). Analogy: two equal pushes from opposite sides cancel, like a swing that does not move.",
+  "mood": "calm",
+  "english": {
+    "title": "How Noise Cancelling Headphones Erase Sound",
+    "description": "Noise cancelling headphones do not just block sound, they add an opposite sound that cancels it. Here is how a tiny mic, a chip and a speaker create silence. #tech #howitworks #headphones #science",
+    "tags": [
+      "noise cancelling",
+      "how noise cancelling works",
+      "ANC",
+      "headphones",
+      "earbuds",
+      "sound waves",
+      "how tech works",
+      "science explained",
+      "physics",
+      "technology"
+    ],
+    "hook_text": "Adding sound to make silence",
+    "scenes": [
+      {
+        "text": "Your headphones can erase a plane's roar by adding more sound.",
+        "graphic": {
+          "kind": "title",
+          "headline": "Sound that erases sound",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "prop": "bulb"
+        },
+        "ai_prompt": "a passenger jet flying above golden clouds at sunset",
+        "visual_query": "airplane above clouds"
+      },
+      {
+        "text": "The trick is called active noise cancelling. It fights sound with its exact opposite.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Noise cancelling",
+          "caption": "fights sound with its opposite",
+          "items": [],
+          "values": [],
+          "prop": "magnet"
+        },
+        "ai_prompt": null,
+        "visual_query": "headphones on table"
+      },
+      {
+        "text": "Sound is a wave of air with high points called peaks and low points called dips.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Sound is a wave",
+          "caption": "peaks and dips in the air",
+          "items": [],
+          "values": [],
+          "prop": "atom"
+        },
+        "ai_prompt": null,
+        "visual_query": "water ripples"
+      },
+      {
+        "text": "First, a tiny microphone on the earcup listens to the noise outside.",
+        "graphic": {
+          "kind": "steps",
+          "headline": "How it works",
+          "caption": "",
+          "items": [
+            "Mic listens",
+            "Chip flips wave",
+            "Speaker plays it"
+          ],
+          "values": [],
+          "prop": null
+        },
+        "ai_prompt": null,
+        "visual_query": "city traffic timelapse"
+      },
+      {
+        "text": "Then a chip creates a mirror wave, with a dip wherever the noise has a peak, and the speaker plays it.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Mirror wave",
+          "caption": "a dip for every peak",
+          "items": [],
+          "values": [],
+          "prop": "chip"
+        },
+        "ai_prompt": null,
+        "visual_query": "circuit board macro"
+      },
+      {
+        "text": "When the two waves meet, they cancel out, and your ear hears almost silence.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Waves cancel",
+          "caption": "your ear hears near silence",
+          "items": [],
+          "values": [],
+          "prop": "brain"
+        },
+        "ai_prompt": null,
+        "visual_query": "calm lake morning"
+      },
+      {
+        "text": "This idea is old. A German inventor, Paul Lueg, got a patent for it in nineteen thirty-six.",
+        "graphic": {
+          "kind": "stat",
+          "headline": "1936",
+          "caption": "first noise control patent",
+          "items": [],
+          "values": [],
+          "prop": "book"
+        },
+        "ai_prompt": null,
+        "visual_query": "old books library"
+      },
+      {
+        "text": "Think of two kids pushing a swing from opposite sides at the same moment. The swing barely moves.",
+        "graphic": {
+          "kind": "compare",
+          "headline": "Like a swing",
+          "caption": "",
+          "items": [
+            "Push left",
+            "Push right"
+          ],
+          "values": [
+            50.0,
+            50.0
+          ],
+          "prop": null
+        },
+        "ai_prompt": "an empty wooden swing hanging still in a quiet park at dawn",
+        "visual_query": "empty swing park"
+      },
+      {
+        "text": "It works best on steady hums like engines. Follow to understand one new thing every day.",
+        "graphic": {
+          "kind": "title",
+          "headline": "Best on steady hums",
+          "caption": "Follow for more",
+          "items": [],
+          "values": [],
+          "prop": "clock"
+        },
+        "ai_prompt": null,
+        "visual_query": "night sky stars"
+      }
+    ]
+  },
+  "hindi": {
+    "title": "नॉइज़ कैंसलिंग हेडफ़ोन शोर कैसे मिटाते हैं?",
+    "description": "नॉइज़ कैंसलिंग हेडफ़ोन शोर को सिर्फ़ रोकते नहीं, उसकी उल्टी आवाज़ बजाकर उसे मिटा देते हैं। जानिए माइक, चिप और स्पीकर मिलकर सन्नाटा कैसे बनाते हैं। #tech #science #headphones #hindi",
+    "tags": [
+      "नॉइज़ कैंसलिंग",
+      "noise cancelling hindi",
+      "ANC",
+      "हेडफ़ोन",
+      "earbuds",
+      "आवाज़ की लहर",
+      "टेक्नोलॉजी",
+      "science in hindi",
+      "how tech works",
+      "विज्ञान"
+    ],
+    "hook_text": "आवाज़ से आवाज़ मिटाओ",
+    "scenes": [
+      {
+        "text": "आपके हेडफ़ोन, और आवाज़ जोड़कर, हवाई जहाज़ का शोर मिटा सकते हैं।",
+        "graphic": {
+          "kind": "title",
+          "headline": "आवाज़ से आवाज़ मिटाओ",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "prop": "bulb"
+        },
+        "ai_prompt": "a passenger jet flying above golden clouds at sunset",
+        "visual_query": "airplane above clouds"
+      },
+      {
+        "text": "इसे कहते हैं एक्टिव नॉइज़ कैंसलिंग। यह आवाज़ को उल्टी आवाज़ से हराता है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "नॉइज़ कैंसलिंग",
+          "caption": "उल्टी आवाज़ से शोर ख़त्म",
+          "items": [],
+          "values": [],
+          "prop": "magnet"
+        },
+        "ai_prompt": null,
+        "visual_query": "headphones on table"
+      },
+      {
+        "text": "आवाज़ हवा की एक लहर है, जिसमें ऊँचे हिस्से और नीचे हिस्से होते हैं।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "आवाज़ एक लहर है",
+          "caption": "हवा में ऊपर और नीचे",
+          "items": [],
+          "values": [],
+          "prop": "atom"
+        },
+        "ai_prompt": null,
+        "visual_query": "water ripples"
+      },
+      {
+        "text": "पहले, ईयरकप में लगा छोटा माइक बाहर का शोर सुनता है।",
+        "graphic": {
+          "kind": "steps",
+          "headline": "कैसे काम करता है",
+          "caption": "",
+          "items": [
+            "माइक सुनता है",
+            "चिप लहर पलटती है",
+            "स्पीकर बजाता है"
+          ],
+          "values": [],
+          "prop": null
+        },
+        "ai_prompt": null,
+        "visual_query": "city traffic timelapse"
+      },
+      {
+        "text": "फिर एक चिप उसकी उल्टी लहर बनाती है, और स्पीकर उसे बजाता है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "उल्टी लहर",
+          "caption": "हर ऊँचाई के लिए गहराई",
+          "items": [],
+          "values": [],
+          "prop": "chip"
+        },
+        "ai_prompt": null,
+        "visual_query": "circuit board macro"
+      },
+      {
+        "text": "दोनों लहरें मिलकर मिट जाती हैं, और कान को लगभग सन्नाटा सुनाई देता है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "लहरें मिट गईं",
+          "caption": "कान को लगभग सन्नाटा",
+          "items": [],
+          "values": [],
+          "prop": "brain"
+        },
+        "ai_prompt": null,
+        "visual_query": "calm lake morning"
+      },
+      {
+        "text": "जर्मन आविष्कारक पॉल लुएग को इसका पेटेंट उन्नीस सौ छत्तीस में मिला।",
+        "graphic": {
+          "kind": "stat",
+          "headline": "1936",
+          "caption": "पहला नॉइज़ कंट्रोल पेटेंट",
+          "items": [],
+          "values": [],
+          "prop": "book"
+        },
+        "ai_prompt": null,
+        "visual_query": "old books library"
+      },
+      {
+        "text": "दो बच्चे झूले को एक साथ उल्टी तरफ़ से धकेलें, तो झूला नहीं हिलता।",
+        "graphic": {
+          "kind": "compare",
+          "headline": "झूले की तरह",
+          "caption": "",
+          "items": [
+            "बाएँ से धक्का",
+            "दाएँ से धक्का"
+          ],
+          "values": [
+            50.0,
+            50.0
+          ],
+          "prop": null
+        },
+        "ai_prompt": "an empty wooden swing hanging still in a quiet park at dawn",
+        "visual_query": "empty swing park"
+      },
+      {
+        "text": "यह इंजन की गूँज पर सबसे अच्छा चलता है। रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "graphic": {
+          "kind": "title",
+          "headline": "लगातार गूँज पर बेस्ट",
+          "caption": "फ़ॉलो करें",
+          "items": [],
+          "values": [],
+          "prop": "clock"
+        },
+        "ai_prompt": null,
+        "visual_query": "night sky stars"
+      }
+    ]
+  }
+}
