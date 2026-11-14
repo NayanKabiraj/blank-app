@@ -32,10 +32,11 @@ VOICES = {
 FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
 # --- Visual style ---
-# "cartoon3d": 3D cartoon explainer rendered by code with three.js (shorts/cartoon.py), the default
+# "stickman": 2D hand-drawn stick figure explainer rendered by code (shorts/stickman/), the default
+# "cartoon3d": 3D cartoon explainer rendered by code with three.js (shorts/cartoon.py)
 # "motion": 2D motion graphics drawn in code with Manim (shorts/motion.py)
 # "footage": real stock footage per scene (shorts/visuals.py)
-VISUAL_STYLE = os.getenv("VISUAL_STYLE", "cartoon3d").strip().lower() or "cartoon3d"
+VISUAL_STYLE = os.getenv("VISUAL_STYLE", "stickman").strip().lower() or "stickman"
 
 # --- Stock footage: Pexels if a key is set, else Wikimedia Commons (no key needed) ---
 PEXELS_API_KEY = os.getenv("PEXELS_API_KEY", "")

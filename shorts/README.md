@@ -25,8 +25,11 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals in code.** By default every Short is a **3D cartoon explainer**
-   (`VISUAL_STYLE=cartoon3d`). A three.js toon-shaded world with black outlines, a mascot
+5. **Builds the visuals in code.** By default every Short is a **2D stickman explainer**
+   (`VISUAL_STYLE=stickman`): a hand-drawn stick figure on white paper that reacts to the
+   narration (points, shrugs, is shocked, hops through steps), with marker-style doodle props
+   that draw themselves on, all drawn by code in `shorts/stickman/` (see the
+   `stickman-explainer` skill). The 3D alternative is `VISUAL_STYLE=cartoon3d`: a three.js toon-shaded world with black outlines, a mascot
    that bobs, waves and hops, and procedural 3D props (bank, chip, planet, brain…) is
    rendered frame by frame in headless Chromium on the CPU (`shorts/cartoon3d/`,
    `shorts/cartoon.py`), with bold cartoon cards for the text. Each scene's `graphic` and
@@ -74,7 +77,7 @@ task starts the workflow on `main`.
 | `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Overrides the niche rotation, e.g. `only How Tech Works and AI Explained this week` |
 | `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
-| `VISUAL_STYLE` | variable | `cartoon3d` (default, 3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
+| `VISUAL_STYLE` | variable | `stickman` (default, 2D stick figure by code), `cartoon3d` (3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
 | `HF_TOKEN` | secret | Free Hugging Face access token (huggingface.co/settings/tokens, "read" is enough). Gives the AI clips your free account's daily GPU quota |
 | `POLLINATIONS_KEY` | secret | Key from a free account at enter.pollinations.ai/keys (a secret `sk_` key). Turns on AI still images, which feed Wan 2.2 image-to-video and the zoom fallback. Its video models are paid, so they're only used if you add `pollinations` to `AI_VIDEO_PROVIDERS` |
 | `AI_VIDEO` | variable | `on` (default) or `off` |

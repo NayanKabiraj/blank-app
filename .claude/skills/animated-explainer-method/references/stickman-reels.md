@@ -60,10 +60,10 @@ The code-only version, the one this repo would use, is Claude drawing the figure
 or three.js lines and rendering frame by frame. Community Claude skills such as "stix" (text
 → 8-second stick-figure clip) and Remotion-based Shorts projects show it can be done.
 
-## Adding it to this repo's renderer (not built yet)
+## In this repo
 
-The current `cartoon3d` style has a 3D coral mascot. A stickman look would be a new
-`VISUAL_STYLE` (for example `stickman`), with:
+Built as `VISUAL_STYLE=stickman` (the default), `shorts/stickman/`. See the
+`stickman-explainer` skill. It was designed as:
 1. A flat orthographic scene (or a 2D canvas/SVG layer) on a white background, with black
    stroked lines and stroke widths that scale with the output size.
 2. A stick-figure rig built from line segments (head circle, torso, two-segment arms and

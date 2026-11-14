@@ -1,5 +1,6 @@
-// Render the 3D cartoon track: node render.cjs <config.json> <out.mp4>
-// Serves this folder on localhost, drives scene.html frame by frame in headless Chromium
+// Render a code-drawn video track: node render.cjs <config.json> <out.mp4>
+// Used by the 3D cartoon (this folder) and the 2D stickman style (cfg.root = ../stickman).
+// Serves the scene folder on localhost, drives scene.html frame by frame in headless Chromium
 // (software WebGL, no GPU needed) and pipes JPEG frames into FFmpeg.
 const http = require('http');
 const fs = require('fs');
@@ -10,7 +11,8 @@ const { chromium } = require('playwright');
 const [, , cfgPath, outPath] = process.argv;
 const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
 const FPS = cfg.fps || 30;
-const ROOT = __dirname;
+const ROOT = cfg.root ? path.resolve(cfg.root) : __dirname;
+const LABEL = path.basename(ROOT);
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.txt': 'text/plain' };
 
 const server = http.createServer((req, res) => {
@@ -45,7 +47,7 @@ const server = http.createServer((req, res) => {
       await page.evaluate(t => window.renderFrame(t), f / FPS);
       const jpg = await page.screenshot({ type: 'jpeg', quality: 92 });
       if (!ff.stdin.write(jpg)) await new Promise(r => ff.stdin.once('drain', r));
-      if (w === 0 && (f - from) % 100 === 0) console.log(`cartoon3d: worker 0 at ${f - from}/${to - from} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
+      if (w === 0 && (f - from) % 100 === 0) console.log(`${LABEL}: worker 0 at ${f - from}/${to - from} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
     }
     ff.stdin.end();
     await new Promise((res, rej) => ff.on('close', c => (c === 0 ? res() : rej(new Error('ffmpeg exited ' + c)))));
@@ -58,5 +60,5 @@ const server = http.createServer((req, res) => {
     { stdio: 'inherit' }).on('close', c => (c === 0 ? res() : rej(new Error('concat failed')))));
   parts.forEach(p => fs.unlinkSync(p)); fs.unlinkSync(list);
   server.close();
-  console.log(`cartoon3d: ${frames} frames with ${workers} workers in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
+  console.log(`${LABEL}: ${frames} frames with ${workers} workers in ${((Date.now() - t0) / 1000).toFixed(0)}s`);
 })().catch(e => { console.error(e); process.exit(1); });

@@ -1,6 +1,6 @@
 ---
 name: animated-explainer-method
-description: The "Claude-made animated explainer" method studied from the Grow With Kaz YouTube channel (faceless 3D and character-animation explainers built entirely in code, with no AI video generators), adapted to this repo's daily Shorts pipeline. Use when choosing a niche or sub-niche, generating video ideas, writing the narration of a plan (hook, story beats, wit, analogy), directing the visuals scene by scene, or planning a longer animated explainer. Pairs with the cartoon-explainer skill, which covers the renderer itself.
+description: The "Claude-made animated explainer" method studied from the Grow With Kaz YouTube channel (faceless 3D and character-animation explainers built entirely in code, with no AI video generators), adapted to this repo's daily Shorts pipeline. Use when choosing a niche or sub-niche, generating video ideas, writing the narration of a plan (hook, story beats, wit, analogy), directing the visuals scene by scene, or planning a longer animated explainer. Pairs with the stickman-explainer skill (the default 2D renderer) and cartoon-explainer (the 3D one).
 ---
 
 # Animated explainer method (studied from @GrowWithKaz)
@@ -12,8 +12,9 @@ captions, audio and the final render) instead of paying for AI video tools. The 
 cover money/psychology explainers with stick figures, prehistoric sea creatures, map
 animations and wordless short films. Each took about 10–45 minutes to generate.
 
-This repo already has the rendering half (`shorts/cartoon3d/`, see the `cartoon-explainer`
-skill). This skill covers the other half, the part that makes these videos get watched: the
+This repo has the rendering half. The default is a **2D stickman explainer drawn by code**
+(`shorts/stickman/`, see the `stickman-explainer` skill), and the 3D cartoon
+(`shorts/cartoon3d/`, `cartoon-explainer`) is the alternative. This skill covers the other half, the part that makes these videos get watched: the
 niche, the idea, the script, and how each line becomes a visual.
 
 ## The workflow, as the channel teaches it
@@ -78,7 +79,7 @@ Every line of narration should have something on screen that *acts it out*, not 
 
 | Narration beat | What the animation does | Plan field in this repo |
 |---|---|---|
-| Hook claim | Hero object appears big and moves (spin, pop, reveal) | `title` + `prop` |
+| Hook claim | Doodle draws on with burst lines; the figure is shocked, then points | `title` + `prop` (+ `pose`) |
 | Name/term + definition | Object on a pedestal, label and one-line caption | `keyword` + `prop` |
 | Process / "how" | Character hops through numbered steps as each lights up | `steps` (2–4 items) |
 | Number | Counter ticks up while a pile or bar grows to scale | `stat` (verified number) |
@@ -87,8 +88,8 @@ Every line of narration should have something on screen that *acts it out*, not 
 | Close | Hero object returns, takeaway + follow line | `title` |
 
 Rules carried over from the channel's style:
-- **A consistent mascot or character** drives the story across scenes (here: the coral
-  mascot). Keep its look stable and let it react: hop on steps, wave on the close.
+- **A consistent character** drives the story across scenes (here: the stick figure, or
+  the coral mascot in 3D). Keep its look stable and let it react: hop on steps, wave on the close.
 - **Movement in every scene**, with smooth transitions and no static slides. Everything in
   `scene.js` is animated as a function of `t`.
 - **Simple shapes, a limited palette, bold outlines**: readable on a phone at a glance.
@@ -100,11 +101,12 @@ Rules carried over from the channel's style:
 ## Stickman reels (the other common style)
 
 Stick-figure explainers use black marker lines on white, exaggerated two-dot faces, one
-accent colour, and a visual joke every few seconds. They are the main alternative to the
-3D look, and suit money, psychology and productivity "why" topics. The full style guide,
-script notes and a plan for adding a `stickman` style to the renderer are in
-`references/stickman-reels.md`. The renderer only draws the 3D cartoon today, so use the
-script half of that file now and the visual half when the style is built.
+accent colour, and a visual joke every few seconds. They suit money, psychology,
+productivity and how-things-work topics. **This is now the channel's default look**, drawn
+in code by `shorts/stickman/`. The style research is in `references/stickman-reels.md`, and
+the renderer, its poses and its props are documented in the `stickman-explainer` skill.
+Direct the figure with the optional `pose` field (`shock` on the reveal, `shrug` on "nobody
+knows", `think` on the question, `cheer` on the win).
 
 ## Niche advice for this channel
 
