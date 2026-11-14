@@ -97,6 +97,15 @@ Rules carried over from the channel's style:
 - If a topic would really benefit from a new prop or layout, add it (see "Extending the
   style" in `cartoon-explainer`) rather than forcing a poor match.
 
+## Stickman reels (the other common style)
+
+Stick-figure explainers use black marker lines on white, exaggerated two-dot faces, one
+accent colour, and a visual joke every few seconds. They are the main alternative to the
+3D look, and suit money, psychology and productivity "why" topics. The full style guide,
+script notes and a plan for adding a `stickman` style to the renderer are in
+`references/stickman-reels.md`. The renderer only draws the 3D cartoon today, so use the
+script half of that file now and the visual half when the style is built.
+
 ## Niche advice for this channel
 
 The channel's niches (`shorts/niches.py`) already suit this style. When choosing topics,
