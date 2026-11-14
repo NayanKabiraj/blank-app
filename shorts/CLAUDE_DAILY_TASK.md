@@ -31,7 +31,9 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      and one everyday analogy that makes it click. Check every fact against a reliable
      source (official sites, encyclopedias, universities, established science outlets).
 3. **Write the plan** as JSON following `shorts/sample_plan.json` exactly (the full schema
-   is in `shorts/plan.py`):
+   is in `shorts/plan.py`). For the script voice (surprising-claim hook, one witty line,
+   "then someone checked" twist, physical analogy) and for matching each line to a visual,
+   follow the `animated-explainer-method` skill in `.claude/skills/`:
    - `niche` (exactly the name from step 1), `topic` (the question), `research_summary`
      (why this topic today, how it works, the facts and their sources),
      and `mood`, which must be one of `calm`, `upbeat`, `dramatic`, `inspiring`, `mysterious`.
