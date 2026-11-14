@@ -31,7 +31,9 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      and one everyday analogy that makes it click. Check every fact against a reliable
      source (official sites, encyclopedias, universities, established science outlets).
 3. **Write the plan** as JSON following `shorts/sample_plan.json` exactly (the full schema
-   is in `shorts/plan.py`):
+   is in `shorts/plan.py`). For the script voice (surprising-claim hook, one witty line,
+   "then someone checked" twist, physical analogy) and for matching each line to a visual,
+   follow the `animated-explainer-method` skill in `.claude/skills/`:
    - `niche` (exactly the name from step 1), `topic` (the question), `research_summary`
      (why this topic today, how it works, the facts and their sources),
      and `mood`, which must be one of `calm`, `upbeat`, `dramatic`, `inspiring`, `mysterious`.
@@ -59,8 +61,10 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
    - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
-   - `graphic` is what the renderer draws for the scene (by default a **3D cartoon** made
-     in code: see the `cartoon-explainer` skill in `.claude/skills/`), written in the
+   - `graphic` is what the renderer draws for the scene (by default a **2D cartoon
+     explainer** in a traditional-animation look, with a presenter character, a painted
+     background and thought-bubble insets, drawn in code: see the `cartoon2d-explainer` skill
+     in `.claude/skills/`; `stickman` and `cartoon3d` are alternatives), written in the
      **video's language** (Hindi graphics in Devanagari). Pick the `kind` that fits the line:
      - `title`: a big headline (use it for the hook and the closing line).
      - `stat`: one striking number with its unit in `headline` (`"71 km/s"`, `"1966"`,
@@ -68,14 +72,18 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      - `keyword`: a key term in `headline` with a one-line explanation in `caption`.
      - `steps`: a process, with a short `headline` and 2–4 `items` in order.
      - `compare`: two things, with exactly 2 `items` and optionally 2 `values` drawn as bars.
-     For `title`, `keyword` and `stat` scenes, also set `prop` to the 3D object that best
+     For `title`, `keyword` and `stat` scenes, also set `prop` to the doodle (3D object in
+     `cartoon3d`) that best
      stands for the idea: one of `star, bulb, coin, planet, globe, phone, bank, rocket,
      brain, chip, heart, clock, gear, atom, book, magnet, cloud`. Don't use the same prop in
      two scenes in a row.
+     Optionally set `pose` to direct the presenter's reaction: one of `stand, point, wave,
+     cheer, shrug, think, shock, walk` (for example `shock` on the reveal, `shrug` on a
+     "nobody knows" line). Left out, it acts according to the scene kind.
      Keep `headline` ≤ 24 characters, `caption` ≤ 40 and each item ≤ 18. Vary the kinds
      across scenes, and use at least one `stat` when the topic has a good number.
    - `ai_prompt` (optional, **at most 2 scenes**; used only when `VISUAL_STYLE` is `motion` or
-     `footage`, ignored in the default 3D cartoon style): an English visual description for a free
+     `footage`, ignored in the default cartoon2d style and in stickman and cartoon3d): an English visual description for a free
      AI-generated video clip that replaces that scene's graphic. Use it where a real-looking
      shot beats a diagram: usually the hook and the analogy scene, never a `stat` or `steps`
      scene. Describe one concrete, cinematic shot of scenery, objects, nature, machines or

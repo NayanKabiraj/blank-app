@@ -1,4 +1,13 @@
-"""3D cartoon explainer visuals, generated entirely by code.
+"""Cartoon explainer visuals, generated entirely by code.
+
+Three styles share this module and the renderer (shorts/cartoon3d/render.cjs):
+- "cartoon2d" (default): a traditional-animation look with a full-colour presenter character,
+  painted backgrounds chosen by niche and round "thought bubble" insets (shorts/cartoon2d/).
+- "stickman": a 2D hand-drawn stick figure explainer on white paper
+  (shorts/stickman/scene.js), with marker strokes, poses, faces and doodle props.
+- "cartoon3d": the 3D toon scene below.
+
+3D style:
 
 A three.js toon-shaded scene (shorts/cartoon3d/scene.js) with a mascot, procedural props,
 step pads, pillars and coin stacks, plus bold cartoon text cards. It is rendered frame by
@@ -19,9 +28,12 @@ from .plan import LangScript
 
 log = logging.getLogger(__name__)
 DIR = Path(__file__).resolve().parent / "cartoon3d"
+STYLE_DIRS = {"stickman": Path(__file__).resolve().parent / "stickman",
+              "cartoon2d": Path(__file__).resolve().parent / "cartoon2d"}
 
 
-def render(script: LangScript, lang: str, niche: str, timeline, total: float, work: Path) -> Path:
+def render(script: LangScript, lang: str, niche: str, timeline, total: float, work: Path,
+           style: str = "cartoon3d") -> Path:
     segments = []
     for i, (start, _end, _text) in enumerate(timeline):
         seg_start = 0.0 if i == 0 else start
@@ -32,9 +44,11 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
     cfg = {"niche": niche, "lang": lang, "total": total, "fps": config.FPS, "segments": segments,
            "workers": int(os.getenv("CARTOON_WORKERS", "3")),
            "glScale": float(os.getenv("CARTOON_GL_SCALE", "0.67"))}
+    if style in STYLE_DIRS:
+        cfg["root"] = str(STYLE_DIRS[style])
     cfg_path = work / "cartoon.json"
     cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
     out = work / "video.mp4"
-    log.info("Rendering 3D cartoon track (%d scenes, %.1fs)", len(segments), total)
+    log.info("Rendering %s track (%d scenes, %.1fs)", style, len(segments), total)
     subprocess.run(["node", str(DIR / "render.cjs"), str(cfg_path), str(out)], check=True)
     return out
