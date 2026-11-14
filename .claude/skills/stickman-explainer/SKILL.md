@@ -1,11 +1,11 @@
 ---
 name: stickman-explainer
-description: Plan, preview and extend the 2D stickman explainer style, the default look of the daily YouTube Shorts. A hand-drawn stick figure on white paper is drawn entirely in code (shorts/stickman/scene.js) and rendered frame by frame. Use when writing a day's plan (graphic kind, prop and the figure's pose per scene), previewing or debugging the stickman render, or adding poses, faces, doodle props or layouts.
+description: Plan, preview and extend the 2D stickman explainer style (VISUAL_STYLE=stickman; the default is now cartoon2d). A hand-drawn stick figure on white paper is drawn entirely in code (shorts/stickman/scene.js) and rendered frame by frame. Use when writing a day's plan (graphic kind, prop and the figure's pose per scene), previewing or debugging the stickman render, or adding poses, faces, doodle props or layouts.
 ---
 
 # 2D stickman explainer videos (drawn by code)
 
-`VISUAL_STYLE=stickman` (the default) draws every Short as a hand-drawn explainer, with no
+`VISUAL_STYLE=stickman` (an alternative; the default is the `cartoon2d` style) draws every Short as a hand-drawn explainer, with no
 stock footage, AI video or image generator:
 
 - `shorts/stickman/scene.js`: a 2D canvas with off-white paper and black marker strokes that
@@ -20,8 +20,8 @@ stock footage, AI video or image generator:
 - Rendering reuses `shorts/cartoon3d/render.cjs` (headless Chromium → JPEG frames →
   FFmpeg, 3 browsers in parallel). `shorts/cartoon.py` points it at `shorts/stickman/`.
   It takes about 3 minutes per 55-second Short on 4 cores, which is faster than the 3D style.
-- Voice, music, captions and upload are unchanged (`compose.py`). Switch back to the 3D look
-  with the workflow input `visual_style: cartoon3d` or the repo variable `VISUAL_STYLE`.
+- Voice, music, captions and upload are unchanged (`compose.py`). Choose this style with the
+  workflow input `visual_style: stickman` or the repo variable `VISUAL_STYLE`.
 
 ## Writing a plan for this style
 

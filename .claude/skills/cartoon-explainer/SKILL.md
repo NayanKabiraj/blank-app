@@ -5,8 +5,8 @@ description: Plan, preview and extend the 3D cartoon explainer style of the dail
 
 # 3D cartoon explainer videos (rendered by code)
 
-The alternative visual style `VISUAL_STYLE=cartoon3d` (the default is now the 2D `stickman`
-style, see the `stickman-explainer` skill) draws every Short as a 3D cartoon,
+The alternative visual style `VISUAL_STYLE=cartoon3d` (the default is now the 2D `cartoon2d`
+style, see the `cartoon2d-explainer` skill) draws every Short as a 3D cartoon,
 entirely in code. There's no stock footage and no AI video in this style:
 
 - `shorts/cartoon3d/scene.js`: three.js scene with toon shading and black outlines. It has a

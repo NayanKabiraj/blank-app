@@ -61,9 +61,10 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
    - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
-   - `graphic` is what the renderer draws for the scene (by default a **2D stickman
-     explainer** drawn in code: see the `stickman-explainer` skill in `.claude/skills/`;
-     `cartoon3d` is the 3D alternative), written in the
+   - `graphic` is what the renderer draws for the scene (by default a **2D cartoon
+     explainer** in a traditional-animation look, with a presenter character, a painted
+     background and thought-bubble insets, drawn in code: see the `cartoon2d-explainer` skill
+     in `.claude/skills/`; `stickman` and `cartoon3d` are alternatives), written in the
      **video's language** (Hindi graphics in Devanagari). Pick the `kind` that fits the line:
      - `title`: a big headline (use it for the hook and the closing line).
      - `stat`: one striking number with its unit in `headline` (`"71 km/s"`, `"1966"`,
@@ -76,13 +77,13 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      stands for the idea: one of `star, bulb, coin, planet, globe, phone, bank, rocket,
      brain, chip, heart, clock, gear, atom, book, magnet, cloud`. Don't use the same prop in
      two scenes in a row.
-     Optionally set `pose` to direct the stick figure's reaction: one of `stand, point, wave,
+     Optionally set `pose` to direct the presenter's reaction: one of `stand, point, wave,
      cheer, shrug, think, shock, walk` (for example `shock` on the reveal, `shrug` on a
      "nobody knows" line). Left out, it acts according to the scene kind.
      Keep `headline` ≤ 24 characters, `caption` ≤ 40 and each item ≤ 18. Vary the kinds
      across scenes, and use at least one `stat` when the topic has a good number.
    - `ai_prompt` (optional, **at most 2 scenes**; used only when `VISUAL_STYLE` is `motion` or
-     `footage`, ignored in the default stickman and the cartoon3d styles): an English visual description for a free
+     `footage`, ignored in the default cartoon2d style and in stickman and cartoon3d): an English visual description for a free
      AI-generated video clip that replaces that scene's graphic. Use it where a real-looking
      shot beats a diagram: usually the hook and the analogy scene, never a `stat` or `steps`
      scene. Describe one concrete, cinematic shot of scenery, objects, nature, machines or

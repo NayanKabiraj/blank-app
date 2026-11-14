@@ -213,13 +213,13 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
 
     credits: list[str] = []
-    if config.VISUAL_STYLE in ("stickman", "cartoon3d"):
+    if config.VISUAL_STYLE in ("cartoon2d", "stickman", "cartoon3d"):
         cartoon.render(script, lang, niche, timeline, total, work, config.VISUAL_STYLE)  # writes work/video.mp4
     elif config.VISUAL_STYLE == "motion":
         motion.render(script, lang, niche, timeline, total, work)
     else:
         credits = _footage_track(script, timeline, total, work)
-    if config.VISUAL_STYLE not in ("stickman", "cartoon3d"):  # realistic AI clips would clash with the drawn look
+    if config.VISUAL_STYLE not in ("cartoon2d", "stickman", "cartoon3d"):  # realistic AI clips would clash with the drawn look
         credits += _ai_clips(script, timeline, total, work)
 
     # Music

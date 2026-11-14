@@ -14,7 +14,7 @@ on:
         type: boolean
         default: false
       visual_style:
-        description: "Visuals: stickman (2D stick figure), cartoon3d (3D cartoon), motion (Manim graphics) or footage (stock video). Empty = repo default"
+        description: "Visuals: cartoon2d (2D cartoon presenter), stickman (2D stick figure), cartoon3d (3D cartoon), motion (Manim graphics) or footage (stock video). Empty = repo default"
         type: string
         default: ""
       langs:
@@ -46,7 +46,7 @@ jobs:
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
       WIKIMEDIA_CONTACT: ${{ vars.WIKIMEDIA_CONTACT }}
       # motion = Manim motion graphics (default), footage = real stock footage
-      VISUAL_STYLE: ${{ inputs.visual_style || vars.VISUAL_STYLE || 'stickman' }}
+      VISUAL_STYLE: ${{ inputs.visual_style || vars.VISUAL_STYLE || 'cartoon2d' }}
       # Free AI clips for scenes with an ai_prompt (see shorts/ai_video.py). All optional:
       # HF_TOKEN = your free Hugging Face account's GPU quota for Wan 2.2 / LTX-Video Spaces;
       # POLLINATIONS_KEY = higher image limits (and paid video models if you enable them).
@@ -86,7 +86,7 @@ jobs:
           cache: npm
           cache-dependency-path: shorts/cartoon3d/package-lock.json
 
-      - name: Install the cartoon renderer (Playwright + Chromium, used by stickman and cartoon3d)
+      - name: Install the cartoon renderer (Playwright + Chromium, used by cartoon2d, stickman and cartoon3d)
         working-directory: shorts/cartoon3d
         run: |
           npm ci --no-audit --no-fund

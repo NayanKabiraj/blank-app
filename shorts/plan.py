@@ -21,7 +21,7 @@ PROPS = ["star", "bulb", "coin", "planet", "globe", "phone", "bank", "rocket", "
          "heart", "clock", "gear", "atom", "book", "magnet", "cloud"]
 
 
-# Stick figure poses available in the stickman style (shorts/stickman/scene.js)
+# Character poses available in the cartoon2d and stickman styles (shorts/cartoon2d/, shorts/stickman/)
 POSES = ["stand", "point", "wave", "cheer", "shrug", "think", "shock", "walk"]
 
 
@@ -40,10 +40,10 @@ class Graphic(BaseModel):
     values: List[float] = Field(default_factory=list, description="compare only: 2 numbers "
                                 "for the bar lengths (optional).")
     prop: Optional[str] = Field(default=None, description="3D cartoon style only: a 3D prop for "
-                                "title/keyword/stat scenes. One of: " + ", ".join(PROPS) + ". The stickman "
-                                "style draws the same names as doodles.")
-    pose: Optional[str] = Field(default=None, description="Stickman style only, optional: the stick "
-                                "figure's reaction for this scene. One of: " + ", ".join(POSES) + ". "
+                                "title/keyword/stat scenes. One of: " + ", ".join(PROPS) + ". The 2D styles "
+                                "draw the same names as drawings.")
+    pose: Optional[str] = Field(default=None, description="cartoon2d and stickman styles, optional: the "
+                                "character's reaction for this scene. One of: " + ", ".join(POSES) + ". "
                                 "Left empty, the pose is picked from the scene kind.")
 
 

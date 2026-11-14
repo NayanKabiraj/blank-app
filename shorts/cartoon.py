@@ -1,7 +1,9 @@
 """Cartoon explainer visuals, generated entirely by code.
 
-Two styles share this module and the renderer (shorts/cartoon3d/render.cjs):
-- "stickman" (default): a 2D hand-drawn stick figure explainer on white paper
+Three styles share this module and the renderer (shorts/cartoon3d/render.cjs):
+- "cartoon2d" (default): a traditional-animation look with a full-colour presenter character,
+  painted backgrounds chosen by niche and round "thought bubble" insets (shorts/cartoon2d/).
+- "stickman": a 2D hand-drawn stick figure explainer on white paper
   (shorts/stickman/scene.js), with marker strokes, poses, faces and doodle props.
 - "cartoon3d": the 3D toon scene below.
 
@@ -26,7 +28,8 @@ from .plan import LangScript
 
 log = logging.getLogger(__name__)
 DIR = Path(__file__).resolve().parent / "cartoon3d"
-STICKMAN_DIR = Path(__file__).resolve().parent / "stickman"
+STYLE_DIRS = {"stickman": Path(__file__).resolve().parent / "stickman",
+              "cartoon2d": Path(__file__).resolve().parent / "cartoon2d"}
 
 
 def render(script: LangScript, lang: str, niche: str, timeline, total: float, work: Path,
@@ -41,8 +44,8 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
     cfg = {"niche": niche, "lang": lang, "total": total, "fps": config.FPS, "segments": segments,
            "workers": int(os.getenv("CARTOON_WORKERS", "3")),
            "glScale": float(os.getenv("CARTOON_GL_SCALE", "0.67"))}
-    if style == "stickman":
-        cfg["root"] = str(STICKMAN_DIR)
+    if style in STYLE_DIRS:
+        cfg["root"] = str(STYLE_DIRS[style])
     cfg_path = work / "cartoon.json"
     cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
     out = work / "video.mp4"
