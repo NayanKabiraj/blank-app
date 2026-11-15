@@ -30,5 +30,21 @@
         "saved_to": "videos/2026-11-14/hi.mp4"
       }
     }
+  },
+  {
+    "date": "2026-11-15",
+    "niche": "Science Explained",
+    "topic": "Why does metal feel colder than wood at the same temperature?",
+    "mood": "calm",
+    "videos": {
+      "en": {
+        "file": "2026-11-15_en.mp4",
+        "saved_to": "videos/2026-11-15/en.mp4"
+      },
+      "hi": {
+        "file": "2026-11-15_hi.mp4",
+        "saved_to": "videos/2026-11-15/hi.mp4"
+      }
+    }
   }
 ]

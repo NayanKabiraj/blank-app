@@ -1,0 +1,290 @@
+{
+  "niche": "Science Explained",
+  "topic": "Why does metal feel colder than wood at the same temperature?",
+  "research_summary": "Timely: winter mornings are arriving across north India, when steel taps, spoons and railings feel icy. How it works: objects left in the same room reach the same temperature, but skin is warmer, so heat flows from the finger into whatever it touches. Metals conduct heat far better than wood because free electrons carry energy quickly, while wood's cells trap air, a poor conductor. Typical thermal conductivity: aluminium about 205 W/m.K, wood about 0.1 to 0.2 W/m.K (standard reference tables), so aluminium carries heat more than 1,000 times better. Skin thermoreceptors respond to the rate of heat loss, not the object's temperature (Thermtest 'touch metal, touch wood' experiment; tec-science; Khan Academy). The effect reverses for hot objects. Analogy: draining the same tank through a wide pipe versus a thin straw.",
+  "mood": "calm",
+  "english": {
+    "title": "Why Metal Feels Colder Than Wood (It Isn't)",
+    "description": "A steel spoon and a wooden table in the same room are the same temperature, yet the metal feels icy. The secret is how fast each one pulls heat from your skin. #science #physics #winter #howitworks",
+    "tags": [
+      "why metal feels cold",
+      "thermal conductivity",
+      "heat transfer",
+      "physics explained",
+      "science explained",
+      "winter science",
+      "metal vs wood",
+      "free electrons",
+      "everyday science",
+      "how it works"
+    ],
+    "hook_text": "Same temperature. Different feel.",
+    "scenes": [
+      {
+        "text": "On a cold morning, a steel spoon feels icy, but the wooden table does not. Yet both are equally cold.",
+        "graphic": {
+          "kind": "title",
+          "headline": "Same temperature?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "prop": "coin",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "frost morning window"
+      },
+      {
+        "text": "The difference is not the cold. It is how fast each one steals heat from your hand.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Heat thieves",
+          "caption": "metal pulls heat out faster",
+          "items": [],
+          "values": [],
+          "prop": "clock",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "hands warm breath winter"
+      },
+      {
+        "text": "Your skin is warmer than the room, so heat always flows from your fingers into whatever you touch.",
+        "graphic": {
+          "kind": "steps",
+          "headline": "What happens",
+          "caption": "",
+          "items": [
+            "Warm finger",
+            "Heat flows out",
+            "Skin cools",
+            "Brain says cold"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "steam cup cold air"
+      },
+      {
+        "text": "Metal has free electrons, tiny charged particles that whisk heat away. Wood is full of trapped air, which barely moves it.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Free electrons",
+          "caption": "they carry heat away fast",
+          "items": [],
+          "values": [],
+          "prop": "atom",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "wood grain macro"
+      },
+      {
+        "text": "Aluminium carries heat more than a thousand times better than wood.",
+        "graphic": {
+          "kind": "stat",
+          "headline": "1,000x",
+          "caption": "better at carrying heat than wood",
+          "items": [],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "aluminium sheet metal"
+      },
+      {
+        "text": "Your nerves do not measure temperature. They sense how fast your skin is losing heat.",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Nerves feel speed",
+          "caption": "how fast heat leaves your skin",
+          "items": [],
+          "values": [],
+          "prop": "brain",
+          "pose": "think"
+        },
+        "ai_prompt": null,
+        "visual_query": "neurons abstract light"
+      },
+      {
+        "text": "Like draining a tank with a wide pipe or a thin straw: same water, very different speed.",
+        "graphic": {
+          "kind": "compare",
+          "headline": "Pipe vs straw",
+          "caption": "",
+          "items": [
+            "Metal = pipe",
+            "Wood = straw"
+          ],
+          "values": [
+            100.0,
+            15.0
+          ],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "water pipe flow"
+      },
+      {
+        "text": "On a hot day it flips, and metal feels hotter. Follow to understand one new thing every day.",
+        "graphic": {
+          "kind": "title",
+          "headline": "Hot day? It flips",
+          "caption": "Follow for more",
+          "items": [],
+          "values": [],
+          "prop": "star",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "sunny summer day"
+      }
+    ]
+  },
+  "hindi": {
+    "title": "धातु लकड़ी से ज़्यादा ठंडी क्यों लगती है?",
+    "description": "एक ही कमरे में रखा स्टील का चम्मच और लकड़ी की मेज़ बराबर ठंडे होते हैं, फिर भी धातु बर्फ़ जैसी लगती है। राज़ है गर्मी के बहने की रफ़्तार। #science #physics #hindi #winter",
+    "tags": [
+      "धातु ठंडी क्यों लगती है",
+      "ऊष्मा चालकता",
+      "thermal conductivity hindi",
+      "विज्ञान",
+      "फ़िज़िक्स",
+      "सर्दी का विज्ञान",
+      "metal vs wood",
+      "science in hindi",
+      "रोज़ का विज्ञान",
+      "how it works"
+    ],
+    "hook_text": "तापमान एक, एहसास अलग",
+    "scenes": [
+      {
+        "text": "ठंडी सुबह स्टील का चम्मच बर्फ़ जैसा लगता है, पर लकड़ी की मेज़ नहीं, जबकि दोनों बराबर ठंडे हैं।",
+        "graphic": {
+          "kind": "title",
+          "headline": "तापमान एक जैसा?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "prop": "coin",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "frost morning window"
+      },
+      {
+        "text": "फ़र्क ठंड का नहीं, आपके हाथ से गर्मी चुराने की रफ़्तार का है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "गर्मी के चोर",
+          "caption": "धातु गर्मी तेज़ी से खींचती है",
+          "items": [],
+          "values": [],
+          "prop": "clock",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "hands warm breath winter"
+      },
+      {
+        "text": "त्वचा कमरे से गर्म है, इसलिए गर्मी उँगलियों से उस चीज़ में जाती है।",
+        "graphic": {
+          "kind": "steps",
+          "headline": "क्या होता है",
+          "caption": "",
+          "items": [
+            "गर्म उँगली",
+            "गर्मी बाहर",
+            "त्वचा ठंडी",
+            "दिमाग़: ठंड!"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "steam cup cold air"
+      },
+      {
+        "text": "धातु में फ़्री इलेक्ट्रॉन होते हैं, जो गर्मी को तेज़ी से ले जाते हैं। लकड़ी में फँसी हवा उसे रोक देती है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "फ़्री इलेक्ट्रॉन",
+          "caption": "गर्मी तेज़ी से ले जाते हैं",
+          "items": [],
+          "values": [],
+          "prop": "atom",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "wood grain macro"
+      },
+      {
+        "text": "एल्युमिनियम लकड़ी से हज़ार गुना से भी ज़्यादा अच्छी तरह गर्मी ले जाता है।",
+        "graphic": {
+          "kind": "stat",
+          "headline": "1,000x",
+          "caption": "लकड़ी से बेहतर गर्मी ले जाता है",
+          "items": [],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "aluminium sheet metal"
+      },
+      {
+        "text": "नसें तापमान नहीं नापतीं, वे महसूस करती हैं कि त्वचा कितनी तेज़ी से गर्मी खो रही है।",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "नसें रफ़्तार नापती हैं",
+          "caption": "त्वचा से गर्मी कितनी तेज़ी से जाती है",
+          "items": [],
+          "values": [],
+          "prop": "brain",
+          "pose": "think"
+        },
+        "ai_prompt": null,
+        "visual_query": "neurons abstract light"
+      },
+      {
+        "text": "जैसे टंकी को चौड़े पाइप या पतली स्ट्रॉ से खाली करना।",
+        "graphic": {
+          "kind": "compare",
+          "headline": "पाइप बनाम स्ट्रॉ",
+          "caption": "",
+          "items": [
+            "धातु = पाइप",
+            "लकड़ी = स्ट्रॉ"
+          ],
+          "values": [
+            100.0,
+            15.0
+          ],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "water pipe flow"
+      },
+      {
+        "text": "गर्म दिन में उल्टा होता है। रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "graphic": {
+          "kind": "title",
+          "headline": "गर्मी में उल्टा",
+          "caption": "फ़ॉलो करें",
+          "items": [],
+          "values": [],
+          "prop": "star",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "sunny summer day"
+      }
+    ]
+  }
+}
