@@ -7,34 +7,65 @@ To change how Claude picks topics or writes scripts, edit this file.
 ## Steps
 
 The channel is an **explainer channel**: every Short answers one clear "how does X work?"
-or "why does X happen?" question, in simple words, with motion graphics. It sticks to a
-fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
+or "why does X happen?" question, in simple words, with animated explainer graphics. **The
+goal of every video is watch-through and shares**: pick the question people are itching to
+have answered, then script it so nobody swipes away. Niches (`shorts/niches.py`) are only
+labels and a variety guard: **the topic decides the niche, not the other way round.**
 
-1. **Get today's niche.** In `NayanKabiraj/blank-app` on branch `main`, run
-   `python -m shorts.niches next` (or read `shorts/niches.py` and `data/history.json`
-   yourself). It prints the niche that has gone longest without a video, its angle,
-   example topics, and the topics already covered in that niche. Use exactly that niche,
-   and copy its `name` into the plan's `niche` field unchanged. If `NICHE_HINT.txt` exists
-   at the repo root, it holds the owner's preferences and overrides the rotation.
-2. **Pick and research one explainer topic in that niche.**
-   - Phrase the topic as a single question a curious 15-year-old would ask ("How does
-     UPI move money in two seconds?"). The examples are a starting point, not a list to
-     work through in order.
-   - Prefer a timely angle: use web search to check what people in India and worldwide are
-     searching for or talking about this week, and pick a topic in today's niche that ties
-     into it (a launch, a season, an event in the sky, a festival). If nothing fits, choose
-     an evergreen question.
-   - Don't repeat anything in `already_covered` or `data/history.json`.
-   - Avoid breaking tragedies, politics, elections, medical or investment advice, brands
-     in a promotional way, and real private individuals.
-   - Find out how it actually works: the 3–4 step mechanism, one striking verified number,
-     and one everyday analogy that makes it click. Check every fact against a reliable
-     source (official sites, encyclopedias, universities, established science outlets).
+1. **See what the channel has done.** In `NayanKabiraj/blank-app` on branch `main`, run
+   `python -m shorts.niches recent`. It prints the last videos (niche and topic), how often
+   each niche was used lately, the niches that are "cooling down" (used in the last two
+   videos), and the list of niches with their angle. Never repeat a topic or a close
+   variant. If `NICHE_HINT.txt` exists at the repo root, it holds the owner's preferences
+   and overrides everything below.
+2. **Choose the topic with the best chance of going viral.**
+   - **Collect at least 10 candidate questions across ALL niches**, each phrased as one
+     question a curious 15-year-old would ask ("How does UPI move money in two seconds?").
+     Sources, in this order:
+     1. *This week's talk* (web search; India first, then worldwide): science and tech news,
+        launches, sky events, weather and season changes, festivals, exam season, viral
+        gadgets or videos. For each, ask "what is the *why/how* behind it that people
+        wonder about?". Also search what people type: "why does", "how does", "how do" with
+        a trending keyword, and "most searched why questions India".
+     2. *Everyday mysteries*: things billions of people see or use daily and almost nobody can
+        explain (phone, body, food, money, weather, trains, cricket, chai, the sky).
+     3. *Proven performers*: if the vidIQ tools are available, spend at most three cheap calls
+        (for example outliers or keyword research for explainer Shorts) to see which
+        question types over-perform. If they are missing or credits are low, skip them
+        without comment.
+   - **Score every candidate 1–5 on each of these, and add them up** (max 40):
+     1. *Curiosity gap*: seen by everyone, understood by few. Does the question create an itch?
+     2. *Universality*: how many viewers have personally met this?
+     3. *Timeliness*: tied to something in the next ~7 days or trending now (5), seasonal (3),
+        evergreen (2).
+     4. *Search demand*: would people type this exact question?
+     5. *Surprise*: a counter-intuitive truth or a striking verified number (below 3: reject).
+     6. *Visual*: the mechanism can be shown as moving dots, a race, layers, a loop or steps,
+        with a countable number (below 3: reject).
+     7. *Shareability*: would someone send it to a friend with "wait, really?".
+     8. *Verifiability and safety*: facts you can confirm from reliable sources, and no breaking
+        tragedies, politics, elections, medical or investment advice, promotional brands or
+        real private individuals (a failure here is an automatic reject).
+   - Pick the highest total (tie-break: Surprise, then Timeliness). Its closest niche in
+     `shorts/niches.py` becomes the plan's `niche` (copy the `name` unchanged). **Variety
+     guard:** if the winner's niche is one of the two cooling-down niches, take the best
+     candidate from a different niche instead, unless the winner beats it by 4 points or
+     more. If nothing scores well, fall back to `python -m shorts.niches next`.
+   - **Title test before you commit:** can you state the video's title as a curiosity question
+     in 60 characters or fewer, with the key word in the first 40, and can the video fully pay
+     it off? Clickbait that the video does not answer is rejected.
+   - **Research it properly.** Find the 3–4 step mechanism, one striking verified number
+     (check it against at least two reliable sources and, when they differ, say which you
+     used and why), and one everyday analogy that makes it click. Prefer official sites,
+     encyclopedias, universities and established science outlets.
+   - **Write the audit trail into `research_summary`**: start with "Candidates:" and the top
+     three with their scores, then one line on why the winner beat the others (and why now),
+     then the mechanism, the facts and their sources.
 3. **Write the plan** as JSON following `shorts/sample_plan.json` exactly (the full schema
    is in `shorts/plan.py`). For the script voice (surprising-claim hook, one witty line,
    "then someone checked" twist, physical analogy) and for matching each line to a visual,
    follow the `animated-explainer-method` skill in `.claude/skills/`:
-   - `niche` (exactly the name from step 1), `topic` (the question), `research_summary`
+   - `niche` (exactly the name chosen in step 2), `topic` (the question), `research_summary`
      (why this topic today, how it works, the facts and their sources),
      and `mood`, which must be one of `calm`, `upbeat`, `dramatic`, `inspiring`, `mysterious`.
    - `english` and `hindi`, each with `title` (80 characters max, no hashtags),
@@ -46,20 +77,40 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      ___"). Every scene proves one claim that serves it; cut anything that doesn't.
    - Pace the narration at about 2–2.4 English words per second (the word limits below already
      fit this). Don't write at the limit: it sounds rushed.
-   - Follow the explainer structure:
-     1. **Hook** (scene 1): the question, or a surprising claim that makes viewers want the
-        answer, in under 3 seconds. `graphic.kind`: `title`.
-     2. **Short answer** (scene 2): the answer in one sentence. Usually a `keyword`.
-     3. **How it works** (2–3 scenes): the mechanism step by step, one idea per scene.
-        Use a `steps` graphic for the sequence.
-     4. **The number** (1 scene): one striking verified number that shows the scale.
-        `stat`.
-     5. **Make it click** (1 scene): an everyday analogy or a before/after comparison.
-        `compare` or `keyword`.
-     If there's room, add a **boundary** line before the close: where the rule stops working
+   - **Script for retention.** A Short is won in the first three seconds and lost at every dull
+     sentence. Read `.claude/skills/animated-explainer-method/references/viral-playbook.md` for
+     hook formulas with examples, then write the scenes as this curve:
+     1. **Hook** (scene 1, `title`): at most 14 words, spoken in about 4 seconds. Start with the
+        most surprising true thing, never with "Today", "In this video", a greeting, "Did you
+        know" or a definition. Use one formula: an impossible-sounding fact, "you already live
+        this", a specific number, a contradiction, or a challenge. It must plant a question the
+        viewer needs answered.
+     2. **Stakes and promise** (scene 2, `keyword`): why this matters to *you*, plus a tease of the
+        payoff ("The answer is hiding in every sunbeam."). Do not give the answer away yet.
+     3. **How it works** (2–3 scenes: `flow`, `steps`, `build` or `cycle`): one idea per scene.
+        Each scene's first sentence must create a reason to hear the second, and each scene
+        should end on a mini-cliffhanger or a turn ("But there is a catch.", "Now it gets
+        weird."). Re-hook with a new question, number or twist about every 8–10 seconds. Never
+        open a scene with a flat connective such as "Next" or "Also".
+     4. **The number** (`stat` or `race`): your most striking verified number, placed about
+        60–70 % of the way through, ideally as a countable difference.
+     5. **Make it click** (`compare` or `keyword`): an everyday analogy or a before/after
+        (India-first when natural: chai, auto-rickshaw, cricket, UPI, the metro, the monsoon).
+     6. **Payoff** (`keyword`): the answer in 12 words or fewer, reusing the hook's own words so
+        the loop closes ("So the sky is blue because...").
+     If there is room, add a **boundary** line before the close: where the rule stops working
         ("on a hot day it flips"). It stops viewers over-generalising.
-     6. **Close** (last scene): a one-line takeaway, then "Follow to understand one new
-        thing every day" (Hindi: "रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें"). `title`.
+     7. **Close** (last scene, `title`): one punchy takeaway that echoes the hook's wording, so
+        the Short loops naturally when it replays, then the follow line: "Follow to understand
+        one new thing every day" (Hindi: "रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें").
+   - Engagement rules: sentences of 12 words or fewer with one idea each, a short punch after a
+     longer line, second person ("you", "your phone"), concrete nouns, one "wait, what?" moment
+     and one "oh, that makes sense" moment, at most one dry joke. Keep to the word limits;
+     do not pad.
+   - `hook_text` is a teaser, not a summary: 5 words or fewer that make people stay ("It sees you
+     in the dark"). The `title` is the curiosity question from your title test, 60 characters or
+     fewer if you can (80 is the hard limit). The first line of the `description` states the
+     question and teases the answer.
    - Explain like a good teacher: plain words, define any technical term the first time
      you use it, and no jargon left unexplained.
    - Set `keyword` on most scenes: the stressed word or short phrase in that scene's `text`,
@@ -67,7 +118,9 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      on it and the caption highlights it. One per scene, never the first word.
    - Use short, natural spoken sentences. Write numbers and years as words, for example
      "nineteen sixty-nine". No emojis, and no hashtags in the narration.
-   - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
+   - Write the Hindi like a native Hindi creator talks, not a translation: its hook may use a
+     different formula if that lands harder, and common loan words (फ़ोन, ऐप, ट्रेन) are fine.
+     Natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
    - `graphic` is what the renderer draws for the scene (by default a **2D cartoon
@@ -125,7 +178,8 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
    - Use only facts you verified. Never make up numbers.
 4. **Validate the plan.** If the repo is checked out, run
    `pip install -q pydantic && python -m shorts.plan validate plan.json` and fix anything it
-   reports. Otherwise check the word counts yourself.
+   reports. It also checks the hook (14 words or fewer, no "Today"/"Did you know"/greeting
+   opener), scene length, the `hook_text` length and that `research_summary` lists the candidates. Otherwise check the word counts yourself.
 5. **Start the workflow.** Use the GitHub tool `actions_run_trigger` with
    `method: run_workflow`, owner `NayanKabiraj`, repo `blank-app`,
    `workflow_id: daily-shorts.yml`, `ref: main`, and
@@ -137,7 +191,8 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
    `conclusion: success`. If it's still running, check again a few minutes later. If it
    failed, read the failed job's log with `get_job_logs` (`run_id`, `failed_only: true`,
    `return_content: true`) and include the error in your report. Don't try to fix code.
-7. **Report back** in a few lines: the niche, the question, both titles, which scenes got
+7. **Report back** in a few lines: the niche, the question and its total score (and the
+   runner-up), both titles, which scenes got
    AI clips (from "Visual credits" in `videos/<date>/en_youtube.txt` on `main`), whether
    the run succeeded, and where the videos are: YouTube links if they were uploaded,
    otherwise `videos/<date>/` on `main`. Don't commit or push anything. The workflow

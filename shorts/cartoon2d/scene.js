@@ -24,7 +24,7 @@ const SKIN = '#e9b48d', SKIN_SH = '#d39a74', HAIR = '#4a2f22', SHIRT = '#3f8fc0'
 const BACKDROP = {
   'How Tech Works': 'room', 'AI Explained': 'room', 'Science Explained': 'room', 'Human Body': 'room',
   'Brain & Psychology': 'room', 'Money Explained': 'town', "How It's Made": 'town',
-  'Engineering Marvels': 'town', 'Earth & Nature': 'nature', 'Space & Universe': 'space',
+  'Engineering Marvels': 'town', 'India Explained': 'town', 'Earth & Nature': 'nature', 'Space & Universe': 'space',
   'History of Ideas': 'classical',
 };
 

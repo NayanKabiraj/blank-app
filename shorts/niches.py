@@ -1,10 +1,13 @@
 """The channel's fixed explainer niches and the daily rotation.
 
 Every video is an explainer: it answers one "how does X work?" or "why does X happen?"
-question. The niche of the day is the one that has gone longest without a video, so the
-channel cycles through all of them. Edit NICHES to change the line-up.
+question. The daily task picks the topic with the best viral and curiosity potential across all
+niches, and the topic's closest niche becomes the label; niches also act as a variety guard
+(`recent` shows the ones used in the last two videos). `next` is the old rotation, kept as a
+fallback: the niche that has gone longest without a video. Edit NICHES to change the line-up.
 
-    python -m shorts.niches next     # today's niche, example topics and topics to avoid
+    python -m shorts.niches recent   # last videos, niche counts, cooling-down niches, all niches
+    python -m shorts.niches next     # fallback: the niche longest without a video
     python -m shorts.niches list     # all niches
 """
 from __future__ import annotations
@@ -71,6 +74,11 @@ NICHES: list[Niche] = [
           ["How do planes stay in the air?", "How do bridges carry heavy trucks?",
            "How does a metro train stop so precisely?", "How do dams make electricity?",
            "How do skyscrapers survive strong wind?"]),
+    Niche("India Explained", "भारत की बातें",
+          "The science and engineering behind everyday India: UPI, trains, the monsoon, ISRO, cricket, festivals.",
+          ["How does UPI move money in two seconds?", "How does ISRO land on the Moon?",
+           "Why does the monsoon arrive on a schedule?", "How do Indian Railways run thousands of trains a day?",
+           "Why do Diwali crackers burst in different colours?"]),
     Niche("History of Ideas", "खोज और आविष्कार",
           "How a world-changing idea or invention came about and why it mattered.",
           ["How was zero invented in India?", "How did the printing press change the world?",
@@ -95,10 +103,30 @@ def next_niche(history: list[dict] | None = None) -> Niche:
     return min(NICHES, key=lambda n: (last_used.get(n.name, -1), NAMES.index(n.name)))
 
 
+def recent(history: list[dict] | None = None, n: int = 10) -> dict:
+    """What the channel did lately, for choosing today's topic."""
+    history = _history() if history is None else history
+    last = [{"date": h.get("date"), "niche": h.get("niche"), "topic": h.get("topic")} for h in history[-n:]]
+    counts: dict[str, int] = {}
+    for h in history[-14:]:
+        counts[h.get("niche")] = counts.get(h.get("niche"), 0) + 1
+    return {
+        "last_videos": last,
+        "niche_counts_last_14": counts,
+        "cooling_down": [h.get("niche") for h in history[-2:]],
+        "all_topics_covered": [h.get("topic") for h in history],
+        "niches": [{"name": x.name, "angle": x.angle, "examples": x.examples} for x in NICHES],
+        "fallback_niche": next_niche(history).name,
+    }
+
+
 def _cli() -> int:
     cmd = sys.argv[1] if len(sys.argv) > 1 else "next"
     if cmd == "list":
         print(json.dumps([asdict(n) for n in NICHES], ensure_ascii=False, indent=2))
+        return 0
+    if cmd == "recent":
+        print(json.dumps(recent(), ensure_ascii=False, indent=2))
         return 0
     if cmd == "next":
         history = _history()

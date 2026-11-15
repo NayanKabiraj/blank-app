@@ -13,8 +13,15 @@ import sys
 from pathlib import Path
 from typing import List, Literal, Optional
 
+import re
+
 from pydantic import BaseModel, Field, ValidationError
 
+
+# Hooks must start on the surprising fact, not with throat-clearing (English and Hindi).
+WEAK_OPENER = re.compile(
+    r"^(today|in this video|in today|hello|hi\b|hey|welcome|did you know|have you ever|ever wondered|"
+    r"आज|नमस्कार|नमस्ते|हेलो|स्वागत|क्या आप जानते|क्या आपने कभी)", re.I)
 
 # Procedural 3D props available in the cartoon style (shorts/cartoon3d/scene.js)
 PROPS = ["star", "bulb", "coin", "planet", "globe", "phone", "bank", "rocket", "brain", "chip",
@@ -97,6 +104,16 @@ def validate(plan: Plan) -> list[str]:
             problems.append(f"{lang}: {len(s.scenes)} scenes, expected 6-9")
         if len(s.title) > 90:
             problems.append(f"{lang}: title longer than 90 characters")
+        first = s.scenes[0].text if s.scenes else ""
+        if len(first.split()) > 18:
+            problems.append(f"{lang}: the hook (scene 1) is {len(first.split())} words, aim for 14 or fewer")
+        if WEAK_OPENER.match(first.strip()):
+            problems.append(f"{lang}: the hook opens with a greeting or filler ({first.strip()[:25]!r}); start with the surprising fact")
+        if len(s.hook_text.split()) > 6:
+            problems.append(f"{lang}: hook_text has {len(s.hook_text.split())} words, max 6 (5 is better)")
+        for i, sc in enumerate(s.scenes, 1):
+            if len(sc.text.split()) > 30:
+                problems.append(f"{lang} scene {i}: {len(sc.text.split())} words, split it (max about 30)")
         for i, sc in enumerate(s.scenes, 1):
             g = sc.graphic
             if g is None:
@@ -122,6 +139,8 @@ def validate(plan: Plan) -> list[str]:
         n_ai = sum(1 for sc in s.scenes if sc.ai_prompt)
         if n_ai > 2:
             problems.append(f"{lang}: {n_ai} scenes have ai_prompt, at most 2 are used")
+    if "candidate" not in plan.research_summary.lower():
+        problems.append("research_summary should start with 'Candidates:' (top 3 with scores) and say why the winner won")
     from .niches import NAMES
     if plan.niche not in NAMES:
         problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
