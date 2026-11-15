@@ -1,0 +1,69 @@
+<template>
+<style>
+ #root { position: absolute; inset: 0; font-family: var(--font-display); color: var(--text); }
+ .hl { position: absolute; font-size: var(--headline); font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; }
+ .hl span { display: inline-block; white-space: pre; }
+ .bar { position: absolute; height: 10px; width: 160px; background: var(--accent); border-radius: 5px; }
+ .stage { position: absolute; }
+ .stage svg { width: 100%; height: 100%; overflow: visible; }
+ .f-text { fill: var(--text); } .f-accent { fill: var(--accent); } .f-a2 { fill: var(--accent-2); }
+ .f-sun { fill: var(--sun); } .f-bg2 { fill: var(--bg-2); } .nofill { fill: none; } .air { opacity: 0.16; }
+ [class*="s-"] { stroke-width: var(--stroke); stroke-linecap: round; stroke-linejoin: round; }
+ .s-text { stroke: var(--text); } .s-accent { stroke: var(--accent); } .s-a2 { stroke: var(--accent-2); } .s-sun { stroke: var(--sun); }
+ .s-red { stroke: var(--spec-red); } .s-orange { stroke: var(--spec-orange); } .s-yellow { stroke: var(--spec-yellow); }
+ .s-green { stroke: var(--spec-green); } .s-blue { stroke: var(--spec-blue); } .s-violet { stroke: var(--spec-violet); }
+ .w10 { stroke-width: 10px; } .w14 { stroke-width: 14px; } .w18 { stroke-width: 18px; }
+ [pathLength] { stroke-dasharray: 1; }
+ text { font-family: var(--font-body); font-weight: 600; fill: var(--text); }
+ .t-lbl { font-size: 52px; } .t-big { font-size: 300px; font-weight: 700; } .t-huge { font-size: 210px; font-weight: 700; }
+ .t-word { font-size: 120px; font-weight: 700; } .t-cta { font-size: 56px; font-weight: 700; fill: var(--bg); }
+ .mid { text-anchor: middle; } .c-accent { fill: var(--accent); } .c-red { fill: var(--spec-red); } .c-blue { fill: var(--spec-blue); }
+
+ #s3-hl { left:120px; top:300px; width:640px; } #s3-bar { left:120px; top:250px; } #s3-stage { left:800px; top:165px; width:1000px; height:750px; }
+</style>
+<div id="s3" data-composition-id="s3" data-width="1920" data-height="1080">
+ <div id="root">
+  <div id="s3-bar" class="clip bar" data-start="0" data-duration="14.375"></div>
+  <div id="s3-hl" class="clip hl" data-start="0" data-duration="14.375"><span id="s3-h0">सफ़ेद </span><span id="s3-h1">रोशनी </span><span id="s3-h2">एक </span><span id="s3-h3">मिश्रण </span><span id="s3-h4">है </span></div>
+  <div id="s3-stage" class="clip stage" data-start="0" data-duration="14.375" data-layout-allow-overflow>
+   <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg"><g id="s3-body">
+ <line id="s3-beam" x1="200" y1="450" x2="415" y2="450" class="s-sun w18" pathLength="1"/>
+ <g id="s3-fan"><line id="s3-f0" x1="545" y1="450" x2="1130" y2="240" class="s-red w18" pathLength="1"/><line id="s3-f1" x1="545" y1="450" x2="1130" y2="324" class="s-orange w18" pathLength="1"/><line id="s3-f2" x1="545" y1="450" x2="1130" y2="408" class="s-yellow w18" pathLength="1"/><line id="s3-f3" x1="545" y1="450" x2="1130" y2="492" class="s-green w18" pathLength="1"/><line id="s3-f4" x1="545" y1="450" x2="1130" y2="576" class="s-blue w18" pathLength="1"/><line id="s3-f5" x1="545" y1="450" x2="1130" y2="660" class="s-violet w18" pathLength="1"/></g>
+ <path id="s3-prism" d="M 480 320 L 620 580 L 340 580 Z" class="s-text f-bg2"/>
+ <path id="s3-w0" d="M 660 450.0 L 664 443.9 L 668 438.0 L 672 432.2 L 676 426.8 L 680 421.7 L 684 417.2 L 688 413.2 L 692 409.9 L 696 407.3 L 700 405.4 L 704 404.3 L 708 404.0 L 712 404.5 L 716 405.8 L 720 407.9 L 724 410.7 L 728 414.2 L 732 418.3 L 736 423.0 L 740 428.1 L 744 433.6 L 748 439.4 L 752 445.4 L 756 451.5 L 760 457.6 L 764 463.5 L 768 469.2 L 772 474.5 L 776 479.4 L 780 483.8 L 784 487.7 L 788 490.8 L 792 493.3 L 796 494.9 L 800 495.8 L 804 495.9 L 808 495.2 L 812 493.7 L 816 491.5 L 820 488.5 L 824 484.9 L 828 480.6 L 832 475.8 L 836 470.5 L 840 464.9 L 844 459.1 L 848 453.0 L 852 447.0 L 856 440.9 L 860 435.1 L 864 429.5 L 868 424.2 L 872 419.4 L 876 415.1 L 880 411.5 L 884 408.5 L 888 406.3 L 892 404.8 L 896 404.1 L 900 404.2 L 904 405.1 L 908 406.7 L 912 409.2 L 916 412.3 L 920 416.2 L 924 420.6 L 928 425.5 L 932 430.8 L 936 436.5 L 940 442.4 L 944 448.5 L 948 454.6 L 952 460.6 L 956 466.4 L 960 471.9 L 964 477.0 L 968 481.7 L 972 485.8 L 976 489.3 L 980 492.1 L 984 494.2 L 988 495.5 L 992 496.0 L 996 495.7 L 1000 494.6 L 1004 492.7 L 1008 490.1 L 1012 486.8 L 1016 482.8 L 1020 478.3 L 1024 473.2 L 1028 467.8 L 1032 462.0 L 1036 456.1 L 1040 450.0 L 1044 443.9 L 1048 438.0 L 1052 432.2 L 1056 426.8 L 1060 421.7 L 1064 417.2 L 1068 413.2 L 1072 409.9 L 1076 407.3 L 1080 405.4 L 1084 404.3 L 1088 404.0 L 1092 404.5 L 1096 405.8 L 1100 407.9 L 1104 410.7 L 1108 414.2 L 1112 418.3 L 1116 423.0 L 1120 428.1 L 1124 433.6 L 1128 439.4 L 1132 445.4 L 1136 451.5 L 1140 457.6" class="s-sun nofill" pathLength="1"/>
+ <path id="s3-wr" d="M 660 250.0 L 664 244.8 L 668 239.6 L 672 234.5 L 676 229.7 L 680 225.0 L 684 220.6 L 688 216.5 L 692 212.8 L 696 209.5 L 700 206.7 L 704 204.3 L 708 202.4 L 712 201.1 L 716 200.3 L 720 200.0 L 724 200.3 L 728 201.1 L 732 202.4 L 736 204.3 L 740 206.7 L 744 209.5 L 748 212.8 L 752 216.5 L 756 220.6 L 760 225.0 L 764 229.7 L 768 234.5 L 772 239.6 L 776 244.8 L 780 250.0 L 784 255.2 L 788 260.4 L 792 265.5 L 796 270.3 L 800 275.0 L 804 279.4 L 808 283.5 L 812 287.2 L 816 290.5 L 820 293.3 L 824 295.7 L 828 297.6 L 832 298.9 L 836 299.7 L 840 300.0 L 844 299.7 L 848 298.9 L 852 297.6 L 856 295.7 L 860 293.3 L 864 290.5 L 868 287.2 L 872 283.5 L 876 279.4 L 880 275.0 L 884 270.3 L 888 265.5 L 892 260.4 L 896 255.2 L 900 250.0 L 904 244.8 L 908 239.6 L 912 234.5 L 916 229.7 L 920 225.0 L 924 220.6 L 928 216.5 L 932 212.8 L 936 209.5 L 940 206.7 L 944 204.3 L 948 202.4 L 952 201.1 L 956 200.3 L 960 200.0 L 964 200.3 L 968 201.1 L 972 202.4 L 976 204.3 L 980 206.7 L 984 209.5 L 988 212.8 L 992 216.5 L 996 220.6 L 1000 225.0 L 1004 229.7 L 1008 234.5 L 1012 239.6 L 1016 244.8 L 1020 250.0 L 1024 255.2 L 1028 260.4 L 1032 265.5 L 1036 270.3 L 1040 275.0 L 1044 279.4 L 1048 283.5 L 1052 287.2 L 1056 290.5 L 1060 293.3 L 1064 295.7 L 1068 297.6 L 1072 298.9 L 1076 299.7 L 1080 300.0 L 1084 299.7 L 1088 298.9 L 1092 297.6 L 1096 295.7 L 1100 293.3 L 1104 290.5 L 1108 287.2 L 1112 283.5 L 1116 279.4 L 1120 275.0 L 1124 270.3 L 1128 265.5 L 1132 260.4 L 1136 255.2 L 1140 250.0" class="s-red nofill" pathLength="1"/>
+ <path id="s3-wb" d="M 660 650.0 L 664 634.5 L 668 620.6 L 672 609.5 L 676 602.4 L 680 600.0 L 684 602.4 L 688 609.5 L 692 620.6 L 696 634.5 L 700 650.0 L 704 665.5 L 708 679.4 L 712 690.5 L 716 697.6 L 720 700.0 L 724 697.6 L 728 690.5 L 732 679.4 L 736 665.5 L 740 650.0 L 744 634.5 L 748 620.6 L 752 609.5 L 756 602.4 L 760 600.0 L 764 602.4 L 768 609.5 L 772 620.6 L 776 634.5 L 780 650.0 L 784 665.5 L 788 679.4 L 792 690.5 L 796 697.6 L 800 700.0 L 804 697.6 L 808 690.5 L 812 679.4 L 816 665.5 L 820 650.0 L 824 634.5 L 828 620.6 L 832 609.5 L 836 602.4 L 840 600.0 L 844 602.4 L 848 609.5 L 852 620.6 L 856 634.5 L 860 650.0 L 864 665.5 L 868 679.4 L 872 690.5 L 876 697.6 L 880 700.0 L 884 697.6 L 888 690.5 L 892 679.4 L 896 665.5 L 900 650.0 L 904 634.5 L 908 620.6 L 912 609.5 L 916 602.4 L 920 600.0 L 924 602.4 L 928 609.5 L 932 620.6 L 936 634.5 L 940 650.0 L 944 665.5 L 948 679.4 L 952 690.5 L 956 697.6 L 960 700.0 L 964 697.6 L 968 690.5 L 972 679.4 L 976 665.5 L 980 650.0 L 984 634.5 L 988 620.6 L 992 609.5 L 996 602.4 L 1000 600.0 L 1004 602.4 L 1008 609.5 L 1012 620.6 L 1016 634.5 L 1020 650.0 L 1024 665.5 L 1028 679.4 L 1032 690.5 L 1036 697.6 L 1040 700.0 L 1044 697.6 L 1048 690.5 L 1052 679.4 L 1056 665.5 L 1060 650.0 L 1064 634.5 L 1068 620.6 L 1072 609.5 L 1076 602.4 L 1080 600.0 L 1084 602.4 L 1088 609.5 L 1092 620.6 L 1096 634.5 L 1100 650.0 L 1104 665.5 L 1108 679.4 L 1112 690.5 L 1116 697.6 L 1120 700.0 L 1124 697.6 L 1128 690.5 L 1132 679.4 L 1136 665.5 L 1140 650.0" class="s-blue nofill" pathLength="1"/>
+ <text id="s3-tr" x="660" y="160" class="t-lbl c-red">लंबी</text>
+ <text id="s3-tb" x="660" y="790" class="t-lbl c-blue">छोटी</text></g><g id="s3-sun"><g id="s3-rays"><line x1="92.0" y1="0.0" x2="122.0" y2="0.0" class="s-sun"/><line x1="65.1" y1="65.1" x2="86.3" y2="86.3" class="s-sun"/><line x1="0.0" y1="92.0" x2="0.0" y2="122.0" class="s-sun"/><line x1="-65.1" y1="65.1" x2="-86.3" y2="86.3" class="s-sun"/><line x1="-92.0" y1="0.0" x2="-122.0" y2="0.0" class="s-sun"/><line x1="-65.1" y1="-65.1" x2="-86.3" y2="-86.3" class="s-sun"/><line x1="-0.0" y1="-92.0" x2="-0.0" y2="-122.0" class="s-sun"/><line x1="65.1" y1="-65.1" x2="86.3" y2="-86.3" class="s-sun"/></g><circle r="70" class="f-sun"/><circle id="s3-warm" r="70" class="f-a2"/></g></svg>
+  </div>
+ </div>
+</div>
+<script>
+(function () {
+ const tl = gsap.timeline({paused: true}), ID = "s3", q = n => "#" + ID + "-" + n;
+ const C = [0.25, 6.546, 8.511, 11.351], E = [6.266, 8.231, 11.071, 13.975], D = 14.375, LAST = false;
+ const P = (s, t, d = 0.5) => tl.fromTo(s, {opacity: 0, scale: 0.5, transformOrigin: "50% 50%"}, {opacity: 1, scale: 1, duration: d, ease: "back.out(1.7)"}, Math.max(0, t));
+ const F = (s, t, d = 0.45) => tl.fromTo(s, {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: d, ease: "power3.out"}, Math.max(0, t));
+ const Dr = (s, t, d = 0.6) => tl.fromTo(s, {strokeDashoffset: 1}, {strokeDashoffset: 0, duration: d, ease: "power2.out"}, Math.max(0, t));
+ const X = (s, t, d = 0.25) => tl.to(s, {opacity: 0, duration: d, ease: "power2.in"}, Math.max(0, t));
+ // the sun is carried over from where the previous scene left it
+ const S0 = [170, 150, 1, 0], S1 = [130, 450, 1, 0];
+ tl.fromTo(q("sun"), {x: S0[0], y: S0[1], scale: S0[2]}, {x: S1[0], y: S1[1], scale: S1[2], duration: 0.7, ease: "power3.out"}, 0);
+ tl.fromTo(q("warm"), {opacity: S0[3]}, {opacity: S1[3], duration: 0.7, ease: "power2.out"}, 0);
+ tl.fromTo(q("rays"), {rotation: 0}, {rotation: D * 8, duration: D, ease: "none", svgOrigin: "0 0"}, 0);
+ tl.fromTo(q("bar"), {scaleX: 0, transformOrigin: "0% 50%"}, {scaleX: 1, duration: 0.5, ease: "power3.out"}, 0.1);
+ document.querySelectorAll("#" + ID + "-hl span").forEach((w, i) =>
+   tl.fromTo(w, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, ease: "power3.out"}, 0.2 + i * 0.08));
+ 
+ P(q("prism"), 0.5); Dr(q("beam"), C[0] + 0.3, 0.6);
+ const m = C[0] + (E[0] - C[0]) * 0.5;
+ for (let i = 0; i < 6; i++) Dr(q("f" + i), m + i * 0.09, 0.6);
+ X(q("fan"), C[1] - 0.2); Dr(q("w0"), C[1] + 0.1, 0.9);
+ X(q("w0"), C[2] - 0.25);
+ Dr(q("wr"), C[2] + 0.05, 1.1); F(q("tr"), C[2] + 0.5);
+ Dr(q("wb"), C[3] + 0.05, 1.1); F(q("tb"), C[3] + 0.5);
+ if (!LAST) { X(q("body"), D - 0.3); X("#" + ID + "-hl", D - 0.3); X(q("bar"), D - 0.3); }
+ window.__timelines[ID] = tl;
+})();
+</script>
+</template>

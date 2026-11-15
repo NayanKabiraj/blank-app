@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<style>
+/* brand/tokens.css (inlined at build time) */
+/* Brand tokens shared by every video. Scenes must use these, never literal colours or fonts. */
+:root {
+  --bg: #0b1524;          /* one background */
+  --bg-2: #13233a;        /* ground / panels on the background */
+  --text: #f5f1e6;        /* one text colour */
+  --accent: #3d9bff;      /* accent: sky blue */
+  --accent-2: #ff8a3c;    /* secondary accent: sunset orange */
+  --sun: #fff6d8;
+  --spec-red: #ff4d4d; --spec-orange: #ff9a3c; --spec-yellow: #ffe14d;
+  --spec-green: #4ddb7a; --spec-blue: #3d9bff; --spec-violet: #9a6bff;
+  --font-display: "Poppins", sans-serif;   /* Google Fonts, OFL; covers Latin and Devanagari */
+  --font-body: "Poppins", sans-serif;
+  --headline: 96px; --body: 48px; --min: 36px;
+  --margin: 120px;
+  --stroke: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); }
+#bg { position: absolute; inset: 0; background: var(--bg); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="86.49" data-width="1920" data-height="1080">
+<div id="bg"></div>
+<div id="s1" data-composition-id="s1" data-composition-src="compositions/s1.html" data-start="0.000" data-duration="6.927" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="s2" data-composition-id="s2" data-composition-src="compositions/s2.html" data-start="6.927" data-duration="7.01" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="s3" data-composition-id="s3" data-composition-src="compositions/s3.html" data-start="13.937" data-duration="14.375" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="s4" data-composition-id="s4" data-composition-src="compositions/s4.html" data-start="28.312" data-duration="16.637" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="s5" data-composition-id="s5" data-composition-src="compositions/s5.html" data-start="44.949" data-duration="14.695" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="s6" data-composition-id="s6" data-composition-src="compositions/s6.html" data-start="59.644" data-duration="12.879" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+<div id="s7" data-composition-id="s7" data-composition-src="compositions/s7.html" data-start="72.523" data-duration="13.967" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+
+<audio id="voiceover" class="clip" data-start="0" data-duration="86.49" data-track-index="2" data-volume="1" src="assets/voiceover.wav"></audio>
+</div>
+<script>
+window.__timelines = window.__timelines || {};
+window.__timelines["main"] = gsap.timeline({paused: true});
+</script>
+</body>
+</html>

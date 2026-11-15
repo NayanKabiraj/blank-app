@@ -1,0 +1,63 @@
+<template>
+<style>
+ #root { position: absolute; inset: 0; font-family: var(--font-display); color: var(--text); }
+ .hl { position: absolute; font-size: var(--headline); font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; }
+ .hl span { display: inline-block; white-space: pre; }
+ .bar { position: absolute; height: 10px; width: 160px; background: var(--accent); border-radius: 5px; }
+ .stage { position: absolute; }
+ .stage svg { width: 100%; height: 100%; overflow: visible; }
+ .f-text { fill: var(--text); } .f-accent { fill: var(--accent); } .f-a2 { fill: var(--accent-2); }
+ .f-sun { fill: var(--sun); } .f-bg2 { fill: var(--bg-2); } .nofill { fill: none; } .air { opacity: 0.16; }
+ [class*="s-"] { stroke-width: var(--stroke); stroke-linecap: round; stroke-linejoin: round; }
+ .s-text { stroke: var(--text); } .s-accent { stroke: var(--accent); } .s-a2 { stroke: var(--accent-2); } .s-sun { stroke: var(--sun); }
+ .s-red { stroke: var(--spec-red); } .s-orange { stroke: var(--spec-orange); } .s-yellow { stroke: var(--spec-yellow); }
+ .s-green { stroke: var(--spec-green); } .s-blue { stroke: var(--spec-blue); } .s-violet { stroke: var(--spec-violet); }
+ .w10 { stroke-width: 10px; } .w14 { stroke-width: 14px; } .w18 { stroke-width: 18px; }
+ [pathLength] { stroke-dasharray: 1; }
+ text { font-family: var(--font-body); font-weight: 600; fill: var(--text); }
+ .t-lbl { font-size: 52px; } .t-big { font-size: 300px; font-weight: 700; } .t-huge { font-size: 210px; font-weight: 700; }
+ .t-word { font-size: 120px; font-weight: 700; } .t-cta { font-size: 56px; font-weight: 700; fill: var(--bg); }
+ .mid { text-anchor: middle; } .c-accent { fill: var(--accent); } .c-red { fill: var(--spec-red); } .c-blue { fill: var(--spec-blue); }
+
+ #s7-hl { left:90px; top:170px; width:900px; text-align:center; } #s7-bar { left:460px; top:120px; } #s7-stage { left:40px; top:470px; width:1000px; height:750px; }
+</style>
+<div id="s7" data-composition-id="s7" data-width="1080" data-height="1920">
+ <div id="root">
+  <div id="s7-bar" class="clip bar" data-start="0" data-duration="9.935"></div>
+  <div id="s7-hl" class="clip hl" data-start="0" data-duration="9.935"><span id="s7-h0">Same </span><span id="s7-h1">trick, </span><span id="s7-h2">two </span><span id="s7-h3">colours </span></div>
+  <div id="s7-stage" class="clip stage" data-start="0" data-duration="9.935" data-layout-allow-overflow>
+   <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg"><g id="s7-body">
+ <path id="s7-arc" d="M 330 290 Q 600 170 870 290" class="s-text nofill" pathLength="1"/>
+ <g id="s7-d1"><circle cx="330" cy="480" r="180" class="f-accent"/></g>
+ <g id="s7-d2"><circle cx="870" cy="480" r="180" class="f-a2"/></g>
+ <text id="s7-t1" x="330" y="740" class="t-lbl mid">scattered</text>
+ <text id="s7-t2" x="870" y="740" class="t-lbl mid">left over</text>
+ <g id="s7-cta"><rect x="400" y="790" width="400" height="96" rx="48" class="f-text"/><text x="600" y="856" class="t-cta mid">Follow</text></g></g><g id="s7-sun"><g id="s7-rays"><line x1="92.0" y1="0.0" x2="122.0" y2="0.0" class="s-sun"/><line x1="65.1" y1="65.1" x2="86.3" y2="86.3" class="s-sun"/><line x1="0.0" y1="92.0" x2="0.0" y2="122.0" class="s-sun"/><line x1="-65.1" y1="65.1" x2="-86.3" y2="86.3" class="s-sun"/><line x1="-92.0" y1="0.0" x2="-122.0" y2="0.0" class="s-sun"/><line x1="-65.1" y1="-65.1" x2="-86.3" y2="-86.3" class="s-sun"/><line x1="-0.0" y1="-92.0" x2="-0.0" y2="-122.0" class="s-sun"/><line x1="65.1" y1="-65.1" x2="86.3" y2="-86.3" class="s-sun"/></g><circle r="70" class="f-sun"/><circle id="s7-warm" r="70" class="f-a2"/></g></svg>
+  </div>
+ </div>
+</div>
+<script>
+(function () {
+ const tl = gsap.timeline({paused: true}), ID = "s7", q = n => "#" + ID + "-" + n;
+ const C = [0.25, 3.879, 7.274], E = [3.599, 6.994, 9.535], D = 9.935, LAST = true;
+ const P = (s, t, d = 0.5) => tl.fromTo(s, {opacity: 0, scale: 0.5, transformOrigin: "50% 50%"}, {opacity: 1, scale: 1, duration: d, ease: "back.out(1.7)"}, Math.max(0, t));
+ const F = (s, t, d = 0.45) => tl.fromTo(s, {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: d, ease: "power3.out"}, Math.max(0, t));
+ const Dr = (s, t, d = 0.6) => tl.fromTo(s, {strokeDashoffset: 1}, {strokeDashoffset: 0, duration: d, ease: "power2.out"}, Math.max(0, t));
+ const X = (s, t, d = 0.25) => tl.to(s, {opacity: 0, duration: d, ease: "power2.in"}, Math.max(0, t));
+ // the sun is carried over from where the previous scene left it
+ const S0 = [1040, 130, 0.8, 0], S1 = [600, 120, 0.8, 0];
+ tl.fromTo(q("sun"), {x: S0[0], y: S0[1], scale: S0[2]}, {x: S1[0], y: S1[1], scale: S1[2], duration: 0.7, ease: "power3.out"}, 0);
+ tl.fromTo(q("warm"), {opacity: S0[3]}, {opacity: S1[3], duration: 0.7, ease: "power2.out"}, 0);
+ tl.fromTo(q("rays"), {rotation: 0}, {rotation: D * 8, duration: D, ease: "none", svgOrigin: "0 0"}, 0);
+ tl.fromTo(q("bar"), {scaleX: 0, transformOrigin: "0% 50%"}, {scaleX: 1, duration: 0.5, ease: "power3.out"}, 0.1);
+ document.querySelectorAll("#" + ID + "-hl span").forEach((w, i) =>
+   tl.fromTo(w, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, ease: "power3.out"}, 0.2 + i * 0.08));
+ 
+ P(q("d1"), C[0] + (E[0] - C[0]) * 0.25); F(q("t1"), C[0] + (E[0] - C[0]) * 0.6);
+ P(q("d2"), C[1] + 0.25); Dr(q("arc"), C[1] + (E[1] - C[1]) * 0.45, 0.6); F(q("t2"), C[1] + (E[1] - C[1]) * 0.7);
+ P(q("cta"), C[2] + 0.2, 0.45);
+ if (!LAST) { X(q("body"), D - 0.3); X("#" + ID + "-hl", D - 0.3); X(q("bar"), D - 0.3); }
+ window.__timelines[ID] = tl;
+})();
+</script>
+</template>

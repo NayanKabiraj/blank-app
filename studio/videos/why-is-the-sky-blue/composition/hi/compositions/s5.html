@@ -1,0 +1,71 @@
+<template>
+<style>
+ #root { position: absolute; inset: 0; font-family: var(--font-display); color: var(--text); }
+ .hl { position: absolute; font-size: var(--headline); font-weight: 700; line-height: 1.12; letter-spacing: -0.01em; }
+ .hl span { display: inline-block; white-space: pre; }
+ .bar { position: absolute; height: 10px; width: 160px; background: var(--accent); border-radius: 5px; }
+ .stage { position: absolute; }
+ .stage svg { width: 100%; height: 100%; overflow: visible; }
+ .f-text { fill: var(--text); } .f-accent { fill: var(--accent); } .f-a2 { fill: var(--accent-2); }
+ .f-sun { fill: var(--sun); } .f-bg2 { fill: var(--bg-2); } .nofill { fill: none; } .air { opacity: 0.16; }
+ [class*="s-"] { stroke-width: var(--stroke); stroke-linecap: round; stroke-linejoin: round; }
+ .s-text { stroke: var(--text); } .s-accent { stroke: var(--accent); } .s-a2 { stroke: var(--accent-2); } .s-sun { stroke: var(--sun); }
+ .s-red { stroke: var(--spec-red); } .s-orange { stroke: var(--spec-orange); } .s-yellow { stroke: var(--spec-yellow); }
+ .s-green { stroke: var(--spec-green); } .s-blue { stroke: var(--spec-blue); } .s-violet { stroke: var(--spec-violet); }
+ .w10 { stroke-width: 10px; } .w14 { stroke-width: 14px; } .w18 { stroke-width: 18px; }
+ [pathLength] { stroke-dasharray: 1; }
+ text { font-family: var(--font-body); font-weight: 600; fill: var(--text); }
+ .t-lbl { font-size: 52px; } .t-big { font-size: 300px; font-weight: 700; } .t-huge { font-size: 210px; font-weight: 700; }
+ .t-word { font-size: 120px; font-weight: 700; } .t-cta { font-size: 56px; font-weight: 700; fill: var(--bg); }
+ .mid { text-anchor: middle; } .c-accent { fill: var(--accent); } .c-red { fill: var(--spec-red); } .c-blue { fill: var(--spec-blue); }
+
+ #s5-hl { left:120px; top:300px; width:640px; } #s5-bar { left:120px; top:250px; } #s5-stage { left:800px; top:165px; width:1000px; height:750px; }
+</style>
+<div id="s5" data-composition-id="s5" data-width="1920" data-height="1080">
+ <div id="root">
+  <div id="s5-bar" class="clip bar" data-start="0" data-duration="14.695"></div>
+  <div id="s5-hl" class="clip hl" data-start="0" data-duration="14.695"><span id="s5-h0">हर </span><span id="s5-h1">दिशा </span><span id="s5-h2">से </span><span id="s5-h3">नीला </span></div>
+  <div id="s5-stage" class="clip stage" data-start="0" data-duration="14.695" data-layout-allow-overflow>
+   <svg viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg"><g id="s5-body">
+ <path id="s5-sky" d="M 40 820 A 560 560 0 0 1 1160 820 Z" class="f-accent"/>
+ <path id="s5-glow" d="M 40 820 A 560 560 0 0 1 1160 820 Z" class="f-accent"/>
+ <line id="s5-c0" x1="746" y1="408" x2="600" y2="705" class="s-accent" pathLength="1"/><line id="s5-c1" x1="965" y1="476" x2="600" y2="705" class="s-accent" pathLength="1"/><line id="s5-c2" x1="905" y1="430" x2="600" y2="705" class="s-accent" pathLength="1"/><line id="s5-c3" x1="984" y1="682" x2="600" y2="705" class="s-accent" pathLength="1"/><line id="s5-c4" x1="576" y1="542" x2="600" y2="705" class="s-accent" pathLength="1"/><line id="s5-c5" x1="646" y1="439" x2="600" y2="705" class="s-accent" pathLength="1"/><line id="s5-c6" x1="318" y1="416" x2="600" y2="705" class="s-accent" pathLength="1"/>
+ <g id="s5-m0"><circle cx="746" cy="408" r="14" class="f-text"/><circle id="s5-mb0" cx="746" cy="408" r="17" class="f-accent"/></g><g id="s5-m1"><circle cx="965" cy="476" r="14" class="f-text"/><circle id="s5-mb1" cx="965" cy="476" r="17" class="f-accent"/></g><g id="s5-m2"><circle cx="905" cy="430" r="14" class="f-text"/><circle id="s5-mb2" cx="905" cy="430" r="17" class="f-accent"/></g><g id="s5-m3"><circle cx="264" cy="727" r="14" class="f-text"/><circle id="s5-mb3" cx="264" cy="727" r="17" class="f-accent"/></g><g id="s5-m4"><circle cx="984" cy="682" r="14" class="f-text"/><circle id="s5-mb4" cx="984" cy="682" r="17" class="f-accent"/></g><g id="s5-m5"><circle cx="811" cy="715" r="14" class="f-text"/><circle id="s5-mb5" cx="811" cy="715" r="17" class="f-accent"/></g><g id="s5-m6"><circle cx="576" cy="542" r="14" class="f-text"/><circle id="s5-mb6" cx="576" cy="542" r="17" class="f-accent"/></g><g id="s5-m7"><circle cx="646" cy="439" r="14" class="f-text"/><circle id="s5-mb7" cx="646" cy="439" r="17" class="f-accent"/></g><g id="s5-m8"><circle cx="337" cy="760" r="14" class="f-text"/><circle id="s5-mb8" cx="337" cy="760" r="17" class="f-accent"/></g><g id="s5-m9"><circle cx="318" cy="416" r="14" class="f-text"/><circle id="s5-mb9" cx="318" cy="416" r="17" class="f-accent"/></g><g id="s5-m10"><circle cx="768" cy="634" r="14" class="f-text"/><circle id="s5-mb10" cx="768" cy="634" r="17" class="f-accent"/></g><g id="s5-m11"><circle cx="677" cy="592" r="14" class="f-text"/><circle id="s5-mb11" cx="677" cy="592" r="17" class="f-accent"/></g><g id="s5-m12"><circle cx="130" cy="728" r="14" class="f-text"/><circle id="s5-mb12" cx="130" cy="728" r="17" class="f-accent"/></g><g id="s5-m13"><circle cx="406" cy="633" r="14" class="f-text"/><circle id="s5-mb13" cx="406" cy="633" r="17" class="f-accent"/></g><g id="s5-m14"><circle cx="1066" cy="707" r="14" class="f-text"/><circle id="s5-mb14" cx="1066" cy="707" r="17" class="f-accent"/></g><g id="s5-m15"><circle cx="235" cy="477" r="14" class="f-text"/><circle id="s5-mb15" cx="235" cy="477" r="17" class="f-accent"/></g><g id="s5-m16"><circle cx="856" cy="380" r="14" class="f-text"/><circle id="s5-mb16" cx="856" cy="380" r="17" class="f-accent"/></g><g id="s5-m17"><circle cx="505" cy="585" r="14" class="f-text"/><circle id="s5-mb17" cx="505" cy="585" r="17" class="f-accent"/></g><g id="s5-m18"><circle cx="395" cy="485" r="14" class="f-text"/><circle id="s5-mb18" cx="395" cy="485" r="17" class="f-accent"/></g><g id="s5-m19"><circle cx="873" cy="595" r="14" class="f-text"/><circle id="s5-mb19" cx="873" cy="595" r="17" class="f-accent"/></g>
+ <g id="s5-gp"><rect x="0" y="800" width="1200" height="100" class="f-bg2"/><line x1="0" y1="800" x2="1200" y2="800" class="s-text"/><g id="s5-per"><circle cx="600" cy="722" r="24" class="f-text"/><path d="M 572 800 Q 572 752 600 752 Q 628 752 628 800 Z" class="f-text"/></g></g>
+ <g id="s5-pw"><text x="600" y="250" class="t-word mid">रंगा हुआ</text><line id="s5-strike" x1="330" y1="232" x2="870" y2="232" class="s-a2 w14" pathLength="1"/></g>
+ <text id="s5-gw" x="600" y="250" class="t-word mid c-accent">चमकता हुआ</text></g><g id="s5-sun"><g id="s5-rays"><line x1="92.0" y1="0.0" x2="122.0" y2="0.0" class="s-sun"/><line x1="65.1" y1="65.1" x2="86.3" y2="86.3" class="s-sun"/><line x1="0.0" y1="92.0" x2="0.0" y2="122.0" class="s-sun"/><line x1="-65.1" y1="65.1" x2="-86.3" y2="86.3" class="s-sun"/><line x1="-92.0" y1="0.0" x2="-122.0" y2="0.0" class="s-sun"/><line x1="-65.1" y1="-65.1" x2="-86.3" y2="-86.3" class="s-sun"/><line x1="-0.0" y1="-92.0" x2="-0.0" y2="-122.0" class="s-sun"/><line x1="65.1" y1="-65.1" x2="86.3" y2="-86.3" class="s-sun"/></g><circle r="70" class="f-sun"/><circle id="s5-warm" r="70" class="f-a2"/></g></svg>
+  </div>
+ </div>
+</div>
+<script>
+(function () {
+ const tl = gsap.timeline({paused: true}), ID = "s5", q = n => "#" + ID + "-" + n;
+ const C = [0.25, 4.519, 9.535, 12.375], E = [4.239, 9.255, 12.095, 14.295], D = 14.695, LAST = false;
+ const P = (s, t, d = 0.5) => tl.fromTo(s, {opacity: 0, scale: 0.5, transformOrigin: "50% 50%"}, {opacity: 1, scale: 1, duration: d, ease: "back.out(1.7)"}, Math.max(0, t));
+ const F = (s, t, d = 0.45) => tl.fromTo(s, {opacity: 0, y: 24}, {opacity: 1, y: 0, duration: d, ease: "power3.out"}, Math.max(0, t));
+ const Dr = (s, t, d = 0.6) => tl.fromTo(s, {strokeDashoffset: 1}, {strokeDashoffset: 0, duration: d, ease: "power2.out"}, Math.max(0, t));
+ const X = (s, t, d = 0.25) => tl.to(s, {opacity: 0, duration: d, ease: "power2.in"}, Math.max(0, t));
+ // the sun is carried over from where the previous scene left it
+ const S0 = [150, 130, 1, 0], S1 = [1040, 130, 0.8, 0];
+ tl.fromTo(q("sun"), {x: S0[0], y: S0[1], scale: S0[2]}, {x: S1[0], y: S1[1], scale: S1[2], duration: 0.7, ease: "power3.out"}, 0);
+ tl.fromTo(q("warm"), {opacity: S0[3]}, {opacity: S1[3], duration: 0.7, ease: "power2.out"}, 0);
+ tl.fromTo(q("rays"), {rotation: 0}, {rotation: D * 8, duration: D, ease: "none", svgOrigin: "0 0"}, 0);
+ tl.fromTo(q("bar"), {scaleX: 0, transformOrigin: "0% 50%"}, {scaleX: 1, duration: 0.5, ease: "power3.out"}, 0.1);
+ document.querySelectorAll("#" + ID + "-hl span").forEach((w, i) =>
+   tl.fromTo(w, {opacity: 0, y: 30}, {opacity: 1, y: 0, duration: 0.5, ease: "power3.out"}, 0.2 + i * 0.08));
+ 
+ F(q("gp"), 0.1); tl.fromTo(q("sky"), {opacity: 0}, {opacity: 0.12, duration: 0.4, ease: "power2.out"}, 0.2);
+ for (let i = 0; i < 20; i++) { P(q("m" + i), 0.3 + i * 0.04, 0.3);
+   tl.fromTo(q("mb" + i), {opacity: 0}, {opacity: 1, duration: 0.35, ease: "power2.out"}, C[0] + 0.5 + i * 0.05); }
+ tl.fromTo(q("glow"), {opacity: 0}, {opacity: 0.3, duration: 1, ease: "power2.out"}, C[0] + 0.6);
+ const c = C[1] + (E[1] - C[1]) * 0.35;
+ for (let k = 0; k < 7; k++) Dr(q("c" + k), c + k * 0.14, 0.5);
+ P(q("pw"), C[2] + (E[2] - C[2]) * 0.45, 0.35); Dr(q("strike"), C[2] + (E[2] - C[2]) * 0.8, 0.3);
+ X(q("pw"), C[3] - 0.2);
+ P(q("gw"), C[3] + (E[3] - C[3]) * 0.35, 0.45);
+ tl.to(q("glow"), {opacity: 0.75, duration: 0.6, ease: "power2.out"}, C[3] + (E[3] - C[3]) * 0.35);
+ if (!LAST) { X(q("body"), D - 0.3); X("#" + ID + "-hl", D - 0.3); X(q("bar"), D - 0.3); }
+ window.__timelines[ID] = tl;
+})();
+</script>
+</template>

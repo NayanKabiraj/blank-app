@@ -1,0 +1,169 @@
+{
+ "total": 65.627,
+ "scenes": [
+  {
+   "id": "s1",
+   "start": 0.0,
+   "duration": 5.029,
+   "cues": [
+    {
+     "text": "Sunlight is white.",
+     "start": 0.25,
+     "end": 1.445
+    },
+    {
+     "text": "Space is black.",
+     "start": 1.725,
+     "end": 2.855
+    },
+    {
+     "text": "So why is the sky blue?",
+     "start": 3.135,
+     "end": 4.629
+    }
+   ]
+  },
+  {
+   "id": "s2",
+   "start": 5.029,
+   "duration": 5.901,
+   "cues": [
+    {
+     "text": "The answer is hiding inside every sunbeam.",
+     "start": 0.25,
+     "end": 2.725
+    },
+    {
+     "text": "And it also explains why sunsets turn red.",
+     "start": 3.005,
+     "end": 5.501
+    }
+   ]
+  },
+  {
+   "id": "s3",
+   "start": 10.929,
+   "duration": 11.197,
+   "cues": [
+    {
+     "text": "Sunlight looks white, but it is really every colour of the rainbow, travelling together.",
+     "start": 0.25,
+     "end": 4.922
+    },
+    {
+     "text": "Each colour is a wave.",
+     "start": 5.202,
+     "end": 6.61
+    },
+    {
+     "text": "Red waves are long and lazy.",
+     "start": 6.89,
+     "end": 8.661
+    },
+    {
+     "text": "Blue waves are short and choppy.",
+     "start": 8.941,
+     "end": 10.797
+    }
+   ]
+  },
+  {
+   "id": "s4",
+   "start": 22.126,
+   "duration": 13.97,
+   "cues": [
+    {
+     "text": "On its way down, sunlight crashes into the air itself.",
+     "start": 0.25,
+     "end": 3.365
+    },
+    {
+     "text": "Air is made of molecules, far smaller than the waves.",
+     "start": 3.645,
+     "end": 6.845
+    },
+    {
+     "text": "These tiny molecules bounce short blue waves around much more than long red ones.",
+     "start": 7.125,
+     "end": 11.925
+    },
+    {
+     "text": "About four times more.",
+     "start": 12.205,
+     "end": 13.57
+    }
+   ]
+  },
+  {
+   "id": "s5",
+   "start": 36.096,
+   "duration": 10.471,
+   "cues": [
+    {
+     "text": "So blue light gets scattered across the whole sky.",
+     "start": 0.25,
+     "end": 2.853
+    },
+    {
+     "text": "Wherever you look, some of that bounced blue is heading for your eyes.",
+     "start": 3.133,
+     "end": 6.589
+    },
+    {
+     "text": "The sky is not painted blue.",
+     "start": 6.869,
+     "end": 8.618
+    },
+    {
+     "text": "It is glowing blue.",
+     "start": 8.898,
+     "end": 10.071
+    }
+   ]
+  },
+  {
+   "id": "s6",
+   "start": 46.567,
+   "duration": 9.125,
+   "cues": [
+    {
+     "text": "At sunset, sunlight takes a much longer path through the air.",
+     "start": 0.25,
+     "end": 3.535
+    },
+    {
+     "text": "Most of the blue is scattered away before it reaches you.",
+     "start": 3.815,
+     "end": 6.674
+    },
+    {
+     "text": "What is left is orange and red.",
+     "start": 6.954,
+     "end": 8.725
+    }
+   ]
+  },
+  {
+   "id": "s7",
+   "start": 55.692,
+   "duration": 9.935,
+   "cues": [
+    {
+     "text": "So the sky is blue because air scatters blue light the most.",
+     "start": 0.25,
+     "end": 3.599
+    },
+    {
+     "text": "And a red sunset is the same trick, seen from the side.",
+     "start": 3.879,
+     "end": 6.994
+    },
+    {
+     "text": "Follow for one clear answer every week.",
+     "start": 7.274,
+     "end": 9.535
+    }
+   ]
+  }
+ ]
+}

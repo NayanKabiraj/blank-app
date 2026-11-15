@@ -1,0 +1,16 @@
+/* Brand tokens shared by every video. Scenes must use these, never literal colours or fonts. */
+:root {
+  --bg: #0b1524;          /* one background */
+  --bg-2: #13233a;        /* ground / panels on the background */
+  --text: #f5f1e6;        /* one text colour */
+  --accent: #3d9bff;      /* accent: sky blue */
+  --accent-2: #ff8a3c;    /* secondary accent: sunset orange */
+  --sun: #fff6d8;
+  --spec-red: #ff4d4d; --spec-orange: #ff9a3c; --spec-yellow: #ffe14d;
+  --spec-green: #4ddb7a; --spec-blue: #3d9bff; --spec-violet: #9a6bff;
+  --font-display: "Poppins", sans-serif;   /* Google Fonts, OFL; covers Latin and Devanagari */
+  --font-body: "Poppins", sans-serif;
+  --headline: 96px; --body: 48px; --min: 36px;
+  --margin: 120px;
+  --stroke: 8px;
+}
