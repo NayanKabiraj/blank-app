@@ -58,6 +58,20 @@ def _throttle(url: str) -> None:
         _last_commons = time.monotonic()
 
 
+def _download_raw(url: str, out: Path, limit: int = 25 * 1024 * 1024) -> bool:
+    """Download any file (photos) without the video probe."""
+    _throttle(url)
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=60) as r, open(out, "wb") as f:
+        size = 0
+        while chunk := r.read(1 << 20):
+            size += len(chunk)
+            if size > limit:
+                return False
+            f.write(chunk)
+    return size > 0
+
+
 def _download(url: str, out: Path) -> bool:
     _throttle(url)
     req = urllib.request.Request(url, headers={"User-Agent": UA})

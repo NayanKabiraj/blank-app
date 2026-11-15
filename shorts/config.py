@@ -39,6 +39,8 @@ FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 # "footage": real stock footage per scene (shorts/visuals.py)
 # Code-synthesized sound effects on the animation cues (cartoon2d only): on unless SFX=off
 SFX = os.getenv("SFX", "on").strip().lower() != "off"
+# A real stock photo behind the cartoon presenter in each scene (cartoon2d): on unless STOCK_PHOTOS=off
+STOCK_PHOTOS = os.getenv("STOCK_PHOTOS", "on").strip().lower() != "off"
 VISUAL_STYLE = os.getenv("VISUAL_STYLE", "cartoon2d").strip().lower() or "cartoon2d"
 
 # --- Stock footage: Pexels if a key is set, else Wikimedia Commons (no key needed) ---

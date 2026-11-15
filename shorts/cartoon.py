@@ -23,7 +23,7 @@ import os
 import subprocess
 from pathlib import Path
 
-from . import config
+from . import config, photos
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -49,13 +49,19 @@ def keyword_time(keyword, text: str, start: float, end: float):
 
 def render(script: LangScript, lang: str, niche: str, timeline, total: float, work: Path,
            style: str = "cartoon3d") -> Path:
-    segments = []
+    segments, credits = [], []
     for i, (start, _end, _text) in enumerate(timeline):  # noqa: B007
         seg_start = 0.0 if i == 0 else start
         seg_end = timeline[i + 1][0] if i + 1 < len(timeline) else total
         g = script.scenes[i].graphic
         graphic = g.model_dump() if g else {"kind": "keyword", "headline": " ".join(_text.split()[:3])}
         seg = {"start": seg_start, "end": seg_end, "graphic": graphic}
+        if style == "cartoon2d" and config.STOCK_PHOTOS:
+            got = photos.fetch(script.scenes[i].visual_query, work, i)
+            if got:
+                seg["photo"] = got[0]
+                if got[1] and got[1] not in credits:
+                    credits.append(got[1])
         hit = keyword_time(script.scenes[i].keyword, _text, start, _end)
         if hit is not None:
             seg["hit"] = hit
@@ -70,4 +76,8 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
     out = work / "video.mp4"
     log.info("Rendering %s track (%d scenes, %.1fs)", style, len(segments), total)
     subprocess.run(["node", str(DIR / "render.cjs"), str(cfg_path), str(out)], check=True)
-    return out
+    # keep the timeline (for sound effect cues) without the large embedded photos
+    for sg in cfg["segments"]:
+        sg.pop("photo", None)
+    cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
+    return credits

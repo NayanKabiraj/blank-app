@@ -113,7 +113,10 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      or from nearby, in one sentence. Don't write negations like "no text" (the model reads
      them as requests), and never mention screens, dashboards, spacecraft cockpits, signs
      or anything with a display, because the model fills those with made-up text.
-   - `visual_query` is always 2–3 concrete **English** keywords for stock footage. The
+   - `visual_query` is always 2–3 concrete **English** keywords. In the default cartoon2d style it
+     finds the **stock photo shown behind the presenter** in that scene, so make it match the line
+     and give each scene a different one.
+   - (Footage styles) `visual_query` is also used for stock footage. The
      footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
      scenery, nature, objects, animals, space imagery or time-lapses (for example
      `meteor timelapse`, `milky way timelapse`, `earth from orbit`, `ocean waves`). Never

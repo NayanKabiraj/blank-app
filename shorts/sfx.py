@@ -1,7 +1,6 @@
 """Sound effects synthesized in code, placed on the animation's own cues.
 
-Cue times come from the renderer's timeline (work/cartoon.json): a whoosh on every whip-pan cut,
-a pop when a thought bubble, diagram board or number lands, and a soft bell on each scene's
+Cue times come from the renderer's timeline (work/cartoon.json): a pop when a thought bubble, diagram board or number lands, and a soft bell on each scene's
 keyword. Everything is generated with numpy (no downloaded sounds), deterministic, and mixed
 quietly under the voice by compose.py.
 """
@@ -61,8 +60,6 @@ def cues_from_timeline(cfg: dict) -> list[tuple[float, str]]:
     for i, s in enumerate(segs):
         g = s.get("graphic") or {}
         kind, hit, start, end = g.get("kind"), s.get("hit"), s["start"], s["end"]
-        if i > 0:
-            cues.append((start - 0.2, "whoosh"))
         if kind in ("title", "keyword"):
             cues.append(((max(start + 0.05, hit - 0.6) if hit else start + 0.1) + 0.1, "pop"))
         elif kind in ("flow", "race", "build", "cycle"):
@@ -80,7 +77,7 @@ def build(cfg_path: Path, total: float, out: Path, volume: float = 0.35) -> Path
         return None
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
     rng = np.random.default_rng(7)
-    sounds = {"whoosh": whoosh(rng), "pop": pop(), "bell": bell()}
+    sounds = {"pop": pop(), "bell": bell()}
     track = np.zeros(int(SR * (total + 1)))
     for t, kind in cues_from_timeline(cfg):
         snd = sounds[kind]

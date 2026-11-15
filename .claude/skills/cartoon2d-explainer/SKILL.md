@@ -30,6 +30,19 @@ code. There's no AI image or video generation, and no copied characters.
 - Other styles are still available through the `visual_style` workflow input or the
   `VISUAL_STYLE` variable: `stickman`, `cartoon3d`, `motion` and `footage`.
 
+## Stock photos and changing backdrops
+
+Every scene gets its own backdrop, so the picture changes on every cut:
+- **Stock photo** (`shorts/photos.py`): the scene's English `visual_query` is searched on Pexels
+  (photos, when `PEXELS_API_KEY` is set) and then Wikimedia Commons (no key). The photo fills the
+  wall area behind the presenter with a slow Ken Burns zoom and alternating pan, a warm grade, and
+  a fade into the painted floor. Titles that suggest people, faces, politics or news are skipped.
+  Every photo's credit is added to the video description. Turn this off with `STOCK_PHOTOS=off`.
+- **No photo found:** the painted sets rotate (the niche's own first, then room, town, nature,
+  classical, space), so consecutive scenes still look different.
+- Write `visual_query` as 2–3 concrete, photographable English words that match the line
+  ("frost window", "aluminium pan", "wood grain"), not abstract ideas.
+
 ## Engagement layer (measured Vox-style motion)
 
 Numbers come from SousekiL/vox-style-video (MIT), which measured real Vox and collage videos
@@ -41,16 +54,16 @@ elements per shot):
   the way in if there's no keyword. Each scene is a wide shot followed by a close shot.
 - **Whip-pan cuts:** the last 5 drawings before a cut slide out (−0.6 → −18 % of the width), and
   the next scene enters from about 40 % behind, decaying ×0.6 per drawing. The background moves
-  at 35 % for parallax. There are no cross-fades.
+  at 35 % for parallax. There are no cross-fades, and the cuts are silent.
 - **Pop-in table** for bubbles and boards: 0.28 → 0.81 → 1.21 → 1.28 → 1.17 → 1.07 → 1.0 per
   1/12 s. The stat number lands with the stamp spring (0.78 → 1.26 → … → 1.0 per frame).
   Text never overshoots: headline words stamp in one every 0.1 s.
 - **One attention colour:** a highlighter-yellow (#FFF200) marker sweeps under the headline on
   the keyword beat. The same yellow colours the keyword in the captions.
 - **Texture:** paper grain that re-rolls 10 times a second, plus a warm vignette.
-- **Sound effects** (`shorts/sfx.py`, synthesized with numpy): a whoosh on every cut, a pop when
-  a bubble, board or number lands, and a soft bell on the keyword, mixed under the voice. Turn
-  them off with the variable `SFX=off`.
+- **Sound effects** (`shorts/sfx.py`, synthesized with numpy): a pop when a bubble, board or
+  number lands, and a soft bell on the keyword, mixed under the voice. There's no sound on cuts
+  (the owner found a whoosh on every cut annoying). Turn them off with the variable `SFX=off`.
 
 
 

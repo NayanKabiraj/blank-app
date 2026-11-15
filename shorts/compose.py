@@ -227,7 +227,7 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
 
     credits: list[str] = []
     if config.VISUAL_STYLE in ("cartoon2d", "stickman", "cartoon3d"):
-        cartoon.render(script, lang, niche, timeline, total, work, config.VISUAL_STYLE)  # writes work/video.mp4
+        credits = cartoon.render(script, lang, niche, timeline, total, work, config.VISUAL_STYLE)  # writes work/video.mp4
     elif config.VISUAL_STYLE == "motion":
         motion.render(script, lang, niche, timeline, total, work)
     else:

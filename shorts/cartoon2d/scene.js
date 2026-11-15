@@ -46,6 +46,7 @@ const hash = s => { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0))
 const rnd = n => { const x = Math.sin(n * 12.9898 + 78.233) * 43758.5453; return x - Math.floor(x); };
 
 let cfg, pal, ctx, bg, clouds, segs = [], T = 0, strokeId = 0, kindOfBg = 'room';
+const segsPhoto = {}, segsBg = {}, segsKind = {};
 
 // ------------------------------------------------------------------ pen: clean ink strokes
 // pts: [[x,y],...]. o: {close, w, color, fill, p (draw-on progress 0..1), amp}
@@ -374,7 +375,7 @@ function drawPerson(x, ground, pose, lift, talk) {
     ctx.stroke(); }
   ctx.restore();
   if (face === 'shock') for (const k of [-1, 1]) pen([[hc[0] + k * 92, hc[1] - 70], [hc[0] + k * 116, hc[1] - 96]], { w: 7, color: pal[0] });
-  if (face === 'hmm') { ctx.save(); ctx.fillStyle = kindOfBg === 'space' ? '#fff8e8' : INK; ctx.font = '900 64px sans-serif'; ctx.fillText('?', hc[0] + 84, hc[1] - 70 + 5 * Math.sin(t * 4)); ctx.restore(); }
+  if (face === 'hmm') { ctx.save(); ctx.fillStyle = (segs.length && segsKind[segs.findIndex(x => T >= x.start && T < x.end)] === 'space') ? '#fff8e8' : INK; ctx.font = '900 64px sans-serif'; ctx.fillText('?', hc[0] + 84, hc[1] - 70 + 5 * Math.sin(t * 4)); ctx.restore(); }
   // front arm on top
   const armR = limbPts(at(sh, 0, 30), P.aR, UA, FA);
   tube(armR, 30, SHIRT); hand(armR[2]);
@@ -690,7 +691,19 @@ window.setup = async (config) => {
   document.body.lang = cfg.lang === 'hi' ? 'hi' : 'en';
   ctx = document.getElementById('cv').getContext('2d');
   kindOfBg = cfg.backdrop || BACKDROP[cfg.niche] || 'room';
-  bg = paintBackground(kindOfBg); clouds = paintClouds(); makeGrain();
+  // a different backdrop for every scene: the scene's stock photo if there is one, otherwise
+  // the painted sets in rotation, starting with the niche's own
+  const order = [kindOfBg, ...['room', 'town', 'nature', 'classical', 'space'].filter(k => k !== kindOfBg)];
+  const painted = {};
+  const paint = k => (painted[k] = painted[k] || paintBackground(k));
+  bg = paint(kindOfBg); clouds = paintClouds(); makeGrain();
+  let n = 0;
+  await Promise.all(cfg.segments.map(async (sg, i) => {
+    if (!sg.photo) return;
+    const img = new Image(); img.src = sg.photo;
+    try { await img.decode(); segsPhoto[i] = img; } catch (e) { /* fall back to painted */ }
+  }));
+  cfg.segments.forEach((sg, i) => { segsKind[i] = segsPhoto[i] ? kindOfBg : order[(n++) % order.length]; segsBg[i] = paint(segsKind[i]); });
   segs = cfg.segments.map((s, i, all) => buildSegment(s, i, all));
   await document.fonts.ready;
 };
@@ -728,6 +741,28 @@ function makeGrain() {
   vg.fillStyle = gr; vg.fillRect(0, 0, W, H);
 }
 
+const FLOOR_Y = 1150;
+function drawBackdrop(s, t) {
+  const i = s ? s.i : 0, paintedBg = segsBg[i] || bg, img = segsPhoto[i];
+  ctx.drawImage(paintedBg, 0, 0);
+  if (!img) return;
+  // stock photo behind the presenter: cover the wall area, slow Ken Burns with alternating pan
+  const u = s ? clamp((t - s.start) / Math.max(1, s.end - s.start)) : 0;
+  const kb = 1.04 + 0.1 * u, pan = (i % 2 ? 1 : -1) * 40 * (u - 0.5);
+  const sc = Math.max(W / img.width, (FLOOR_Y + 60) / img.height) * kb;
+  const iw = img.width * sc, ih = img.height * sc;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(-200, -200, W + 400, FLOOR_Y + 200); ctx.clip();
+  ctx.drawImage(img, (W - iw) / 2 + pan, (FLOOR_Y + 60 - ih) / 2, iw, ih);
+  // warm grade so the photo sits with the cartoon, and a fade into the floor
+  ctx.fillStyle = 'rgba(246,226,196,0.20)'; ctx.fillRect(-200, -200, W + 400, FLOOR_Y + 200);
+  const g = ctx.createLinearGradient(0, FLOOR_Y - 220, 0, FLOOR_Y);
+  g.addColorStop(0, 'rgba(60,35,20,0)'); g.addColorStop(1, 'rgba(60,35,20,0.45)');
+  ctx.fillStyle = g; ctx.fillRect(-200, FLOOR_Y - 220, W + 400, 220);
+  ctx.restore();
+  ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(-200, FLOOR_Y); ctx.lineTo(W + 200, FLOOR_Y); ctx.stroke();
+}
+
 window.renderFrame = (t) => {
   T = t; strokeId = 0;
   const cur = segs.find(s => t >= s.start && t < s.end) || segs[segs.length - 1];
@@ -736,8 +771,9 @@ window.renderFrame = (t) => {
   // background: slower parallax, slightly oversized so whips never show an edge
   const bz = 1.22 + (cam.z - 1) * 0.4;
   ctx.setTransform(bz, 0, 0, bz, W / 2 * (1 - bz) + cam.dx * 0.35, 1050 * (1 - bz));
-  ctx.drawImage(bg, 0, 0);
-  if (kindOfBg === 'nature' || kindOfBg === 'town' || kindOfBg === 'classical')
+  drawBackdrop(cur, t);
+  const ck = cur ? segsKind[cur.i] : kindOfBg;
+  if (!(cur && segsPhoto[cur.i]) && (ck === 'nature' || ck === 'town' || ck === 'classical'))
     for (let i = 0; i < 2; i++) ctx.drawImage(clouds, ((i * 640 + t * 14) % 1600) - 520, 200 + i * 120, 520 * (0.8 + i * 0.3), 200 * (0.8 + i * 0.3));
   ctx.setTransform(cam.z, 0, 0, cam.z, cam.fx * (1 - cam.z) + (W / 2 - cam.fx) * (cam.z - 1) * 0.5 + cam.dx, cam.fy * (1 - cam.z));
   if (cur) updateSegment(cur, t);
