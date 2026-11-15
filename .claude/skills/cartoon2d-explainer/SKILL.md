@@ -40,6 +40,35 @@ code. There's no AI image or video generation, and no copied characters.
 | `steps` | 2–4 round floor tiles; the active one turns the accent colour | hops from tile to tile as each step lights up in the card |
 | `compare` | two classical columns that rise like bars (heights from `values`, equal if omitted) | points, then shrugs |
 
+| `flow` | an easel board: 2–4 numbered stages appear in turn, connectors draw on, then dots flow down them; the newest stage is highlighted | points at the board |
+| `race` | two lanes; dots stream along each at speeds from `values`, and a counter shows how many have arrived (a countable difference) | points, then is shocked on the keyword |
+| `build` | 2–4 layers drop in and stack, newest on top and highlighted | points at the board |
+| `cycle` | 3–4 states around a loop; a glowing token travels round and lights the state it passes | points at the board |
+
+### Pick a visual grammar (one per scene, prove one claim)
+
+From the `making-canvas-explainer-videos` skill (MIT): choose the shape that *proves* the line.
+| The line is about… | kind |
+|---|---|
+| a sequence: something moves from A to B to C | `flow` (or `steps`) |
+| a difference between two things | `race` when it's a speed or rate, `compare` when it's a size |
+| a magnitude | `stat` |
+| something that changes state, or a loop | `cycle` |
+| how parts combine into a whole | `build` |
+| a new term or object | `keyword` (bubble) |
+Prefer a countable comparison over another flow: viewers remember "4 arrived vs 0".
+**Animate the verb, not the noun** (kazi): "heat flows out" is dots moving, not a picture of a hand.
+
+### Keyword sync (from the kazi skill, MIT)
+
+Set `keyword` on a scene to the stressed word or short phrase in its narration (copied exactly).
+The scene's main motion lands about 3 frames before that word: the bubble pops, the number finishes
+counting, the presenter reacts, and the diagram gets an extra kick. The caption shows the word in
+yellow. Time is estimated from the word's position in the scene's own audio, which is accurate to
+a couple of frames for one or two short sentences, so keep scenes short. Use one keyword per
+scene, never on the first word, and pick the word that carries the meaning ("thousand",
+"trapped air"), not "the" or "it".
+
 - `prop`: `star, bulb, coin, planet, globe, phone, bank, rocket, brain, chip, heart, clock,
   gear, atom, book, magnet, cloud`. Pick one that stands for the line, and don't use the
   same one in two scenes in a row.
@@ -82,3 +111,11 @@ placeholder tone. Afterwards, restore `videos/` with `git checkout -- videos/`.
   1290–1400 px). Characters stand at y 1255.
 - Keep every frame a pure function of `t`. Don't use `ctx.filter` per frame (it's slow in
   software rendering): paint expensive things once in `setup`.
+
+## Credits
+
+The diagram kinds, keyword timing and beat sheet adapt ideas (not code) from MIT-licensed skills:
+[syydaniel/kazi](https://github.com/syydaniel/kazi) (keyword-synced explainers),
+[junjie721/canvas-explainer-videos](https://github.com/junjie721/canvas-explainer-videos) (visual grammars,
+beat sheet), and [iart-ai/explainer-video-skills](https://github.com/iart-ai/explainer-video-skills)
+(progressive diagram reveal).

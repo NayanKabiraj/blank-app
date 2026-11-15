@@ -386,7 +386,9 @@ const fmt = (v, d, commas) => commas ? v.toLocaleString('en-US', { minimumFracti
 
 // ------------------------------------------------------------------ segments
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-const HOME = { title: 270, keyword: 260, stat: 250, steps: 170, compare: 220 };
+const HOME = { title: 270, keyword: 260, stat: 250, steps: 170, compare: 220, flow: 225, race: 225, build: 225, cycle: 225 };
+const DIAGRAM_OK = { flow: g => g.items?.length >= 2, build: g => g.items?.length >= 2, cycle: g => g.items?.length >= 3,
+                     race: g => g.items?.length === 2 && g.values?.length === 2 && Math.min(...g.values) > 0 };
 
 function buildSegment(seg, i, all) {
   const g = seg.graphic, kind = g.kind;
@@ -412,6 +414,10 @@ function buildSegment(seg, i, all) {
     card.append(row);
     const vals = g.values?.length === 2 && Math.max(...g.values) > 0 ? g.values : [1, 1];
     s.bars = vals.map(v => v / Math.max(...vals));
+  } else if (DIAGRAM_OK[kind] && DIAGRAM_OK[kind](g)) {
+    headline(g.headline, '70px');
+    if (g.caption) card.append(el('div', 'cap', g.caption));
+    s.diagram = kind; s.labels = g.items.slice(0, 4); s.vals = g.values || [];
   } else {
     const h = headline(g.headline, kind === 'title' ? '88px' : '80px');
     if (kind === 'keyword') h.style.color = pal[0];
@@ -423,8 +429,10 @@ function buildSegment(seg, i, all) {
   if (kind === 'title' && i === 0) k.push([s.start, 'shock'], [s.start + 1.3, 'point']);
   else if (s.last) k.push([s.start, 'wave'], [s.start + INTRO + hold * 0.6, 'cheer']);
   else if (kind === 'title') k.push([s.start, 'point']);
-  else if (kind === 'keyword') k.push([s.start, 'think'], [mid, 'point']);
-  else if (kind === 'stat') k.push([s.start, 'stand'], [s.start + 1.6, 'shock']);
+  else if (kind === 'keyword') k.push([s.start, 'think'], [s.hit ? Math.max(s.start + 0.4, s.hit - 0.25) : mid, 'point']);
+  else if (kind === 'stat') k.push([s.start, 'stand'], [s.hit ? Math.max(s.start + 0.4, s.hit - 0.15) : s.start + 1.6, 'shock']);
+  else if (s.diagram === 'race') k.push([s.start, 'point'], [s.hit ? Math.max(s.start + 0.4, s.hit - 0.15) : s.start + INTRO + hold * 0.6, 'shock']);
+  else if (s.diagram) k.push([s.start, 'point']);
   else if (kind === 'steps') k.push([s.start, 'point']);
   else if (kind === 'compare') k.push([s.start, 'point'], [s.start + INTRO + hold * 0.7, 'shrug']);
   else k.push([s.start, 'stand']);
@@ -485,13 +493,17 @@ function updateSegment(s, t) {
   const holdStart = s.start + INTRO, holdEnd = s.end - OUTRO;
   s.card.style.display = 'block';
   s.card.style.opacity = String(clamp(enter * 2) * exit);
-  s.card.style.transform = `translateY(${(1 - enter) * 40}px) scale(${0.85 + 0.15 * k})`;
+  // kazi: the main motion lands ~3 frames before the keyword; give it a visible extra kick
+  const pk = s.hit ? clamp(1 - Math.abs(t - (s.hit - 0.03)) / 0.2) : 0;
+  s.card.style.transform = `translateY(${(1 - enter) * 40}px) scale(${(0.85 + 0.15 * k) * (1 + 0.05 * pk)})`;
   const fig = figureAt(s, t);
+  if (s.diagram) drawDiagram(s, t, u, exit, pk);
 
   if (s.num) {
-    const p = s.num.isYear ? 1 : easeOutCubic(clamp(u / 1.4));
+    const c0 = s.hit ? Math.max(s.start, s.hit - 1.5) : s.start, cu = t - c0;
+    const p = s.num.isYear ? 1 : easeOutCubic(clamp(cu / 1.4));
     s.big.textContent = s.num.prefix + fmt(s.num.value * p, s.num.decimals, s.num.commas);
-    const coins = Math.ceil(clamp(easeOutCubic(clamp(u / 1.4))) * 8);
+    const coins = Math.ceil(clamp(easeOutCubic(clamp(cu / 1.4))) * 8);
     for (let c = 0; c < coins; c++) { ellipse(780 + Math.sin(c * 2.1) * 8, GROUND - 22 - c * 34, 92, 24, { fill: c % 2 ? '#f6c445' : '#ffd166', w: 6, p: exit }); }
     if (u > 1.5) for (let j = 0; j < 4; j++) { const a = -Math.PI / 2 + (j - 1.5) * 0.5; pen([[780 + Math.cos(a) * 130, GROUND - 330 + Math.sin(a) * 60], [780 + Math.cos(a) * 165, GROUND - 330 + Math.sin(a) * 90]], { w: 7, color: pal[0], p: clamp((u - 1.5) / 0.3) * exit }); }
   }
@@ -523,10 +535,123 @@ function updateSegment(s, t) {
   const talk = speaking ? clamp(0.5 + 0.5 * Math.sin(t * 15)) * clamp(0.55 + 0.45 * Math.sin(t * 4.7 + s.i)) : 0;
   const person = drawPerson(fig.x, s.pads && fig.onPad >= 0 ? GROUND - 16 : GROUND, pose, fig.lift, talk);
   if (s.prop) {
-    const bk = easeOutBack(clamp((u - 0.1) / 0.5)) * easeInOut(exit);
+    const b0 = s.hit ? Math.max(s.start + 0.05, s.hit - 0.6) : s.start + 0.1;
+    const bk = easeOutBack(clamp((t - b0) / 0.5)) * easeInOut(exit) * (1 + 0.07 * pk);
     bubble(770, 960, 180, bk, s.kind === 'keyword' || (s.kind === 'title' && s.i === 0) ? person.head : null, s.prop, u, exit);
     if (s.kind === 'title') for (let j = 0; j < 5; j++) { const a = -2.6 + j * 0.42; pen([[770 + Math.cos(a) * 200, 960 + Math.sin(a) * 200], [770 + Math.cos(a) * 236, 960 + Math.sin(a) * 236]], { w: 7, color: pal[0], p: clamp((u - 0.6 - j * 0.08) / 0.3) * exit }); }
   }
+}
+
+
+// ------------------------------------------------------------------ animated diagrams on an easel board
+// Visual grammars from the canvas-explainer-videos skill (pipeline, A/B comparison, progressive
+// build, state loop) with progressive disclosure from iart's diagram-animation skill:
+// nodes, then edges, then labels; the active element is highlighted, the rest dimmed.
+const BOARD = { x: 430, y: 755, w: 615, h: 470 };
+function fitText(str, x, y, maxW, size, color, align = 'left', weight = 800) {
+  let f = size;
+  ctx.font = `${weight} ${f}px "Noto Sans", "Noto Sans Devanagari", sans-serif`;
+  while (f > 18 && ctx.measureText(str).width > maxW) { f -= 2; ctx.font = `${weight} ${f}px "Noto Sans", "Noto Sans Devanagari", sans-serif`; }
+  ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.fillText(str, x, y);
+}
+function drawBoard(k) {
+  const { x, y, w, h } = BOARD;
+  ctx.save(); ctx.translate(x + w / 2, y + h); ctx.scale(1, k); ctx.translate(-(x + w / 2), -(y + h));
+  tube([[x + 90, y + h - 10], [x + 60, GROUND + 4]], 12, '#8b6a4f'); tube([[x + w - 90, y + h - 10], [x + w - 60, GROUND + 4]], 12, '#8b6a4f');
+  ctx.fillStyle = 'rgba(40,25,15,0.18)'; ctx.fillRect(x + 10, y + 14, w, h);
+  poly([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], '#8b6a4f', 6);
+  poly([[x + 16, y + 16], [x + w - 16, y + 16], [x + w - 16, y + h - 16], [x + 16, y + h - 16]], '#fffaf0', 4);
+  ctx.strokeStyle = 'rgba(59,42,32,0.06)'; ctx.lineWidth = 2;
+  for (let gx = x + 56; gx < x + w - 16; gx += 40) { ctx.beginPath(); ctx.moveTo(gx, y + 16); ctx.lineTo(gx, y + h - 16); ctx.stroke(); }
+  for (let gy = y + 56; gy < y + h - 16; gy += 40) { ctx.beginPath(); ctx.moveTo(x + 16, gy); ctx.lineTo(x + w - 16, gy); ctx.stroke(); }
+  ctx.restore();
+}
+function dot(x, y, r, fill, glow = 0) {
+  ctx.save(); if (glow) { ctx.shadowColor = fill; ctx.shadowBlur = glow; }
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = fill; ctx.fill(); ctx.restore();
+}
+function drawDiagram(s, t, u, exit, pk) {
+  const bk = easeOutBack(clamp((u - 0.05) / 0.45)) * easeInOut(exit);
+  if (bk <= 0.01) return;
+  drawBoard(bk);
+  if (bk < 0.6) return;
+  const { x: BX, y: BY, w: BW, h: BH } = BOARD;
+  const t0 = s.start + INTRO * 0.8, D = Math.max(0.8, s.end - OUTRO - t0);
+  const L = s.labels, n = L.length;
+  ctx.save(); ctx.globalAlpha = clamp(exit * 1.5);
+  if (s.diagram === 'flow') { // pipeline: things move along the chain
+    const ys = L.map((_, j) => BY + 78 + j * ((BH - 156) / Math.max(1, n - 1)));
+    const cx = BX + 100;
+    L.forEach((lab, j) => {
+      const on = t >= t0 + (j * D) / (n + 0.6);
+      const a = clamp((t - (t0 + (j * D) / (n + 0.6))) / 0.35);
+      if (j < n - 1) { // edge draws on after the next node appears, then carries particles
+        const e0 = t0 + ((j + 1) * D) / (n + 0.6);
+        const ep = clamp((t - e0 + 0.25) / 0.45);
+        if (ep > 0) {
+          pen([[cx, ys[j] + 40], [cx, ys[j] + 40 + (ys[j + 1] - ys[j] - 80) * ep]], { w: 7, color: '#b9a796', amp: 0 });
+          if (ep >= 1) for (let q = 0; q < 4; q++) {
+            const f = ((t * 0.9 + q / 4) % 1), py = ys[j] + 40 + (ys[j + 1] - ys[j] - 80) * f;
+            dot(cx, py, 12, pal[0], 12);
+          }
+        }
+      }
+      if (a <= 0) return;
+      const last = t >= t0 + ((j + 1) * D) / (n + 0.6);
+      const active = on && (!last || j === n - 1);
+      const r = 38 * easeOutBack(a) * (active ? 1 + 0.08 * pk : 1);
+      blob(cx, ys[j], r, r, active ? pal[0] : '#efe3cf', 0, 5);
+      fitText(String(j + 1), cx, ys[j] + 2, 60, 34, active ? '#ffffff' : INK, 'center', 900);
+      ctx.save(); ctx.globalAlpha *= clamp((t - (t0 + (j * D) / (n + 0.6)) - 0.15) / 0.3);
+      fitText(lab, cx + 62, ys[j], BW - 190, 40, active ? INK : '#8a7666', 'left', active ? 900 : 700);
+      ctx.restore();
+    });
+  } else if (s.diagram === 'race') { // A/B comparison with a countable difference
+    const vmax = Math.max(...s.vals), x0 = BX + 50, x1 = BX + BW - 120, len = x1 - x0, gap = 0.32;
+    L.forEach((lab, j) => {
+      const y = BY + 140 + j * 200, col = j ? pal[1] : pal[0];
+      const speed = Math.max(4, 420 * s.vals[j] / vmax), ts = t0 + 0.3;
+      fitText(lab, x0, y - 62, BW - 120, 40, INK, 'left', 900);
+      pen([[x0, y], [x1, y]], { w: 6, color: '#cdbfae', amp: 0 });
+      pen([[x1 + 6, y - 34], [x1 + 6, y + 34]], { w: 7, color: INK, amp: 0 });
+      const m = Math.floor((t - ts) / gap);
+      for (let q = Math.max(0, m - 40); q <= m; q++) {
+        const px = x0 + speed * (t - (ts + q * gap));
+        if (px >= x0 && px <= x1) dot(px, y, 15, col, 10);
+      }
+      const arrived = t < ts ? 0 : Math.max(0, Math.floor((t - ts - len / speed) / gap) + 1);
+      blob(x1 + 62, y, 46 * (1 + 0.1 * pk), 40 * (1 + 0.1 * pk), col, 0, 5);
+      fitText(String(arrived), x1 + 62, y + 2, 80, 38, '#ffffff', 'center', 900);
+    });
+  } else if (s.diagram === 'build') { // progressive build: one layer at a time
+    L.forEach((lab, j) => {
+      const at = t0 + (j * D) / (n + 0.4), a = clamp((t - at) / 0.45);
+      if (a <= 0) return;
+      const top = t >= at && (j === n - 1 || t < t0 + ((j + 1) * D) / (n + 0.4));
+      const hgt = Math.min(92, (BH - 90) / n - 12), y = BY + BH - 40 - (j + 1) * (hgt + 12) - (1 - easeOutBack(a)) * 160;
+      const w = BW - 150 - j * 20, x = BX + (BW - w) / 2;
+      ctx.save(); ctx.globalAlpha *= clamp(a * 2);
+      poly([[x, y], [x + w, y], [x + w, y + hgt], [x, y + hgt]], top ? pal[0] : (j % 2 ? '#e8d9c2' : '#f3e7d3'), 5);
+      fitText(lab, x + w / 2, y + hgt / 2 + 2, w - 30, 38, top ? '#ffffff' : INK, 'center', 900);
+      ctx.restore();
+    });
+  } else if (s.diagram === 'cycle') { // state loop with a travelling token
+    const cx = BX + BW / 2, cy = BY + BH / 2, R = 160, ring = clamp((t - t0) / 0.8);
+    const ang = j => -Math.PI / 2 + (j * Math.PI * 2) / n;
+    pen(arcPts(cx, cy, R, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * ring, 60), { w: 7, color: '#cdbfae', amp: 0 });
+    const lap = Math.max(2.4, D / 1.5), ta = ang(0) + (Math.max(0, t - t0 - 0.6) / lap) * Math.PI * 2;
+    const activeIdx = Math.floor((((ta + Math.PI / 2) / (Math.PI * 2)) % 1) * n + 1e-6) % n;
+    if (t > t0 + 0.6) dot(cx + Math.cos(ta) * R, cy + Math.sin(ta) * R, 20, pal[0], 16);
+    L.forEach((lab, j) => {
+      const a = clamp((t - t0 - j * 0.25) / 0.4);
+      if (a <= 0) return;
+      const px = cx + Math.cos(ang(j)) * R, py = cy + Math.sin(ang(j)) * R, on = t > t0 + 0.6 && j === activeIdx;
+      const w = 220 * easeOutBack(a) * (on ? 1 + 0.06 * pk : 1), h = 66 * easeOutBack(a);
+      poly([[px - w / 2, py - h / 2], [px + w / 2, py - h / 2], [px + w / 2, py + h / 2], [px - w / 2, py + h / 2]], on ? pal[0] : '#efe3cf', 5);
+      fitText(lab, px, py + 2, w - 24, 34, on ? '#ffffff' : INK, 'center', 900);
+    });
+  }
+  ctx.restore();
 }
 
 // ------------------------------------------------------------------ public API

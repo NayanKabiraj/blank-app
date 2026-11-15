@@ -79,7 +79,19 @@ def _ass_escape(t: str) -> str:
     return t.replace("\\", "").replace("{", "(").replace("}", ")").replace("\n", " ")
 
 
-def _captions(timeline, hook: str, lang: str, out: Path, words_per_chunk: int = 3):
+def _highlight(chunk: str, kw: set) -> str:
+    """Escape a caption chunk and colour the scene's keyword words yellow (kazi: the keyword
+    changes colour as it is spoken)."""
+    if not kw:
+        return _ass_escape(chunk)
+    out = []
+    for w in chunk.split():
+        bare = w.strip(".,!?;:\"'()।").lower()
+        out.append("{\\c&H0000E5FF&}" + _ass_escape(w) + "{\\c&H00FFFFFF&}" if bare in kw else _ass_escape(w))
+    return " ".join(out)
+
+
+def _captions(timeline, hook: str, lang: str, out: Path, words_per_chunk: int = 3, keywords=None):
     font = config.FONTS[lang]
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -99,7 +111,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if hook:
         lines.append(f"Dialogue: 1,{_ass_time(0)},{_ass_time(3.0)},Hook,,0,0,0,,"
                      f"{{\\fad(200,300)}}{_ass_escape(hook)}")
-    for start, end, text in timeline:
+    for k, (start, end, text) in enumerate(timeline):
+        kw = set((keywords[k] or "").lower().split()) if keywords and k < len(keywords) else set()
         words = text.split()
         chunks = [" ".join(words[i:i + words_per_chunk]) for i in range(0, len(words), words_per_chunk)]
         weights = [max(1, len(c)) for c in chunks]
@@ -107,7 +120,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         for c, wgt in zip(chunks, weights):
             d = span * wgt / sum(weights)
             lines.append(f"Dialogue: 0,{_ass_time(t)},{_ass_time(t + d)},Cap,,0,0,0,,"
-                         f"{{\\fscx92\\fscy92\\t(0,90,\\fscx100\\fscy100)}}{_ass_escape(c)}")
+                         f"{{\\fscx92\\fscy92\\t(0,90,\\fscx100\\fscy100)}}{_highlight(c, kw)}")
             t += d
     out.write_text(head + "\n".join(lines) + "\n", encoding="utf-8")
     return out
@@ -230,7 +243,8 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     else:
         music_in = ["-i", music.synthesize(mood, total, work / "music.wav")]
 
-    _captions(timeline, script.hook_text, lang, work / "captions.ass")
+    _captions(timeline, script.hook_text, lang, work / "captions.ass",
+              keywords=[sc.keyword for sc in script.scenes])
     out = work / f"short_{lang}.mp4"
     fade_out = total - 1.2
     filt = (

@@ -28,10 +28,15 @@ POSES = ["stand", "point", "wave", "cheer", "shrug", "think", "shock", "walk"]
 class Graphic(BaseModel):
     """What the motion-graphics renderer (shorts/motion.py) draws for a scene. Text is in
     the video's language; keep it short, it is shown big on a phone screen."""
-    kind: Literal["title", "stat", "keyword", "steps", "compare"] = Field(
+    kind: Literal["title", "stat", "keyword", "steps", "compare", "flow", "race", "build", "cycle"] = Field(
         description="title: a big headline. stat: one big number with a label. keyword: a "
         "key term with a one-line explanation. steps: 2-4 stages of a process. compare: two "
-        "things side by side, optionally with values drawn as bars.")
+        "things side by side, optionally with values drawn as bars. Animated diagrams (cartoon2d "
+        "style; other styles show them as a keyword card): flow: 2-4 stages in a chain with "
+        "particles flowing along the connectors (something moves from A to B). race: exactly 2 "
+        "lanes with 2 values = relative speeds; dots stream along each lane and an arrival "
+        "counter shows the countable difference. build: 2-4 layers stacking up one at a time "
+        "(how parts combine). cycle: 3-4 states around a loop with a token travelling round.")
     headline: str = Field(description="Main text: the headline, the number with its unit "
                           "(e.g. '71 km/s', '1966'), or the key term. Max 24 characters.")
     caption: str = Field(default="", description="Optional smaller line under the headline, max 40 characters.")
@@ -49,6 +54,9 @@ class Graphic(BaseModel):
 
 class Scene(BaseModel):
     text: str = Field(description="Narration for this scene, 1-2 short spoken sentences.")
+    keyword: Optional[str] = Field(default=None, description="Optional: the stressed word or short "
+                                   "phrase in `text` (copied exactly). The scene's main motion lands "
+                                   "on it and the caption highlights it. One per scene.")
     graphic: Optional[Graphic] = Field(default=None, description="Motion graphic for this scene.")
     ai_prompt: Optional[str] = Field(default=None, description=(
         "Optional, at most 2 scenes per video: an ENGLISH visual description for an "
@@ -99,8 +107,16 @@ def validate(plan: Plan) -> list[str]:
                 problems.append(f"{lang} scene {i}: steps needs 2-4 items")
             elif g.kind == "compare" and len(g.items) != 2:
                 problems.append(f"{lang} scene {i}: compare needs exactly 2 items")
+            elif g.kind in ("flow", "build") and not 2 <= len(g.items) <= 4:
+                problems.append(f"{lang} scene {i}: {g.kind} needs 2-4 items")
+            elif g.kind == "cycle" and not 3 <= len(g.items) <= 4:
+                problems.append(f"{lang} scene {i}: cycle needs 3-4 items")
+            elif g.kind == "race" and (len(g.items) != 2 or len(g.values) != 2 or min(g.values or [0]) <= 0):
+                problems.append(f"{lang} scene {i}: race needs exactly 2 items and 2 positive values")
             if g is not None and g.prop and g.prop not in PROPS:
                 problems.append(f"{lang} scene {i}: unknown prop {g.prop!r} (choose from {', '.join(PROPS)})")
+            if sc.keyword and sc.keyword.lower() not in sc.text.lower():
+                problems.append(f"{lang} scene {i}: keyword {sc.keyword!r} does not appear in the narration")
             if g is not None and g.pose and g.pose not in POSES:
                 problems.append(f"{lang} scene {i}: unknown pose {g.pose!r} (choose from {', '.join(POSES)})")
         n_ai = sum(1 for sc in s.scenes if sc.ai_prompt)
