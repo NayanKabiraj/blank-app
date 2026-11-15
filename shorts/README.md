@@ -4,14 +4,17 @@ The work is split into two parts:
 
 - **Claude, as a scheduled task (every day at 08:23 IST),** does the thinking. The channel
   is an **explainer channel**: every Short answers one "how does X work?" or "why does X
-  happen?" question. Claude takes the day's niche from a fixed rotation of 11 explainer
-  niches in [`niches.py`](niches.py): How Tech Works, AI Explained, Science Explained,
-  Space & Universe, Human Body, Brain & Psychology, Money Explained, Earth & Nature,
-  How It's Made, Engineering Marvels and History of Ideas. It then picks a question in
-  that niche, using this week's trends for a timely angle where one fits, researches how
-  it works and writes an English and a Hindi script. Each script follows the same
-  structure: hook, answer, step-by-step mechanism, one striking number, an analogy and a
-  takeaway. Claude then starts the GitHub workflow with the plan. Its instructions are in
+  happen?" question. Claude hunts for the question with the best chance of going viral:
+  it collects 10+ candidate questions across all of the 12 niches in
+  [`niches.py`](niches.py) (this week's trends in India and worldwide, everyday mysteries,
+  and what over-performs), scores each for curiosity gap, universality, timeliness,
+  search demand, surprise, visual potential, shareability and safety, and picks the
+  winner. The topic decides the niche, and a variety guard stops the same niche
+  appearing twice in a row. It then researches how it works and writes an English and a
+  Hindi script built for retention: a hook that starts on the surprising fact, a promise,
+  a mechanism told in beats with a re-hook every 8-10 seconds, one striking number, an
+  analogy, a payoff that reuses the hook's words and a looping close. The plan's
+  `research_summary` records the scored candidates. Claude then starts the GitHub workflow with the plan. Its instructions are in
   [`CLAUDE_DAILY_TASK.md`](CLAUDE_DAILY_TASK.md). To change the niches, edit `NICHES` in
   `niches.py`. To check which niche is next, run `python -m shorts.niches next`.
 - **GitHub Actions** (`.github/workflows/daily-shorts.yml`) only produces the videos and
@@ -79,7 +82,7 @@ task starts the workflow on `main`.
 | Name | Type | Purpose |
 |---|---|---|
 | `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
-| `NICHE_HINT.txt` | file at the repo root | Overrides the niche rotation, e.g. `only How Tech Works and AI Explained this week` |
+| `NICHE_HINT.txt` | file at the repo root | Overrides the topic and niche choice, e.g. `only How Tech Works and AI Explained this week` |
 | `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
 | `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the cartoon2d cues. `off` to mute them |
 | `STOCK_PHOTOS` | variable | `on` (default): a stock photo (Pexels if keyed, else Wikimedia Commons) behind the cartoon2d presenter in each scene, credited in the description. `off` for painted backdrops only |
