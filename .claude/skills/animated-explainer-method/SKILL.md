@@ -1,6 +1,6 @@
 ---
 name: animated-explainer-method
-description: The "Claude-made animated explainer" method studied from the Grow With Kaz YouTube channel (faceless 3D and character-animation explainers built entirely in code, with no AI video generators), adapted to this repo's daily Shorts pipeline. Use when choosing a niche or sub-niche, generating video ideas, writing the narration of a plan (hook, story beats, wit, analogy), directing the visuals scene by scene, or planning a longer animated explainer. Pairs with the cartoon2d-explainer skill (the default renderer), stickman-explainer and cartoon-explainer (3D).
+description: The "Claude-made animated explainer" method studied from the Grow With Kaz YouTube channel (faceless 3D and character-animation explainers built entirely in code, with no AI video generators), adapted to this repo's daily Shorts pipeline. Use when choosing a niche or sub-niche, generating video ideas, writing the narration of a plan (hook, story beats, wit, analogy), directing the visuals scene by scene, or planning a longer animated explainer. Pairs with the explainer-diagram skill (the renderer).
 ---
 
 # Animated explainer method (studied from @GrowWithKaz)
@@ -12,11 +12,10 @@ captions, audio and the final render) instead of paying for AI video tools. The 
 cover money/psychology explainers with stick figures, prehistoric sea creatures, map
 animations and wordless short films. Each took about 10–45 minutes to generate.
 
-This repo has the rendering half. The default is a **2D traditional-animation explainer
-drawn by code** (`shorts/cartoon2d/`, see the `cartoon2d-explainer` skill). It has a
-talking presenter character, painted backgrounds and thought-bubble insets. The
-alternatives are the stickman (`shorts/stickman/`) and the 3D cartoon (`shorts/cartoon3d/`). This skill covers the other half, the part that makes these videos get watched: the
-niche, the idea, the script, and how each line becomes a visual.
+This repo has the rendering half: the one and only look of the channel is the **explainer** (dark navy, flat
+step-by-step diagrams, a guiding spark, chat bubbles, quizzes, drawn by code in `shorts/explainer/`, see the
+`explainer-diagram` skill). This skill covers the other half, the part that makes these videos get
+watched: the niche, the idea, the script, and how each line becomes a visual.
 
 ## The workflow, as the channel teaches it
 
@@ -40,7 +39,7 @@ niche, the idea, the script, and how each line becomes a visual.
 The style skill itself was built by **studying reference videos frame by frame** (screenshots
 of characters, motion, transitions, palette) and writing those rules down. Do the same when
 adding a new look here: capture frames, list what is consistent, and encode it in
-`scene.js` as props/layouts plus written rules in `cartoon-explainer`.
+`scene.js` as layouts plus written rules in `explainer-diagram`.
 
 Use the prompt in `references/master-prompt.md` for steps 1–4. It's written for this repo's
 plan format.
@@ -80,34 +79,36 @@ Every line of narration should have something on screen that *acts it out*, not 
 
 | Narration beat | What the animation does | Plan field in this repo |
 |---|---|---|
-| Hook claim | Subject pops into a bubble with burst lines; the presenter is shocked, then points | `title` + `prop` (+ `pose`) |
-| Name/term + definition | Object on a pedestal, label and one-line caption | `keyword` + `prop` |
-| Process / "how" | Character hops through numbered steps as each lights up | `steps` (2–4 items) |
-| Number | Counter ticks up while a pile or bar grows to scale | `stat` (verified number) |
-| Old vs new / before vs after | Two things side by side, bars rise | `compare` (+ `values`) |
-| Analogy | Everyday object stands in for the idea | `keyword` with a matching `prop`, or `compare` |
-| Close | Hero object returns, takeaway + follow line | `title` |
+| Hook claim | The icon pops in with burst lines | `title` + `prop` |
+| Question to the viewer, "you ask, I answer" | A text-message exchange: viewer bubble, typing dots, answer bubble | `chat` (2-4 bubbles) |
+| "Think you know?" | A multiple-choice question, a countdown, then the right option lights up | `quiz` (+ `answer`) |
+| A common belief that is wrong | The myth is struck out, the truth stamps in | `myth` |
+| Name/term + definition | Icon in a turning ring, one-line caption | `keyword` + `prop` |
+| Process / "how" | Numbered nodes light up, or dots flow from A to B | `steps`, `flow`, `build`, `cycle` |
+| Number | Counter ticks up, ten dots fill | `stat` (verified number) |
+| Several things measured against each other | Bars grow to their values | `bars` |
+| Two speeds / two rates | Dots race along two lanes, counters show who arrives | `race` |
+| Old vs new / two sizes | Two discs, area follows the values | `compare` (+ `values`) |
+| Close | Icon returns, a question for the comments | `keyword` or `title` |
 
 Rules carried over from the channel's style:
-- **A consistent character** drives the story across scenes (here: the cartoon2d presenter;
-  the stick figure or the coral mascot in the other styles). Keep its look stable and let it react: hop on steps, wave on the close.
+- **One guiding character** carries the story: here the glowing spark moves from scene to scene.
 - **Movement in every scene**, with smooth transitions and no static slides. Everything in
   `scene.js` is animated as a function of `t`.
-- **Simple shapes, a limited palette, bold outlines**: readable on a phone at a glance.
-- **Captions on screen**, plus **sound effects** on reveals (pop, whoosh, coin tick) when the
-  pipeline supports them. Background music matches `mood`.
-- If a topic would really benefit from a new prop or layout, add it (see "Extending the
-  style" in `cartoon-explainer`) rather than forcing a poor match.
+- **Simple shapes, a limited palette, flat colour**: readable on a phone at a glance. The accent colour follows the niche.
+- **Captions on screen**, plus **sound effects** on reveals (pop, bell). Background music matches `mood`.
+- If a topic would really benefit from a new layout or icon, add it (see "Extending" in `explainer-diagram`)
+  rather than forcing a poor match.
 
-## Stickman reels (the other common style)
+## Make it a conversation
 
-Stick-figure explainers use black marker lines on white, exaggerated two-dot faces, one
-accent colour, and a visual joke every few seconds. They suit money, psychology,
-productivity and how-things-work topics. It's available as `VISUAL_STYLE=stickman`
-(`shorts/stickman/`). The default is now the full-colour `cartoon2d` presenter style. The style research is in `references/stickman-reels.md`, and
-the renderer, its poses and its props are documented in the `stickman-explainer` skill.
-Direct the figure with the optional `pose` field (`shock` on the reveal, `shrug` on "nobody
-knows", `think` on the question, `cheer` on the win).
+People stay for a *dialogue*, not a lecture. Every script should:
+- ask the viewer something in scene 1 or 2 ("Weird, right?", "Ever felt this at a scary scene?"),
+- answer its own questions out loud and let a `chat` scene play the question-and-answer,
+- challenge the viewer once with a `quiz` ("Quick quiz: ...") or a `myth` ("Think it's X? That's the myth."),
+- ask for a guess before the number ("Guess how many..."),
+- end by asking the viewer something they can answer in the comments ("Which one is you? Tell me below!").
+`shorts.plan validate` checks for this (3+ questions, one early, a question at the end, a chat/quiz/myth scene).
 
 ## Niche advice for this channel
 

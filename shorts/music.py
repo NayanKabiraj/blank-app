@@ -66,7 +66,7 @@ def synthesize(mood: str, duration: float, out_wav: Path) -> Path:
     bar = 0
     while bar * bar_n < total:
         s = bar * bar_n
-        d = prog[bar % len(prog)]
+        d = prog[(bar + bar // 16) % len(prog)]   # the progression shifts every 16 bars, so long tracks keep moving
         chord = [deg(d), deg(d + 2), deg(d + 4)]
         # Soft pad with slow attack/release
         env = np.minimum(1, np.linspace(0, 4, bar_n)) * np.minimum(1, np.linspace(4, 0, bar_n) + 0.3)

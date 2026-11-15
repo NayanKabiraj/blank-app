@@ -1,0 +1,8 @@
+{
+  "name": "shorts-explainer",
+  "private": true,
+  "description": "Renders the explainer animation track (canvas scene in headless Chromium)",
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

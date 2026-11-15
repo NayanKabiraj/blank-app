@@ -1,4 +1,13 @@
-# Daily YouTube Shorts (English + Hindi)
+# YouTube Shorts and documentaries (English + Hindi)
+
+Two products come out of this repo, in the same explainer look, with the same voice and music:
+
+- **Daily Shorts** (45-55 seconds, vertical): one in English and one in Hindi, every day.
+- **Documentaries** (5-15 minutes, landscape 1920x1080): one in English and one in Hindi, with chapters,
+  started by their own Claude task through the same workflow with `format: documentary` (see
+  [`CLAUDE_DOCUMENTARY_TASK.md`](CLAUDE_DOCUMENTARY_TASK.md)). Chapter markers are added to the YouTube
+  description automatically. Because the files are large they are kept as workflow artifacts (14 days)
+  and uploaded to YouTube, not committed to the repo, unless you tick `keep_in_repo`.
 
 The work is split into two parts:
 
@@ -13,7 +22,9 @@ The work is split into two parts:
   appearing twice in a row. It then researches how it works and writes an English and a
   Hindi script built for retention: a hook that starts on the surprising fact, a promise,
   a mechanism told in beats with a re-hook every 8-10 seconds, one striking number, an
-  analogy, a payoff that reuses the hook's words and a looping close. The plan's
+  analogy, a payoff that reuses the hook's words and a looping close. The script is a **conversation**: it asks
+  the viewer questions, answers them in a chat-bubble scene, challenges them with a quiz or a myth, and ends by
+  asking a question for the comments. The plan's
   `research_summary` records the scored candidates. Claude then starts the GitHub workflow with the plan. Its instructions are in
   [`CLAUDE_DAILY_TASK.md`](CLAUDE_DAILY_TASK.md). To change the niches, edit `NICHES` in
   `niches.py`. To check which niche is next, run `python -m shorts.niches next`.
@@ -28,22 +39,14 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals in code.** By default every Short is a **2D cartoon explainer** in a
-   traditional-animation look (`VISUAL_STYLE=cartoon2d`): an original presenter character in
-   full colour with ink outlines who talks, points, thinks and reacts, a painted background
-   chosen by niche (study room, town, nature, space or classical columns), and the subject
-   in a round thought-bubble inset, all drawn by code in `shorts/cartoon2d/` (see the
-   `cartoon2d-explainer` skill). Alternatively, `VISUAL_STYLE=stickman` gives a hand-drawn stick figure on white paper that reacts to the
-   narration (points, shrugs, is shocked, hops through steps), with marker-style doodle props
-   that draw themselves on, all drawn by code in `shorts/stickman/` (see the
-   `stickman-explainer` skill). The 3D alternative is `VISUAL_STYLE=cartoon3d`: a three.js toon-shaded world with black outlines, a mascot
-   that bobs, waves and hops, and procedural 3D props (bank, chip, planet, brain…) is
-   rendered frame by frame in headless Chromium on the CPU (`shorts/cartoon3d/`,
-   `shorts/cartoon.py`), with bold cartoon cards for the text. Each scene's `graphic` and
-   `prop` in the plan say what to show. The `cartoon-explainer` skill in
-   `.claude/skills/` explains how to plan and extend it. Other styles: `motion` (2D Manim
-   graphics, optionally with free AI clips from Wan 2.2 / LTX-Video for scenes with an
-   `ai_prompt`) and `footage` (Pexels or Wikimedia Commons stock video).
+5. **Builds the visuals in code.** Every Short is an **animated explainer** (`shorts/explainer/`, see the
+   `explainer-diagram` skill): a dark navy background, flat step-by-step diagrams that show the mechanism
+   (numbered chains with flowing dots, races with arrival counters, stacking layers, loops, discs sized by
+   their values, growing bars), **conversation scenes** (text-message chat bubbles with typing dots, a quiz
+   with a countdown and a reveal, myth struck out and truth stamped in), one guiding spark carried from scene
+   to scene, big word-by-word headlines, rounded caption pills with the keyword lit, and an accent colour that
+   follows the niche. It is rendered frame by frame in headless Chromium and encoded with FFmpeg. There is only
+   this one look: the older cartoon, stickman, Manim and stock-footage styles were removed.
 6. **Edits the video with FFmpeg.** 1080×1920, 30 fps, captions burned in word by word,
    a hook title, loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
 7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts, and the AI
@@ -81,21 +84,17 @@ task starts the workflow on `main`.
 ### 3. Optional
 | Name | Type | Purpose |
 |---|---|---|
-| `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Overrides the topic and niche choice, e.g. `only How Tech Works and AI Explained this week` |
-| `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
-| `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the cartoon2d cues. `off` to mute them |
-| `STOCK_PHOTOS` | variable | `on` (default): a stock photo (Pexels if keyed, else Wikimedia Commons) behind the cartoon2d presenter in each scene, credited in the description. `off` for painted backdrops only |
-| `VISUAL_STYLE` | variable | `cartoon2d` (default, 2D cartoon presenter by code), `stickman` (2D stick figure by code), `cartoon3d` (3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
-| `HF_TOKEN` | secret | Free Hugging Face access token (huggingface.co/settings/tokens, "read" is enough). Gives the AI clips your free account's daily GPU quota |
-| `POLLINATIONS_KEY` | secret | Key from a free account at enter.pollinations.ai/keys (a secret `sk_` key). Turns on AI still images, which feed Wan 2.2 image-to-video and the zoom fallback. Its video models are paid, so they're only used if you add `pollinations` to `AI_VIDEO_PROVIDERS` |
-| `AI_VIDEO` | variable | `on` (default) or `off` |
-| `AI_VIDEO_PROVIDERS` | variable | Order to try: default `wan,ltx,image`; options `wan`, `ltx`, `pollinations`, `image` |
-| `AI_VIDEO_MAX_CLIPS` | variable | AI clips per video, default `2` |
+| `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the animation cues. `off` to mute them |
 | `YT_PRIVACY` | variable | `public` (default), `unlisted` or `private` |
 | `PIPER_VOICE_EN` / `PIPER_VOICE_HI` | variable | Any voice from <https://huggingface.co/rhasspy/piper-voices>, e.g. `hi_IN-priyamvada-medium` for a female Hindi voice |
 
 ## Running it
+- **Documentary:** Actions → *Daily YouTube Shorts* → *Run workflow* with `format` = `documentary`. Paste a plan into
+  `plan_json` (schema: `python -m shorts.plan doc-schema`) or leave it empty for `shorts/sample_documentary_plan.json`.
+  Locally: `python -m shorts.documentary --plan-file shorts/sample_documentary_plan.json --dry-run`.
+  Rendering runs at roughly 40 frames per second on a 4-core runner: a 10-minute video takes about
+  6 minutes to draw per language, plus the voice and mix.
 - **Automatic:** the scheduled Claude task runs daily and starts the workflow. You can
   see, pause or change it under scheduled tasks at claude.ai/code.
 - **Manual:** go to Actions → *Daily YouTube Shorts* → *Run workflow*. Paste a plan into
@@ -110,6 +109,4 @@ task starts the workflow on `main`.
 
 ## Cost
 Rendering is free and open source, and runs on free GitHub Actions minutes. The research
-runs as a Claude task on your Claude plan. Pexels and the YouTube API are free.
-(`shorts/research.py` is an optional alternative that calls the Claude API from inside the
-workflow, but it isn't used by default.)
+runs as a Claude task on your Claude plan. The YouTube API is free.

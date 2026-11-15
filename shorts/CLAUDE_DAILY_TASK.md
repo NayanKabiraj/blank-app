@@ -70,7 +70,7 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
      and `mood`, which must be one of `calm`, `upbeat`, `dramatic`, `inspiring`, `mysterious`.
    - `english` and `hindi`, each with `title` (80 characters max, no hashtags),
      `description` (2–3 sentences plus 3–5 hashtags), `tags` (8–12), `hook_text`
-     (6 words max) and `scenes` (6–9 of them, each with `text`, `graphic` and `visual_query`).
+     (6 words max) and `scenes` (6–9 of them, each with `text`, an optional `keyword` and a `graphic`).
    - Length: the English narration is 120–140 words in total and the Hindi narration is
      105–125 words, which gives 45–55 seconds of speech.
    - Before writing, state the learning goal in one sentence ("after this the viewer can answer:
@@ -107,6 +107,18 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
      longer line, second person ("you", "your phone"), concrete nouns, one "wait, what?" moment
      and one "oh, that makes sense" moment, at most one dry joke. Keep to the word limits;
      do not pad.
+   - **Make it a conversation, not a lecture.** The narrator talks *to* the viewer and answers back:
+     - Scene 1 or 2 asks the viewer something ("Weird, right?", "Ever felt this at a scary scene?").
+     - At least 3 scenes contain a question (the validator checks), and the narrator answers each one in the
+       next breath ("Why? Because...").
+     - One `chat` scene plays the viewer-asks, video-answers exchange as text bubbles (viewer bubble, answer
+       bubble, "wait, what?" bubble, answer). Keep bubbles to a few words.
+     - One challenge for the viewer: a `quiz` ("Quick quiz: what pulls the hair up?" three options, then the
+       reveal) or a `myth` ("Think it keeps you warm? That's the myth.").
+     - Ask for a guess before the big number ("Guess how many...") and react after it ("Yes, five million!").
+     - The last scene ends with a question the viewer can answer in the comments ("Which one is you? Tell me
+       below!"), then the follow line. Hindi: the same, in natural spoken Hindi ("कमेंट में बताइए!").
+     Spoken, casual, second person, contractions, short replies ("Right?", "Exactly.", "Nope.").
    - `hook_text` is a teaser, not a summary: 5 words or fewer that make people stay ("It sees you
      in the dark"). The `title` is the curiosity question from your title test, 60 characters or
      fewer if you can (80 is the hard limit). The first line of the `description` states the
@@ -123,63 +135,38 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
      Natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
-   - `graphic` is what the renderer draws for the scene (by default a **2D cartoon
-     explainer** in a traditional-animation look, with a presenter character, a painted
-     background and thought-bubble insets, drawn in code: see the `cartoon2d-explainer` skill
-     in `.claude/skills/`; `stickman` and `cartoon3d` are alternatives), written in the
-     **video's language** (Hindi graphics in Devanagari). Pick the `kind` that fits the line:
-     - `title`: a big headline (use it for the hook and the closing line).
-     - `stat`: one striking number with its unit in `headline` (`"71 km/s"`, `"1966"`,
-       `"243 दिन"`). The number counts up on screen, so only use numbers you verified.
-     - `keyword`: a key term in `headline` with a one-line explanation in `caption`.
-     - `steps`: a process, with a short `headline` and 2–4 `items` in order.
-     - `compare`: two things, with exactly 2 `items` and optionally 2 `values` drawn as bars.
-     - Animated diagrams, drawn on a board the presenter points at (prefer these for the
-       mechanism, since they *show* the process happening instead of naming it):
-       - `flow`: 2–4 `items` in a chain; dots flow along the connectors (A moves to B moves to C).
-       - `race`: exactly 2 `items` and 2 positive `values` (relative speeds or rates, from your
-         verified numbers); dots race along two lanes and counters show how many arrived.
-       - `build`: 2–4 `items` that stack up as layers (how parts combine).
-       - `cycle`: 3–4 `items` around a loop with a token travelling round (cycles, feedback).
-       See the "Pick a visual grammar" table in the `cartoon2d-explainer` skill. Use at least one
-       diagram per video, and animate the verb ("heat flows out" means moving dots).
-     For `title`, `keyword` and `stat` scenes, also set `prop` to the doodle (3D object in
-     `cartoon3d`) that best
-     stands for the idea: one of `star, bulb, coin, planet, globe, phone, bank, rocket,
-     brain, chip, heart, clock, gear, atom, book, magnet, cloud`. Don't use the same prop in
-     two scenes in a row.
-     Optionally set `pose` to direct the presenter's reaction: one of `stand, point, wave,
-     cheer, shrug, think, shock, walk` (for example `shock` on the reveal, `shrug` on a
-     "nobody knows" line). Left out, it acts according to the scene kind.
-     Keep `headline` ≤ 24 characters, `caption` ≤ 40 and each item ≤ 18. Vary the kinds
-     across scenes, and use at least one `stat` when the topic has a good number.
-   - `ai_prompt` (optional, **at most 2 scenes**; used only when `VISUAL_STYLE` is `motion` or
-     `footage`, ignored in the default cartoon2d style and in stickman and cartoon3d): an English visual description for a free
-     AI-generated video clip that replaces that scene's graphic. Use it where a real-looking
-     shot beats a diagram: usually the hook and the analogy scene, never a `stat` or `steps`
-     scene. Describe one concrete, cinematic shot of scenery, objects, nature, machines or
-     space ("a glowing comet with a long dust tail crossing a starry sky", "macro shot of
-     a smartphone chip with tiny glowing circuits"). Never ask for people, faces, text,
-     logos or real brands. Use the **same** `ai_prompt` for the matching English and Hindi
-     scene, so the clip is generated once and reused.
-     Write it as a plain description of what is in the frame, as if seen from the ground
-     or from nearby, in one sentence. Don't write negations like "no text" (the model reads
-     them as requests), and never mention screens, dashboards, spacecraft cockpits, signs
-     or anything with a display, because the model fills those with made-up text.
-   - `visual_query` is always 2–3 concrete **English** keywords. In the default cartoon2d style it
-     finds the **stock photo shown behind the presenter** in that scene, so make it match the line
-     and give each scene a different one.
-   - (Footage styles) `visual_query` is also used for stock footage. The
-     footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
-     scenery, nature, objects, animals, space imagery or time-lapses (for example
-     `meteor timelapse`, `milky way timelapse`, `earth from orbit`, `ocean waves`). Never
-     ask for people, faces, celebrities, politicians, brands or news events. Use different
-     queries for different scenes.
+   - `graphic` is what the animation draws for the scene. The channel has **one look**: the explainer (dark
+     navy, flat step-by-step diagrams drawn in code, a guiding spark carried from scene to scene, rounded
+     caption pills; see the `explainer-diagram` skill in `.claude/skills/`). Write graphic text in the
+     **video's language** (Hindi graphics in Devanagari). Pick the `kind` that acts out the line:
+     - `title`: a big headline with an icon (the hook and the closing line).
+     - `keyword`: a key term in `headline`, a one-line explanation in `caption`, an icon.
+     - `stat`: one striking number with its unit in `headline` (`"71 km/s"`, `"1966"`, `"243 दिन"`); put
+       the label in `caption`. It counts up, so only use numbers you verified.
+     - `steps`: a process, 2–4 `items` in order, one lit at a time.
+     - `flow`: 2–4 `items` in a chain; dots flow along the connectors (A moves to B moves to C).
+     - `build`: 2–4 `items` that stack up as layers (how parts combine).
+     - `cycle`: 3–4 `items` around a loop with a token travelling round.
+     - `race`: exactly 2 `items` and 2 positive `values` (relative speeds or rates); dots race, counters show who arrived.
+     - `compare`: exactly 2 `items`, optional 2 `values`; two discs sized by the values.
+     - `bars`: 2–4 `items` and the same number of positive `values`; bars grow and count up (e.g. how much
+       more, for several things).
+     - `chat`: 2–4 `items` as text bubbles; the 1st, 3rd are the viewer asking, the 2nd, 4th are the answers.
+     - `quiz`: `headline` = the question (up to 48 characters), 2–4 `items` = options, `answer` = the
+       0-based index of the right option. Put the answer's word as the scene's `keyword` so the reveal lands on it.
+     - `myth`: `items` = [the common myth, the truth], `headline` = a few words naming the topic.
+     Use at least 4 different kinds per video, at least one diagram of the mechanism (`flow`, `steps`,
+     `build` or `cycle`; animate the verb) and at least one of `chat`, `quiz`, `myth`.
+     For `title` and `keyword` scenes, also set `prop` to the icon that stands for the idea, one of `star,
+     bulb, coin, planet, globe, phone, bank, rocket, brain, chip, heart, clock, gear, atom, book, magnet,
+     cloud`. Don't use the same prop in two scenes in a row.
+     Keep `headline` ≤ 28 characters (quiz ≤ 48), `caption` ≤ 40, each item ≤ 18 (chat bubbles, myth and quiz options ≤ 36).
    - Use only facts you verified. Never make up numbers.
 4. **Validate the plan.** If the repo is checked out, run
    `pip install -q pydantic && python -m shorts.plan validate plan.json` and fix anything it
    reports. It also checks the hook (14 words or fewer, no "Today"/"Did you know"/greeting
-   opener), scene length, the `hook_text` length and that `research_summary` lists the candidates. Otherwise check the word counts yourself.
+   opener), scene length, the `hook_text` length, that `research_summary` lists the candidates, and the
+   conversation rules (3+ questions, one early, a question at the end, a chat/quiz/myth scene, 4+ kinds). Otherwise check the word counts yourself.
 5. **Start the workflow.** Use the GitHub tool `actions_run_trigger` with
    `method: run_workflow`, owner `NayanKabiraj`, repo `blank-app`,
    `workflow_id: daily-shorts.yml`, `ref: main`, and
@@ -192,8 +179,8 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
    failed, read the failed job's log with `get_job_logs` (`run_id`, `failed_only: true`,
    `return_content: true`) and include the error in your report. Don't try to fix code.
 7. **Report back** in a few lines: the niche, the question and its total score (and the
-   runner-up), both titles, which scenes got
-   AI clips (from "Visual credits" in `videos/<date>/en_youtube.txt` on `main`), whether
+   runner-up), both titles, which
+   scene kinds were used, whether
    the run succeeded, and where the videos are: YouTube links if they were uploaded,
    otherwise `videos/<date>/` on `main`. Don't commit or push anything. The workflow
    records history on its own.

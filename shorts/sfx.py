@@ -1,7 +1,7 @@
 """Sound effects synthesized in code, placed on the animation's own cues.
 
-Cue times come from the renderer's timeline (work/cartoon.json): a pop when a thought bubble, diagram board or number lands, and a soft bell on each scene's
-keyword. Everything is generated with numpy (no downloaded sounds), deterministic, and mixed
+Cue times come from the renderer's timeline (work/timeline.json): a pop when a diagram, chat bubble, quiz
+answer or number lands, and a soft bell on each scene's keyword. Everything is generated with numpy (no downloaded sounds), deterministic, and mixed
 quietly under the voice by compose.py.
 """
 from __future__ import annotations
@@ -21,22 +21,6 @@ def _env(n: int, attack: float, decay: float) -> np.ndarray:
     return a * np.exp(-np.maximum(0, t - attack) / decay)
 
 
-def whoosh(rng) -> np.ndarray:
-    n = int(SR * 0.42)
-    noise = rng.standard_normal(n)
-    # one-pole low-pass with a cutoff sweeping up then down: air rushing past
-    t = np.linspace(0, 1, n)
-    cutoff = 300 + 5200 * np.sin(np.pi * t) ** 2
-    alpha = 1 - np.exp(-2 * np.pi * cutoff / SR)
-    out = np.empty(n)
-    y = 0.0
-    for i in range(n):
-        y += alpha[i] * (noise[i] - y)
-        out[i] = y
-    out = out * np.sin(np.pi * t) ** 1.5
-    return out / (np.abs(out).max() + 1e-9) * 0.55
-
-
 def pop() -> np.ndarray:
     n = int(SR * 0.14)
     t = np.arange(n) / SR
@@ -54,29 +38,38 @@ def bell() -> np.ndarray:
 
 
 def cues_from_timeline(cfg: dict) -> list[tuple[float, str]]:
-    """Mirror the cue times used by shorts/cartoon2d/scene.js."""
+    """Mirror the cue times used by shorts/explainer/scene.js."""
     cues = []
-    segs = cfg.get("segments", [])
-    for i, s in enumerate(segs):
+    intro, outro = 0.6, 0.3
+    for s in cfg.get("segments", []):
         g = s.get("graphic") or {}
-        kind, hit, start, end = g.get("kind"), s.get("hit"), s["start"], s["end"]
+        kind, hit, start, end, n = g.get("kind"), s.get("hit"), s["start"], s["end"], len(g.get("items") or [])
         if kind in ("title", "keyword"):
             cues.append(((max(start + 0.05, hit - 0.6) if hit else start + 0.1) + 0.1, "pop"))
-        elif kind in ("flow", "race", "build", "cycle"):
-            cues.append((start + 0.12, "pop"))
         elif kind == "stat":
             c0 = max(start, hit - 1.5) if hit else start
             cues.append((c0 + 1.4, "pop"))
+        elif kind == "chat" and n:                       # one pop per bubble
+            t0, step = start + intro * 0.8, max(1.2, end - outro - (start + intro * 0.8)) / (n + 0.4)
+            cues += [(t0 + j * step, "pop") for j in range(min(n, 4))]
+        elif kind == "quiz" and n:                       # options land, then the answer is revealed
+            cues.append((start + intro, "pop"))
+            rev = min(end - 0.9, max(start + 2.0, hit if hit and hit > start + 2.0 else start + (end - start) * 0.68))
+            cues.append((rev, "bell"))
+        elif kind == "myth":                             # the myth is struck out, the fact stamps in
+            strike = start + max(1.0, (hit - start) if hit else (end - start) * 0.42)
+            cues += [(strike, "pop"), (strike + 0.35, "pop")]
+        else:                                            # diagrams: flow, steps, build, cycle, race, compare, bars
+            cues.append((start + 0.12, "pop"))
         if hit:
             cues.append((hit - 0.03, "bell"))
-    return [(t, k) for t, k in cues if t >= 0]
+    return [(t, k) for t, k in sorted(cues) if t >= 0]
 
 
 def build(cfg_path: Path, total: float, out: Path, volume: float = 0.35) -> Path | None:
     if not cfg_path.exists():
         return None
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
-    rng = np.random.default_rng(7)
     sounds = {"pop": pop(), "bell": bell()}
     track = np.zeros(int(SR * (total + 1)))
     for t, kind in cues_from_timeline(cfg):

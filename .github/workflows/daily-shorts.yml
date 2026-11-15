@@ -5,6 +5,14 @@ name: Daily YouTube Shorts
 on:
   workflow_dispatch:
     inputs:
+      format:
+        description: "shorts (default: the daily 45-55 second Shorts) or documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema)"
+        type: string
+        default: "shorts"
+      keep_in_repo:
+        description: "documentary only: also commit the videos to videos/<date>/ (they are large; normally they are only kept as workflow artifacts)"
+        type: boolean
+        default: false
       plan_json:
         description: "Video plan JSON (schema: python -m shorts.plan schema). Empty = sample plan"
         type: string
@@ -13,10 +21,6 @@ on:
         description: "Render only, do not upload"
         type: boolean
         default: false
-      visual_style:
-        description: "Visuals: cartoon2d (2D cartoon presenter), stickman (2D stick figure), cartoon3d (3D cartoon), motion (Manim graphics) or footage (stock video). Empty = repo default"
-        type: string
-        default: ""
       langs:
         description: "Languages to produce"
         type: string
@@ -32,9 +36,8 @@ concurrency:
 jobs:
   make-shorts:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 240   # a documentary takes far longer than a Short
     env:
-      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
@@ -44,17 +47,6 @@ jobs:
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
-      WIKIMEDIA_CONTACT: ${{ vars.WIKIMEDIA_CONTACT }}
-      # motion = Manim motion graphics (default), footage = real stock footage
-      VISUAL_STYLE: ${{ inputs.visual_style || vars.VISUAL_STYLE || 'cartoon2d' }}
-      # Free AI clips for scenes with an ai_prompt (see shorts/ai_video.py). All optional:
-      # HF_TOKEN = your free Hugging Face account's GPU quota for Wan 2.2 / LTX-Video Spaces;
-      # POLLINATIONS_KEY = higher image limits (and paid video models if you enable them).
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      POLLINATIONS_KEY: ${{ secrets.POLLINATIONS_KEY }}
-      AI_VIDEO: ${{ vars.AI_VIDEO || 'on' }}
-      AI_VIDEO_PROVIDERS: ${{ vars.AI_VIDEO_PROVIDERS || 'wan,ltx,image' }}
-      AI_VIDEO_MAX_CLIPS: ${{ vars.AI_VIDEO_MAX_CLIPS || '2' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -67,8 +59,7 @@ jobs:
       - name: Install FFmpeg and fonts (English + Devanagari)
         run: |
           sudo apt-get update -q
-          # libpango1.0-dev + pkg-config: needed to build manimpango (Manim's text renderer)
-          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core libpango1.0-dev pkg-config
+          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core
           fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
 
       - name: Cache Piper voices
@@ -84,10 +75,10 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: shorts/cartoon3d/package-lock.json
+          cache-dependency-path: shorts/explainer/package-lock.json
 
-      - name: Install the cartoon renderer (Playwright + Chromium, used by cartoon2d, stickman and cartoon3d)
-        working-directory: shorts/cartoon3d
+      - name: Install the animation renderer (Playwright + headless Chromium)
+        working-directory: shorts/explainer
         run: |
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
@@ -95,32 +86,44 @@ jobs:
       - name: Read the plan sent by Claude
         env:
           IN_PLAN: ${{ inputs.plan_json }}
+          IN_FORMAT: ${{ inputs.format || 'shorts' }}
         run: |
+          if [ "$IN_FORMAT" = "documentary" ]; then SAMPLE=shorts/sample_documentary_plan.json; CHECK=validate-doc; else SAMPLE=shorts/sample_plan.json; CHECK=validate; fi
           if [ -n "$IN_PLAN" ]; then
             printf '%s' "$IN_PLAN" > "$RUNNER_TEMP/plan.json"
           else
-            echo "::warning::No plan_json given, using shorts/sample_plan.json"
-            cp shorts/sample_plan.json "$RUNNER_TEMP/plan.json"
+            echo "::warning::No plan_json given, using $SAMPLE"
+            cp "$SAMPLE" "$RUNNER_TEMP/plan.json"
           fi
-          python -m shorts.plan validate "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
+          python -m shorts.plan "$CHECK" "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
 
       - name: Render and publish
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
+          IN_FORMAT: ${{ inputs.format || 'shorts' }}
+          IN_KEEP: ${{ inputs.keep_in_repo }}
         run: |
           ARGS=(--plan-file "$RUNNER_TEMP/plan.json" --langs "$IN_LANGS")
           if [ "$IN_DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
-          python -m shorts.main "${ARGS[@]}"
+          if [ "$IN_FORMAT" = "documentary" ]; then
+            if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
+            python -m shorts.documentary "${ARGS[@]}"
+          else
+            python -m shorts.main "${ARGS[@]}"
+          fi
 
       - name: Keep videos as a workflow artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: shorts-${{ github.run_number }}
+          name: videos-${{ github.run_number }}
           path: |
             output/*.mp4
             output/plan.json
+            output_documentary/*.mp4
+            output_documentary/*_youtube.txt
+            output_documentary/plan.json
           retention-days: 14
           if-no-files-found: ignore
 
@@ -131,7 +134,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/ videos/
-            git commit -m "chore: save today's Shorts [skip ci]"
+            git commit -m "chore: save today's videos [skip ci]"
             git pull --rebase -q
             git push
           fi
