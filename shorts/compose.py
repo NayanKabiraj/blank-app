@@ -7,7 +7,7 @@ import subprocess
 import wave
 from pathlib import Path
 
-from . import ai_video, cartoon, config, motion, music, tts, visuals
+from . import ai_video, cartoon, config, motion, music, sfx, tts, visuals
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -243,20 +243,27 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     else:
         music_in = ["-i", music.synthesize(mood, total, work / "music.wav")]
 
+    # Sound effects on the animation's cues (whoosh on cuts, pop on reveals, bell on keywords)
+    sfx_wav = None
+    if config.VISUAL_STYLE == "cartoon2d" and config.SFX:
+        sfx_wav = sfx.build(work / "cartoon.json", total, work / "sfx.wav")
+    sfx_in = ["-i", sfx_wav.name] if sfx_wav else []
+
     _captions(timeline, script.hook_text, lang, work / "captions.ass",
               keywords=[sc.keyword for sc in script.scenes])
     out = work / f"short_{lang}.mp4"
     fade_out = total - 1.2
     filt = (
-        "[1:a]aresample=44100,aformat=channel_layouts=stereo,asplit=2[vo][sc];"
+        "[1:a]aresample=44100,aformat=channel_layouts=stereo,apad,asplit=2[vo][sc];"
         f"[2:a]aresample=44100,aformat=channel_layouts=stereo,volume=0.30,"
         f"afade=t=out:st={fade_out:.2f}:d=1.2[mu];"
         "[mu][sc]sidechaincompress=threshold=0.02:ratio=6:attack=20:release=400[duck];"
-        "[vo][duck]amix=inputs=2:duration=longest:normalize=0,"
-        "loudnorm=I=-14:TP=-1.5:LRA=11[a];"
-        "[0:v]ass=captions.ass:shaping=complex[v]"  # complex shaping for Devanagari
+        + ("[3:a]aresample=44100,aformat=channel_layouts=stereo[fx];" if sfx_wav else "")
+        + f"[vo][duck]{'[fx]' if sfx_wav else ''}amix=inputs={3 if sfx_wav else 2}:duration=first:normalize=0,"
+        + "loudnorm=I=-14:TP=-1.5:LRA=11[a];"
+        + "[0:v]ass=captions.ass:shaping=complex[v]"  # complex shaping for Devanagari
     )
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-i", "video.mp4", "-i", voice.name, *music_in,
+    _run(["ffmpeg", "-y", "-loglevel", "error", "-i", "video.mp4", "-i", voice.name, *music_in, *sfx_in,
           "-filter_complex", filt, "-map", "[v]", "-map", "[a]", "-t", f"{total:.2f}",
           "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
           "-r", str(config.FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "44100",

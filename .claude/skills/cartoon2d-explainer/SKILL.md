@@ -30,7 +30,29 @@ code. There's no AI image or video generation, and no copied characters.
 - Other styles are still available through the `visual_style` workflow input or the
   `VISUAL_STYLE` variable: `stickman`, `cartoon3d`, `motion` and `footage`.
 
-## Writing a plan for this style
+## Engagement layer (measured Vox-style motion)
+
+Numbers come from SousekiL/vox-style-video (MIT), which measured real Vox and collage videos
+frame by frame, plus the pacing rules of Anil-matcha/vox-ai-motion-graphics-generator (hook in
+3 seconds or less, a new shot every 4–6 seconds, wide shot then close cut-in, several moving
+elements per shot):
+- **Camera never freezes:** slow push-in (+3 %) through every scene, then a **cut-in** that
+  zooms 16 % onto the scene's focus (bubble, board or coins) on the keyword beat, or about 45 % of
+  the way in if there's no keyword. Each scene is a wide shot followed by a close shot.
+- **Whip-pan cuts:** the last 5 drawings before a cut slide out (−0.6 → −18 % of the width), and
+  the next scene enters from about 40 % behind, decaying ×0.6 per drawing. The background moves
+  at 35 % for parallax. There are no cross-fades.
+- **Pop-in table** for bubbles and boards: 0.28 → 0.81 → 1.21 → 1.28 → 1.17 → 1.07 → 1.0 per
+  1/12 s. The stat number lands with the stamp spring (0.78 → 1.26 → … → 1.0 per frame).
+  Text never overshoots: headline words stamp in one every 0.1 s.
+- **One attention colour:** a highlighter-yellow (#FFF200) marker sweeps under the headline on
+  the keyword beat. The same yellow colours the keyword in the captions.
+- **Texture:** paper grain that re-rolls 10 times a second, plus a warm vignette.
+- **Sound effects** (`shorts/sfx.py`, synthesized with numpy): a whoosh on every cut, a pop when
+  a bubble, board or number lands, and a soft bell on the keyword, mixed under the voice. Turn
+  them off with the variable `SFX=off`.
+
+
 
 | kind | what is drawn | the presenter |
 |---|---|---|
@@ -118,4 +140,6 @@ The diagram kinds, keyword timing and beat sheet adapt ideas (not code) from MIT
 [syydaniel/kazi](https://github.com/syydaniel/kazi) (keyword-synced explainers),
 [junjie721/canvas-explainer-videos](https://github.com/junjie721/canvas-explainer-videos) (visual grammars,
 beat sheet), and [iart-ai/explainer-video-skills](https://github.com/iart-ai/explainer-video-skills)
-(progressive diagram reveal).
+(progressive diagram reveal); measured motion, transitions and pacing from
+[SousekiL/vox-style-video](https://github.com/SousekiL/vox-style-video) (MIT) and
+[Anil-matcha/vox-ai-motion-graphics-generator](https://github.com/Anil-matcha/vox-ai-motion-graphics-generator) (ideas only).

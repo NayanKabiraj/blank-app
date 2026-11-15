@@ -37,6 +37,8 @@ FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 # "cartoon3d": 3D cartoon explainer rendered by code with three.js (shorts/cartoon.py)
 # "motion": 2D motion graphics drawn in code with Manim (shorts/motion.py)
 # "footage": real stock footage per scene (shorts/visuals.py)
+# Code-synthesized sound effects on the animation cues (cartoon2d only): on unless SFX=off
+SFX = os.getenv("SFX", "on").strip().lower() != "off"
 VISUAL_STYLE = os.getenv("VISUAL_STYLE", "cartoon2d").strip().lower() or "cartoon2d"
 
 # --- Stock footage: Pexels if a key is set, else Wikimedia Commons (no key needed) ---

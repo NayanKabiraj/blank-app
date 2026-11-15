@@ -81,6 +81,7 @@ task starts the workflow on `main`.
 | `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Overrides the niche rotation, e.g. `only How Tech Works and AI Explained this week` |
 | `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
+| `SFX` | variable | `on` (default): code-synthesized whoosh, pop and bell effects on the cartoon2d cues. `off` to mute them |
 | `VISUAL_STYLE` | variable | `cartoon2d` (default, 2D cartoon presenter by code), `stickman` (2D stick figure by code), `cartoon3d` (3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
 | `HF_TOKEN` | secret | Free Hugging Face access token (huggingface.co/settings/tokens, "read" is enough). Gives the AI clips your free account's daily GPU quota |
 | `POLLINATIONS_KEY` | secret | Key from a free account at enter.pollinations.ai/keys (a secret `sk_` key). Turns on AI still images, which feed Wan 2.2 image-to-video and the zoom fallback. Its video models are paid, so they're only used if you add `pollinations` to `AI_VIDEO_PROVIDERS` |
