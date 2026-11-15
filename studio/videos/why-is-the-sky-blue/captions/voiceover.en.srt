@@ -1,0 +1,91 @@
+1
+00:00:00,250 --> 00:00:01,595
+Sunlight is white.
+
+2
+00:00:01,725 --> 00:00:03,005
+Space is black.
+
+3
+00:00:03,135 --> 00:00:04,779
+So why is the sky blue?
+
+4
+00:00:05,279 --> 00:00:07,904
+The answer is hiding inside every sunbeam.
+
+5
+00:00:08,034 --> 00:00:10,680
+And it also explains why sunsets turn red.
+
+6
+00:00:11,179 --> 00:00:16,001
+Sunlight looks white, but it is really every colour of the rainbow, travelling together.
+
+7
+00:00:16,131 --> 00:00:17,689
+Each colour is a wave.
+
+8
+00:00:17,819 --> 00:00:19,740
+Red waves are long and lazy.
+
+9
+00:00:19,870 --> 00:00:21,876
+Blue waves are short and choppy.
+
+10
+00:00:22,376 --> 00:00:25,641
+On its way down, sunlight crashes into the air itself.
+
+11
+00:00:25,771 --> 00:00:29,121
+Air is made of molecules, far smaller than the waves.
+
+12
+00:00:29,251 --> 00:00:34,201
+These tiny molecules bounce short blue waves around much more than long red ones.
+
+13
+00:00:34,331 --> 00:00:35,846
+About four times more.
+
+14
+00:00:36,346 --> 00:00:39,099
+So blue light gets scattered across the whole sky.
+
+15
+00:00:39,229 --> 00:00:42,835
+Wherever you look, some of that bounced blue is heading for your eyes.
+
+16
+00:00:42,965 --> 00:00:44,864
+The sky is not painted blue.
+
+17
+00:00:44,994 --> 00:00:46,317
+It is glowing blue.
+
+18
+00:00:46,817 --> 00:00:50,252
+At sunset, sunlight takes a much longer path through the air.
+
+19
+00:00:50,382 --> 00:00:53,391
+Most of the blue is scattered away before it reaches you.
+
+20
+00:00:53,521 --> 00:00:55,442
+What is left is orange and red.
+
+21
+00:00:55,942 --> 00:00:59,441
+So the sky is blue because air scatters blue light the most.
+
+22
+00:00:59,571 --> 00:01:02,836
+And a red sunset is the same trick, seen from the side.
+
+23
+00:01:02,966 --> 00:01:05,377
+Follow for one clear answer every week.

@@ -136,7 +136,7 @@ SC["s5"] = ([1040, 130, 0.8, 0], f'''
 
 ticks = "".join(f'<line id="@k{i}" x1="{880 - i * 34}" y1="656" x2="{880 - i * 34 - 50}" y2="{656 + (-1) ** i * 86}" class="s-accent" pathLength="1"/>' for i in range(7))
 SC["s6"] = ([600, 110, 0.8, 0], f'''
- <ellipse id="@hz" cx="980" cy="700" rx="430" ry="210" class="f-a2"/>
+ <ellipse id="@hz" cx="960" cy="700" rx="330" ry="190" class="f-a2"/>
  <circle cx="600" cy="1500" r="900" class="f-accent air"/>
  <line id="@nb" x1="600" y1="178" x2="600" y2="660" class="s-sun w10" pathLength="1"/>
  <line id="@ns" x1="600" y1="600" x2="600" y2="690" class="s-accent w18" pathLength="1"/>
@@ -195,8 +195,8 @@ CSS = '''
 LAYOUT = {
  "wide": dict(W=1920, H=1080, hl="left:120px; top:300px; width:640px;", bar="left:120px; top:250px;",
               stage="left:800px; top:165px; width:1000px; height:750px;"),
- "tall": dict(W=1080, H=1920, hl="left:90px; top:170px; width:900px; text-align:center;", bar="left:460px; top:120px;",
-              stage="left:40px; top:470px; width:1000px; height:750px;"),
+ "tall": dict(W=1080, H=1920, hl="left:90px; top:330px; width:900px; text-align:center;", bar="left:460px; top:280px;",
+              stage="left:40px; top:640px; width:1000px; height:750px;"),
 }
 
 def scene_file(sid, lang, fmt, timing, prev):
@@ -282,7 +282,7 @@ def build(lang, fmt):
         (out / "compositions" / "captions.html").write_text(f'''<template>
 <style>
  #root {{ position: absolute; inset: 0; font-family: var(--font-display); }}
- .capg {{ position: absolute; left: 0; width: 100%; top: 1290px; text-align: center; overflow: visible; }}
+ .capg {{ position: absolute; left: 0; width: 100%; top: 1450px; text-align: center; overflow: visible; }}
  .capg span {{ display: inline-block; max-width: 900px; font-size: 68px; font-weight: 700; line-height: 1.2; color: var(--bg);
    background: var(--text); padding: 14px 34px; border-radius: 28px; }}
 </style>
