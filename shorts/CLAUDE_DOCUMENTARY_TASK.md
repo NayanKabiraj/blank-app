@@ -5,7 +5,7 @@ The channel makes two kinds of video: the daily **Shorts** (`CLAUDE_DAILY_TASK.m
 (dark navy, flat diagrams, the guiding spark, chat bubbles, quizzes) but landscape, 1920x1080.
 A documentary answers one big question properly instead of a quick "why": it has chapters, a
 story and a real payoff. Claude researches and writes the plan; the GitHub workflow
-`documentary.yml` renders it with the same Piper voice and synthesized music, and uploads it
+`daily-shorts.yml` (with `format: documentary`) renders it with the same Piper voice and synthesized music, and uploads it
 (if the YouTube secrets exist) with automatic chapter markers.
 
 Run this task on its own schedule (for example weekly). It does not replace the daily Shorts.
@@ -59,13 +59,13 @@ Run this task on its own schedule (for example weekly). It does not replace the 
    - `description`: 3-5 sentences plus 3-5 hashtags; the chapter timestamps are added automatically.
 6. **Validate:** `python -m shorts.plan validate-doc plan.json` and fix everything it reports.
 7. **Start the workflow:** the GitHub tool `actions_run_trigger`, `method: run_workflow`, owner
-   `NayanKabiraj`, repo `blank-app`, `workflow_id: documentary.yml`, `ref: main`,
-   `inputs: {"plan_json": "<the whole plan as one compact JSON string>"}`. Leave out the other inputs
-   (add `"dry_run": "true"` only when testing).
+   `NayanKabiraj`, repo `blank-app`, `workflow_id: daily-shorts.yml`, `ref: main`,
+   `inputs: {"format": "documentary", "plan_json": "<the whole plan as one compact JSON string>"}`. Leave out the
+   other inputs (add `"dry_run": "true"` only when testing).
 8. **Check the render.** A 10-minute documentary takes roughly 15-30 minutes in both languages. Look
-   for the newest `documentary.yml` run (`actions_list`, `list_workflow_runs`) and wait for
+   for the newest `daily-shorts.yml` run (`actions_list`, `list_workflow_runs`) and wait for
    `conclusion: success`; if it failed, read the failed job's log (`get_job_logs`) and report the
    error. Don't try to fix code.
 9. **Report back** in a few lines: the topic, its score and the runner-up, both titles, the length and
    chapter list, whether the run succeeded, and where the videos are (YouTube links if uploaded,
-   otherwise the run's artifacts, `documentary-<n>`, kept for 14 days). Don't commit anything.
+   otherwise the run's artifacts, `videos-<n>`, kept for 14 days). Don't commit anything.

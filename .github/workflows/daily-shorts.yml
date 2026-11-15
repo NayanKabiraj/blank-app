@@ -5,6 +5,14 @@ name: Daily YouTube Shorts
 on:
   workflow_dispatch:
     inputs:
+      format:
+        description: "shorts (default: the daily 45-55 second Shorts) or documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema)"
+        type: string
+        default: "shorts"
+      keep_in_repo:
+        description: "documentary only: also commit the videos to videos/<date>/ (they are large; normally they are only kept as workflow artifacts)"
+        type: boolean
+        default: false
       plan_json:
         description: "Video plan JSON (schema: python -m shorts.plan schema). Empty = sample plan"
         type: string
@@ -28,7 +36,7 @@ concurrency:
 jobs:
   make-shorts:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 240   # a documentary takes far longer than a Short
     env:
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
@@ -78,32 +86,44 @@ jobs:
       - name: Read the plan sent by Claude
         env:
           IN_PLAN: ${{ inputs.plan_json }}
+          IN_FORMAT: ${{ inputs.format || 'shorts' }}
         run: |
+          if [ "$IN_FORMAT" = "documentary" ]; then SAMPLE=shorts/sample_documentary_plan.json; CHECK=validate-doc; else SAMPLE=shorts/sample_plan.json; CHECK=validate; fi
           if [ -n "$IN_PLAN" ]; then
             printf '%s' "$IN_PLAN" > "$RUNNER_TEMP/plan.json"
           else
-            echo "::warning::No plan_json given, using shorts/sample_plan.json"
-            cp shorts/sample_plan.json "$RUNNER_TEMP/plan.json"
+            echo "::warning::No plan_json given, using $SAMPLE"
+            cp "$SAMPLE" "$RUNNER_TEMP/plan.json"
           fi
-          python -m shorts.plan validate "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
+          python -m shorts.plan "$CHECK" "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
 
       - name: Render and publish
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
+          IN_FORMAT: ${{ inputs.format || 'shorts' }}
+          IN_KEEP: ${{ inputs.keep_in_repo }}
         run: |
           ARGS=(--plan-file "$RUNNER_TEMP/plan.json" --langs "$IN_LANGS")
           if [ "$IN_DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
-          python -m shorts.main "${ARGS[@]}"
+          if [ "$IN_FORMAT" = "documentary" ]; then
+            if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
+            python -m shorts.documentary "${ARGS[@]}"
+          else
+            python -m shorts.main "${ARGS[@]}"
+          fi
 
       - name: Keep videos as a workflow artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: shorts-${{ github.run_number }}
+          name: videos-${{ github.run_number }}
           path: |
             output/*.mp4
             output/plan.json
+            output_documentary/*.mp4
+            output_documentary/*_youtube.txt
+            output_documentary/plan.json
           retention-days: 14
           if-no-files-found: ignore
 
@@ -114,7 +134,7 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/ videos/
-            git commit -m "chore: save today's Shorts [skip ci]"
+            git commit -m "chore: save today's videos [skip ci]"
             git pull --rebase -q
             git push
           fi
