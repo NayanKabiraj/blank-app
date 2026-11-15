@@ -5,5 +5,4 @@ soundfile>=0.12
 google-api-python-client>=2.130
 google-auth>=2.29
 google-auth-oauthlib>=1.2
-# Indic Parler-TTS (needs torch: the workflow installs the CPU build first)
-git+https://github.com/huggingface/parler-tts.git
+# Indic Parler-TTS (torch, torchaudio, parler-tts) is installed by its own optional workflow step

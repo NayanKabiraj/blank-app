@@ -81,9 +81,13 @@ jobs:
           key: parler-indic-v1
 
       - name: Install Python packages
+        run: pip install -r shorts/requirements.txt
+
+      - name: Install Parler-TTS (optional: without it the Piper voice is used)
         run: |
-          pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
-          pip install -r shorts/requirements.txt
+          pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu \
+            && pip install git+https://github.com/huggingface/parler-tts.git \
+            || echo "::warning::Parler-TTS could not be installed, the Piper voice will be used"
 
       - uses: actions/setup-node@v4
         with:
