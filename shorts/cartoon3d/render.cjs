@@ -13,7 +13,7 @@ const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
 const FPS = cfg.fps || 30;
 const ROOT = cfg.root ? path.resolve(cfg.root) : __dirname;
 const LABEL = path.basename(ROOT);
-const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.txt': 'text/plain' };
+const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.txt': 'text/plain', '.woff2': 'font/woff2' };
 
 const server = http.createServer((req, res) => {
   const file = path.join(ROOT, decodeURIComponent(req.url.split('?')[0]));

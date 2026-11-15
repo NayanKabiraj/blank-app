@@ -91,8 +91,15 @@ def _highlight(chunk: str, kw: set) -> str:
     return " ".join(out)
 
 
-def _captions(timeline, hook: str, lang: str, out: Path, words_per_chunk: int = 3, keywords=None):
+ART_STYLES = ("explainer", "cartoon2d", "stickman", "cartoon3d")
+
+
+def _captions(timeline, hook: str, lang: str, out: Path, words_per_chunk: int = 3, keywords=None, theme: str = ""):
     font = config.FONTS[lang]
+    explainer = theme == "explainer"   # the scene draws its own caption pills; only the hook line is burned in here
+    hook_style = ("Style: Hook,{font},80,&H003C8AFF,&H003C8AFF,&H003A2313,&HA0000000,-1,0,0,0,100,100,0,0,3,20,0,8,60,60,120,1"
+                  if explainer else "Style: Hook,{font},84,&H0000E5FF,&H0000E5FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,3,18,0,8,60,60,260,1"
+                  ).format(font=font)
     head = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {config.WIDTH}
@@ -102,7 +109,7 @@ WrapStyle: 0
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Cap,{font},92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,3,2,70,70,560,1
-Style: Hook,{font},84,&H0000E5FF,&H0000E5FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,3,18,0,8,60,60,260,1
+{hook_style}
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -111,7 +118,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if hook:
         lines.append(f"Dialogue: 1,{_ass_time(0)},{_ass_time(3.0)},Hook,,0,0,0,,"
                      f"{{\\fad(200,300)}}{_ass_escape(hook)}")
-    for k, (start, end, text) in enumerate(timeline):
+    for k, (start, end, text) in enumerate([] if explainer else timeline):
         kw = set((keywords[k] or "").lower().split()) if keywords and k < len(keywords) else set()
         words = text.split()
         chunks = [" ".join(words[i:i + words_per_chunk]) for i in range(0, len(words), words_per_chunk)]
@@ -226,13 +233,13 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
 
     credits: list[str] = []
-    if config.VISUAL_STYLE in ("cartoon2d", "stickman", "cartoon3d"):
+    if config.VISUAL_STYLE in ART_STYLES:
         credits = cartoon.render(script, lang, niche, timeline, total, work, config.VISUAL_STYLE)  # writes work/video.mp4
     elif config.VISUAL_STYLE == "motion":
         motion.render(script, lang, niche, timeline, total, work)
     else:
         credits = _footage_track(script, timeline, total, work)
-    if config.VISUAL_STYLE not in ("cartoon2d", "stickman", "cartoon3d"):  # realistic AI clips would clash with the drawn look
+    if config.VISUAL_STYLE not in ART_STYLES:  # realistic AI clips would clash with the drawn look
         credits += _ai_clips(script, timeline, total, work)
 
     # Music
@@ -245,12 +252,12 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
 
     # Sound effects on the animation's cues (whoosh on cuts, pop on reveals, bell on keywords)
     sfx_wav = None
-    if config.VISUAL_STYLE == "cartoon2d" and config.SFX:
+    if config.VISUAL_STYLE in ("explainer", "cartoon2d") and config.SFX:
         sfx_wav = sfx.build(work / "cartoon.json", total, work / "sfx.wav")
     sfx_in = ["-i", sfx_wav.name] if sfx_wav else []
 
     _captions(timeline, script.hook_text, lang, work / "captions.ass",
-              keywords=[sc.keyword for sc in script.scenes])
+              keywords=[sc.keyword for sc in script.scenes], theme=config.VISUAL_STYLE)
     out = work / f"short_{lang}.mp4"
     fade_out = total - 1.2
     filt = (

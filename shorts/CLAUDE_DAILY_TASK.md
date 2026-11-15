@@ -123,10 +123,10 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
      Natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
-   - `graphic` is what the renderer draws for the scene (by default a **2D cartoon
-     explainer** in a traditional-animation look, with a presenter character, a painted
-     background and thought-bubble insets, drawn in code: see the `cartoon2d-explainer` skill
-     in `.claude/skills/`; `stickman` and `cartoon3d` are alternatives), written in the
+   - `graphic` is what the renderer draws for the scene (by default the **explainer
+     diagram look**: dark navy, flat step-by-step diagrams drawn in code, a guiding spark
+     carried from scene to scene and rounded caption pills; see the `explainer-diagram` skill
+     in `.claude/skills/`; `cartoon2d`, `stickman` and `cartoon3d` are alternatives), written in the
      **video's language** (Hindi graphics in Devanagari). Pick the `kind` that fits the line:
      - `title`: a big headline (use it for the hook and the closing line).
      - `stat`: one striking number with its unit in `headline` (`"71 km/s"`, `"1966"`,
@@ -166,9 +166,9 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
      or from nearby, in one sentence. Don't write negations like "no text" (the model reads
      them as requests), and never mention screens, dashboards, spacecraft cockpits, signs
      or anything with a display, because the model fills those with made-up text.
-   - `visual_query` is always 2–3 concrete **English** keywords. In the default cartoon2d style it
-     finds the **stock photo shown behind the presenter** in that scene, so make it match the line
-     and give each scene a different one.
+   - `visual_query` is always 2–3 concrete **English** keywords. The default explainer style does not
+     use it (no photos, so the diagrams stay clean); the cartoon2d style uses it to find the stock photo
+     behind the presenter, so still write a sensible one for each scene.
    - (Footage styles) `visual_query` is also used for stock footage. The
      footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
      scenery, nature, objects, animals, space imagery or time-lapses (for example

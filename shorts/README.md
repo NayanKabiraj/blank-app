@@ -28,8 +28,14 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals in code.** By default every Short is a **2D cartoon explainer** in a
-   traditional-animation look (`VISUAL_STYLE=cartoon2d`): an original presenter character in
+5. **Builds the visuals in code.** By default every Short is an **explainer diagram** video
+   (`VISUAL_STYLE=explainer`): a dark navy background, flat step-by-step diagrams that show the
+   mechanism (numbered chains with flowing dots, races with arrival counters, stacking layers,
+   loops, discs of different size), one guiding spark carried from scene to scene, big
+   word-by-word headlines and rounded caption pills with the keyword lit, all drawn by code in
+   `shorts/explainer/` (see the `explainer-diagram` skill). The voice-over and background music
+   are unchanged. Alternatively `VISUAL_STYLE=cartoon2d` is a **2D cartoon explainer** in a
+   traditional-animation look: an original presenter character in
    full colour with ink outlines who talks, points, thinks and reacts, a painted background
    chosen by niche (study room, town, nature, space or classical columns), and the subject
    in a round thought-bubble inset, all drawn by code in `shorts/cartoon2d/` (see the
@@ -84,9 +90,9 @@ task starts the workflow on `main`.
 | `PEXELS_API_KEY` | secret | Free key from <https://www.pexels.com/api/> for higher-quality vertical stock footage (without it, Wikimedia Commons is used) |
 | `NICHE_HINT.txt` | file at the repo root | Overrides the topic and niche choice, e.g. `only How Tech Works and AI Explained this week` |
 | `WIKIMEDIA_CONTACT` | variable | Optional email or URL added to the User-Agent for Wikimedia Commons downloads, as their bot policy asks |
-| `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the cartoon2d cues. `off` to mute them |
+| `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the explainer and cartoon2d cues. `off` to mute them |
 | `STOCK_PHOTOS` | variable | `on` (default): a stock photo (Pexels if keyed, else Wikimedia Commons) behind the cartoon2d presenter in each scene, credited in the description. `off` for painted backdrops only |
-| `VISUAL_STYLE` | variable | `cartoon2d` (default, 2D cartoon presenter by code), `stickman` (2D stick figure by code), `cartoon3d` (3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
+| `VISUAL_STYLE` | variable | `explainer` (default, flat step-by-step diagrams by code), `cartoon2d` (2D cartoon presenter by code), `stickman` (2D stick figure by code), `cartoon3d` (3D cartoon by code), `motion` (Manim graphics) or `footage` (stock video). Can also be picked per run |
 | `HF_TOKEN` | secret | Free Hugging Face access token (huggingface.co/settings/tokens, "read" is enough). Gives the AI clips your free account's daily GPU quota |
 | `POLLINATIONS_KEY` | secret | Key from a free account at enter.pollinations.ai/keys (a secret `sk_` key). Turns on AI still images, which feed Wan 2.2 image-to-video and the zoom fallback. Its video models are paid, so they're only used if you add `pollinations` to `AI_VIDEO_PROVIDERS` |
 | `AI_VIDEO` | variable | `on` (default) or `off` |

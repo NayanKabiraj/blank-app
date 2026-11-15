@@ -1,7 +1,10 @@
 """Cartoon explainer visuals, generated entirely by code.
 
-Three styles share this module and the renderer (shorts/cartoon3d/render.cjs):
-- "cartoon2d" (default): a traditional-animation look with a full-colour presenter character,
+Four styles share this module and the renderer (shorts/cartoon3d/render.cjs):
+- "explainer" (default): dark navy, flat step-by-step diagrams (nodes, flowing dots, races, stacks,
+  loops, discs), one guiding "spark" carried from scene to scene, word-by-word headlines and rounded
+  caption pills (shorts/explainer/). No presenter and no photos; this is the explanatory look.
+- "cartoon2d": a traditional-animation look with a full-colour presenter character,
   painted backgrounds chosen by niche and round "thought bubble" insets (shorts/cartoon2d/).
 - "stickman": a 2D hand-drawn stick figure explainer on white paper
   (shorts/stickman/scene.js), with marker strokes, poses, faces and doodle props.
@@ -28,7 +31,8 @@ from .plan import LangScript
 
 log = logging.getLogger(__name__)
 DIR = Path(__file__).resolve().parent / "cartoon3d"
-STYLE_DIRS = {"stickman": Path(__file__).resolve().parent / "stickman",
+STYLE_DIRS = {"explainer": Path(__file__).resolve().parent / "explainer",
+              "stickman": Path(__file__).resolve().parent / "stickman",
               "cartoon2d": Path(__file__).resolve().parent / "cartoon2d"}
 
 
@@ -45,6 +49,24 @@ def keyword_time(keyword, text: str, start: float, end: float):
     if pos < 0:
         return None
     return start + (end - start) * (pos / max(1, len(text)))
+
+
+def caption_chunks(timeline, keywords, words_per_chunk: int = 3) -> list[dict]:
+    """The spoken text cut into short caption chunks with their timing (same rule as the ASS captions),
+    with the scene keyword's words flagged so the renderer can colour them."""
+    out = []
+    for k, (start, end, text) in enumerate(timeline):
+        kw = set((keywords[k] or "").lower().split()) if keywords and k < len(keywords) else set()
+        words = text.split()
+        chunks = [words[i:i + words_per_chunk] for i in range(0, len(words), words_per_chunk)]
+        weights = [max(1, len(" ".join(c))) for c in chunks]
+        t, span = start, end - start
+        for c, w in zip(chunks, weights):
+            d = span * w / sum(weights)
+            out.append({"start": round(t, 3), "end": round(t + d, 3),
+                        "words": [{"t": x, "kw": x.strip(".,!?;:\"'()।").lower() in kw} for x in c]})
+            t += d
+    return out
 
 
 def render(script: LangScript, lang: str, niche: str, timeline, total: float, work: Path,
@@ -71,6 +93,8 @@ def render(script: LangScript, lang: str, niche: str, timeline, total: float, wo
            "glScale": float(os.getenv("CARTOON_GL_SCALE", "0.67"))}
     if style in STYLE_DIRS:
         cfg["root"] = str(STYLE_DIRS[style])
+    if style == "explainer":  # captions are drawn by the scene itself (rounded pills with the keyword lit)
+        cfg["captions"] = caption_chunks(timeline, [sc.keyword for sc in script.scenes])
     cfg_path = work / "cartoon.json"
     cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
     out = work / "video.mp4"
