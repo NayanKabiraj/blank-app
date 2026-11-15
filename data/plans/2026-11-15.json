@@ -1,315 +1,311 @@
 {
-  "niche": "Space & Universe",
-  "topic": "Why do shooting stars return every November? (the Leonids)",
-  "research_summary": "Timely: the Leonid meteor shower peaks this week (NASA: peak night Nov 16-17; Space.com predicted maximum Nov 17 2026; Farmer's Almanac: night of Nov 17-18). How it works: comet 55P/Tempel-Tuttle (nucleus about 3.6 km) orbits the Sun about every 33 years and leaves a trail of dust; each November Earth's orbit crosses that trail and the dust hits the upper atmosphere, where air in front of each particle is compressed and heated until it glows. Speed: NASA fast facts 69.7 km/s (Space.com: 71 km/s), said as 'about seventy kilometres per second'. Comparison: a passenger jet cruises at roughly 900 km/h, about 0.25 km/s, so a Leonid is more than 200 times faster (ratio about 280). Best viewing after midnight away from city lights. Sources: NASA Science Leonids page, Space.com, EarthSky, Farmer's Almanac.",
-  "mood": "mysterious",
+  "niche": "Human Body",
+  "topic": "Why do we get goosebumps? (the fur reflex you no longer need)",
+  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) Why we get goosebumps, a reflex for fur we no longer have: 36 (5,5,3,4,5,4,5,5). (2) Why winter static shocks happen: 35 (rejected by the variety guard: Science Explained was used in the last two videos and the last video was a close touch/physics cousin). (3) Why prices end in 99 before Black Friday: 33 (no controlled study found to confirm numbers). Also considered: UPI in two seconds 33, why Delhi fog forms 30, why we shiver 29. Winner: goosebumps. Highest score, Human Body is not cooling down, and the hook 'your body keeps trying to fluff up fur you don't have' is a genuine surprise. Timely because winter is arriving across north India (dense fog and a western disturbance around 9-15 Nov per IMD and Down To Earth reports); otherwise evergreen. How it works: cold or strong emotion triggers the sympathetic nervous system; a tiny arrector pili muscle at the base of each hair contracts, pulls the hair upright, and the skin bunches into a bump. An adult has roughly five million hair follicles (approximate, counts vary by source), each with its own muscle. In furry mammals the raised fur traps insulating air or makes the animal look bigger; in humans the sparse hair barely warms us, so most researchers consider the reflex a leftover from furry ancestors. Newer ideas (sebum release, hair stem cells) are speculative and left out. Analogy: a puffer jacket. Sources: LiveScience 'Why do we get goosebumps?'; Wikipedia 'Goose bumps' (Pilomotor); Sciencing on the arrector pili. Facts taken from search summaries of these pages.",
+  "mood": "upbeat",
   "english": {
-    "title": "This Week's Shooting Stars Aren't Stars at All",
-    "description": "The Leonid meteor shower peaks this week. Here is where those shooting stars really come from, and why they glow. #space #leonids #meteorshower #astronomy",
+    "title": "Why Do We Get Goosebumps? It's a Fur Reflex",
+    "description": "Goosebumps are a reflex built for fur your body no longer has. Here is how a tiny muscle at the base of every hair turns cold, fear or a great song into bumps. #goosebumps #humanbody #science #howitworks",
     "tags": [
-      "leonids",
-      "leonid meteor shower",
-      "meteor shower 2026",
-      "shooting stars",
-      "comet tempel tuttle",
-      "how meteors work",
-      "astronomy",
-      "space explained",
-      "night sky",
-      "science"
+      "goosebumps",
+      "why do we get goosebumps",
+      "arrector pili",
+      "human body",
+      "body facts",
+      "science explained",
+      "why cold gives goosebumps",
+      "evolution",
+      "how the body works",
+      "animated explainer"
     ],
-    "hook_text": "They are not stars",
+    "hook_text": "Your body wants fur",
     "scenes": [
       {
-        "text": "This week, the sky will throw shooting stars at us. But they are not stars at all.",
-        "keyword": "not stars",
+        "text": "Your body keeps trying to fluff up fur you don't have.",
+        "keyword": "fluff up fur",
         "graphic": {
           "kind": "title",
-          "headline": "Shooting stars?",
+          "headline": "Fluffing up fur?",
           "caption": "",
+          "items": [],
+          "values": [],
+          "prop": "cloud",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "fluffy cat fur"
+      },
+      {
+        "text": "You've felt it in cold air, or a scary scene. Goosebumps. But why?",
+        "keyword": "Goosebumps",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Goosebumps",
+          "caption": "a reflex with a secret",
+          "items": [],
+          "values": [],
+          "prop": "heart",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "frosty winter morning"
+      },
+      {
+        "text": "Your skin feels the cold. Your brain fires an alarm down tiny nerves to one hair. Now it gets weird.",
+        "keyword": "alarm",
+        "graphic": {
+          "kind": "flow",
+          "headline": "The alarm",
+          "caption": "",
+          "items": [
+            "Skin feels cold",
+            "Brain sends alarm",
+            "Nerve signal",
+            "Hair gets tugged"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "neurons microscope"
+      },
+      {
+        "text": "Every hair has a tiny muscle. The alarm makes it squeeze. The hair stands up, the skin bunches into a bump.",
+        "keyword": "tiny muscle",
+        "graphic": {
+          "kind": "build",
+          "headline": "Inside one bump",
+          "caption": "one muscle per hair",
+          "items": [
+            "Hair follicle",
+            "Tiny muscle",
+            "Muscle squeezes",
+            "Skin bumps up"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "hair strand macro"
+      },
+      {
+        "text": "You have roughly five million hairs. Five million tiny muscles, squeezing at once.",
+        "keyword": "five million",
+        "graphic": {
+          "kind": "stat",
+          "headline": "5 million",
+          "caption": "hair muscles, give or take",
+          "items": [],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "dandelion seeds"
+      },
+      {
+        "text": "In furry animals, it fluffs the fur and traps warm air, like a puffer jacket. Scared? It makes them look bigger.",
+        "keyword": "puffer jacket",
+        "graphic": {
+          "kind": "steps",
+          "headline": "The fur reflex",
+          "caption": "",
+          "items": [
+            "Fur stands up",
+            "Air gets trapped",
+            "Warm layer forms"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "fluffy bird winter"
+      },
+      {
+        "text": "Strong feelings fire the same alarm, so songs give you chills. Goosebumps: your body fluffing up fur you don't have.",
+        "keyword": "songs",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Fur you don't have",
+          "caption": "goosebumps = a leftover reflex",
+          "items": [],
+          "values": [],
+          "prop": "book",
+          "pose": "shrug"
+        },
+        "ai_prompt": null,
+        "visual_query": "monkey snow"
+      },
+      {
+        "text": "So when you shiver tonight, remember the fur you don't have. Follow to understand one new thing every day.",
+        "keyword": "shiver",
+        "graphic": {
+          "kind": "title",
+          "headline": "Remember the fur",
+          "caption": "Follow for more",
           "items": [],
           "values": [],
           "prop": "star",
           "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "meteor shower night"
-      },
-      {
-        "text": "These are the Leonids, a meteor shower that comes back every single November.",
-        "keyword": "every single November",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "The Leonids",
-          "caption": "back every November",
-          "items": [],
-          "values": [],
-          "prop": "clock",
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "starry night sky"
-      },
-      {
-        "text": "A comet called Tempel Tuttle circles the Sun every thirty three years, leaving a trail of dust behind it.",
-        "keyword": "trail of dust",
-        "graphic": {
-          "kind": "flow",
-          "headline": "Where they come from",
-          "caption": "",
-          "items": [
-            "Comet passes",
-            "Dust trail stays",
-            "Earth crosses it",
-            "Sky lights up"
-          ],
-          "values": [],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "comet tail"
-      },
-      {
-        "text": "Every November, Earth's orbit carries us straight through that old trail of dust.",
-        "keyword": "straight through",
-        "graphic": {
-          "kind": "cycle",
-          "headline": "Every year",
-          "caption": "",
-          "items": [
-            "Earth orbits",
-            "Hits dust trail",
-            "Meteor shower",
-            "A year later"
-          ],
-          "values": [],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "earth from orbit"
-      },
-      {
-        "text": "Each tiny speck hits our air at about seventy kilometres per second.",
-        "keyword": "seventy",
-        "graphic": {
-          "kind": "stat",
-          "headline": "70 km/s",
-          "caption": "speed of a Leonid",
-          "items": [],
-          "values": [],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "meteor streak"
-      },
-      {
-        "text": "At that speed, the air in front of each speck gets squeezed and heated until it glows as a streak.",
-        "keyword": "glows",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "Squeezed air glows",
-          "caption": "that is the streak we see",
-          "items": [],
-          "values": [],
-          "prop": "bulb",
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "glowing embers"
-      },
-      {
-        "text": "That is more than two hundred times faster than a passenger jet.",
-        "keyword": "two hundred",
-        "graphic": {
-          "kind": "race",
-          "headline": "Meteor vs jet",
-          "caption": "",
-          "items": [
-            "Leonid",
-            "Jet plane"
-          ],
-          "values": [
-            252000.0,
-            900.0
-          ],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "airplane above clouds"
-      },
-      {
-        "text": "Look up after midnight, away from city lights. Follow to understand one new thing every day.",
-        "keyword": "after midnight",
-        "graphic": {
-          "kind": "title",
-          "headline": "Look after midnight",
-          "caption": "Follow for more",
-          "items": [],
-          "values": [],
-          "prop": "planet",
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "milky way mountains"
+        "visual_query": "winter night sky"
       }
     ]
   },
   "hindi": {
-    "title": "इस हफ़्ते टूटते तारे दिखेंगे, पर वो तारे नहीं हैं",
-    "description": "लियोनिड उल्का बौछार इस हफ़्ते चरम पर है। जानिए ये टूटते तारे असल में कहाँ से आते हैं और क्यों चमकते हैं। #space #leonids #hindi #astronomy",
+    "title": "रोंगटे खड़े क्यों होते हैं? यह फ़र वाला पुराना रिफ़्लेक्स है",
+    "description": "रोंगटे खड़े होना उस फ़र के लिए बना रिफ़्लेक्स है, जो अब आपके शरीर पर नहीं है। जानिए हर बाल की जड़ की नन्ही मांसपेशी ठंड, डर या गाने को उभार में कैसे बदलती है। #रोंगटे #humanbody #विज्ञान #hindi",
     "tags": [
-      "लियोनिड्स",
-      "उल्का बौछार",
-      "टूटते तारे",
-      "leonids hindi",
-      "meteor shower hindi",
-      "धूमकेतु",
-      "अंतरिक्ष",
-      "खगोल विज्ञान",
-      "space in hindi",
-      "विज्ञान"
+      "रोंगटे खड़े क्यों होते हैं",
+      "goosebumps hindi",
+      "रोंगटे खड़े होना",
+      "इंसानी शरीर",
+      "शरीर के राज़",
+      "science in hindi",
+      "विज्ञान",
+      "ठंड में रोंगटे",
+      "evolution hindi",
+      "animated explainer"
     ],
-    "hook_text": "ये तारे नहीं हैं",
+    "hook_text": "शरीर को चाहिए फ़र",
     "scenes": [
       {
-        "text": "इस हफ़्ते आसमान से टूटते तारे बरसेंगे। लेकिन ये तारे हैं ही नहीं।",
-        "keyword": "नहीं",
+        "text": "आपका शरीर उस फ़र को फुलाता है, जो आपके पास नहीं।",
+        "keyword": "फुलाता",
         "graphic": {
           "kind": "title",
-          "headline": "टूटते तारे?",
+          "headline": "फ़र फुलाता शरीर?",
           "caption": "",
+          "items": [],
+          "values": [],
+          "prop": "cloud",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "fluffy cat fur"
+      },
+      {
+        "text": "ठंड हो या डर, रोंगटे खड़े हो जाते हैं। पर क्यों?",
+        "keyword": "रोंगटे खड़े",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "रोंगटे खड़े",
+          "caption": "एक रिफ़्लेक्स, एक राज़",
+          "items": [],
+          "values": [],
+          "prop": "heart",
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "frosty winter morning"
+      },
+      {
+        "text": "त्वचा ठंड महसूस करती है। दिमाग़ नसों से अलार्म भेजता है, सीधे एक बाल तक। अब अजीब हिस्सा।",
+        "keyword": "अलार्म",
+        "graphic": {
+          "kind": "flow",
+          "headline": "अलार्म का रास्ता",
+          "caption": "",
+          "items": [
+            "त्वचा को ठंड",
+            "दिमाग़ का अलार्म",
+            "नस में संकेत",
+            "बाल पर खिंचाव"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "neurons microscope"
+      },
+      {
+        "text": "हर बाल की जड़ में नन्ही मांसपेशी है। अलार्म से वह सिकुड़ती है, बाल खड़ा होता है, त्वचा उभरती है।",
+        "keyword": "मांसपेशी",
+        "graphic": {
+          "kind": "build",
+          "headline": "एक उभार के अंदर",
+          "caption": "हर बाल की अपनी मांसपेशी",
+          "items": [
+            "बाल की जड़",
+            "नन्ही मांसपेशी",
+            "मांसपेशी सिकुड़ी",
+            "त्वचा उभरी"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "hair strand macro"
+      },
+      {
+        "text": "शरीर पर लगभग पचास लाख बाल हैं, यानी पचास लाख मांसपेशियाँ, एक साथ।",
+        "keyword": "पचास लाख",
+        "graphic": {
+          "kind": "stat",
+          "headline": "50 लाख",
+          "caption": "बालों की मांसपेशियाँ, लगभग",
+          "items": [],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "dandelion seeds"
+      },
+      {
+        "text": "जानवरों में यह फ़र फुलाकर गर्म हवा रोकता है, पफ़र जैकेट जैसे।",
+        "keyword": "पफ़र जैकेट",
+        "graphic": {
+          "kind": "steps",
+          "headline": "फ़र वाला रिफ़्लेक्स",
+          "caption": "",
+          "items": [
+            "फ़र खड़ा होता है",
+            "हवा फँसती है",
+            "गर्म परत बनती है"
+          ],
+          "values": [],
+          "prop": null,
+          "pose": null
+        },
+        "ai_prompt": null,
+        "visual_query": "fluffy bird winter"
+      },
+      {
+        "text": "यही अलार्म भावनाओं में भी बजता है। रोंगटे खड़े होना: उस फ़र को फुलाता शरीर, जो आपके पास नहीं।",
+        "keyword": "भावनाओं",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "जो फ़र है ही नहीं",
+          "caption": "रोंगटे = पुराना रिफ़्लेक्स",
+          "items": [],
+          "values": [],
+          "prop": "book",
+          "pose": "shrug"
+        },
+        "ai_prompt": null,
+        "visual_query": "monkey snow"
+      },
+      {
+        "text": "जब ठंड लगे, तो उस फ़र को याद करें, जो नहीं है। रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "keyword": "ठंड",
+        "graphic": {
+          "kind": "title",
+          "headline": "उस फ़र को याद करें",
+          "caption": "फ़ॉलो करें",
           "items": [],
           "values": [],
           "prop": "star",
           "pose": null
         },
         "ai_prompt": null,
-        "visual_query": "meteor shower night"
-      },
-      {
-        "text": "ये हैं लियोनिड्स, एक उल्का बौछार जो हर नवंबर लौटती है।",
-        "keyword": "हर नवंबर",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "लियोनिड्स",
-          "caption": "हर नवंबर लौटते हैं",
-          "items": [],
-          "values": [],
-          "prop": "clock",
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "starry night sky"
-      },
-      {
-        "text": "टेम्पल टटल नाम का धूमकेतु हर तैंतीस साल में सूरज का चक्कर लगाता है, और पीछे धूल छोड़ जाता है।",
-        "keyword": "धूल",
-        "graphic": {
-          "kind": "flow",
-          "headline": "ये आते कहाँ से हैं",
-          "caption": "",
-          "items": [
-            "धूमकेतु गुज़रा",
-            "धूल रह गई",
-            "पृथ्वी पहुँची",
-            "आसमान चमका"
-          ],
-          "values": [],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "comet tail"
-      },
-      {
-        "text": "हर नवंबर पृथ्वी अपनी कक्षा में घूमते हुए उसी धूल के रास्ते से गुज़रती है।",
-        "keyword": "गुज़रती",
-        "graphic": {
-          "kind": "cycle",
-          "headline": "हर साल",
-          "caption": "",
-          "items": [
-            "पृथ्वी घूमी",
-            "धूल से टक्कर",
-            "उल्का बौछार",
-            "अगले साल फिर"
-          ],
-          "values": [],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "earth from orbit"
-      },
-      {
-        "text": "धूल का हर कण लगभग सत्तर किलोमीटर प्रति सेकंड से हवा से टकराता है।",
-        "keyword": "सत्तर",
-        "graphic": {
-          "kind": "stat",
-          "headline": "70 km/s",
-          "caption": "एक लियोनिड की रफ़्तार",
-          "items": [],
-          "values": [],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "meteor streak"
-      },
-      {
-        "text": "इतनी रफ़्तार पर सामने की हवा दबकर इतनी गर्म होती है कि चमक उठती है।",
-        "keyword": "चमक",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "दबी हवा चमकती है",
-          "caption": "यही है टूटता तारा",
-          "items": [],
-          "values": [],
-          "prop": "bulb",
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "glowing embers"
-      },
-      {
-        "text": "यह यात्री विमान से दो सौ गुना से भी ज़्यादा तेज़ है।",
-        "keyword": "दो सौ",
-        "graphic": {
-          "kind": "race",
-          "headline": "उल्का बनाम विमान",
-          "caption": "",
-          "items": [
-            "लियोनिड",
-            "हवाई जहाज़"
-          ],
-          "values": [
-            252000.0,
-            900.0
-          ],
-          "prop": null,
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "airplane above clouds"
-      },
-      {
-        "text": "आधी रात के बाद, शहर की रोशनी से दूर देखिए। रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
-        "keyword": "आधी रात",
-        "graphic": {
-          "kind": "title",
-          "headline": "आधी रात के बाद",
-          "caption": "फ़ॉलो करें",
-          "items": [],
-          "values": [],
-          "prop": "planet",
-          "pose": null
-        },
-        "ai_prompt": null,
-        "visual_query": "milky way mountains"
+        "visual_query": "winter night sky"
       }
     ]
   }

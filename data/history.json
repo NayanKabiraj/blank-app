@@ -62,5 +62,21 @@
         "saved_to": "videos/2026-11-15/hi.mp4"
       }
     }
+  },
+  {
+    "date": "2026-11-15",
+    "niche": "Human Body",
+    "topic": "Why do we get goosebumps? (the fur reflex you no longer need)",
+    "mood": "upbeat",
+    "videos": {
+      "en": {
+        "file": "2026-11-15_en.mp4",
+        "saved_to": "videos/2026-11-15/en.mp4"
+      },
+      "hi": {
+        "file": "2026-11-15_hi.mp4",
+        "saved_to": "videos/2026-11-15/hi.mp4"
+      }
+    }
   }
 ]
