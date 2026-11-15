@@ -15,7 +15,7 @@ Follow this file for every video. Everything used must be free and open source.
 | Thumbnail | HTML page rendered to PNG, or Inkscape | — |
 
 Never use ElevenLabs, stock-footage APIs, paid fonts, or any service needing an API key.
-Fonts: Google Fonts (OFL) only. Icons: Lucide or Tabler (MIT). Music: only files the owner places in `assets/music/`.
+Fonts: Google Fonts (OFL) only. Icons: Lucide or Tabler (MIT). Music: files the owner places in `assets/music/`; if the folder is empty, an original track synthesized in code by `mix_music.py` (the owner approved this on 2026-11-15, so it is copyright-safe). Never use downloaded or commercial music.
 
 ## 2. One-time setup
 

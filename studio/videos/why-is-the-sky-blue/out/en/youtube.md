@@ -34,4 +34,4 @@ why is the sky blue, rayleigh scattering, why are sunsets red, science explained
 - The voice is synthetic (Kokoro TTS). The video shows no realistic people or events; decide whether to tick YouTube's altered-content box for the synthetic narration.
 - Captions: upload `captions/voiceover.en.srt`.
 - Thumbnails: `thumbnail-1.png`, `thumbnail-2.png`.
-- No music was added (`assets/music/` is empty).
+- Music: an original calm background track synthesized in code (no third-party audio, so nothing to claim or credit). Voice-only versions are kept as `*.no-music.mp4`.
