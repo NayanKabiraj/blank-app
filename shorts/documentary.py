@@ -61,7 +61,7 @@ def main() -> int:
     for lang in [x.strip() for x in args.langs.split(",") if x.strip()]:
         try:
             script = scripts[lang]
-            log.info("Documentary %s: about %.1f minutes planned", lang, doc_seconds(script) / 60)
+            log.info("Documentary %s: about %.1f minutes planned", lang, doc_seconds(script, lang) / 60)
             video, chapters = compose.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
             desc = chapter_description(script.description, chapters)
             final = out / f"{today}_documentary_{lang}.mp4"

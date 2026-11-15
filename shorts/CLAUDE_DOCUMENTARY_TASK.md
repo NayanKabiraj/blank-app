@@ -30,9 +30,9 @@ Run this task on its own schedule (for example weekly). It does not replace the 
    winner won, then the facts and their sources. Mark approximations ("roughly", "about").
 4. **Pick the length** (`target_minutes`, 5-15): 5 for a single clean mechanism, 8-10 for a mechanism
    plus history and stakes, 12-15 only when there really are that many strong chapters. Longer is
-   not better; never pad. The validator estimates the time from the word count (2.6 words per
-   second, plus pauses) and wants it within 20 % of `target_minutes`. Rough budget: 5 min is about
-   700 words, 10 min about 1,500 words, 15 min about 2,300 words.
+   not better; never pad. The validator estimates the time from the word count (English 3.1 words and Hindi 2.85
+   words per second, plus pauses) and wants it within 20 % of `target_minutes`. Rough budget: 5 min is about
+   850 words in English (780 in Hindi), 10 min about 1,800 (1,600), 15 min about 2,700 (2,450).
 5. **Write the plan** as JSON that follows `shorts/sample_documentary_plan.json` and the schema
    (`python -m shorts.plan doc-schema`). `niche` (a name from `shorts/niches.py`), `topic`,
    `research_summary`, `mood`, `target_minutes`, and `english` and `hindi`, each with `title`,
