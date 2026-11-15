@@ -34,8 +34,12 @@ The work is split into two parts:
 1. **Checks the plan.** It validates the JSON plan it receives (`python -m shorts.plan validate`).
 2. **Uses two scripts.** One in English and one in Hindi (Devanagari), each 6–9 scenes long
    and sized for 45–55 seconds of speech.
-3. **Generates the voice-over** with [Piper](https://github.com/OHF-Voice/piper1-gpl), an
-   open-source TTS that runs offline on the CPU (`en_US-lessac-medium`, `hi_IN-pratham-medium`).
+3. **Generates the voice-over** with [Indic Parler-TTS](https://huggingface.co/ai4bharat/indic-parler-tts)
+   (AI4Bharat, Apache 2.0): an expressive neural voice that is steered by a text description, with the speakers
+   **Thoma** (English) and **Rohit** (Hindi), animated for Shorts and measured for documentaries. The model is
+   gated on Hugging Face, so it needs the `HF_TOKEN` secret (see below). Without it, or if the model cannot
+   load, the whole run falls back to [Piper](https://github.com/OHF-Voice/piper1-gpl), a small offline CPU
+   voice (`en_US-lessac-medium`, `hi_IN-pratham-medium`).
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
@@ -85,6 +89,9 @@ task starts the workflow on `main`.
 | Name | Type | Purpose |
 |---|---|---|
 | `NICHE_HINT.txt` | file at the repo root | Overrides the topic and niche choice, e.g. `only How Tech Works and AI Explained this week` |
+| `HF_TOKEN` | secret | **Needed for the Parler voices.** On huggingface.co: sign in (free), open <https://huggingface.co/ai4bharat/indic-parler-tts> and accept the terms, then create a *read* token at <https://huggingface.co/settings/tokens> and save it as the `HF_TOKEN` repository secret |
+| `TTS_ENGINE` | variable | `parler` (default) or `piper` to force the small fallback voice |
+| `PARLER_SPEAKER_EN` / `PARLER_SPEAKER_HI` | variable | Parler speaker names, default `Thoma` and `Rohit` |
 | `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the animation cues. `off` to mute them |
 | `YT_PRIVACY` | variable | `public` (default), `unlisted` or `private` |
 | `PIPER_VOICE_EN` / `PIPER_VOICE_HI` | variable | Any voice from <https://huggingface.co/rhasspy/piper-voices>, e.g. `hi_IN-priyamvada-medium` for a female Hindi voice |

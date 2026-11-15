@@ -68,7 +68,8 @@ def synthesize(text: str, out_wav: Path, lang: str, length_scale: float = 1.0, s
         except Exception:  # noqa: BLE001 - the model could not be loaded: keep the whole run on one voice
             if _state["parler"]:
                 raise
-            log.exception("Parler-TTS is unavailable, falling back to Piper for this run")
+            log.exception("Parler-TTS is unavailable (is the HF_TOKEN secret set, and the model's terms accepted?), "
+                          "falling back to Piper for this run")
             _state["parler"] = False
     return _piper(text, out_wav, lang, length_scale)
 
