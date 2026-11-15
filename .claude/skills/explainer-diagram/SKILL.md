@@ -59,6 +59,13 @@ were removed on purpose; do not bring them back.
   `compare` with real numbers for a countable difference, and `stat` for the single most striking number.
 - Scripts are a **conversation**: see "Make it a conversation" in the `animated-explainer-method` skill.
 
+## Landscape (documentaries)
+
+The same scene renders 1920x1080 for the documentaries (`layout: landscape` in the config): the headline sits in
+the left column (left-aligned, up to three lines), the spark top left, the diagram area is moved into the right-hand
+panel, and the caption pill runs along the bottom. Every kind works unchanged. `shorts/documentary.py` and
+`CLAUDE_DOCUMENTARY_TASK.md` cover the long-form pipeline (chapters, 5-15 minutes, 24 fps).
+
 ## Previewing
 
 ```bash

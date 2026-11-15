@@ -53,21 +53,27 @@ def caption_chunks(timeline, keywords, words_per_chunk: int = 3) -> list[dict]:
     return out
 
 
-def render(script: LangScript, lang: str, niche: str, timeline, total: float, work: Path) -> Path:
-    """Render work/video.mp4 (picture only) and keep work/timeline.json (the timeline, for sound cues)."""
+def render(script, lang: str, niche: str, timeline, total: float, work: Path, layout: str = "portrait",
+           fps: int | None = None) -> Path:
+    """Render work/video.mp4 (picture only) and keep work/timeline.json (the timeline, for sound cues).
+    `script` is anything with `.scenes` (a Short's LangScript, or the scene list of a documentary)."""
+    scenes = script.scenes if hasattr(script, "scenes") else script
+    land = layout == "landscape"
     segments = []
     for i, (start, end, text) in enumerate(timeline):
         seg_end = timeline[i + 1][0] if i + 1 < len(timeline) else total
-        g = script.scenes[i].graphic
+        g = scenes[i].graphic
         graphic = g.model_dump() if g else {"kind": "keyword", "headline": " ".join(text.split()[:3])}
         seg = {"start": 0.0 if i == 0 else start, "end": seg_end, "graphic": graphic}
-        hit = keyword_time(script.scenes[i].keyword, text, start, end)
+        hit = keyword_time(scenes[i].keyword, text, start, end)
         if hit is not None:
             seg["hit"] = hit
         segments.append(seg)
-    cfg = {"niche": niche, "lang": lang, "total": total, "fps": config.FPS, "segments": segments,
-           "workers": int(os.getenv("RENDER_WORKERS", "3")),
-           "captions": caption_chunks(timeline, [sc.keyword for sc in script.scenes])}
+    cfg = {"niche": niche, "lang": lang, "total": total, "fps": fps or config.FPS, "segments": segments,
+           "layout": layout, "width": 1920 if land else 1080, "height": 1080 if land else 1920,
+           "workers": int(os.getenv("RENDER_WORKERS", "4" if land else "3")),
+           **({"crf": 24, "jpegQuality": 88} if land else {}),
+           "captions": caption_chunks(timeline, [sc.keyword for sc in scenes])}
     cfg_path = work / "timeline.json"
     cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
     out = work / "video.mp4"

@@ -5,7 +5,9 @@
 // The plan's per-scene `graphic` (title, keyword, stat, steps, flow, build, cycle, race, compare, bars and the
 // conversation scenes chat, quiz, myth, plus an optional `prop` icon) decides what is drawn; `keyword` timing
 // drives the main beat. The accent colour follows the niche.
-const W = 1080, H = 1920, INTRO = 0.6, OUTRO = 0.3;
+let W = 1080, H = 1920, LAND = false;                 // portrait Short by default; the documentary renders 1920x1080
+const INTRO = 0.6, OUTRO = 0.3;
+const PANEL_DX = 720, PANEL_DY = -470;                 // landscape: the 1080-wide diagram area is moved into the right-hand panel
 const BG = '#0b1524', PANEL = '#13233a', PANEL2 = '#1d3556', TEXT = '#f5f1e6', MUTED = '#9fb4d0';
 let BLUE = '#3d9bff', ACCD = '#1c6fd6';
 const ORANGE = '#ff8a3c', SUN = '#fff6d8';
@@ -225,6 +227,7 @@ const ANCHOR = {                                             // [x, y, scale] of
   bars: [940, 250, 0.5], chat: [940, 250, 0.5], quiz: [940, 250, 0.5], myth: [940, 250, 0.5],
 };
 function orbPos(t, cur) {
+  if (LAND) { const p = easeOutCubic(clamp((t - cur.start) / 0.7)); return [150, 150 + Math.sin(t * 1.4) * 8, 0.6 * (0.7 + 0.3 * p)]; }
   const a = ANCHOR[cur.kind] || ANCHOR.title, pa = cur.i > 0 ? (ANCHOR[segs[cur.i - 1].kind] || ANCHOR.title) : a;
   const p = easeOutCubic(clamp((t - cur.start) / 0.7));
   return [lerp(pa[0], a[0], p), lerp(pa[1], a[1], p), lerp(pa[2], a[2], p)];
@@ -254,11 +257,12 @@ function buildSegment(seg, i, all) {
   ui.append(h); s.hlEl = h;
   if (s.hl && s.cap) { const c = document.createElement('div'); c.className = 'sub'; c.textContent = s.cap; ui.append(c); s.capEl = c; }
   // fit the headline into two lines, then place the caption under it
-  h.style.display = 'block'; let size = s.hl.length <= 14 ? 108 : 96; h.style.fontSize = size + 'px';
-  while (size > 56 && h.offsetHeight > size * 1.14 * 2.05) { size -= 4; h.style.fontSize = size + 'px'; }
+  h.style.display = 'block'; let size = LAND ? (s.hl.length <= 14 ? 104 : 88) : (s.hl.length <= 14 ? 108 : 96); h.style.fontSize = size + 'px';
+  const maxLines = LAND ? 3.05 : 2.05;
+  while (size > 52 && h.offsetHeight > size * 1.14 * maxLines) { size -= 4; h.style.fontSize = size + 'px'; }
   s.hlH = h.offsetHeight; h.style.display = 'none';
-  if (s.capEl) s.capEl.style.top = (350 + s.hlH + 14) + 'px';
-  s.hlTop = 350;
+  s.hlTop = LAND ? Math.max(260, Math.round((H - s.hlH - (s.capEl ? 110 : 0)) / 2) - 40) : 350;
+  if (s.capEl) s.capEl.style.top = (s.hlTop + s.hlH + 14) + 'px';
   return s;
 }
 
@@ -368,7 +372,7 @@ function wrapLines(str, maxW, size, weight = 600) {            // greedy word wr
   for (const w of str.split(' ')) { const t = cur ? cur + ' ' + w : w; if (cur && ctx.measureText(t).width > maxW) { out.push(cur); cur = w; } else cur = t; }
   if (cur) out.push(cur); return out;
 }
-function bodyTop(s) { return Math.max(640, s.hlTop + (s.hl ? s.hlH : 0) + (s.cap ? 90 : 0) + 50); }
+function bodyTop(s) { if (LAND) return 640; return Math.max(640, s.hlTop + (s.hl ? s.hlH : 0) + (s.cap ? 90 : 0) + 50); }
 function drawBars(s, t, u, pk) {
   const n = s.labels.length, vmax = Math.max(...s.vals), top = bodyTop(s), pitch = Math.min(170, (1330 - top) / n), t0 = s.start + INTRO * 0.8;
   const cols = [BLUE, ORANGE, GREEN, '#9a7bff'];
@@ -453,9 +457,9 @@ function drawMyth(s, t, u, pk) {
 }
 function drawBackdrop(s, t, u) {                                 // a faint motif that changes from scene to scene
   ctx.save(); ctx.globalAlpha *= 0.09; const m = s.i % 4;
-  if (m === 1) { ctx.fillStyle = TEXT; for (let x = 60; x < W; x += 90) for (let y = 120; y < 1400; y += 90) { ctx.beginPath(); ctx.arc(x + ((t * 6) % 90), y, 3, 0, Math.PI * 2); ctx.fill(); } }
-  else if (m === 2) { ctx.strokeStyle = TEXT; ctx.lineWidth = 3; for (let r = 1; r <= 6; r++) { ctx.beginPath(); ctx.arc(540, 990, r * 170 + ((t * 20) % 170) - 170, 0, Math.PI * 2); if (r * 170 + ((t * 20) % 170) - 170 > 0) ctx.stroke(); } }
-  else if (m === 3) { ctx.strokeStyle = TEXT; ctx.lineWidth = 3; for (let x = -1920 + ((t * 24) % 120); x < W; x += 120) { ctx.beginPath(); ctx.moveTo(x, 1500); ctx.lineTo(x + 1500, 0); ctx.stroke(); } }
+  if (m === 1) { ctx.fillStyle = TEXT; for (let x = 60; x < W; x += 90) for (let y = 60; y < H - 100; y += 90) { ctx.beginPath(); ctx.arc(x + ((t * 6) % 90), y, 3, 0, Math.PI * 2); ctx.fill(); } }
+  else if (m === 2) { ctx.strokeStyle = TEXT; ctx.lineWidth = 3; for (let r = 1; r <= 6; r++) { ctx.beginPath(); ctx.arc(W / 2, H / 2, r * 170 + ((t * 20) % 170) - 170, 0, Math.PI * 2); if (r * 170 + ((t * 20) % 170) - 170 > 0) ctx.stroke(); } }
+  else if (m === 3) { ctx.strokeStyle = TEXT; ctx.lineWidth = 3; for (let x = -1920 + ((t * 24) % 120); x < W; x += 120) { ctx.beginPath(); ctx.moveTo(x, H); ctx.lineTo(x + H, 0); ctx.stroke(); } }
   ctx.restore();
 }
 function drawCaptions(t) {
@@ -463,13 +467,15 @@ function drawCaptions(t) {
   const a = clamp((t - c.start) / 0.14), words = c.words;
   let size = 68; setFont(size, 700);
   const text = words.map(w => w.t).join(' ');
-  while (size > 40 && ctx.measureText(text).width > 840) { size -= 2; setFont(size, 700); }
-  const w = ctx.measureText(text).width + 90, h = size + 62, x = 540 - w / 2, y = 1440 - h / 2 + (1 - a) * 14;
+  const capW = LAND ? 1500 : 840, capY = LAND ? 990 : 1440, cx0 = W / 2;
+  if (LAND) { size = 56; setFont(size, 700); }
+  while (size > 40 && ctx.measureText(text).width > capW) { size -= 2; setFont(size, 700); }
+  const w = ctx.measureText(text).width + 90, h = size + 62, x = cx0 - w / 2, y = capY - h / 2 + (1 - a) * 14;
   ctx.save(); ctx.globalAlpha = a;
   ctx.shadowColor = 'rgba(0,0,0,0.35)'; ctx.shadowBlur = 24; ctx.shadowOffsetY = 8;
   rrect(x, y, w, h, 40); ctx.fillStyle = TEXT; ctx.fill(); ctx.shadowColor = 'transparent';
   ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
-  let cx = 540 - (w - 90) / 2;
+  let cx = cx0 - (w - 90) / 2;
   words.forEach((wd, k) => { ctx.fillStyle = wd.kw ? ACCD : BG; ctx.fillText(wd.t, cx, y + h / 2 + 3); cx += ctx.measureText(wd.t + ' ').width; });
   ctx.restore();
 }
@@ -483,11 +489,12 @@ function updateSegment(s, t) {
     s.words.forEach((w, j) => { const a = clamp((u - 0.12 - j * 0.08) / 0.4); w.style.opacity = String(a); w.style.transform = `translateY(${(1 - easeOutCubic(a)) * 30}px)`; });
     if (s.capEl) { s.capEl.style.display = 'block'; s.capEl.style.opacity = String(clamp((u - 0.5) / 0.4) * A); }
     const bw = 170 * easeOutCubic(clamp((u - 0.1) / 0.5)) * A;               // accent bar above the headline
-    ctx.fillStyle = BLUE; rrect(540 - bw / 2, s.hlTop - 52, bw, 12, 6); ctx.fill();
+    ctx.fillStyle = BLUE; rrect(LAND ? 90 : 540 - bw / 2, s.hlTop - 52, bw, 12, 6); ctx.fill();
   }
   ctx.save(); ctx.globalAlpha = A;
   drawBackdrop(s, t, u);
   const [ox, oy, os] = orbPos(t, s); orb(ox, oy, os * popS(u + 0.3, 1.0), pk);
+  if (LAND) ctx.translate(PANEL_DX, PANEL_DY);
   if (s.num) drawStat(s, t, u, pk);
   else if (s.diagram === 'flow' || s.diagram === 'steps') drawChain(s, t, u, A, pk);
   else if (s.diagram === 'race') drawRace(s, t, u, pk);
@@ -510,7 +517,11 @@ window.setup = async (config) => {
   ACCD = mix(BLUE, 0.78);
   pal = [BLUE, ORANGE, PANEL];
   document.body.lang = cfg.lang === 'hi' ? 'hi' : 'en';
-  ctx = document.getElementById('cv').getContext('2d');
+  LAND = cfg.layout === 'landscape';
+  if (LAND) { W = 1920; H = 1080; document.getElementById('ui').classList.add('land'); }
+  const cv = document.getElementById('cv'); cv.width = W; cv.height = H;
+  for (const el of [document.documentElement, document.body, cv]) { el.style.width = W + 'px'; el.style.height = H + 'px'; }
+  ctx = cv.getContext('2d');
   await Promise.all([document.fonts.load('700 40px Poppins'), document.fonts.load('600 40px Poppins'),
                      document.fonts.load('700 40px Poppins', 'आ'), document.fonts.load('600 40px Poppins', 'आ')]);
   segs = cfg.segments.map((s, i, all) => buildSegment(s, i, all));

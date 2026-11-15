@@ -5,6 +5,8 @@ to the GitHub Actions workflow, which only renders and uploads.
 
     python -m shorts.plan schema            # print the JSON schema
     python -m shorts.plan validate p.json   # validate a plan (exit 1 if invalid)
+    python -m shorts.plan doc-schema        # the schema of a documentary plan
+    python -m shorts.plan validate-doc d.json   # validate a documentary plan
 """
 from __future__ import annotations
 
@@ -87,6 +89,36 @@ class Plan(BaseModel):
     hindi: LangScript
 
 
+def _scene_problems(sc: "Scene", where: str) -> list[str]:
+    """Checks on one scene's graphic and keyword (shared by Shorts and documentaries)."""
+    problems = []
+    g = sc.graphic
+    if g is None:
+        return [f"{where}: no graphic (a keyword card will be used)"]
+    n, label = len(g.items), g.kind
+    if len(g.headline) > (48 if g.kind == "quiz" else 28):
+        problems.append(f"{where}: graphic headline too long ({len(g.headline)} characters)")
+    if g.kind in ("steps", "flow", "build", "bars") and not 2 <= n <= 4:
+        problems.append(f"{where}: {label} needs 2-4 items")
+    elif g.kind in ("compare", "myth") and n != 2:
+        problems.append(f"{where}: {label} needs exactly 2 items")
+    elif g.kind == "cycle" and not 3 <= n <= 4:
+        problems.append(f"{where}: cycle needs 3-4 items")
+    elif g.kind == "chat" and not 2 <= n <= 4:
+        problems.append(f"{where}: chat needs 2-4 bubbles")
+    elif g.kind == "quiz" and (not 2 <= n <= 4 or g.answer is None or not 0 <= g.answer < n):
+        problems.append(f"{where}: quiz needs 2-4 options and `answer` = the 0-based index of the right one")
+    elif g.kind == "race" and (n != 2 or len(g.values) != 2 or min(g.values or [0]) <= 0):
+        problems.append(f"{where}: race needs exactly 2 items and 2 positive values")
+    elif g.kind == "bars" and (len(g.values) != n or min(g.values or [0]) <= 0):
+        problems.append(f"{where}: bars needs one positive value per item")
+    if g.prop and g.prop not in PROPS:
+        problems.append(f"{where}: unknown prop {g.prop!r} (choose from {', '.join(PROPS)})")
+    if sc.keyword and sc.keyword.lower() not in sc.text.lower():
+        problems.append(f"{where}: keyword {sc.keyword!r} does not appear in the narration")
+    return problems
+
+
 def validate(plan: Plan) -> list[str]:
     """Extra checks beyond the schema. Returns a list of problems."""
     problems = []
@@ -109,31 +141,7 @@ def validate(plan: Plan) -> list[str]:
             if len(sc.text.split()) > 30:
                 problems.append(f"{lang} scene {i}: {len(sc.text.split())} words, split it (max about 30)")
         for i, sc in enumerate(s.scenes, 1):
-            g = sc.graphic
-            n, label = (len(g.items) if g else 0), (g.kind if g else "")
-            if g is None:
-                problems.append(f"{lang} scene {i}: no graphic (a keyword card will be used)")
-                continue
-            if len(g.headline) > (48 if g.kind == "quiz" else 28):
-                problems.append(f"{lang} scene {i}: graphic headline too long ({len(g.headline)} characters)")
-            if g.kind in ("steps", "flow", "build", "bars") and not 2 <= n <= 4:
-                problems.append(f"{lang} scene {i}: {label} needs 2-4 items")
-            elif g.kind in ("compare", "myth") and n != 2:
-                problems.append(f"{lang} scene {i}: {label} needs exactly 2 items")
-            elif g.kind == "cycle" and not 3 <= n <= 4:
-                problems.append(f"{lang} scene {i}: cycle needs 3-4 items")
-            elif g.kind == "chat" and not 2 <= n <= 4:
-                problems.append(f"{lang} scene {i}: chat needs 2-4 bubbles")
-            elif g.kind == "quiz" and (not 2 <= n <= 4 or g.answer is None or not 0 <= g.answer < n):
-                problems.append(f"{lang} scene {i}: quiz needs 2-4 options and `answer` = the 0-based index of the right one")
-            elif g.kind == "race" and (n != 2 or len(g.values) != 2 or min(g.values or [0]) <= 0):
-                problems.append(f"{lang} scene {i}: race needs exactly 2 items and 2 positive values")
-            elif g.kind == "bars" and (len(g.values) != n or min(g.values or [0]) <= 0):
-                problems.append(f"{lang} scene {i}: bars needs one positive value per item")
-            if g.prop and g.prop not in PROPS:
-                problems.append(f"{lang} scene {i}: unknown prop {g.prop!r} (choose from {', '.join(PROPS)})")
-            if sc.keyword and sc.keyword.lower() not in sc.text.lower():
-                problems.append(f"{lang} scene {i}: keyword {sc.keyword!r} does not appear in the narration")
+            problems += _scene_problems(sc, f"{lang} scene {i}")
         # conversational feel: the narrator keeps asking and answering, and ends by asking the viewer
         qs = [i for i, sc in enumerate(s.scenes, 1) if "?" in sc.text]
         if len(qs) < 3:
@@ -157,10 +165,109 @@ def validate(plan: Plan) -> list[str]:
     return problems
 
 
+# ------------------------------------------------------------------ documentaries (5-15 minutes)
+WORDS_PER_SEC = 2.6          # Piper narration pace (the Shorts limits use the same figure)
+SCENE_PAUSE, CHAPTER_PAUSE = 0.4, 1.0
+
+
+class Chapter(BaseModel):
+    title: str = Field(description="Chapter title, max 50 characters. It becomes the chapter marker in the "
+                       "YouTube description and should also be the headline of the chapter's first scene.")
+    scenes: List[Scene] = Field(description="3-12 scenes. The first one is usually a `title` scene with the "
+                                "chapter's name.")
+
+
+class DocScript(BaseModel):
+    title: str = Field(description="YouTube title, max 90 characters, no hashtags.")
+    description: str = Field(description="3-5 sentence description plus 3-5 hashtags. Chapter timestamps are "
+                             "added automatically.")
+    tags: List[str] = Field(description="8-15 search tags.")
+    chapters: List[Chapter] = Field(description="3-12 chapters in order; chapter 1 is the cold open.")
+
+    @property
+    def scenes(self) -> List[Scene]:
+        return [sc for ch in self.chapters for sc in ch.scenes]
+
+
+class DocPlan(BaseModel):
+    niche: str
+    topic: str
+    research_summary: str = Field(description="Candidates considered, why this documentary, the sources and facts used.")
+    mood: Literal["calm", "upbeat", "dramatic", "inspiring", "mysterious"]
+    target_minutes: int = Field(description="Intended length: 5 to 15 minutes.")
+    english: DocScript
+    hindi: DocScript
+
+
+def doc_seconds(s: DocScript) -> float:
+    """Estimated running time of a documentary script."""
+    words = sum(len(sc.text.split()) for sc in s.scenes)
+    return words / WORDS_PER_SEC + SCENE_PAUSE * len(s.scenes) + CHAPTER_PAUSE * len(s.chapters) + 3
+
+
+def validate_doc(plan: DocPlan) -> list[str]:
+    problems = []
+    if not 5 <= plan.target_minutes <= 15:
+        problems.append(f"target_minutes {plan.target_minutes} is outside 5-15")
+    for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
+        secs = doc_seconds(s)
+        if not 270 <= secs <= 930:
+            problems.append(f"{lang}: estimated {secs / 60:.1f} min, a documentary runs 5-15 minutes")
+        elif abs(secs - plan.target_minutes * 60) > plan.target_minutes * 60 * 0.2:
+            problems.append(f"{lang}: estimated {secs / 60:.1f} min but target_minutes is {plan.target_minutes} (stay within 20 %)")
+        if not 3 <= len(s.chapters) <= 12:
+            problems.append(f"{lang}: {len(s.chapters)} chapters, expected 3-12")
+        if len(s.title) > 90:
+            problems.append(f"{lang}: title longer than 90 characters")
+        for c, ch in enumerate(s.chapters, 1):
+            if len(ch.title) > 50:
+                problems.append(f"{lang} chapter {c}: title longer than 50 characters")
+            if not 2 <= len(ch.scenes) <= 12:
+                problems.append(f"{lang} chapter {c}: {len(ch.scenes)} scenes, expected 2-12")
+            for i, sc in enumerate(ch.scenes, 1):
+                if len(sc.text.split()) > 45:
+                    problems.append(f"{lang} chapter {c} scene {i}: {len(sc.text.split())} words, split it (max about 40)")
+                problems += _scene_problems(sc, f"{lang} chapter {c} scene {i}")
+        scenes = s.scenes
+        if scenes and WEAK_OPENER.match(scenes[0].text.strip()):
+            problems.append(f"{lang}: the cold open starts with a greeting or filler; start with the story")
+        qs = sum(1 for sc in scenes if "?" in sc.text)
+        if qs < max(4, len(s.chapters)):
+            problems.append(f"{lang}: only {qs} scenes ask a question, a documentary that talks to the viewer needs {max(4, len(s.chapters))}+")
+        if scenes and "?" not in scenes[-1].text:
+            problems.append(f"{lang}: the last scene should ask the viewer a question for the comments")
+        if sum(1 for sc in scenes if sc.graphic and sc.graphic.kind in CONVO_KINDS) < 2:
+            problems.append(f"{lang}: use at least two chat, quiz or myth scenes")
+        kinds = {sc.graphic.kind for sc in scenes if sc.graphic}
+        if len(kinds) < 6:
+            problems.append(f"{lang}: only {len(kinds)} different graphic kinds, vary the scenes (6 or more)")
+    if "candidate" not in plan.research_summary.lower():
+        problems.append("research_summary should list the candidates and say why the winner won")
+    from .niches import NAMES
+    if plan.niche not in NAMES:
+        problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
+    if not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
+        problems.append("hindi: narration is not in Devanagari script")
+    return problems
+
+
 def _cli() -> int:
     if len(sys.argv) >= 2 and sys.argv[1] == "schema":
         print(json.dumps(Plan.model_json_schema(), ensure_ascii=False, indent=2))
         return 0
+    if len(sys.argv) >= 2 and sys.argv[1] == "doc-schema":
+        print(json.dumps(DocPlan.model_json_schema(), ensure_ascii=False, indent=2))
+        return 0
+    if len(sys.argv) == 3 and sys.argv[1] == "validate-doc":
+        try:
+            dplan = DocPlan.model_validate_json(Path(sys.argv[2]).read_text(encoding="utf-8"))
+        except ValidationError as e:
+            print(e)
+            return 1
+        problems = validate_doc(dplan)
+        print("\n".join(problems) if problems else
+              f"OK: {dplan.niche} | {dplan.topic} | ~{doc_seconds(dplan.english) / 60:.1f} min EN, ~{doc_seconds(dplan.hindi) / 60:.1f} min HI")
+        return 1 if problems else 0
     if len(sys.argv) == 3 and sys.argv[1] == "validate":
         try:
             plan = Plan.model_validate_json(Path(sys.argv[2]).read_text(encoding="utf-8"))

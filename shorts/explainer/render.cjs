@@ -10,6 +10,7 @@ const { chromium } = require('playwright');
 const [, , cfgPath, outPath] = process.argv;
 const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
 const FPS = cfg.fps || 30;
+const VW = cfg.width || 1080, VH = cfg.height || 1920;
 const ROOT = __dirname;
 const LABEL = path.basename(ROOT);
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.txt': 'text/plain', '.woff2': 'font/woff2' };
@@ -33,16 +34,16 @@ const server = http.createServer((req, res) => {
     const from = w * per, to = Math.min(frames, from + per);
     const part = `${outPath}.part${w}.mp4`;
     const browser = await launch();
-    const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
+    const page = await browser.newPage({ viewport: { width: VW, height: VH }, deviceScaleFactor: 1 });
     page.on('pageerror', e => { console.error('page error:', e.message); process.exitCode = 1; });
     await page.goto(url);
     await page.waitForFunction(() => window.sceneReady === true);
     await page.evaluate(c => window.setup(c), cfg);
     const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg',
-      '-i', '-', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18', '-pix_fmt', 'yuv420p', part], { stdio: ['pipe', 'inherit', 'inherit'] });
+      '-i', '-', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', String(cfg.crf || 18), '-pix_fmt', 'yuv420p', part], { stdio: ['pipe', 'inherit', 'inherit'] });
     for (let f = from; f < to; f++) {
       await page.evaluate(t => window.renderFrame(t), f / FPS);
-      const jpg = await page.screenshot({ type: 'jpeg', quality: 92 });
+      const jpg = await page.screenshot({ type: 'jpeg', quality: cfg.jpegQuality || 92 });
       if (!ff.stdin.write(jpg)) await new Promise(r => ff.stdin.once('drain', r));
       if (w === 0 && (f - from) % 100 === 0) console.log(`${LABEL}: worker 0 at ${f - from}/${to - from} (${((Date.now() - t0) / 1000).toFixed(0)}s)`);
     }

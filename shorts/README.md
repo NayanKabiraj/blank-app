@@ -1,4 +1,13 @@
-# Daily YouTube Shorts (English + Hindi)
+# YouTube Shorts and documentaries (English + Hindi)
+
+Two products come out of this repo, in the same explainer look, with the same voice and music:
+
+- **Daily Shorts** (45-55 seconds, vertical): one in English and one in Hindi, every day.
+- **Documentaries** (5-15 minutes, landscape 1920x1080): one in English and one in Hindi, with chapters,
+  started by their own Claude task and workflow (`documentary.yml`, see
+  [`CLAUDE_DOCUMENTARY_TASK.md`](CLAUDE_DOCUMENTARY_TASK.md)). Chapter markers are added to the YouTube
+  description automatically. Because the files are large they are kept as workflow artifacts (14 days)
+  and uploaded to YouTube, not committed to the repo, unless you tick `keep_in_repo`.
 
 The work is split into two parts:
 
@@ -81,6 +90,11 @@ task starts the workflow on `main`.
 | `PIPER_VOICE_EN` / `PIPER_VOICE_HI` | variable | Any voice from <https://huggingface.co/rhasspy/piper-voices>, e.g. `hi_IN-priyamvada-medium` for a female Hindi voice |
 
 ## Running it
+- **Documentary:** Actions → *Documentary (5-15 min)* → *Run workflow*. Paste a plan into `plan_json`
+  (schema: `python -m shorts.plan doc-schema`) or leave it empty for `shorts/sample_documentary_plan.json`.
+  Locally: `python -m shorts.documentary --plan-file shorts/sample_documentary_plan.json --dry-run`.
+  Rendering runs at roughly 40 frames per second on a 4-core runner: a 10-minute video takes about
+  6 minutes to draw per language, plus the voice and mix.
 - **Automatic:** the scheduled Claude task runs daily and starts the workflow. You can
   see, pause or change it under scheduled tasks at claude.ai/code.
 - **Manual:** go to Actions → *Daily YouTube Shorts* → *Run workflow*. Paste a plan into

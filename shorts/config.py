@@ -19,6 +19,8 @@ LEAD_IN = 0.4         # silence before the voice starts
 TAIL = 1.8            # music-only tail after the voice ends
 SCENE_GAP = 0.25      # pause between scenes
 
+DOC_FPS = 24        # documentaries (1920x1080) are rendered at 24 fps
+
 # --- Voices (Piper, open source: https://github.com/OHF-Voice/piper1-gpl) ---
 VOICES = {
     "en": os.getenv("PIPER_VOICE_EN", "en_US-lessac-medium"),

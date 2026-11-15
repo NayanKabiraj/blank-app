@@ -9,7 +9,6 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
 from . import config
-from .plan import LangScript
 
 log = logging.getLogger(__name__)
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
@@ -29,7 +28,8 @@ def _clean_tags(tags: list[str]) -> list[str]:
     return out
 
 
-def upload(video: Path, script: LangScript, lang: str) -> str:
+def upload(video: Path, script, lang: str, short: bool = True, description: str | None = None) -> str:
+    """Upload a Short (default) or a long-form video. `description` overrides the script's (chapters added)."""
     creds = Credentials(
         None,
         refresh_token=config.YT_REFRESH_TOKENS[lang],
@@ -40,15 +40,18 @@ def upload(video: Path, script: LangScript, lang: str) -> str:
     )
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
     title = script.title.replace("<", "").replace(">", "").strip()
-    title = (title[:90] + " #Shorts") if len(title) <= 90 else title[:100]
-    description = script.description.replace("<", "").replace(">", "")
-    if "#shorts" not in description.lower():
-        description += "\n\n#Shorts"
+    description = (description or script.description).replace("<", "").replace(">", "")
+    if short:
+        title = (title[:90] + " #Shorts") if len(title) <= 90 else title[:100]
+        if "#shorts" not in description.lower():
+            description += "\n\n#Shorts"
+    else:
+        title = title[:100]
     body = {
         "snippet": {
             "title": title,
             "description": description[:4900],
-            "tags": _clean_tags(script.tags + ["shorts"]),
+            "tags": _clean_tags(script.tags + (["shorts"] if short else [])),
             "categoryId": config.YT_CATEGORY_ID,
             "defaultLanguage": lang,
             "defaultAudioLanguage": lang,
@@ -69,5 +72,5 @@ def upload(video: Path, script: LangScript, lang: str) -> str:
         if status:
             log.info("Upload %d%%", int(status.progress() * 100))
     vid = response["id"]
-    log.info("Uploaded %s: https://youtube.com/shorts/%s", lang, vid)
+    log.info("Uploaded %s: https://youtube.com/%s%s", lang, "shorts/" if short else "watch?v=", vid)
     return vid

@@ -1,0 +1,127 @@
+name: Documentary (5-15 min)
+
+# Started by a scheduled Claude task (or by hand) with a documentary plan (schema: python -m shorts.plan doc-schema).
+# Renders a long-form landscape video in English and Hindi with the same look, voice and music as the Shorts.
+on:
+  workflow_dispatch:
+    inputs:
+      plan_json:
+        description: "Documentary plan JSON (schema: python -m shorts.plan doc-schema). Empty = sample documentary plan"
+        type: string
+        default: ""
+      keep_in_repo:
+        description: "Also commit the videos to videos/<date>/ (they are large; normally they are only kept as workflow artifacts)"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Render only, do not upload"
+        type: boolean
+        default: false
+      langs:
+        description: "Languages to produce"
+        type: string
+        default: "en,hi"
+
+permissions:
+  contents: write   # to commit data/history.json (topic memory)
+
+concurrency:
+  group: documentary
+  cancel-in-progress: false
+
+jobs:
+  make-documentary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
+      # Optional repository variables (Settings > Secrets and variables > Actions > Variables)
+      YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
+      PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
+      PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
+      VOICES_DIR: ${{ github.workspace }}/.cache/voices
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: shorts/requirements.txt
+
+      - name: Install FFmpeg and fonts (English + Devanagari)
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core
+          fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
+
+      - name: Cache Piper voices
+        uses: actions/cache@v4
+        with:
+          path: .cache/voices
+          key: piper-${{ env.PIPER_VOICE_EN }}-${{ env.PIPER_VOICE_HI }}
+
+      - name: Install Python packages
+        run: pip install -r shorts/requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: shorts/explainer/package-lock.json
+
+      - name: Install the animation renderer (Playwright + headless Chromium)
+        working-directory: shorts/explainer
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Read the plan sent by Claude
+        env:
+          IN_PLAN: ${{ inputs.plan_json }}
+        run: |
+          if [ -n "$IN_PLAN" ]; then
+            printf '%s' "$IN_PLAN" > "$RUNNER_TEMP/plan.json"
+          else
+            echo "::warning::No plan_json given, using shorts/sample_documentary_plan.json"
+            cp shorts/sample_documentary_plan.json "$RUNNER_TEMP/plan.json"
+          fi
+          python -m shorts.plan validate-doc "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
+
+      - name: Render and publish
+        env:
+          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_DRY_RUN: ${{ inputs.dry_run }}
+          IN_KEEP: ${{ inputs.keep_in_repo }}
+        run: |
+          ARGS=(--plan-file "$RUNNER_TEMP/plan.json" --langs "$IN_LANGS")
+          if [ "$IN_DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
+          python -m shorts.documentary "${ARGS[@]}"
+
+      - name: Keep videos as a workflow artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentary-${{ github.run_number }}
+          path: |
+            output_documentary/*.mp4
+            output_documentary/*_youtube.txt
+            output_documentary/plan.json
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Save documentary history (and videos when asked)
+        if: always()
+        run: |
+          if [ -n "$(git status --porcelain data/ videos/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/ videos/
+            git commit -m "chore: save today's documentary [skip ci]"
+            git pull --rebase -q
+            git push
+          fi
