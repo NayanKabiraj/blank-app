@@ -29,6 +29,15 @@ const BACKDROP = {
 };
 
 const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+// Measured motion (SousekiL/vox-style-video, MIT, style/collage-motion 05-motion and 06-transitions):
+// prop pop-in per 12 fps step (+28 % peak), stamp spring per frame, whip-pan offsets in % of width.
+const POP = [0.28, 0.81, 1.21, 1.28, 1.17, 1.07, 1.0, 0.98, 1.0];
+const STAMP = [0.78, 1.26, 1.15, 0.95, 0.92, 0.97, 1.0];
+const WHIP_OUT = [-0.18, -0.10, -0.025, -0.006, 0];        // last 5 drawings before a cut (index = drawings left)
+const popAt = dt => (dt < 0 ? 0 : POP[Math.min(POP.length - 1, Math.floor(dt * 12))]);
+const stampAt = dt => (dt < 0 ? 1 : STAMP[Math.min(STAMP.length - 1, Math.floor(dt * 30))]);
+const expoOut = x => (x >= 1 ? 1 : 1 - Math.pow(2, -10 * x));
+const ATTN = '#FFF200';                                     // the one attention colour: highlighter yellow
 const lerp = (a, b, k) => a + (b - a) * k;
 const easeOutBack = x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
 const easeOutCubic = x => 1 - Math.pow(1 - x, 3);
@@ -37,6 +46,7 @@ const hash = s => { let h = 7; for (const c of s) h = (h * 31 + c.charCodeAt(0))
 const rnd = n => { const x = Math.sin(n * 12.9898 + 78.233) * 43758.5453; return x - Math.floor(x); };
 
 let cfg, pal, ctx, bg, clouds, segs = [], T = 0, strokeId = 0, kindOfBg = 'room';
+const segsPhoto = {}, segsBg = {}, segsKind = {};
 
 // ------------------------------------------------------------------ pen: clean ink strokes
 // pts: [[x,y],...]. o: {close, w, color, fill, p (draw-on progress 0..1), amp}
@@ -365,7 +375,7 @@ function drawPerson(x, ground, pose, lift, talk) {
     ctx.stroke(); }
   ctx.restore();
   if (face === 'shock') for (const k of [-1, 1]) pen([[hc[0] + k * 92, hc[1] - 70], [hc[0] + k * 116, hc[1] - 96]], { w: 7, color: pal[0] });
-  if (face === 'hmm') { ctx.save(); ctx.fillStyle = kindOfBg === 'space' ? '#fff8e8' : INK; ctx.font = '900 64px sans-serif'; ctx.fillText('?', hc[0] + 84, hc[1] - 70 + 5 * Math.sin(t * 4)); ctx.restore(); }
+  if (face === 'hmm') { ctx.save(); ctx.fillStyle = (segs.length && segsKind[segs.findIndex(x => T >= x.start && T < x.end)] === 'space') ? '#fff8e8' : INK; ctx.font = '900 64px sans-serif'; ctx.fillText('?', hc[0] + 84, hc[1] - 70 + 5 * Math.sin(t * 4)); ctx.restore(); }
   // front arm on top
   const armR = limbPts(at(sh, 0, 30), P.aR, UA, FA);
   tube(armR, 30, SHIRT); hand(armR[2]);
@@ -386,13 +396,20 @@ const fmt = (v, d, commas) => commas ? v.toLocaleString('en-US', { minimumFracti
 
 // ------------------------------------------------------------------ segments
 function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-const HOME = { title: 270, keyword: 260, stat: 250, steps: 170, compare: 220 };
+const HOME = { title: 270, keyword: 260, stat: 250, steps: 170, compare: 220, flow: 225, race: 225, build: 225, cycle: 225 };
+const DIAGRAM_OK = { flow: g => g.items?.length >= 2, build: g => g.items?.length >= 2, cycle: g => g.items?.length >= 3,
+                     race: g => g.items?.length === 2 && g.values?.length === 2 && Math.min(...g.values) > 0 };
 
 function buildSegment(seg, i, all) {
   const g = seg.graphic, kind = g.kind;
   const card = el('div', 'card'); card.style.display = 'none';
   const s = { ...seg, g, kind, card, i, last: i === all.length - 1, home: HOME[kind] ?? 270 };
-  const headline = (txt, size) => { const h = el('div', 'head', txt); if (size) h.style.fontSize = size; card.append(h); return h; };
+  const headline = (txt, size) => {
+    const h = el('div', 'head'); if (size) h.style.fontSize = size;
+    const mk = el('span', 'mk'); s.words = [];
+    txt.split(' ').forEach((w, j) => { const sp = el('span', 'w', w); mk.append(sp); if (j < txt.split(' ').length - 1) mk.append(document.createTextNode(' ')); s.words.push(sp); });
+    h.append(mk); s.mark = mk; card.append(h); return h;
+  };
   if (kind === 'stat' && parseNumber(g.headline)) {
     s.num = parseNumber(g.headline);
     s.big = el('div', 'big'); s.big.style.color = pal[0]; card.append(s.big);
@@ -412,6 +429,10 @@ function buildSegment(seg, i, all) {
     card.append(row);
     const vals = g.values?.length === 2 && Math.max(...g.values) > 0 ? g.values : [1, 1];
     s.bars = vals.map(v => v / Math.max(...vals));
+  } else if (DIAGRAM_OK[kind] && DIAGRAM_OK[kind](g)) {
+    headline(g.headline, '70px');
+    if (g.caption) card.append(el('div', 'cap', g.caption));
+    s.diagram = kind; s.labels = g.items.slice(0, 4); s.vals = g.values || [];
   } else {
     const h = headline(g.headline, kind === 'title' ? '88px' : '80px');
     if (kind === 'keyword') h.style.color = pal[0];
@@ -423,13 +444,17 @@ function buildSegment(seg, i, all) {
   if (kind === 'title' && i === 0) k.push([s.start, 'shock'], [s.start + 1.3, 'point']);
   else if (s.last) k.push([s.start, 'wave'], [s.start + INTRO + hold * 0.6, 'cheer']);
   else if (kind === 'title') k.push([s.start, 'point']);
-  else if (kind === 'keyword') k.push([s.start, 'think'], [mid, 'point']);
-  else if (kind === 'stat') k.push([s.start, 'stand'], [s.start + 1.6, 'shock']);
+  else if (kind === 'keyword') k.push([s.start, 'think'], [s.hit ? Math.max(s.start + 0.4, s.hit - 0.25) : mid, 'point']);
+  else if (kind === 'stat') k.push([s.start, 'stand'], [s.hit ? Math.max(s.start + 0.4, s.hit - 0.15) : s.start + 1.6, 'shock']);
+  else if (s.diagram === 'race') k.push([s.start, 'point'], [s.hit ? Math.max(s.start + 0.4, s.hit - 0.15) : s.start + INTRO + hold * 0.6, 'shock']);
+  else if (s.diagram) k.push([s.start, 'point']);
   else if (kind === 'steps') k.push([s.start, 'point']);
   else if (kind === 'compare') k.push([s.start, 'point'], [s.start + INTRO + hold * 0.7, 'shrug']);
   else k.push([s.start, 'stand']);
   if (g.pose && POSES[g.pose]) k.splice(1, k.length, [s.start + Math.min(1.0, hold * 0.3), g.pose]);
   s.keys = k;
+  s.focus = s.prop ? [770, 960] : s.diagram ? [737, 990] : s.num ? [700, 1050] : null;
+  s.pushAt = s.hit ? s.hit - 0.15 : s.start + (s.end - s.start) * 0.45;
   if (i === 0) card.style.top = '470px'; // keep clear of the hook text shown in the first seconds
   document.getElementById('cards').append(card);
   return s;
@@ -485,13 +510,28 @@ function updateSegment(s, t) {
   const holdStart = s.start + INTRO, holdEnd = s.end - OUTRO;
   s.card.style.display = 'block';
   s.card.style.opacity = String(clamp(enter * 2) * exit);
-  s.card.style.transform = `translateY(${(1 - enter) * 40}px) scale(${0.85 + 0.15 * k})`;
+  // kazi: the main motion lands ~3 frames before the keyword; give it a visible extra kick
+  const pk = s.hit ? clamp(1 - Math.abs(t - (s.hit - 0.03)) / 0.2) : 0;
+  s.card.style.transform = `translateY(${(1 - enter) * 40}px) scale(${(0.85 + 0.15 * k) * (1 + 0.05 * pk)})`;
+  if (s.words) s.words.forEach((w, j) => {
+    const a = clamp((u - 0.12 - j * 0.1) / 0.1);
+    w.style.opacity = String(a); w.style.display = 'inline-block';
+    w.style.transform = `translateY(${(1 - a) * 18}px)`;
+  });
+  if (s.mark && (s.kind === 'keyword' || s.kind === 'title' || s.diagram)) {
+    const m0 = s.hit ? Math.max(s.start + 0.3, s.hit - 0.35) : s.start + 0.7;
+    const mp = expoOut(clamp((t - m0) / 0.35));
+    s.mark.style.backgroundSize = `${mp * 100}% 44%`;
+  }
   const fig = figureAt(s, t);
+  if (s.diagram) drawDiagram(s, t, u, exit, pk);
 
   if (s.num) {
-    const p = s.num.isYear ? 1 : easeOutCubic(clamp(u / 1.4));
+    const c0 = s.hit ? Math.max(s.start, s.hit - 1.5) : s.start, cu = t - c0;
+    const p = s.num.isYear ? 1 : easeOutCubic(clamp(cu / 1.4));
     s.big.textContent = s.num.prefix + fmt(s.num.value * p, s.num.decimals, s.num.commas);
-    const coins = Math.ceil(clamp(easeOutCubic(clamp(u / 1.4))) * 8);
+    s.big.style.transform = `scale(${stampAt(t - (c0 + 1.4))})`;
+    const coins = Math.ceil(clamp(easeOutCubic(clamp(cu / 1.4))) * 8);
     for (let c = 0; c < coins; c++) { ellipse(780 + Math.sin(c * 2.1) * 8, GROUND - 22 - c * 34, 92, 24, { fill: c % 2 ? '#f6c445' : '#ffd166', w: 6, p: exit }); }
     if (u > 1.5) for (let j = 0; j < 4; j++) { const a = -Math.PI / 2 + (j - 1.5) * 0.5; pen([[780 + Math.cos(a) * 130, GROUND - 330 + Math.sin(a) * 60], [780 + Math.cos(a) * 165, GROUND - 330 + Math.sin(a) * 90]], { w: 7, color: pal[0], p: clamp((u - 1.5) / 0.3) * exit }); }
   }
@@ -523,10 +563,123 @@ function updateSegment(s, t) {
   const talk = speaking ? clamp(0.5 + 0.5 * Math.sin(t * 15)) * clamp(0.55 + 0.45 * Math.sin(t * 4.7 + s.i)) : 0;
   const person = drawPerson(fig.x, s.pads && fig.onPad >= 0 ? GROUND - 16 : GROUND, pose, fig.lift, talk);
   if (s.prop) {
-    const bk = easeOutBack(clamp((u - 0.1) / 0.5)) * easeInOut(exit);
+    const b0 = s.hit ? Math.max(s.start + 0.05, s.hit - 0.6) : s.start + 0.1;
+    const bk = popAt(t - b0) * easeInOut(exit) * (1 + 0.07 * pk);
     bubble(770, 960, 180, bk, s.kind === 'keyword' || (s.kind === 'title' && s.i === 0) ? person.head : null, s.prop, u, exit);
     if (s.kind === 'title') for (let j = 0; j < 5; j++) { const a = -2.6 + j * 0.42; pen([[770 + Math.cos(a) * 200, 960 + Math.sin(a) * 200], [770 + Math.cos(a) * 236, 960 + Math.sin(a) * 236]], { w: 7, color: pal[0], p: clamp((u - 0.6 - j * 0.08) / 0.3) * exit }); }
   }
+}
+
+
+// ------------------------------------------------------------------ animated diagrams on an easel board
+// Visual grammars from the canvas-explainer-videos skill (pipeline, A/B comparison, progressive
+// build, state loop) with progressive disclosure from iart's diagram-animation skill:
+// nodes, then edges, then labels; the active element is highlighted, the rest dimmed.
+const BOARD = { x: 430, y: 755, w: 615, h: 470 };
+function fitText(str, x, y, maxW, size, color, align = 'left', weight = 800) {
+  let f = size;
+  ctx.font = `${weight} ${f}px "Noto Sans", "Noto Sans Devanagari", sans-serif`;
+  while (f > 18 && ctx.measureText(str).width > maxW) { f -= 2; ctx.font = `${weight} ${f}px "Noto Sans", "Noto Sans Devanagari", sans-serif`; }
+  ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = 'middle'; ctx.fillText(str, x, y);
+}
+function drawBoard(k) {
+  const { x, y, w, h } = BOARD;
+  ctx.save(); ctx.translate(x + w / 2, y + h); ctx.scale(1, k); ctx.translate(-(x + w / 2), -(y + h));
+  tube([[x + 90, y + h - 10], [x + 60, GROUND + 4]], 12, '#8b6a4f'); tube([[x + w - 90, y + h - 10], [x + w - 60, GROUND + 4]], 12, '#8b6a4f');
+  ctx.fillStyle = 'rgba(40,25,15,0.18)'; ctx.fillRect(x + 10, y + 14, w, h);
+  poly([[x, y], [x + w, y], [x + w, y + h], [x, y + h]], '#8b6a4f', 6);
+  poly([[x + 16, y + 16], [x + w - 16, y + 16], [x + w - 16, y + h - 16], [x + 16, y + h - 16]], '#fffaf0', 4);
+  ctx.strokeStyle = 'rgba(59,42,32,0.06)'; ctx.lineWidth = 2;
+  for (let gx = x + 56; gx < x + w - 16; gx += 40) { ctx.beginPath(); ctx.moveTo(gx, y + 16); ctx.lineTo(gx, y + h - 16); ctx.stroke(); }
+  for (let gy = y + 56; gy < y + h - 16; gy += 40) { ctx.beginPath(); ctx.moveTo(x + 16, gy); ctx.lineTo(x + w - 16, gy); ctx.stroke(); }
+  ctx.restore();
+}
+function dot(x, y, r, fill, glow = 0) {
+  ctx.save(); if (glow) { ctx.shadowColor = fill; ctx.shadowBlur = glow; }
+  ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fillStyle = fill; ctx.fill(); ctx.restore();
+}
+function drawDiagram(s, t, u, exit, pk) {
+  const bk = Math.min(1.12, popAt(u - 0.05)) * easeInOut(exit);
+  if (bk <= 0.01) return;
+  drawBoard(bk);
+  if (bk < 0.6) return;
+  const { x: BX, y: BY, w: BW, h: BH } = BOARD;
+  const t0 = s.start + INTRO * 0.8, D = Math.max(0.8, s.end - OUTRO - t0);
+  const L = s.labels, n = L.length;
+  ctx.save(); ctx.globalAlpha = clamp(exit * 1.5);
+  if (s.diagram === 'flow') { // pipeline: things move along the chain
+    const ys = L.map((_, j) => BY + 78 + j * ((BH - 156) / Math.max(1, n - 1)));
+    const cx = BX + 100;
+    L.forEach((lab, j) => {
+      const on = t >= t0 + (j * D) / (n + 0.6);
+      const a = clamp((t - (t0 + (j * D) / (n + 0.6))) / 0.35);
+      if (j < n - 1) { // edge draws on after the next node appears, then carries particles
+        const e0 = t0 + ((j + 1) * D) / (n + 0.6);
+        const ep = clamp((t - e0 + 0.25) / 0.45);
+        if (ep > 0) {
+          pen([[cx, ys[j] + 40], [cx, ys[j] + 40 + (ys[j + 1] - ys[j] - 80) * ep]], { w: 7, color: '#b9a796', amp: 0 });
+          if (ep >= 1) for (let q = 0; q < 4; q++) {
+            const f = ((t * 0.9 + q / 4) % 1), py = ys[j] + 40 + (ys[j + 1] - ys[j] - 80) * f;
+            dot(cx, py, 12, pal[0], 12);
+          }
+        }
+      }
+      if (a <= 0) return;
+      const last = t >= t0 + ((j + 1) * D) / (n + 0.6);
+      const active = on && (!last || j === n - 1);
+      const r = 38 * easeOutBack(a) * (active ? 1 + 0.08 * pk : 1);
+      blob(cx, ys[j], r, r, active ? pal[0] : '#efe3cf', 0, 5);
+      fitText(String(j + 1), cx, ys[j] + 2, 60, 34, active ? '#ffffff' : INK, 'center', 900);
+      ctx.save(); ctx.globalAlpha *= clamp((t - (t0 + (j * D) / (n + 0.6)) - 0.15) / 0.3);
+      fitText(lab, cx + 62, ys[j], BW - 190, 40, active ? INK : '#8a7666', 'left', active ? 900 : 700);
+      ctx.restore();
+    });
+  } else if (s.diagram === 'race') { // A/B comparison with a countable difference
+    const vmax = Math.max(...s.vals), x0 = BX + 50, x1 = BX + BW - 120, len = x1 - x0, gap = 0.32;
+    L.forEach((lab, j) => {
+      const y = BY + 140 + j * 200, col = j ? pal[1] : pal[0];
+      const speed = Math.max(4, 420 * s.vals[j] / vmax), ts = t0 + 0.3;
+      fitText(lab, x0, y - 62, BW - 120, 40, INK, 'left', 900);
+      pen([[x0, y], [x1, y]], { w: 6, color: '#cdbfae', amp: 0 });
+      pen([[x1 + 6, y - 34], [x1 + 6, y + 34]], { w: 7, color: INK, amp: 0 });
+      const m = Math.floor((t - ts) / gap);
+      for (let q = Math.max(0, m - 40); q <= m; q++) {
+        const px = x0 + speed * (t - (ts + q * gap));
+        if (px >= x0 && px <= x1) dot(px, y, 15, col, 10);
+      }
+      const arrived = t < ts ? 0 : Math.max(0, Math.floor((t - ts - len / speed) / gap) + 1);
+      blob(x1 + 62, y, 46 * (1 + 0.1 * pk), 40 * (1 + 0.1 * pk), col, 0, 5);
+      fitText(String(arrived), x1 + 62, y + 2, 80, 38, '#ffffff', 'center', 900);
+    });
+  } else if (s.diagram === 'build') { // progressive build: one layer at a time
+    L.forEach((lab, j) => {
+      const at = t0 + (j * D) / (n + 0.4), a = clamp((t - at) / 0.45);
+      if (a <= 0) return;
+      const top = t >= at && (j === n - 1 || t < t0 + ((j + 1) * D) / (n + 0.4));
+      const hgt = Math.min(92, (BH - 90) / n - 12), y = BY + BH - 40 - (j + 1) * (hgt + 12) - (1 - easeOutBack(a)) * 160;
+      const w = BW - 150 - j * 20, x = BX + (BW - w) / 2;
+      ctx.save(); ctx.globalAlpha *= clamp(a * 2);
+      poly([[x, y], [x + w, y], [x + w, y + hgt], [x, y + hgt]], top ? pal[0] : (j % 2 ? '#e8d9c2' : '#f3e7d3'), 5);
+      fitText(lab, x + w / 2, y + hgt / 2 + 2, w - 30, 38, top ? '#ffffff' : INK, 'center', 900);
+      ctx.restore();
+    });
+  } else if (s.diagram === 'cycle') { // state loop with a travelling token
+    const cx = BX + BW / 2, cy = BY + BH / 2, R = 160, ring = clamp((t - t0) / 0.8);
+    const ang = j => -Math.PI / 2 + (j * Math.PI * 2) / n;
+    pen(arcPts(cx, cy, R, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * ring, 60), { w: 7, color: '#cdbfae', amp: 0 });
+    const lap = Math.max(2.4, D / 1.5), ta = ang(0) + (Math.max(0, t - t0 - 0.6) / lap) * Math.PI * 2;
+    const activeIdx = Math.floor((((ta + Math.PI / 2) / (Math.PI * 2)) % 1) * n + 1e-6) % n;
+    if (t > t0 + 0.6) dot(cx + Math.cos(ta) * R, cy + Math.sin(ta) * R, 20, pal[0], 16);
+    L.forEach((lab, j) => {
+      const a = clamp((t - t0 - j * 0.25) / 0.4);
+      if (a <= 0) return;
+      const px = cx + Math.cos(ang(j)) * R, py = cy + Math.sin(ang(j)) * R, on = t > t0 + 0.6 && j === activeIdx;
+      const w = 220 * easeOutBack(a) * (on ? 1 + 0.06 * pk : 1), h = 66 * easeOutBack(a);
+      poly([[px - w / 2, py - h / 2], [px + w / 2, py - h / 2], [px + w / 2, py + h / 2], [px - w / 2, py + h / 2]], on ? pal[0] : '#efe3cf', 5);
+      fitText(lab, px, py + 2, w - 24, 34, on ? '#ffffff' : INK, 'center', 900);
+    });
+  }
+  ctx.restore();
 }
 
 // ------------------------------------------------------------------ public API
@@ -538,22 +691,97 @@ window.setup = async (config) => {
   document.body.lang = cfg.lang === 'hi' ? 'hi' : 'en';
   ctx = document.getElementById('cv').getContext('2d');
   kindOfBg = cfg.backdrop || BACKDROP[cfg.niche] || 'room';
-  bg = paintBackground(kindOfBg); clouds = paintClouds();
+  // a different backdrop for every scene: the scene's stock photo if there is one, otherwise
+  // the painted sets in rotation, starting with the niche's own
+  const order = [kindOfBg, ...['room', 'town', 'nature', 'classical', 'space'].filter(k => k !== kindOfBg)];
+  const painted = {};
+  const paint = k => (painted[k] = painted[k] || paintBackground(k));
+  bg = paint(kindOfBg); clouds = paintClouds(); makeGrain();
+  let n = 0;
+  await Promise.all(cfg.segments.map(async (sg, i) => {
+    if (!sg.photo) return;
+    const img = new Image(); img.src = sg.photo;
+    try { await img.decode(); segsPhoto[i] = img; } catch (e) { /* fall back to painted */ }
+  }));
+  cfg.segments.forEach((sg, i) => { segsKind[i] = segsPhoto[i] ? kindOfBg : order[(n++) % order.length]; segsBg[i] = paint(segsKind[i]); });
   segs = cfg.segments.map((s, i, all) => buildSegment(s, i, all));
   await document.fonts.ready;
 };
+
+// Camera that never freezes: whip-pan in after each cut, slow drift, a cut-in push to the
+// scene's focus on the keyword beat, and a whip-pan out before the next cut.
+function cameraAt(s, t) {
+  const u = t - s.start, left = s.end - t;
+  let dx = 0;
+  const inStep = Math.floor(u * 12);
+  if (s.i > 0 && inStep < 10) dx += 0.392 * W * Math.pow(0.6, inStep + 1);
+  const outStep = Math.floor(left * 12);
+  if (!s.last && outStep < WHIP_OUT.length) dx += WHIP_OUT[outStep] * W;
+  const drift = 0.03 * clamp(u / Math.max(1, s.end - s.start));
+  const push = s.focus ? expoOut(clamp((t - s.pushAt) / 0.5)) * clamp(left / 0.25) : 0;
+  const z = 1 + drift + 0.16 * push;
+  const fx = s.focus ? lerp(W / 2, s.focus[0], push) : W / 2, fy = s.focus ? lerp(1050, s.focus[1], push) : 1050;
+  return { dx, z, fx, fy };
+}
+let GRAIN = [], VIGNETTE;
+function makeGrain() {
+  for (let k = 0; k < 4; k++) {
+    const c = document.createElement('canvas'); c.width = 270; c.height = 480;
+    const g = c.getContext('2d'), img = g.createImageData(270, 480);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = rnd(i * 0.37 + k * 9991), on = v > 0.5;
+      img.data[i] = img.data[i + 1] = img.data[i + 2] = on ? 255 : 40;
+      img.data[i + 3] = Math.floor(Math.abs(v - 0.5) * 2 * 22);
+    }
+    g.putImageData(img, 0, 0); GRAIN.push(c);
+  }
+  VIGNETTE = document.createElement('canvas'); VIGNETTE.width = W; VIGNETTE.height = H;
+  const vg = VIGNETTE.getContext('2d'), gr = vg.createRadialGradient(W / 2, H * 0.52, H * 0.3, W / 2, H * 0.52, H * 0.78);
+  gr.addColorStop(0, 'rgba(40,20,10,0)'); gr.addColorStop(1, 'rgba(40,20,10,0.32)');
+  vg.fillStyle = gr; vg.fillRect(0, 0, W, H);
+}
+
+const FLOOR_Y = 1150;
+function drawBackdrop(s, t) {
+  const i = s ? s.i : 0, paintedBg = segsBg[i] || bg, img = segsPhoto[i];
+  ctx.drawImage(paintedBg, 0, 0);
+  if (!img) return;
+  // stock photo behind the presenter: cover the wall area, slow Ken Burns with alternating pan
+  const u = s ? clamp((t - s.start) / Math.max(1, s.end - s.start)) : 0;
+  const kb = 1.04 + 0.1 * u, pan = (i % 2 ? 1 : -1) * 40 * (u - 0.5);
+  const sc = Math.max(W / img.width, (FLOOR_Y + 60) / img.height) * kb;
+  const iw = img.width * sc, ih = img.height * sc;
+  ctx.save();
+  ctx.beginPath(); ctx.rect(-200, -200, W + 400, FLOOR_Y + 200); ctx.clip();
+  ctx.drawImage(img, (W - iw) / 2 + pan, (FLOOR_Y + 60 - ih) / 2, iw, ih);
+  // warm grade so the photo sits with the cartoon, and a fade into the floor
+  ctx.fillStyle = 'rgba(246,226,196,0.20)'; ctx.fillRect(-200, -200, W + 400, FLOOR_Y + 200);
+  const g = ctx.createLinearGradient(0, FLOOR_Y - 220, 0, FLOOR_Y);
+  g.addColorStop(0, 'rgba(60,35,20,0)'); g.addColorStop(1, 'rgba(60,35,20,0.45)');
+  ctx.fillStyle = g; ctx.fillRect(-200, FLOOR_Y - 220, W + 400, 220);
+  ctx.restore();
+  ctx.strokeStyle = INK; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(-200, FLOOR_Y); ctx.lineTo(W + 200, FLOOR_Y); ctx.stroke();
+}
 
 window.renderFrame = (t) => {
   T = t; strokeId = 0;
   const cur = segs.find(s => t >= s.start && t < s.end) || segs[segs.length - 1];
   segs.forEach(s => (s.card.style.display = 'none'));
-  const push = cur ? clamp((t - cur.start) / (cur.end - cur.start)) : 0, z = 1 + push * 0.03;
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.drawImage(bg, 0, 0);
-  if (kindOfBg === 'nature' || kindOfBg === 'town' || kindOfBg === 'classical')
+  const cam = cur ? cameraAt(cur, t) : { dx: 0, z: 1, fx: W / 2, fy: 1050 };
+  // background: slower parallax, slightly oversized so whips never show an edge
+  const bz = 1.22 + (cam.z - 1) * 0.4;
+  ctx.setTransform(bz, 0, 0, bz, W / 2 * (1 - bz) + cam.dx * 0.35, 1050 * (1 - bz));
+  drawBackdrop(cur, t);
+  const ck = cur ? segsKind[cur.i] : kindOfBg;
+  if (!(cur && segsPhoto[cur.i]) && (ck === 'nature' || ck === 'town' || ck === 'classical'))
     for (let i = 0; i < 2; i++) ctx.drawImage(clouds, ((i * 640 + t * 14) % 1600) - 520, 200 + i * 120, 520 * (0.8 + i * 0.3), 200 * (0.8 + i * 0.3));
-  ctx.setTransform(z, 0, 0, z, W / 2 * (1 - z), 1050 * (1 - z));
+  ctx.setTransform(cam.z, 0, 0, cam.z, cam.fx * (1 - cam.z) + (W / 2 - cam.fx) * (cam.z - 1) * 0.5 + cam.dx, cam.fy * (1 - cam.z));
   if (cur) updateSegment(cur, t);
+  // film texture on top: grain re-rolls every 3 frames (on the 10 fps paper clock), plus a warm vignette
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  ctx.imageSmoothingEnabled = false; ctx.drawImage(GRAIN[Math.floor(t * 10) % GRAIN.length], 0, 0, W, H); ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(VIGNETTE, 0, 0);
+  document.getElementById('cards').style.transform = `translateX(${cam.dx}px)`;
   document.getElementById('fill').style.width = `${clamp(t / cfg.total) * 100}%`;
 };
 window.sceneReady = true;

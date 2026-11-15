@@ -30,7 +30,42 @@ code. There's no AI image or video generation, and no copied characters.
 - Other styles are still available through the `visual_style` workflow input or the
   `VISUAL_STYLE` variable: `stickman`, `cartoon3d`, `motion` and `footage`.
 
-## Writing a plan for this style
+## Stock photos and changing backdrops
+
+Every scene gets its own backdrop, so the picture changes on every cut:
+- **Stock photo** (`shorts/photos.py`): the scene's English `visual_query` is searched on Pexels
+  (photos, when `PEXELS_API_KEY` is set) and then Wikimedia Commons (no key). The photo fills the
+  wall area behind the presenter with a slow Ken Burns zoom and alternating pan, a warm grade, and
+  a fade into the painted floor. Titles that suggest people, faces, politics or news are skipped.
+  Every photo's credit is added to the video description. Turn this off with `STOCK_PHOTOS=off`.
+- **No photo found:** the painted sets rotate (the niche's own first, then room, town, nature,
+  classical, space), so consecutive scenes still look different.
+- Write `visual_query` as 2–3 concrete, photographable English words that match the line
+  ("frost window", "aluminium pan", "wood grain"), not abstract ideas.
+
+## Engagement layer (measured Vox-style motion)
+
+Numbers come from SousekiL/vox-style-video (MIT), which measured real Vox and collage videos
+frame by frame, plus the pacing rules of Anil-matcha/vox-ai-motion-graphics-generator (hook in
+3 seconds or less, a new shot every 4–6 seconds, wide shot then close cut-in, several moving
+elements per shot):
+- **Camera never freezes:** slow push-in (+3 %) through every scene, then a **cut-in** that
+  zooms 16 % onto the scene's focus (bubble, board or coins) on the keyword beat, or about 45 % of
+  the way in if there's no keyword. Each scene is a wide shot followed by a close shot.
+- **Whip-pan cuts:** the last 5 drawings before a cut slide out (−0.6 → −18 % of the width), and
+  the next scene enters from about 40 % behind, decaying ×0.6 per drawing. The background moves
+  at 35 % for parallax. There are no cross-fades, and the cuts are silent.
+- **Pop-in table** for bubbles and boards: 0.28 → 0.81 → 1.21 → 1.28 → 1.17 → 1.07 → 1.0 per
+  1/12 s. The stat number lands with the stamp spring (0.78 → 1.26 → … → 1.0 per frame).
+  Text never overshoots: headline words stamp in one every 0.1 s.
+- **One attention colour:** a highlighter-yellow (#FFF200) marker sweeps under the headline on
+  the keyword beat. The same yellow colours the keyword in the captions.
+- **Texture:** paper grain that re-rolls 10 times a second, plus a warm vignette.
+- **Sound effects** (`shorts/sfx.py`, synthesized with numpy): a pop when a bubble, board or
+  number lands, and a soft bell on the keyword, mixed under the voice. There's no sound on cuts
+  (the owner found a whoosh on every cut annoying). Turn them off with the variable `SFX=off`.
+
+
 
 | kind | what is drawn | the presenter |
 |---|---|---|
@@ -39,6 +74,35 @@ code. There's no AI image or video generation, and no copied characters.
 | `stat` | a stack of gold coins that grows while the number counts up, then sparkle lines | stands, then is shocked |
 | `steps` | 2–4 round floor tiles; the active one turns the accent colour | hops from tile to tile as each step lights up in the card |
 | `compare` | two classical columns that rise like bars (heights from `values`, equal if omitted) | points, then shrugs |
+
+| `flow` | an easel board: 2–4 numbered stages appear in turn, connectors draw on, then dots flow down them; the newest stage is highlighted | points at the board |
+| `race` | two lanes; dots stream along each at speeds from `values`, and a counter shows how many have arrived (a countable difference) | points, then is shocked on the keyword |
+| `build` | 2–4 layers drop in and stack, newest on top and highlighted | points at the board |
+| `cycle` | 3–4 states around a loop; a glowing token travels round and lights the state it passes | points at the board |
+
+### Pick a visual grammar (one per scene, prove one claim)
+
+From the `making-canvas-explainer-videos` skill (MIT): choose the shape that *proves* the line.
+| The line is about… | kind |
+|---|---|
+| a sequence: something moves from A to B to C | `flow` (or `steps`) |
+| a difference between two things | `race` when it's a speed or rate, `compare` when it's a size |
+| a magnitude | `stat` |
+| something that changes state, or a loop | `cycle` |
+| how parts combine into a whole | `build` |
+| a new term or object | `keyword` (bubble) |
+Prefer a countable comparison over another flow: viewers remember "4 arrived vs 0".
+**Animate the verb, not the noun** (kazi): "heat flows out" is dots moving, not a picture of a hand.
+
+### Keyword sync (from the kazi skill, MIT)
+
+Set `keyword` on a scene to the stressed word or short phrase in its narration (copied exactly).
+The scene's main motion lands about 3 frames before that word: the bubble pops, the number finishes
+counting, the presenter reacts, and the diagram gets an extra kick. The caption shows the word in
+yellow. Time is estimated from the word's position in the scene's own audio, which is accurate to
+a couple of frames for one or two short sentences, so keep scenes short. Use one keyword per
+scene, never on the first word, and pick the word that carries the meaning ("thousand",
+"trapped air"), not "the" or "it".
 
 - `prop`: `star, bulb, coin, planet, globe, phone, bank, rocket, brain, chip, heart, clock,
   gear, atom, book, magnet, cloud`. Pick one that stands for the line, and don't use the
@@ -82,3 +146,13 @@ placeholder tone. Afterwards, restore `videos/` with `git checkout -- videos/`.
   1290–1400 px). Characters stand at y 1255.
 - Keep every frame a pure function of `t`. Don't use `ctx.filter` per frame (it's slow in
   software rendering): paint expensive things once in `setup`.
+
+## Credits
+
+The diagram kinds, keyword timing and beat sheet adapt ideas (not code) from MIT-licensed skills:
+[syydaniel/kazi](https://github.com/syydaniel/kazi) (keyword-synced explainers),
+[junjie721/canvas-explainer-videos](https://github.com/junjie721/canvas-explainer-videos) (visual grammars,
+beat sheet), and [iart-ai/explainer-video-skills](https://github.com/iart-ai/explainer-video-skills)
+(progressive diagram reveal); measured motion, transitions and pacing from
+[SousekiL/vox-style-video](https://github.com/SousekiL/vox-style-video) (MIT) and
+[Anil-matcha/vox-ai-motion-graphics-generator](https://github.com/Anil-matcha/vox-ai-motion-graphics-generator) (ideas only).

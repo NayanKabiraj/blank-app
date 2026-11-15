@@ -42,6 +42,10 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      (6 words max) and `scenes` (6–9 of them, each with `text`, `graphic` and `visual_query`).
    - Length: the English narration is 120–140 words in total and the Hindi narration is
      105–125 words, which gives 45–55 seconds of speech.
+   - Before writing, state the learning goal in one sentence ("after this the viewer can answer:
+     ___"). Every scene proves one claim that serves it; cut anything that doesn't.
+   - Pace the narration at about 2–2.4 English words per second (the word limits below already
+     fit this). Don't write at the limit: it sounds rushed.
    - Follow the explainer structure:
      1. **Hook** (scene 1): the question, or a surprising claim that makes viewers want the
         answer, in under 3 seconds. `graphic.kind`: `title`.
@@ -52,10 +56,15 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
         `stat`.
      5. **Make it click** (1 scene): an everyday analogy or a before/after comparison.
         `compare` or `keyword`.
+     If there's room, add a **boundary** line before the close: where the rule stops working
+        ("on a hot day it flips"). It stops viewers over-generalising.
      6. **Close** (last scene): a one-line takeaway, then "Follow to understand one new
         thing every day" (Hindi: "रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें"). `title`.
    - Explain like a good teacher: plain words, define any technical term the first time
      you use it, and no jargon left unexplained.
+   - Set `keyword` on most scenes: the stressed word or short phrase in that scene's `text`,
+     copied exactly (in the Hindi scenes, a Hindi word from the Hindi text). The animation lands
+     on it and the caption highlights it. One per scene, never the first word.
    - Use short, natural spoken sentences. Write numbers and years as words, for example
      "nineteen sixty-nine". No emojis, and no hashtags in the narration.
    - Write the Hindi in natural everyday spoken Hindi in **Devanagari** script, adapting
@@ -72,6 +81,15 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      - `keyword`: a key term in `headline` with a one-line explanation in `caption`.
      - `steps`: a process, with a short `headline` and 2–4 `items` in order.
      - `compare`: two things, with exactly 2 `items` and optionally 2 `values` drawn as bars.
+     - Animated diagrams, drawn on a board the presenter points at (prefer these for the
+       mechanism, since they *show* the process happening instead of naming it):
+       - `flow`: 2–4 `items` in a chain; dots flow along the connectors (A moves to B moves to C).
+       - `race`: exactly 2 `items` and 2 positive `values` (relative speeds or rates, from your
+         verified numbers); dots race along two lanes and counters show how many arrived.
+       - `build`: 2–4 `items` that stack up as layers (how parts combine).
+       - `cycle`: 3–4 `items` around a loop with a token travelling round (cycles, feedback).
+       See the "Pick a visual grammar" table in the `cartoon2d-explainer` skill. Use at least one
+       diagram per video, and animate the verb ("heat flows out" means moving dots).
      For `title`, `keyword` and `stat` scenes, also set `prop` to the doodle (3D object in
      `cartoon3d`) that best
      stands for the idea: one of `star, bulb, coin, planet, globe, phone, bank, rocket,
@@ -95,7 +113,10 @@ fixed set of explainer niches (`shorts/niches.py`) and rotates through them.
      or from nearby, in one sentence. Don't write negations like "no text" (the model reads
      them as requests), and never mention screens, dashboards, spacecraft cockpits, signs
      or anything with a display, because the model fills those with made-up text.
-   - `visual_query` is always 2–3 concrete **English** keywords for stock footage. The
+   - `visual_query` is always 2–3 concrete **English** keywords. In the default cartoon2d style it
+     finds the **stock photo shown behind the presenter** in that scene, so make it match the line
+     and give each scene a different one.
+   - (Footage styles) `visual_query` is also used for stock footage. The
      footage comes from Pexels or Wikimedia Commons, so name things that are easy to film:
      scenery, nature, objects, animals, space imagery or time-lapses (for example
      `meteor timelapse`, `milky way timelapse`, `earth from orbit`, `ocean waves`). Never
