@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       format:
-        description: "shorts (default: the daily 45-55 second Shorts) or documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema)"
+        description: "shorts (default: the daily 45-55 second Shorts), documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema) or voicelab (voice samples, no video)"
         type: string
         default: "shorts"
       keep_in_repo:
@@ -83,7 +83,23 @@ jobs:
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
 
+      - uses: actions/setup-python@v5
+        if: ${{ inputs.format == 'voicelab' }}
+        with:
+          python-version: "3.11"
+
+      - name: Voice lab - generate Indic Parler-TTS samples
+        if: ${{ inputs.format == 'voicelab' }}
+        run: |
+          python -m venv "$RUNNER_TEMP/vl"
+          . "$RUNNER_TEMP/vl/bin/activate"
+          pip install -q --upgrade pip
+          pip install -q torch --index-url https://download.pytorch.org/whl/cpu
+          pip install -q soundfile "git+https://github.com/huggingface/parler-tts.git"
+          python shorts/voicelab_parler.py videos/voicelab
+
       - name: Read the plan sent by Claude
+        if: ${{ inputs.format != 'voicelab' }}
         env:
           IN_PLAN: ${{ inputs.plan_json }}
           IN_FORMAT: ${{ inputs.format || 'shorts' }}
@@ -98,6 +114,7 @@ jobs:
           python -m shorts.plan "$CHECK" "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
 
       - name: Render and publish
+        if: ${{ inputs.format != 'voicelab' }}
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
