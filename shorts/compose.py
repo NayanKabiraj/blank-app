@@ -1,5 +1,5 @@
-"""Assemble a vertical Short: voice-over + ducked background music + footage + captions.
-All rendering is done with FFmpeg (open source)."""
+"""Assemble a vertical Short: the code-drawn animation + voice-over + ducked background music +
+sound effects + hook line. Everything is mixed with FFmpeg (open source)."""
 from __future__ import annotations
 
 import logging
@@ -7,7 +7,7 @@ import subprocess
 import wave
 from pathlib import Path
 
-from . import ai_video, cartoon, config, motion, music, sfx, tts, visuals
+from . import animate, config, music, sfx, tts
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -79,26 +79,10 @@ def _ass_escape(t: str) -> str:
     return t.replace("\\", "").replace("{", "(").replace("}", ")").replace("\n", " ")
 
 
-def _highlight(chunk: str, kw: set) -> str:
-    """Escape a caption chunk and colour the scene's keyword words yellow (kazi: the keyword
-    changes colour as it is spoken)."""
-    if not kw:
-        return _ass_escape(chunk)
-    out = []
-    for w in chunk.split():
-        bare = w.strip(".,!?;:\"'()।").lower()
-        out.append("{\\c&H0000E5FF&}" + _ass_escape(w) + "{\\c&H00FFFFFF&}" if bare in kw else _ass_escape(w))
-    return " ".join(out)
-
-
-ART_STYLES = ("explainer", "cartoon2d", "stickman", "cartoon3d")
-
-
-def _captions(timeline, hook: str, lang: str, out: Path, words_per_chunk: int = 3, keywords=None, theme: str = ""):
+def _captions(hook: str, lang: str, out: Path):
     font = config.FONTS[lang]
-    explainer = theme == "explainer"   # the scene draws its own caption pills; only the hook line is burned in here
+    # the scene draws its own caption pills; only the hook line is burned in here
     hook_style = ("Style: Hook,{font},80,&H003C8AFF,&H003C8AFF,&H003A2313,&HA0000000,-1,0,0,0,100,100,0,0,3,20,0,8,60,60,120,1"
-                  if explainer else "Style: Hook,{font},84,&H0000E5FF,&H0000E5FF,&H00000000,&HA0000000,-1,0,0,0,100,100,0,0,3,18,0,8,60,60,260,1"
                   ).format(font=font)
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -108,7 +92,6 @@ WrapStyle: 0
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,{font},92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,-1,0,0,0,100,100,0,0,1,6,3,2,70,70,560,1
 {hook_style}
 
 [Events]
@@ -118,129 +101,19 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     if hook:
         lines.append(f"Dialogue: 1,{_ass_time(0)},{_ass_time(3.0)},Hook,,0,0,0,,"
                      f"{{\\fad(200,300)}}{_ass_escape(hook)}")
-    for k, (start, end, text) in enumerate([] if explainer else timeline):
-        kw = set((keywords[k] or "").lower().split()) if keywords and k < len(keywords) else set()
-        words = text.split()
-        chunks = [" ".join(words[i:i + words_per_chunk]) for i in range(0, len(words), words_per_chunk)]
-        weights = [max(1, len(c)) for c in chunks]
-        t, span = start, end - start
-        for c, wgt in zip(chunks, weights):
-            d = span * wgt / sum(weights)
-            lines.append(f"Dialogue: 0,{_ass_time(t)},{_ass_time(t + d)},Cap,,0,0,0,,"
-                         f"{{\\fscx92\\fscy92\\t(0,90,\\fscx100\\fscy100)}}{_highlight(c, kw)}")
-            t += d
     out.write_text(head + "\n".join(lines) + "\n", encoding="utf-8")
     return out
 
 
 # ---------------------------------------------------------------- video
-def _probe_duration(path: Path) -> float:
-    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                        "-of", "csv=p=0", str(path)], capture_output=True, text=True)
-    try:
-        return float(r.stdout.strip())
-    except ValueError:
-        return 0.0
-
-
-def _scene_clip(src: Path, duration: float, out: Path):
-    # Long source videos often open with titles or black frames: start a bit in
-    src_dur = _probe_duration(src)
-    offset = min(src_dur * 0.15, 8.0) if src_dur > duration + 6 else 0.0
-    vf = (f"scale={config.WIDTH}:{config.HEIGHT}:force_original_aspect_ratio=increase,"
-          f"crop={config.WIDTH}:{config.HEIGHT},setsar=1,fps={config.FPS},"
-          f"eq=brightness=-0.06:saturation=1.1,format=yuv420p")
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{offset:.2f}", "-stream_loop", "-1",
-          "-i", src, "-t", f"{duration:.3f}", "-vf", vf, "-an", "-c:v", "libx264",
-          "-preset", "veryfast", "-crf", "21", out])
-
-
-def _footage_track(script: LangScript, timeline, total: float, work: Path) -> list[str]:
-    """Stock footage per scene, concatenated into work/video.mp4. Returns footage credits."""
-    # Footage: each scene's clip runs until the next scene starts; last one to the end
-    used: set[str] = set()
-    clips, credits = [], []
-    for i, (start, _end, _t) in enumerate(timeline):
-        seg_start = 0.0 if i == 0 else start
-        seg_end = timeline[i + 1][0] if i + 1 < len(timeline) else total
-        dur = seg_end - seg_start
-        src, credit = visuals.fetch(script.scenes[i].visual_query, work / f"src_{i}.mp4", dur, used)
-        if credit:
-            credits.append(credit)
-        clip = work / f"clip_{i}.mp4"
-        _scene_clip(src, dur, clip)
-        clips.append(clip)
-    (work / "clips.txt").write_text("".join(f"file '{c.name}'\n" for c in clips))
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "clips.txt",
-          "-c", "copy", "video.mp4"], cwd=work)
-    return credits
-
-
-def _segments(timeline, total: float):
-    """(start, end) of each scene's picture: scene i shows until scene i+1 starts."""
-    return [(0.0 if i == 0 else start, timeline[i + 1][0] if i + 1 < len(timeline) else total)
-            for i, (start, _e, _t) in enumerate(timeline)]
-
-
-def _fit_clip(clip: Path, duration: float, out: Path):
-    """Scale/crop an AI clip to 1080x1920 and stretch (up to 1.6x slower) or loop it to fill."""
-    length = _probe_duration(clip) or duration
-    slow = min(1.6, max(1.0, duration / length))
-    vf = (f"setpts={slow:.3f}*PTS,scale={config.WIDTH}:{config.HEIGHT}:force_original_aspect_ratio=increase,"
-          f"crop={config.WIDTH}:{config.HEIGHT},setsar=1,fps={config.FPS},eq=brightness=-0.05,format=yuv420p")
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", clip, "-t", f"{duration:.3f}",
-          "-vf", vf, "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", out])
-
-
-def _ai_clips(script: LangScript, timeline, total: float, work: Path) -> list[str]:
-    """Swap the picture of up to AI_VIDEO_MAX_CLIPS scenes (those with an ai_prompt) for
-    AI-generated clips. Scenes without a clip keep their original picture."""
-    wanted = [i for i, sc in enumerate(script.scenes) if sc.ai_prompt][:ai_video.MAX_CLIPS]
-    if not wanted or not ai_video.enabled():
-        return []
-    segs = _segments(timeline, total)
-    clips, credits = {}, []
-    for i in wanted:
-        made = ai_video.make_clip(script.scenes[i].ai_prompt, work / "ai", i, segs[i][1] - segs[i][0])
-        if made:
-            clips[i] = made[0]
-            credit = f"Scene {i + 1}: AI-generated with {ai_video.CREDITS[made[1]]}"
-            credits.append(credit)
-    if not clips:
-        return []
-    pieces = []
-    for i, (s0, s1) in enumerate(segs):
-        piece = work / f"piece_{i}.mp4"
-        if i in clips:
-            _fit_clip(clips[i], s1 - s0, piece)
-        else:
-            _run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{s0:.3f}", "-i", "video.mp4",
-                  "-t", f"{s1 - s0:.3f}", "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
-                  "-r", str(config.FPS), "-pix_fmt", "yuv420p", piece.name], cwd=work)
-        pieces.append(piece)
-    (work / "pieces.txt").write_text("".join(f"file '{p.name}'\n" for p in pieces))
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", "pieces.txt",
-          "-c", "copy", "video_ai.mp4"], cwd=work)
-    (work / "video_ai.mp4").replace(work / "video.mp4")
-    return credits
-
-
-def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "") -> tuple[Path, list[str]]:
-    """Render one Short. Returns (video path, footage credits to add to the description)."""
+def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "") -> Path:
+    """Render one Short and return its path."""
     work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
     work.mkdir(parents=True, exist_ok=True)
     voice, timeline, voice_end = _voice_track(script, lang, work)
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
 
-    credits: list[str] = []
-    if config.VISUAL_STYLE in ART_STYLES:
-        credits = cartoon.render(script, lang, niche, timeline, total, work, config.VISUAL_STYLE)  # writes work/video.mp4
-    elif config.VISUAL_STYLE == "motion":
-        motion.render(script, lang, niche, timeline, total, work)
-    else:
-        credits = _footage_track(script, timeline, total, work)
-    if config.VISUAL_STYLE not in ART_STYLES:  # realistic AI clips would clash with the drawn look
-        credits += _ai_clips(script, timeline, total, work)
+    animate.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4 (the picture)
 
     # Music
     track = music.pick_track(mood)
@@ -250,14 +123,13 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     else:
         music_in = ["-i", music.synthesize(mood, total, work / "music.wav")]
 
-    # Sound effects on the animation's cues (whoosh on cuts, pop on reveals, bell on keywords)
+    # Sound effects on the animation's cues (pops on reveals, a bell on each keyword)
     sfx_wav = None
-    if config.VISUAL_STYLE in ("explainer", "cartoon2d") and config.SFX:
-        sfx_wav = sfx.build(work / "cartoon.json", total, work / "sfx.wav")
+    if config.SFX:
+        sfx_wav = sfx.build(work / "timeline.json", total, work / "sfx.wav")
     sfx_in = ["-i", sfx_wav.name] if sfx_wav else []
 
-    _captions(timeline, script.hook_text, lang, work / "captions.ass",
-              keywords=[sc.keyword for sc in script.scenes], theme=config.VISUAL_STYLE)
+    _captions(script.hook_text, lang, work / "captions.ass")
     out = work / f"short_{lang}.mp4"
     fade_out = total - 1.2
     filt = (
@@ -276,4 +148,4 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
           "-r", str(config.FPS), "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
           "-movflags", "+faststart", out.name], cwd=work)
     log.info("Rendered %s (%.1fs)", out, total)
-    return out, credits
+    return out

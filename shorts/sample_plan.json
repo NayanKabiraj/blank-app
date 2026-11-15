@@ -1,202 +1,242 @@
 {
-  "niche": "Space & Universe",
-  "topic": "Why a day on Venus is longer than its year",
-  "research_summary": "Candidates: (sample) Venus day vs year 31/40, Why the Moon has phases 27/40, How rockets steer 25/40. Winner: Venus, a number that breaks intuition. Sample plan used for offline testing.",
-  "mood": "mysterious",
+  "niche": "Human Body",
+  "topic": "Why do we get goosebumps?",
+  "research_summary": "Candidates: (1) goosebumps 36, (2) static shocks 35, (3) prices ending in 99 33. Winner: goosebumps; a surprising fur-reflex story with a clean mechanism. Sources: LiveScience, Wikipedia (Goose bumps). Roughly five million hair follicles (approximate).",
+  "mood": "upbeat",
   "english": {
-    "title": "A Day on Venus Is Longer Than Its Year",
-    "description": "Venus spins so slowly that one day there outlasts a whole Venus year. #space #venus #facts",
+    "title": "Why Do We Get Goosebumps? A Fur Reflex",
+    "description": "Goosebumps are a reflex built for fur you no longer have. #goosebumps #humanbody #science",
     "tags": [
-      "venus",
-      "space facts",
-      "planets",
-      "astronomy",
-      "solar system",
-      "science"
+      "goosebumps",
+      "human body",
+      "science explained",
+      "why do we get goosebumps",
+      "body facts",
+      "evolution",
+      "how the body works",
+      "animated explainer"
     ],
-    "hook_text": "This planet breaks time",
+    "hook_text": "Your body wants fur",
     "scenes": [
       {
-        "text": "On one planet, your birthday comes before tomorrow.",
-        "visual_query": "planet space orbit",
+        "text": "Your body keeps trying to fluff up fur you don't have. Weird, right?",
+        "keyword": "fluff up fur",
         "graphic": {
           "kind": "title",
-          "headline": "A day longer than a year",
-          "caption": "",
-          "prop": "star"
+          "headline": "Fluffing up fur?",
+          "prop": "cloud"
         }
       },
       {
-        "text": "That planet is Venus, our closest neighbour. It takes two hundred and twenty five Earth days to circle the Sun.",
-        "visual_query": "venus planet",
+        "text": "Ever felt goosebumps at a scary scene? Let's ask the obvious question.",
+        "keyword": "goosebumps",
         "graphic": {
-          "kind": "keyword",
-          "headline": "Venus",
-          "caption": "our closest neighbour",
-          "prop": "planet"
+          "kind": "chat",
+          "headline": "Quick chat",
+          "items": [
+            "Why do I get goosebumps?",
+            "Your skin sets off an alarm",
+            "An alarm? For what?",
+            "To raise hairs you barely have"
+          ]
         }
       },
       {
-        "text": "But it spins so slowly that one full day there lasts two hundred and forty three Earth days.",
-        "visual_query": "planet rotating slowly",
+        "text": "Skin feels cold. Brain sends an alarm down tiny nerves to one hair. Now it gets weird.",
+        "keyword": "alarm",
+        "graphic": {
+          "kind": "flow",
+          "headline": "The alarm",
+          "items": [
+            "Skin feels cold",
+            "Brain sends alarm",
+            "Nerve signal",
+            "Hair tugged"
+          ]
+        }
+      },
+      {
+        "text": "Think it's just in your head? Quick quiz: what actually pulls the hair up?",
+        "keyword": "pulls the hair up",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "What pulls the hair up?",
+          "items": [
+            "A tiny muscle",
+            "The wind",
+            "A hair gland"
+          ],
+          "answer": 0
+        }
+      },
+      {
+        "text": "Yes, a tiny muscle! You have about five million of them, squeezing at once.",
+        "keyword": "five million",
         "graphic": {
           "kind": "stat",
-          "headline": "243 days",
-          "caption": "one day on Venus"
+          "headline": "5 million",
+          "caption": "hair muscles, give or take"
         }
       },
       {
-        "text": "So a single day on Venus is longer than its entire year.",
-        "visual_query": "sunrise clouds timelapse",
+        "text": "Do you think it warms us up? That's the myth. In furry animals it traps warm air, like a puffer jacket.",
+        "keyword": "myth",
         "graphic": {
-          "kind": "compare",
-          "headline": "Venus: day vs year",
-          "caption": "",
+          "kind": "myth",
+          "headline": "Warmth?",
           "items": [
-            "Day",
-            "Year"
+            "It keeps humans warm",
+            "It's a leftover fur reflex"
+          ]
+        }
+      },
+      {
+        "text": "Who gets the fluffiest fur? Look how much more air a thick coat traps.",
+        "keyword": "traps",
+        "graphic": {
+          "kind": "bars",
+          "headline": "Air trapped",
+          "items": [
+            "Human",
+            "Cat",
+            "Husky",
+            "Arctic fox"
           ],
           "values": [
-            243,
-            225
+            1,
+            6,
+            9,
+            12
           ]
         }
       },
       {
-        "text": "And it spins backwards, so the Sun rises in the west and sets in the east.",
-        "visual_query": "sunset horizon",
+        "text": "So next time you shiver, which one feels like you? Tell me in the comments!",
+        "keyword": "comments",
         "graphic": {
           "kind": "keyword",
-          "headline": "Spins backwards",
-          "caption": "sunrise in the west",
-          "prop": "clock"
-        }
-      },
-      {
-        "text": "Scientists think a giant collision or its thick atmosphere slowed it down over billions of years.",
-        "visual_query": "asteroid impact space",
-        "graphic": {
-          "kind": "steps",
-          "headline": "Why so slow?",
-          "caption": "",
-          "items": [
-            "Giant collision",
-            "Thick atmosphere",
-            "Billions of years"
-          ]
-        }
-      },
-      {
-        "text": "Its clouds of sulfuric acid trap so much heat that the surface could melt lead.",
-        "visual_query": "volcano lava",
-        "graphic": {
-          "kind": "stat",
-          "headline": "465 °C",
-          "caption": "surface temperature",
-          "prop": "star"
-        }
-      },
-      {
-        "text": "Follow for one mind blowing fact every single day.",
-        "visual_query": "night sky stars",
-        "graphic": {
-          "kind": "title",
-          "headline": "Follow for a fact a day",
-          "caption": ""
+          "headline": "Fur you don't have",
+          "caption": "your leftover reflex",
+          "prop": "heart"
         }
       }
     ]
   },
   "hindi": {
-    "title": "शुक्र ग्रह पर एक दिन, एक साल से भी लंबा",
-    "description": "शुक्र इतना धीरे घूमता है कि वहाँ का एक दिन पूरे साल से लंबा होता है। #space #venus #facts",
+    "title": "रोंगटे खड़े क्यों होते हैं? फ़र वाला पुराना रिफ़्लेक्स",
+    "description": "रोंगटे खड़े होना उस फ़र का रिफ़्लेक्स है जो अब आपके पास नहीं। #रोंगटे #विज्ञान",
     "tags": [
-      "शुक्र ग्रह",
-      "venus",
-      "space facts hindi",
-      "अंतरिक्ष",
-      "science"
+      "रोंगटे खड़े क्यों होते हैं",
+      "goosebumps hindi",
+      "इंसानी शरीर",
+      "science in hindi",
+      "विज्ञान",
+      "evolution hindi",
+      "शरीर के राज़",
+      "animated explainer"
     ],
-    "hook_text": "यह ग्रह समय तोड़ देता है",
+    "hook_text": "शरीर को चाहिए फ़र",
     "scenes": [
       {
-        "text": "एक ऐसा ग्रह है जहाँ आपका जन्मदिन, कल से पहले आ जाता है।",
-        "visual_query": "planet space orbit",
+        "text": "आपका शरीर उस फ़र को फुलाता है जो आपके पास नहीं। अजीब है ना?",
+        "keyword": "फुलाता",
         "graphic": {
           "kind": "title",
-          "headline": "दिन, साल से लंबा",
-          "caption": "",
-          "prop": "star"
+          "headline": "फ़र फुलाता शरीर?",
+          "prop": "cloud"
         }
       },
       {
-        "text": "वो ग्रह है शुक्र। सूरज का एक चक्कर लगाने में इसे दो सौ पच्चीस दिन लगते हैं।",
-        "visual_query": "venus planet",
+        "text": "क्या डरावना सीन देखकर रोंगटे खड़े हुए हैं? तो सीधा सवाल पूछते हैं।",
+        "keyword": "रोंगटे खड़े",
         "graphic": {
-          "kind": "keyword",
-          "headline": "शुक्र ग्रह",
-          "caption": "हमारा सबसे क़रीबी पड़ोसी",
-          "prop": "planet"
+          "kind": "chat",
+          "headline": "छोटी बातचीत",
+          "items": [
+            "रोंगटे क्यों खड़े होते हैं?",
+            "त्वचा अलार्म बजाती है",
+            "अलार्म? किसलिए?",
+            "बाल खड़े करने के लिए"
+          ]
         }
       },
       {
-        "text": "लेकिन यह इतना धीरे घूमता है कि वहाँ एक दिन दो सौ तैंतालीस दिन का होता है।",
-        "visual_query": "planet rotating slowly",
+        "text": "त्वचा ठंड महसूस करती है। दिमाग़ नसों से अलार्म भेजता है, सीधे एक बाल तक।",
+        "keyword": "अलार्म",
+        "graphic": {
+          "kind": "flow",
+          "headline": "अलार्म का रास्ता",
+          "items": [
+            "त्वचा को ठंड",
+            "दिमाग़ का अलार्म",
+            "नस में संकेत",
+            "बाल पर खिंचाव"
+          ]
+        }
+      },
+      {
+        "text": "क्या लगता है, बाल को कौन खींचता है? छोटा सा क्विज़ है।",
+        "keyword": "क्विज़",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "बाल को कौन खींचता है?",
+          "items": [
+            "नन्ही मांसपेशी",
+            "हवा",
+            "ग्रंथि"
+          ],
+          "answer": 0
+        }
+      },
+      {
+        "text": "सही! नन्ही मांसपेशी। लगभग पचास लाख, एक साथ।",
+        "keyword": "पचास लाख",
         "graphic": {
           "kind": "stat",
-          "headline": "243 दिन",
-          "caption": "शुक्र पर एक दिन"
+          "headline": "50 लाख",
+          "caption": "बालों की मांसपेशियाँ, लगभग"
         }
       },
       {
-        "text": "यानी शुक्र पर एक दिन, उसके पूरे साल से भी लंबा है।",
-        "visual_query": "sunrise clouds timelapse",
+        "text": "क्या इससे गर्मी मिलती है? यही मिथक है। जानवरों में यह गर्म हवा रोकता है।",
+        "keyword": "मिथक",
         "graphic": {
-          "kind": "compare",
-          "headline": "शुक्र: दिन बनाम साल",
-          "caption": "",
+          "kind": "myth",
+          "headline": "गर्मी?",
           "items": [
-            "दिन",
-            "साल"
+            "इंसान को गर्म रखता है",
+            "पुराना फ़र रिफ़्लेक्स है"
+          ]
+        }
+      },
+      {
+        "text": "किसका फ़र सबसे घना है? देखिए कितनी हवा रुकती है।",
+        "keyword": "हवा",
+        "graphic": {
+          "kind": "bars",
+          "headline": "रुकी हुई हवा",
+          "items": [
+            "इंसान",
+            "बिल्ली",
+            "हस्की",
+            "आर्कटिक लोमड़ी"
           ],
           "values": [
-            243,
-            225
+            1,
+            6,
+            9,
+            12
           ]
         }
       },
       {
-        "text": "और यह उल्टा घूमता है, इसलिए वहाँ सूरज पश्चिम से निकलता है।",
-        "visual_query": "sunset horizon",
+        "text": "अगली बार ठंड लगे, तो आपको क्या महसूस हुआ? कमेंट में बताइए!",
+        "keyword": "कमेंट",
         "graphic": {
           "kind": "keyword",
-          "headline": "उल्टा घूमना",
-          "caption": "पश्चिम में सूर्योदय",
-          "prop": "clock"
-        }
-      },
-      {
-        "text": "वैज्ञानिक मानते हैं कि किसी बड़ी टक्कर या घने वातावरण ने इसकी रफ़्तार धीमी कर दी।",
-        "visual_query": "asteroid impact space",
-        "graphic": {
-          "kind": "steps",
-          "headline": "इतना धीमा क्यों?",
-          "caption": "",
-          "items": [
-            "बड़ी टक्कर",
-            "घना वातावरण",
-            "अरबों साल"
-          ]
-        }
-      },
-      {
-        "text": "ऐसे ही रोज़ एक नया फ़ैक्ट जानने के लिए फ़ॉलो करें।",
-        "visual_query": "night sky stars",
-        "graphic": {
-          "kind": "title",
-          "headline": "रोज़ एक नया फ़ैक्ट",
-          "caption": "फ़ॉलो करें",
-          "prop": "star"
+          "headline": "जो फ़र है ही नहीं",
+          "caption": "पुराना रिफ़्लेक्स",
+          "prop": "heart"
         }
       }
     ]

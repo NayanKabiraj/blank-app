@@ -1,8 +1,7 @@
-"""Daily entry point: research -> scripts -> render (EN + HI) -> upload -> log history.
+"""Daily entry point: plan (written by the scheduled Claude task) -> render (EN + HI) -> upload -> log history.
 
     python -m shorts.main --plan-file plan.json            # render + upload (normal use)
     python -m shorts.main --plan-file plan.json --dry-run  # render only
-    python -m shorts.main                                  # optional: research via Claude API
 """
 from __future__ import annotations
 
@@ -38,8 +37,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="render videos but do not upload")
     ap.add_argument("--langs", default="en,hi", help="comma-separated: en,hi")
-    ap.add_argument("--niche", default="", help="force a niche instead of researching one")
-    ap.add_argument("--plan-file", default="", help="use an existing plan JSON (skips Claude)")
+    ap.add_argument("--plan-file", required=True, help="the plan JSON written by the daily Claude task")
     ap.add_argument("--out", default="output", help="output directory")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -49,24 +47,16 @@ def main() -> int:
         shutil.rmtree(out)
     out.mkdir(parents=True)
 
-    if args.plan_file:
-        plan = Plan.model_validate_json(Path(args.plan_file).read_text(encoding="utf-8"))
-        for problem in validate(plan):
-            log.warning("Plan check: %s", problem)
-    else:  # optional: research via the Claude API inside the pipeline
-        from .research import make_plan
-        plan = make_plan(args.niche)
+    plan = Plan.model_validate_json(Path(args.plan_file).read_text(encoding="utf-8"))
+    for problem in validate(plan):
+        log.warning("Plan check: %s", problem)
     (out / "plan.json").write_text(plan.model_dump_json(indent=2), encoding="utf-8")
 
     scripts = {"en": plan.english, "hi": plan.hindi}
     results, failures = {}, []
     for lang in [l.strip() for l in args.langs.split(",") if l.strip()]:
         try:
-            video, credits = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}", plan.niche)
-            if credits:  # freely licensed footage must be credited
-                scripts[lang] = scripts[lang].model_copy(update={
-                    "description": scripts[lang].description + "\n\nVisual credits:\n"
-                    + "\n".join(f"- {c}" for c in credits)})
+            video = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}", plan.niche)
             final = out / f"{dt.date.today().isoformat()}_{lang}.mp4"
             shutil.move(video, final)
             # Always keep a copy first, so the video is saved even if the upload fails

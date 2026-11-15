@@ -1,7 +1,6 @@
 // Render a code-drawn video track: node render.cjs <config.json> <out.mp4>
-// Used by the 3D cartoon (this folder) and the 2D stickman style (cfg.root = ../stickman).
-// Serves the scene folder on localhost, drives scene.html frame by frame in headless Chromium
-// (software WebGL, no GPU needed) and pipes JPEG frames into FFmpeg.
+// Serves this folder on localhost, drives scene.html frame by frame in headless Chromium and pipes
+// JPEG frames into FFmpeg. Frames are split across parallel browsers (cfg.workers).
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -11,7 +10,7 @@ const { chromium } = require('playwright');
 const [, , cfgPath, outPath] = process.argv;
 const cfg = JSON.parse(fs.readFileSync(cfgPath, 'utf8'));
 const FPS = cfg.fps || 30;
-const ROOT = cfg.root ? path.resolve(cfg.root) : __dirname;
+const ROOT = __dirname;
 const LABEL = path.basename(ROOT);
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.txt': 'text/plain', '.woff2': 'font/woff2' };
 
@@ -25,9 +24,7 @@ const server = http.createServer((req, res) => {
 (async () => {
   await new Promise(r => server.listen(0, '127.0.0.1', r));
   const url = `http://127.0.0.1:${server.address().port}/scene.html`;
-  // One browser per worker: software WebGL runs in each browser's single GPU process,
-  // so pages sharing one browser don't render any faster.
-  const launch = () => chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
+  const launch = () => chromium.launch();
   const frames = Math.ceil(cfg.total * FPS);
   const workers = Math.max(1, Math.min(cfg.workers || 3, 8));
   const per = Math.ceil(frames / workers);

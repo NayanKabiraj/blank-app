@@ -23,57 +23,51 @@ WEAK_OPENER = re.compile(
     r"^(today|in this video|in today|hello|hi\b|hey|welcome|did you know|have you ever|ever wondered|"
     r"आज|नमस्कार|नमस्ते|हेलो|स्वागत|क्या आप जानते|क्या आपने कभी)", re.I)
 
-# Procedural 3D props available in the cartoon style (shorts/cartoon3d/scene.js)
+# Icons the explainer can draw for title/keyword scenes (shorts/explainer/scene.js)
 PROPS = ["star", "bulb", "coin", "planet", "globe", "phone", "bank", "rocket", "brain", "chip",
          "heart", "clock", "gear", "atom", "book", "magnet", "cloud"]
 
 
-# Character poses available in the cartoon2d and stickman styles (shorts/cartoon2d/, shorts/stickman/)
-POSES = ["stand", "point", "wave", "cheer", "shrug", "think", "shock", "walk"]
+KINDS = ["title", "keyword", "stat", "steps", "flow", "build", "cycle", "race", "compare", "bars",
+         "chat", "quiz", "myth"]
+CONVO_KINDS = ("chat", "quiz", "myth")
 
 
 class Graphic(BaseModel):
-    """What the motion-graphics renderer (shorts/motion.py) draws for a scene. Text is in
+    """What the explainer animation (shorts/explainer/scene.js) draws for a scene. Text is in
     the video's language; keep it short, it is shown big on a phone screen."""
-    kind: Literal["title", "stat", "keyword", "steps", "compare", "flow", "race", "build", "cycle"] = Field(
-        description="title: a big headline. stat: one big number with a label. keyword: a "
-        "key term with a one-line explanation. steps: 2-4 stages of a process. compare: two "
-        "things side by side, optionally with values drawn as bars. Animated diagrams (cartoon2d "
-        "style; other styles show them as a keyword card): flow: 2-4 stages in a chain with "
-        "particles flowing along the connectors (something moves from A to B). race: exactly 2 "
-        "lanes with 2 values = relative speeds; dots stream along each lane and an arrival "
-        "counter shows the countable difference. build: 2-4 layers stacking up one at a time "
-        "(how parts combine). cycle: 3-4 states around a loop with a token travelling round.")
+    kind: Literal["title", "keyword", "stat", "steps", "flow", "build", "cycle", "race", "compare", "bars",
+                  "chat", "quiz", "myth"] = Field(
+        description="title: a big headline with an icon. keyword: a key term with an icon and a one-line "
+        "explanation. stat: one big number counting up, with a label. steps: 2-4 stages, one lit at a time. "
+        "flow: 2-4 stages in a chain with dots flowing along the connectors (something moves from A to B). "
+        "build: 2-4 layers stacking up one at a time. cycle: 3-4 states around a loop with a token "
+        "travelling round. race: exactly 2 lanes with 2 values = relative speeds; dots stream along each "
+        "lane and an arrival counter shows the difference. compare: two discs sized by their values. "
+        "bars: 2-4 horizontal bars growing to their values. Conversation scenes: chat: a text-message "
+        "exchange, 2-4 bubbles, the first is the viewer asking, the next is the answer, and so on. "
+        "quiz: the headline is a question put to the viewer, 2-4 answer options, a short countdown, then "
+        "the right one (`answer`, 0-based) lights up. myth: items = [the common myth, the truth]; the myth "
+        "is struck out and the truth stamps in.")
     headline: str = Field(description="Main text: the headline, the number with its unit "
-                          "(e.g. '71 km/s', '1966'), or the key term. Max 24 characters.")
+                          "(e.g. '71 km/s', '1966'), the key term, or for quiz the question. Max 28 characters "
+                          "(quiz: max 48).")
     caption: str = Field(default="", description="Optional smaller line under the headline, max 40 characters.")
-    items: List[str] = Field(default_factory=list, description="steps: 2-4 short labels in order. "
-                             "compare: exactly 2 labels. Max 18 characters each.")
-    values: List[float] = Field(default_factory=list, description="compare only: 2 numbers "
-                                "for the bar lengths (optional).")
-    prop: Optional[str] = Field(default=None, description="3D cartoon style only: a 3D prop for "
-                                "title/keyword/stat scenes. One of: " + ", ".join(PROPS) + ". The 2D styles "
-                                "draw the same names as drawings.")
-    pose: Optional[str] = Field(default=None, description="cartoon2d and stickman styles, optional: the "
-                                "character's reaction for this scene. One of: " + ", ".join(POSES) + ". "
-                                "Left empty, the pose is picked from the scene kind.")
+    items: List[str] = Field(default_factory=list, description="Short labels in order (max 18 characters "
+                             "each; chat bubbles and myth/quiz options may use up to 36).")
+    values: List[float] = Field(default_factory=list, description="race: 2 speeds. compare: 2 sizes. "
+                                "bars: one number per item.")
+    answer: Optional[int] = Field(default=None, description="quiz only: 0-based index of the correct option.")
+    prop: Optional[str] = Field(default=None, description="title/keyword scenes: an icon. One of: " + ", ".join(PROPS))
 
 
 class Scene(BaseModel):
-    text: str = Field(description="Narration for this scene, 1-2 short spoken sentences.")
+    text: str = Field(description="Narration for this scene, 1-2 short spoken sentences. Talk TO the viewer: "
+                      "questions, 'you', short replies, as if in a conversation.")
     keyword: Optional[str] = Field(default=None, description="Optional: the stressed word or short "
                                    "phrase in `text` (copied exactly). The scene's main motion lands "
                                    "on it and the caption highlights it. One per scene.")
-    graphic: Optional[Graphic] = Field(default=None, description="Motion graphic for this scene.")
-    ai_prompt: Optional[str] = Field(default=None, description=(
-        "Optional, at most 2 scenes per video: an ENGLISH visual description for an "
-        "AI-generated clip that replaces this scene's graphic (e.g. 'a glowing comet with a "
-        "long dust tail crossing a starry sky'). Scenery, objects, nature or space only: no "
-        "people, faces, text, logos or real brands."))
-    visual_query: str = Field(
-        description="2-3 ENGLISH keywords for filmable stock footage of scenery, nature, "
-        "objects or space (e.g. 'meteor timelapse', 'ocean waves'); never people or news."
-    )
+    graphic: Optional[Graphic] = Field(default=None, description="The animation for this scene.")
 
 
 class LangScript(BaseModel):
@@ -116,29 +110,43 @@ def validate(plan: Plan) -> list[str]:
                 problems.append(f"{lang} scene {i}: {len(sc.text.split())} words, split it (max about 30)")
         for i, sc in enumerate(s.scenes, 1):
             g = sc.graphic
+            n, label = (len(g.items) if g else 0), (g.kind if g else "")
             if g is None:
                 problems.append(f"{lang} scene {i}: no graphic (a keyword card will be used)")
-            elif len(g.headline) > 28:
-                problems.append(f"{lang} scene {i}: graphic headline longer than 28 characters")
-            elif g.kind == "steps" and not 2 <= len(g.items) <= 4:
-                problems.append(f"{lang} scene {i}: steps needs 2-4 items")
-            elif g.kind == "compare" and len(g.items) != 2:
-                problems.append(f"{lang} scene {i}: compare needs exactly 2 items")
-            elif g.kind in ("flow", "build") and not 2 <= len(g.items) <= 4:
-                problems.append(f"{lang} scene {i}: {g.kind} needs 2-4 items")
-            elif g.kind == "cycle" and not 3 <= len(g.items) <= 4:
+                continue
+            if len(g.headline) > (48 if g.kind == "quiz" else 28):
+                problems.append(f"{lang} scene {i}: graphic headline too long ({len(g.headline)} characters)")
+            if g.kind in ("steps", "flow", "build", "bars") and not 2 <= n <= 4:
+                problems.append(f"{lang} scene {i}: {label} needs 2-4 items")
+            elif g.kind in ("compare", "myth") and n != 2:
+                problems.append(f"{lang} scene {i}: {label} needs exactly 2 items")
+            elif g.kind == "cycle" and not 3 <= n <= 4:
                 problems.append(f"{lang} scene {i}: cycle needs 3-4 items")
-            elif g.kind == "race" and (len(g.items) != 2 or len(g.values) != 2 or min(g.values or [0]) <= 0):
+            elif g.kind == "chat" and not 2 <= n <= 4:
+                problems.append(f"{lang} scene {i}: chat needs 2-4 bubbles")
+            elif g.kind == "quiz" and (not 2 <= n <= 4 or g.answer is None or not 0 <= g.answer < n):
+                problems.append(f"{lang} scene {i}: quiz needs 2-4 options and `answer` = the 0-based index of the right one")
+            elif g.kind == "race" and (n != 2 or len(g.values) != 2 or min(g.values or [0]) <= 0):
                 problems.append(f"{lang} scene {i}: race needs exactly 2 items and 2 positive values")
-            if g is not None and g.prop and g.prop not in PROPS:
+            elif g.kind == "bars" and (len(g.values) != n or min(g.values or [0]) <= 0):
+                problems.append(f"{lang} scene {i}: bars needs one positive value per item")
+            if g.prop and g.prop not in PROPS:
                 problems.append(f"{lang} scene {i}: unknown prop {g.prop!r} (choose from {', '.join(PROPS)})")
             if sc.keyword and sc.keyword.lower() not in sc.text.lower():
                 problems.append(f"{lang} scene {i}: keyword {sc.keyword!r} does not appear in the narration")
-            if g is not None and g.pose and g.pose not in POSES:
-                problems.append(f"{lang} scene {i}: unknown pose {g.pose!r} (choose from {', '.join(POSES)})")
-        n_ai = sum(1 for sc in s.scenes if sc.ai_prompt)
-        if n_ai > 2:
-            problems.append(f"{lang}: {n_ai} scenes have ai_prompt, at most 2 are used")
+        # conversational feel: the narrator keeps asking and answering, and ends by asking the viewer
+        qs = [i for i, sc in enumerate(s.scenes, 1) if "?" in sc.text]
+        if len(qs) < 3:
+            problems.append(f"{lang}: only {len(qs)} scenes ask a question, make it a conversation (3 or more)")
+        if not any(i <= 2 for i in qs):
+            problems.append(f"{lang}: no question in the first two scenes (open the conversation early)")
+        if s.scenes and "?" not in s.scenes[-1].text:
+            problems.append(f"{lang}: the last scene should ask the viewer a question to answer in the comments")
+        if not any(sc.graphic and sc.graphic.kind in CONVO_KINDS for sc in s.scenes):
+            problems.append(f"{lang}: use at least one chat, quiz or myth scene")
+        kinds = [sc.graphic.kind for sc in s.scenes if sc.graphic]
+        if len(set(kinds)) < 4:
+            problems.append(f"{lang}: only {len(set(kinds))} different graphic kinds, vary the scenes (4 or more)")
     if "candidate" not in plan.research_summary.lower():
         problems.append("research_summary should start with 'Candidates:' (top 3 with scores) and say why the winner won")
     from .niches import NAMES

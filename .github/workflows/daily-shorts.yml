@@ -13,10 +13,6 @@ on:
         description: "Render only, do not upload"
         type: boolean
         default: false
-      visual_style:
-        description: "Visuals: explainer (flat step-by-step diagrams), cartoon2d (2D cartoon presenter), stickman (2D stick figure), cartoon3d (3D cartoon), motion (Manim graphics) or footage (stock video). Empty = repo default"
-        type: string
-        default: ""
       langs:
         description: "Languages to produce"
         type: string
@@ -34,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     env:
-      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
       YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
@@ -44,17 +39,6 @@ jobs:
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
-      WIKIMEDIA_CONTACT: ${{ vars.WIKIMEDIA_CONTACT }}
-      # motion = Manim motion graphics (default), footage = real stock footage
-      VISUAL_STYLE: ${{ inputs.visual_style || vars.VISUAL_STYLE || 'explainer' }}
-      # Free AI clips for scenes with an ai_prompt (see shorts/ai_video.py). All optional:
-      # HF_TOKEN = your free Hugging Face account's GPU quota for Wan 2.2 / LTX-Video Spaces;
-      # POLLINATIONS_KEY = higher image limits (and paid video models if you enable them).
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      POLLINATIONS_KEY: ${{ secrets.POLLINATIONS_KEY }}
-      AI_VIDEO: ${{ vars.AI_VIDEO || 'on' }}
-      AI_VIDEO_PROVIDERS: ${{ vars.AI_VIDEO_PROVIDERS || 'wan,ltx,image' }}
-      AI_VIDEO_MAX_CLIPS: ${{ vars.AI_VIDEO_MAX_CLIPS || '2' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -67,8 +51,7 @@ jobs:
       - name: Install FFmpeg and fonts (English + Devanagari)
         run: |
           sudo apt-get update -q
-          # libpango1.0-dev + pkg-config: needed to build manimpango (Manim's text renderer)
-          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core libpango1.0-dev pkg-config
+          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core
           fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
 
       - name: Cache Piper voices
@@ -84,10 +67,10 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: shorts/cartoon3d/package-lock.json
+          cache-dependency-path: shorts/explainer/package-lock.json
 
-      - name: Install the cartoon renderer (Playwright + Chromium, used by explainer, cartoon2d, stickman and cartoon3d)
-        working-directory: shorts/cartoon3d
+      - name: Install the animation renderer (Playwright + headless Chromium)
+        working-directory: shorts/explainer
         run: |
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium

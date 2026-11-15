@@ -1,12 +1,18 @@
-// Explainer diagram scene (the default look): dark navy, flat, step-by-step diagrams, one guiding
+// Explainer scene (the only look of the channel): dark navy, flat, step-by-step diagrams, one guiding
 // "spark" carried from scene to scene, big word-by-word headlines and rounded caption pills.
-// Rendered frame by frame by ../cartoon3d/render.cjs. Everything is a pure function of time t
+// Rendered frame by frame by ./render.cjs. Everything is a pure function of time t
 // (no Math.random, Date or CSS animation) so the render can be split across parallel browsers.
-// The plan's per-scene `graphic` (title, keyword, stat, steps, compare, flow, race, build, cycle,
-// plus an optional `prop` icon) decides what is drawn; `keyword` timing drives the main beat.
+// The plan's per-scene `graphic` (title, keyword, stat, steps, flow, build, cycle, race, compare, bars and the
+// conversation scenes chat, quiz, myth, plus an optional `prop` icon) decides what is drawn; `keyword` timing
+// drives the main beat. The accent colour follows the niche.
 const W = 1080, H = 1920, INTRO = 0.6, OUTRO = 0.3;
 const BG = '#0b1524', PANEL = '#13233a', PANEL2 = '#1d3556', TEXT = '#f5f1e6', MUTED = '#9fb4d0';
-const BLUE = '#3d9bff', ORANGE = '#ff8a3c', SUN = '#fff6d8';
+let BLUE = '#3d9bff', ACCD = '#1c6fd6';
+const ORANGE = '#ff8a3c', SUN = '#fff6d8';
+const GREEN = '#3ddc84', RED = '#ff5d6c';
+const NICHE_ACCENT = [[/body|health|medic/i, '#ff7a9c'], [/space|astro|universe/i, '#9a7bff'], [/money|financ|econom|india/i, '#3ddc84'],
+  [/nature|animal|earth|environment/i, '#4fd1a5'], [/histor|human|mind|psych/i, '#ffb347']];
+const mix = (hex, k) => '#' + [1, 3, 5].map(i => Math.round(parseInt(hex.slice(i, i + 2), 16) * k).toString(16).padStart(2, '0')).join('');
 const SPEC = ['#ff4d4d', '#ff9a3c', '#ffe14d', '#4ddb7a', '#3d9bff', '#9a6bff'];
 const INK = TEXT;                                   // outline colour of the prop icons
 const FONT = '"Poppins", "Noto Sans", "Noto Sans Devanagari", sans-serif';
@@ -216,6 +222,7 @@ function orb(x, y, s, pulse) {
 const ANCHOR = {                                             // [x, y, scale] of the spark for each kind of scene
   title: [880, 700, 0.7], keyword: [880, 700, 0.7], stat: [880, 700, 0.7], steps: [900, 760, 0.7], flow: [900, 760, 0.7],
   race: [900, 700, 0.7], compare: [540, 740, 0.75], build: [900, 700, 0.7], cycle: [540, 990, 0.8],
+  bars: [940, 250, 0.5], chat: [940, 250, 0.5], quiz: [940, 250, 0.5], myth: [940, 250, 0.5],
 };
 function orbPos(t, cur) {
   const a = ANCHOR[cur.kind] || ANCHOR.title, pa = cur.i > 0 ? (ANCHOR[segs[cur.i - 1].kind] || ANCHOR.title) : a;
@@ -226,12 +233,15 @@ function orbPos(t, cur) {
 // ------------------------------------------------------------------ build one scene
 const DIAGRAM_OK = { flow: g => g.items?.length >= 2, build: g => g.items?.length >= 2, cycle: g => g.items?.length >= 3,
                      race: g => g.items?.length === 2 && g.values?.length === 2 && Math.min(...g.values) > 0,
-                     steps: g => g.items?.length >= 2, compare: g => g.items?.length === 2 };
+                     steps: g => g.items?.length >= 2, compare: g => g.items?.length === 2,
+                     bars: g => g.items?.length >= 2 && g.values?.length >= g.items.length && Math.min(...g.values) > 0,
+                     chat: g => g.items?.length >= 2, myth: g => g.items?.length === 2,
+                     quiz: g => g.items?.length >= 2 && Number.isInteger(g.answer) && g.answer >= 0 && g.answer < g.items.length };
 function buildSegment(seg, i, all) {
   const g = seg.graphic, kind = g.kind;
   const s = { ...seg, g, i, kind, last: i === all.length - 1, hl: g.headline || '', cap: g.caption || '' };
   if (kind === 'stat' && parseNumber(g.headline)) { s.num = parseNumber(g.headline); s.hl = g.caption || ''; s.cap = ''; }
-  else if (DIAGRAM_OK[kind] && DIAGRAM_OK[kind](g)) { s.labels = g.items.slice(0, 4); s.vals = g.values || []; s.diagram = kind; }
+  else if (DIAGRAM_OK[kind] && DIAGRAM_OK[kind](g)) { s.labels = g.items.slice(0, 4); s.vals = g.values || []; s.diagram = kind; s.answer = g.answer; }
   else { s.kind = kind === 'title' ? 'title' : 'keyword'; s.prop = PROPS[g.prop] ? g.prop : DEFAULT_PROP[s.kind]; }
   if (kind === 'stat' && !s.num) { s.kind = 'keyword'; s.prop = PROPS[g.prop] ? g.prop : 'coin'; }
   // headline as words that rise in one by one
@@ -352,6 +362,102 @@ function drawCompare(s, t, u, pk) {
   for (let q = 0; q <= 40 * p; q++) { const f = q / 40, x = lerp(xs[0], xs[1], f), yy = y - R[0] - 40 - Math.sin(Math.PI * f) * 90; q ? ctx.lineTo(x, yy) : ctx.moveTo(x, yy); }
   ctx.stroke(); ctx.restore();
 }
+
+function wrapLines(str, maxW, size, weight = 600) {            // greedy word wrap
+  setFont(size, weight); const out = []; let cur = '';
+  for (const w of str.split(' ')) { const t = cur ? cur + ' ' + w : w; if (cur && ctx.measureText(t).width > maxW) { out.push(cur); cur = w; } else cur = t; }
+  if (cur) out.push(cur); return out;
+}
+function bodyTop(s) { return Math.max(640, s.hlTop + (s.hl ? s.hlH : 0) + (s.cap ? 90 : 0) + 50); }
+function drawBars(s, t, u, pk) {
+  const n = s.labels.length, vmax = Math.max(...s.vals), top = bodyTop(s), pitch = Math.min(170, (1330 - top) / n), t0 = s.start + INTRO * 0.8;
+  const cols = [BLUE, ORANGE, GREEN, '#9a7bff'];
+  s.labels.forEach((lab, j) => {
+    const a = clamp((t - t0 - j * 0.3) / 0.4); if (a <= 0) return;
+    const y = top + j * pitch, grow = easeOutCubic(clamp((t - t0 - j * 0.3 - 0.15) / 0.9)), w = 700 * (s.vals[j] / vmax);
+    ctx.save(); ctx.globalAlpha *= clamp(a * 2);
+    fitText(lab, 110, y, 820, 52, TEXT, 'left', 700);
+    rrect(110, y + 36, 700, 54, 27); ctx.fillStyle = PANEL; ctx.fill();
+    if (w * grow > 4) { rrect(110, y + 36, Math.max(54, w * grow), 54, 27); ctx.fillStyle = cols[j % 4]; ctx.fill(); }
+    const v = s.vals[j] * grow, dec = Number.isInteger(s.vals[j]) ? 0 : 1;
+    fitText(fmt(v, dec, s.vals[j] >= 10000), 110 + Math.max(54, w * grow) + 22, y + 63, 260, 50, TEXT, 'left', 700);
+    ctx.restore();
+  });
+}
+function drawChat(s, t, u, pk) {
+  const n = s.labels.length, t0 = s.start + INTRO * 0.8, D = Math.max(1.2, s.end - OUTRO - t0), step = D / (n + 0.4), size = 44;
+  let y = bodyTop(s);
+  const boxes = s.labels.map(lab => { const lines = wrapLines(lab, 640, size), h = lines.length * 56 + 46; return { lines, h }; });
+  const total = boxes.reduce((q, b) => q + b.h + 26, 0), scale = total > 1340 - y ? (1340 - y) / total : 1;
+  boxes.forEach((b, j) => {
+    const at = t0 + j * step, a = clamp((t - at) / 0.35), me = j % 2 === 1, h = b.h * scale, w = 730 * scale;
+    const x = me ? 1000 - w : 80, tt = at - 0.55;
+    if (t > tt && t < at) {                                      // typing dots before the reply
+      const dx = me ? 1000 - 190 : 80; rrect(dx, y, 190, 84, 42); ctx.fillStyle = me ? mix(BLUE, 0.7) : PANEL2; ctx.fill();
+      for (let q = 0; q < 3; q++) dot(dx + 55 + q * 40, y + 42 - Math.abs(Math.sin(t * 9 + q * 0.9)) * 10, 9, TEXT);
+    }
+    if (a > 0) {
+      const k = popS(a * 0.7, 1.06);
+      ctx.save(); ctx.translate(me ? 1000 : 80, y + h); ctx.scale(k, k); ctx.translate(me ? -1000 : -80, -(y + h)); ctx.globalAlpha *= clamp(a * 2.5);
+      rrect(x, y, w, h, 38); ctx.fillStyle = me ? BLUE : TEXT; ctx.fill();
+      ctx.fillStyle = me ? BG : BG; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; setFont(size * scale, 600);
+      b.lines.forEach((ln, q) => ctx.fillText(ln, x + 36, y + 23 * scale + 28 * scale + q * 56 * scale));
+      ctx.restore();
+    }
+    y += h + 26 * scale;
+  });
+}
+function drawQuiz(s, t, u, pk) {
+  const n = s.labels.length, top = bodyTop(s), h = Math.min(120, (1250 - top) / n - 20), t0 = s.start + INTRO;
+  const R = Math.min(s.end - 0.9, Math.max(s.start + 2.0, s.hit && s.hit > s.start + 2.0 ? s.hit : s.start + (s.end - s.start) * 0.68));
+  const rev = clamp((t - R) / 0.35);
+  s.labels.forEach((lab, j) => {
+    const a = clamp((t - t0 - j * 0.14) / 0.35); if (a <= 0) return;
+    const right = j === s.answer, y = top + j * (h + 20), k = popS(a * 0.7) * (right && rev > 0 ? 1 + 0.05 * Math.sin(rev * Math.PI) : 1);
+    ctx.save(); ctx.translate(540, y + h / 2); ctx.scale(k, k); ctx.translate(-540, -(y + h / 2));
+    ctx.globalAlpha *= right || rev === 0 ? clamp(a * 2) : clamp(a * 2) * (1 - 0.65 * rev);
+    rrect(110, y, 860, h, 34); ctx.fillStyle = right && rev > 0 ? GREEN : PANEL; ctx.fill();
+    ctx.lineWidth = 5; ctx.strokeStyle = right && rev > 0 ? SUN : '#2c4a73'; ctx.stroke();
+    dot(172, y + h / 2, h * 0.34, right && rev > 0 ? BG : PANEL2);
+    fitText(String.fromCharCode(65 + j), 172, y + h / 2 + 2, 60, 40, right && rev > 0 ? GREEN : TEXT, 'center', 700);
+    fitText(lab, 236, y + h / 2 + 2, 690, 50, right && rev > 0 ? BG : TEXT, 'left', 700);
+    ctx.restore();
+  });
+  if (t < R && t > t0 + 0.6) {                                   // countdown ring while the viewer thinks
+    const left = R - t, cy = Math.min(1380, top + n * (h + 20) + 70);
+    ctx.save(); ctx.lineWidth = 9; ctx.strokeStyle = PANEL2; ctx.beginPath(); ctx.arc(540, cy, 46, 0, Math.PI * 2); ctx.stroke();
+    ctx.strokeStyle = ORANGE; ctx.lineCap = 'round'; ctx.beginPath(); ctx.arc(540, cy, 46, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * clamp(left / (R - t0))); ctx.stroke(); ctx.restore();
+    fitText(String(Math.max(1, Math.ceil(left))), 540, cy + 2, 60, 50, TEXT, 'center', 700);
+  }
+}
+function drawMyth(s, t, u, pk) {
+  const top = bodyTop(s), cw = 880, ch = 250, x = 100, strike = s.start + Math.max(1.0, (s.hit ? s.hit - s.start : (s.end - s.start) * 0.42));
+  const sp = clamp((t - strike) / 0.45), fact = clamp((t - strike - 0.35) / 0.4);
+  // myth card
+  const a = clamp((u - 0.35) / 0.4);
+  ctx.save(); ctx.globalAlpha *= clamp(a * 2) * (1 - 0.35 * sp);
+  rrect(x, top, cw, ch, 36); ctx.fillStyle = PANEL; ctx.fill(); ctx.lineWidth = 5; ctx.strokeStyle = RED; ctx.stroke();
+  rrect(x + 36, top - 24, 150, 48, 24); ctx.fillStyle = RED; ctx.fill(); fitText(cfg.lang === 'hi' ? 'मिथक' : 'MYTH', x + 111, top + 1, 130, 30, BG, 'center', 700);
+  const ml = wrapLines(s.labels[0], cw - 90, 52, 700); setFont(52, 700); ctx.fillStyle = TEXT; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ml.forEach((ln, q) => ctx.fillText(ln, x + cw / 2, top + ch / 2 + 8 + (q - (ml.length - 1) / 2) * 64));
+  if (sp > 0) { const lw = Math.max(...ml.map(l => ctx.measureText(l).width)); line(x + cw / 2 - lw / 2 - 30, top + ch / 2 + 8, x + cw / 2 - lw / 2 - 30 + (lw + 60) * sp, top + ch / 2 + 8, 1, RED, 12); }
+  ctx.restore();
+  // truth card
+  const y2 = top + ch + 90, k = fact > 0 ? stampAt(t - (strike + 0.35)) : 0;
+  ctx.save(); ctx.translate(540, y2 + ch / 2); ctx.scale(Math.max(0.01, k), Math.max(0.01, k)); ctx.translate(-540, -(y2 + ch / 2)); ctx.globalAlpha *= clamp(fact * 2);
+  rrect(x, y2, cw, ch, 36); ctx.fillStyle = BLUE; ctx.fill(); ctx.lineWidth = 6; ctx.strokeStyle = SUN; ctx.stroke();
+  rrect(x + 36, y2 - 24, 150, 48, 24); ctx.fillStyle = SUN; ctx.fill(); fitText(cfg.lang === 'hi' ? 'सच' : 'FACT', x + 111, y2 + 1, 130, 30, BG, 'center', 700);
+  const fl = wrapLines(s.labels[1], cw - 90, 52, 700); setFont(52, 700); ctx.fillStyle = BG; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  fl.forEach((ln, q) => ctx.fillText(ln, x + cw / 2, y2 + ch / 2 + 8 + (q - (fl.length - 1) / 2) * 64));
+  ctx.restore();
+}
+function drawBackdrop(s, t, u) {                                 // a faint motif that changes from scene to scene
+  ctx.save(); ctx.globalAlpha *= 0.09; const m = s.i % 4;
+  if (m === 1) { ctx.fillStyle = TEXT; for (let x = 60; x < W; x += 90) for (let y = 120; y < 1400; y += 90) { ctx.beginPath(); ctx.arc(x + ((t * 6) % 90), y, 3, 0, Math.PI * 2); ctx.fill(); } }
+  else if (m === 2) { ctx.strokeStyle = TEXT; ctx.lineWidth = 3; for (let r = 1; r <= 6; r++) { ctx.beginPath(); ctx.arc(540, 990, r * 170 + ((t * 20) % 170) - 170, 0, Math.PI * 2); if (r * 170 + ((t * 20) % 170) - 170 > 0) ctx.stroke(); } }
+  else if (m === 3) { ctx.strokeStyle = TEXT; ctx.lineWidth = 3; for (let x = -1920 + ((t * 24) % 120); x < W; x += 120) { ctx.beginPath(); ctx.moveTo(x, 1500); ctx.lineTo(x + 1500, 0); ctx.stroke(); } }
+  ctx.restore();
+}
 function drawCaptions(t) {
   const c = (cfg.captions || []).find(c => t >= c.start && t < c.end); if (!c) return;
   const a = clamp((t - c.start) / 0.14), words = c.words;
@@ -364,7 +470,7 @@ function drawCaptions(t) {
   rrect(x, y, w, h, 40); ctx.fillStyle = TEXT; ctx.fill(); ctx.shadowColor = 'transparent';
   ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
   let cx = 540 - (w - 90) / 2;
-  words.forEach((wd, k) => { ctx.fillStyle = wd.kw ? '#1c6fd6' : BG; ctx.fillText(wd.t, cx, y + h / 2 + 3); cx += ctx.measureText(wd.t + ' ').width; });
+  words.forEach((wd, k) => { ctx.fillStyle = wd.kw ? ACCD : BG; ctx.fillText(wd.t, cx, y + h / 2 + 3); cx += ctx.measureText(wd.t + ' ').width; });
   ctx.restore();
 }
 
@@ -380,6 +486,7 @@ function updateSegment(s, t) {
     ctx.fillStyle = BLUE; rrect(540 - bw / 2, s.hlTop - 52, bw, 12, 6); ctx.fill();
   }
   ctx.save(); ctx.globalAlpha = A;
+  drawBackdrop(s, t, u);
   const [ox, oy, os] = orbPos(t, s); orb(ox, oy, os * popS(u + 0.3, 1.0), pk);
   if (s.num) drawStat(s, t, u, pk);
   else if (s.diagram === 'flow' || s.diagram === 'steps') drawChain(s, t, u, A, pk);
@@ -387,6 +494,10 @@ function updateSegment(s, t) {
   else if (s.diagram === 'build') drawBuild(s, t, u, pk);
   else if (s.diagram === 'cycle') drawCycle(s, t, u, pk);
   else if (s.diagram === 'compare') drawCompare(s, t, u, pk);
+  else if (s.diagram === 'bars') drawBars(s, t, u, pk);
+  else if (s.diagram === 'chat') drawChat(s, t, u, pk);
+  else if (s.diagram === 'quiz') drawQuiz(s, t, u, pk);
+  else if (s.diagram === 'myth') drawMyth(s, t, u, pk);
   else drawProp(s, t, u, pk);
   ctx.restore();
 }
@@ -394,6 +505,10 @@ function updateSegment(s, t) {
 // ------------------------------------------------------------------ public API
 window.setup = async (config) => {
   cfg = config;
+  const hit = NICHE_ACCENT.find(([re]) => re.test(cfg.niche || ''));
+  if (hit) BLUE = hit[1];
+  ACCD = mix(BLUE, 0.78);
+  pal = [BLUE, ORANGE, PANEL];
   document.body.lang = cfg.lang === 'hi' ? 'hi' : 'en';
   ctx = document.getElementById('cv').getContext('2d');
   await Promise.all([document.fonts.load('700 40px Poppins'), document.fonts.load('600 40px Poppins'),
