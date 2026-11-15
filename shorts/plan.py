@@ -166,7 +166,7 @@ def validate(plan: Plan) -> list[str]:
 
 
 # ------------------------------------------------------------------ documentaries (5-15 minutes)
-WORDS_PER_SEC = 2.6          # Piper narration pace (the Shorts limits use the same figure)
+WORDS_PER_SEC = {"en": 3.1, "hi": 2.85}   # measured Piper pace (en_US-lessac-medium, hi_IN-pratham-medium)
 SCENE_PAUSE, CHAPTER_PAUSE = 0.4, 1.0
 
 
@@ -199,10 +199,10 @@ class DocPlan(BaseModel):
     hindi: DocScript
 
 
-def doc_seconds(s: DocScript) -> float:
+def doc_seconds(s: DocScript, lang: str = "en") -> float:
     """Estimated running time of a documentary script."""
     words = sum(len(sc.text.split()) for sc in s.scenes)
-    return words / WORDS_PER_SEC + SCENE_PAUSE * len(s.scenes) + CHAPTER_PAUSE * len(s.chapters) + 3
+    return words / WORDS_PER_SEC[lang] + SCENE_PAUSE * len(s.scenes) + CHAPTER_PAUSE * len(s.chapters) + 3
 
 
 def validate_doc(plan: DocPlan) -> list[str]:
@@ -210,7 +210,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
     if not 5 <= plan.target_minutes <= 15:
         problems.append(f"target_minutes {plan.target_minutes} is outside 5-15")
     for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
-        secs = doc_seconds(s)
+        secs = doc_seconds(s, "en" if lang == "english" else "hi")
         if not 270 <= secs <= 930:
             problems.append(f"{lang}: estimated {secs / 60:.1f} min, a documentary runs 5-15 minutes")
         elif abs(secs - plan.target_minutes * 60) > plan.target_minutes * 60 * 0.2:
@@ -266,7 +266,7 @@ def _cli() -> int:
             return 1
         problems = validate_doc(dplan)
         print("\n".join(problems) if problems else
-              f"OK: {dplan.niche} | {dplan.topic} | ~{doc_seconds(dplan.english) / 60:.1f} min EN, ~{doc_seconds(dplan.hindi) / 60:.1f} min HI")
+              f"OK: {dplan.niche} | {dplan.topic} | ~{doc_seconds(dplan.english, 'en') / 60:.1f} min EN, ~{doc_seconds(dplan.hindi, 'hi') / 60:.1f} min HI")
         return 1 if problems else 0
     if len(sys.argv) == 3 and sys.argv[1] == "validate":
         try:

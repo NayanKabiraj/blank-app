@@ -1,6 +1,9 @@
 pydantic>=2.7
 piper-tts>=1.3.0
 numpy>=1.26
+soundfile>=0.12
 google-api-python-client>=2.130
 google-auth>=2.29
 google-auth-oauthlib>=1.2
+# Indic Parler-TTS (needs torch: the workflow installs the CPU build first)
+git+https://github.com/huggingface/parler-tts.git

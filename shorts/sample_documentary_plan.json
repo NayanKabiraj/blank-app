@@ -283,6 +283,76 @@
         ]
       },
       {
+        "title": "Rain in a warming world",
+        "scenes": [
+          {
+            "text": "Now a twist, and it's about the future. As the planet warms, the air can hold more moisture. So when it rains, it can rain harder. Does that mean more water for everyone? Not quite.",
+            "keyword": "harder",
+            "graphic": {
+              "kind": "title",
+              "headline": "Rain in a warming world",
+              "prop": "planet"
+            }
+          },
+          {
+            "text": "Many studies suggest the pattern is changing: heavier downpours, with longer dry gaps in between. The same total can arrive in a few wild bursts, which floods one week and leaves fields dry the next.",
+            "keyword": "wild bursts",
+            "graphic": {
+              "kind": "steps",
+              "headline": "A changing pattern",
+              "items": [
+                "More moisture",
+                "Heavier downpours",
+                "Longer dry gaps"
+              ]
+            }
+          },
+          {
+            "text": "So is the monsoon doomed? Hold on. Scientists don't expect it to vanish. It has shaped this land for ages. What they watch now is how evenly the rain arrives.",
+            "keyword": "evenly",
+            "graphic": {
+              "kind": "chat",
+              "headline": "Another chat",
+              "items": [
+                "Will the monsoon vanish?",
+                "Scientists don't expect that",
+                "So what changes?",
+                "How the rain arrives"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Trade on the wind",
+        "scenes": [
+          {
+            "text": "Long before satellites, sailors learned to read the monsoon. The summer wind carried ships from Arabia towards India, and the winter wind carried them home. Whole trade routes ran on a wind calendar.",
+            "keyword": "wind calendar",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "The wind calendar",
+              "items": [
+                "Summer: sail east",
+                "Trade and wait",
+                "Winter: sail home",
+                "Wait for summer"
+              ]
+            }
+          },
+          {
+            "text": "And that rhythm still holds. Every June, clouds march towards Kerala on an ancient clock, one that has been ticking far longer than humans have been counting.",
+            "keyword": "ancient clock",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "An ancient clock",
+              "caption": "older than humans",
+              "prop": "clock"
+            }
+          }
+        ]
+      },
+      {
         "title": "Why it matters",
         "scenes": [
           {
@@ -603,6 +673,76 @@
                 "ज़मीन पर बारिश",
                 "नदियाँ लौटातीं"
               ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "गरम दुनिया में बारिश",
+        "scenes": [
+          {
+            "text": "अब भविष्य की बात, और यह मोड़ चौंकाता है। धरती गरम होती है तो हवा ज़्यादा नमी पकड़ती है। यानी जब बारिश होती है, तो ज़्यादा तेज़ हो सकती है। क्या इसका मतलब सबके लिए ज़्यादा पानी? ठीक ऐसा नहीं।",
+            "keyword": "ज़्यादा तेज़",
+            "graphic": {
+              "kind": "title",
+              "headline": "गरम दुनिया में बारिश",
+              "prop": "planet"
+            }
+          },
+          {
+            "text": "कई अध्ययन बताते हैं कि मॉनसून का ढर्रा बदल रहा है: ज़्यादा तेज़ बौछारें और बीच में लंबे सूखे दौर। कुल पानी वही रहे, तब भी वह बेक़ाबू बौछारों में आता है। एक हफ़्ते बाढ़, अगले हफ़्ते सूखे खेत।",
+            "keyword": "बेक़ाबू बौछारों",
+            "graphic": {
+              "kind": "steps",
+              "headline": "बदलता ढर्रा",
+              "items": [
+                "ज़्यादा नमी",
+                "तेज़ बौछारें",
+                "लंबे सूखे दौर"
+              ]
+            }
+          },
+          {
+            "text": "तो क्या मॉनसून ख़त्म हो जाएगा? रुकिए। वैज्ञानिक ऐसा नहीं मानते। यह हज़ारों साल से इस ज़मीन को गढ़ता आया है। अब वे यह देखते हैं कि बारिश कितनी बराबरी से आती है।",
+            "keyword": "बराबरी",
+            "graphic": {
+              "kind": "chat",
+              "headline": "एक और बातचीत",
+              "items": [
+                "क्या मॉनसून ख़त्म होगा?",
+                "वैज्ञानिक ऐसा नहीं मानते",
+                "तो क्या बदलेगा?",
+                "बारिश आने का तरीक़ा"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "हवा पर चलता व्यापार",
+        "scenes": [
+          {
+            "text": "सैटेलाइट से बहुत पहले, नाविक मॉनसून को पढ़ना सीख गए थे। गर्मियों की हवा जहाज़ों को अरब से भारत ले जाती थी और सर्दियों की हवा वापस। पूरे व्यापार-मार्ग हवा के कैलेंडर पर चलते थे।",
+            "keyword": "कैलेंडर",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "हवा का कैलेंडर",
+              "items": [
+                "गर्मी: भारत की ओर",
+                "व्यापार, इंतज़ार",
+                "सर्दी: घर वापसी",
+                "अगली गर्मी की राह"
+              ]
+            }
+          },
+          {
+            "text": "और वह लय आज भी नहीं टूटी। हर जून, केरल की ओर बढ़ते बादल एक पुरानी घड़ी पर चलते हैं, जो इंसानों के गिनना सीखने से बहुत पहले से टिक-टिक कर रही है।",
+            "keyword": "पुरानी घड़ी",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "एक पुरानी घड़ी",
+              "caption": "इंसान से भी पुरानी",
+              "prop": "clock"
             }
           }
         ]

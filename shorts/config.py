@@ -21,7 +21,15 @@ SCENE_GAP = 0.25      # pause between scenes
 
 DOC_FPS = 24        # documentaries (1920x1080) are rendered at 24 fps
 
-# --- Voices (Piper, open source: https://github.com/OHF-Voice/piper1-gpl) ---
+# --- Voices ---
+# Default engine: Indic Parler-TTS (AI4Bharat, Apache 2.0), an expressive neural voice steered by a text
+# description, with the named speakers below. If it cannot load, Piper (below) is used for the whole run.
+# TTS_ENGINE=piper forces Piper.
+TTS_ENGINE = os.getenv("TTS_ENGINE", "parler").strip().lower()
+PARLER_MODEL = os.getenv("PARLER_MODEL", "ai4bharat/indic-parler-tts")
+PARLER_SPEAKERS = {"en": os.getenv("PARLER_SPEAKER_EN", "Thoma"), "hi": os.getenv("PARLER_SPEAKER_HI", "Rohit")}
+
+# Piper (open source, fallback): https://github.com/OHF-Voice/piper1-gpl
 VOICES = {
     "en": os.getenv("PIPER_VOICE_EN", "en_US-lessac-medium"),
     "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-pratham-medium"),

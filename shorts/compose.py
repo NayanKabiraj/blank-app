@@ -19,7 +19,7 @@ def _run(cmd, cwd=None):
 
 
 # ---------------------------------------------------------------- voice
-def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=frozenset()):
+def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=frozenset(), style: str = "shorts"):
     """Synthesize every scene. With a (min, max) duration window (Shorts) the speech speed is adjusted
     to fit it; without one (documentaries) the voice keeps its natural pace and a longer pause is left
     before each scene in `chapter_starts`. Returns (voice_wav, [(start, end, text), ...] per scene, voice_end)."""
@@ -30,7 +30,7 @@ def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=froz
         files, durs = [], []
         for i, sc in enumerate(scenes):
             f = work / f"vo_{i}.wav"
-            durs.append(tts.synthesize(sc.text, f, lang, scale))
+            durs.append(tts.synthesize(sc.text, f, lang, scale, style))
             files.append(f)
         return files, durs
 
@@ -169,7 +169,7 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "")
     for ch in script.chapters:
         starts[n] = ch.title
         n += len(ch.scenes)
-    voice, timeline, voice_end = _voice_track(scenes, lang, work, chapter_starts=frozenset(starts))
+    voice, timeline, voice_end = _voice_track(scenes, lang, work, chapter_starts=frozenset(starts), style="documentary")
     total = voice_end + 3.0
     animate.render(scenes, lang, niche, timeline, total, work, layout="landscape", fps=config.DOC_FPS)
     out = work / f"documentary_{lang}.mp4"
