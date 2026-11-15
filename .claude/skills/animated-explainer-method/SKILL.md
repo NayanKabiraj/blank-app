@@ -12,8 +12,8 @@ captions, audio and the final render) instead of paying for AI video tools. The 
 cover money/psychology explainers with stick figures, prehistoric sea creatures, map
 animations and wordless short films. Each took about 10–45 minutes to generate.
 
-This repo has the rendering half: the one and only look of the channel is the **explainer** (dark navy, flat
-step-by-step diagrams, a guiding spark, chat bubbles, quizzes, drawn by code in `shorts/explainer/`, see the
+This repo has the rendering half: the one and only look of the channel is the **whiteboard explainer** (a hand
+drawing marker diagrams, a smiling sun, chat bubbles, quizzes, drawn by code in `shorts/explainer/`, see the
 `explainer-diagram` skill). This skill covers the other half, the part that makes these videos get
 watched: the niche, the idea, the script, and how each line becomes a visual.
 
@@ -92,10 +92,10 @@ Every line of narration should have something on screen that *acts it out*, not 
 | Close | Icon returns, a question for the comments | `keyword` or `title` |
 
 Rules carried over from the channel's style:
-- **One guiding character** carries the story: here the glowing spark moves from scene to scene.
+- **One guiding character** carries the story: here a smiling sun moves from scene to scene.
 - **Movement in every scene**, with smooth transitions and no static slides. Everything in
   `scene.js` is animated as a function of `t`.
-- **Simple shapes, a limited palette, flat colour**: readable on a phone at a glance. The accent colour follows the niche.
+- **Simple marker shapes, a limited palette, pastel fills**: readable on a phone at a glance. The accent colour follows the niche.
 - **Captions on screen**, plus **sound effects** on reveals (pop, bell). Background music matches `mood`.
 - If a topic would really benefit from a new layout or icon, add it (see "Extending" in `explainer-diagram`)
   rather than forcing a poor match.

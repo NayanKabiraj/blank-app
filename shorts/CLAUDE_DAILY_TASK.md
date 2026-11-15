@@ -135,9 +135,9 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
      Natural everyday spoken Hindi in **Devanagari** script, adapting
      the English rather than translating it word for word. Put the Hindi title and
      description in Hindi.
-   - `graphic` is what the animation draws for the scene. The channel has **one look**: the explainer (dark
-     navy, flat step-by-step diagrams drawn in code, a guiding spark carried from scene to scene, rounded
-     caption pills; see the `explainer-diagram` skill in `.claude/skills/`). Write graphic text in the
+   - `graphic` is what the animation draws for the scene. The channel has **one look**: the whiteboard
+     explainer (a hand draws marker diagrams in code, a smiling sun is carried from scene to scene, caption
+     pills with a yellow highlighter on the keyword; see the `explainer-diagram` skill in `.claude/skills/`). Write graphic text in the
      **video's language** (Hindi graphics in Devanagari). Pick the `kind` that acts out the line:
      - `title`: a big headline with an icon (the hook and the closing line).
      - `keyword`: a key term in `headline`, a one-line explanation in `caption`, an icon.

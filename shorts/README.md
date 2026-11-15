@@ -43,16 +43,17 @@ The work is split into two parts:
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.
-5. **Builds the visuals in code.** Every Short is an **animated explainer** (`shorts/explainer/`, see the
-   `explainer-diagram` skill): a dark navy background, flat step-by-step diagrams that show the mechanism
-   (numbered chains with flowing dots, races with arrival counters, stacking layers, loops, discs sized by
-   their values, growing bars), **conversation scenes** (text-message chat bubbles with typing dots, a quiz
-   with a countdown and a reveal, myth struck out and truth stamped in), one guiding spark carried from scene
-   to scene, big word-by-word headlines, rounded caption pills with the keyword lit, and an accent colour that
-   follows the niche. It is rendered frame by frame in headless Chromium and encoded with FFmpeg. There is only
-   this one look: the older cartoon, stickman, Manim and stock-footage styles were removed.
+5. **Builds the visuals in code.** Every video is a **whiteboard explainer** (`shorts/explainer/`, see the
+   `explainer-diagram` skill): a white board where a hand draws the picture in marker while the voice explains it.
+   Marker-drawn step-by-step diagrams that show the mechanism (numbered chains with flowing dots, races with arrival
+   counters, stacking layers, loops, discs sized by their values, growing bars), **conversation scenes** (text-message
+   chat bubbles with typing dots, a quiz with a countdown and a tick on the right answer, a myth struck out and the
+   truth stamped in), a smiling sun carried from scene to scene, handwritten headlines, and caption pills with a
+   yellow highlighter on the keyword. The accent colour follows the niche. It is rendered frame by frame in headless
+   Chromium and encoded with FFmpeg. There is only this one look: the older cartoon, stickman, Manim, stock-footage
+   and dark-diagram styles were removed.
 6. **Edits the video with FFmpeg.** 1080×1920, 30 fps, captions burned in word by word,
-   a hook title, loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
+   the hook line (drawn in the scene), loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
 7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts, and the AI
    voice is disclosed through `containsSyntheticMedia`.
 

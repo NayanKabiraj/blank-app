@@ -1,7 +1,8 @@
 """Explainer animation, generated entirely by code.
 
-Dark navy, flat step-by-step diagrams, one guiding "spark" carried from scene to scene, word-by-word
-headlines, chat bubbles, quizzes and rounded caption pills (shorts/explainer/scene.js), rendered frame
+A whiteboard: marker-drawn step-by-step diagrams that draw themselves on while a hand holds the pen, one smiling
+sun carried from scene to scene, handwritten headlines, chat bubbles, quizzes and highlighter caption pills
+(shorts/explainer/scene.js), rendered frame
 by frame in headless Chromium by shorts/explainer/render.cjs and encoded with FFmpeg. Each scene's
 `graphic` in the plan says what to draw; voice, music and sound effects are added by compose.py.
 """
@@ -73,7 +74,8 @@ def render(script, lang: str, niche: str, timeline, total: float, work: Path, la
            "layout": layout, "width": 1920 if land else 1080, "height": 1080 if land else 1920,
            "workers": int(os.getenv("RENDER_WORKERS", "4" if land else "3")),
            **({"crf": 24, "jpegQuality": 88} if land else {}),
-           "captions": caption_chunks(timeline, [sc.keyword for sc in scenes])}
+           "captions": caption_chunks(timeline, [sc.keyword for sc in scenes]),
+           "hook": getattr(script, "hook_text", "") or ""}
     cfg_path = work / "timeline.json"
     cfg_path.write_text(json.dumps(cfg, ensure_ascii=False), encoding="utf-8")
     out = work / "video.mp4"
