@@ -44,7 +44,7 @@ DEFAULTS: dict[str, Any] = {
         "motionBlur": {"enabled": False, "strength": 0.35, "samples": 8},
         "postProcessing": {
             "enabled": True, "bloom": {"enabled": True, "strength": 0.55, "radius": 0.45, "threshold": 0.78},
-            "filmGrain": {"enabled": True, "strength": 0.05}, "vignette": {"enabled": True, "strength": 0.2},
+            "filmGrain": {"enabled": True, "strength": 0.015}, "vignette": {"enabled": True, "strength": 0.2},
             "chromaticAberration": {"enabled": True, "strength": 0.015},
             "glitch": {"enabled": True, "maximumStrength": 0.08, "useOnlyOnMajorBeats": True}},
         "safeArea": {"topPercent": 10, "bottomPercent": 18, "leftPercent": 7, "rightPercent": 7},
@@ -141,7 +141,7 @@ def complete(m: dict) -> dict:
         base["captions"]["bottomOffsetPercent"] = 8
         base["renderSettings"]["safeArea"] = {"topPercent": 8, "bottomPercent": 16, "leftPercent": 6, "rightPercent": 6}
         base["renderSettings"]["postProcessing"]["glitch"]["enabled"] = False
-        base["renderSettings"]["postProcessing"]["filmGrain"]["strength"] = 0.05
+        base["renderSettings"]["postProcessing"]["filmGrain"]["strength"] = 0.012
     m = deep_merge(base, m)
     brief = m.setdefault("creativeBrief", {})
     brief.setdefault("language", "en-IN")

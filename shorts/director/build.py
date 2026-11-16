@@ -164,7 +164,7 @@ def engine_cfg(m: dict, lang: str, total: float, chunks: list[dict], analysis: d
             # software WebGL is the bottleneck: the 3D world is drawn at a fraction of the output size and upsampled, while the text
             # overlay and captions stay at full resolution (the difference is invisible under bloom; it is 2-3x faster)
             "renderScale": float(os.getenv("DIRECTOR_SCALE", "0.55" if doc else "0.7")),
-            "msaa": int(os.getenv("DIRECTOR_MSAA", "0")), "crf": 26 if doc else 23, "jpegQuality": 90}
+            "msaa": int(os.getenv("DIRECTOR_MSAA", "0")), "crf": 28 if doc else 26, "jpegQuality": 90}
 
 
 def run_node(cfg: dict, out: Path, work: Path, sample: int = 0) -> dict:
