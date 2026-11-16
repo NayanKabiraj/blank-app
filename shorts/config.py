@@ -22,10 +22,9 @@ SCENE_GAP = 0.25      # pause between scenes
 DOC_FPS = 24        # documentaries (1920x1080) are rendered at 24 fps
 
 # --- Voices ---
-# Default engine: Indic Parler-TTS (AI4Bharat, Apache 2.0), an expressive neural voice steered by a text
-# description, with the named speakers below. If it cannot load, Piper (below) is used for the whole run.
-# TTS_ENGINE=piper forces Piper.
-TTS_ENGINE = os.getenv("TTS_ENGINE", "parler").strip().lower()
+# Default engine: Piper (small, fast, offline). TTS_ENGINE=parler selects Indic Parler-TTS (AI4Bharat, Apache 2.0,
+# expressive but slow on a CPU: about 10-12x real time) with the named speakers below; if it cannot load, Piper is used.
+TTS_ENGINE = os.getenv("TTS_ENGINE", "piper").strip().lower()
 PARLER_MODEL = os.getenv("PARLER_MODEL", "ai4bharat/indic-parler-tts")
 PARLER_SPEAKERS = {"en": os.getenv("PARLER_SPEAKER_EN", "Thoma"), "hi": os.getenv("PARLER_SPEAKER_HI", "Rohit")}
 
