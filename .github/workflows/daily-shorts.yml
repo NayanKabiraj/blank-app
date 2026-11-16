@@ -87,6 +87,8 @@ jobs:
         run: |
           pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu \
             && pip install git+https://github.com/huggingface/parler-tts.git \
+            && pip install "protobuf>=5.28,<7" \
+            && python -c "from sentencepiece import sentencepiece_model_pb2" \
             || echo "::warning::Parler-TTS could not be installed, the Piper voice will be used"
 
       - uses: actions/setup-node@v4
