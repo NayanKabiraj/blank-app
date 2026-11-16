@@ -30,11 +30,11 @@ It runs every day right after the daily Shorts task, in the same Claude session:
    the audit trail into `research_summary`: start with "Candidates:" (top 3 with scores), why the
    winner won, then the facts and their sources. Mark approximations ("roughly", "about").
 4. **Pick the length** (`target_minutes`, **5 to 10**): 5 for a single clean mechanism, 8-10 for a mechanism
-   plus history and stakes. Never more than 10: the Parler voice generates speech at roughly 10-12x real time on
-   the runner, so two languages of 10 minutes already take about 4 hours of the 6 hour job limit. Longer is
-   not better; never pad. The validator estimates the time from the word count (English 3.1 words and Hindi 2.85
+   plus history and stakes. Never more than 10 (the Piper voice is fast, but the picture takes about 40 frames per second to
+   draw, and a long video is a long upload). Longer is
+   not better; never pad. The validator estimates the time from the word count (English 3.3 words and Hindi 2.45
    words per second, plus pauses) and wants it within 20 % of `target_minutes`. Rough budget: 5 min is about
-   850 words in English (780 in Hindi), 10 min about 1,800 (1,600), 15 min about 2,700 (2,450).
+   900 words in English (680 in Hindi), 10 min about 1,900 (1,450).
 5. **Write the plan** as JSON that follows `shorts/sample_documentary_plan.json` and the schema
    (`python -m shorts.plan doc-schema`). `niche` (a name from `shorts/niches.py`), `topic`,
    `research_summary`, `mood`, `target_minutes`, and `english` and `hindi`, each with `title`,
