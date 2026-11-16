@@ -13,7 +13,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from . import compose, config, upload
+from . import compose, config, pending, upload
 from .plan import Plan, validate
 
 log = logging.getLogger("shorts")
@@ -54,6 +54,9 @@ def main() -> int:
 
     scripts = {"en": plan.english, "hi": plan.hindi}
     results, failures = {}, []
+    if not args.dry_run and upload.can_upload("en"):   # videos waiting from earlier runs go first
+        langs0 = [l.strip() for l in args.langs.split(",") if l.strip()]
+        log.info("Queue: %s", pending.flush(langs0))
     for lang in [l.strip() for l in args.langs.split(",") if l.strip()]:
         try:
             video = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}", plan.niche)
@@ -63,10 +66,8 @@ def main() -> int:
             entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang)}
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
-            elif not upload.can_upload(lang):
-                log.warning("YouTube secrets missing for %s; skipping upload", lang)
-            else:
-                entry["video_id"] = upload.upload(final, scripts[lang], lang)
+            else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
+                entry.update(pending.publish(final, scripts[lang], lang, topic=plan.topic))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so one language can still publish
             log.exception("Failed to produce the %s Short", lang)

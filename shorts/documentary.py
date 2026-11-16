@@ -19,7 +19,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from . import compose, config, upload
+from . import compose, config, pending, upload
 from .plan import DocPlan, doc_seconds, validate_doc
 
 log = logging.getLogger("shorts.documentary")
@@ -57,6 +57,8 @@ def main() -> int:
 
     scripts = {"en": plan.english, "hi": plan.hindi}
     today = dt.date.today().isoformat()
+    if not args.dry_run and upload.can_upload("en"):   # videos waiting from earlier runs go first
+        log.info("Queue: %s", pending.flush([x.strip() for x in args.langs.split(",") if x.strip()]))
     results, failures = {}, []
     for lang in [x.strip() for x in args.langs.split(",") if x.strip()]:
         try:
@@ -77,10 +79,8 @@ def main() -> int:
                 entry["saved_to"] = f"videos/{today}/documentary_{lang}.mp4"
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
-            elif not upload.can_upload(lang):
-                log.warning("YouTube secrets missing for %s; skipping upload", lang)
-            else:
-                entry["video_id"] = upload.upload(final, script, lang, short=False, description=desc)
+            else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
+                entry.update(pending.publish(final, script, lang, short=False, description=desc, topic=plan.topic))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so the other language can still be made
             log.exception("Failed to produce the %s documentary", lang)

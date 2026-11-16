@@ -14,7 +14,7 @@ on:
         type: string
         default: ""
       upload_date:
-        description: "format upload only: the day to upload, e.g. 2026-11-16 (videos/<date>/ and data/plans/<date>.json must exist)"
+        description: "format upload only: the day to upload, e.g. 2026-11-16 (videos/<date>/ and data/plans/<date>.json must exist). Empty (and dry_run off) = upload the videos waiting in videos/unpublished/"
         type: string
         default: ""
       keep_in_repo:
@@ -175,7 +175,9 @@ jobs:
           IN_LANGS: ${{ matrix.langs }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          if [ "$IN_DRY_RUN" = "true" ] || [ -z "$IN_DATE" ]; then python -m shorts.upload_saved --check
+          # dry_run = only check the credentials; a date = upload that saved day; neither = upload what waits in videos/unpublished/
+          if [ "$IN_DRY_RUN" = "true" ]; then python -m shorts.upload_saved --check
+          elif [ -z "$IN_DATE" ]; then python -m shorts.pending flush --langs "$IN_LANGS" || true
           else python -m shorts.upload_saved --date "$IN_DATE" --langs "$IN_LANGS"; fi
 
       - name: Read the manifest sent by Claude (director)
