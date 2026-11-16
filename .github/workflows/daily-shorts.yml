@@ -6,9 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       format:
-        description: "shorts (default: the daily 45-55 second Shorts), documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema) or voicelab (voice samples, no video)"
+        description: "shorts (default: the daily 45-55 second Shorts), documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema) voicelab (voice samples, no video) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
         type: string
         default: "shorts"
+      upload_date:
+        description: "format upload only: the day to upload, e.g. 2026-11-16 (videos/<date>/ and data/plans/<date>.json must exist)"
+        type: string
+        default: ""
       keep_in_repo:
         description: "documentary only: also commit the videos to videos/<date>/ (they are large; normally they are only kept as workflow artifacts)"
         type: boolean
@@ -43,7 +47,7 @@ jobs:
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
       YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
       # Optional repository variables (Settings > Secrets and variables > Actions > Variables)
-      YT_PRIVACY: ${{ vars.YT_PRIVACY || 'public' }}
+      YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
@@ -75,6 +79,7 @@ jobs:
           key: piper-${{ env.PIPER_VOICE_EN }}-${{ env.PIPER_VOICE_HI }}
 
       - name: Cache the Parler-TTS model
+        if: ${{ inputs.format != 'upload' }}
         uses: actions/cache@v4
         with:
           path: .cache/hf
@@ -84,6 +89,7 @@ jobs:
         run: pip install -r shorts/requirements.txt
 
       - name: Install Parler-TTS (optional, without it the Piper voice is used)
+        if: ${{ inputs.format != 'upload' }}
         run: |
           pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu \
             && pip install git+https://github.com/huggingface/parler-tts.git \
@@ -92,12 +98,14 @@ jobs:
             || echo "::warning::Parler-TTS could not be installed, the Piper voice will be used"
 
       - uses: actions/setup-node@v4
+        if: ${{ inputs.format != 'upload' }}
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: shorts/explainer/package-lock.json
 
       - name: Install the animation renderer (Playwright + headless Chromium)
+        if: ${{ inputs.format != 'upload' }}
         working-directory: shorts/explainer
         run: |
           npm ci --no-audit --no-fund
@@ -107,8 +115,18 @@ jobs:
         if: ${{ inputs.format == 'voicelab' }}
         run: python shorts/voicelab_parler.py videos/voicelab
 
+      - name: Upload a saved day to YouTube (dry run = only check the credentials)
+        if: ${{ inputs.format == 'upload' }}
+        env:
+          IN_DATE: ${{ inputs.upload_date }}
+          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [ "$IN_DRY_RUN" = "true" ] || [ -z "$IN_DATE" ]; then python -m shorts.upload_saved --check
+          else python -m shorts.upload_saved --date "$IN_DATE" --langs "$IN_LANGS"; fi
+
       - name: Read the plan sent by Claude
-        if: ${{ inputs.format != 'voicelab' }}
+        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' }}
         env:
           IN_PLAN: ${{ inputs.plan_json }}
           IN_FORMAT: ${{ inputs.format || 'shorts' }}
@@ -123,7 +141,7 @@ jobs:
           python -m shorts.plan "$CHECK" "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
 
       - name: Render and publish
-        if: ${{ inputs.format != 'voicelab' }}
+        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' }}
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
