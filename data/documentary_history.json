@@ -1,0 +1,86 @@
+[
+  {
+    "date": "2026-11-16",
+    "niche": "India Explained",
+    "topic": "How the Indian monsoon works",
+    "minutes": 5,
+    "videos": {
+      "en": {
+        "file": "2026-11-16_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "A season that rules a nation",
+            "start": 0.0
+          },
+          {
+            "title": "Land versus ocean",
+            "start": 30.1
+          },
+          {
+            "title": "The journey of the rain",
+            "start": 72.2
+          },
+          {
+            "title": "One of the wettest places",
+            "start": 120.4
+          },
+          {
+            "title": "When the rain misses",
+            "start": 154.2
+          },
+          {
+            "title": "Rain in a warming world",
+            "start": 196.4
+          },
+          {
+            "title": "Trade on the wind",
+            "start": 232.3
+          },
+          {
+            "title": "Why it matters",
+            "start": 255.1
+          }
+        ],
+        "video_id": "3VeZpL_RQ2U"
+      },
+      "hi": {
+        "file": "2026-11-16_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "एक मौसम जो देश चलाता है",
+            "start": 0.0
+          },
+          {
+            "title": "ज़मीन बनाम समंदर",
+            "start": 34.4
+          },
+          {
+            "title": "बारिश का सफ़र",
+            "start": 84.2
+          },
+          {
+            "title": "सबसे गीली जगहों में से एक",
+            "start": 147.1
+          },
+          {
+            "title": "जब बारिश चूक जाए",
+            "start": 189.1
+          },
+          {
+            "title": "गरम दुनिया में बारिश",
+            "start": 241.6
+          },
+          {
+            "title": "हवा पर चलता व्यापार",
+            "start": 286.1
+          },
+          {
+            "title": "यह क्यों मायने रखता है",
+            "start": 312.6
+          }
+        ],
+        "video_id": "WvEmz4FPQAI"
+      }
+    }
+  }
+]
