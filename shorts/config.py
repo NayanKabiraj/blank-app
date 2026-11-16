@@ -48,5 +48,5 @@ YT_REFRESH_TOKENS = {
     "en": os.getenv("YT_REFRESH_TOKEN_EN") or os.getenv("YT_REFRESH_TOKEN", ""),
     "hi": os.getenv("YT_REFRESH_TOKEN_HI") or os.getenv("YT_REFRESH_TOKEN", ""),
 }
-YT_PRIVACY = os.getenv("YT_PRIVACY", "public")          # public | unlisted | private
+YT_PRIVACY = os.getenv("YT_PRIVACY", "private")         # private (default) | unlisted | public
 YT_CATEGORY_ID = os.getenv("YT_CATEGORY_ID", "27")      # 27 = Education
