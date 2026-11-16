@@ -1,0 +1,286 @@
+{
+  "niche": "Earth & Nature",
+  "topic": "Why does Delhi's air get trapped every winter? (the temperature-inversion lid)",
+  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) Why Delhi's winter air gets trapped, the temperature-inversion lid: 35 (4,4,5,5,4,5,4,4). (2) Why phones die faster in the cold: 34 (4,5,4,4,4,4,4,5), close runner-up, How Tech Works. (3) Why UPI settles in seconds: 33. (4) Why prices end in 99 before Black Friday: 33 (no controlled study to quote). (5) Why we can't tickle ourselves: 30. (6) Why we see our breath in winter: 28. (7) The Mpemba effect, hot water freezing faster: 28 (contested science, rejected). Others considered: why lips crack in winter and why the Moon looks huge (Human Body and Space are cooling down). Winner: Delhi's trapped air. Highest score, wins the tie-break on timeliness (Delhi's AQI hit 377 on 4 November 2026, the worst in 288 days, per Business Today and National Herald, with CPCB/DSS data), Earth & Nature is unused, and the mechanism is pure physics that can be drawn as a lid. Kept neutral: no blame, no health advice. How it works: normally the sun warms the ground, warm air rises and carries smoke up (mixing). On a winter night the ground radiates heat away and the surface air turns cold and heavy while a warmer layer sits above it (a temperature inversion), so nothing rises and smoke, dust and vapour stay near the ground; smog is thickest at night and early morning and lifts as the sun warms the ground (Outlook India, Duke Global Health, The Week). The inversion layer is typically 100 to 200 metres up per UrbanEmissions' Sarath Guttikunda, so the script avoids a precise height. PM2.5 means particles 2.5 micrometres or smaller, about 30 times thinner than a human hair (EPA, rounded from 70/2.5 = 28). Many sources add up: on 4 November the DSS put stubble burning at 20.2% and transport at 15.5% (Business Today), and other days stubble share is tiny while air stays very poor (The Statesman). Analogy: a lid on a pot.",
+  "mood": "mysterious",
+  "english": {
+    "title": "Why Delhi's Air Gets Trapped Every Winter (The Warm Lid)",
+    "description": "Why does Delhi's air get trapped every winter? On some nights the air above the city is warmer than the air you breathe, and that acts like a lid. Here is the physics of the temperature inversion, why smog is worst in the early morning, and why it is never just one cause. #delhismog #winter #science #howitworks",
+    "tags": [
+      "delhi smog",
+      "why delhi air is bad in winter",
+      "temperature inversion",
+      "winter smog explained",
+      "pm2.5",
+      "air pollution explained",
+      "why smog in winter",
+      "earth science",
+      "science explained",
+      "animated explainer"
+    ],
+    "hook_text": "Warm air above Delhi?",
+    "scenes": [
+      {
+        "text": "Some winter nights, the air above Delhi is warmer than the air you breathe.",
+        "keyword": "warmer",
+        "graphic": {
+          "kind": "title",
+          "headline": "Warm air above?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "cloud"
+        }
+      },
+      {
+        "text": "Weird, right? Air usually gets colder as you go up. So what flipped?",
+        "keyword": "flipped",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "The rule flips",
+          "caption": "usually colder as you go up",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "globe"
+        }
+      },
+      {
+        "text": "Normally, the sun warms the ground. Warm air rises and carries smoke away, like a chimney.",
+        "keyword": "chimney",
+        "graphic": {
+          "kind": "flow",
+          "headline": "A normal day",
+          "caption": "",
+          "items": [
+            "Sun warms ground",
+            "Warm air rises",
+            "Smoke goes up",
+            "Air clears"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "But on a winter night, the ground turns cold. Cold air is heavy, so it stays put under a warm layer. Smoke gets trapped.",
+        "keyword": "warm layer",
+        "graphic": {
+          "kind": "build",
+          "headline": "The lid forms",
+          "caption": "",
+          "items": [
+            "Ground turns cold",
+            "Cold air sits low",
+            "Warm layer above",
+            "Smoke is trapped"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Quick quiz: when is the smog thickest? Take a guess.",
+        "keyword": "guess",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "When is smog thickest?",
+          "caption": "",
+          "items": [
+            "Afternoon",
+            "Early morning",
+            "It never changes"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "Early morning, when the ground is coldest! And the smoke is tiny, about thirty times thinner than a hair.",
+        "keyword": "thirty times",
+        "graphic": {
+          "kind": "stat",
+          "headline": "30 times",
+          "caption": "thinner than a hair",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Only farm fires? That's the myth. Traffic, dust and cooking smoke add up, and the lid traps them all.",
+        "keyword": "myth",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Only farm fires?",
+          "caption": "",
+          "items": [
+            "Farm fires cause it all",
+            "Many sources, one lid"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So when you see a hazy morning, think of the lid. Which city should we explain next? Tell me below, and follow for more.",
+        "keyword": "lid",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Think of the lid",
+          "caption": "which city next?",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "bulb"
+        }
+      }
+    ]
+  },
+  "hindi": {
+    "title": "दिल्ली की हवा हर सर्दी में क्यों फँस जाती है? (गरम ढक्कन)",
+    "description": "दिल्ली की हवा हर सर्दी में क्यों फँस जाती है? कुछ रातों में शहर के ऊपर की हवा नीचे की हवा से गरम होती है, और यह ढक्कन का काम करती है। जानिए तापमान उलटाव का विज्ञान, स्मॉग सुबह-सुबह सबसे घना क्यों होता है, और वजह कभी एक नहीं होती। #दिल्लीस्मॉग #सर्दी #विज्ञान #hindi",
+    "tags": [
+      "दिल्ली स्मॉग",
+      "सर्दी में दिल्ली की हवा खराब क्यों",
+      "तापमान उलटाव",
+      "स्मॉग कैसे बनता है",
+      "pm2.5 क्या है",
+      "वायु प्रदूषण",
+      "science in hindi",
+      "विज्ञान",
+      "earth science hindi",
+      "animated explainer"
+    ],
+    "hook_text": "ऊपर गरम, नीचे ठंडी",
+    "scenes": [
+      {
+        "text": "सर्दियों की कुछ रातों में दिल्ली के ऊपर की हवा, नीचे की हवा से गरम होती है।",
+        "keyword": "गरम",
+        "graphic": {
+          "kind": "title",
+          "headline": "ऊपर गरम हवा?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "cloud"
+        }
+      },
+      {
+        "text": "अजीब है ना? आम तौर पर ऊपर हवा ठंडी होती है। तो यह उल्टा कैसे हुआ?",
+        "keyword": "उल्टा",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "नियम उलट गया",
+          "caption": "आम तौर पर ऊपर ठंडी हवा",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "globe"
+        }
+      },
+      {
+        "text": "आम दिन सूरज ज़मीन गरम करता है। गरम हवा उठती है और धुआँ ले जाती है, चिमनी की तरह।",
+        "keyword": "चिमनी",
+        "graphic": {
+          "kind": "flow",
+          "headline": "एक आम दिन",
+          "caption": "",
+          "items": [
+            "सूरज ज़मीन तपाता है",
+            "गरम हवा उठती है",
+            "धुआँ ऊपर जाता है",
+            "हवा साफ़ होती है"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "पर सर्दी की रात ज़मीन ठंडी हो जाती है। भारी ठंडी हवा नीचे रुकती है, गरम परत के नीचे। धुआँ फँस जाता है।",
+        "keyword": "गरम परत",
+        "graphic": {
+          "kind": "build",
+          "headline": "ढक्कन बनता है",
+          "caption": "",
+          "items": [
+            "ज़मीन ठंडी होती है",
+            "ठंडी हवा नीचे रुकी",
+            "ऊपर गरम परत",
+            "धुआँ फँस गया"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "छोटा-सा क्विज़। स्मॉग सबसे घना कब होता है? ज़रा अंदाज़ा लगाइए।",
+        "keyword": "अंदाज़ा",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "स्मॉग सबसे घना कब?",
+          "caption": "",
+          "items": [
+            "दोपहर",
+            "सुबह-सुबह",
+            "कभी नहीं बदलता"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "सुबह-सुबह, जब ज़मीन सबसे ठंडी होती है! और धुएँ के कण बाल से लगभग तीस गुना पतले हैं।",
+        "keyword": "तीस गुना",
+        "graphic": {
+          "kind": "stat",
+          "headline": "30 गुना",
+          "caption": "बाल से पतले",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "क्या सिर्फ़ पराली वजह है? यही मिथक है। गाड़ियाँ, धूल, खाने का धुआँ जुड़ते हैं, और ढक्कन सबको रोकता है।",
+        "keyword": "मिथक",
+        "graphic": {
+          "kind": "myth",
+          "headline": "सिर्फ़ पराली?",
+          "caption": "",
+          "items": [
+            "सिर्फ़ पराली वजह है",
+            "कई स्रोत, एक ढक्कन"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो धुंधली सुबह दिखे, तो इस ढक्कन को याद करें। अगला कौन-सा शहर? कमेंट में बताइए, और फ़ॉलो करें।",
+        "keyword": "ढक्कन",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "ढक्कन को याद करें",
+          "caption": "अगला कौन-सा शहर?",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "bulb"
+        }
+      }
+    ]
+  }
+}

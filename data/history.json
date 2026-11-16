@@ -78,5 +78,21 @@
         "saved_to": "videos/2026-11-15/hi.mp4"
       }
     }
+  },
+  {
+    "date": "2026-11-16",
+    "niche": "Earth & Nature",
+    "topic": "Why does Delhi's air get trapped every winter? (the temperature-inversion lid)",
+    "mood": "mysterious",
+    "videos": {
+      "en": {
+        "file": "2026-11-16_en.mp4",
+        "saved_to": "videos/2026-11-16/en.mp4"
+      },
+      "hi": {
+        "file": "2026-11-16_hi.mp4",
+        "saved_to": "videos/2026-11-16/hi.mp4"
+      }
+    }
   }
 ]
