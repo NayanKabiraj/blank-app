@@ -84,6 +84,8 @@ def main() -> int:
     if len(sys.argv) >= 2 and sys.argv[1] == "url":
         print("OPEN THIS LINK, sign in with the channel's Google account and approve:\n")
         print(auth_url())
+        h = len(config.YT_CLIENT_ID) // 2   # the id is public by design, but GitHub masks it in logs: show it in two halves
+        print("\nCLIENT_ID_HALVES:", config.YT_CLIENT_ID[:h], "|", config.YT_CLIENT_ID[h:])
         print("\nThe browser then shows a page that cannot be reached (http://localhost/?code=...). That is expected:")
         print("copy the whole address from the address bar and send it back.")
         return 0
