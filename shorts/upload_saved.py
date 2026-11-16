@@ -59,8 +59,14 @@ def main() -> int:
     if args.check or not args.date:
         return check()
 
-    plan = Plan.model_validate_json((config.DATA_DIR / "plans" / f"{args.date}.json").read_text(encoding="utf-8"))
-    scripts = {"en": plan.english, "hi": plan.hindi}
+    raw = (config.DATA_DIR / "plans" / f"{args.date}.json").read_text(encoding="utf-8")
+    if '"schemaVersion"' in raw:   # a director manifest: titles, descriptions and tags come from its localizations
+        from .director import manifest as dm
+        m = dm.complete(json.loads(raw))
+        scripts = {lang: dm.script(dm.localize(m, lang)) for lang in ("en", "hi") if lang == "en" or lang in (m.get("localizations") or {})}
+    else:
+        plan = Plan.model_validate_json(raw)
+        scripts = {"en": plan.english, "hi": plan.hindi}
     day = config.VIDEOS_DIR / args.date
     hist_file = config.HISTORY_FILE
     hist = json.loads(hist_file.read_text()) if hist_file.exists() else []

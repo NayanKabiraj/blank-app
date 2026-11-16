@@ -1,0 +1,12 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;background:#000;overflow:hidden}
+  #stage{position:relative;width:100vw;height:100vh}
+  canvas#gl{position:absolute;left:0;top:0}
+  #cap{position:absolute;left:0;right:0;text-align:center;color:#fff;pointer-events:none;display:flex;flex-wrap:wrap;justify-content:center;gap:0 .42em;padding:0 5%;box-sizing:border-box;line-height:1.18}
+  #cap .w{display:inline-block;text-shadow:0 2px 0 rgba(0,0,0,.65),0 0 18px rgba(0,0,0,.75);transition:none}
+</style>
+<script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js","three/addons/":"/node_modules/three/examples/jsm/"}}</script>
+</head><body><div id="stage"><canvas id="gl"></canvas><div id="cap"></div></div>
+<script type="module" src="/engine/main.js"></script></body></html>

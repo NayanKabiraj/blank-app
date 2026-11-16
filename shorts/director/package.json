@@ -1,0 +1,13 @@
+{
+  "name": "shorts-director-engine",
+  "private": true,
+  "description": "Three.js scene engine that renders a Claude-written video manifest (headless Chromium, frame by frame)",
+  "dependencies": {
+    "@fontsource/inter": "5.1.0",
+    "@fontsource/jetbrains-mono": "5.1.0",
+    "@fontsource/noto-sans-devanagari": "5.1.0",
+    "@fontsource/space-grotesk": "5.1.0",
+    "playwright": "1.63.0",
+    "three": "0.170.0"
+  }
+}

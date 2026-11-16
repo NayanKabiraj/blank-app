@@ -119,3 +119,21 @@ task starts the workflow on `main`.
 ## Cost
 Rendering is free and open source, and runs on free GitHub Actions minutes. The research
 runs as a Claude task on your Claude plan. The YouTube API is free.
+
+
+## Director mode (Claude writes the scenes, the workflow renders them)
+
+Besides the whiteboard template videos there is a second, fully dynamic engine. Claude acts as the **director**: it writes
+one JSON manifest (story, narration per scene, scene types, camera moves, environments, objects and their behaviour,
+on-screen text animations, sound cues, Hindi localization) and starts the workflow with `format: director` (Short) or
+`format: director-documentary`, `manifest_json: <the JSON>`. GitHub Actions then voices the narration (same TTS as before),
+rebuilds the timeline around the real speech, renders the scenes with Three.js in headless Chromium
+(`shorts/director/engine/`), mixes voice, music and effects, and uploads (private by default).
+
+- Instructions for the director: `shorts/CLAUDE_DIRECTOR_TASK.md` (manifest shape, registered presets, rules).
+- Examples: `shorts/director/examples/ai_agents_short.json` (Short, EN + HI), `gps_documentary.json` (documentary, EN + HI).
+- Check a manifest: `python -m shorts.director.run --manifest-file m.json --validate-only`; list presets: `python -m shorts.director.run schema`.
+- Render locally (slow, software WebGL): `SHORTS_FAKE_TTS=1 python -m shorts.director.run --manifest-file m.json --langs en --dry-run`
+  after `cd shorts/director && npm ci`.
+- Tuning: `DIRECTOR_SCALE` (3D render scale, default 0.7 Shorts / 0.55 documentaries), `DIRECTOR_MSAA`, `RENDER_WORKERS`,
+  `DIRECTOR_PREFLIGHT=off`.

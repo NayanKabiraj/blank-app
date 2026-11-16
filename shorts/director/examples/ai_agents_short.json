@@ -1,0 +1,1647 @@
+{
+  "schemaVersion": "1.0.0",
+  "job": {
+    "jobId": "jack-video-20261116-001",
+    "createdAt": "2026-11-16T13:30:00Z",
+    "createdBy": "claude-director",
+    "renderMode": "production",
+    "seed": 184276,
+    "priority": "normal",
+    "outputDirectory": "output/jack-video-20261116-001",
+    "failOnValidationError": true
+  },
+  "creativeBrief": {
+    "topic": "Why AI agents will change software development",
+    "objective": "Create a fast-paced, visually dynamic educational video that explains how AI agents will change software development without making unsupported claims.",
+    "targetAudience": [
+      "software developers",
+      "QA engineers",
+      "engineering managers",
+      "technology enthusiasts"
+    ],
+    "platform": "youtube-shorts",
+    "language": "en-IN",
+    "targetDurationSeconds": 60,
+    "aspectRatio": "9:16",
+    "resolution": {
+      "width": 1080,
+      "height": 1920
+    },
+    "framesPerSecond": 30,
+    "visualStyle": {
+      "styleId": "jack-dynamic",
+      "description": "Fast-paced coded animation using kinetic typography, procedural particles, 3D geometry, data-inspired environments, camera movement and synchronized transitions.",
+      "tone": [
+        "cinematic",
+        "energetic",
+        "intelligent",
+        "slightly-dramatic"
+      ],
+      "avoid": [
+        "static-slides",
+        "repetitive-camera-movements",
+        "long-unmoving-text",
+        "generic-corporate-template",
+        "excessive-glitch",
+        "unreadable-typography",
+        "rapid-flashing",
+        "copyrighted-characters",
+        "third-party-logos"
+      ]
+    },
+    "niche": "Technology"
+  },
+  "director": {
+    "role": "Claude acts as the creative director. Claude creates the script, narration, timing, emotional beats, visual concepts and scene instructions. Claude must not generate implementation-specific Three.js source code inside this manifest.",
+    "responsibilities": [
+      "Create a coherent story with a hook, escalation, explanation, payoff and call to action.",
+      "Split the script into visual scenes based on meaning and narration timing.",
+      "Select animation presets supported by the animation engine.",
+      "Assign energy, mood, camera movement and transition instructions.",
+      "Keep every spoken narration segment synchronized with its scene.",
+      "Maintain visual variety without introducing randomness that breaks the story.",
+      "Avoid repeating the same dominant animation, camera preset or transition in consecutive scenes.",
+      "Keep all on-screen text short, legible and safe inside the configured margins.",
+      "Use the global seed and scene seeds to make every render reproducible.",
+      "Return valid JSON only when this manifest is generated automatically."
+    ],
+    "storyRules": {
+      "hookWithinSeconds": 2.5,
+      "maximumSceneDurationSeconds": 6,
+      "minimumSceneDurationSeconds": 1.5,
+      "maximumWordsPerTextElement": 8,
+      "maximumTextElementsPerScene": 3,
+      "maximumNarrationWordsPerMinute": 165,
+      "requiredStoryPhases": [
+        "hook",
+        "problem",
+        "context",
+        "development",
+        "reveal",
+        "payoff",
+        "call-to-action"
+      ],
+      "requireOpenLoop": true,
+      "openLoopCloseBeforeSeconds": 55,
+      "requirePatternInterruptEverySeconds": 7,
+      "requireVisualChangeEverySeconds": 3
+    },
+    "selectionRules": {
+      "useOnlyRegisteredEnginePresets": true,
+      "maximumConsecutiveSameSceneType": 1,
+      "maximumCameraReuseWithinScenes": 3,
+      "maximumTransitionReuseWithinScenes": 4,
+      "maximumPaletteReuseWithinScenes": 5,
+      "minimumSceneTypeVariety": 5,
+      "preferSemanticAnimation": true,
+      "allowBoundedRandomness": true,
+      "allowUnregisteredEffects": false
+    }
+  },
+  "engineContract": {
+    "engine": "three.js",
+    "renderer": "webgl",
+    "timelineEngine": "gsap",
+    "frameCapture": "puppeteer",
+    "videoEncoder": "ffmpeg",
+    "audioProcessor": "ffmpeg",
+    "colorSpace": "srgb",
+    "registeredSceneTypes": [
+      "kinetic-typography",
+      "particle-world",
+      "geometry-swarm",
+      "data-tunnel",
+      "procedural-grid",
+      "object-assembly",
+      "diagram-3d",
+      "image-parallax",
+      "timeline-3d",
+      "wave-field",
+      "network-nodes",
+      "finale"
+    ],
+    "registeredCameraPresets": [
+      "static-drift",
+      "slow-dolly-in",
+      "fast-dolly-in",
+      "dolly-out",
+      "orbit-left",
+      "orbit-right",
+      "crane-up",
+      "crane-down",
+      "fly-through",
+      "whip-pan-left",
+      "whip-pan-right",
+      "handheld-subtle",
+      "follow-target",
+      "push-orbit",
+      "macro-push",
+      "parallax-slide"
+    ],
+    "registeredObjectBehaviors": [
+      "float",
+      "pulse",
+      "rotate",
+      "assemble",
+      "explode",
+      "scatter",
+      "swarm",
+      "spiral",
+      "orbit",
+      "wave",
+      "fall",
+      "rise",
+      "magnetize",
+      "follow-path",
+      "react-to-audio"
+    ],
+    "registeredTextAnimations": [
+      "word-punch",
+      "kinetic-sentence",
+      "character-scatter",
+      "typewriter",
+      "tracking-reveal",
+      "mask-reveal",
+      "impact-zoom",
+      "particle-assemble",
+      "depth-reveal",
+      "word-stack",
+      "slide-and-lock"
+    ],
+    "registeredTransitions": [
+      "particle-dissolve",
+      "camera-fly-through",
+      "geometry-wipe",
+      "zoom-tunnel",
+      "whip-pan",
+      "object-occlusion",
+      "grid-collapse",
+      "light-sweep",
+      "depth-push",
+      "match-motion",
+      "fade-through-black"
+    ],
+    "registeredEnvironmentPresets": [
+      "dark-tech",
+      "neon-grid",
+      "particle-space",
+      "data-network",
+      "abstract-dark",
+      "energy-tunnel",
+      "minimal-light",
+      "digital-city",
+      "wave-space",
+      "holographic-room"
+    ],
+    "fallbacks": {
+      "unknownSceneType": "kinetic-typography",
+      "unknownCameraPreset": "slow-dolly-in",
+      "unknownTransition": "particle-dissolve",
+      "unknownEnvironment": "abstract-dark",
+      "missingSceneSeed": "derive-from-global-seed",
+      "missingAsset": "procedural-placeholder",
+      "missingFont": "inter"
+    }
+  },
+  "renderSettings": {
+    "durationSeconds": 60,
+    "fps": 30,
+    "totalFrames": 1800,
+    "pixelRatio": 1,
+    "antialias": true,
+    "alpha": false,
+    "shadows": true,
+    "shadowMapType": "pcf-soft",
+    "toneMapping": "aces-filmic",
+    "exposure": 1.05,
+    "motionBlur": {
+      "enabled": true,
+      "strength": 0.35,
+      "samples": 8
+    },
+    "postProcessing": {
+      "enabled": true,
+      "bloom": {
+        "enabled": true,
+        "strength": 0.55,
+        "radius": 0.45,
+        "threshold": 0.78
+      },
+      "filmGrain": {
+        "enabled": true,
+        "strength": 0.08
+      },
+      "vignette": {
+        "enabled": true,
+        "strength": 0.2
+      },
+      "chromaticAberration": {
+        "enabled": true,
+        "strength": 0.015
+      },
+      "glitch": {
+        "enabled": true,
+        "maximumStrength": 0.08,
+        "useOnlyOnMajorBeats": true
+      }
+    },
+    "safeArea": {
+      "topPercent": 10,
+      "bottomPercent": 18,
+      "leftPercent": 7,
+      "rightPercent": 7
+    },
+    "encoding": {
+      "container": "mp4",
+      "videoCodec": "libx264",
+      "pixelFormat": "yuv420p",
+      "crf": 18,
+      "preset": "medium",
+      "audioCodec": "aac",
+      "audioBitrate": "192k",
+      "fastStart": true
+    }
+  },
+  "brandSystem": {
+    "fontFamily": {
+      "primary": "Inter",
+      "secondary": "Space Grotesk",
+      "monospace": "JetBrains Mono"
+    },
+    "defaultPalette": {
+      "background": "#05070D",
+      "primary": "#00D9FF",
+      "secondary": "#775CFF",
+      "accent": "#FFCC33",
+      "danger": "#FF3B6B",
+      "textPrimary": "#FFFFFF",
+      "textSecondary": "#B8C1D9"
+    },
+    "typography": {
+      "headlineWeight": 800,
+      "bodyWeight": 500,
+      "maximumHeadlineLines": 3,
+      "uppercaseHeadlines": true,
+      "minimumReadableFontSizePixels": 48,
+      "preferredHeadlineFontSizePixels": 96,
+      "captionFontSizePixels": 54
+    },
+    "logo": {
+      "enabled": false,
+      "assetId": null,
+      "position": "top-right",
+      "opacity": 0.8
+    }
+  },
+  "randomization": {
+    "mode": "seeded",
+    "globalSeed": 184276,
+    "reproducible": true,
+    "variationStrength": 0.68,
+    "allowedProperties": [
+      "object-count",
+      "object-scale",
+      "object-rotation",
+      "particle-position",
+      "particle-speed",
+      "camera-path-offset",
+      "light-position",
+      "background-noise",
+      "text-entry-direction",
+      "secondary-color",
+      "transition-particle-pattern"
+    ],
+    "lockedProperties": [
+      "narration-timing",
+      "scene-duration",
+      "on-screen-text",
+      "aspect-ratio",
+      "resolution",
+      "safe-area",
+      "story-order"
+    ],
+    "antiRepetition": {
+      "enabled": true,
+      "historyWindowScenes": 3,
+      "preventConsecutiveCameraReuse": true,
+      "preventConsecutiveTransitionReuse": true,
+      "preventConsecutiveSceneTypeReuse": true,
+      "preventConsecutiveTextAnimationReuse": true
+    }
+  },
+  "audio": {
+    "narration": {
+      "enabled": true,
+      "provider": "configured-provider",
+      "voiceId": "default-narrator",
+      "language": "en-IN",
+      "speakingRate": 1.05,
+      "pitch": 0,
+      "style": "confident-conversational",
+      "targetLufs": -16,
+      "outputFile": "audio/narration.wav",
+      "generatePerScene": true,
+      "stitchAfterGeneration": true
+    },
+    "music": {
+      "enabled": true,
+      "assetId": "music-tech-cinematic-01",
+      "source": "repository",
+      "outputLevelDb": -22,
+      "duckUnderNarration": true,
+      "duckingDb": -8,
+      "fadeInSeconds": 0.5,
+      "fadeOutSeconds": 1.5,
+      "mood": "dramatic"
+    },
+    "soundEffects": {
+      "enabled": true,
+      "maximumEffectsPerScene": 3,
+      "outputLevelDb": -14,
+      "library": "repository",
+      "allowedCategories": [
+        "whoosh",
+        "impact",
+        "digital",
+        "riser",
+        "click",
+        "pulse",
+        "transition",
+        "sub-bass"
+      ],
+      "avoid": [
+        "excessive-impacts",
+        "effects-over-dialogue",
+        "repetitive-whoosh"
+      ]
+    },
+    "beatSync": {
+      "enabled": true,
+      "source": "music-analysis",
+      "beatMapFile": "audio/beat-map.json",
+      "minorBeatActions": [
+        "text-pulse",
+        "small-particle-burst"
+      ],
+      "majorBeatActions": [
+        "camera-punch",
+        "geometry-impact",
+        "scene-transition"
+      ],
+      "minimumSecondsBetweenMajorActions": 1.2
+    }
+  },
+  "captions": {
+    "enabled": true,
+    "source": "narration",
+    "format": "word-by-word",
+    "maximumWordsPerCaption": 5,
+    "highlightCurrentWord": true,
+    "defaultColor": "#FFFFFF",
+    "highlightColor": "#FFCC33",
+    "position": "lower-middle",
+    "bottomOffsetPercent": 19,
+    "backgroundEnabled": false,
+    "shadowEnabled": true,
+    "outputSrt": "captions/captions.srt",
+    "outputJson": "captions/captions.json",
+    "burnIntoVideo": true
+  },
+  "story": {
+    "title": "AI Agents Will Change Software Development",
+    "summary": "AI agents are shifting software development from manually executing every task toward directing systems that plan, build, test and improve work under human supervision.",
+    "hook": "The biggest change in software development will not be better autocomplete.",
+    "openLoop": "The real shift happens when AI stops waiting for every instruction.",
+    "payoff": "Developers will increasingly direct, review and govern AI-driven workflows instead of manually executing every step.",
+    "callToAction": "Learn to direct the systems, not just use the tools.",
+    "fullNarration": "The biggest change in software development will not be better autocomplete. Today, most AI tools wait for you to ask a question. AI agents work differently. Give an agent a goal and it can break that goal into tasks, inspect files, write code, run tests and correct failures. That does not remove developers from the process. It changes where developers create value. Less time may go into repetitive execution, while more time goes into architecture, judgment, security and validation. The developer of the future may not write every line manually. But they will be responsible for directing the system, reviewing its decisions and proving that the result is safe. Learn to direct the systems, not just use the tools."
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-001",
+      "order": 1,
+      "storyPhase": "hook",
+      "startSeconds": 0,
+      "durationSeconds": 3.5,
+      "endSeconds": 3.5,
+      "seed": 1001,
+      "sceneType": "kinetic-typography",
+      "energy": 0.96,
+      "mood": "urgent",
+      "narration": {
+        "text": "The biggest change in software development",
+        "startSeconds": 0.15,
+        "endSeconds": 3.4,
+        "emphasisWords": [
+          "biggest",
+          "change"
+        ]
+      },
+      "visualIntent": "Immediately stop scrolling with enormous typography moving through three-dimensional depth.",
+      "environment": {
+        "preset": "abstract-dark",
+        "fogDensity": 0.08,
+        "backgroundMotion": "slow-forward"
+      },
+      "camera": {
+        "preset": "fast-dolly-in",
+        "target": "headline-main",
+        "speed": 0.9,
+        "shake": 0.025,
+        "fov": 48
+      },
+      "textElements": [
+        {
+          "id": "headline-main",
+          "text": "THE BIGGEST CHANGE",
+          "animation": "impact-zoom",
+          "startSeconds": 0.15,
+          "durationSeconds": 2.2,
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": -2
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "BIGGEST": "#FFCC33"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "hook-particles",
+          "type": "particles",
+          "count": 900,
+          "behavior": "explode",
+          "color": "#00D9FF",
+          "audioReactive": true
+        }
+      ],
+      "lights": [
+        {
+          "type": "point",
+          "color": "#00D9FF",
+          "intensity": 3,
+          "position": {
+            "x": -2,
+            "y": 2,
+            "z": 1
+          }
+        }
+      ],
+      "soundEffects": [
+        {
+          "assetId": "impact-deep-01",
+          "atSeconds": 0.2,
+          "volume": 0.8
+        },
+        {
+          "assetId": "riser-short-01",
+          "atSeconds": 1.7,
+          "volume": 0.55
+        }
+      ],
+      "transitionOut": {
+        "type": "camera-fly-through",
+        "durationSeconds": 0.55,
+        "targetObjectId": "headline-main"
+      }
+    },
+    {
+      "sceneId": "scene-002",
+      "order": 2,
+      "storyPhase": "problem",
+      "startSeconds": 3.5,
+      "durationSeconds": 4,
+      "endSeconds": 7.5,
+      "seed": 1002,
+      "sceneType": "procedural-grid",
+      "energy": 0.7,
+      "mood": "anticipation",
+      "narration": {
+        "text": "will not be better autocomplete.",
+        "startSeconds": 3.6,
+        "endSeconds": 7.2,
+        "emphasisWords": [
+          "not",
+          "autocomplete"
+        ]
+      },
+      "visualIntent": "Show lines of code flowing across a grid, then visually reject autocomplete as the complete answer.",
+      "environment": {
+        "preset": "neon-grid",
+        "fogDensity": 0.12,
+        "backgroundMotion": "forward"
+      },
+      "camera": {
+        "preset": "orbit-left",
+        "target": "code-stream",
+        "speed": 0.5,
+        "shake": 0,
+        "fov": 52
+      },
+      "textElements": [
+        {
+          "id": "autocomplete-label",
+          "text": "NOT JUST AUTOCOMPLETE",
+          "animation": "slide-and-lock",
+          "startSeconds": 4.3,
+          "durationSeconds": 2.5,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "style": {
+            "font": "monospace",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "NOT": "#FF3B6B"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "code-stream",
+          "type": "instanced-code-blocks",
+          "count": 34,
+          "behavior": "follow-path",
+          "color": "#775CFF",
+          "audioReactive": false
+        }
+      ],
+      "soundEffects": [
+        {
+          "assetId": "digital-scan-01",
+          "atSeconds": 3.7,
+          "volume": 0.4
+        }
+      ],
+      "transitionOut": {
+        "type": "grid-collapse",
+        "durationSeconds": 0.65
+      }
+    },
+    {
+      "sceneId": "scene-003",
+      "order": 3,
+      "storyPhase": "context",
+      "startSeconds": 7.5,
+      "durationSeconds": 5,
+      "endSeconds": 12.5,
+      "seed": 1003,
+      "sceneType": "network-nodes",
+      "energy": 0.55,
+      "mood": "explanatory",
+      "narration": {
+        "text": "Today, most AI tools wait for you to ask a question.",
+        "startSeconds": 7.6,
+        "endSeconds": 12.2,
+        "emphasisWords": [
+          "wait",
+          "question"
+        ]
+      },
+      "visualIntent": "Represent traditional AI as a central inactive node that only lights up after receiving a command.",
+      "environment": {
+        "preset": "data-network",
+        "fogDensity": 0.1,
+        "backgroundMotion": "drift"
+      },
+      "camera": {
+        "preset": "push-orbit",
+        "target": "central-node",
+        "speed": 0.38,
+        "shake": 0,
+        "fov": 50
+      },
+      "textElements": [
+        {
+          "id": "wait-text",
+          "text": "AI WAITS",
+          "animation": "tracking-reveal",
+          "startSeconds": 8.2,
+          "durationSeconds": 2,
+          "position": {
+            "x": 0,
+            "y": 1.5,
+            "z": -1
+          },
+          "style": {
+            "font": "secondary",
+            "weight": 700,
+            "color": "#B8C1D9"
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "central-node",
+          "type": "sphere",
+          "count": 1,
+          "behavior": "pulse",
+          "color": "#775CFF",
+          "audioReactive": true
+        },
+        {
+          "id": "question-nodes",
+          "type": "network-node",
+          "count": 18,
+          "behavior": "float",
+          "color": "#00D9FF",
+          "audioReactive": false
+        }
+      ],
+      "transitionOut": {
+        "type": "light-sweep",
+        "durationSeconds": 0.5
+      },
+      "sceneParams": {
+        "dormantUntil": 0.5
+      }
+    },
+    {
+      "sceneId": "scene-004",
+      "order": 4,
+      "storyPhase": "development",
+      "startSeconds": 12.5,
+      "durationSeconds": 4,
+      "endSeconds": 16.5,
+      "seed": 1004,
+      "sceneType": "object-assembly",
+      "energy": 0.85,
+      "mood": "reveal",
+      "narration": {
+        "text": "AI agents work differently.",
+        "startSeconds": 12.7,
+        "endSeconds": 16.1,
+        "emphasisWords": [
+          "agents",
+          "differently"
+        ]
+      },
+      "visualIntent": "Create a strong pattern interrupt by assembling an autonomous agent core from separate moving components.",
+      "environment": {
+        "preset": "holographic-room",
+        "fogDensity": 0.07,
+        "backgroundMotion": "rotate-slow"
+      },
+      "camera": {
+        "preset": "crane-up",
+        "target": "agent-core",
+        "speed": 0.72,
+        "shake": 0.015,
+        "fov": 45
+      },
+      "textElements": [
+        {
+          "id": "agent-reveal",
+          "text": "AGENTS ACT",
+          "animation": "particle-assemble",
+          "startSeconds": 13,
+          "durationSeconds": 2.5,
+          "position": {
+            "x": 0,
+            "y": -1.4,
+            "z": 0
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "ACT": "#00D9FF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "agent-core",
+          "type": "icosahedron",
+          "count": 1,
+          "behavior": "assemble",
+          "color": "#00D9FF",
+          "audioReactive": true
+        },
+        {
+          "id": "agent-rings",
+          "type": "torus",
+          "count": 4,
+          "behavior": "orbit",
+          "color": "#775CFF",
+          "audioReactive": false
+        }
+      ],
+      "soundEffects": [
+        {
+          "assetId": "assembly-digital-01",
+          "atSeconds": 12.8,
+          "volume": 0.65
+        }
+      ],
+      "transitionOut": {
+        "type": "object-occlusion",
+        "durationSeconds": 0.6,
+        "targetObjectId": "agent-core"
+      }
+    },
+    {
+      "sceneId": "scene-005",
+      "order": 5,
+      "storyPhase": "development",
+      "startSeconds": 16.5,
+      "durationSeconds": 6,
+      "endSeconds": 22.5,
+      "seed": 1005,
+      "sceneType": "data-tunnel",
+      "energy": 0.82,
+      "mood": "momentum",
+      "narration": {
+        "text": "Give an agent a goal and it can break that goal into tasks, inspect files and write code.",
+        "startSeconds": 16.6,
+        "endSeconds": 22.3,
+        "emphasisWords": [
+          "goal",
+          "tasks",
+          "inspect",
+          "code"
+        ]
+      },
+      "visualIntent": "Fly through a task pipeline where one goal splits into multiple connected actions.",
+      "environment": {
+        "preset": "energy-tunnel",
+        "fogDensity": 0.14,
+        "backgroundMotion": "fast-forward"
+      },
+      "camera": {
+        "preset": "fly-through",
+        "target": "task-path",
+        "speed": 0.85,
+        "shake": 0.02,
+        "fov": 58
+      },
+      "textElements": [
+        {
+          "id": "goal-label",
+          "text": "ONE GOAL",
+          "animation": "word-punch",
+          "startSeconds": 16.8,
+          "durationSeconds": 1.3,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": -2
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFCC33"
+          }
+        },
+        {
+          "id": "tasks-label",
+          "text": "MANY ACTIONS",
+          "animation": "depth-reveal",
+          "startSeconds": 18.4,
+          "durationSeconds": 3.2,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": -8
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF"
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "task-path",
+          "type": "task-nodes",
+          "count": 12,
+          "behavior": "follow-path",
+          "color": "#00D9FF",
+          "audioReactive": true
+        }
+      ],
+      "transitionOut": {
+        "type": "match-motion",
+        "durationSeconds": 0.5,
+        "direction": "forward"
+      }
+    },
+    {
+      "sceneId": "scene-006",
+      "order": 6,
+      "storyPhase": "development",
+      "startSeconds": 22.5,
+      "durationSeconds": 5,
+      "endSeconds": 27.5,
+      "seed": 1006,
+      "sceneType": "diagram-3d",
+      "energy": 0.68,
+      "mood": "technical",
+      "narration": {
+        "text": "It can run tests and correct failures.",
+        "startSeconds": 22.7,
+        "endSeconds": 27.2,
+        "emphasisWords": [
+          "tests",
+          "correct",
+          "failures"
+        ]
+      },
+      "visualIntent": "Show a visible test-fail-fix-retest loop using three-dimensional connected blocks.",
+      "environment": {
+        "preset": "dark-tech",
+        "fogDensity": 0.08,
+        "backgroundMotion": "subtle-drift"
+      },
+      "camera": {
+        "preset": "parallax-slide",
+        "target": "test-loop",
+        "speed": 0.55,
+        "shake": 0,
+        "fov": 48
+      },
+      "textElements": [
+        {
+          "id": "loop-text",
+          "text": "TEST → FAIL → FIX → RETEST",
+          "animation": "kinetic-sentence",
+          "startSeconds": 23,
+          "durationSeconds": 3.8,
+          "position": {
+            "x": 0,
+            "y": -1.35,
+            "z": 0
+          },
+          "style": {
+            "font": "monospace",
+            "weight": 700,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "FAIL": "#FF3B6B",
+              "FIX": "#FFCC33",
+              "RETEST": "#00D9FF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "test-loop",
+          "type": "workflow-blocks",
+          "count": 4,
+          "behavior": "pulse",
+          "color": "#775CFF",
+          "audioReactive": true
+        }
+      ],
+      "transitionOut": {
+        "type": "geometry-wipe",
+        "durationSeconds": 0.55
+      }
+    },
+    {
+      "sceneId": "scene-007",
+      "order": 7,
+      "storyPhase": "reveal",
+      "startSeconds": 27.5,
+      "durationSeconds": 5,
+      "endSeconds": 32.5,
+      "seed": 1007,
+      "sceneType": "geometry-swarm",
+      "energy": 0.74,
+      "mood": "reassuring",
+      "narration": {
+        "text": "That does not remove developers from the process.",
+        "startSeconds": 27.7,
+        "endSeconds": 32.2,
+        "emphasisWords": [
+          "not",
+          "remove",
+          "developers"
+        ]
+      },
+      "visualIntent": "Show a human-controlled central shape directing an AI swarm without visually depicting replacement.",
+      "environment": {
+        "preset": "minimal-light",
+        "fogDensity": 0.05,
+        "backgroundMotion": "slow-orbit"
+      },
+      "camera": {
+        "preset": "dolly-out",
+        "target": "human-controller",
+        "speed": 0.45,
+        "shake": 0,
+        "fov": 45
+      },
+      "textElements": [
+        {
+          "id": "human-stays",
+          "text": "HUMANS STAY IN CONTROL",
+          "animation": "mask-reveal",
+          "startSeconds": 28.2,
+          "durationSeconds": 3,
+          "position": {
+            "x": 0,
+            "y": 1.4,
+            "z": 0
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "CONTROL": "#00D9FF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "human-controller",
+          "type": "central-control-orb",
+          "count": 1,
+          "behavior": "pulse",
+          "color": "#FFCC33",
+          "audioReactive": true
+        },
+        {
+          "id": "ai-swarm",
+          "type": "tetrahedron",
+          "count": 28,
+          "behavior": "swarm",
+          "color": "#775CFF",
+          "audioReactive": false
+        }
+      ],
+      "transitionOut": {
+        "type": "particle-dissolve",
+        "durationSeconds": 0.65
+      }
+    },
+    {
+      "sceneId": "scene-008",
+      "order": 8,
+      "storyPhase": "payoff",
+      "startSeconds": 32.5,
+      "durationSeconds": 6,
+      "endSeconds": 38.5,
+      "seed": 1008,
+      "sceneType": "wave-field",
+      "energy": 0.58,
+      "mood": "thoughtful",
+      "narration": {
+        "text": "It changes where developers create value.",
+        "startSeconds": 32.7,
+        "endSeconds": 38.1,
+        "emphasisWords": [
+          "changes",
+          "create",
+          "value"
+        ]
+      },
+      "visualIntent": "Transform a field of repetitive blocks into fewer high-value glowing structures.",
+      "environment": {
+        "preset": "wave-space",
+        "fogDensity": 0.09,
+        "backgroundMotion": "wave"
+      },
+      "camera": {
+        "preset": "orbit-right",
+        "target": "value-structures",
+        "speed": 0.42,
+        "shake": 0,
+        "fov": 52
+      },
+      "textElements": [
+        {
+          "id": "value-shift",
+          "text": "VALUE MOVES UP",
+          "animation": "word-stack",
+          "startSeconds": 33.5,
+          "durationSeconds": 3.5,
+          "position": {
+            "x": 0,
+            "y": 0.5,
+            "z": 0
+          },
+          "style": {
+            "font": "secondary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "UP": "#FFCC33"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "value-structures",
+          "type": "columns",
+          "count": 20,
+          "behavior": "wave",
+          "color": "#00D9FF",
+          "audioReactive": true
+        }
+      ],
+      "transitionOut": {
+        "type": "depth-push",
+        "durationSeconds": 0.55
+      }
+    },
+    {
+      "sceneId": "scene-009",
+      "order": 9,
+      "storyPhase": "payoff",
+      "startSeconds": 38.5,
+      "durationSeconds": 6,
+      "endSeconds": 44.5,
+      "seed": 1009,
+      "sceneType": "kinetic-typography",
+      "energy": 0.84,
+      "mood": "confident",
+      "narration": {
+        "text": "Less repetitive execution. More architecture, judgment, security and validation.",
+        "startSeconds": 38.7,
+        "endSeconds": 44.3,
+        "emphasisWords": [
+          "architecture",
+          "judgment",
+          "security",
+          "validation"
+        ]
+      },
+      "visualIntent": "Use sequential dimensional typography to introduce the four areas where human responsibility increases.",
+      "environment": {
+        "preset": "abstract-dark",
+        "fogDensity": 0.06,
+        "backgroundMotion": "forward"
+      },
+      "camera": {
+        "preset": "whip-pan-right",
+        "target": "value-words",
+        "speed": 0.8,
+        "shake": 0.015,
+        "fov": 50
+      },
+      "textElements": [
+        {
+          "id": "value-words",
+          "text": "ARCHITECTURE • JUDGMENT • SECURITY • VALIDATION",
+          "animation": "kinetic-sentence",
+          "startSeconds": 39,
+          "durationSeconds": 4.8,
+          "position": {
+            "x": 0,
+            "y": 0,
+            "z": 0
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "SECURITY": "#FF3B6B",
+              "VALIDATION": "#00D9FF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "background-bars",
+          "type": "light-bars",
+          "count": 14,
+          "behavior": "rise",
+          "color": "#775CFF",
+          "audioReactive": true
+        }
+      ],
+      "transitionOut": {
+        "type": "whip-pan",
+        "durationSeconds": 0.45,
+        "direction": "right"
+      }
+    },
+    {
+      "sceneId": "scene-010",
+      "order": 10,
+      "storyPhase": "payoff",
+      "startSeconds": 44.5,
+      "durationSeconds": 6,
+      "endSeconds": 50.5,
+      "seed": 1010,
+      "sceneType": "timeline-3d",
+      "energy": 0.65,
+      "mood": "future-focused",
+      "narration": {
+        "text": "The developer of the future may not write every line manually.",
+        "startSeconds": 44.7,
+        "endSeconds": 50.2,
+        "emphasisWords": [
+          "future",
+          "every line",
+          "manually"
+        ]
+      },
+      "visualIntent": "Move through a timeline showing manual coding evolving into directed, multi-agent workflows.",
+      "environment": {
+        "preset": "digital-city",
+        "fogDensity": 0.11,
+        "backgroundMotion": "forward"
+      },
+      "camera": {
+        "preset": "follow-target",
+        "target": "timeline-path",
+        "speed": 0.58,
+        "shake": 0,
+        "fov": 55
+      },
+      "textElements": [
+        {
+          "id": "future-role",
+          "text": "FROM CODER TO DIRECTOR",
+          "animation": "depth-reveal",
+          "startSeconds": 46,
+          "durationSeconds": 3.5,
+          "position": {
+            "x": 0,
+            "y": 1,
+            "z": -3
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "DIRECTOR": "#FFCC33"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "timeline-path",
+          "type": "timeline-nodes",
+          "count": 8,
+          "behavior": "follow-path",
+          "color": "#00D9FF",
+          "audioReactive": false
+        }
+      ],
+      "transitionOut": {
+        "type": "zoom-tunnel",
+        "durationSeconds": 0.65
+      }
+    },
+    {
+      "sceneId": "scene-011",
+      "order": 11,
+      "storyPhase": "payoff",
+      "startSeconds": 50.5,
+      "durationSeconds": 5.5,
+      "endSeconds": 56,
+      "seed": 1011,
+      "sceneType": "network-nodes",
+      "energy": 0.77,
+      "mood": "responsible",
+      "narration": {
+        "text": "But they will direct the system, review its decisions and prove that the result is safe.",
+        "startSeconds": 50.6,
+        "endSeconds": 55.8,
+        "emphasisWords": [
+          "direct",
+          "review",
+          "prove",
+          "safe"
+        ]
+      },
+      "visualIntent": "Show the human control node approving and rejecting agent decisions before releasing the final result.",
+      "environment": {
+        "preset": "data-network",
+        "fogDensity": 0.08,
+        "backgroundMotion": "slow-forward"
+      },
+      "camera": {
+        "preset": "macro-push",
+        "target": "approval-core",
+        "speed": 0.62,
+        "shake": 0.01,
+        "fov": 42
+      },
+      "textElements": [
+        {
+          "id": "responsibility-text",
+          "text": "DIRECT • REVIEW • PROVE",
+          "animation": "word-punch",
+          "startSeconds": 51.2,
+          "durationSeconds": 3.7,
+          "position": {
+            "x": 0,
+            "y": 0.9,
+            "z": 0
+          },
+          "style": {
+            "font": "secondary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "PROVE": "#00D9FF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "approval-core",
+          "type": "approval-gate",
+          "count": 1,
+          "behavior": "pulse",
+          "color": "#00D9FF",
+          "audioReactive": true
+        },
+        {
+          "id": "decision-nodes",
+          "type": "decision-node",
+          "count": 16,
+          "behavior": "magnetize",
+          "color": "#775CFF",
+          "audioReactive": false
+        }
+      ],
+      "transitionOut": {
+        "type": "light-sweep",
+        "durationSeconds": 0.5
+      },
+      "sceneParams": {
+        "reject": 0.3
+      }
+    },
+    {
+      "sceneId": "scene-012",
+      "order": 12,
+      "storyPhase": "call-to-action",
+      "startSeconds": 56,
+      "durationSeconds": 4,
+      "endSeconds": 60,
+      "seed": 1012,
+      "sceneType": "finale",
+      "energy": 0.93,
+      "mood": "inspiring",
+      "narration": {
+        "text": "Learn to direct the systems, not just use the tools.",
+        "startSeconds": 56.1,
+        "endSeconds": 59.5,
+        "emphasisWords": [
+          "direct",
+          "systems"
+        ]
+      },
+      "visualIntent": "Finish with a strong memorable statement while the entire visual system converges behind the text.",
+      "environment": {
+        "preset": "particle-space",
+        "fogDensity": 0.06,
+        "backgroundMotion": "converge"
+      },
+      "camera": {
+        "preset": "slow-dolly-in",
+        "target": "cta-text",
+        "speed": 0.52,
+        "shake": 0,
+        "fov": 46
+      },
+      "textElements": [
+        {
+          "id": "cta-text",
+          "text": "DIRECT THE SYSTEM",
+          "animation": "particle-assemble",
+          "startSeconds": 56.3,
+          "durationSeconds": 3,
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 0
+          },
+          "style": {
+            "font": "primary",
+            "weight": 800,
+            "color": "#FFFFFF",
+            "accentWords": {
+              "DIRECT": "#FFCC33",
+              "SYSTEM": "#00D9FF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "final-particles",
+          "type": "particles",
+          "count": 2400,
+          "behavior": "magnetize",
+          "color": "#00D9FF",
+          "audioReactive": true
+        }
+      ],
+      "soundEffects": [
+        {
+          "assetId": "final-impact-01",
+          "atSeconds": 56.4,
+          "volume": 0.75
+        }
+      ],
+      "transitionOut": {
+        "type": "fade-through-black",
+        "durationSeconds": 0.8
+      }
+    }
+  ],
+  "assetManifest": {
+    "fonts": [
+      {
+        "assetId": "inter",
+        "path": "assets/fonts/Inter-VariableFont.ttf",
+        "required": true
+      },
+      {
+        "assetId": "space-grotesk",
+        "path": "assets/fonts/SpaceGrotesk-VariableFont.ttf",
+        "required": true
+      },
+      {
+        "assetId": "jetbrains-mono",
+        "path": "assets/fonts/JetBrainsMono-VariableFont.ttf",
+        "required": false
+      }
+    ],
+    "music": [
+      {
+        "assetId": "music-tech-cinematic-01",
+        "path": "assets/music/tech-cinematic-01.mp3",
+        "required": true
+      }
+    ],
+    "soundEffectsDirectory": "assets/sfx",
+    "texturesDirectory": "assets/textures",
+    "modelsDirectory": "assets/models",
+    "imagesDirectory": "assets/images",
+    "allowRemoteAssets": false
+  },
+  "validation": {
+    "checkJsonSchema": true,
+    "checkSceneContinuity": true,
+    "checkTimelineOverlap": true,
+    "checkTimelineGaps": true,
+    "checkTotalDuration": true,
+    "checkRegisteredPresets": true,
+    "checkAssetExistence": true,
+    "checkSafeArea": true,
+    "checkTextLength": true,
+    "checkCaptionReadability": true,
+    "checkNarrationDuration": true,
+    "checkRepeatedPresets": true,
+    "maximumAllowedTimelineDriftSeconds": 0.1,
+    "maximumAllowedNarrationOverflowSeconds": 0.2,
+    "minimumContrastRatio": 4.5,
+    "onWarning": "continue",
+    "onError": "fail"
+  },
+  "qualityControl": {
+    "runPreflightRender": true,
+    "preflightResolutionScale": 0.25,
+    "preflightFps": 10,
+    "detectBlackFrames": true,
+    "maximumBlackFrameDurationSeconds": 0.3,
+    "detectFrozenFrames": true,
+    "maximumFrozenFrameDurationSeconds": 1.2,
+    "detectTextOverflow": true,
+    "detectMissingAudio": true,
+    "detectAudioClipping": true,
+    "maximumTruePeakDb": -1,
+    "minimumIntegratedLufs": -18,
+    "maximumIntegratedLufs": -14,
+    "generateContactSheet": true,
+    "generateRenderReport": true
+  },
+  "githubAction": {
+    "workflow": "render-threejs-video.yml",
+    "trigger": "workflow_dispatch",
+    "manifestInputName": "video_manifest",
+    "branch": "main",
+    "nodeVersion": "22",
+    "commands": {
+      "install": "npm ci",
+      "validate": "npm run validate:manifest -- video-manifest.json",
+      "generateNarration": "npm run generate:narration -- video-manifest.json",
+      "analyzeAudio": "npm run analyze:audio -- video-manifest.json",
+      "preflight": "npm run render:preflight -- video-manifest.json",
+      "renderFrames": "npm run render:frames -- video-manifest.json",
+      "encodeVideo": "npm run encode:video -- video-manifest.json",
+      "qualityCheck": "npm run quality:check -- video-manifest.json"
+    },
+    "artifacts": [
+      "output/jack-video-20261116-001/final.mp4",
+      "output/jack-video-20261116-001/thumbnail.png",
+      "output/jack-video-20261116-001/captions.srt",
+      "output/jack-video-20261116-001/video-manifest.json",
+      "output/jack-video-20261116-001/render-report.json",
+      "output/jack-video-20261116-001/contact-sheet.png"
+    ],
+    "retentionDays": 30
+  },
+  "output": {
+    "videoFile": "output/jack-video-20261116-001/final.mp4",
+    "thumbnailFile": "output/jack-video-20261116-001/thumbnail.png",
+    "narrationFile": "output/jack-video-20261116-001/audio/narration.wav",
+    "captionFile": "output/jack-video-20261116-001/captions/captions.srt",
+    "renderReportFile": "output/jack-video-20261116-001/render-report.json",
+    "contactSheetFile": "output/jack-video-20261116-001/contact-sheet.png"
+  },
+  "publishingMetadata": {
+    "title": "AI Agents Will Change Software Development",
+    "description": "AI agents are changing how software is designed, built, tested and validated. The future developer will direct, review and govern intelligent workflows.",
+    "tags": [
+      "AI agents",
+      "software development",
+      "coding",
+      "artificial intelligence",
+      "developer tools",
+      "Three.js",
+      "automation"
+    ],
+    "hashtags": [
+      "#AIAgents",
+      "#SoftwareDevelopment",
+      "#Coding",
+      "#ArtificialIntelligence"
+    ],
+    "category": "Science & Technology",
+    "madeForKids": false,
+    "visibility": "private"
+  },
+  "localizations": {
+    "hi": {
+      "title": "एआई एजेंट बदल देंगे सॉफ़्टवेयर डेवलपमेंट",
+      "description": "एआई एजेंट सॉफ़्टवेयर को डिज़ाइन करने, बनाने, टेस्ट करने और जाँचने का तरीका बदल रहे हैं। भविष्य का डेवलपर बुद्धिमान वर्कफ़्लो को दिशा देगा, परखेगा और संचालित करेगा।",
+      "tags": [
+        "एआई एजेंट",
+        "सॉफ़्टवेयर डेवलपमेंट",
+        "कोडिंग",
+        "आर्टिफ़िशियल इंटेलिजेंस",
+        "AI agents",
+        "software development"
+      ],
+      "hashtags": [
+        "#AIAgents",
+        "#SoftwareDevelopment",
+        "#Coding",
+        "#AI"
+      ],
+      "scenes": {
+        "scene-001": {
+          "narration": "सॉफ़्टवेयर डेवलपमेंट में सबसे बड़ा बदलाव",
+          "text": {
+            "headline-main": "सबसे बड़ा बदलाव"
+          },
+          "accentWords": {
+            "headline-main": {
+              "बड़ा": "#FFCC33"
+            }
+          }
+        },
+        "scene-002": {
+          "narration": "बेहतर ऑटोकम्प्लीट नहीं होगा।",
+          "text": {
+            "autocomplete-label": "सिर्फ़ ऑटोकम्प्लीट नहीं"
+          },
+          "accentWords": {
+            "autocomplete-label": {
+              "नहीं": "#FF3B6B"
+            }
+          }
+        },
+        "scene-003": {
+          "narration": "आज ज़्यादातर एआई टूल तब तक इंतज़ार करते हैं, जब तक आप सवाल न पूछें।",
+          "text": {
+            "wait-text": "एआई इंतज़ार करता है"
+          },
+          "accentWords": {}
+        },
+        "scene-004": {
+          "narration": "एआई एजेंट अलग तरह से काम करते हैं।",
+          "text": {
+            "agent-reveal": "एजेंट करते हैं"
+          },
+          "accentWords": {
+            "agent-reveal": {
+              "करते": "#00D9FF"
+            }
+          }
+        },
+        "scene-005": {
+          "narration": "उन्हें एक लक्ष्य दीजिए, और वे उसे छोटे-छोटे कामों में बाँटते हैं, फ़ाइलें जाँचते हैं और कोड लिखते हैं।",
+          "text": {
+            "goal-label": "एक लक्ष्य",
+            "tasks-label": "कई काम"
+          },
+          "accentWords": {}
+        },
+        "scene-006": {
+          "narration": "वे टेस्ट चलाते हैं और गलतियाँ सुधारते हैं।",
+          "text": {
+            "loop-text": "टेस्ट → फेल → सुधार → रीटेस्ट"
+          },
+          "accentWords": {
+            "loop-text": {
+              "फेल": "#FF3B6B",
+              "सुधार": "#FFCC33",
+              "रीटेस्ट": "#00D9FF"
+            }
+          }
+        },
+        "scene-007": {
+          "narration": "इसका मतलब यह नहीं कि डेवलपर प्रक्रिया से बाहर हो जाएँगे।",
+          "text": {
+            "human-stays": "कमान इंसान के हाथ"
+          },
+          "accentWords": {
+            "human-stays": {
+              "इंसान": "#00D9FF"
+            }
+          }
+        },
+        "scene-008": {
+          "narration": "बदलाव यह है कि डेवलपर अपनी कीमत कहाँ पैदा करते हैं।",
+          "text": {
+            "value-shift": "कीमत ऊपर जाती है"
+          },
+          "accentWords": {
+            "value-shift": {
+              "ऊपर": "#FFCC33"
+            }
+          }
+        },
+        "scene-009": {
+          "narration": "कम दोहराव वाला काम। ज़्यादा आर्किटेक्चर, विवेक, सुरक्षा और सत्यापन।",
+          "text": {
+            "value-words": "आर्किटेक्चर • विवेक • सुरक्षा • सत्यापन"
+          },
+          "accentWords": {
+            "value-words": {
+              "सुरक्षा": "#FF3B6B",
+              "सत्यापन": "#00D9FF"
+            }
+          }
+        },
+        "scene-010": {
+          "narration": "भविष्य का डेवलपर शायद हर लाइन खुद न लिखे।",
+          "text": {
+            "future-role": "कोडर से डायरेक्टर"
+          },
+          "accentWords": {
+            "future-role": {
+              "डायरेक्टर": "#FFCC33"
+            }
+          }
+        },
+        "scene-011": {
+          "narration": "लेकिन वह सिस्टम को दिशा देगा, उसके फ़ैसले परखेगा और साबित करेगा कि नतीजा सुरक्षित है।",
+          "text": {
+            "responsibility-text": "दिशा • परख • प्रमाण"
+          },
+          "accentWords": {
+            "responsibility-text": {
+              "प्रमाण": "#00D9FF"
+            }
+          }
+        },
+        "scene-012": {
+          "narration": "सिस्टम को दिशा देना सीखिए, सिर्फ़ टूल इस्तेमाल करना नहीं।",
+          "text": {
+            "cta-text": "सिस्टम को दिशा दें"
+          },
+          "accentWords": {
+            "cta-text": {
+              "दिशा": "#FFCC33",
+              "सिस्टम": "#00D9FF"
+            }
+          }
+        }
+      }
+    }
+  }
+}

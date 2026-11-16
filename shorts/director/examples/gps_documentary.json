@@ -1,0 +1,472 @@
+{
+  "schemaVersion": "1.0.0",
+  "job": {
+    "jobId": "example-gps-documentary"
+  },
+  "creativeBrief": {
+    "format": "documentary",
+    "topic": "How GPS finds you (and why it needs Einstein)",
+    "niche": "Technology",
+    "objective": "Explain how GPS works: satellites broadcast time, the phone turns delay into distance, four satellites fix position and clock, and relativity has to be corrected.",
+    "targetAudience": [
+      "curious viewers",
+      "students",
+      "technology enthusiasts"
+    ],
+    "targetDurationSeconds": 120,
+    "visualStyle": {
+      "styleId": "jack-dynamic",
+      "tone": [
+        "cinematic",
+        "intelligent",
+        "warm"
+      ]
+    }
+  },
+  "randomization": {
+    "globalSeed": 20261117
+  },
+  "story": {
+    "title": "How Your Phone Finds You (and Why It Needs Einstein)",
+    "hook": "Your phone has never sent a single signal to space, yet it knows exactly where you are.",
+    "openLoop": "How does a silent phone work out its position?",
+    "payoff": "Four satellites, one clock fix, and a relativity correction.",
+    "callToAction": "What other everyday technology hides surprises like this?"
+  },
+  "chapters": [
+    {
+      "title": "A silent listener",
+      "firstScene": "scene-001"
+    },
+    {
+      "title": "Time becomes distance",
+      "firstScene": "scene-004"
+    },
+    {
+      "title": "Three spheres and a clock",
+      "firstScene": "scene-007"
+    },
+    {
+      "title": "Einstein in your pocket",
+      "firstScene": "scene-009"
+    }
+  ],
+  "scenes": [
+    {
+      "sceneId": "scene-001",
+      "storyPhase": "hook",
+      "sceneType": "kinetic-typography",
+      "narration": {
+        "text": "Your phone knows where you are to within a few metres. And it has never sent a single signal to space."
+      },
+      "textElements": [
+        {
+          "id": "scene-001-text-1",
+          "text": "NEVER SENT A SIGNAL",
+          "animation": "impact-zoom",
+          "style": {
+            "accentWords": {
+              "NEVER": "#FF3B6B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-002",
+      "storyPhase": "problem",
+      "sceneType": "network-nodes",
+      "narration": {
+        "text": "So how does a silent phone, listening to satellites twenty thousand kilometres up, work out its exact position?"
+      },
+      "textElements": [
+        {
+          "id": "scene-002-text-1",
+          "text": "HOW DOES IT KNOW?",
+          "animation": "word-punch",
+          "style": {
+            "accentWords": {
+              "KNOW": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-003",
+      "storyPhase": "context",
+      "sceneType": "particle-world",
+      "narration": {
+        "text": "The answer starts with a ring of about thirty satellites, orbiting roughly twenty thousand kilometres above Earth, each circling the planet twice a day."
+      },
+      "textElements": [
+        {
+          "id": "scene-003-text-1",
+          "text": "ABOUT 30 SATELLITES",
+          "animation": "tracking-reveal",
+          "style": {
+            "accentWords": {
+              "30": "#00D9FF"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-004",
+      "storyPhase": "development",
+      "sceneType": "object-assembly",
+      "narration": {
+        "text": "Every satellite carries atomic clocks, and all it does is broadcast two things: exactly where it is, and exactly what time it is."
+      },
+      "textElements": [
+        {
+          "id": "scene-004-text-1",
+          "text": "WHERE + WHEN",
+          "animation": "particle-assemble",
+          "style": {
+            "accentWords": {
+              "WHEN": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-005",
+      "storyPhase": "development",
+      "sceneType": "data-tunnel",
+      "narration": {
+        "text": "Your phone catches that signal. Radio waves travel at the speed of light, so a signal from straight overhead takes about sixty-seven milliseconds to arrive."
+      },
+      "textElements": [
+        {
+          "id": "scene-005-text-1",
+          "text": "67 MILLISECONDS",
+          "animation": "slide-and-lock",
+          "style": {
+            "accentWords": {
+              "67": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-006",
+      "storyPhase": "development",
+      "sceneType": "geometry-swarm",
+      "narration": {
+        "text": "Time the delay, multiply by the speed of light, and you have a distance. One satellite says you are somewhere on a giant sphere around it."
+      },
+      "textElements": [
+        {
+          "id": "scene-006-text-1",
+          "text": "DELAY = DISTANCE",
+          "animation": "kinetic-sentence",
+          "style": {
+            "accentWords": {
+              "DISTANCE": "#00D9FF"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-007",
+      "storyPhase": "reveal",
+      "sceneType": "network-nodes",
+      "narration": {
+        "text": "Add a second satellite and the spheres cross in a circle. A third narrows it down to two points, and one of them is out in space."
+      },
+      "textElements": [
+        {
+          "id": "scene-007-text-1",
+          "text": "THREE SPHERES, TWO POINTS",
+          "animation": "word-stack",
+          "style": {
+            "accentWords": {
+              "TWO": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-008",
+      "storyPhase": "reveal",
+      "sceneType": "diagram-3d",
+      "narration": {
+        "text": "A fourth satellite fixes something else: your phone's own clock, which is far less precise than an atomic one. That is why a phone needs at least four satellites."
+      },
+      "textElements": [
+        {
+          "id": "scene-008-text-1",
+          "text": "FOUR SATELLITES",
+          "animation": "mask-reveal",
+          "style": {
+            "accentWords": {
+              "FOUR": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-009",
+      "storyPhase": "payoff",
+      "sceneType": "wave-field",
+      "narration": {
+        "text": "Here is the strange part. Einstein's relativity changes how fast those clocks tick. Weaker gravity speeds them up, and their high speed slows them down."
+      },
+      "textElements": [
+        {
+          "id": "scene-009-text-1",
+          "text": "RELATIVITY AT WORK",
+          "animation": "depth-reveal",
+          "style": {
+            "accentWords": {
+              "RELATIVITY": "#775CFF"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-010",
+      "storyPhase": "payoff",
+      "sceneType": "timeline-3d",
+      "narration": {
+        "text": "Add it up and each satellite clock gains about thirty-eight millionths of a second every day. Ignore that, and your position would drift by roughly ten kilometres daily."
+      },
+      "textElements": [
+        {
+          "id": "scene-010-text-1",
+          "text": "10 KM OFF PER DAY",
+          "animation": "impact-zoom",
+          "style": {
+            "accentWords": {
+              "10": "#FF3B6B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-011",
+      "storyPhase": "payoff",
+      "sceneType": "image-parallax",
+      "narration": {
+        "text": "So engineers tune the clocks before launch, and receivers correct the rest. It is general relativity, working quietly inside your pocket."
+      },
+      "textElements": [
+        {
+          "id": "scene-011-text-1",
+          "text": "RELATIVITY IN YOUR POCKET",
+          "animation": "kinetic-sentence",
+          "style": {
+            "accentWords": {
+              "POCKET": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-012",
+      "storyPhase": "call-to-action",
+      "sceneType": "finale",
+      "narration": {
+        "text": "Next time a blue dot finds you on a map, remember: it is a silent listener, doing physics. What other everyday technology hides surprises like this?"
+      },
+      "textElements": [
+        {
+          "id": "scene-012-text-1",
+          "text": "A SILENT LISTENER",
+          "animation": "particle-assemble",
+          "style": {
+            "accentWords": {
+              "SILENT": "#00D9FF"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "publishingMetadata": {
+    "title": "How Your Phone Finds You (and Why It Needs Einstein)",
+    "description": "GPS receivers only listen. Here is how about thirty satellites, atomic clocks and a dash of relativity turn a few milliseconds of delay into a blue dot on your map.",
+    "tags": [
+      "GPS",
+      "how GPS works",
+      "satellites",
+      "relativity",
+      "technology explained"
+    ],
+    "hashtags": [
+      "#GPS",
+      "#Science",
+      "#Technology"
+    ],
+    "visibility": "private"
+  },
+  "localizations": {
+    "hi": {
+      "title": "आपका फ़ोन आपको कैसे ढूँढता है (और उसे आइंस्टाइन क्यों चाहिए)",
+      "description": "जीपीएस रिसीवर सिर्फ़ सुनते हैं। जानिए कैसे लगभग तीस उपग्रह, परमाणु घड़ियाँ और थोड़ी-सी सापेक्षता कुछ मिलीसेकंड की देरी को आपके नक्शे के नीले बिंदु में बदल देती हैं।",
+      "tags": [
+        "जीपीएस",
+        "GPS कैसे काम करता है",
+        "उपग्रह",
+        "सापेक्षता",
+        "GPS",
+        "technology explained"
+      ],
+      "hashtags": [
+        "#GPS",
+        "#Science",
+        "#Technology"
+      ],
+      "chapters": [
+        "चुप श्रोता",
+        "समय बनता है दूरी",
+        "तीन गोले और एक घड़ी",
+        "जेब में आइंस्टाइन"
+      ],
+      "scenes": {
+        "scene-001": {
+          "narration": "आपका फ़ोन कुछ ही मीटर की सटीकता से जानता है कि आप कहाँ हैं। और उसने अंतरिक्ष की ओर कभी एक भी सिग्नल नहीं भेजा।",
+          "text": {
+            "scene-001-text-1": "कभी सिग्नल नहीं भेजा"
+          },
+          "accentWords": {
+            "scene-001-text-1": {
+              "नहीं": "#FF3B6B"
+            }
+          }
+        },
+        "scene-002": {
+          "narration": "तो बीस हज़ार किलोमीटर ऊपर के उपग्रहों को सिर्फ़ सुनकर, एक चुप फ़ोन अपनी सही जगह कैसे निकालता है?",
+          "text": {
+            "scene-002-text-1": "कैसे पता चलता है?"
+          },
+          "accentWords": {
+            "scene-002-text-1": {
+              "पता": "#FFCC33"
+            }
+          }
+        },
+        "scene-003": {
+          "narration": "जवाब शुरू होता है लगभग तीस उपग्रहों के एक घेरे से, जो धरती से करीब बीस हज़ार किलोमीटर ऊपर हैं और दिन में दो बार चक्कर लगाते हैं।",
+          "text": {
+            "scene-003-text-1": "लगभग 30 उपग्रह"
+          },
+          "accentWords": {
+            "scene-003-text-1": {
+              "30": "#00D9FF"
+            }
+          }
+        },
+        "scene-004": {
+          "narration": "हर उपग्रह में परमाणु घड़ियाँ होती हैं, और वह बस दो चीज़ें प्रसारित करता है: वह ठीक कहाँ है, और ठीक कितने बजे हैं।",
+          "text": {
+            "scene-004-text-1": "कहाँ + कब"
+          },
+          "accentWords": {
+            "scene-004-text-1": {
+              "कब": "#FFCC33"
+            }
+          }
+        },
+        "scene-005": {
+          "narration": "आपका फ़ोन वह सिग्नल पकड़ता है। रेडियो तरंगें प्रकाश की गति से चलती हैं, इसलिए ठीक ऊपर के उपग्रह का सिग्नल पहुँचने में लगभग सड़सठ मिलीसेकंड लेता है।",
+          "text": {
+            "scene-005-text-1": "67 मिलीसेकंड"
+          },
+          "accentWords": {
+            "scene-005-text-1": {
+              "67": "#FFCC33"
+            }
+          }
+        },
+        "scene-006": {
+          "narration": "देरी नापिए, उसे प्रकाश की गति से गुणा कीजिए, और आपको दूरी मिल जाती है। एक उपग्रह बस इतना बताता है कि आप उसके चारों ओर बने एक विशाल गोले पर कहीं हैं।",
+          "text": {
+            "scene-006-text-1": "देरी = दूरी"
+          },
+          "accentWords": {
+            "scene-006-text-1": {
+              "दूरी": "#00D9FF"
+            }
+          }
+        },
+        "scene-007": {
+          "narration": "दूसरा उपग्रह जोड़िए, तो गोले एक घेरे में कटते हैं। तीसरा उसे दो बिंदुओं तक सीमित कर देता है, और उनमें से एक अंतरिक्ष में होता है।",
+          "text": {
+            "scene-007-text-1": "तीन गोले, दो बिंदु"
+          },
+          "accentWords": {
+            "scene-007-text-1": {
+              "दो": "#FFCC33"
+            }
+          }
+        },
+        "scene-008": {
+          "narration": "चौथा उपग्रह कुछ और तय करता है: आपके फ़ोन की अपनी घड़ी, जो परमाणु घड़ी जितनी सटीक नहीं होती। इसीलिए फ़ोन को कम से कम चार उपग्रह चाहिए।",
+          "text": {
+            "scene-008-text-1": "चार उपग्रह"
+          },
+          "accentWords": {
+            "scene-008-text-1": {
+              "चार": "#FFCC33"
+            }
+          }
+        },
+        "scene-009": {
+          "narration": "अब अजीब बात सुनिए। आइंस्टाइन का सापेक्षता सिद्धांत उन घड़ियों की चाल बदल देता है। कमज़ोर गुरुत्व उन्हें तेज़ करता है, और उनकी रफ़्तार उन्हें धीमा।",
+          "text": {
+            "scene-009-text-1": "सापेक्षता का असर"
+          },
+          "accentWords": {
+            "scene-009-text-1": {
+              "सापेक्षता": "#775CFF"
+            }
+          }
+        },
+        "scene-010": {
+          "narration": "सब जोड़ें तो हर उपग्रह की घड़ी रोज़ लगभग अड़तीस माइक्रोसेकंड आगे निकल जाती है। इसे नज़रअंदाज़ करें, तो आपकी लोकेशन रोज़ करीब दस किलोमीटर खिसक जाएगी।",
+          "text": {
+            "scene-010-text-1": "रोज़ 10 किमी की चूक"
+          },
+          "accentWords": {
+            "scene-010-text-1": {
+              "10": "#FF3B6B"
+            }
+          }
+        },
+        "scene-011": {
+          "narration": "इसलिए इंजीनियर घड़ियों को लॉन्च से पहले ही ट्यून करते हैं, और रिसीवर बाकी सुधार कर लेते हैं। यह सामान्य सापेक्षता है, जो चुपचाप आपकी जेब में काम कर रही है।",
+          "text": {
+            "scene-011-text-1": "जेब में सापेक्षता"
+          },
+          "accentWords": {
+            "scene-011-text-1": {
+              "जेब": "#FFCC33"
+            }
+          }
+        },
+        "scene-012": {
+          "narration": "अगली बार जब नक्शे पर नीला बिंदु आपको ढूँढ ले, तो याद रखिए: यह एक चुप श्रोता है, जो भौतिकी कर रहा है। और कौन-सी रोज़मर्रा की तकनीक ऐसे राज़ छिपाती है?",
+          "text": {
+            "scene-012-text-1": "एक चुप श्रोता"
+          },
+          "accentWords": {
+            "scene-012-text-1": {
+              "चुप": "#00D9FF"
+            }
+          }
+        }
+      }
+    }
+  }
+}

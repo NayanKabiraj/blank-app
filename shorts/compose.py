@@ -19,11 +19,12 @@ def _run(cmd, cwd=None):
 
 
 # ---------------------------------------------------------------- voice
-def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=frozenset(), style: str = "shorts"):
+def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=frozenset(), style: str = "shorts",
+                 gap: float | None = None):
     """Synthesize every scene. With a (min, max) duration window (Shorts) the speech speed is adjusted
     to fit it; without one (documentaries) the voice keeps its natural pace and a longer pause is left
     before each scene in `chapter_starts`. Returns (voice_wav, [(start, end, text), ...] per scene, voice_end)."""
-    gap = config.SCENE_GAP if window else 0.4
+    gap = gap if gap is not None else (config.SCENE_GAP if window else 0.4)
     chap_gap = 0.9
 
     def render(scale):
@@ -75,7 +76,8 @@ def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=froz
 
 
 # ---------------------------------------------------------------- video
-def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, lufs: int = -14, music_volume: float = 0.30) -> None:
+def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, lufs: int = -14, music_volume: float = 0.30,
+         sfx_wav: Path | None = None) -> None:
     """Mix voice, ducked music and sound effects under work/video.mp4 (the picture is copied as it is: the scene
     already draws the captions and the hook line)."""
     track = music.pick_track(mood)
@@ -86,8 +88,11 @@ def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, lufs: i
         music_in = ["-i", music.synthesize(mood, total, work / "music.wav")]
 
     # Sound effects on the animation's cues (pops on reveals, a bell on each keyword)
-    sfx_wav = sfx.build(work / "timeline.json", total, work / "sfx.wav") if config.SFX else None
-    sfx_in = ["-i", sfx_wav.name] if sfx_wav else []
+    if sfx_wav is None and config.SFX:   # the director pipeline passes its own cue track
+        sfx_wav = sfx.build(work / "timeline.json", total, work / "sfx.wav")
+    elif not config.SFX:
+        sfx_wav = None
+    sfx_in = ["-i", Path(sfx_wav).name] if sfx_wav else []
 
     fade_out = total - 1.2
     filt = (

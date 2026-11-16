@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       format:
-        description: "shorts (default: the daily 45-55 second Shorts), documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema) voicelab (voice samples, no video) ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
+        description: "shorts (default: the daily 45-55 second whiteboard Shorts), documentary (5-15 minute whiteboard videos; plan schema: python -m shorts.plan doc-schema), director (Claude-directed dynamic Three.js Short from a manifest in manifest_json), director-documentary (the same, 5-10 minute landscape), voicelab (voice samples, no video), ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
         type: string
         default: "shorts"
       auth_code:
@@ -25,6 +25,10 @@ on:
         description: "Video plan JSON (schema: python -m shorts.plan schema). Empty = sample plan"
         type: string
         default: ""
+      manifest_json:
+        description: "format director / director-documentary only: the video manifest JSON written by Claude (see shorts/CLAUDE_DIRECTOR_TASK.md). Empty = the example manifest"
+        type: string
+        default: ""
       dry_run:
         description: "Render only, do not upload"
         type: boolean
@@ -39,7 +43,7 @@ permissions:
 
 concurrency:
   # a documentary (hours of rendering) must not block, or cancel, the Shorts that are started next to it
-  group: ${{ inputs.format == 'documentary' && 'documentary' || 'shorts-pipeline' }}
+  group: ${{ (inputs.format == 'documentary' || inputs.format == 'director-documentary') && 'documentary' || 'shorts-pipeline' }}
   cancel-in-progress: false
 
 jobs:
@@ -109,11 +113,20 @@ jobs:
         with:
           node-version: "22"
           cache: npm
-          cache-dependency-path: shorts/explainer/package-lock.json
+          cache-dependency-path: |
+            shorts/explainer/package-lock.json
+            shorts/director/package-lock.json
 
       - name: Install the animation renderer (Playwright + headless Chromium)
-        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') }}
         working-directory: shorts/explainer
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Install the director engine (Three.js + fonts + Playwright + headless Chromium)
+        if: ${{ startsWith(inputs.format, 'director') }}
+        working-directory: shorts/director
         run: |
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
@@ -141,8 +154,21 @@ jobs:
           if [ "$IN_DRY_RUN" = "true" ] || [ -z "$IN_DATE" ]; then python -m shorts.upload_saved --check
           else python -m shorts.upload_saved --date "$IN_DATE" --langs "$IN_LANGS"; fi
 
+      - name: Read the manifest sent by Claude (director)
+        if: ${{ startsWith(inputs.format, 'director') }}
+        env:
+          IN_MANIFEST: ${{ inputs.manifest_json }}
+        run: |
+          if [ -n "$IN_MANIFEST" ]; then
+            printf '%s' "$IN_MANIFEST" > "$RUNNER_TEMP/manifest.json"
+          else
+            echo "::warning::No manifest_json given, using the example manifest"
+            cp shorts/director/examples/ai_agents_short.json "$RUNNER_TEMP/manifest.json"
+          fi
+          python -m shorts.director.run --manifest-file "$RUNNER_TEMP/manifest.json" --langs "${{ inputs.langs || 'en,hi' }}" --validate-only
+
       - name: Read the plan sent by Claude
-        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' }}
+        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') }}
         env:
           IN_PLAN: ${{ inputs.plan_json }}
           IN_FORMAT: ${{ inputs.format || 'shorts' }}
@@ -156,8 +182,20 @@ jobs:
           fi
           python -m shorts.plan "$CHECK" "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
 
+      - name: Render and publish (director, Three.js)
+        if: ${{ startsWith(inputs.format, 'director') }}
+        env:
+          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_DRY_RUN: ${{ inputs.dry_run }}
+          IN_KEEP: ${{ inputs.keep_in_repo }}
+        run: |
+          ARGS=(--manifest-file "$RUNNER_TEMP/manifest.json" --langs "$IN_LANGS")
+          if [ "$IN_DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
+          if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
+          python -m shorts.director.run "${ARGS[@]}"
+
       - name: Render and publish
-        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' }}
+        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') }}
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
@@ -184,6 +222,13 @@ jobs:
             output_documentary/*.mp4
             output_documentary/*_youtube.txt
             output_documentary/plan.json
+            output_director/*.mp4
+            output_director/*_youtube.txt
+            output_director/manifest.json
+            output_director/*/render-report.json
+            output_director/*/captions.srt
+            output_director/*/thumbnail.png
+            output_director/*/contact-sheet.png
           retention-days: 14
           if-no-files-found: ignore
 

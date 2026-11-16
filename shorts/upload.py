@@ -28,7 +28,8 @@ def _clean_tags(tags: list[str]) -> list[str]:
     return out
 
 
-def upload(video: Path, script, lang: str, short: bool = True, description: str | None = None) -> str:
+def upload(video: Path, script, lang: str, short: bool = True, description: str | None = None,
+           privacy: str | None = None) -> str:
     """Upload a Short (default) or a long-form video. `description` overrides the script's (chapters added)."""
     creds = Credentials(
         None,
@@ -57,7 +58,7 @@ def upload(video: Path, script, lang: str, short: bool = True, description: str 
             "defaultAudioLanguage": lang,
         },
         "status": {
-            "privacyStatus": config.YT_PRIVACY,
+            "privacyStatus": privacy or config.YT_PRIVACY,
             "selfDeclaredMadeForKids": False,
             # YouTube's synthetic-media label: only when YT_AI_DISCLOSURE=on (see config.py)
             "containsSyntheticMedia": config.YT_AI_DISCLOSURE,
