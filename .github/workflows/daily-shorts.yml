@@ -55,8 +55,8 @@ jobs:
       YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
       # YouTube's "altered or synthetic content" label: off unless the YT_AI_DISCLOSURE variable is "on"
       YT_AI_DISCLOSURE: ${{ vars.YT_AI_DISCLOSURE || 'off' }}
-      PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
-      PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
+      PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-ryan-high' }}
+      PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-rohan-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
       HF_HOME: ${{ github.workspace }}/.cache/hf
       # The Indic Parler-TTS model is gated: a free Hugging Face read token (from an account that accepted the

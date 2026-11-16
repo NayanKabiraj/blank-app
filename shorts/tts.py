@@ -24,7 +24,7 @@ HF_BASE = "https://huggingface.co/rhasspy/piper-voices/resolve/main"
 
 
 def _voice_files(voice: str) -> tuple[Path, Path]:
-    """Download a Piper voice (e.g. 'hi_IN-pratham-medium') once and cache it."""
+    """Download a Piper voice (e.g. 'hi_IN-rohan-medium') once and cache it."""
     locale, name, quality = voice.split("-", 2)
     family = locale.split("_")[0]
     config.VOICES_DIR.mkdir(parents=True, exist_ok=True)

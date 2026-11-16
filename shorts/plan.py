@@ -166,7 +166,7 @@ def validate(plan: Plan) -> list[str]:
 
 
 # ------------------------------------------------------------------ documentaries (5-15 minutes)
-WORDS_PER_SEC = {"en": 3.1, "hi": 2.85}   # measured Piper pace (en_US-lessac-medium, hi_IN-pratham-medium)
+WORDS_PER_SEC = {"en": 3.3, "hi": 2.45}   # Piper pace measured on the same paragraph (en_US-ryan-high, hi_IN-rohan-medium)
 SCENE_PAUSE, CHAPTER_PAUSE = 0.4, 1.0
 
 
@@ -210,7 +210,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
     if not 5 <= plan.target_minutes <= 15:
         problems.append(f"target_minutes {plan.target_minutes} is outside 5-15")
     if plan.target_minutes > 10:
-        problems.append("target_minutes over 10: with the Parler voice (about 10-12x real time on the CPU) two languages of that length can run past the 6 hour job limit; use 10 or less")
+        problems.append("target_minutes over 10: keep documentaries to 10 minutes or less (long runs risk the job limit, especially with the slow Parler voice)")
     for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
         secs = doc_seconds(s, "en" if lang == "english" else "hi")
         if not 270 <= secs <= 930:

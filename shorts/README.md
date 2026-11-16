@@ -39,7 +39,7 @@ The work is split into two parts:
    **Thoma** (English) and **Rohit** (Hindi), animated for Shorts and measured for documentaries. The model is
    gated on Hugging Face, so it needs the `HF_TOKEN` secret (see below). Without it, or if the model cannot
    load, the whole run falls back to [Piper](https://github.com/OHF-Voice/piper1-gpl), a small offline CPU
-   voice (`en_US-lessac-medium`, `hi_IN-pratham-medium`).
+   voice (`en_US-ryan-high`, `hi_IN-rohan-medium`).
 4. **Creates the background music.** The music is synthesized with numpy for the video's
    mood, so it's original and safe from Content ID. You can also put your own royalty-free
    tracks in `assets/music/` or `assets/music/<mood>/`. The music is ducked under the voice.

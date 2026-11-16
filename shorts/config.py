@@ -30,8 +30,8 @@ PARLER_SPEAKERS = {"en": os.getenv("PARLER_SPEAKER_EN", "Thoma"), "hi": os.geten
 
 # Piper (open source, fallback): https://github.com/OHF-Voice/piper1-gpl
 VOICES = {
-    "en": os.getenv("PIPER_VOICE_EN", "en_US-lessac-medium"),
-    "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-pratham-medium"),
+    "en": os.getenv("PIPER_VOICE_EN", "en_US-ryan-high"),
+    "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-rohan-medium"),
 }
 FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
