@@ -74,47 +74,10 @@ def _voice_track(scenes, lang: str, work: Path, window=None, chapter_starts=froz
     return out, timeline, t
 
 
-# ---------------------------------------------------------------- captions
-def _ass_time(s: float) -> str:
-    h, m = int(s // 3600), int(s % 3600 // 60)
-    return f"{h}:{m:02d}:{s % 60:05.2f}"
-
-
-def _ass_escape(t: str) -> str:
-    return t.replace("\\", "").replace("{", "(").replace("}", ")").replace("\n", " ")
-
-
-def _captions(hook: str, lang: str, out: Path):
-    font = config.FONTS[lang]
-    # the scene draws its own caption pills; only the hook line is burned in here
-    hook_style = ("Style: Hook,{font},80,&H003C8AFF,&H003C8AFF,&H003A2313,&HA0000000,-1,0,0,0,100,100,0,0,3,20,0,8,60,60,120,1"
-                  ).format(font=font)
-    head = f"""[Script Info]
-ScriptType: v4.00+
-PlayResX: {config.WIDTH}
-PlayResY: {config.HEIGHT}
-WrapStyle: 0
-
-[V4+ Styles]
-Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-{hook_style}
-
-[Events]
-Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-"""
-    lines = []
-    if hook:
-        lines.append(f"Dialogue: 1,{_ass_time(0)},{_ass_time(3.0)},Hook,,0,0,0,,"
-                     f"{{\\fad(200,300)}}{_ass_escape(hook)}")
-    out.write_text(head + "\n".join(lines) + "\n", encoding="utf-8")
-    return out
-
-
 # ---------------------------------------------------------------- video
-def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, hook: str = "", lang: str = "en",
-         fps: int = 30, lufs: int = -14, music_volume: float = 0.30) -> None:
-    """Mix voice, ducked music and sound effects under work/video.mp4. With a `hook` the hook line is burned
-    in (Shorts); without one the picture is copied as it is (documentaries)."""
+def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, lufs: int = -14, music_volume: float = 0.30) -> None:
+    """Mix voice, ducked music and sound effects under work/video.mp4 (the picture is copied as it is: the scene
+    already draws the captions and the hook line)."""
     track = music.pick_track(mood)
     if track:
         log.info("Using music track %s", track.name)
@@ -136,12 +99,7 @@ def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, hook: s
         + f"[vo][duck]{'[fx]' if sfx_wav else ''}amix=inputs={3 if sfx_wav else 2}:duration=first:normalize=0,"
         + f"loudnorm=I={lufs}:TP=-1.5:LRA=11[a]"
     )
-    if hook:
-        _captions(hook, lang, work / "captions.ass")
-        filt += ";[0:v]ass=captions.ass:shaping=complex[v]"  # complex shaping for Devanagari
-        vmap, vcodec = "[v]", ["-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-r", str(fps)]
-    else:
-        vmap, vcodec = "0:v", ["-c:v", "copy"]
+    vmap, vcodec = "0:v", ["-c:v", "copy"]
     _run(["ffmpeg", "-y", "-loglevel", "error", "-i", "video.mp4", "-i", voice.name, *music_in, *sfx_in,
           "-filter_complex", filt, "-map", vmap, "-map", "[a]", "-t", f"{total:.2f}", *vcodec,
           "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "-movflags", "+faststart", out.name], cwd=work)
@@ -156,7 +114,7 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
     animate.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4 (the picture)
     out = work / f"short_{lang}.mp4"
-    _mix(work, voice, total, mood, out, hook=script.hook_text or " ", lang=lang, fps=config.FPS)
+    _mix(work, voice, total, mood, out)
     return out
 
 
@@ -173,6 +131,6 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "")
     total = voice_end + 3.0
     animate.render(scenes, lang, niche, timeline, total, work, layout="landscape", fps=config.DOC_FPS)
     out = work / f"documentary_{lang}.mp4"
-    _mix(work, voice, total, mood, out, lang=lang, fps=config.DOC_FPS, lufs=-16, music_volume=0.22)
+    _mix(work, voice, total, mood, out, lufs=-16, music_volume=0.22)
     chapters = [(title, 0.0 if i == 0 else timeline[i][0]) for i, title in sorted(starts.items())]
     return out, chapters

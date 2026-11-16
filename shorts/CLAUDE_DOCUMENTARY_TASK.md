@@ -2,7 +2,7 @@
 
 The channel makes two kinds of video: the daily **Shorts** (`CLAUDE_DAILY_TASK.md`) and
 **documentaries** of **5 to 15 minutes**, in **English and Hindi**, in the same explainer look
-(dark navy, flat diagrams, the guiding spark, chat bubbles, quizzes) but landscape, 1920x1080.
+(a whiteboard drawn in marker, the smiling sun, chat bubbles, quizzes) but landscape, 1920x1080.
 A documentary answers one big question properly instead of a quick "why": it has chapters, a
 story and a real payoff. Claude researches and writes the plan; the GitHub workflow
 `daily-shorts.yml` (with `format: documentary`) renders it with the same Piper voice and synthesized music, and uploads it
