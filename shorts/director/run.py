@@ -44,16 +44,62 @@ def check(path: str, langs: list[str]) -> tuple[dict, list[str], list[str]]:
     return m, errs, warns
 
 
+def write_history(m: dict, results: dict, today: str) -> None:
+    """Topic memory for the daily task (data/history.json or data/documentary_history.json) and, for Shorts, the manifest
+    under data/plans/<date>.json (which upload_saved uses for titles and tags)."""
+    config.DATA_DIR.mkdir(exist_ok=True)
+    topic = m["creativeBrief"].get("topic", "")
+    niche = m["creativeBrief"].get("niche", "Technology")
+    if is_doc(m):
+        hist_file = config.DATA_DIR / "documentary_history.json"
+        hist = json.loads(hist_file.read_text()) if hist_file.exists() else []
+        hist.append({"date": today, "niche": niche, "topic": topic, "minutes": round(m["scenes"][-1]["endSeconds"] / 60, 1), "engine": "director", "videos": results})
+        hist_file.write_text(json.dumps(hist[-200:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    else:
+        hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []
+        hist.append({"date": today, "niche": niche, "topic": topic, "mood": build.music_mood(m), "engine": "director", "videos": results})
+        plans = config.DATA_DIR / "plans"
+        plans.mkdir(exist_ok=True)
+        (plans / f"{today}.json").write_text(json.dumps(m, ensure_ascii=False, indent=1), encoding="utf-8")
+        config.HISTORY_FILE.write_text(json.dumps(hist[-365:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def is_doc(m: dict) -> bool:
+    return M.is_documentary(m)
+
+
+def history_from(folder: str) -> int:
+    """`run history <dir>`: merge the result.json files the per-language jobs produced into one history entry."""
+    root = Path(folder)
+    found = sorted(root.rglob("result.json"))
+    if not found:
+        log.error("no result.json under %s", folder)
+        return 1
+    results, today = {}, None
+    for f in found:
+        r = json.loads(f.read_text(encoding="utf-8"))
+        results.update(r["results"])
+        today = r["date"]
+    m = json.loads(sorted(root.rglob("manifest.json"))[0].read_text(encoding="utf-8"))
+    write_history(m, results, today)
+    log.info("History written for %s", sorted(results))
+    return 0
+
+
 def main() -> int:
     if len(sys.argv) > 1 and sys.argv[1] == "schema":
         print(json.dumps(schema(), indent=2))
         return 0
+    if len(sys.argv) > 2 and sys.argv[1] == "history":
+        logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
+        return history_from(sys.argv[2])
     ap = argparse.ArgumentParser()
     ap.add_argument("--manifest-file", required=True)
     ap.add_argument("--langs", default="en,hi")
     ap.add_argument("--dry-run", action="store_true", help="render but do not upload")
     ap.add_argument("--validate-only", action="store_true")
     ap.add_argument("--keep-in-repo", action="store_true", help="documentaries: also copy the video into videos/<date>/")
+    ap.add_argument("--no-history", action="store_true", help="the workflow writes the history once, after all languages")
     ap.add_argument("--out", default="output_director")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -113,22 +159,9 @@ def main() -> int:
             log.exception("Failed to produce the %s video", lang)
             failures.append(lang)
 
-    if not args.dry_run and results:
-        config.DATA_DIR.mkdir(exist_ok=True)
-        topic = m["creativeBrief"].get("topic", "")
-        niche = m["creativeBrief"].get("niche", "Technology")
-        if doc:
-            hist_file = config.DATA_DIR / "documentary_history.json"
-            hist = json.loads(hist_file.read_text()) if hist_file.exists() else []
-            hist.append({"date": today, "niche": niche, "topic": topic, "minutes": round(m["scenes"][-1]["endSeconds"] / 60, 1), "engine": "director", "videos": results})
-            hist_file.write_text(json.dumps(hist[-200:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-        else:
-            hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []
-            hist.append({"date": today, "niche": niche, "topic": topic, "mood": build.music_mood(m), "engine": "director", "videos": results})
-            plans = config.DATA_DIR / "plans"
-            plans.mkdir(exist_ok=True)
-            (plans / f"{today}.json").write_text(json.dumps(json.loads((out / "manifest.json").read_text()), ensure_ascii=False, indent=1), encoding="utf-8")
-            config.HISTORY_FILE.write_text(json.dumps(hist[-365:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (out / "result.json").write_text(json.dumps({"date": today, "results": results}, ensure_ascii=False, indent=1), encoding="utf-8")
+    if not args.dry_run and results and not args.no_history:
+        write_history(m, results, today)
     log.info("Done: %s", json.dumps(results, ensure_ascii=False))
     return 1 if failures else 0
 

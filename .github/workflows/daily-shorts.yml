@@ -47,7 +47,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # director videos render one language per runner, in parallel (a documentary takes about an hour per language);
+  # every other format keeps rendering all its languages in one job
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      langs: ${{ steps.m.outputs.langs }}
+    steps:
+      - id: m
+        env:
+          IN_FORMAT: ${{ inputs.format }}
+          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          langs = [x.strip() for x in os.environ["IN_LANGS"].split(",") if x.strip()]
+          split = os.environ["IN_FORMAT"].startswith("director")
+          print("langs=" + json.dumps(langs if split else [",".join(langs)]))
+          PY
+
   make-shorts:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix:
+        langs: ${{ fromJSON(needs.plan.outputs.langs) }}
     runs-on: ubuntu-latest
     timeout-minutes: 360   # a documentary (and Parler-TTS voices on the CPU) takes far longer than a Short
     env:
@@ -148,7 +172,7 @@ jobs:
         if: ${{ inputs.format == 'upload' }}
         env:
           IN_DATE: ${{ inputs.upload_date }}
-          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_LANGS: ${{ matrix.langs }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
         run: |
           if [ "$IN_DRY_RUN" = "true" ] || [ -z "$IN_DATE" ]; then python -m shorts.upload_saved --check
@@ -165,7 +189,7 @@ jobs:
             echo "::warning::No manifest_json given, using the example manifest"
             cp shorts/director/examples/ai_agents_short.json "$RUNNER_TEMP/manifest.json"
           fi
-          python -m shorts.director.run --manifest-file "$RUNNER_TEMP/manifest.json" --langs "${{ inputs.langs || 'en,hi' }}" --validate-only
+          python -m shorts.director.run --manifest-file "$RUNNER_TEMP/manifest.json" --langs "${{ matrix.langs }}" --validate-only
 
       - name: Read the plan sent by Claude
         if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') }}
@@ -185,11 +209,11 @@ jobs:
       - name: Render and publish (director, Three.js)
         if: ${{ startsWith(inputs.format, 'director') }}
         env:
-          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_LANGS: ${{ matrix.langs }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
           IN_KEEP: ${{ inputs.keep_in_repo }}
         run: |
-          ARGS=(--manifest-file "$RUNNER_TEMP/manifest.json" --langs "$IN_LANGS")
+          ARGS=(--manifest-file "$RUNNER_TEMP/manifest.json" --langs "$IN_LANGS" --no-history)
           if [ "$IN_DRY_RUN" = "true" ]; then ARGS+=(--dry-run); fi
           if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
           python -m shorts.director.run "${ARGS[@]}"
@@ -197,7 +221,7 @@ jobs:
       - name: Render and publish
         if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') }}
         env:
-          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_LANGS: ${{ matrix.langs }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
           IN_FORMAT: ${{ inputs.format || 'shorts' }}
           IN_KEEP: ${{ inputs.keep_in_repo }}
@@ -215,7 +239,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: videos-${{ github.run_number }}
+          name: videos-${{ github.run_number }}-${{ strategy.job-index }}
           path: |
             output/*.mp4
             output/plan.json
@@ -225,6 +249,7 @@ jobs:
             output_director/*.mp4
             output_director/*_youtube.txt
             output_director/manifest.json
+            output_director/result.json
             output_director/*/render-report.json
             output_director/*/captions.srt
             output_director/*/thumbnail.png
@@ -246,4 +271,35 @@ jobs:
               echo "push attempt $i failed, retrying"; git rebase --abort 2>/dev/null || true; sleep $((i * 7))
             done
             git status -sb | head -1
+          fi
+
+  # director videos: one history entry for all languages, written after the per-language jobs finish
+  history:
+    needs: make-shorts
+    if: ${{ always() && startsWith(inputs.format, 'director') && !inputs.dry_run && needs.make-shorts.result != 'cancelled' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: shorts/requirements.txt
+      - run: pip install -r shorts/requirements.txt
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: videos-${{ github.run_number }}-*
+          path: results
+      - name: Write the topic history
+        run: |
+          python -m shorts.director.run history results
+          if [ -n "$(git status --porcelain data/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/
+            git commit -m "chore: save director history [skip ci]"
+            for i in 1 2 3 4 5 6; do
+              git pull --rebase -q && git push && break
+              echo "push attempt $i failed, retrying"; git rebase --abort 2>/dev/null || true; sleep $((i * 7))
+            done
           fi
