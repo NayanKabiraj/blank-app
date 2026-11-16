@@ -195,6 +195,10 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add data/ videos/
             git commit -m "chore: save today's videos [skip ci]"
-            git pull --rebase -q
-            git push
+            # other runs push to main too (the documentary renders for hours): retry instead of failing on a race
+            for i in 1 2 3 4 5 6; do
+              git pull --rebase -q && git push && break
+              echo "push attempt $i failed, retrying"; git rebase --abort 2>/dev/null || true; sleep $((i * 7))
+            done
+            git status -sb | head -1
           fi
