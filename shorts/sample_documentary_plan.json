@@ -1,12 +1,12 @@
 {
   "niche": "India Explained",
   "topic": "How the Indian monsoon works",
-  "research_summary": "Candidates: (1) how the Indian monsoon works 36, (2) how UPI settles a payment in seconds 33, (3) why Delhi gets winter smog 31. Winner: the monsoon, a universal Indian story with a clean mechanism (land heats faster than ocean, low pressure draws moist wind, mountains force rain), a quiz-able number and a surprise (the wettest village is dry in winter). Facts to check against IMD and encyclopedias: onset near Kerala around 1 June, two branches (Arabian Sea and Bay of Bengal), roughly three quarters of annual rain falls June to September, Mawsynram about 11,900 mm a year (rounded to roughly 12,000), Mumbai about 2,400 mm, Delhi about 800 mm, Jaisalmer about 200 mm (all approximate), El Nino often weakens the monsoon, close to half of India's workers in agriculture, 'monsoon' from Arabic mausim (season).",
+  "research_summary": "Candidates: (1) how the Indian monsoon works 36, (2) how UPI settles a payment in seconds 33, (3) why Delhi gets winter smog 31 (done as a Short). Winner: the monsoon. Facts checked against sources (16 Nov 2026): the southwest monsoon brings about 75% of India's annual rain, June to September, sources say 70-80% (IMD via Vikaspedia, CEEW); normal Kerala onset 1 June +/- 7 days and normal whole-country cover about 8 July (IMD); Mawsynram averages roughly 11,870 mm a year (Wikipedia, Guinness-based reports), its 'wettest on Earth' title is disputed (Lloro, Colombia claims about 12,700 mm), so the script says one of the wettest; Delhi Safdarjung normal 779 mm (IMD via Times of India); Jaisalmer about 182 mm (CGWB, Down To Earth); El Nino often weakens the monsoon (Down To Earth, Finance Ministry); agriculture is 41.1% of employment in the Jan-Mar 2026 PLFS quarter (other sources say 46-47% for earlier years), so the script says more than four in ten; 'monsoon' comes from the Arabic mausim (season). Mumbai's annual normal could not be confirmed and was left out. Heavier downpours with longer dry gaps in a warming climate is stated as 'many studies suggest'.",
   "mood": "calm",
   "target_minutes": 5,
   "english": {
     "title": "How India's Monsoon Really Works (The Giant Rain Machine)",
-    "description": "Every June India waits for one thing: the monsoon. Here is how a giant machine of land, ocean, wind and mountains makes the rain, why the wettest village on Earth is dry in winter, and what happens when it fails. #monsoon #indiaexplained #science",
+    "description": "Every June India waits for one thing: the monsoon. Here is how a giant machine of land, ocean, wind and mountains makes the rain, why one of the wettest places on Earth is much drier in winter, and what happens when it fails. #monsoon #indiaexplained #science",
     "tags": [
       "monsoon",
       "how monsoon works",
@@ -181,10 +181,10 @@
         ]
       },
       {
-        "title": "The wettest village",
+        "title": "One of the wettest places",
         "scenes": [
           {
-            "text": "Yes, about three quarters! Now meet the champion. In Meghalaya, a village called Mawsynram gets roughly twelve thousand millimetres of rain every year. That is about twelve metres of water.",
+            "text": "Yes, about three quarters! Now meet one of the wettest places on Earth. In Meghalaya, a village called Mawsynram gets roughly twelve thousand millimetres of rain every year. That is about twelve metres of water.",
             "keyword": "twelve thousand",
             "graphic": {
               "kind": "stat",
@@ -193,7 +193,7 @@
             }
           },
           {
-            "text": "Why there? Wind from the Bay of Bengal slams into the Khasi Hills, which squeeze it upward, and it drops almost everything. Compare that with the rest of the country.",
+            "text": "Why there? Wind from the Bay of Bengal slams into the Khasi Hills, which squeeze it upward, and it drops almost everything. Compare that with Delhi and the Thar desert.",
             "keyword": "squeeze",
             "graphic": {
               "kind": "bars",
@@ -201,20 +201,18 @@
               "caption": "roughly",
               "items": [
                 "Mawsynram",
-                "Mumbai",
                 "Delhi",
                 "Jaisalmer"
               ],
               "values": [
-                12000,
-                2400,
-                800,
-                200
+                11900,
+                780,
+                180
               ]
             }
           },
           {
-            "text": "Think the wettest place must be flooded all year? That's the myth. In winter, Mawsynram turns much drier, because the monsoon wind has gone away.",
+            "text": "Think a place that wet must be flooded all year? That's the myth. In winter, Mawsynram turns much drier, because the monsoon wind has gone away.",
             "keyword": "myth",
             "graphic": {
               "kind": "myth",
@@ -356,12 +354,12 @@
         "title": "Why it matters",
         "scenes": [
           {
-            "text": "Close to half of India's workers still depend on farming, and most crops need the monsoon. Rice, pulses, cotton: they are all sown when the rains arrive.",
-            "keyword": "half",
+            "text": "More than four in ten of India's workers still depend on farming, and most crops need the monsoon. Rice, pulses, cotton: they are all sown when the rains arrive.",
+            "keyword": "four in ten",
             "graphic": {
               "kind": "keyword",
               "headline": "Farms wait for rain",
-              "caption": "close to half the workforce",
+              "caption": "over four in ten workers",
               "prop": "coin"
             }
           },
@@ -401,7 +399,7 @@
   },
   "hindi": {
     "title": "भारत का मॉनसून असल में कैसे काम करता है? (बारिश की विशाल मशीन)",
-    "description": "हर जून भारत एक ही चीज़ का इंतज़ार करता है: मॉनसून। जानिए ज़मीन, समंदर, हवा और पहाड़ों की यह विशाल मशीन बारिश कैसे बनाती है, सबसे गीला गाँव सर्दियों में सूखा क्यों रहता है, और मॉनसून चूक जाए तो क्या होता है। #मॉनसून #विज्ञान #भारत",
+    "description": "हर जून भारत एक ही चीज़ का इंतज़ार करता है: मॉनसून। जानिए ज़मीन, समंदर, हवा और पहाड़ों की यह विशाल मशीन बारिश कैसे बनाती है, दुनिया की सबसे गीली जगहों में से एक सर्दियों में काफ़ी सूखी क्यों रहती है, और मॉनसून चूक जाए तो क्या होता है। #मॉनसून #विज्ञान #भारत",
     "tags": [
       "मॉनसून",
       "मॉनसून कैसे काम करता है",
@@ -576,10 +574,10 @@
         ]
       },
       {
-        "title": "सबसे गीला गाँव",
+        "title": "सबसे गीली जगहों में से एक",
         "scenes": [
           {
-            "text": "सही, लगभग तीन चौथाई! अब चैंपियन से मिलिए। मेघालय का गाँव मावसिनराम हर साल लगभग बारह हज़ार मिलीमीटर बारिश पाता है। यानी करीब बारह मीटर पानी।",
+            "text": "सही, लगभग तीन चौथाई! अब दुनिया की सबसे गीली जगहों में से एक से मिलिए। मेघालय का गाँव मावसिनराम हर साल लगभग बारह हज़ार मिलीमीटर बारिश पाता है। यानी करीब बारह मीटर पानी।",
             "keyword": "बारह हज़ार",
             "graphic": {
               "kind": "stat",
@@ -588,7 +586,7 @@
             }
           },
           {
-            "text": "ऐसा वहाँ क्यों? बंगाल की खाड़ी की हवा खासी पहाड़ियों से टकराती है, जो उसे ऊपर की ओर दबा देती हैं, और वह लगभग सारा पानी गिरा देती है। बाक़ी देश से तुलना देखिए।",
+            "text": "ऐसा वहाँ क्यों? बंगाल की खाड़ी की हवा खासी पहाड़ियों से टकराती है, जो उसे ऊपर की ओर दबा देती हैं, और वह लगभग सारा पानी गिरा देती है। दिल्ली और थार रेगिस्तान से तुलना देखिए।",
             "keyword": "दबा देती हैं",
             "graphic": {
               "kind": "bars",
@@ -596,20 +594,18 @@
               "caption": "लगभग",
               "items": [
                 "मावसिनराम",
-                "मुंबई",
                 "दिल्ली",
                 "जैसलमेर"
               ],
               "values": [
-                12000,
-                2400,
-                800,
-                200
+                11900,
+                780,
+                180
               ]
             }
           },
           {
-            "text": "क्या सबसे गीली जगह साल भर डूबी रहती होगी? यही मिथक है। सर्दियों में मावसिनराम काफ़ी सूखा रहता है, क्योंकि मॉनसून की हवा लौट चुकी होती है।",
+            "text": "क्या इतनी गीली जगह साल भर डूबी रहती होगी? यही मिथक है। सर्दियों में मावसिनराम काफ़ी सूखा रहता है, क्योंकि मॉनसून की हवा लौट चुकी होती है।",
             "keyword": "मिथक",
             "graphic": {
               "kind": "myth",
@@ -751,12 +747,12 @@
         "title": "यह क्यों मायने रखता है",
         "scenes": [
           {
-            "text": "भारत में लगभग आधे कामगार आज भी खेती पर निर्भर हैं, और ज़्यादातर फ़सलों को मॉनसून चाहिए। धान, दालें, कपास, सब बारिश आने पर ही बोए जाते हैं।",
-            "keyword": "आधे कामगार",
+            "text": "भारत के चालीस प्रतिशत से ज़्यादा कामगार आज भी खेती पर निर्भर हैं, और ज़्यादातर फ़सलों को मॉनसून चाहिए। धान, दालें, कपास, सब बारिश आने पर ही बोए जाते हैं।",
+            "keyword": "चालीस प्रतिशत",
             "graphic": {
               "kind": "keyword",
               "headline": "खेत बारिश के भरोसे",
-              "caption": "लगभग आधे कामगार",
+              "caption": "चालीस प्रतिशत से ज़्यादा",
               "prop": "coin"
             }
           },
