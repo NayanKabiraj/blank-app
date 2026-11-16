@@ -261,7 +261,11 @@ jobs:
 
       - name: Save topic history and videos
         if: always()
+        env:
+          KEEP_DAYS: ${{ vars.KEEP_DAYS || '1' }}
         run: |
+          # replace the older videos: only today's and yesterday's stay in the repo (KEEP_DAYS variable to change)
+          python -m shorts.cleanup
           if [ -n "$(git status --porcelain data/ videos/)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
