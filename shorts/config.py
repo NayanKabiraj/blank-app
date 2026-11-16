@@ -48,5 +48,10 @@ YT_REFRESH_TOKENS = {
     "en": os.getenv("YT_REFRESH_TOKEN_EN") or os.getenv("YT_REFRESH_TOKEN", ""),
     "hi": os.getenv("YT_REFRESH_TOKEN_HI") or os.getenv("YT_REFRESH_TOKEN", ""),
 }
+if YT_CLIENT_SECRET and not (YT_REFRESH_TOKENS["en"] and YT_REFRESH_TOKENS["hi"]):
+    # no secret set: use the token that `python -m shorts.ytauth exchange` saved (encrypted) in data/
+    from .ytauth import load_saved_token
+    for _lang in ("en", "hi"):
+        YT_REFRESH_TOKENS[_lang] = YT_REFRESH_TOKENS[_lang] or load_saved_token(_lang)
 YT_PRIVACY = os.getenv("YT_PRIVACY", "private")         # private (default) | unlisted | public
 YT_CATEGORY_ID = os.getenv("YT_CATEGORY_ID", "27")      # 27 = Education
