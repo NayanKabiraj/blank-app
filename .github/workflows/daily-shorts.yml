@@ -182,12 +182,14 @@ jobs:
         if: ${{ startsWith(inputs.format, 'director') }}
         env:
           IN_MANIFEST: ${{ inputs.manifest_json }}
+          IN_FORMAT: ${{ inputs.format }}
         run: |
           if [ -n "$IN_MANIFEST" ]; then
             printf '%s' "$IN_MANIFEST" > "$RUNNER_TEMP/manifest.json"
           else
             echo "::warning::No manifest_json given, using the example manifest"
-            cp shorts/director/examples/ai_agents_short.json "$RUNNER_TEMP/manifest.json"
+            if [ "$IN_FORMAT" = "director-documentary" ]; then EX=gps_documentary; else EX=ai_agents_short; fi
+            cp "shorts/director/examples/$EX.json" "$RUNNER_TEMP/manifest.json"
           fi
           python -m shorts.director.run --manifest-file "$RUNNER_TEMP/manifest.json" --langs "${{ matrix.langs }}" --validate-only
 
