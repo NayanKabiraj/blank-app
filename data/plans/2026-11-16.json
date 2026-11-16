@@ -1,63 +1,63 @@
 {
-  "niche": "Earth & Nature",
-  "topic": "Why does Delhi's air get trapped every winter? (the temperature-inversion lid)",
-  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) Why Delhi's winter air gets trapped, the temperature-inversion lid: 35 (4,4,5,5,4,5,4,4). (2) Why phones die faster in the cold: 34 (4,5,4,4,4,4,4,5), close runner-up, How Tech Works. (3) Why UPI settles in seconds: 33. (4) Why prices end in 99 before Black Friday: 33 (no controlled study to quote). (5) Why we can't tickle ourselves: 30. (6) Why we see our breath in winter: 28. (7) The Mpemba effect, hot water freezing faster: 28 (contested science, rejected). Others considered: why lips crack in winter and why the Moon looks huge (Human Body and Space are cooling down). Winner: Delhi's trapped air. Highest score, wins the tie-break on timeliness (Delhi's AQI hit 377 on 4 November 2026, the worst in 288 days, per Business Today and National Herald, with CPCB/DSS data), Earth & Nature is unused, and the mechanism is pure physics that can be drawn as a lid. Kept neutral: no blame, no health advice. How it works: normally the sun warms the ground, warm air rises and carries smoke up (mixing). On a winter night the ground radiates heat away and the surface air turns cold and heavy while a warmer layer sits above it (a temperature inversion), so nothing rises and smoke, dust and vapour stay near the ground; smog is thickest at night and early morning and lifts as the sun warms the ground (Outlook India, Duke Global Health, The Week). The inversion layer is typically 100 to 200 metres up per UrbanEmissions' Sarath Guttikunda, so the script avoids a precise height. PM2.5 means particles 2.5 micrometres or smaller, about 30 times thinner than a human hair (EPA, rounded from 70/2.5 = 28). Many sources add up: on 4 November the DSS put stubble burning at 20.2% and transport at 15.5% (Business Today), and other days stubble share is tiny while air stays very poor (The Statesman). Analogy: a lid on a pot.",
-  "mood": "mysterious",
+  "niche": "How Tech Works",
+  "topic": "Why does your phone die at 30% in the cold? (the battery isn't empty)",
+  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) Why phones die faster in the cold: 34 (4,5,4,4,4,4,4,5), the runner-up from this morning's scoring, winner of this second run of the day because the earlier Short was Delhi air (Earth & Nature). (2) Why UPI settles in seconds: 33. (3) Why prices end in 99 before Black Friday: 33 (no controlled study). (4) Why we can't tickle ourselves: 30. (5) Why we see our breath in winter: 28. Timely: winter has arrived across north India. How it works: a lithium-ion battery moves lithium ions through a liquid electrolyte; cold thickens the electrolyte and slows the ions, internal resistance rises, so under load the voltage sags and the phone's software reads the dip as nearly empty and shuts down, while the energy is still stored; the battery percentage is an estimate, not a measurement. The effect is temporary: Apple says battery life returns to normal when the device is brought back to higher temperatures, and that iPhones are designed for 0 to 35 degrees Celsius ambient (Apple Support, HT201678). Mechanism cross-checked across several explainer sources; their percentage figures (30% or 50% loss at -10 or -18 C) could not be verified against primary research, so no capacity-loss number is used. Analogy: oil thickening in winter. Safety kept simple: let a cold phone warm up before charging it, which matches Apple's guidance that a too-cold device may not charge.",
+  "mood": "upbeat",
   "english": {
-    "title": "Why Delhi's Air Gets Trapped Every Winter (The Warm Lid)",
-    "description": "Why does Delhi's air get trapped every winter? On some nights the air above the city is warmer than the air you breathe, and that acts like a lid. Here is the physics of the temperature inversion, why smog is worst in the early morning, and why it is never just one cause. #delhismog #winter #science #howitworks",
+    "title": "Why Your Phone Dies at 30% in the Cold (It's Not Empty)",
+    "description": "Why does your phone die at 30% in the cold? The battery isn't empty, it's cold: the liquid inside thickens, the ions slow down, and the voltage sags, so the phone thinks it's nearly empty. Here is how it works, why it's temporary, and what to do. #phonebattery #winter #howitworks #science",
     "tags": [
-      "delhi smog",
-      "why delhi air is bad in winter",
-      "temperature inversion",
-      "winter smog explained",
-      "pm2.5",
-      "air pollution explained",
-      "why smog in winter",
-      "earth science",
+      "phone battery cold",
+      "why phone dies in cold",
+      "phone shuts off at 30 percent",
+      "lithium ion battery explained",
+      "battery in winter",
+      "phone battery drain winter",
+      "how batteries work",
+      "tech explained",
       "science explained",
       "animated explainer"
     ],
-    "hook_text": "Warm air above Delhi?",
+    "hook_text": "It's not empty. It's cold.",
     "scenes": [
       {
-        "text": "Some winter nights, the air above Delhi is warmer than the air you breathe.",
-        "keyword": "warmer",
+        "text": "Your phone says thirty percent, then dies. The battery isn't empty, it's just cold.",
+        "keyword": "isn't empty",
         "graphic": {
           "kind": "title",
-          "headline": "Warm air above?",
+          "headline": "Dead at 30%?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "cloud"
+          "prop": "phone"
         }
       },
       {
-        "text": "Weird, right? Air usually gets colder as you go up. So what flipped?",
-        "keyword": "flipped",
+        "text": "Weird, right? A battery with charge left, and a phone that still shuts off. So what's going on?",
+        "keyword": "shuts off",
         "graphic": {
           "kind": "keyword",
-          "headline": "The rule flips",
-          "caption": "usually colder as you go up",
+          "headline": "Charge left, phone off",
+          "caption": "but the battery isn't empty",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "globe"
+          "prop": "chip"
         }
       },
       {
-        "text": "Normally, the sun warms the ground. Warm air rises and carries smoke away, like a chimney.",
-        "keyword": "chimney",
+        "text": "Inside, lithium ions swim through a liquid called electrolyte. In the cold, that liquid gets thick, like oil in winter.",
+        "keyword": "thick",
         "graphic": {
           "kind": "flow",
-          "headline": "A normal day",
+          "headline": "Inside the battery",
           "caption": "",
           "items": [
-            "Sun warms ground",
-            "Warm air rises",
-            "Smoke goes up",
-            "Air clears"
+            "Lithium ions move",
+            "Through liquid",
+            "Cold thickens it",
+            "Ions slow down"
           ],
           "values": [],
           "answer": null,
@@ -65,17 +65,17 @@
         }
       },
       {
-        "text": "But on a winter night, the ground turns cold. Cold air is heavy, so it stays put under a warm layer. Smoke gets trapped.",
-        "keyword": "warm layer",
+        "text": "Slow ions struggle to deliver power. The voltage sags, and the phone reads that dip as nearly empty.",
+        "keyword": "sags",
         "graphic": {
           "kind": "build",
-          "headline": "The lid forms",
+          "headline": "The fake empty",
           "caption": "",
           "items": [
-            "Ground turns cold",
-            "Cold air sits low",
-            "Warm layer above",
-            "Smoke is trapped"
+            "Cold, slow ions",
+            "Hard to deliver",
+            "Voltage dips",
+            "Phone sees empty"
           ],
           "values": [],
           "answer": null,
@@ -83,16 +83,16 @@
         }
       },
       {
-        "text": "Quick quiz: when is the smog thickest? Take a guess.",
+        "text": "Quick quiz: your phone just died in the cold. What now? Take a guess.",
         "keyword": "guess",
         "graphic": {
           "kind": "quiz",
-          "headline": "When is smog thickest?",
+          "headline": "Phone died in the cold. Now?",
           "caption": "",
           "items": [
-            "Afternoon",
-            "Early morning",
-            "It never changes"
+            "Charge it right away",
+            "Warm it up first",
+            "Shake it"
           ],
           "values": [],
           "answer": 1,
@@ -100,12 +100,12 @@
         }
       },
       {
-        "text": "Early morning, when the ground is coldest! And the smoke is tiny, about thirty times thinner than a hair.",
-        "keyword": "thirty times",
+        "text": "Warm it up first! Apple designs iPhones for zero to thirty-five degrees Celsius, so zero is the line.",
+        "keyword": "zero",
         "graphic": {
           "kind": "stat",
-          "headline": "30 times",
-          "caption": "thinner than a hair",
+          "headline": "0 °C",
+          "caption": "lowest temperature Apple designs for",
           "items": [],
           "values": [],
           "answer": null,
@@ -113,15 +113,15 @@
         }
       },
       {
-        "text": "Only farm fires? That's the myth. Traffic, dust and cooking smoke add up, and the lid traps them all.",
+        "text": "Battery damaged forever? That's the myth. The cold slowness is temporary, and it fades once the phone warms up.",
         "keyword": "myth",
         "graphic": {
           "kind": "myth",
-          "headline": "Only farm fires?",
+          "headline": "Damaged forever?",
           "caption": "",
           "items": [
-            "Farm fires cause it all",
-            "Many sources, one lid"
+            "Cold ruins it for good",
+            "The slowness is temporary"
           ],
           "values": [],
           "answer": null,
@@ -129,75 +129,75 @@
         }
       },
       {
-        "text": "So when you see a hazy morning, think of the lid. Which city should we explain next? Tell me below, and follow for more.",
-        "keyword": "lid",
+        "text": "So next time it dies outdoors, keep it in your pocket. Which gadget hates winter most? Tell me below, and follow for more.",
+        "keyword": "pocket",
         "graphic": {
           "kind": "keyword",
-          "headline": "Think of the lid",
-          "caption": "which city next?",
+          "headline": "Keep it warm",
+          "caption": "which gadget hates winter?",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "bulb"
+          "prop": "heart"
         }
       }
     ]
   },
   "hindi": {
-    "title": "दिल्ली की हवा हर सर्दी में क्यों फँस जाती है? (गरम ढक्कन)",
-    "description": "दिल्ली की हवा हर सर्दी में क्यों फँस जाती है? कुछ रातों में शहर के ऊपर की हवा नीचे की हवा से गरम होती है, और यह ढक्कन का काम करती है। जानिए तापमान उलटाव का विज्ञान, स्मॉग सुबह-सुबह सबसे घना क्यों होता है, और वजह कभी एक नहीं होती। #दिल्लीस्मॉग #सर्दी #विज्ञान #hindi",
+    "title": "ठंड में फ़ोन 30% पर क्यों बंद हो जाता है? (बैटरी खाली नहीं होती)",
+    "description": "ठंड में फ़ोन 30% पर क्यों बंद हो जाता है? बैटरी खाली नहीं, ठंडी होती है: अंदर का तरल गाढ़ा हो जाता है, आयन धीमे पड़ते हैं, वोल्टेज गिरता है और फ़ोन को लगता है कि बैटरी लगभग खाली है। जानिए यह कैसे होता है, क्यों अस्थायी है, और क्या करें। #फ़ोनबैटरी #सर्दी #विज्ञान #hindi",
     "tags": [
-      "दिल्ली स्मॉग",
-      "सर्दी में दिल्ली की हवा खराब क्यों",
-      "तापमान उलटाव",
-      "स्मॉग कैसे बनता है",
-      "pm2.5 क्या है",
-      "वायु प्रदूषण",
+      "ठंड में फ़ोन बंद क्यों",
+      "फ़ोन की बैटरी सर्दी में",
+      "30 प्रतिशत पर फ़ोन बंद",
+      "लिथियम आयन बैटरी",
+      "बैटरी कैसे काम करती है",
+      "सर्दी में बैटरी जल्दी खत्म",
+      "tech in hindi",
       "science in hindi",
       "विज्ञान",
-      "earth science hindi",
       "animated explainer"
     ],
-    "hook_text": "ऊपर गरम, नीचे ठंडी",
+    "hook_text": "बैटरी खाली नहीं, ठंडी है",
     "scenes": [
       {
-        "text": "सर्दियों की कुछ रातों में दिल्ली के ऊपर की हवा, नीचे की हवा से गरम होती है।",
-        "keyword": "गरम",
+        "text": "आपका फ़ोन तीस प्रतिशत दिखाता है, फिर बंद हो जाता है। बैटरी खाली नहीं, बस ठंडी है।",
+        "keyword": "ठंडी",
         "graphic": {
           "kind": "title",
-          "headline": "ऊपर गरम हवा?",
+          "headline": "30% पर बंद?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "cloud"
+          "prop": "phone"
         }
       },
       {
-        "text": "अजीब है ना? आम तौर पर ऊपर हवा ठंडी होती है। तो यह उल्टा कैसे हुआ?",
-        "keyword": "उल्टा",
+        "text": "अजीब है ना? चार्ज बचा है, फिर भी फ़ोन बंद। तो हुआ क्या?",
+        "keyword": "बंद",
         "graphic": {
           "kind": "keyword",
-          "headline": "नियम उलट गया",
-          "caption": "आम तौर पर ऊपर ठंडी हवा",
+          "headline": "चार्ज बचा, फ़ोन बंद",
+          "caption": "पर बैटरी खाली नहीं",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "globe"
+          "prop": "chip"
         }
       },
       {
-        "text": "आम दिन सूरज ज़मीन गरम करता है। गरम हवा उठती है और धुआँ ले जाती है, चिमनी की तरह।",
-        "keyword": "चिमनी",
+        "text": "अंदर लिथियम आयन तरल, यानी इलेक्ट्रोलाइट में तैरते हैं। ठंड में यह गाढ़ा हो जाता है, तेल जैसा।",
+        "keyword": "गाढ़ा",
         "graphic": {
           "kind": "flow",
-          "headline": "एक आम दिन",
+          "headline": "बैटरी के अंदर",
           "caption": "",
           "items": [
-            "सूरज ज़मीन तपाता है",
-            "गरम हवा उठती है",
-            "धुआँ ऊपर जाता है",
-            "हवा साफ़ होती है"
+            "लिथियम आयन चलते हैं",
+            "तरल से गुज़रकर",
+            "ठंड में गाढ़ा तरल",
+            "आयन धीमे पड़ते हैं"
           ],
           "values": [],
           "answer": null,
@@ -205,17 +205,17 @@
         }
       },
       {
-        "text": "पर सर्दी की रात ज़मीन ठंडी हो जाती है। भारी ठंडी हवा नीचे रुकती है, गरम परत के नीचे। धुआँ फँस जाता है।",
-        "keyword": "गरम परत",
+        "text": "धीमे आयन यानी बिजली देने में दिक्कत। वोल्टेज गिर जाता है, और फ़ोन उसे लगभग खाली समझ लेता है।",
+        "keyword": "वोल्टेज",
         "graphic": {
           "kind": "build",
-          "headline": "ढक्कन बनता है",
+          "headline": "नकली खाली",
           "caption": "",
           "items": [
-            "ज़मीन ठंडी होती है",
-            "ठंडी हवा नीचे रुकी",
-            "ऊपर गरम परत",
-            "धुआँ फँस गया"
+            "ठंड, धीमे आयन",
+            "बिजली देना मुश्किल",
+            "वोल्टेज गिरता है",
+            "फ़ोन को लगा खाली"
           ],
           "values": [],
           "answer": null,
@@ -223,16 +223,16 @@
         }
       },
       {
-        "text": "छोटा-सा क्विज़। स्मॉग सबसे घना कब होता है? ज़रा अंदाज़ा लगाइए।",
+        "text": "छोटा-सा क्विज़। ठंड में फ़ोन बंद हो गया, अब क्या करें? ज़रा अंदाज़ा लगाइए।",
         "keyword": "अंदाज़ा",
         "graphic": {
           "kind": "quiz",
-          "headline": "स्मॉग सबसे घना कब?",
+          "headline": "ठंड में फ़ोन बंद, अब?",
           "caption": "",
           "items": [
-            "दोपहर",
-            "सुबह-सुबह",
-            "कभी नहीं बदलता"
+            "तुरंत चार्ज करें",
+            "पहले गरम करें",
+            "फ़ोन को हिलाएँ"
           ],
           "values": [],
           "answer": 1,
@@ -240,12 +240,12 @@
         }
       },
       {
-        "text": "सुबह-सुबह, जब ज़मीन सबसे ठंडी होती है! और धुएँ के कण बाल से लगभग तीस गुना पतले हैं।",
-        "keyword": "तीस गुना",
+        "text": "पहले गरम करें! एप्पल आईफ़ोन को शून्य से पैंतीस डिग्री के लिए बनाता है, तो शून्य याद रखिए।",
+        "keyword": "शून्य",
         "graphic": {
           "kind": "stat",
-          "headline": "30 गुना",
-          "caption": "बाल से पतले",
+          "headline": "0 °C",
+          "caption": "एप्पल की सबसे कम तापमान सीमा",
           "items": [],
           "values": [],
           "answer": null,
@@ -253,15 +253,15 @@
         }
       },
       {
-        "text": "क्या सिर्फ़ पराली वजह है? यही मिथक है। गाड़ियाँ, धूल, खाने का धुआँ जुड़ते हैं, और ढक्कन सबको रोकता है।",
+        "text": "क्या बैटरी हमेशा के लिए ख़राब हो गई? यही मिथक है। ठंड की सुस्ती अस्थायी है, गरम होते ही लौट आती है।",
         "keyword": "मिथक",
         "graphic": {
           "kind": "myth",
-          "headline": "सिर्फ़ पराली?",
+          "headline": "हमेशा के लिए ख़राब?",
           "caption": "",
           "items": [
-            "सिर्फ़ पराली वजह है",
-            "कई स्रोत, एक ढक्कन"
+            "ठंड से बैटरी हमेशा ख़राब",
+            "सुस्ती अस्थायी है"
           ],
           "values": [],
           "answer": null,
@@ -269,16 +269,16 @@
         }
       },
       {
-        "text": "तो धुंधली सुबह दिखे, तो इस ढक्कन को याद करें। अगला कौन-सा शहर? कमेंट में बताइए, और फ़ॉलो करें।",
-        "keyword": "ढक्कन",
+        "text": "तो बाहर फ़ोन बंद हो, तो उसे जेब में रखिए। कौन-सा गैजेट सर्दी में नखरे करता है? कमेंट में बताइए, और फ़ॉलो करें।",
+        "keyword": "जेब",
         "graphic": {
           "kind": "keyword",
-          "headline": "ढक्कन को याद करें",
-          "caption": "अगला कौन-सा शहर?",
+          "headline": "इसे गरम रखिए",
+          "caption": "कौन-सा गैजेट नखरे करता है?",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "bulb"
+          "prop": "heart"
         }
       }
     ]

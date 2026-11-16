@@ -96,5 +96,23 @@
         "video_id": "_h9M1lqZV1I"
       }
     }
+  },
+  {
+    "date": "2026-11-16",
+    "niche": "How Tech Works",
+    "topic": "Why does your phone die at 30% in the cold? (the battery isn't empty)",
+    "mood": "upbeat",
+    "videos": {
+      "en": {
+        "file": "2026-11-16_en.mp4",
+        "saved_to": "videos/2026-11-16/en.mp4",
+        "video_id": "o18KGdxq85w"
+      },
+      "hi": {
+        "file": "2026-11-16_hi.mp4",
+        "saved_to": "videos/2026-11-16/hi.mp4",
+        "video_id": "oLQ-3RA85ek"
+      }
+    }
   }
 ]
