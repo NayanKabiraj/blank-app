@@ -9,6 +9,8 @@ A whiteboard explainer: a hand draws every shape in marker while the narrator ex
 always *being made* in step with the words. Nothing on screen is decoration, every shape shows a step of the
 mechanism or a beat of the conversation. No presenter, no photo. Older looks (dark navy flat diagrams, cartoon
 2D/3D, stickman, Manim motion graphics, stock footage) were removed on purpose; do not bring them back.
+The only other engine is the **director mode** (`shorts/director/`, the `director-manifest` skill): Claude writes a manifest and the workflow renders
+it as a dynamic Three.js animation. It is opt-in (`format: director` / `director-documentary`); this whiteboard look stays the template engine.
 
 - `shorts/explainer/scene.js`: a canvas scene, a pure function of time `t`. Kalam, a handwriting font with
   Latin and Devanagari (SIL OFL), is bundled in `shorts/explainer/fonts/`, so the render needs no network.
