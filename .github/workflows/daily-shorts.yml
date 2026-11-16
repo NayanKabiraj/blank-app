@@ -52,6 +52,8 @@ jobs:
       YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
       # Optional repository variables (Settings > Secrets and variables > Actions > Variables)
       YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
+      # YouTube's "altered or synthetic content" label: off unless the YT_AI_DISCLOSURE variable is "on"
+      YT_AI_DISCLOSURE: ${{ vars.YT_AI_DISCLOSURE || 'off' }}
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-lessac-medium' }}
       PIPER_VOICE_HI: ${{ vars.PIPER_VOICE_HI || 'hi_IN-pratham-medium' }}
       VOICES_DIR: ${{ github.workspace }}/.cache/voices
