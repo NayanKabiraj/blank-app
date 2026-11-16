@@ -114,5 +114,23 @@
         "video_id": "oLQ-3RA85ek"
       }
     }
+  },
+  {
+    "date": "2026-11-16",
+    "niche": "Money Explained",
+    "topic": "Why do prices end in 99? (the left-digit trick before Black Friday)",
+    "mood": "upbeat",
+    "videos": {
+      "en": {
+        "file": "2026-11-16_en.mp4",
+        "saved_to": "videos/2026-11-16/en.mp4",
+        "video_id": "bR_gPKXgQ_k"
+      },
+      "hi": {
+        "file": "2026-11-16_hi.mp4",
+        "saved_to": "videos/2026-11-16/hi.mp4",
+        "video_id": "fxEunP-9-3c"
+      }
+    }
   }
 ]

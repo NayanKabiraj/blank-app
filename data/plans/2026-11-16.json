@@ -1,63 +1,63 @@
 {
-  "niche": "How Tech Works",
-  "topic": "Why does your phone die at 30% in the cold? (the battery isn't empty)",
-  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) Why phones die faster in the cold: 34 (4,5,4,4,4,4,4,5), the runner-up from this morning's scoring, winner of this second run of the day because the earlier Short was Delhi air (Earth & Nature). (2) Why UPI settles in seconds: 33. (3) Why prices end in 99 before Black Friday: 33 (no controlled study). (4) Why we can't tickle ourselves: 30. (5) Why we see our breath in winter: 28. Timely: winter has arrived across north India. How it works: a lithium-ion battery moves lithium ions through a liquid electrolyte; cold thickens the electrolyte and slows the ions, internal resistance rises, so under load the voltage sags and the phone's software reads the dip as nearly empty and shuts down, while the energy is still stored; the battery percentage is an estimate, not a measurement. The effect is temporary: Apple says battery life returns to normal when the device is brought back to higher temperatures, and that iPhones are designed for 0 to 35 degrees Celsius ambient (Apple Support, HT201678). Mechanism cross-checked across several explainer sources; their percentage figures (30% or 50% loss at -10 or -18 C) could not be verified against primary research, so no capacity-loss number is used. Analogy: oil thickening in winter. Safety kept simple: let a cold phone warm up before charging it, which matches Apple's guidance that a too-cold device may not charge.",
+  "niche": "Money Explained",
+  "topic": "Why do prices end in 99? (the left-digit trick before Black Friday)",
+  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) Why prices end in 99 / 499 / 999: 35 (4,5,5,5,4,4,4,4), timely because Black Friday is 27 November and Indian sales run on 499 and 999 prices. (2) Why UPI settles in seconds: 33 (used for today's documentary instead). (3) Why we can't tickle ourselves: 30. (4) Why we see our breath in winter: 28. Winner for the third Short of the day, new niche (Money Explained is unused; Earth & Nature and How Tech Works were used earlier today). How it works: people read numbers left to right and the left-most digit gets most of the attention (Schindler, Rutgers), so 499 is filed in the four hundreds and 500 in the five hundreds although they are one rupee apart; in a 2005 study (Bizer and Schindler) respondents thought they could buy significantly more products priced with 99 endings than with comparable 00 endings; Schindler also found it can backfire, because just-below prices can signal low or questionable quality when shoppers care about quality. The often quoted 7.98 percent sales lift (1996 study) could not be confirmed in a primary source and is left out. No Black Friday statistic is used. Analogy: filing the price in a box by its first digit.",
   "mood": "upbeat",
   "english": {
-    "title": "Why Your Phone Dies at 30% in the Cold (It's Not Empty)",
-    "description": "Why does your phone die at 30% in the cold? The battery isn't empty, it's cold: the liquid inside thickens, the ions slow down, and the voltage sags, so the phone thinks it's nearly empty. Here is how it works, why it's temporary, and what to do. #phonebattery #winter #howitworks #science",
+    "title": "Why Do Prices End in 99? (The Left-Digit Trick)",
+    "description": "Why do prices end in 99, or 499 and 999 in India? Your brain files a price by its first digit, so a price one rupee lower can feel like a whole step cheaper. Here is how the left-digit effect works, what a study found, and when it backfires. #pricing #blackfriday #psychology #moneyexplained",
     "tags": [
-      "phone battery cold",
-      "why phone dies in cold",
-      "phone shuts off at 30 percent",
-      "lithium ion battery explained",
-      "battery in winter",
-      "phone battery drain winter",
-      "how batteries work",
-      "tech explained",
-      "science explained",
+      "why prices end in 99",
+      "left digit effect",
+      "charm pricing",
+      "999 price psychology",
+      "499 price trick",
+      "black friday psychology",
+      "pricing psychology",
+      "money explained",
+      "psychology explained",
       "animated explainer"
     ],
-    "hook_text": "It's not empty. It's cold.",
+    "hook_text": "499 is not 400",
     "scenes": [
       {
-        "text": "Your phone says thirty percent, then dies. The battery isn't empty, it's just cold.",
-        "keyword": "isn't empty",
+        "text": "Your brain treats four hundred ninety-nine rupees like it's closer to four hundred.",
+        "keyword": "closer to four hundred",
         "graphic": {
           "kind": "title",
-          "headline": "Dead at 30%?",
+          "headline": "₹499 ≈ ₹400?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "coin"
         }
       },
       {
-        "text": "Weird, right? A battery with charge left, and a phone that still shuts off. So what's going on?",
-        "keyword": "shuts off",
+        "text": "Weird, right? It's only one rupee less than five hundred. So why does it feel so much cheaper?",
+        "keyword": "cheaper",
         "graphic": {
           "kind": "keyword",
-          "headline": "Charge left, phone off",
-          "caption": "but the battery isn't empty",
+          "headline": "One rupee cheaper?",
+          "caption": "but it feels much cheaper",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "chip"
+          "prop": "bulb"
         }
       },
       {
-        "text": "Inside, lithium ions swim through a liquid called electrolyte. In the cold, that liquid gets thick, like oil in winter.",
-        "keyword": "thick",
+        "text": "Here's the trick. We read numbers left to right, and the first digit grabs most of our attention.",
+        "keyword": "first digit",
         "graphic": {
           "kind": "flow",
-          "headline": "Inside the battery",
+          "headline": "Left-digit effect",
           "caption": "",
           "items": [
-            "Lithium ions move",
-            "Through liquid",
-            "Cold thickens it",
-            "Ions slow down"
+            "Eyes read left",
+            "First digit lands",
+            "Brain files it",
+            "Price feels lower"
           ],
           "values": [],
           "answer": null,
@@ -65,63 +65,69 @@
         }
       },
       {
-        "text": "Slow ions struggle to deliver power. The voltage sags, and the phone reads that dip as nearly empty.",
-        "keyword": "sags",
+        "text": "Four ninety-nine starts with a four, and five hundred starts with a five. Our brain files them in different boxes.",
+        "keyword": "boxes",
         "graphic": {
-          "kind": "build",
-          "headline": "The fake empty",
+          "kind": "compare",
+          "headline": "One rupee apart",
           "caption": "",
           "items": [
-            "Cold, slow ions",
-            "Hard to deliver",
-            "Voltage dips",
-            "Phone sees empty"
+            "₹499 (400s box)",
+            "₹500 (500s box)"
           ],
-          "values": [],
+          "values": [
+            499.0,
+            500.0
+          ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Quick quiz: your phone just died in the cold. What now? Take a guess.",
+        "text": "Quick quiz: in a study, shoppers thought they could afford more items at which kind of price? Take a guess.",
         "keyword": "guess",
         "graphic": {
           "kind": "quiz",
-          "headline": "Phone died in the cold. Now?",
+          "headline": "Which prices felt cheaper?",
           "caption": "",
           "items": [
-            "Charge it right away",
-            "Warm it up first",
-            "Shake it"
+            "Ending in 99",
+            "Round prices",
+            "Same either way"
           ],
           "values": [],
-          "answer": 1,
+          "answer": 0,
           "prop": null
         }
       },
       {
-        "text": "Warm it up first! Apple designs iPhones for zero to thirty-five degrees Celsius, so zero is the line.",
-        "keyword": "zero",
+        "text": "So stores drop one rupee and leave the nine. The first digit does the rest.",
+        "keyword": "nine",
         "graphic": {
-          "kind": "stat",
-          "headline": "0 °C",
-          "caption": "lowest temperature Apple designs for",
-          "items": [],
+          "kind": "steps",
+          "headline": "The store trick",
+          "caption": "",
+          "items": [
+            "Pick a round price",
+            "Drop one rupee",
+            "Leave the nines",
+            "Left digit sells"
+          ],
           "values": [],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Battery damaged forever? That's the myth. The cold slowness is temporary, and it fades once the phone warms up.",
+        "text": "Does it always work? That's the myth. Nines can look cheap, so quality shoppers may walk away.",
         "keyword": "myth",
         "graphic": {
           "kind": "myth",
-          "headline": "Damaged forever?",
+          "headline": "Always works?",
           "caption": "",
           "items": [
-            "Cold ruins it for good",
-            "The slowness is temporary"
+            "Nines always boost sales",
+            "Can look low quality"
           ],
           "values": [],
           "answer": null,
@@ -129,75 +135,75 @@
         }
       },
       {
-        "text": "So next time it dies outdoors, keep it in your pocket. Which gadget hates winter most? Tell me below, and follow for more.",
-        "keyword": "pocket",
+        "text": "So this Black Friday, check the first digit. Which deal fooled you? Tell me below, and follow for more.",
+        "keyword": "first digit",
         "graphic": {
           "kind": "keyword",
-          "headline": "Keep it warm",
-          "caption": "which gadget hates winter?",
+          "headline": "Check the first digit",
+          "caption": "which deal fooled you?",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "heart"
+          "prop": "star"
         }
       }
     ]
   },
   "hindi": {
-    "title": "ठंड में फ़ोन 30% पर क्यों बंद हो जाता है? (बैटरी खाली नहीं होती)",
-    "description": "ठंड में फ़ोन 30% पर क्यों बंद हो जाता है? बैटरी खाली नहीं, ठंडी होती है: अंदर का तरल गाढ़ा हो जाता है, आयन धीमे पड़ते हैं, वोल्टेज गिरता है और फ़ोन को लगता है कि बैटरी लगभग खाली है। जानिए यह कैसे होता है, क्यों अस्थायी है, और क्या करें। #फ़ोनबैटरी #सर्दी #विज्ञान #hindi",
+    "title": "दाम 99 पर ही क्यों ख़त्म होते हैं? (पहले अंक की चाल)",
+    "description": "दाम 99, या भारत में 499 और 999 पर क्यों ख़त्म होते हैं? आपका दिमाग़ दाम को उसके पहले अंक से फ़ाइल करता है, इसलिए एक रुपया कम होने पर भी वह पूरी एक सीढ़ी सस्ता लगता है। जानिए यह चाल कैसे काम करती है, एक अध्ययन में क्या मिला, और कब उलटी पड़ती है। #प्राइसिंग #ब्लैकफ्राइडे #मनोविज्ञान #hindi",
     "tags": [
-      "ठंड में फ़ोन बंद क्यों",
-      "फ़ोन की बैटरी सर्दी में",
-      "30 प्रतिशत पर फ़ोन बंद",
-      "लिथियम आयन बैटरी",
-      "बैटरी कैसे काम करती है",
-      "सर्दी में बैटरी जल्दी खत्म",
-      "tech in hindi",
-      "science in hindi",
-      "विज्ञान",
+      "दाम 99 पर क्यों खत्म होते हैं",
+      "499 और 999 का दाम",
+      "प्राइसिंग साइकोलॉजी",
+      "ब्लैक फ्राइडे",
+      "पहला अंक",
+      "सस्ता क्यों लगता है",
+      "money in hindi",
+      "psychology in hindi",
+      "मनोविज्ञान",
       "animated explainer"
     ],
-    "hook_text": "बैटरी खाली नहीं, ठंडी है",
+    "hook_text": "499 मतलब 400 नहीं",
     "scenes": [
       {
-        "text": "आपका फ़ोन तीस प्रतिशत दिखाता है, फिर बंद हो जाता है। बैटरी खाली नहीं, बस ठंडी है।",
-        "keyword": "ठंडी",
+        "text": "आपका दिमाग़ चार सौ निन्यानवे रुपये को चार सौ के ज़्यादा क़रीब मानता है।",
+        "keyword": "ज़्यादा क़रीब",
         "graphic": {
           "kind": "title",
-          "headline": "30% पर बंद?",
+          "headline": "₹499 ≈ ₹400?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "coin"
         }
       },
       {
-        "text": "अजीब है ना? चार्ज बचा है, फिर भी फ़ोन बंद। तो हुआ क्या?",
-        "keyword": "बंद",
+        "text": "अजीब है ना? पाँच सौ से बस एक रुपया कम, फिर भी इतना सस्ता क्यों लगता है?",
+        "keyword": "सस्ता",
         "graphic": {
           "kind": "keyword",
-          "headline": "चार्ज बचा, फ़ोन बंद",
-          "caption": "पर बैटरी खाली नहीं",
+          "headline": "एक रुपया सस्ता?",
+          "caption": "पर बहुत सस्ता लगता है",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "chip"
+          "prop": "bulb"
         }
       },
       {
-        "text": "अंदर लिथियम आयन तरल, यानी इलेक्ट्रोलाइट में तैरते हैं। ठंड में यह गाढ़ा हो जाता है, तेल जैसा।",
-        "keyword": "गाढ़ा",
+        "text": "ट्रिक यह है: हम संख्याएँ बाएँ से दाएँ पढ़ते हैं, और पहला अंक सबसे ज़्यादा ध्यान खींचता है।",
+        "keyword": "पहला अंक",
         "graphic": {
           "kind": "flow",
-          "headline": "बैटरी के अंदर",
+          "headline": "पहले अंक का असर",
           "caption": "",
           "items": [
-            "लिथियम आयन चलते हैं",
-            "तरल से गुज़रकर",
-            "ठंड में गाढ़ा तरल",
-            "आयन धीमे पड़ते हैं"
+            "आँखें बाएँ से पढ़ें",
+            "पहला अंक दिखे",
+            "दिमाग़ फ़ाइल करे",
+            "दाम कम लगे"
           ],
           "values": [],
           "answer": null,
@@ -205,63 +211,69 @@
         }
       },
       {
-        "text": "धीमे आयन यानी बिजली देने में दिक्कत। वोल्टेज गिर जाता है, और फ़ोन उसे लगभग खाली समझ लेता है।",
-        "keyword": "वोल्टेज",
+        "text": "चार सौ निन्यानवे चार से शुरू होता है, और पाँच सौ पाँच से। दिमाग़ दोनों को अलग डिब्बों में रखता है।",
+        "keyword": "डिब्बों",
         "graphic": {
-          "kind": "build",
-          "headline": "नकली खाली",
+          "kind": "compare",
+          "headline": "बस एक रुपये का फ़र्क़",
           "caption": "",
           "items": [
-            "ठंड, धीमे आयन",
-            "बिजली देना मुश्किल",
-            "वोल्टेज गिरता है",
-            "फ़ोन को लगा खाली"
+            "₹499 (400 का डिब्बा)",
+            "₹500 (500 का डिब्बा)"
           ],
-          "values": [],
+          "values": [
+            499.0,
+            500.0
+          ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "छोटा-सा क्विज़। ठंड में फ़ोन बंद हो गया, अब क्या करें? ज़रा अंदाज़ा लगाइए।",
+        "text": "छोटा-सा क्विज़। एक अध्ययन में लोगों को किस तरह की क़ीमत पर ज़्यादा सामान ख़रीदने लायक़ लगा? अंदाज़ा लगाइए।",
         "keyword": "अंदाज़ा",
         "graphic": {
           "kind": "quiz",
-          "headline": "ठंड में फ़ोन बंद, अब?",
+          "headline": "कौन-सा दाम सस्ता लगा?",
           "caption": "",
           "items": [
-            "तुरंत चार्ज करें",
-            "पहले गरम करें",
-            "फ़ोन को हिलाएँ"
+            "99 पर ख़त्म",
+            "गोल दाम",
+            "कोई फ़र्क़ नहीं"
           ],
           "values": [],
-          "answer": 1,
+          "answer": 0,
           "prop": null
         }
       },
       {
-        "text": "पहले गरम करें! एप्पल आईफ़ोन को शून्य से पैंतीस डिग्री के लिए बनाता है, तो शून्य याद रखिए।",
-        "keyword": "शून्य",
+        "text": "इसलिए दुकानें एक रुपया घटाकर नौ छोड़ देती हैं। बाक़ी काम पहला अंक करता है।",
+        "keyword": "नौ",
         "graphic": {
-          "kind": "stat",
-          "headline": "0 °C",
-          "caption": "एप्पल की सबसे कम तापमान सीमा",
-          "items": [],
+          "kind": "steps",
+          "headline": "दुकान की चाल",
+          "caption": "",
+          "items": [
+            "गोल दाम चुनो",
+            "एक रुपया घटाओ",
+            "नौ छोड़ दो",
+            "पहला अंक बेचे"
+          ],
           "values": [],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "क्या बैटरी हमेशा के लिए ख़राब हो गई? यही मिथक है। ठंड की सुस्ती अस्थायी है, गरम होते ही लौट आती है।",
+        "text": "क्या यह हमेशा चलता है? यही मिथक है। क्वालिटी देखने वालों को नौ वाली क़ीमत कमज़ोर भी लग सकती है।",
         "keyword": "मिथक",
         "graphic": {
           "kind": "myth",
-          "headline": "हमेशा के लिए ख़राब?",
+          "headline": "हमेशा चलता है?",
           "caption": "",
           "items": [
-            "ठंड से बैटरी हमेशा ख़राब",
-            "सुस्ती अस्थायी है"
+            "नौ हमेशा बिक्री बढ़ाए",
+            "कमज़ोर क्वालिटी लग सकती"
           ],
           "values": [],
           "answer": null,
@@ -269,16 +281,16 @@
         }
       },
       {
-        "text": "तो बाहर फ़ोन बंद हो, तो उसे जेब में रखिए। कौन-सा गैजेट सर्दी में नखरे करता है? कमेंट में बताइए, और फ़ॉलो करें।",
-        "keyword": "जेब",
+        "text": "तो इस ब्लैक फ़्राइडे नौ दिखे, तो पहला अंक देखिए। कौन-सा ऑफ़र आपको बहका गया? कमेंट में बताइए, और फ़ॉलो करें।",
+        "keyword": "पहला अंक",
         "graphic": {
           "kind": "keyword",
-          "headline": "इसे गरम रखिए",
-          "caption": "कौन-सा गैजेट नखरे करता है?",
+          "headline": "पहला अंक देखिए",
+          "caption": "कौन-सा ऑफ़र बहकाया?",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "heart"
+          "prop": "star"
         }
       }
     ]
