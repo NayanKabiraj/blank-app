@@ -17,7 +17,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from .. import config, upload
+from .. import config, pending, upload
 from . import build, manifest as M
 
 log = logging.getLogger("shorts.director")
@@ -125,6 +125,8 @@ def main() -> int:
     (out / "manifest.json").write_text(json.dumps(m, ensure_ascii=False, indent=1), encoding="utf-8")
     today = dt.date.today().isoformat()
     results, failures = {}, []
+    if not args.dry_run and upload.can_upload(langs[0]):   # videos waiting from earlier runs go first
+        log.info("Queue: %s", pending.flush(langs))
     for lang in langs:
         try:
             ml = M.localize(m, lang)
@@ -148,11 +150,10 @@ def main() -> int:
                 entry["saved_to"] = f"videos/{today}/{name}.mp4"
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
-            elif not upload.can_upload(lang):
-                log.warning("YouTube secrets missing for %s; skipping upload", lang)
-            else:
+            else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
                 priv = M.privacy(ml, config.YT_PRIVACY)
-                entry["video_id"] = upload.upload(final, script, lang, short=not doc, description=desc, privacy=priv)
+                entry.update(pending.publish(final, script, lang, short=not doc, description=desc, privacy=priv,
+                                             topic=m["creativeBrief"].get("topic", ""), date=today))
                 entry["privacy"] = priv
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so the other language can still be made
