@@ -1,396 +1,339 @@
 {
   "niche": "India Explained",
-  "topic": "How the Indian monsoon works",
-  "research_summary": "Candidates: (1) how the Indian monsoon works 36, (2) how UPI settles a payment in seconds 33, (3) why Delhi gets winter smog 31 (done as a Short). Winner: the monsoon. Facts checked against sources (16 Nov 2026): the southwest monsoon brings about 75% of India's annual rain, June to September, sources say 70-80% (IMD via Vikaspedia, CEEW); normal Kerala onset 1 June +/- 7 days and normal whole-country cover about 8 July (IMD); Mawsynram averages roughly 11,870 mm a year (Wikipedia, Guinness-based reports), its 'wettest on Earth' title is disputed (Lloro, Colombia claims about 12,700 mm), so the script says one of the wettest; Delhi Safdarjung normal 779 mm (IMD via Times of India); Jaisalmer about 182 mm (CGWB, Down To Earth); El Nino often weakens the monsoon (Down To Earth, Finance Ministry); agriculture is 41.1% of employment in the Jan-Mar 2026 PLFS quarter (other sources say 46-47% for earlier years), so the script says more than four in ten; 'monsoon' comes from the Arabic mausim (season). Mumbai's annual normal could not be confirmed and was left out. Heavier downpours with longer dry gaps in a warming climate is stated as 'many studies suggest'.",
-  "mood": "calm",
+  "topic": "How a UPI payment really works, from the tap to the bank",
+  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) How a UPI payment really works: 34 (4,5,4,5,4,5,4,3 on verifiability because the flow is documented mostly in explainers, not NPCI's own pages), India's most universal daily tech and timely with record October numbers. (2) Why prices end in 99: 35, used for today's third Short instead. (3) Why the sky changes colour at sunrise: 30. (4) How Wi-Fi works: 29. Winner for a documentary because it has a clear multi-step mechanism, a surprise (the app does not hold your money, the PIN is checked at your bank), real numbers and everyday stakes. Verified (16 Nov 2026) against several news reports of NPCI data: October 2026 UPI volume 25.47 billion transactions (up 23% year on year), value about 31.53 lakh crore rupees (first month above 30 lakh crore), about 822 million transactions a day and an average of more than 1 lakh crore rupees a day; August 24.51 billion and September 24.07 billion transactions. Flow of a payment from explainer sources: app sends the request, NPCI acts as the central switch and finds the beneficiary bank from the UPI ID (VPA), the remitter bank checks the UPI PIN and debits, the beneficiary bank credits, confirmations travel back; UPI runs round the clock including holidays. UPI launched in 2016 (NPCI). Not verified and left out: fees or MDR (NPCI deferred an MDR rollout on some merchant payments until after Diwali), exact timings in seconds, per-transaction limits. Reversal of failed debits and reference numbers are stated in general terms only.",
+  "mood": "upbeat",
   "target_minutes": 5,
   "english": {
-    "title": "How India's Monsoon Really Works (The Giant Rain Machine)",
-    "description": "Every June India waits for one thing: the monsoon. Here is how a giant machine of land, ocean, wind and mountains makes the rain, why one of the wettest places on Earth is much drier in winter, and what happens when it fails. #monsoon #indiaexplained #science",
+    "title": "How a UPI Payment Really Works (From Your Tap to the Bank)",
+    "description": "India made about 25 billion UPI payments in October 2026. But what actually happens in the moments after you tap Pay? Follow one payment through your app, the NPCI switch and two banks, see where your PIN is checked, why a payment shows pending, and how money is put back when something fails. #upi #fintech #indiaexplained #howitworks",
     "tags": [
-      "monsoon",
-      "how monsoon works",
-      "indian monsoon",
-      "why does it rain in india",
-      "mawsynram",
-      "el nino",
-      "documentary",
-      "science explained",
-      "india explained",
+      "how upi works",
+      "upi explained",
+      "how upi payment works",
+      "what is npci",
+      "upi pin safety",
+      "upi pending payment",
+      "upi transactions october 2026",
+      "india digital payments",
+      "how money moves between banks",
       "animated documentary"
     ],
     "chapters": [
       {
-        "title": "A season that rules a nation",
+        "title": "A number that sounds fake",
         "scenes": [
           {
-            "text": "Every June, a whole country looks up at the sky and holds its breath. Farmers, cities, even stock markets wait for one thing: the first rain of the monsoon.",
-            "keyword": "first rain",
+            "text": "Twenty-five billion. That is how many times Indians tapped Pay on UPI in just one month, October. It works out to about eight hundred million payments a day, from tea stalls and street vendors to malls and shopping apps.",
+            "keyword": "Twenty-five billion",
             "graphic": {
-              "kind": "title",
-              "headline": "The Monsoon",
-              "prop": "cloud"
+              "kind": "stat",
+              "headline": "25.47 billion",
+              "caption": "UPI payments in one month"
             }
           },
           {
-            "text": "But here's the strange part. Rain doesn't fall by magic. The monsoon is a giant machine, powered by one simple fact. Do you know what it is?",
-            "keyword": "giant machine",
+            "text": "And every one of those payments takes only moments. You scan a code, type a PIN, and money has already moved from your bank to someone else's. So how does one tap move money between two completely different banks?",
+            "keyword": "two completely different banks",
             "graphic": {
               "kind": "keyword",
-              "headline": "A giant machine",
-              "caption": "powered by one fact",
-              "prop": "gear"
+              "headline": "One tap, two banks",
+              "caption": "in just moments",
+              "prop": "phone"
             }
           },
           {
-            "text": "Let's ask it like a chat. Why does India get a rainy season at all? Because the land heats up fast. Faster than what? Faster than the ocean beside it.",
-            "keyword": "ocean",
+            "text": "Let's ask it like a chat. A very common worry: does the payment app hold my money? Not really. Your money stays in your bank, and the app is just the messenger. Let's meet the cast.",
+            "keyword": "messenger",
             "graphic": {
               "kind": "chat",
               "headline": "Quick chat",
               "items": [
-                "Why a rainy season?",
-                "The land heats up fast",
-                "Faster than what?",
-                "Faster than the ocean"
+                "Does the app hold my money?",
+                "No, your bank does",
+                "Then what does the app do?",
+                "It just carries the request"
               ]
             }
           }
         ]
       },
       {
-        "title": "Land versus ocean",
+        "title": "Meet the cast",
         "scenes": [
           {
-            "text": "Under the summer sun, land warms quickly. Water takes much longer. So by May, the land is baking like a hot pan, while the Indian Ocean stays cooler.",
-            "keyword": "hot pan",
-            "graphic": {
-              "kind": "steps",
-              "headline": "Why wind moves",
-              "items": [
-                "Land heats up",
-                "Hot air rises",
-                "Low pressure forms"
-              ]
-            }
-          },
-          {
-            "text": "Here's a way to feel it. At the beach, the sand burns your feet while the sea stays cool. That is the same difference, just at the scale of a whole continent.",
-            "keyword": "beach",
+            "text": "First, you and your payment app. The app has one job: carry your request into the system. It is a courier, a very fast one, and it does not decide whether your payment goes through. The banks do.",
+            "keyword": "courier",
             "graphic": {
               "kind": "keyword",
-              "headline": "Hot sand, cool sea",
-              "caption": "the same idea, but huge",
-              "prop": "bulb"
+              "headline": "The app: a courier",
+              "caption": "carries your request",
+              "prop": "rocket"
             }
           },
           {
-            "text": "Hot air rises and leaves a low pressure zone over land. Cooler, heavier air from the ocean rushes in to fill the gap. That rush of air is what we call the monsoon wind.",
-            "keyword": "rushes in",
+            "text": "In the middle sits NPCI, the National Payments Corporation of India. It works like a central switch. It reads the request, works out which bank you are paying, and passes it along, like a very fast post office.",
+            "keyword": "central switch",
             "graphic": {
               "kind": "flow",
-              "headline": "The wind machine",
+              "headline": "Who is who",
               "items": [
-                "Land heats up",
-                "Hot air rises",
-                "Ocean air rushes in",
-                "Moisture comes along"
+                "You and your app",
+                "NPCI, the switch",
+                "Your bank",
+                "Their bank"
               ]
             }
           },
           {
-            "text": "And that wind is loaded. It crossed thousands of kilometres of warm ocean, soaking up water vapour all the way. Think of it as a flying river. Ready to see where it goes?",
-            "keyword": "flying river",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "A flying river",
-              "caption": "loaded with vapour",
-              "prop": "cloud"
-            }
-          }
-        ]
-      },
-      {
-        "title": "The journey of the rain",
-        "scenes": [
-          {
-            "text": "The wind reaches the Kerala coast first, usually around the first of June. That is the official start of the monsoon in India.",
-            "keyword": "Kerala",
-            "graphic": {
-              "kind": "title",
-              "headline": "Journey of the rain",
-              "prop": "globe"
-            }
-          },
-          {
-            "text": "Then it splits into two branches. One comes from the Arabian Sea, the other from the Bay of Bengal. They sweep north and cover almost the whole country by early July.",
-            "keyword": "two branches",
-            "graphic": {
-              "kind": "steps",
-              "headline": "The advance",
-              "items": [
-                "Kerala, June",
-                "Two branches",
-                "Spreads north",
-                "Country covered"
-              ]
-            }
-          },
-          {
-            "text": "Then the mountains do their job. The Western Ghats and the Himalayas block the wet air. It has nowhere to go but up, and as it rises, it cools and drops its water.",
-            "keyword": "cools",
-            "graphic": {
-              "kind": "build",
-              "headline": "Mountains make rain",
-              "items": [
-                "Wet wind arrives",
-                "Hits the mountains",
-                "Air rises, cools",
-                "Rain falls"
-              ]
-            }
-          },
-          {
-            "text": "By late September, the land cools down, the pressure difference fades, and the wind turns around. The monsoon retreats and the dry season begins. That is why it is a season, not a single storm.",
-            "keyword": "turns around",
-            "graphic": {
-              "kind": "steps",
-              "headline": "The retreat",
-              "items": [
-                "Land cools",
-                "Pressure evens out",
-                "Winds turn around",
-                "Dry season"
-              ]
-            }
-          },
-          {
-            "text": "Here's a question. How much of India's yearly rain falls in just four months, June to September? Take a guess.",
+            "text": "Quick check. Who connects your bank to the other person's bank, in the middle of every UPI payment? Think about it, then take a guess.",
             "keyword": "guess",
             "graphic": {
               "kind": "quiz",
-              "headline": "Share of yearly rain?",
+              "headline": "Who connects the banks?",
               "items": [
-                "About a quarter",
-                "About half",
-                "About three quarters"
+                "The payment app",
+                "NPCI's switch",
+                "The shopkeeper"
               ],
-              "answer": 2
-            }
-          }
-        ]
-      },
-      {
-        "title": "One of the wettest places",
-        "scenes": [
-          {
-            "text": "Yes, about three quarters! Now meet one of the wettest places on Earth. In Meghalaya, a village called Mawsynram gets roughly twelve thousand millimetres of rain every year. That is about twelve metres of water.",
-            "keyword": "twelve thousand",
-            "graphic": {
-              "kind": "stat",
-              "headline": "12,000 mm",
-              "caption": "yearly rain, roughly"
+              "answer": 1
             }
           },
           {
-            "text": "Why there? Wind from the Bay of Bengal slams into the Khasi Hills, which squeeze it upward, and it drops almost everything. Compare that with Delhi and the Thar desert.",
-            "keyword": "squeeze",
-            "graphic": {
-              "kind": "bars",
-              "headline": "Yearly rain, mm",
-              "caption": "roughly",
-              "items": [
-                "Mawsynram",
-                "Delhi",
-                "Jaisalmer"
-              ],
-              "values": [
-                11900,
-                780,
-                180
-              ]
-            }
-          },
-          {
-            "text": "Think a place that wet must be flooded all year? That's the myth. In winter, Mawsynram turns much drier, because the monsoon wind has gone away.",
-            "keyword": "myth",
-            "graphic": {
-              "kind": "myth",
-              "headline": "Wettest place?",
-              "items": [
-                "It rains here all year",
-                "Most rain is monsoon rain"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "title": "When the rain misses",
-        "scenes": [
-          {
-            "text": "Some years, the monsoon stumbles. A weak monsoon means dry fields, thirsty reservoirs and rising food prices. So what makes it fail?",
-            "keyword": "stumbles",
-            "graphic": {
-              "kind": "title",
-              "headline": "When rain misses",
-              "prop": "clock"
-            }
-          },
-          {
-            "text": "One big suspect is El Niño, a patch of unusually warm water in the Pacific Ocean, thousands of kilometres away. It shifts winds around the world, and the Indian monsoon often weakens.",
-            "keyword": "El Niño",
-            "graphic": {
-              "kind": "flow",
-              "headline": "A faraway cause",
-              "items": [
-                "Warm Pacific water",
-                "Global winds shift",
-                "Weaker monsoon"
-              ]
-            }
-          },
-          {
-            "text": "Sounds far-fetched, right? Here's the chat. The ocean and the winds are all linked, and the Indian Ocean has its own warm and cool swings too.",
-            "keyword": "linked",
-            "graphic": {
-              "kind": "chat",
-              "headline": "Another chat",
-              "items": [
-                "Pacific affects India?",
-                "Yes, the winds are linked",
-                "Every single time?",
-                "No, other things matter too"
-              ]
-            }
-          },
-          {
-            "text": "In the end, the whole thing is a loop. Ocean water evaporates, wind carries it, rain falls on land, and rivers carry it back to the sea. Then the sun starts it again.",
-            "keyword": "loop",
-            "graphic": {
-              "kind": "cycle",
-              "headline": "The water loop",
-              "items": [
-                "Ocean evaporates",
-                "Wind carries it",
-                "Rain falls on land",
-                "Rivers return it"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "title": "Rain in a warming world",
-        "scenes": [
-          {
-            "text": "Now a twist, and it's about the future. As the planet warms, the air can hold more moisture. So when it rains, it can rain harder. Does that mean more water for everyone? Not quite.",
-            "keyword": "harder",
-            "graphic": {
-              "kind": "title",
-              "headline": "Rain in a warming world",
-              "prop": "planet"
-            }
-          },
-          {
-            "text": "Many studies suggest the pattern is changing: heavier downpours, with longer dry gaps in between. The same total can arrive in a few wild bursts, which floods one week and leaves fields dry the next.",
-            "keyword": "wild bursts",
-            "graphic": {
-              "kind": "steps",
-              "headline": "A changing pattern",
-              "items": [
-                "More moisture",
-                "Heavier downpours",
-                "Longer dry gaps"
-              ]
-            }
-          },
-          {
-            "text": "So is the monsoon doomed? Hold on. Scientists don't expect it to vanish. It has shaped this land for ages. What they watch now is how evenly the rain arrives.",
-            "keyword": "evenly",
-            "graphic": {
-              "kind": "chat",
-              "headline": "Another chat",
-              "items": [
-                "Will the monsoon vanish?",
-                "Scientists don't expect that",
-                "So what changes?",
-                "How the rain arrives"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "title": "Trade on the wind",
-        "scenes": [
-          {
-            "text": "Long before satellites, sailors learned to read the monsoon. The summer wind carried ships from Arabia towards India, and the winter wind carried them home. Whole trade routes ran on a wind calendar.",
-            "keyword": "wind calendar",
-            "graphic": {
-              "kind": "cycle",
-              "headline": "The wind calendar",
-              "items": [
-                "Summer: sail east",
-                "Trade and wait",
-                "Winter: sail home",
-                "Wait for summer"
-              ]
-            }
-          },
-          {
-            "text": "And that rhythm still holds. Every June, clouds march towards Kerala on an ancient clock, one that has been ticking far longer than humans have been counting.",
-            "keyword": "ancient clock",
+            "text": "Then there is your UPI ID. It looks like a nickname, because that is what it is. Behind it sits a real bank account, and the switch translates one into the other. So nobody needs your account number.",
+            "keyword": "nickname",
             "graphic": {
               "kind": "keyword",
-              "headline": "An ancient clock",
-              "caption": "older than humans",
-              "prop": "clock"
-            }
-          }
-        ]
-      },
-      {
-        "title": "Why it matters",
-        "scenes": [
-          {
-            "text": "More than four in ten of India's workers still depend on farming, and most crops need the monsoon. Rice, pulses, cotton: they are all sown when the rains arrive.",
-            "keyword": "four in ten",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "Farms wait for rain",
-              "caption": "over four in ten workers",
-              "prop": "coin"
-            }
-          },
-          {
-            "text": "And rain decides more than crops. When rivers and reservoirs fill up, cities get drinking water and dams make electricity. One season quietly powers an entire year.",
-            "keyword": "drinking water",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "More than crops",
-              "caption": "water and power",
-              "prop": "bulb"
-            }
-          },
-          {
-            "text": "By the way, the word monsoon comes from the Arabic word mausim, which simply means season. Sailors used it centuries ago, because the winds reliably reversed, carrying ships one way in summer and back in winter.",
-            "keyword": "season",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "Mausim = season",
-              "caption": "an Arabic word",
+              "headline": "UPI ID = nickname",
+              "caption": "the switch finds the account",
               "prop": "book"
             }
           },
           {
-            "text": "So next time rain taps your window, remember the journey: an ocean, a wind, a mountain and a very long trip. Which part surprised you the most? Tell me in the comments!",
+            "text": "And finally, two banks. Your bank is where the money leaves from. The other person's bank is where it arrives. They never need to deal with each other's customers, because the switch connects them.",
+            "keyword": "arrives",
+            "graphic": {
+              "kind": "build",
+              "headline": "Four parties",
+              "items": [
+                "You tap Pay",
+                "The switch routes",
+                "Your bank pays",
+                "Their bank receives"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Press Pay",
+        "scenes": [
+          {
+            "text": "Let's follow one payment. You buy tea and scan the QR code on the stall. That code simply holds the seller's UPI ID. Your app reads it, shows the name, and asks how much you want to pay.",
+            "keyword": "QR code",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Scan the QR",
+              "caption": "it holds the seller's UPI ID",
+              "prop": "chip"
+            }
+          },
+          {
+            "text": "Now press Pay. One: your app sends the request. Two: the switch finds the receiver's bank. Three: your bank checks your PIN and takes the money out. Four: their bank adds it in.",
+            "keyword": "checks your PIN",
+            "graphic": {
+              "kind": "steps",
+              "headline": "Press Pay",
+              "items": [
+                "App sends request",
+                "Switch finds the bank",
+                "Bank checks PIN",
+                "Their bank credits"
+              ]
+            }
+          },
+          {
+            "text": "Quick quiz, and it matters for safety. Where is your UPI PIN actually checked? Take a guess.",
+            "keyword": "guess",
+            "graphic": {
+              "kind": "quiz",
+              "headline": "Where is the PIN checked?",
+              "items": [
+                "In the app",
+                "At your bank",
+                "At the shop"
+              ],
+              "answer": 1
+            }
+          },
+          {
+            "text": "At your bank! The app only passes your PIN along, scrambled, and your bank is the one that checks it. So the app can't approve a payment on its own. Keep your PIN to yourself, always.",
+            "keyword": "scrambled",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "PIN stays secret",
+              "caption": "checked by your bank",
+              "prop": "gear"
+            }
+          },
+          {
+            "text": "Then the confirmations travel back the same way: from their bank to the switch, and from the switch to your app. Both of you get a message. Debit, credit, confirm, all in moments, at any hour.",
+            "keyword": "confirm",
+            "graphic": {
+              "kind": "flow",
+              "headline": "The way back",
+              "items": [
+                "Their bank says yes",
+                "Switch passes it on",
+                "Your app shows a tick",
+                "Both get a message"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "What the numbers say",
+        "scenes": [
+          {
+            "text": "The habit is huge, and steady. August and September each crossed twenty-four billion payments, and October set a record at about twenty-five and a half billion. And October is festival season, when gifts, travel and shopping all move to UPI.",
+            "keyword": "record",
+            "graphic": {
+              "kind": "bars",
+              "headline": "Billions of payments",
+              "caption": "per month, 2026",
+              "items": [
+                "August",
+                "September",
+                "October"
+              ],
+              "values": [
+                24.51,
+                24.07,
+                25.47
+              ]
+            }
+          },
+          {
+            "text": "In value, October passed thirty lakh crore rupees for the first time. Spread over the month, that is more than one lakh crore rupees moving every single day, through the same four steps you just saw.",
+            "keyword": "thirty lakh crore",
+            "graphic": {
+              "kind": "stat",
+              "headline": "₹31.5 lakh crore",
+              "caption": "moved in October"
+            }
+          },
+          {
+            "text": "Think this only works for big shops? That's the myth. A tea stall and a giant mall use the very same system, the same switch and the same banks. The rails don't care how big you are.",
+            "keyword": "myth",
+            "graphic": {
+              "kind": "myth",
+              "headline": "Only big shops?",
+              "items": [
+                "Only for big shops",
+                "Same rails for everyone"
+              ]
+            }
+          },
+          {
+            "text": "And it never sleeps. UPI works day and night, on weekends and on bank holidays. Bank branches have opening hours, but the switch and the banks' systems keep running around the clock.",
+            "keyword": "never sleeps",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Always on",
+              "caption": "nights, weekends, holidays",
+              "prop": "clock"
+            }
+          }
+        ]
+      },
+      {
+        "title": "When it goes wrong",
+        "scenes": [
+          {
+            "text": "Now the question everyone asks. Why does a payment sometimes show pending? Because three parties have to agree: your bank, the switch and their bank. If any one of them is slow or busy, the answer takes longer.",
+            "keyword": "pending",
+            "graphic": {
+              "kind": "title",
+              "headline": "Why 'pending'?",
+              "prop": "magnet"
+            }
+          },
+          {
+            "text": "The system is designed so that money is either fully moved, or put back. If the other side never confirms, the debit is reversed and the money returns to your account.",
+            "keyword": "put back",
+            "graphic": {
+              "kind": "steps",
+              "headline": "If it fails",
+              "items": [
+                "Money leaves you",
+                "No confirmation",
+                "Debit reversed",
+                "Money comes back"
+              ]
+            }
+          },
+          {
+            "text": "Every payment also gets a unique reference number, a kind of receipt that both banks and the switch can look up. That is why a support team can trace one payment out of hundreds of millions in a day.",
+            "keyword": "reference number",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "A receipt for every tap",
+              "caption": "a unique reference number",
+              "prop": "coin"
+            }
+          },
+          {
+            "text": "So what should you do when it says pending? First, stay calm, and don't pay twice. Wait for the confirmation or the reversal, and note the payment reference in case you need to ask your bank.",
+            "keyword": "twice",
+            "graphic": {
+              "kind": "chat",
+              "headline": "Pending? Quick chat",
+              "items": [
+                "It says pending. Pay again?",
+                "No, wait first",
+                "Then what?",
+                "Keep the reference number"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Where it came from",
+        "scenes": [
+          {
+            "text": "About ten years ago, none of this existed. In two thousand sixteen, India launched UPI so that any bank account could talk to any other through one shared system. Today it carries hundreds of millions of payments every day.",
+            "keyword": "two thousand sixteen",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Launched in 2016",
+              "caption": "one shared system",
+              "prop": "globe"
+            }
+          },
+          {
+            "text": "So the whole story is a loop of four beats: request, check, move, confirm. It repeats about eight hundred million times a day, and every single loop starts with one tap on your phone.",
+            "keyword": "four beats",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "The four-beat loop",
+              "items": [
+                "Request",
+                "Check PIN",
+                "Move money",
+                "Confirm"
+              ]
+            }
+          },
+          {
+            "text": "So next time you tap Pay, picture the journey: your app, the switch, two banks, and back, in moments. Which part surprised you the most? Tell me in the comments!",
             "keyword": "comments",
             "graphic": {
               "kind": "keyword",
-              "headline": "Thank the machine",
+              "headline": "Picture the journey",
               "caption": "which part surprised you?",
-              "prop": "heart"
+              "prop": "star"
             }
           }
         ]
@@ -398,392 +341,335 @@
     ]
   },
   "hindi": {
-    "title": "भारत का मॉनसून असल में कैसे काम करता है? (बारिश की विशाल मशीन)",
-    "description": "हर जून भारत एक ही चीज़ का इंतज़ार करता है: मॉनसून। जानिए ज़मीन, समंदर, हवा और पहाड़ों की यह विशाल मशीन बारिश कैसे बनाती है, दुनिया की सबसे गीली जगहों में से एक सर्दियों में काफ़ी सूखी क्यों रहती है, और मॉनसून चूक जाए तो क्या होता है। #मॉनसून #विज्ञान #भारत",
+    "title": "यूपीआई भुगतान असल में कैसे काम करता है? (आपके टैप से बैंक तक)",
+    "description": "अक्टूबर 2026 में भारत में लगभग 25 अरब यूपीआई भुगतान हुए। पर पे दबाने के बाद के उन पलों में असल में होता क्या है? एक भुगतान के साथ चलिए: आपका ऐप, एनपीसीआई का स्विच और दो बैंक, पिन कहाँ जाँचा जाता है, भुगतान पेंडिंग क्यों दिखता है, और कुछ गड़बड़ हो तो पैसा कैसे वापस आता है। #यूपीआई #फिनटेक #भारत #hindi",
     "tags": [
-      "मॉनसून",
-      "मॉनसून कैसे काम करता है",
-      "भारतीय मॉनसून",
-      "बारिश क्यों होती है",
-      "मावसिनराम",
-      "एल नीनो",
-      "documentary hindi",
-      "science in hindi",
-      "india explained",
+      "यूपीआई कैसे काम करता है",
+      "यूपीआई क्या है",
+      "एनपीसीआई क्या है",
+      "यूपीआई पिन सुरक्षा",
+      "यूपीआई पेंडिंग पेमेंट",
+      "यूपीआई ट्रांजैक्शन अक्टूबर 2026",
+      "डिजिटल पेमेंट भारत",
+      "पैसा बैंकों के बीच कैसे जाता है",
+      "tech in hindi",
       "animated documentary"
     ],
     "chapters": [
       {
-        "title": "एक मौसम जो देश चलाता है",
+        "title": "एक ऐसा आँकड़ा जो झूठ लगता है",
         "scenes": [
           {
-            "text": "हर जून में पूरा देश आसमान की ओर देखता है। किसान, शहर, यहाँ तक कि शेयर बाज़ार भी एक ही चीज़ का इंतज़ार करते हैं: मॉनसून की पहली बारिश।",
-            "keyword": "पहली बारिश",
+            "text": "पच्चीस अरब। अक्टूबर के एक ही महीने में भारतीयों ने इतनी बार यूपीआई पर पे दबाया। यानी रोज़ लगभग अस्सी करोड़ भुगतान, चाय की दुकान से लेकर बड़े मॉल तक।",
+            "keyword": "पच्चीस अरब",
             "graphic": {
-              "kind": "title",
-              "headline": "मॉनसून",
-              "prop": "cloud"
+              "kind": "stat",
+              "headline": "25.47 अरब",
+              "caption": "एक महीने के यूपीआई भुगतान"
             }
           },
           {
-            "text": "पर अजीब बात यह है कि बारिश जादू से नहीं गिरती। मॉनसून एक विशाल मशीन है, जो एक सीधी-सी बात से चलती है। क्या आप जानते हैं वह क्या है?",
-            "keyword": "विशाल मशीन",
+            "text": "और हर भुगतान बस कुछ पलों में हो जाता है। कोड स्कैन करो, पिन डालो, और पैसा आपके बैंक से किसी और के बैंक में पहुँच चुका होता है। तो एक टैप दो अलग बैंकों के बीच पैसा कैसे भेजता है?",
+            "keyword": "दो अलग बैंकों",
             "graphic": {
               "kind": "keyword",
-              "headline": "एक विशाल मशीन",
-              "caption": "एक ही बात से चलती है",
-              "prop": "gear"
+              "headline": "एक टैप, दो बैंक",
+              "caption": "बस कुछ पलों में",
+              "prop": "phone"
             }
           },
           {
-            "text": "चलिए बातचीत की तरह पूछते हैं। भारत में बरसात का मौसम क्यों आता है? क्योंकि ज़मीन तेज़ी से गरम होती है। किसके मुक़ाबले? पास के समंदर के मुक़ाबले।",
-            "keyword": "समंदर",
+            "text": "इसे बातचीत की तरह पूछते हैं। आम चिंता: क्या पेमेंट ऐप मेरा पैसा रखता है? असल में नहीं। पैसा आपके बैंक में रहता है, और ऐप सिर्फ़ संदेशवाहक है। अब पूरी टीम से मिलिए।",
+            "keyword": "संदेशवाहक",
             "graphic": {
               "kind": "chat",
               "headline": "छोटी बातचीत",
               "items": [
-                "बरसात क्यों आती है?",
-                "ज़मीन तेज़ गरम होती है",
-                "किसके मुक़ाबले?",
-                "पास के समंदर के मुक़ाबले"
+                "क्या ऐप मेरा पैसा रखता है?",
+                "नहीं, आपका बैंक रखता है",
+                "तो ऐप क्या करता है?",
+                "बस अनुरोध ले जाता है"
               ]
             }
           }
         ]
       },
       {
-        "title": "ज़मीन बनाम समंदर",
+        "title": "पूरी टीम से मिलिए",
         "scenes": [
           {
-            "text": "गर्मियों में सूरज ज़मीन को जल्दी तपा देता है, जबकि पानी को गरम होने में बहुत समय लगता है। मई तक ज़मीन तवे जैसी होती है और हिंद महासागर ठंडा रहता है।",
-            "keyword": "तवे जैसी",
-            "graphic": {
-              "kind": "steps",
-              "headline": "हवा क्यों चलती है",
-              "items": [
-                "ज़मीन तपती है",
-                "गरम हवा उठती है",
-                "कम दबाव बनता है"
-              ]
-            }
-          },
-          {
-            "text": "इसे महसूस करने का एक तरीक़ा है। समुद्र तट पर रेत पैरों को जला देती है, जबकि समंदर ठंडा रहता है। यही फ़र्क़ है, बस पूरे महाद्वीप के पैमाने पर।",
-            "keyword": "समुद्र तट",
+            "text": "पहले आप और आपका पेमेंट ऐप। ऐप का एक ही काम है: आपका अनुरोध सिस्टम तक पहुँचाना। वह एक तेज़ कूरियर है, फ़ैसला नहीं करता कि भुगतान होगा या नहीं। यह बैंक तय करते हैं।",
+            "keyword": "कूरियर",
             "graphic": {
               "kind": "keyword",
-              "headline": "गरम रेत, ठंडा समंदर",
-              "caption": "वही बात, बहुत बड़ी",
-              "prop": "bulb"
+              "headline": "ऐप: एक कूरियर",
+              "caption": "अनुरोध ले जाता है",
+              "prop": "rocket"
             }
           },
           {
-            "text": "गरम हवा ऊपर उठती है और ज़मीन पर कम दबाव का इलाक़ा बन जाता है। समंदर की ठंडी, भारी हवा उसे भरने दौड़ती है। हवा की यही दौड़ मॉनसून कहलाती है।",
-            "keyword": "दौड़ती है",
+            "text": "बीच में एनपीसीआई बैठा है, यानी नेशनल पेमेंट्स कॉरपोरेशन ऑफ़ इंडिया। यह एक केंद्रीय स्विच जैसा है। अनुरोध पढ़ता है, पता लगाता है कि किस बैंक को पैसा जाना है, और आगे बढ़ा देता है।",
+            "keyword": "केंद्रीय स्विच",
             "graphic": {
               "kind": "flow",
-              "headline": "हवा की मशीन",
+              "headline": "कौन क्या है",
               "items": [
-                "ज़मीन तपती है",
-                "गरम हवा उठती है",
-                "समंदर की हवा दौड़ी",
-                "नमी साथ आती है"
+                "आप और आपका ऐप",
+                "एनपीसीआई, स्विच",
+                "आपका बैंक",
+                "उनका बैंक"
               ]
             }
           },
           {
-            "text": "और यह हवा भरी हुई है। हज़ारों किलोमीटर गरम समंदर पार करते हुए इसने रास्ते भर भाप सोखी है। इसे उड़ती हुई नदी समझिए। देखना चाहेंगे यह कहाँ जाती है?",
-            "keyword": "उड़ती हुई नदी",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "उड़ती नदी",
-              "caption": "भाप से भरी हुई",
-              "prop": "cloud"
-            }
-          }
-        ]
-      },
-      {
-        "title": "बारिश का सफ़र",
-        "scenes": [
-          {
-            "text": "यह हवा सबसे पहले केरल के तट पर पहुँचती है, आम तौर पर जून की पहली तारीख़ के आसपास। भारत में मॉनसून की आधिकारिक शुरुआत यहीं से मानी जाती है।",
-            "keyword": "केरल",
-            "graphic": {
-              "kind": "title",
-              "headline": "बारिश का सफ़र",
-              "prop": "globe"
-            }
-          },
-          {
-            "text": "फिर यह दो शाखाओं में बँट जाती है। एक अरब सागर से आती है और दूसरी बंगाल की खाड़ी से। दोनों उत्तर की ओर बढ़ती हैं और जुलाई की शुरुआत तक लगभग पूरा देश ढक लेती हैं।",
-            "keyword": "दो शाखाओं",
-            "graphic": {
-              "kind": "steps",
-              "headline": "आगे बढ़ता मॉनसून",
-              "items": [
-                "केरल, जून",
-                "दो शाखाएँ",
-                "उत्तर की ओर",
-                "पूरा देश"
-              ]
-            }
-          },
-          {
-            "text": "फिर पहाड़ अपना काम करते हैं। पश्चिमी घाट और हिमालय नम हवा को रोक देते हैं। उसके पास ऊपर उठने के सिवा कोई रास्ता नहीं बचता, और ऊपर जाकर वह ठंडी होती है और पानी गिरा देती है।",
-            "keyword": "ठंडी होती है",
-            "graphic": {
-              "kind": "build",
-              "headline": "पहाड़ बनाते हैं बारिश",
-              "items": [
-                "नम हवा आती है",
-                "पहाड़ से टकराती",
-                "ऊपर उठकर ठंडी",
-                "बारिश गिरती है"
-              ]
-            }
-          },
-          {
-            "text": "सितंबर के आख़िर तक ज़मीन ठंडी हो जाती है, दबाव का फ़र्क़ घट जाता है और हवा पलट जाती है। मॉनसून लौटता है और सूखा मौसम शुरू होता है। इसीलिए यह एक मौसम है, कोई एक तूफ़ान नहीं।",
-            "keyword": "पलट जाती है",
-            "graphic": {
-              "kind": "steps",
-              "headline": "वापसी",
-              "items": [
-                "ज़मीन ठंडी होती है",
-                "दबाव बराबर होता है",
-                "हवा पलटती है",
-                "सूखा मौसम"
-              ]
-            }
-          },
-          {
-            "text": "अब एक सवाल। भारत की साल भर की बारिश का कितना हिस्सा सिर्फ़ इन चार महीनों, जून से सितंबर में गिरता है? ज़रा अंदाज़ा लगाइए।",
+            "text": "छोटा-सा सवाल। हर यूपीआई भुगतान के बीच में, आपके बैंक को दूसरे के बैंक से कौन जोड़ता है? ज़रा अंदाज़ा लगाइए।",
             "keyword": "अंदाज़ा",
             "graphic": {
               "kind": "quiz",
-              "headline": "साल की बारिश का हिस्सा?",
+              "headline": "बैंकों को कौन जोड़ता है?",
               "items": [
-                "लगभग एक चौथाई",
-                "लगभग आधा",
-                "लगभग तीन चौथाई"
+                "पेमेंट ऐप",
+                "एनपीसीआई का स्विच",
+                "दुकानदार"
               ],
-              "answer": 2
-            }
-          }
-        ]
-      },
-      {
-        "title": "सबसे गीली जगहों में से एक",
-        "scenes": [
-          {
-            "text": "सही, लगभग तीन चौथाई! अब दुनिया की सबसे गीली जगहों में से एक से मिलिए। मेघालय का गाँव मावसिनराम हर साल लगभग बारह हज़ार मिलीमीटर बारिश पाता है। यानी करीब बारह मीटर पानी।",
-            "keyword": "बारह हज़ार",
-            "graphic": {
-              "kind": "stat",
-              "headline": "12,000 मिमी",
-              "caption": "सालाना बारिश, लगभग"
+              "answer": 1
             }
           },
           {
-            "text": "ऐसा वहाँ क्यों? बंगाल की खाड़ी की हवा खासी पहाड़ियों से टकराती है, जो उसे ऊपर की ओर दबा देती हैं, और वह लगभग सारा पानी गिरा देती है। दिल्ली और थार रेगिस्तान से तुलना देखिए।",
-            "keyword": "दबा देती हैं",
-            "graphic": {
-              "kind": "bars",
-              "headline": "सालाना बारिश, मिमी",
-              "caption": "लगभग",
-              "items": [
-                "मावसिनराम",
-                "दिल्ली",
-                "जैसलमेर"
-              ],
-              "values": [
-                11900,
-                780,
-                180
-              ]
-            }
-          },
-          {
-            "text": "क्या इतनी गीली जगह साल भर डूबी रहती होगी? यही मिथक है। सर्दियों में मावसिनराम काफ़ी सूखा रहता है, क्योंकि मॉनसून की हवा लौट चुकी होती है।",
-            "keyword": "मिथक",
-            "graphic": {
-              "kind": "myth",
-              "headline": "सबसे गीली जगह?",
-              "items": [
-                "वहाँ साल भर बारिश होती है",
-                "ज़्यादातर बारिश मॉनसून में"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "title": "जब बारिश चूक जाए",
-        "scenes": [
-          {
-            "text": "कुछ सालों में मॉनसून लड़खड़ा जाता है। कमज़ोर मॉनसून यानी सूखे खेत, खाली जलाशय और बढ़ती महँगाई। तो आख़िर यह कमज़ोर क्यों पड़ता है?",
-            "keyword": "लड़खड़ा",
-            "graphic": {
-              "kind": "title",
-              "headline": "जब बारिश चूके",
-              "prop": "clock"
-            }
-          },
-          {
-            "text": "एक बड़ा संदिग्ध है एल नीनो, यानी हज़ारों किलोमीटर दूर प्रशांत महासागर में गरम पानी का एक असामान्य हिस्सा। यह दुनिया भर की हवाएँ बदल देता है, और भारतीय मॉनसून अक्सर कमज़ोर हो जाता है।",
-            "keyword": "एल नीनो",
-            "graphic": {
-              "kind": "flow",
-              "headline": "दूर का कारण",
-              "items": [
-                "प्रशांत में गरम पानी",
-                "दुनिया की हवाएँ बदलीं",
-                "कमज़ोर मॉनसून"
-              ]
-            }
-          },
-          {
-            "text": "सुनने में अजीब लगता है, है ना? वैज्ञानिकों को भी लगा था। पर सारी हवाएँ आपस में जुड़ी हैं, और हिंद महासागर के अपने गरम-ठंडे उतार-चढ़ाव भी हैं।",
-            "keyword": "जुड़ी हैं",
-            "graphic": {
-              "kind": "chat",
-              "headline": "एक और बातचीत",
-              "items": [
-                "प्रशांत का असर भारत पर?",
-                "हाँ, हवाएँ जुड़ी हैं",
-                "हर बार ऐसा होता है?",
-                "नहीं, और भी कारण हैं"
-              ]
-            }
-          },
-          {
-            "text": "आख़िर में पूरा खेल एक चक्र है। समंदर का पानी भाप बनता है, हवा उसे ले जाती है, ज़मीन पर बारिश होती है, और नदियाँ उसे वापस समंदर तक पहुँचा देती हैं। फिर सूरज इसे दोबारा शुरू करता है।",
-            "keyword": "चक्र",
-            "graphic": {
-              "kind": "cycle",
-              "headline": "पानी का चक्र",
-              "items": [
-                "समंदर से भाप",
-                "हवा ले जाती है",
-                "ज़मीन पर बारिश",
-                "नदियाँ लौटातीं"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "title": "गरम दुनिया में बारिश",
-        "scenes": [
-          {
-            "text": "अब भविष्य की बात, और यह मोड़ चौंकाता है। धरती गरम होती है तो हवा ज़्यादा नमी पकड़ती है। यानी जब बारिश होती है, तो ज़्यादा तेज़ हो सकती है। क्या इसका मतलब सबके लिए ज़्यादा पानी? ठीक ऐसा नहीं।",
-            "keyword": "ज़्यादा तेज़",
-            "graphic": {
-              "kind": "title",
-              "headline": "गरम दुनिया में बारिश",
-              "prop": "planet"
-            }
-          },
-          {
-            "text": "कई अध्ययन बताते हैं कि मॉनसून का ढर्रा बदल रहा है: ज़्यादा तेज़ बौछारें और बीच में लंबे सूखे दौर। कुल पानी वही रहे, तब भी वह बेक़ाबू बौछारों में आता है। एक हफ़्ते बाढ़, अगले हफ़्ते सूखे खेत।",
-            "keyword": "बेक़ाबू बौछारों",
-            "graphic": {
-              "kind": "steps",
-              "headline": "बदलता ढर्रा",
-              "items": [
-                "ज़्यादा नमी",
-                "तेज़ बौछारें",
-                "लंबे सूखे दौर"
-              ]
-            }
-          },
-          {
-            "text": "तो क्या मॉनसून ख़त्म हो जाएगा? रुकिए। वैज्ञानिक ऐसा नहीं मानते। यह हज़ारों साल से इस ज़मीन को गढ़ता आया है। अब वे यह देखते हैं कि बारिश कितनी बराबरी से आती है।",
-            "keyword": "बराबरी",
-            "graphic": {
-              "kind": "chat",
-              "headline": "एक और बातचीत",
-              "items": [
-                "क्या मॉनसून ख़त्म होगा?",
-                "वैज्ञानिक ऐसा नहीं मानते",
-                "तो क्या बदलेगा?",
-                "बारिश आने का तरीक़ा"
-              ]
-            }
-          }
-        ]
-      },
-      {
-        "title": "हवा पर चलता व्यापार",
-        "scenes": [
-          {
-            "text": "सैटेलाइट से बहुत पहले, नाविक मॉनसून को पढ़ना सीख गए थे। गर्मियों की हवा जहाज़ों को अरब से भारत ले जाती थी और सर्दियों की हवा वापस। पूरे व्यापार-मार्ग हवा के कैलेंडर पर चलते थे।",
-            "keyword": "कैलेंडर",
-            "graphic": {
-              "kind": "cycle",
-              "headline": "हवा का कैलेंडर",
-              "items": [
-                "गर्मी: भारत की ओर",
-                "व्यापार, इंतज़ार",
-                "सर्दी: घर वापसी",
-                "अगली गर्मी की राह"
-              ]
-            }
-          },
-          {
-            "text": "और वह लय आज भी नहीं टूटी। हर जून, केरल की ओर बढ़ते बादल एक पुरानी घड़ी पर चलते हैं, जो इंसानों के गिनना सीखने से बहुत पहले से टिक-टिक कर रही है।",
-            "keyword": "पुरानी घड़ी",
+            "text": "फिर आपकी यूपीआई आईडी। यह एक उपनाम जैसी है। इसके पीछे असली बैंक खाता है, और स्विच एक को दूसरे में बदल देता है। इसलिए किसी को आपका खाता नंबर नहीं चाहिए।",
+            "keyword": "उपनाम",
             "graphic": {
               "kind": "keyword",
-              "headline": "एक पुरानी घड़ी",
-              "caption": "इंसान से भी पुरानी",
-              "prop": "clock"
-            }
-          }
-        ]
-      },
-      {
-        "title": "यह क्यों मायने रखता है",
-        "scenes": [
-          {
-            "text": "भारत के चालीस प्रतिशत से ज़्यादा कामगार आज भी खेती पर निर्भर हैं, और ज़्यादातर फ़सलों को मॉनसून चाहिए। धान, दालें, कपास, सब बारिश आने पर ही बोए जाते हैं।",
-            "keyword": "चालीस प्रतिशत",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "खेत बारिश के भरोसे",
-              "caption": "चालीस प्रतिशत से ज़्यादा",
-              "prop": "coin"
-            }
-          },
-          {
-            "text": "और बारिश सिर्फ़ फ़सल तय नहीं करती। जब नदियाँ और जलाशय भरते हैं, तो शहरों को पीने का पानी मिलता है और बाँधों से बिजली बनती है। एक मौसम चुपचाप पूरे साल को चलाता है।",
-            "keyword": "पीने का पानी",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "फ़सल से कहीं ज़्यादा",
-              "caption": "पानी और बिजली",
-              "prop": "bulb"
-            }
-          },
-          {
-            "text": "वैसे, मॉनसून शब्द अरबी के मौसिम से आया है, जिसका मतलब बस मौसम है। सदियों पहले नाविक इसे इसलिए बोलते थे, क्योंकि हवाएँ भरोसे के साथ पलट जाती थीं और जहाज़ों को गर्मियों में एक तरफ़, सर्दियों में दूसरी तरफ़ ले जाती थीं।",
-            "keyword": "मौसम",
-            "graphic": {
-              "kind": "keyword",
-              "headline": "मौसिम = मौसम",
-              "caption": "एक अरबी शब्द",
+              "headline": "यूपीआई आईडी = उपनाम",
+              "caption": "स्विच खाता ढूँढता है",
               "prop": "book"
             }
           },
           {
-            "text": "तो अगली बार जब बारिश आपकी खिड़की पर दस्तक दे, तो इस सफ़र को याद कीजिए: एक समंदर, एक हवा, एक पहाड़ और लंबी यात्रा। आपको कौन-सा हिस्सा सबसे ज़्यादा चौंकाया? कमेंट में बताइए!",
+            "text": "और आख़िर में दो बैंक। आपका बैंक वहाँ है जहाँ से पैसा निकलता है। दूसरे का बैंक वहाँ, जहाँ पहुँचता है। उन्हें एक-दूसरे के ग्राहकों से निपटना नहीं पड़ता, क्योंकि स्विच दोनों को जोड़ता है।",
+            "keyword": "पहुँचता",
+            "graphic": {
+              "kind": "build",
+              "headline": "चार पक्ष",
+              "items": [
+                "आप पे दबाते हैं",
+                "स्विच रास्ता बताता है",
+                "आपका बैंक देता है",
+                "उनका बैंक पाता है"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "पे दबाइए",
+        "scenes": [
+          {
+            "text": "एक भुगतान के साथ चलते हैं। आप चाय ख़रीदते हैं और दुकान का क्यूआर कोड स्कैन करते हैं। उस कोड में बस दुकानदार की यूपीआई आईडी होती है। ऐप उसे पढ़कर नाम दिखाता है और रक़म पूछता है।",
+            "keyword": "क्यूआर कोड",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "क्यूआर स्कैन",
+              "caption": "उसमें दुकानदार की आईडी",
+              "prop": "chip"
+            }
+          },
+          {
+            "text": "अब पे दबाइए। एक: आपका ऐप अनुरोध भेजता है। दो: स्विच दूसरे का बैंक ढूँढता है। तीन: आपका बैंक पिन जाँचकर पैसा निकालता है। चार: उनका बैंक पैसा जोड़ता है।",
+            "keyword": "पिन जाँचकर",
+            "graphic": {
+              "kind": "steps",
+              "headline": "पे दबाइए",
+              "items": [
+                "ऐप अनुरोध भेजे",
+                "स्विच बैंक ढूँढे",
+                "बैंक पिन जाँचे",
+                "उनका बैंक जमा करे"
+              ]
+            }
+          },
+          {
+            "text": "छोटा-सा क्विज़, और सुरक्षा के लिए ज़रूरी। आपका यूपीआई पिन असल में कहाँ जाँचा जाता है? ज़रा अंदाज़ा लगाइए।",
+            "keyword": "अंदाज़ा",
+            "graphic": {
+              "kind": "quiz",
+              "headline": "पिन कहाँ जाँचा जाता है?",
+              "items": [
+                "ऐप में",
+                "आपके बैंक में",
+                "दुकान पर"
+              ],
+              "answer": 1
+            }
+          },
+          {
+            "text": "आपके बैंक में! ऐप पिन को बस कूटबद्ध करके आगे भेजता है, और जाँच आपका बैंक करता है। इसलिए ऐप अकेले भुगतान मंज़ूर नहीं कर सकता। अपना पिन हमेशा अपने तक रखिए।",
+            "keyword": "कूटबद्ध",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "पिन रहता है गुप्त",
+              "caption": "बैंक जाँचता है",
+              "prop": "gear"
+            }
+          },
+          {
+            "text": "फिर पुष्टि उसी रास्ते लौटती है: उनके बैंक से स्विच तक, और स्विच से आपके ऐप तक। दोनों को संदेश मिलता है। निकासी, जमा, पुष्टि, सब कुछ पलों में, किसी भी घड़ी।",
+            "keyword": "पुष्टि",
+            "graphic": {
+              "kind": "flow",
+              "headline": "वापसी का रास्ता",
+              "items": [
+                "उनका बैंक हाँ कहे",
+                "स्विच आगे बढ़ाए",
+                "आपके ऐप पर टिक",
+                "दोनों को संदेश"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "आँकड़े क्या कहते हैं",
+        "scenes": [
+          {
+            "text": "यह आदत बहुत बड़ी और टिकाऊ है। अगस्त और सितंबर में हर महीने चौबीस अरब से ज़्यादा भुगतान हुए, और अक्टूबर में रिकॉर्ड बना, लगभग साढ़े पच्चीस अरब। अक्टूबर त्योहारों का मौसम भी है।",
+            "keyword": "रिकॉर्ड",
+            "graphic": {
+              "kind": "bars",
+              "headline": "अरबों भुगतान",
+              "caption": "हर महीने, 2026",
+              "items": [
+                "अगस्त",
+                "सितंबर",
+                "अक्टूबर"
+              ],
+              "values": [
+                24.51,
+                24.07,
+                25.47
+              ]
+            }
+          },
+          {
+            "text": "मूल्य में, अक्टूबर पहली बार तीस लाख करोड़ रुपये के पार गया। महीने में बाँटें, तो हर दिन एक लाख करोड़ रुपये से ज़्यादा, उन्हीं चार चरणों से गुज़रकर।",
+            "keyword": "तीस लाख करोड़",
+            "graphic": {
+              "kind": "stat",
+              "headline": "₹31.5 लाख करोड़",
+              "caption": "अक्टूबर में लेन-देन"
+            }
+          },
+          {
+            "text": "क्या यह सिर्फ़ बड़ी दुकानों के लिए है? यही मिथक है। चाय की दुकान और बड़ा मॉल एक ही सिस्टम, एक ही स्विच और वही बैंक इस्तेमाल करते हैं। पटरियों को दुकान का आकार नहीं दिखता।",
+            "keyword": "मिथक",
+            "graphic": {
+              "kind": "myth",
+              "headline": "सिर्फ़ बड़ी दुकानें?",
+              "items": [
+                "सिर्फ़ बड़ी दुकानों के लिए",
+                "सबके लिए वही पटरियाँ"
+              ]
+            }
+          },
+          {
+            "text": "और यह कभी सोता नहीं। यूपीआई दिन-रात चलता है, छुट्टियों और बैंक अवकाश पर भी। बैंक शाखाओं के खुलने का समय होता है, पर स्विच और बैंकों के सिस्टम चौबीसों घंटे चलते रहते हैं।",
+            "keyword": "कभी सोता नहीं",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "हमेशा चालू",
+              "caption": "रात, सप्ताहांत, छुट्टी",
+              "prop": "clock"
+            }
+          }
+        ]
+      },
+      {
+        "title": "जब गड़बड़ हो जाए",
+        "scenes": [
+          {
+            "text": "अब वह सवाल जो सब पूछते हैं। भुगतान कभी-कभी पेंडिंग क्यों दिखता है? क्योंकि तीन पक्षों को सहमत होना पड़ता है: आपका बैंक, स्विच और उनका बैंक। कोई एक धीमा या व्यस्त हो, तो जवाब देर से आता है।",
+            "keyword": "पेंडिंग",
+            "graphic": {
+              "kind": "title",
+              "headline": "'पेंडिंग' क्यों?",
+              "prop": "magnet"
+            }
+          },
+          {
+            "text": "सिस्टम ऐसा बना है कि पैसा या तो पूरा पहुँचता है, या वापस रख दिया जाता है। अगर दूसरी तरफ़ से पुष्टि न आए, तो निकासी पलट दी जाती है और पैसा आपके खाते में लौट आता है।",
+            "keyword": "वापस रख दिया",
+            "graphic": {
+              "kind": "steps",
+              "headline": "अगर असफल हो",
+              "items": [
+                "पैसा आपसे निकला",
+                "पुष्टि नहीं आई",
+                "निकासी पलटी",
+                "पैसा लौट आया"
+              ]
+            }
+          },
+          {
+            "text": "हर भुगतान को एक अनोखा संदर्भ नंबर भी मिलता है, एक तरह की रसीद, जिसे दोनों बैंक और स्विच ढूँढ सकते हैं। इसीलिए रोज़ के करोड़ों भुगतानों में से भी एक भुगतान का पता लगाया जा सकता है।",
+            "keyword": "संदर्भ नंबर",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "हर टैप की एक रसीद",
+              "caption": "अनोखा संदर्भ नंबर",
+              "prop": "coin"
+            }
+          },
+          {
+            "text": "तो पेंडिंग दिखे तो क्या करें? पहले शांत रहें, और दोबारा भुगतान न करें। पुष्टि या वापसी का इंतज़ार करें, और संदर्भ नंबर नोट कर लें, ताकि ज़रूरत पड़ने पर बैंक से पूछ सकें।",
+            "keyword": "दोबारा",
+            "graphic": {
+              "kind": "chat",
+              "headline": "पेंडिंग? बातचीत",
+              "items": [
+                "पेंडिंग दिखा। फिर से दें?",
+                "नहीं, पहले रुकिए",
+                "तो फिर क्या?",
+                "संदर्भ नंबर नोट करें"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "यह कहाँ से आया",
+        "scenes": [
+          {
+            "text": "लगभग दस साल पहले यह सब था ही नहीं। दो हज़ार सोलह में भारत ने यूपीआई शुरू किया, ताकि हर बैंक खाता एक साझा सिस्टम से किसी भी दूसरे से बात कर सके। आज यह रोज़ करोड़ों भुगतान सँभालता है।",
+            "keyword": "दो हज़ार सोलह",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "2016 में शुरू",
+              "caption": "एक साझा सिस्टम",
+              "prop": "globe"
+            }
+          },
+          {
+            "text": "तो पूरी कहानी चार धड़कनों का चक्र है: अनुरोध, जाँच, पैसा, पुष्टि। यह रोज़ लगभग अस्सी करोड़ बार दोहराया जाता है, और हर चक्र आपके फ़ोन पर एक टैप से शुरू होता है।",
+            "keyword": "चार धड़कनों",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "चार धड़कनों का चक्र",
+              "items": [
+                "अनुरोध",
+                "पिन जाँच",
+                "पैसा जाए",
+                "पुष्टि"
+              ]
+            }
+          },
+          {
+            "text": "तो अगली बार पे दबाएँ, तो सफ़र याद कीजिए: आपका ऐप, स्विच, दो बैंक, और वापस, पलों में। आपको कौन-सा हिस्सा सबसे ज़्यादा चौंकाया? कमेंट में बताइए!",
             "keyword": "कमेंट",
             "graphic": {
               "kind": "keyword",
-              "headline": "इस सफ़र को सलाम",
+              "headline": "सफ़र याद कीजिए",
               "caption": "कौन-सा हिस्सा चौंकाया?",
-              "prop": "heart"
+              "prop": "star"
             }
           }
         ]

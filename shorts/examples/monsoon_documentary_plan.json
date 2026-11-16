@@ -1,0 +1,793 @@
+{
+  "niche": "India Explained",
+  "topic": "How the Indian monsoon works",
+  "research_summary": "Candidates: (1) how the Indian monsoon works 36, (2) how UPI settles a payment in seconds 33, (3) why Delhi gets winter smog 31 (done as a Short). Winner: the monsoon. Facts checked against sources (16 Nov 2026): the southwest monsoon brings about 75% of India's annual rain, June to September, sources say 70-80% (IMD via Vikaspedia, CEEW); normal Kerala onset 1 June +/- 7 days and normal whole-country cover about 8 July (IMD); Mawsynram averages roughly 11,870 mm a year (Wikipedia, Guinness-based reports), its 'wettest on Earth' title is disputed (Lloro, Colombia claims about 12,700 mm), so the script says one of the wettest; Delhi Safdarjung normal 779 mm (IMD via Times of India); Jaisalmer about 182 mm (CGWB, Down To Earth); El Nino often weakens the monsoon (Down To Earth, Finance Ministry); agriculture is 41.1% of employment in the Jan-Mar 2026 PLFS quarter (other sources say 46-47% for earlier years), so the script says more than four in ten; 'monsoon' comes from the Arabic mausim (season). Mumbai's annual normal could not be confirmed and was left out. Heavier downpours with longer dry gaps in a warming climate is stated as 'many studies suggest'.",
+  "mood": "calm",
+  "target_minutes": 5,
+  "english": {
+    "title": "How India's Monsoon Really Works (The Giant Rain Machine)",
+    "description": "Every June India waits for one thing: the monsoon. Here is how a giant machine of land, ocean, wind and mountains makes the rain, why one of the wettest places on Earth is much drier in winter, and what happens when it fails. #monsoon #indiaexplained #science",
+    "tags": [
+      "monsoon",
+      "how monsoon works",
+      "indian monsoon",
+      "why does it rain in india",
+      "mawsynram",
+      "el nino",
+      "documentary",
+      "science explained",
+      "india explained",
+      "animated documentary"
+    ],
+    "chapters": [
+      {
+        "title": "A season that rules a nation",
+        "scenes": [
+          {
+            "text": "Every June, a whole country looks up at the sky and holds its breath. Farmers, cities, even stock markets wait for one thing: the first rain of the monsoon.",
+            "keyword": "first rain",
+            "graphic": {
+              "kind": "title",
+              "headline": "The Monsoon",
+              "prop": "cloud"
+            }
+          },
+          {
+            "text": "But here's the strange part. Rain doesn't fall by magic. The monsoon is a giant machine, powered by one simple fact. Do you know what it is?",
+            "keyword": "giant machine",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "A giant machine",
+              "caption": "powered by one fact",
+              "prop": "gear"
+            }
+          },
+          {
+            "text": "Let's ask it like a chat. Why does India get a rainy season at all? Because the land heats up fast. Faster than what? Faster than the ocean beside it.",
+            "keyword": "ocean",
+            "graphic": {
+              "kind": "chat",
+              "headline": "Quick chat",
+              "items": [
+                "Why a rainy season?",
+                "The land heats up fast",
+                "Faster than what?",
+                "Faster than the ocean"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Land versus ocean",
+        "scenes": [
+          {
+            "text": "Under the summer sun, land warms quickly. Water takes much longer. So by May, the land is baking like a hot pan, while the Indian Ocean stays cooler.",
+            "keyword": "hot pan",
+            "graphic": {
+              "kind": "steps",
+              "headline": "Why wind moves",
+              "items": [
+                "Land heats up",
+                "Hot air rises",
+                "Low pressure forms"
+              ]
+            }
+          },
+          {
+            "text": "Here's a way to feel it. At the beach, the sand burns your feet while the sea stays cool. That is the same difference, just at the scale of a whole continent.",
+            "keyword": "beach",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Hot sand, cool sea",
+              "caption": "the same idea, but huge",
+              "prop": "bulb"
+            }
+          },
+          {
+            "text": "Hot air rises and leaves a low pressure zone over land. Cooler, heavier air from the ocean rushes in to fill the gap. That rush of air is what we call the monsoon wind.",
+            "keyword": "rushes in",
+            "graphic": {
+              "kind": "flow",
+              "headline": "The wind machine",
+              "items": [
+                "Land heats up",
+                "Hot air rises",
+                "Ocean air rushes in",
+                "Moisture comes along"
+              ]
+            }
+          },
+          {
+            "text": "And that wind is loaded. It crossed thousands of kilometres of warm ocean, soaking up water vapour all the way. Think of it as a flying river. Ready to see where it goes?",
+            "keyword": "flying river",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "A flying river",
+              "caption": "loaded with vapour",
+              "prop": "cloud"
+            }
+          }
+        ]
+      },
+      {
+        "title": "The journey of the rain",
+        "scenes": [
+          {
+            "text": "The wind reaches the Kerala coast first, usually around the first of June. That is the official start of the monsoon in India.",
+            "keyword": "Kerala",
+            "graphic": {
+              "kind": "title",
+              "headline": "Journey of the rain",
+              "prop": "globe"
+            }
+          },
+          {
+            "text": "Then it splits into two branches. One comes from the Arabian Sea, the other from the Bay of Bengal. They sweep north and cover almost the whole country by early July.",
+            "keyword": "two branches",
+            "graphic": {
+              "kind": "steps",
+              "headline": "The advance",
+              "items": [
+                "Kerala, June",
+                "Two branches",
+                "Spreads north",
+                "Country covered"
+              ]
+            }
+          },
+          {
+            "text": "Then the mountains do their job. The Western Ghats and the Himalayas block the wet air. It has nowhere to go but up, and as it rises, it cools and drops its water.",
+            "keyword": "cools",
+            "graphic": {
+              "kind": "build",
+              "headline": "Mountains make rain",
+              "items": [
+                "Wet wind arrives",
+                "Hits the mountains",
+                "Air rises, cools",
+                "Rain falls"
+              ]
+            }
+          },
+          {
+            "text": "By late September, the land cools down, the pressure difference fades, and the wind turns around. The monsoon retreats and the dry season begins. That is why it is a season, not a single storm.",
+            "keyword": "turns around",
+            "graphic": {
+              "kind": "steps",
+              "headline": "The retreat",
+              "items": [
+                "Land cools",
+                "Pressure evens out",
+                "Winds turn around",
+                "Dry season"
+              ]
+            }
+          },
+          {
+            "text": "Here's a question. How much of India's yearly rain falls in just four months, June to September? Take a guess.",
+            "keyword": "guess",
+            "graphic": {
+              "kind": "quiz",
+              "headline": "Share of yearly rain?",
+              "items": [
+                "About a quarter",
+                "About half",
+                "About three quarters"
+              ],
+              "answer": 2
+            }
+          }
+        ]
+      },
+      {
+        "title": "One of the wettest places",
+        "scenes": [
+          {
+            "text": "Yes, about three quarters! Now meet one of the wettest places on Earth. In Meghalaya, a village called Mawsynram gets roughly twelve thousand millimetres of rain every year. That is about twelve metres of water.",
+            "keyword": "twelve thousand",
+            "graphic": {
+              "kind": "stat",
+              "headline": "12,000 mm",
+              "caption": "yearly rain, roughly"
+            }
+          },
+          {
+            "text": "Why there? Wind from the Bay of Bengal slams into the Khasi Hills, which squeeze it upward, and it drops almost everything. Compare that with Delhi and the Thar desert.",
+            "keyword": "squeeze",
+            "graphic": {
+              "kind": "bars",
+              "headline": "Yearly rain, mm",
+              "caption": "roughly",
+              "items": [
+                "Mawsynram",
+                "Delhi",
+                "Jaisalmer"
+              ],
+              "values": [
+                11900,
+                780,
+                180
+              ]
+            }
+          },
+          {
+            "text": "Think a place that wet must be flooded all year? That's the myth. In winter, Mawsynram turns much drier, because the monsoon wind has gone away.",
+            "keyword": "myth",
+            "graphic": {
+              "kind": "myth",
+              "headline": "Wettest place?",
+              "items": [
+                "It rains here all year",
+                "Most rain is monsoon rain"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "When the rain misses",
+        "scenes": [
+          {
+            "text": "Some years, the monsoon stumbles. A weak monsoon means dry fields, thirsty reservoirs and rising food prices. So what makes it fail?",
+            "keyword": "stumbles",
+            "graphic": {
+              "kind": "title",
+              "headline": "When rain misses",
+              "prop": "clock"
+            }
+          },
+          {
+            "text": "One big suspect is El Niño, a patch of unusually warm water in the Pacific Ocean, thousands of kilometres away. It shifts winds around the world, and the Indian monsoon often weakens.",
+            "keyword": "El Niño",
+            "graphic": {
+              "kind": "flow",
+              "headline": "A faraway cause",
+              "items": [
+                "Warm Pacific water",
+                "Global winds shift",
+                "Weaker monsoon"
+              ]
+            }
+          },
+          {
+            "text": "Sounds far-fetched, right? Here's the chat. The ocean and the winds are all linked, and the Indian Ocean has its own warm and cool swings too.",
+            "keyword": "linked",
+            "graphic": {
+              "kind": "chat",
+              "headline": "Another chat",
+              "items": [
+                "Pacific affects India?",
+                "Yes, the winds are linked",
+                "Every single time?",
+                "No, other things matter too"
+              ]
+            }
+          },
+          {
+            "text": "In the end, the whole thing is a loop. Ocean water evaporates, wind carries it, rain falls on land, and rivers carry it back to the sea. Then the sun starts it again.",
+            "keyword": "loop",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "The water loop",
+              "items": [
+                "Ocean evaporates",
+                "Wind carries it",
+                "Rain falls on land",
+                "Rivers return it"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Rain in a warming world",
+        "scenes": [
+          {
+            "text": "Now a twist, and it's about the future. As the planet warms, the air can hold more moisture. So when it rains, it can rain harder. Does that mean more water for everyone? Not quite.",
+            "keyword": "harder",
+            "graphic": {
+              "kind": "title",
+              "headline": "Rain in a warming world",
+              "prop": "planet"
+            }
+          },
+          {
+            "text": "Many studies suggest the pattern is changing: heavier downpours, with longer dry gaps in between. The same total can arrive in a few wild bursts, which floods one week and leaves fields dry the next.",
+            "keyword": "wild bursts",
+            "graphic": {
+              "kind": "steps",
+              "headline": "A changing pattern",
+              "items": [
+                "More moisture",
+                "Heavier downpours",
+                "Longer dry gaps"
+              ]
+            }
+          },
+          {
+            "text": "So is the monsoon doomed? Hold on. Scientists don't expect it to vanish. It has shaped this land for ages. What they watch now is how evenly the rain arrives.",
+            "keyword": "evenly",
+            "graphic": {
+              "kind": "chat",
+              "headline": "Another chat",
+              "items": [
+                "Will the monsoon vanish?",
+                "Scientists don't expect that",
+                "So what changes?",
+                "How the rain arrives"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "Trade on the wind",
+        "scenes": [
+          {
+            "text": "Long before satellites, sailors learned to read the monsoon. The summer wind carried ships from Arabia towards India, and the winter wind carried them home. Whole trade routes ran on a wind calendar.",
+            "keyword": "wind calendar",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "The wind calendar",
+              "items": [
+                "Summer: sail east",
+                "Trade and wait",
+                "Winter: sail home",
+                "Wait for summer"
+              ]
+            }
+          },
+          {
+            "text": "And that rhythm still holds. Every June, clouds march towards Kerala on an ancient clock, one that has been ticking far longer than humans have been counting.",
+            "keyword": "ancient clock",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "An ancient clock",
+              "caption": "older than humans",
+              "prop": "clock"
+            }
+          }
+        ]
+      },
+      {
+        "title": "Why it matters",
+        "scenes": [
+          {
+            "text": "More than four in ten of India's workers still depend on farming, and most crops need the monsoon. Rice, pulses, cotton: they are all sown when the rains arrive.",
+            "keyword": "four in ten",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Farms wait for rain",
+              "caption": "over four in ten workers",
+              "prop": "coin"
+            }
+          },
+          {
+            "text": "And rain decides more than crops. When rivers and reservoirs fill up, cities get drinking water and dams make electricity. One season quietly powers an entire year.",
+            "keyword": "drinking water",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "More than crops",
+              "caption": "water and power",
+              "prop": "bulb"
+            }
+          },
+          {
+            "text": "By the way, the word monsoon comes from the Arabic word mausim, which simply means season. Sailors used it centuries ago, because the winds reliably reversed, carrying ships one way in summer and back in winter.",
+            "keyword": "season",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Mausim = season",
+              "caption": "an Arabic word",
+              "prop": "book"
+            }
+          },
+          {
+            "text": "So next time rain taps your window, remember the journey: an ocean, a wind, a mountain and a very long trip. Which part surprised you the most? Tell me in the comments!",
+            "keyword": "comments",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "Thank the machine",
+              "caption": "which part surprised you?",
+              "prop": "heart"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "hindi": {
+    "title": "भारत का मॉनसून असल में कैसे काम करता है? (बारिश की विशाल मशीन)",
+    "description": "हर जून भारत एक ही चीज़ का इंतज़ार करता है: मॉनसून। जानिए ज़मीन, समंदर, हवा और पहाड़ों की यह विशाल मशीन बारिश कैसे बनाती है, दुनिया की सबसे गीली जगहों में से एक सर्दियों में काफ़ी सूखी क्यों रहती है, और मॉनसून चूक जाए तो क्या होता है। #मॉनसून #विज्ञान #भारत",
+    "tags": [
+      "मॉनसून",
+      "मॉनसून कैसे काम करता है",
+      "भारतीय मॉनसून",
+      "बारिश क्यों होती है",
+      "मावसिनराम",
+      "एल नीनो",
+      "documentary hindi",
+      "science in hindi",
+      "india explained",
+      "animated documentary"
+    ],
+    "chapters": [
+      {
+        "title": "एक मौसम जो देश चलाता है",
+        "scenes": [
+          {
+            "text": "हर जून में पूरा देश आसमान की ओर देखता है। किसान, शहर, यहाँ तक कि शेयर बाज़ार भी एक ही चीज़ का इंतज़ार करते हैं: मॉनसून की पहली बारिश।",
+            "keyword": "पहली बारिश",
+            "graphic": {
+              "kind": "title",
+              "headline": "मॉनसून",
+              "prop": "cloud"
+            }
+          },
+          {
+            "text": "पर अजीब बात यह है कि बारिश जादू से नहीं गिरती। मॉनसून एक विशाल मशीन है, जो एक सीधी-सी बात से चलती है। क्या आप जानते हैं वह क्या है?",
+            "keyword": "विशाल मशीन",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "एक विशाल मशीन",
+              "caption": "एक ही बात से चलती है",
+              "prop": "gear"
+            }
+          },
+          {
+            "text": "चलिए बातचीत की तरह पूछते हैं। भारत में बरसात का मौसम क्यों आता है? क्योंकि ज़मीन तेज़ी से गरम होती है। किसके मुक़ाबले? पास के समंदर के मुक़ाबले।",
+            "keyword": "समंदर",
+            "graphic": {
+              "kind": "chat",
+              "headline": "छोटी बातचीत",
+              "items": [
+                "बरसात क्यों आती है?",
+                "ज़मीन तेज़ गरम होती है",
+                "किसके मुक़ाबले?",
+                "पास के समंदर के मुक़ाबले"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "ज़मीन बनाम समंदर",
+        "scenes": [
+          {
+            "text": "गर्मियों में सूरज ज़मीन को जल्दी तपा देता है, जबकि पानी को गरम होने में बहुत समय लगता है। मई तक ज़मीन तवे जैसी होती है और हिंद महासागर ठंडा रहता है।",
+            "keyword": "तवे जैसी",
+            "graphic": {
+              "kind": "steps",
+              "headline": "हवा क्यों चलती है",
+              "items": [
+                "ज़मीन तपती है",
+                "गरम हवा उठती है",
+                "कम दबाव बनता है"
+              ]
+            }
+          },
+          {
+            "text": "इसे महसूस करने का एक तरीक़ा है। समुद्र तट पर रेत पैरों को जला देती है, जबकि समंदर ठंडा रहता है। यही फ़र्क़ है, बस पूरे महाद्वीप के पैमाने पर।",
+            "keyword": "समुद्र तट",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "गरम रेत, ठंडा समंदर",
+              "caption": "वही बात, बहुत बड़ी",
+              "prop": "bulb"
+            }
+          },
+          {
+            "text": "गरम हवा ऊपर उठती है और ज़मीन पर कम दबाव का इलाक़ा बन जाता है। समंदर की ठंडी, भारी हवा उसे भरने दौड़ती है। हवा की यही दौड़ मॉनसून कहलाती है।",
+            "keyword": "दौड़ती है",
+            "graphic": {
+              "kind": "flow",
+              "headline": "हवा की मशीन",
+              "items": [
+                "ज़मीन तपती है",
+                "गरम हवा उठती है",
+                "समंदर की हवा दौड़ी",
+                "नमी साथ आती है"
+              ]
+            }
+          },
+          {
+            "text": "और यह हवा भरी हुई है। हज़ारों किलोमीटर गरम समंदर पार करते हुए इसने रास्ते भर भाप सोखी है। इसे उड़ती हुई नदी समझिए। देखना चाहेंगे यह कहाँ जाती है?",
+            "keyword": "उड़ती हुई नदी",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "उड़ती नदी",
+              "caption": "भाप से भरी हुई",
+              "prop": "cloud"
+            }
+          }
+        ]
+      },
+      {
+        "title": "बारिश का सफ़र",
+        "scenes": [
+          {
+            "text": "यह हवा सबसे पहले केरल के तट पर पहुँचती है, आम तौर पर जून की पहली तारीख़ के आसपास। भारत में मॉनसून की आधिकारिक शुरुआत यहीं से मानी जाती है।",
+            "keyword": "केरल",
+            "graphic": {
+              "kind": "title",
+              "headline": "बारिश का सफ़र",
+              "prop": "globe"
+            }
+          },
+          {
+            "text": "फिर यह दो शाखाओं में बँट जाती है। एक अरब सागर से आती है और दूसरी बंगाल की खाड़ी से। दोनों उत्तर की ओर बढ़ती हैं और जुलाई की शुरुआत तक लगभग पूरा देश ढक लेती हैं।",
+            "keyword": "दो शाखाओं",
+            "graphic": {
+              "kind": "steps",
+              "headline": "आगे बढ़ता मॉनसून",
+              "items": [
+                "केरल, जून",
+                "दो शाखाएँ",
+                "उत्तर की ओर",
+                "पूरा देश"
+              ]
+            }
+          },
+          {
+            "text": "फिर पहाड़ अपना काम करते हैं। पश्चिमी घाट और हिमालय नम हवा को रोक देते हैं। उसके पास ऊपर उठने के सिवा कोई रास्ता नहीं बचता, और ऊपर जाकर वह ठंडी होती है और पानी गिरा देती है।",
+            "keyword": "ठंडी होती है",
+            "graphic": {
+              "kind": "build",
+              "headline": "पहाड़ बनाते हैं बारिश",
+              "items": [
+                "नम हवा आती है",
+                "पहाड़ से टकराती",
+                "ऊपर उठकर ठंडी",
+                "बारिश गिरती है"
+              ]
+            }
+          },
+          {
+            "text": "सितंबर के आख़िर तक ज़मीन ठंडी हो जाती है, दबाव का फ़र्क़ घट जाता है और हवा पलट जाती है। मॉनसून लौटता है और सूखा मौसम शुरू होता है। इसीलिए यह एक मौसम है, कोई एक तूफ़ान नहीं।",
+            "keyword": "पलट जाती है",
+            "graphic": {
+              "kind": "steps",
+              "headline": "वापसी",
+              "items": [
+                "ज़मीन ठंडी होती है",
+                "दबाव बराबर होता है",
+                "हवा पलटती है",
+                "सूखा मौसम"
+              ]
+            }
+          },
+          {
+            "text": "अब एक सवाल। भारत की साल भर की बारिश का कितना हिस्सा सिर्फ़ इन चार महीनों, जून से सितंबर में गिरता है? ज़रा अंदाज़ा लगाइए।",
+            "keyword": "अंदाज़ा",
+            "graphic": {
+              "kind": "quiz",
+              "headline": "साल की बारिश का हिस्सा?",
+              "items": [
+                "लगभग एक चौथाई",
+                "लगभग आधा",
+                "लगभग तीन चौथाई"
+              ],
+              "answer": 2
+            }
+          }
+        ]
+      },
+      {
+        "title": "सबसे गीली जगहों में से एक",
+        "scenes": [
+          {
+            "text": "सही, लगभग तीन चौथाई! अब दुनिया की सबसे गीली जगहों में से एक से मिलिए। मेघालय का गाँव मावसिनराम हर साल लगभग बारह हज़ार मिलीमीटर बारिश पाता है। यानी करीब बारह मीटर पानी।",
+            "keyword": "बारह हज़ार",
+            "graphic": {
+              "kind": "stat",
+              "headline": "12,000 मिमी",
+              "caption": "सालाना बारिश, लगभग"
+            }
+          },
+          {
+            "text": "ऐसा वहाँ क्यों? बंगाल की खाड़ी की हवा खासी पहाड़ियों से टकराती है, जो उसे ऊपर की ओर दबा देती हैं, और वह लगभग सारा पानी गिरा देती है। दिल्ली और थार रेगिस्तान से तुलना देखिए।",
+            "keyword": "दबा देती हैं",
+            "graphic": {
+              "kind": "bars",
+              "headline": "सालाना बारिश, मिमी",
+              "caption": "लगभग",
+              "items": [
+                "मावसिनराम",
+                "दिल्ली",
+                "जैसलमेर"
+              ],
+              "values": [
+                11900,
+                780,
+                180
+              ]
+            }
+          },
+          {
+            "text": "क्या इतनी गीली जगह साल भर डूबी रहती होगी? यही मिथक है। सर्दियों में मावसिनराम काफ़ी सूखा रहता है, क्योंकि मॉनसून की हवा लौट चुकी होती है।",
+            "keyword": "मिथक",
+            "graphic": {
+              "kind": "myth",
+              "headline": "सबसे गीली जगह?",
+              "items": [
+                "वहाँ साल भर बारिश होती है",
+                "ज़्यादातर बारिश मॉनसून में"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "जब बारिश चूक जाए",
+        "scenes": [
+          {
+            "text": "कुछ सालों में मॉनसून लड़खड़ा जाता है। कमज़ोर मॉनसून यानी सूखे खेत, खाली जलाशय और बढ़ती महँगाई। तो आख़िर यह कमज़ोर क्यों पड़ता है?",
+            "keyword": "लड़खड़ा",
+            "graphic": {
+              "kind": "title",
+              "headline": "जब बारिश चूके",
+              "prop": "clock"
+            }
+          },
+          {
+            "text": "एक बड़ा संदिग्ध है एल नीनो, यानी हज़ारों किलोमीटर दूर प्रशांत महासागर में गरम पानी का एक असामान्य हिस्सा। यह दुनिया भर की हवाएँ बदल देता है, और भारतीय मॉनसून अक्सर कमज़ोर हो जाता है।",
+            "keyword": "एल नीनो",
+            "graphic": {
+              "kind": "flow",
+              "headline": "दूर का कारण",
+              "items": [
+                "प्रशांत में गरम पानी",
+                "दुनिया की हवाएँ बदलीं",
+                "कमज़ोर मॉनसून"
+              ]
+            }
+          },
+          {
+            "text": "सुनने में अजीब लगता है, है ना? वैज्ञानिकों को भी लगा था। पर सारी हवाएँ आपस में जुड़ी हैं, और हिंद महासागर के अपने गरम-ठंडे उतार-चढ़ाव भी हैं।",
+            "keyword": "जुड़ी हैं",
+            "graphic": {
+              "kind": "chat",
+              "headline": "एक और बातचीत",
+              "items": [
+                "प्रशांत का असर भारत पर?",
+                "हाँ, हवाएँ जुड़ी हैं",
+                "हर बार ऐसा होता है?",
+                "नहीं, और भी कारण हैं"
+              ]
+            }
+          },
+          {
+            "text": "आख़िर में पूरा खेल एक चक्र है। समंदर का पानी भाप बनता है, हवा उसे ले जाती है, ज़मीन पर बारिश होती है, और नदियाँ उसे वापस समंदर तक पहुँचा देती हैं। फिर सूरज इसे दोबारा शुरू करता है।",
+            "keyword": "चक्र",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "पानी का चक्र",
+              "items": [
+                "समंदर से भाप",
+                "हवा ले जाती है",
+                "ज़मीन पर बारिश",
+                "नदियाँ लौटातीं"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "गरम दुनिया में बारिश",
+        "scenes": [
+          {
+            "text": "अब भविष्य की बात, और यह मोड़ चौंकाता है। धरती गरम होती है तो हवा ज़्यादा नमी पकड़ती है। यानी जब बारिश होती है, तो ज़्यादा तेज़ हो सकती है। क्या इसका मतलब सबके लिए ज़्यादा पानी? ठीक ऐसा नहीं।",
+            "keyword": "ज़्यादा तेज़",
+            "graphic": {
+              "kind": "title",
+              "headline": "गरम दुनिया में बारिश",
+              "prop": "planet"
+            }
+          },
+          {
+            "text": "कई अध्ययन बताते हैं कि मॉनसून का ढर्रा बदल रहा है: ज़्यादा तेज़ बौछारें और बीच में लंबे सूखे दौर। कुल पानी वही रहे, तब भी वह बेक़ाबू बौछारों में आता है। एक हफ़्ते बाढ़, अगले हफ़्ते सूखे खेत।",
+            "keyword": "बेक़ाबू बौछारों",
+            "graphic": {
+              "kind": "steps",
+              "headline": "बदलता ढर्रा",
+              "items": [
+                "ज़्यादा नमी",
+                "तेज़ बौछारें",
+                "लंबे सूखे दौर"
+              ]
+            }
+          },
+          {
+            "text": "तो क्या मॉनसून ख़त्म हो जाएगा? रुकिए। वैज्ञानिक ऐसा नहीं मानते। यह हज़ारों साल से इस ज़मीन को गढ़ता आया है। अब वे यह देखते हैं कि बारिश कितनी बराबरी से आती है।",
+            "keyword": "बराबरी",
+            "graphic": {
+              "kind": "chat",
+              "headline": "एक और बातचीत",
+              "items": [
+                "क्या मॉनसून ख़त्म होगा?",
+                "वैज्ञानिक ऐसा नहीं मानते",
+                "तो क्या बदलेगा?",
+                "बारिश आने का तरीक़ा"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "title": "हवा पर चलता व्यापार",
+        "scenes": [
+          {
+            "text": "सैटेलाइट से बहुत पहले, नाविक मॉनसून को पढ़ना सीख गए थे। गर्मियों की हवा जहाज़ों को अरब से भारत ले जाती थी और सर्दियों की हवा वापस। पूरे व्यापार-मार्ग हवा के कैलेंडर पर चलते थे।",
+            "keyword": "कैलेंडर",
+            "graphic": {
+              "kind": "cycle",
+              "headline": "हवा का कैलेंडर",
+              "items": [
+                "गर्मी: भारत की ओर",
+                "व्यापार, इंतज़ार",
+                "सर्दी: घर वापसी",
+                "अगली गर्मी की राह"
+              ]
+            }
+          },
+          {
+            "text": "और वह लय आज भी नहीं टूटी। हर जून, केरल की ओर बढ़ते बादल एक पुरानी घड़ी पर चलते हैं, जो इंसानों के गिनना सीखने से बहुत पहले से टिक-टिक कर रही है।",
+            "keyword": "पुरानी घड़ी",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "एक पुरानी घड़ी",
+              "caption": "इंसान से भी पुरानी",
+              "prop": "clock"
+            }
+          }
+        ]
+      },
+      {
+        "title": "यह क्यों मायने रखता है",
+        "scenes": [
+          {
+            "text": "भारत के चालीस प्रतिशत से ज़्यादा कामगार आज भी खेती पर निर्भर हैं, और ज़्यादातर फ़सलों को मॉनसून चाहिए। धान, दालें, कपास, सब बारिश आने पर ही बोए जाते हैं।",
+            "keyword": "चालीस प्रतिशत",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "खेत बारिश के भरोसे",
+              "caption": "चालीस प्रतिशत से ज़्यादा",
+              "prop": "coin"
+            }
+          },
+          {
+            "text": "और बारिश सिर्फ़ फ़सल तय नहीं करती। जब नदियाँ और जलाशय भरते हैं, तो शहरों को पीने का पानी मिलता है और बाँधों से बिजली बनती है। एक मौसम चुपचाप पूरे साल को चलाता है।",
+            "keyword": "पीने का पानी",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "फ़सल से कहीं ज़्यादा",
+              "caption": "पानी और बिजली",
+              "prop": "bulb"
+            }
+          },
+          {
+            "text": "वैसे, मॉनसून शब्द अरबी के मौसिम से आया है, जिसका मतलब बस मौसम है। सदियों पहले नाविक इसे इसलिए बोलते थे, क्योंकि हवाएँ भरोसे के साथ पलट जाती थीं और जहाज़ों को गर्मियों में एक तरफ़, सर्दियों में दूसरी तरफ़ ले जाती थीं।",
+            "keyword": "मौसम",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "मौसिम = मौसम",
+              "caption": "एक अरबी शब्द",
+              "prop": "book"
+            }
+          },
+          {
+            "text": "तो अगली बार जब बारिश आपकी खिड़की पर दस्तक दे, तो इस सफ़र को याद कीजिए: एक समंदर, एक हवा, एक पहाड़ और लंबी यात्रा। आपको कौन-सा हिस्सा सबसे ज़्यादा चौंकाया? कमेंट में बताइए!",
+            "keyword": "कमेंट",
+            "graphic": {
+              "kind": "keyword",
+              "headline": "इस सफ़र को सलाम",
+              "caption": "कौन-सा हिस्सा चौंकाया?",
+              "prop": "heart"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
