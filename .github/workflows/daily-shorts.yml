@@ -38,7 +38,8 @@ permissions:
   contents: write   # to commit data/history.json (topic memory)
 
 concurrency:
-  group: daily-shorts
+  # a documentary (hours of rendering) must not block, or cancel, the Shorts that are started next to it
+  group: ${{ inputs.format == 'documentary' && 'documentary' || 'shorts-pipeline' }}
   cancel-in-progress: false
 
 jobs:

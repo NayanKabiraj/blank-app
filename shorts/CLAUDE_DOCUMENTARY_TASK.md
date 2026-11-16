@@ -8,7 +8,7 @@ story and a real payoff. Claude researches and writes the plan; the GitHub workf
 `daily-shorts.yml` (with `format: documentary`) renders it with the same Piper voice and synthesized music, and uploads it
 (if the YouTube secrets exist) with automatic chapter markers.
 
-Run this task on its own schedule (for example weekly). It does not replace the daily Shorts.
+It runs every day right after the daily Shorts task, in the same Claude session: start the Shorts workflow first, then do this task and start the documentary workflow (it has its own concurrency group, so it renders in parallel with the Shorts on a separate runner).
 
 ## Steps
 
@@ -20,16 +20,18 @@ Run this task on its own schedule (for example weekly). It does not replace the 
    actually happens when you press 'Pay' on UPI", "Why the Moon keeps drifting away". Collect 6+
    candidates across niches (this week's news, anniversaries, seasons, everyday mysteries), score
    them like the Shorts (curiosity, universality, timeliness, search demand, surprise, visual,
-   shareability, verifiability and safety; max 40) and take the best. A good documentary topic is also
-   a good Shorts topic: you can cut a Short from it later.
+   shareability, verifiability and safety; max 40) and take the best. Use a *different* topic from today's Short (the
+   strongest remaining candidate from the Shorts scoring that is big enough for chapters); a good documentary topic is
+   also a good future Short.
    Avoid breaking tragedies, politics, elections, medical or investment advice, promotional brands.
 3. **Research it properly** (web search; official sites, universities, encyclopedias, established
    outlets): the mechanism in 4-8 steps, 3+ striking numbers (each from two sources; say which you
    used), one myth people believe, one analogy, one surprise, one "what if it fails" angle. Write
    the audit trail into `research_summary`: start with "Candidates:" (top 3 with scores), why the
    winner won, then the facts and their sources. Mark approximations ("roughly", "about").
-4. **Pick the length** (`target_minutes`, 5-15): 5 for a single clean mechanism, 8-10 for a mechanism
-   plus history and stakes, 12-15 only when there really are that many strong chapters. Longer is
+4. **Pick the length** (`target_minutes`, **5 to 10**): 5 for a single clean mechanism, 8-10 for a mechanism
+   plus history and stakes. Never more than 10: the Parler voice generates speech at roughly 10-12x real time on
+   the runner, so two languages of 10 minutes already take about 4 hours of the 6 hour job limit. Longer is
    not better; never pad. The validator estimates the time from the word count (English 3.1 words and Hindi 2.85
    words per second, plus pauses) and wants it within 20 % of `target_minutes`. Rough budget: 5 min is about
    850 words in English (780 in Hindi), 10 min about 1,800 (1,600), 15 min about 2,700 (2,450).
