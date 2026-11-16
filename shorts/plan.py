@@ -209,6 +209,8 @@ def validate_doc(plan: DocPlan) -> list[str]:
     problems = []
     if not 5 <= plan.target_minutes <= 15:
         problems.append(f"target_minutes {plan.target_minutes} is outside 5-15")
+    if plan.target_minutes > 10:
+        problems.append("target_minutes over 10: with the Parler voice (about 10-12x real time on the CPU) two languages of that length can run past the 6 hour job limit; use 10 or less")
     for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
         secs = doc_seconds(s, "en" if lang == "english" else "hi")
         if not 270 <= secs <= 930:
