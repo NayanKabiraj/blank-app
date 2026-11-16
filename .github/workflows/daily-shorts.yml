@@ -6,9 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       format:
-        description: "shorts (default: the daily 45-55 second Shorts), documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema) voicelab (voice samples, no video) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
+        description: "shorts (default: the daily 45-55 second Shorts), documentary (5-15 minute landscape videos; plan schema: python -m shorts.plan doc-schema) voicelab (voice samples, no video) ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
         type: string
         default: "shorts"
+      auth_code:
+        description: "format ytauth only: empty = print the Google sign-in link; otherwise the address the browser shows after approving (http://localhost/?code=...)"
+        type: string
+        default: ""
       upload_date:
         description: "format upload only: the day to upload, e.g. 2026-11-16 (videos/<date>/ and data/plans/<date>.json must exist)"
         type: string
@@ -79,7 +83,7 @@ jobs:
           key: piper-${{ env.PIPER_VOICE_EN }}-${{ env.PIPER_VOICE_HI }}
 
       - name: Cache the Parler-TTS model
-        if: ${{ inputs.format != 'upload' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
         uses: actions/cache@v4
         with:
           path: .cache/hf
@@ -89,7 +93,7 @@ jobs:
         run: pip install -r shorts/requirements.txt
 
       - name: Install Parler-TTS (optional, without it the Piper voice is used)
-        if: ${{ inputs.format != 'upload' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
         run: |
           pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu \
             && pip install git+https://github.com/huggingface/parler-tts.git \
@@ -98,14 +102,14 @@ jobs:
             || echo "::warning::Parler-TTS could not be installed, the Piper voice will be used"
 
       - uses: actions/setup-node@v4
-        if: ${{ inputs.format != 'upload' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: shorts/explainer/package-lock.json
 
       - name: Install the animation renderer (Playwright + headless Chromium)
-        if: ${{ inputs.format != 'upload' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
         working-directory: shorts/explainer
         run: |
           npm ci --no-audit --no-fund
@@ -114,6 +118,13 @@ jobs:
       - name: Voice lab - generate Indic Parler-TTS samples
         if: ${{ inputs.format == 'voicelab' }}
         run: python shorts/voicelab_parler.py videos/voicelab
+
+      - name: YouTube sign-in helper (creates the refresh token from the client id and secret)
+        if: ${{ inputs.format == 'ytauth' }}
+        env:
+          IN_CODE: ${{ inputs.auth_code }}
+        run: |
+          if [ -z "$IN_CODE" ]; then python -m shorts.ytauth url; else python -m shorts.ytauth exchange "$IN_CODE"; fi
 
       - name: Upload a saved day to YouTube (dry run = only check the credentials)
         if: ${{ inputs.format == 'upload' }}
@@ -126,7 +137,7 @@ jobs:
           else python -m shorts.upload_saved --date "$IN_DATE" --langs "$IN_LANGS"; fi
 
       - name: Read the plan sent by Claude
-        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' }}
+        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' }}
         env:
           IN_PLAN: ${{ inputs.plan_json }}
           IN_FORMAT: ${{ inputs.format || 'shorts' }}
@@ -141,7 +152,7 @@ jobs:
           python -m shorts.plan "$CHECK" "$RUNNER_TEMP/plan.json" || echo "::warning::Plan has warnings (see above)"
 
       - name: Render and publish
-        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' }}
+        if: ${{ inputs.format != 'voicelab' && inputs.format != 'upload' && inputs.format != 'ytauth' }}
         env:
           IN_LANGS: ${{ inputs.langs || 'en,hi' }}
           IN_DRY_RUN: ${{ inputs.dry_run }}
