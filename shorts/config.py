@@ -54,4 +54,7 @@ if YT_CLIENT_SECRET and not (YT_REFRESH_TOKENS["en"] and YT_REFRESH_TOKENS["hi"]
     for _lang in ("en", "hi"):
         YT_REFRESH_TOKENS[_lang] = YT_REFRESH_TOKENS[_lang] or load_saved_token(_lang)
 YT_PRIVACY = os.getenv("YT_PRIVACY", "private")         # private (default) | unlisted | public
+# YouTube's "altered or synthetic content" label. Off by default: the videos are animated explainers with a generic
+# synthetic narrator. Set the repository variable YT_AI_DISCLOSURE=on to flag every upload as containing synthetic media.
+YT_AI_DISCLOSURE = os.getenv("YT_AI_DISCLOSURE", "off").strip().lower() == "on"
 YT_CATEGORY_ID = os.getenv("YT_CATEGORY_ID", "27")      # 27 = Education

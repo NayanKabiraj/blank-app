@@ -59,9 +59,8 @@ def upload(video: Path, script, lang: str, short: bool = True, description: str 
         "status": {
             "privacyStatus": config.YT_PRIVACY,
             "selfDeclaredMadeForKids": False,
-            # Narration is AI-generated: disclose it, as YouTube's policy requires for
-            # realistic synthetic content.
-            "containsSyntheticMedia": True,
+            # YouTube's synthetic-media label: only when YT_AI_DISCLOSURE=on (see config.py)
+            "containsSyntheticMedia": config.YT_AI_DISCLOSURE,
         },
     }
     media = MediaFileUpload(str(video), mimetype="video/mp4", chunksize=-1, resumable=True)

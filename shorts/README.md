@@ -54,8 +54,8 @@ The work is split into two parts:
    and dark-diagram styles were removed.
 6. **Edits the video with FFmpeg.** 1080×1920, 30 fps, captions burned in word by word,
    the hook line (drawn in the scene), loudness normalized to −14 LUFS, and a length kept between 40 and 59 seconds.
-7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts, and the AI
-   voice is disclosed through `containsSyntheticMedia`.
+7. **Uploads both videos** with the YouTube Data API. They're marked as Shorts (the synthetic-media label is off by
+   default, `YT_AI_DISCLOSURE=on` turns it on).
 
 Each run also saves the MP4s as a workflow artifact for 14 days.
 
@@ -94,6 +94,7 @@ task starts the workflow on `main`.
 | `TTS_ENGINE` | variable | `parler` (default) or `piper` to force the small fallback voice |
 | `PARLER_SPEAKER_EN` / `PARLER_SPEAKER_HI` | variable | Parler speaker names, default `Thoma` and `Rohit` |
 | `SFX` | variable | `on` (default): code-synthesized pop and bell effects on the animation cues. `off` to mute them |
+| `YT_AI_DISCLOSURE` | variable | `off` (default) or `on`: flag uploads with YouTube's "altered or synthetic content" label |
 | `YT_PRIVACY` | variable | `public` (default), `unlisted` or `private` |
 | `PIPER_VOICE_EN` / `PIPER_VOICE_HI` | variable | Any voice from <https://huggingface.co/rhasspy/piper-voices>, e.g. `hi_IN-priyamvada-medium` for a female Hindi voice |
 
