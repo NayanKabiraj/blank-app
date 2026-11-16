@@ -82,5 +82,73 @@
         "video_id": "WvEmz4FPQAI"
       }
     }
+  },
+  {
+    "date": "2026-11-16",
+    "niche": "India Explained",
+    "topic": "How a UPI payment really works, from the tap to the bank",
+    "minutes": 5,
+    "videos": {
+      "en": {
+        "file": "2026-11-16_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "A number that sounds fake",
+            "start": 0.0
+          },
+          {
+            "title": "Meet the cast",
+            "start": 34.7
+          },
+          {
+            "title": "Press Pay",
+            "start": 85.5
+          },
+          {
+            "title": "What the numbers say",
+            "start": 133.7
+          },
+          {
+            "title": "When it goes wrong",
+            "start": 180.0
+          },
+          {
+            "title": "Where it came from",
+            "start": 222.0
+          }
+        ],
+        "video_id": "J2IDnTxet7M"
+      },
+      "hi": {
+        "file": "2026-11-16_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "एक ऐसा आँकड़ा जो झूठ लगता है",
+            "start": 0.0
+          },
+          {
+            "title": "पूरी टीम से मिलिए",
+            "start": 43.8
+          },
+          {
+            "title": "पे दबाइए",
+            "start": 114.6
+          },
+          {
+            "title": "आँकड़े क्या कहते हैं",
+            "start": 185.9
+          },
+          {
+            "title": "जब गड़बड़ हो जाए",
+            "start": 243.5
+          },
+          {
+            "title": "यह कहाँ से आया",
+            "start": 301.7
+          }
+        ],
+        "video_id": "xdpeVI0ZL4E"
+      }
+    }
   }
 ]
