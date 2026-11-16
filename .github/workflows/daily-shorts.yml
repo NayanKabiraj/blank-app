@@ -62,8 +62,8 @@ jobs:
       # The Indic Parler-TTS model is gated: a free Hugging Face read token (from an account that accepted the
       # model's terms) as the HF_TOKEN repository secret turns the Parler voices on. Without it Piper is used.
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      # TTS_ENGINE=piper forces the small fallback voice; the default is Indic Parler-TTS (Rohit / Thoma)
-      TTS_ENGINE: ${{ vars.TTS_ENGINE || 'parler' }}
+      # voice engine: piper (default, fast) or parler (Indic Parler-TTS, Rohit / Thoma, slow); set the TTS_ENGINE variable
+      TTS_ENGINE: ${{ vars.TTS_ENGINE || 'piper' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -86,7 +86,7 @@ jobs:
           key: piper-${{ env.PIPER_VOICE_EN }}-${{ env.PIPER_VOICE_HI }}
 
       - name: Cache the Parler-TTS model
-        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
+        if: ${{ vars.TTS_ENGINE == 'parler' && inputs.format != 'upload' && inputs.format != 'ytauth' }}
         uses: actions/cache@v4
         with:
           path: .cache/hf
@@ -96,7 +96,7 @@ jobs:
         run: pip install -r shorts/requirements.txt
 
       - name: Install Parler-TTS (optional, without it the Piper voice is used)
-        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
+        if: ${{ vars.TTS_ENGINE == 'parler' && inputs.format != 'upload' && inputs.format != 'ytauth' }}
         run: |
           pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu \
             && pip install git+https://github.com/huggingface/parler-tts.git \
@@ -118,9 +118,11 @@ jobs:
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
 
-      - name: Voice lab - generate Indic Parler-TTS samples
+      - name: Voice lab - generate voice samples from several free engines
         if: ${{ inputs.format == 'voicelab' }}
-        run: python shorts/voicelab_parler.py videos/voicelab
+        run: |
+          pip install -q edge-tts gTTS
+          python shorts/voicelab_more.py videos/voicelab_more
 
       - name: YouTube sign-in helper (creates the refresh token from the client id and secret)
         if: ${{ inputs.format == 'ytauth' }}
