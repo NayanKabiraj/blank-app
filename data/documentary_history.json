@@ -158,5 +158,67 @@
     "minutes": 1.9,
     "engine": "director",
     "videos": {}
+  },
+  {
+    "date": "2026-11-17",
+    "niche": "Engineering Marvels",
+    "topic": "How can a 79-tonne plane stay in the air? (what a wing really does)",
+    "minutes": 5,
+    "videos": {
+      "en": {
+        "file": "2026-11-17_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "A 79-tonne plane in the sky",
+            "start": 0.0
+          },
+          {
+            "title": "What a wing does to the air",
+            "start": 38.1
+          },
+          {
+            "title": "Why speed makes lift",
+            "start": 101.6
+          },
+          {
+            "title": "Why planes fly so high",
+            "start": 158.8
+          },
+          {
+            "title": "Steering, landing, the big picture",
+            "start": 209.8
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-17_documentary_en",
+        "error": "daily upload limit already reached in this run"
+      },
+      "hi": {
+        "file": "2026-11-17_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "आसमान में 79 टन का विमान",
+            "start": 0.0
+          },
+          {
+            "title": "पंख हवा के साथ क्या करता है",
+            "start": 53.5
+          },
+          {
+            "title": "रफ़्तार से लिफ़्ट क्यों बनती है",
+            "start": 140.3
+          },
+          {
+            "title": "विमान इतना ऊपर क्यों उड़ते हैं",
+            "start": 219.2
+          },
+          {
+            "title": "मोड़ना, उतरना और पूरी तस्वीर",
+            "start": 280.7
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-17_documentary_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
