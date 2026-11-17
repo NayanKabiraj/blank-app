@@ -341,6 +341,24 @@ def validate(m: dict) -> tuple[list[str], list[str]]:
     tgt = m["creativeBrief"]["targetDurationSeconds"]
     if abs(total - tgt) > 0.2 * tgt:
         warns.append(f"planned length {total:.0f}s is far from the target {tgt}s")
+    # the standing strategy (skills/video-strategy): a quality gate, a cluster, follow-ups, a next video and a pinned question
+    story, brief = m.get("story", {}), m["creativeBrief"]
+    if not story.get("gateScore"):
+        warns.append("story.gateScore is missing: score the concept /100 (85+ proceed, 75-84 improve, below 75 rework)")
+    elif story["gateScore"] < 75:
+        warns.append(f"story.gateScore {story['gateScore']} is below 75: rework the weakest components before rendering")
+    if not brief.get("cluster"):
+        warns.append("creativeBrief.cluster is missing: name the content cluster")
+    if len(story.get("followUps") or []) < 3:
+        warns.append("story.followUps: list three follow-up video ideas that continue the cluster")
+    pm = m.get("publishingMetadata", {})
+    if not pm.get("nextVideo"):
+        warns.append("publishingMetadata.nextVideo is missing (the close hands the viewer to the next video)")
+    if "?" not in pm.get("pinnedComment", ""):
+        warns.append("publishingMetadata.pinnedComment should be one viewer decision as a question")
+    for lang, loc in (m.get("localizations") or {}).items():
+        if not loc.get("nextVideo") or "?" not in loc.get("pinnedComment", ""):
+            warns.append(f"localizations.{lang}: nextVideo and a pinnedComment question are needed")
     th = m.get("thumbnail") or {}
     if th.get("headline") and (len(words(th["headline"])) > 4 or len(th["headline"]) > 24):
         warns.append("thumbnail.headline should be 1-4 big words (at most 24 characters)")
@@ -379,7 +397,7 @@ def localize(m: dict, lang: str) -> dict:
                     # accent words are matched by text, so a translation brings its own accentWords
                     te["text"] = s["text"][te["id"]]
                     te.setdefault("style", {})["accentWords"] = (s.get("accentWords") or {}).get(te["id"], {})
-        for k in ("title", "description", "tags", "hashtags"):
+        for k in ("title", "description", "tags", "hashtags", "nextVideo", "pinnedComment"):
             if k in loc:
                 m.setdefault("publishingMetadata", {})[k] = loc[k]
         if loc.get("chapters"):
@@ -402,6 +420,8 @@ class Script:
         self.description = (p.get("description", "") + (f"\n\n{hashtags}" if hashtags else "")).strip()
         self.tags = tags
         self.hashtags = p.get("hashtags", [])
+        self.next_video = p.get("nextVideo", "")
+        self.pinned_comment = p.get("pinnedComment", "")
 
 
 def script(m: dict) -> Script:

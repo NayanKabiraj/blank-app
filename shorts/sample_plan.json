@@ -1,7 +1,7 @@
 {
   "niche": "Human Body",
   "topic": "Why do we get goosebumps?",
-  "research_summary": "Candidates: (1) goosebumps 36, (2) static shocks 35, (3) prices ending in 99 33. Winner: goosebumps; a surprising fur-reflex story with a clean mechanism. Sources: LiveScience, Wikipedia (Goose bumps). Roughly five million hair follicles (approximate).",
+  "research_summary": "Candidates: (1) goosebumps 36, (2) static shocks 35, (3) prices ending in 99 33. Winner: goosebumps; a surprising fur-reflex story with a clean mechanism. Sources: LiveScience, Wikipedia (Goose bumps). Roughly five million hair follicles (approximate). Titles considered (/50): 'Why Do We Get Goosebumps? A Fur Reflex' 43, 'Your Body Is Trying To Grow Fur' 41, 'Why Does Fear Fluff You Up?' 38; chosen: the first (curiosity + clear promise). Thumbnails: A a person with a fur-fluffed arm (chosen, 'YOUR BODY WANTS FUR'), B a cat and a human arm side by side, C a tiny muscle pulling one hair. Hooks: 'Your body keeps trying to fluff up fur you don't have' (chosen), 'You have five million tiny muscles you never use on purpose', 'Goosebumps are a leftover from your fuzzy ancestors'. Quality gate 84: improve the emotional close.",
   "mood": "upbeat",
   "english": {
     "title": "Why Do We Get Goosebumps? A Fur Reflex",
@@ -121,7 +121,9 @@
         }
       }
     ],
-    "thumbnail_text": "Your body wants fur"
+    "thumbnail_text": "Your body wants fur",
+    "next_video": "Why do we shiver when we are cold?",
+    "pinned_comment": "Which one feels like you: goosebumps from fear, cold or music?"
   },
   "hindi": {
     "title": "रोंगटे खड़े क्यों होते हैं? फ़र वाला पुराना रिफ़्लेक्स",
@@ -241,6 +243,15 @@
         }
       }
     ],
-    "thumbnail_text": "शरीर को चाहिए फ़र"
-  }
+    "thumbnail_text": "शरीर को चाहिए फ़र",
+    "next_video": "ठंड में हमें कंपकंपी क्यों होती है?",
+    "pinned_comment": "आपके रोंगटे किससे खड़े होते हैं: डर, ठंड या संगीत?"
+  },
+  "cluster": "The Human Body",
+  "gate_score": 84,
+  "follow_ups": [
+    "Why do we yawn when others yawn?",
+    "Why do we shiver when we are cold?",
+    "Why does your stomach growl?"
+  ]
 }

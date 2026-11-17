@@ -1,0 +1,307 @@
+[
+  {
+    "kind": "short",
+    "topic": "Why does the supermoon look huge? (it is only about 7% bigger, your brain does the rest)",
+    "niche": "Space & Universe",
+    "match": [
+      "supermoon"
+    ],
+    "window": {
+      "from": "2026-11-18",
+      "to": "2026-11-25"
+    },
+    "gate_score": 79,
+    "title": "Why Does the Supermoon Look HUGE? (It Isn't)",
+    "thumbnail_text": "SAME SIZE?",
+    "hooks": [
+      "Next Tuesday's supermoon is only seven percent bigger. So why will it feel enormous?",
+      "The moon rising next Tuesday is lying to your brain.",
+      "Hold a pea at arm's length. The 'giant' moon fits behind it."
+    ],
+    "follow_ups": [
+      "Why does the Moon always show the same face?",
+      "How does the Moon move the tides?",
+      "What if the Moon disappeared?"
+    ],
+    "next_video": "How does the Moon move the tides?",
+    "dossier": "strategy/supermoon-illusion/research.md",
+    "notes": "Full 'Beaver' supermoon 24 Nov 2026, 14:54 UTC (NASA). Verify the exact size and brightness percentages and the pea-at-arm's-length claim before writing; weakest parts of the gate: story and emotional close.",
+    "status": "researched",
+    "cluster": "The Moon"
+  },
+  {
+    "kind": "documentary",
+    "topic": "How the Moon runs the tides",
+    "niche": "Earth & Nature",
+    "match": [
+      "tides",
+      "tide"
+    ],
+    "window": {
+      "from": "2026-11-18",
+      "to": "2026-12-31"
+    },
+    "gate_score": 72,
+    "title": "How the Moon Moves the Ocean (and Why There Are Two Tides a Day)",
+    "thumbnail_text": "TWO TIDES?",
+    "hooks": [
+      "The Moon pulls the sea up on the side facing it, and on the opposite side too. Why?"
+    ],
+    "follow_ups": [
+      "Why does the Moon always show the same face?",
+      "What are spring and neap tides?",
+      "How do tides make electricity?"
+    ],
+    "next_video": "What if the Moon disappeared?",
+    "dossier": "strategy/supermoon-illusion/research.md",
+    "notes": "Documentary slot idea tied to the supermoon (supermoon tides are slightly higher). Needs its own research and fact check; gate score is a first estimate. First estimate, not yet fact-checked.",
+    "status": "idea",
+    "cluster": "The Moon"
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if the Sun vanished? (you would still see it for eight minutes)",
+    "niche": "Space & Universe",
+    "match": [
+      "sun vanished",
+      "sun disappeared",
+      "sun disappear"
+    ],
+    "window": {},
+    "gate_score": 84,
+    "cluster": "The Sun",
+    "title": "What If the Sun Vanished? Nothing Happens for 8 Minutes",
+    "thumbnail_text": "8 MINUTES",
+    "hooks": [
+      "The Sun vanishes. And for eight minutes, nothing happens.",
+      "You'd still see the Sun in the sky, after it was gone."
+    ],
+    "follow_ups": [
+      "What if the Moon disappeared?",
+      "What if Earth stopped spinning?",
+      "What if a black hole replaced the Sun?"
+    ],
+    "next_video": "What if the Moon disappeared?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: light takes about 8 min 20 s to reach Earth; after that Earth leaves its orbit in a straight line (standard relativity answer; sources on the gravity timing differ)."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if Earth stopped spinning?",
+    "niche": "Earth & Nature",
+    "match": [
+      "stopped spinning",
+      "stop spinning",
+      "stops spinning"
+    ],
+    "window": {},
+    "gate_score": 82,
+    "cluster": "Earth",
+    "title": "What If Earth Suddenly Stopped Spinning?",
+    "thumbnail_text": "1,670 KM/H",
+    "hooks": [
+      "You're moving at over a thousand kilometres an hour right now. Now imagine stopping.",
+      "Earth spins at about 1,670 km/h at the equator. What if it stopped?"
+    ],
+    "follow_ups": [
+      "What if a day was 48 hours long?",
+      "What if the Moon disappeared?",
+      "What if the Sun vanished?"
+    ],
+    "next_video": "What if a day was 48 hours long?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: equator speed about 1,670 km/h (verify with NASA); effects on oceans, atmosphere and magnetic field; abrupt vs gradual stop."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if the Moon disappeared?",
+    "niche": "Space & Universe",
+    "match": [
+      "moon disappeared",
+      "moon vanished",
+      "moon disappear"
+    ],
+    "window": {},
+    "gate_score": 80,
+    "cluster": "The Moon",
+    "title": "What If the Moon Disappeared Tomorrow?",
+    "thumbnail_text": "NO MOON?",
+    "hooks": [
+      "Tomorrow night the Moon is gone. The tides go next.",
+      "The Moon holds Earth steady. Take it away and..."
+    ],
+    "follow_ups": [
+      "How does the Moon move the tides?",
+      "What if Earth stopped spinning?",
+      "Why does the Moon show the same face?"
+    ],
+    "next_video": "How does the Moon move the tides?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: the Moon's role in tides and in stabilising Earth's axial tilt (verify how strong the stabilising effect is; do not overstate); night brightness."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if you fell into a black hole?",
+    "niche": "Space & Universe",
+    "match": [
+      "black hole"
+    ],
+    "window": {},
+    "gate_score": 79,
+    "cluster": "Black Holes",
+    "title": "What If You Fell Into a Black Hole?",
+    "thumbnail_text": "NO ESCAPE",
+    "hooks": [
+      "You fall in feet first. Your feet age slower than your head.",
+      "There is a point where light itself cannot leave. You just crossed it."
+    ],
+    "follow_ups": [
+      "What if the Sun became a black hole?",
+      "What if you could travel at light speed?",
+      "What is inside a black hole?"
+    ],
+    "next_video": "What if the Sun became a black hole?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: tidal forces (spaghettification) depend on the black hole's mass; time dilation as seen from outside; keep theory separate from observation."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if you dove to the bottom of the Mariana Trench?",
+    "niche": "Earth & Nature",
+    "match": [
+      "mariana",
+      "challenger deep"
+    ],
+    "window": {},
+    "gate_score": 78,
+    "cluster": "The Deep Sea",
+    "title": "What If You Dove to the Deepest Point on Earth?",
+    "thumbnail_text": "1,000x PRESSURE",
+    "hooks": [
+      "At the bottom of the ocean, every square centimetre carries about a tonne.",
+      "One thousand times the air pressure. Here's what it does to you."
+    ],
+    "follow_ups": [
+      "Why don't deep-sea fish get crushed?",
+      "What if the oceans dried up?",
+      "What if you rode a submarine to the bottom?"
+    ],
+    "next_video": "Why don't deep-sea fish get crushed?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: Challenger Deep about 10,935 m, pressure about 1,086 bar (over 1,000 times atmospheric); air-filled cavities are the danger, tissue is mostly incompressible; a competitor video exists (the What If show), so find a different angle; avoid gore."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if you could stop time?",
+    "niche": "Brain & Psychology",
+    "match": [
+      "stop time",
+      "stopped time"
+    ],
+    "window": {},
+    "gate_score": 77,
+    "cluster": "Superpowers",
+    "title": "What If You Could Stop Time?",
+    "thumbnail_text": "TIME STOPPED",
+    "hooks": [
+      "You stop time. And the first thing that goes wrong is: you go blind.",
+      "Time stops. So does the light. So does the air."
+    ],
+    "follow_ups": [
+      "What if your powers changed every day?",
+      "What if you were invincible?",
+      "What if everyone got superpowers?"
+    ],
+    "next_video": "What if you were invincible?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: FICTIONAL ASSUMPTION throughout; label what is physics (light and air need time to move) and what is invented; second-person story with a hidden cost."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if you woke up with every superpower?",
+    "niche": "Brain & Psychology",
+    "match": [
+      "every superpower",
+      "all superpowers"
+    ],
+    "window": {},
+    "gate_score": 76,
+    "cluster": "Superpowers",
+    "title": "What If You Woke Up With Every Superpower?",
+    "thumbnail_text": "TOO MUCH POWER",
+    "hooks": [
+      "Monday morning. You reach for your alarm clock. CRACK. It breaks in your hand.",
+      "Your bed is floating six inches above the floor."
+    ],
+    "follow_ups": [
+      "What if you could stop time?",
+      "What if the government found out?",
+      "What if everyone got powers?"
+    ],
+    "next_video": "What if you could stop time?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: FICTIONAL; story escalation (normal, anomaly, proof, public reaction, personal cost, threat, choice); no science claims without sources."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if all the ice on Earth melted?",
+    "niche": "Earth & Nature",
+    "match": [
+      "ice melted",
+      "ice melt",
+      "all the ice"
+    ],
+    "window": {},
+    "gate_score": 75,
+    "cluster": "Earth",
+    "title": "What If All the Ice on Earth Melted?",
+    "thumbnail_text": "SEA +70 M?",
+    "hooks": [
+      "Every glacier and ice sheet, gone. Look at your city on the new map.",
+      "The sea would rise by around seventy metres."
+    ],
+    "follow_ups": [
+      "What if the oceans dried up?",
+      "What if Earth stopped spinning?",
+      "Why does ice float?"
+    ],
+    "next_video": "Why does ice float?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: sea-level rise if all ice melted is commonly quoted at about 65-70 m (verify with USGS/NASA); timescale of centuries to millennia; avoid politics and alarm."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What if the internet went down for a day in India?",
+    "niche": "India Explained",
+    "match": [
+      "internet went down",
+      "internet down"
+    ],
+    "window": {},
+    "gate_score": 74,
+    "cluster": "How India Pays",
+    "title": "What If India's Internet Went Down for 24 Hours?",
+    "thumbnail_text": "NO UPI?",
+    "hooks": [
+      "You wake up. No signal. And your UPI won't work either.",
+      "One day without the internet. See what stops."
+    ],
+    "follow_ups": [
+      "How does UPI work offline?",
+      "What runs on satellites?",
+      "How does the internet cross oceans?"
+    ],
+    "next_video": "How does the internet cross oceans?",
+    "dossier": "strategy/what-if-ideas.md",
+    "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: which services depend on connectivity (UPI, rail booking, airports, hospitals); verify any statistic; explanatory, not alarmist."
+  }
+]

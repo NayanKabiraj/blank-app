@@ -21,6 +21,7 @@ from pathlib import Path
 
 from . import compose, config, pending, upload
 from .director import thumbnail as thumbs
+from . import strategy
 from .plan import DocPlan, doc_seconds, validate_doc
 
 log = logging.getLogger("shorts.documentary")
@@ -66,12 +67,12 @@ def main() -> int:
             script = scripts[lang]
             log.info("Documentary %s: about %.1f minutes planned", lang, doc_seconds(script, lang) / 60)
             video, chapters = compose.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
-            desc = chapter_description(script.description, chapters)
+            desc = chapter_description(strategy.up_next(script.description, script.next_video, lang), chapters)
             thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_documentary_{lang}.jpg", short=False)
             final = out / f"{today}_documentary_{lang}.mp4"
             shutil.move(video, final)
             (out / f"{today}_documentary_{lang}_youtube.txt").write_text(
-                f"TITLE:\n{script.title}\n\nDESCRIPTION:\n{desc}\nTAGS:\n{', '.join(script.tags)}\n", encoding="utf-8")
+                f"TITLE:\n{script.title}\n\nDESCRIPTION:\n{desc}\nTAGS:\n{', '.join(script.tags)}\n\nPINNED COMMENT:\n{script.pinned_comment}\n", encoding="utf-8")
             entry = {"file": final.name, "chapters": [{"title": t, "start": round(s, 1)} for t, s in chapters]}
             if args.keep_in_repo:
                 day = config.VIDEOS_DIR / today
@@ -92,7 +93,8 @@ def main() -> int:
         config.DATA_DIR.mkdir(exist_ok=True)
         hist_file = config.DATA_DIR / "documentary_history.json"
         hist = json.loads(hist_file.read_text()) if hist_file.exists() else []
-        hist.append({"date": today, "niche": plan.niche, "topic": plan.topic, "minutes": plan.target_minutes,
+        hist.append({"date": today, "niche": plan.niche, "topic": plan.topic, "minutes": plan.target_minutes, "cluster": plan.cluster,
+                     "follow_ups": plan.follow_ups, "next_video": plan.english.next_video, "gate_score": plan.gate_score,
                      "videos": results})
         hist_file.write_text(json.dumps(hist[-200:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     log.info("Done: %s", json.dumps(results, ensure_ascii=False))

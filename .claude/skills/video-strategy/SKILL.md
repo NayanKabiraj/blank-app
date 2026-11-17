@@ -35,6 +35,19 @@ before building. Do not rebuild a working pipeline, add a library, duplicate a c
 | render, QC, upload | the workflow `daily-shorts.yml` (`format: director` / `director-documentary` / `shorts` / `documentary`): render, quality checks, thumbnail, private upload, queue if YouTube refuses |
 | videos/<slug>/ research files | `strategy/<slug>/` (research.md, strategy.md, titles.md, thumbnail.md, script.md) only when the owner runs RESEARCH or BUILD interactively. The scheduled daily tasks commit nothing. `videos/` is for rendered videos and is cleaned automatically |
 
+## 1b. Standing rules (apply to every video, interactive or scheduled)
+
+- The research output is part of the plan, not a separate chore: `research_summary` records candidates, titles, thumbnails, hooks, facts with
+  status, risks and the gate; plans carry `cluster`, `follow_ups`, `gate_score`, per-language `thumbnail_text`, `next_video`, `pinned_comment`
+  (director manifests: `creativeBrief.cluster`, `story.followUps`, `story.gateScore`, `thumbnail`, `publishingMetadata.nextVideo/pinnedComment`).
+  The validators report anything missing; fix it before starting the workflow.
+- Researched concepts live in `strategy/research-queue.json` with a dossier under `strategy/<slug>/research.md`. After a RESEARCH command that
+  the owner asks you to keep, add the concept there (topic, niche, `match` keywords, date `window`, `gate_score`, title, `thumbnail_text`, hooks,
+  follow-ups, next video). `python -m shorts.niches recent` and `python -m shorts.strategy queue` show what is open; the daily tasks use it first.
+- The audience growth loop: cluster -> follow-ups -> "Up next" line and a close that points to the next video -> a pinned decision question ->
+  the history remembers it all so tomorrow continues the series.
+- No unverifiable numbers, ever. If vidIQ credits are low, say so and use public web research.
+
 ## 2. Pipeline for every video
 
 Research -> topic selection -> packaging (title + thumbnail) -> story design -> script -> storyboard -> scene JSON -> asset plan ->
@@ -66,6 +79,12 @@ Think in **content clusters**, not random videos: a selected concept yields the 
 should be able to grow into a 5-10 video cluster (for example SUPERPOWERS: every superpower, stop time, invincible, read minds,
 everyone gets powers, powers change daily, governments find out).
 
+## 4b. The "What if" series
+
+"What if" hypotheticals are a core format here (see `strategy/what-if-ideas.md` for the scored sweep and the formula). They are ideas until the research
+gate and fact-check are done: state which parts are physics (sources, status) and which are invented rules (FICTIONAL ASSUMPTION), never dress fiction up
+as fact, and keep medical, political and tragedy-adjacent premises out.
+
 ## 5. Titles
 
 At least 10 titles, scored /50 (curiosity, clarity, emotional pull, thumbnail synergy, originality). Priorities: curiosity +
@@ -92,6 +111,11 @@ focal 3D subject + the headline, 1280x720 for long videos, 720x1280 for Shorts, 
 - nothing written: the hook text is used, which is a fallback, not a design.
 The workflow uploads it with the video (`thumbnails.set`, needs a verified channel), keeps it next to a queued video if YouTube
 refuses the upload, and uploads it when the queue drains. Preview: `python -m shorts.director.thumbnail --manifest-file m.json --lang en --out t.jpg`.
+
+**Lettering** (added automatically): the headline is drawn with a thick dark outline, a warm gradient fill, a slight tilt and the accent colour on
+the key word, plus a small **tag chip** in the top corner: "WHAT IF?" when the title starts with What if / What happens / What would, otherwise
+the niche's subject (TECH, SPACE, SCIENCE, YOUR BODY, MONEY, EARTH, INDIA...). Override with `thumbnail.tag` (manifest) or leave it. Keep the
+headline to the consequence in 1-4 words; the chip is the category, not a second headline.
 
 ## 6b. Story engine and the first 30 seconds
 

@@ -79,6 +79,10 @@ class LangScript(BaseModel):
     hook_text: str = Field(description="On-screen hook shown in the first 3 seconds, max 6 words.")
     thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
                                 "(not a copy of the title). Empty = the hook text is used.")
+    next_video: str = Field(default="", description="The next video's title or question: the close hands the viewer on, and the "
+                            "description gets an 'Up next' line.")
+    pinned_comment: str = Field(default="", description="One viewer decision tied to the central dilemma, to pin as the first "
+                                "comment (saved in the *_youtube.txt file).")
     scenes: List[Scene] = Field(description="6-9 scenes; first is the hook, last is a call to follow.")
 
 
@@ -87,6 +91,9 @@ class Plan(BaseModel):
     topic: str
     research_summary: str = Field(description="Why this niche/topic today, with the key facts used.")
     mood: Literal["calm", "upbeat", "dramatic", "inspiring", "mysterious"]
+    cluster: str = Field(default="", description="The content cluster this video belongs to (e.g. 'The Moon'); 5-10 videos grow from one.")
+    follow_ups: List[str] = Field(default_factory=list, description="Three follow-up video ideas that continue the cluster.")
+    gate_score: int = Field(default=0, description="The /100 quality-gate score from the video-strategy skill (85+ strong, 75-84 improve, below 75 rework).")
     english: LangScript
     hindi: LangScript
 
@@ -121,6 +128,30 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
+def _strategy_problems(plan) -> list[str]:
+    """The standing strategy (skills/video-strategy): researched packaging, a quality gate, a cluster and a next video."""
+    out = []
+    rs = plan.research_summary.lower()
+    for marker, label in (("title", "the title options and why this one"), ("thumbnail", "the thumbnail concepts and the chosen one"),
+                          ("hook", "the opening hook options")):
+        if marker not in rs:
+            out.append(f"research_summary should also record {label} (see the video-strategy skill)")
+    if not plan.gate_score:
+        out.append("gate_score is missing: score the concept /100 with the quality gate (85+ proceed, 75-84 improve, below 75 rework)")
+    elif plan.gate_score < 75:
+        out.append(f"gate_score {plan.gate_score} is below 75: rework the weakest components before rendering")
+    if not plan.cluster:
+        out.append("cluster is missing: name the content cluster this video belongs to")
+    if len(plan.follow_ups) < 3:
+        out.append("follow_ups: list three follow-up video ideas that continue the cluster")
+    for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
+        if not s.next_video.strip():
+            out.append(f"{lang}: next_video is missing (the close hands the viewer to the next video)")
+        if "?" not in s.pinned_comment:
+            out.append(f"{lang}: pinned_comment should be one viewer decision tied to the central dilemma, as a question")
+    return out
+
+
 def _thumb_problems(lang: str, s) -> list[str]:
     t = (getattr(s, "thumbnail_text", "") or "").strip()
     out = []
@@ -133,7 +164,7 @@ def _thumb_problems(lang: str, s) -> list[str]:
 
 def validate(plan: Plan) -> list[str]:
     """Extra checks beyond the schema. Returns a list of problems."""
-    problems = []
+    problems = _strategy_problems(plan)
     for lang, s, (lo, hi) in (("english", plan.english, (100, 160)), ("hindi", plan.hindi, (85, 145))):
         words = sum(len(sc.text.split()) for sc in s.scenes)
         if not lo <= words <= hi:
@@ -197,6 +228,8 @@ class DocScript(BaseModel):
     tags: List[str] = Field(description="8-15 search tags.")
     thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
                                 "(not a copy of the title). Empty = the first words of the title are used.")
+    next_video: str = Field(default="", description="The next video's title or question; the description gets an 'Up next' line.")
+    pinned_comment: str = Field(default="", description="One viewer decision tied to the central dilemma, to pin as the first comment.")
     chapters: List[Chapter] = Field(description="3-12 chapters in order; chapter 1 is the cold open.")
 
     @property
@@ -210,6 +243,9 @@ class DocPlan(BaseModel):
     research_summary: str = Field(description="Candidates considered, why this documentary, the sources and facts used.")
     mood: Literal["calm", "upbeat", "dramatic", "inspiring", "mysterious"]
     target_minutes: int = Field(description="Intended length: 5 to 15 minutes.")
+    cluster: str = Field(default="", description="The content cluster this video belongs to; 5-10 videos grow from one.")
+    follow_ups: List[str] = Field(default_factory=list, description="Three follow-up video ideas that continue the cluster.")
+    gate_score: int = Field(default=0, description="The /100 quality-gate score from the video-strategy skill (85+ strong, 75-84 improve, below 75 rework).")
     english: DocScript
     hindi: DocScript
 
@@ -221,7 +257,7 @@ def doc_seconds(s: DocScript, lang: str = "en") -> float:
 
 
 def validate_doc(plan: DocPlan) -> list[str]:
-    problems = []
+    problems = _strategy_problems(plan)
     if not 5 <= plan.target_minutes <= 15:
         problems.append(f"target_minutes {plan.target_minutes} is outside 5-15")
     if plan.target_minutes > 10:
