@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "1.0.0",
+  "job": {
+    "jobId": "what-if-sun-vanished-20261117"
+  },
+  "creativeBrief": {
+    "format": "short",
+    "topic": "What if the Sun vanished? (you would still see it for eight minutes)",
+    "niche": "Space & Universe",
+    "cluster": "The Sun",
+    "objective": "Explain, in one story, that the Sun's light and gravity both take about eight minutes to reach Earth, so nothing would change at first.",
+    "targetDurationSeconds": 50,
+    "visualStyle": {
+      "tone": [
+        "cinematic",
+        "energetic",
+        "intelligent"
+      ]
+    }
+  },
+  "randomization": {
+    "globalSeed": 20261117
+  },
+  "story": {
+    "title": "What If the Sun Vanished?",
+    "hook": "The Sun vanishes right now. And for eight minutes, nothing happens.",
+    "openLoop": "What happens after those eight minutes?",
+    "payoff": "The news arrives at minute eight: Earth flies off in a straight line, and the cold begins.",
+    "callToAction": "What would you do with eight minutes?",
+    "gateScore": 82,
+    "followUps": [
+      "What if the Moon disappeared?",
+      "What if Earth stopped spinning?",
+      "What if a black hole replaced the Sun?"
+    ]
+  },
+  "thumbnail": {
+    "headline": "8 MINUTES",
+    "concept": "a glowing Sun core with Earth-like shards orbiting an empty centre: the consequence (nothing happens yet), not the title",
+    "sceneType": "geometry-swarm",
+    "environment": "particle-space",
+    "accentWords": {
+      "MINUTES": "#FFCC33"
+    }
+  },
+  "scenes": [
+    {
+      "sceneId": "scene-001",
+      "storyPhase": "hook",
+      "sceneType": "kinetic-typography",
+      "narration": {
+        "text": "The Sun vanishes right now. And for eight minutes, nothing happens."
+      },
+      "textElements": [
+        {
+          "id": "s1-text",
+          "text": "NOTHING HAPPENS",
+          "animation": "impact-zoom",
+          "style": {
+            "accentWords": {
+              "NOTHING": "#FFCC33"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "burst",
+          "type": "particles",
+          "count": 900,
+          "behavior": "explode",
+          "color": "#FFCC33",
+          "audioReactive": true
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-002",
+      "storyPhase": "problem",
+      "sceneType": "particle-world",
+      "narration": {
+        "text": "You can still see it. The sky stays bright. The day stays warm."
+      },
+      "textElements": [
+        {
+          "id": "s2-text",
+          "text": "STILL THERE",
+          "animation": "word-punch",
+          "style": {
+            "accentWords": {
+              "STILL": "#00D9FF"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-003",
+      "storyPhase": "context",
+      "sceneType": "data-tunnel",
+      "narration": {
+        "text": "Why? Sunlight needs about eight minutes and twenty seconds to reach you."
+      },
+      "textElements": [
+        {
+          "id": "s3-text",
+          "text": "8 MIN 20 SEC",
+          "animation": "slide-and-lock",
+          "style": {
+            "accentWords": {
+              "20": "#FFCC33"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "photons",
+          "type": "particles",
+          "count": 520,
+          "behavior": "follow-path",
+          "color": "#FFCC33",
+          "audioReactive": true
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-004",
+      "storyPhase": "development",
+      "sceneType": "geometry-swarm",
+      "narration": {
+        "text": "Gravity travels at that speed too. So Earth keeps circling an empty spot."
+      },
+      "textElements": [
+        {
+          "id": "s4-text",
+          "text": "GRAVITY WAITS TOO",
+          "animation": "tracking-reveal",
+          "style": {
+            "accentWords": {
+              "GRAVITY": "#775CFF"
+            }
+          }
+        }
+      ],
+      "objects": [
+        {
+          "id": "sun",
+          "type": "central-control-orb",
+          "count": 1,
+          "behavior": "pulse",
+          "color": "#FFCC33",
+          "audioReactive": true
+        },
+        {
+          "id": "earth",
+          "type": "tetrahedron",
+          "count": 10,
+          "behavior": "orbit",
+          "color": "#00D9FF",
+          "audioReactive": false
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-005",
+      "storyPhase": "reveal",
+      "sceneType": "timeline-3d",
+      "narration": {
+        "text": "At minute eight, the news arrives. Earth flies off in a straight line."
+      },
+      "textElements": [
+        {
+          "id": "s5-text",
+          "text": "STRAIGHT INTO THE DARK",
+          "animation": "depth-reveal",
+          "style": {
+            "accentWords": {
+              "DARK": "#FF3B6B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-006",
+      "storyPhase": "payoff",
+      "sceneType": "wave-field",
+      "narration": {
+        "text": "Then it gets cold. Within weeks, the average surface falls to freezing."
+      },
+      "textElements": [
+        {
+          "id": "s6-text",
+          "text": "WEEKS TO FREEZE",
+          "animation": "word-stack",
+          "style": {
+            "accentWords": {
+              "FREEZE": "#00D9FF"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-007",
+      "storyPhase": "payoff",
+      "sceneType": "network-nodes",
+      "narration": {
+        "text": "Plants stop making food. But life near deep-sea vents could carry on."
+      },
+      "textElements": [
+        {
+          "id": "s7-text",
+          "text": "LIFE WITHOUT SUNLIGHT",
+          "animation": "mask-reveal",
+          "style": {
+            "accentWords": {
+              "SUNLIGHT": "#FFCC33"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sceneId": "scene-008",
+      "storyPhase": "call-to-action",
+      "sceneType": "finale",
+      "narration": {
+        "text": "What would you do with eight minutes? Tell me below. Next: the Moon."
+      },
+      "textElements": [
+        {
+          "id": "s8-text",
+          "text": "8 MINUTES LEFT",
+          "animation": "particle-assemble",
+          "style": {
+            "accentWords": {
+              "8": "#FFCC33",
+              "LEFT": "#FF3B6B"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "publishingMetadata": {
+    "title": "What If the Sun Vanished? Nothing Happens for 8 Minutes",
+    "description": "What if the Sun vanished right now? For about eight minutes, nothing would change: sunlight and gravity both need that long to reach Earth. Then Earth flies off in a straight line and the cold begins. #WhatIf #Space #Science",
+    "tags": [
+      "what if the sun disappeared",
+      "what if the sun vanished",
+      "sun disappears",
+      "speed of light",
+      "gravity",
+      "space explained",
+      "what if",
+      "science explained"
+    ],
+    "hashtags": [
+      "#WhatIf",
+      "#Space",
+      "#Science"
+    ],
+    "nextVideo": "What if the Moon disappeared?",
+    "pinnedComment": "What would you do with your last eight minutes of sunlight?",
+    "visibility": "private"
+  },
+  "localizations": {
+    "hi": {
+      "title": "अगर सूरज ग़ायब हो जाए? 8 मिनट तक कुछ नहीं होगा",
+      "description": "अगर सूरज अभी ग़ायब हो जाए तो क्या होगा? करीब आठ मिनट तक कुछ नहीं बदलेगा, क्योंकि रोशनी और गुरुत्वाकर्षण दोनों को पृथ्वी तक पहुँचने में इतना समय लगता है। फिर धरती सीधी रेखा में निकल जाएगी और ठंड शुरू होगी। #अगर #अंतरिक्ष #विज्ञान",
+      "tags": [
+        "अगर सूरज ग़ायब हो जाए",
+        "सूरज गायब",
+        "प्रकाश की गति",
+        "गुरुत्वाकर्षण",
+        "अंतरिक्ष",
+        "what if hindi",
+        "science in hindi",
+        "विज्ञान"
+      ],
+      "hashtags": [
+        "#अगर",
+        "#अंतरिक्ष",
+        "#विज्ञान"
+      ],
+      "nextVideo": "अगर चाँद ग़ायब हो जाए तो?",
+      "pinnedComment": "सूरज की आख़िरी आठ मिनट की रोशनी में आप क्या करेंगे?",
+      "thumbnailText": "8 मिनट",
+      "thumbnailAccent": {
+        "मिनट": "#FFCC33"
+      },
+      "scenes": {
+        "scene-001": {
+          "narration": "सूरज अभी ग़ायब हो जाए। और आठ मिनट तक कुछ नहीं होगा।",
+          "text": {
+            "s1-text": "कुछ नहीं होगा"
+          },
+          "accentWords": {
+            "s1-text": {
+              "नहीं": "#FFCC33"
+            }
+          }
+        },
+        "scene-002": {
+          "narration": "आपको वह दिखता रहेगा। आसमान रोशन और दिन गर्म रहेगा।",
+          "text": {
+            "s2-text": "अभी भी दिखेगा"
+          },
+          "accentWords": {
+            "s2-text": {
+              "दिखेगा": "#00D9FF"
+            }
+          }
+        },
+        "scene-003": {
+          "narration": "वजह? सूरज की रोशनी को आप तक पहुँचने में लगभग आठ मिनट बीस सेकंड लगते हैं।",
+          "text": {
+            "s3-text": "8 मिनट 20 सेकंड"
+          },
+          "accentWords": {
+            "s3-text": {
+              "20": "#FFCC33"
+            }
+          }
+        },
+        "scene-004": {
+          "narration": "गुरुत्वाकर्षण भी इसी रफ़्तार से चलता है। इसलिए धरती खाली जगह के चक्कर लगाती रहेगी।",
+          "text": {
+            "s4-text": "गुरुत्व भी इंतज़ार करता है"
+          },
+          "accentWords": {
+            "s4-text": {
+              "गुरुत्व": "#775CFF"
+            }
+          }
+        },
+        "scene-005": {
+          "narration": "आठवें मिनट पर ख़बर पहुँचेगी, और धरती सीधी रेखा में अंधेरे में निकल जाएगी।",
+          "text": {
+            "s5-text": "सीधे अंधेरे में"
+          },
+          "accentWords": {
+            "s5-text": {
+              "अंधेरे": "#FF3B6B"
+            }
+          }
+        },
+        "scene-006": {
+          "narration": "फिर ठंड बढ़ेगी। कुछ हफ़्तों में सतह का औसत तापमान जमाव बिंदु पर आ जाएगा।",
+          "text": {
+            "s6-text": "हफ़्तों में जमाव"
+          },
+          "accentWords": {
+            "s6-text": {
+              "जमाव": "#00D9FF"
+            }
+          }
+        },
+        "scene-007": {
+          "narration": "पौधे खाना बनाना बंद कर देंगे। पर गहरे समुद्र के वेंट के आसपास जीवन चलता रह सकता है।",
+          "text": {
+            "s7-text": "बिना सूरज का जीवन"
+          },
+          "accentWords": {
+            "s7-text": {
+              "सूरज": "#FFCC33"
+            }
+          }
+        },
+        "scene-008": {
+          "narration": "आप उन आठ मिनटों में क्या करेंगे? कमेंट में बताइए। अगला: चाँद।",
+          "text": {
+            "s8-text": "8 मिनट बाकी"
+          },
+          "accentWords": {
+            "s8-text": {
+              "8": "#FFCC33"
+            }
+          }
+        }
+      }
+    }
+  }
+}
