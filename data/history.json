@@ -88,12 +88,14 @@
       "en": {
         "file": "2026-11-16_en.mp4",
         "saved_to": "videos/2026-11-16/en.mp4",
-        "video_id": "e7XO0bJeXH4"
+        "video_id": "b7JhsbWiEIA",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-16_hi.mp4",
         "saved_to": "videos/2026-11-16/hi.mp4",
-        "video_id": "_h9M1lqZV1I"
+        "video_id": "2G95xWfWLI8",
+        "queued": false
       }
     }
   },
@@ -106,12 +108,14 @@
       "en": {
         "file": "2026-11-16_en.mp4",
         "saved_to": "videos/2026-11-16/en.mp4",
-        "video_id": "o18KGdxq85w"
+        "video_id": "b7JhsbWiEIA",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-16_hi.mp4",
         "saved_to": "videos/2026-11-16/hi.mp4",
-        "video_id": "oLQ-3RA85ek"
+        "video_id": "2G95xWfWLI8",
+        "queued": false
       }
     }
   },
@@ -124,12 +128,14 @@
       "en": {
         "file": "2026-11-16_en.mp4",
         "saved_to": "videos/2026-11-16/en.mp4",
-        "video_id": "bR_gPKXgQ_k"
+        "video_id": "b7JhsbWiEIA",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-16_hi.mp4",
         "saved_to": "videos/2026-11-16/hi.mp4",
-        "video_id": "fxEunP-9-3c"
+        "video_id": "2G95xWfWLI8",
+        "queued": false
       }
     }
   },
@@ -139,7 +145,16 @@
     "topic": "Why AI agents will change software development",
     "mood": "dramatic",
     "engine": "director",
-    "videos": {}
+    "videos": {
+      "en": {
+        "video_id": "b7JhsbWiEIA",
+        "queued": false
+      },
+      "hi": {
+        "video_id": "2G95xWfWLI8",
+        "queued": false
+      }
+    }
   },
   {
     "date": "2026-11-17",
@@ -150,14 +165,16 @@
       "en": {
         "file": "2026-11-17_en.mp4",
         "saved_to": "videos/2026-11-17/en.mp4",
-        "queued": "videos/unpublished/2026-11-17_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "KG2RWFHfyi8"
       },
       "hi": {
         "file": "2026-11-17_hi.mp4",
         "saved_to": "videos/2026-11-17/hi.mp4",
-        "queued": "videos/unpublished/2026-11-17_short_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "k6BRkrh4lok"
       }
     }
   }

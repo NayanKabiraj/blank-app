@@ -189,8 +189,9 @@
             "start": 209.8
           }
         ],
-        "queued": "videos/unpublished/2026-11-17_documentary_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "xXmhxA3xUhQ"
       },
       "hi": {
         "file": "2026-11-17_documentary_hi.mp4",
@@ -216,8 +217,9 @@
             "start": 280.7
           }
         ],
-        "queued": "videos/unpublished/2026-11-17_documentary_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "NQ-GnC2OtCQ"
       }
     }
   }
