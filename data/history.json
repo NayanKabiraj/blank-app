@@ -177,5 +177,40 @@
         "video_id": "k6BRkrh4lok"
       }
     }
+  },
+  {
+    "date": "2026-11-17",
+    "niche": "Space & Universe",
+    "topic": "What if the Sun vanished? (you would still see it for eight minutes)",
+    "mood": "dramatic",
+    "engine": "director",
+    "cluster": "The Sun",
+    "follow_ups": [
+      "What if the Moon disappeared?",
+      "What if Earth stopped spinning?",
+      "What if a black hole replaced the Sun?"
+    ],
+    "next_video": "What if the Moon disappeared?",
+    "gate_score": 82,
+    "videos": {
+      "en": {
+        "file": "2026-11-17_en.mp4",
+        "seconds": 37.5,
+        "issues": [],
+        "engine": "director",
+        "saved_to": "videos/2026-11-17/en.mp4",
+        "video_id": "blroX9zDT1M",
+        "privacy": "private"
+      },
+      "hi": {
+        "file": "2026-11-17_hi.mp4",
+        "seconds": 55.63,
+        "issues": [],
+        "engine": "director",
+        "saved_to": "videos/2026-11-17/hi.mp4",
+        "video_id": "q3yz34MDOpI",
+        "privacy": "private"
+      }
+    }
   }
 ]

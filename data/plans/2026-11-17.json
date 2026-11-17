@@ -1,284 +1,943 @@
 {
-  "niche": "Science Explained",
-  "topic": "Why do doorknobs zap you in winter? (dry air traps your static charge)",
-  "research_summary": "Candidates (estimated scores /40): (1) static shocks in winter 35; (2) why your breath fogs in the cold 32; (3) how Google Maps sees traffic 31; also considered: chapped lips in winter 29, why planes leave contrails 28, how a pressure cooker works 27, Black Friday price anchoring 27 (prices-99 was done), why onions make you cry 26, Mpemba effect 24 (contested, rejected), why we yawn 22 (contested, rejected). Winner: static shocks, because winter dryness is arriving across North India now, everyone has been zapped by a doorknob, and the mechanism (charge builds, dry air removes the leaking water film) is visual. Science Explained was last used two days ago, so it is not cooling down. Mechanism: rubbing moves electrons onto the body; a thin water film on surfaces normally leaks the charge away; heated winter air is dry so the film disappears and charge accumulates until it jumps to a conductor. Facts and sources: University of Kentucky Physics (sciworks, static in winter: water film conducts, dry conditions cause shocks); Scripps News (less water vapour, higher voltage); EPA guidance of 30 to 50 percent indoor humidity; Desco/ESD Association handbook: a person feels a discharge at roughly 3,000 V (some sources say 2,000 to 4,000 V, so the number is marked approximate), sees it above roughly 5,000 V.",
-  "mood": "upbeat",
-  "english": {
-    "title": "Why do doorknobs zap you in winter?",
-    "description": "Why does a doorknob zap you in winter? Your body builds up charge and dry air stops it leaking away. #static #winter #science",
-    "tags": [
-      "static shock",
-      "why do I get shocked in winter",
-      "static electricity",
-      "dry air",
-      "science explained",
-      "winter science",
-      "electrons",
-      "animated explainer"
-    ],
-    "hook_text": "Thousands of volts. Unfelt.",
-    "scenes": [
-      {
-        "text": "In winter, your body can carry thousands of volts. You just can't feel it.",
-        "keyword": "thousands of volts",
-        "graphic": {
-          "kind": "title",
-          "headline": "Thousands of volts?",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "bulb"
-        }
-      },
-      {
-        "text": "Ever touched a doorknob and got zapped? Let's ask why.",
-        "keyword": "zapped",
-        "graphic": {
-          "kind": "chat",
-          "headline": "Quick chat",
-          "caption": "",
-          "items": [
-            "Why do doorknobs zap me?",
-            "Your body is charged up",
-            "Charged? From what?",
-            "Rubbing, in dry air"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Rubbing shoes on carpet moves electrons, tiny charged particles, onto you. Where do they go?",
-        "keyword": "electrons",
-        "graphic": {
-          "kind": "flow",
-          "headline": "How you charge up",
-          "caption": "",
-          "items": [
-            "Shoes rub carpet",
-            "Electrons move",
-            "Charge builds on you",
-            "Spark at the knob"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Quick quiz: what makes winter zaps worse? The cold, the wind, or drier air? It's the drier air.",
-        "keyword": "drier air",
-        "graphic": {
-          "kind": "quiz",
-          "headline": "What makes winter zaps worse?",
-          "caption": "",
-          "items": [
-            "Colder air",
-            "Drier air",
-            "Faster wind"
-          ],
-          "values": [],
-          "answer": 1,
-          "prop": null
-        }
-      },
-      {
-        "text": "Normally a thin, invisible film of water on surfaces lets charge leak away. Heated winter air is dry, so the film vanishes and the charge stays trapped.",
-        "keyword": "film of water",
-        "graphic": {
-          "kind": "build",
-          "headline": "Why charge stays",
-          "caption": "",
-          "items": [
-            "Heated, dry air",
-            "Water film gone",
-            "Charge trapped"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Guess how many volts you need to feel a zap? About three thousand!",
-        "keyword": "three thousand",
-        "graphic": {
-          "kind": "stat",
-          "headline": "3,000 V",
-          "caption": "to feel a zap, roughly",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "So how do you stop it? Keep room humidity around thirty to fifty percent, or touch metal with your keys first.",
-        "keyword": "humidity",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "30-50% humidity",
-          "caption": "lets charge leak away",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "cloud"
-        }
-      },
-      {
-        "text": "So you carry thousands of volts, and dry air keeps them. Which doorknob got you? Tell me below! Follow to understand one new thing every day.",
-        "keyword": "dry air",
-        "graphic": {
-          "kind": "title",
-          "headline": "Your own charge",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "heart"
-        }
-      }
-    ]
+ "schemaVersion": "1.0.0",
+ "renderSettings": {
+  "pixelRatio": 1,
+  "antialias": true,
+  "shadows": false,
+  "toneMapping": "aces-filmic",
+  "exposure": 1.05,
+  "motionBlur": {
+   "enabled": false,
+   "strength": 0.35,
+   "samples": 8
   },
-  "hindi": {
-    "title": "सर्दियों में हैंडल से झटका क्यों लगता है?",
-    "description": "सर्दियों में दरवाज़े का हैंडल छूते ही झटका क्यों लगता है? शरीर पर चार्ज जमा होता है और सूखी हवा उसे बहने नहीं देती। #स्टैटिक #सर्दी #विज्ञान",
-    "tags": [
-      "सर्दी में झटका क्यों लगता है",
-      "स्टैटिक बिजली",
-      "सूखी हवा",
-      "विज्ञान",
-      "science in hindi",
-      "इलेक्ट्रॉन",
-      "सर्दियों का विज्ञान",
-      "animated explainer"
-    ],
-    "hook_text": "हज़ारों वोल्ट, महसूस नहीं",
-    "scenes": [
-      {
-        "text": "सर्दियों में आपका शरीर हज़ारों वोल्ट लिए घूमता है, और आपको पता भी नहीं चलता।",
-        "keyword": "हज़ारों वोल्ट",
-        "graphic": {
-          "kind": "title",
-          "headline": "हज़ारों वोल्ट?",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "bulb"
-        }
-      },
-      {
-        "text": "कभी दरवाज़े का हैंडल छूते ही झटका लगा है? तो पूछते हैं, क्यों?",
-        "keyword": "झटका",
-        "graphic": {
-          "kind": "chat",
-          "headline": "छोटी बातचीत",
-          "caption": "",
-          "items": [
-            "हैंडल झटका क्यों देता है?",
-            "आपके शरीर में चार्ज है",
-            "चार्ज? कहाँ से?",
-            "सूखी हवा में रगड़ से"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "कालीन पर जूते रगड़ने से इलेक्ट्रॉन, यानी आवेशित कण, शरीर पर आ जाते हैं। ये जाएँ कहाँ?",
-        "keyword": "इलेक्ट्रॉन",
-        "graphic": {
-          "kind": "flow",
-          "headline": "चार्ज कैसे चढ़ता है",
-          "caption": "",
-          "items": [
-            "जूते कालीन पर",
-            "इलेक्ट्रॉन खिसके",
-            "शरीर पर चार्ज",
-            "हैंडल पर चिंगारी"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "छोटा क्विज़: झटके सर्दी में ज़्यादा क्यों? ठंड, हवा या सूखापन? जवाब: सूखी हवा।",
-        "keyword": "सूखी हवा",
-        "graphic": {
-          "kind": "quiz",
-          "headline": "सर्दी में झटके ज़्यादा क्यों?",
-          "caption": "",
-          "items": [
-            "ज़्यादा ठंड",
-            "सूखी हवा",
-            "तेज़ हवा"
-          ],
-          "values": [],
-          "answer": 1,
-          "prop": null
-        }
-      },
-      {
-        "text": "सतहों पर पानी की परत चार्ज को बहा देती है। सर्दी की गरम हवा सूखी है, परत ग़ायब, चार्ज फँसा।",
-        "keyword": "पानी की परत",
-        "graphic": {
-          "kind": "build",
-          "headline": "चार्ज क्यों फँसता है",
-          "caption": "",
-          "items": [
-            "गरम, सूखी हवा",
-            "पानी की परत ग़ायब",
-            "चार्ज फँसा"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "अंदाज़ा लगाइए, झटका महसूस होने के लिए कितने वोल्ट चाहिए? करीब तीन हज़ार!",
-        "keyword": "तीन हज़ार",
-        "graphic": {
-          "kind": "stat",
-          "headline": "3,000 वोल्ट",
-          "caption": "झटके के लिए, लगभग",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "तो बचें कैसे? कमरे की नमी तीस से पचास प्रतिशत रखें, या पहले चाबी से धातु छुएँ।",
-        "keyword": "नमी",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "30-50% नमी",
-          "caption": "चार्ज बहता रहता है",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "cloud"
-        }
-      },
-      {
-        "text": "हज़ारों वोल्ट आप लिए घूमते हैं, सूखी हवा उन्हें रोकती है। कौन सा हैंडल झटका दे गया? कमेंट में बताइए! रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
-        "keyword": "सूखी हवा",
-        "graphic": {
-          "kind": "title",
-          "headline": "आपका अपना चार्ज",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "heart"
-        }
-      }
-    ]
+  "postProcessing": {
+   "enabled": true,
+   "bloom": {
+    "enabled": true,
+    "strength": 0.55,
+    "radius": 0.45,
+    "threshold": 0.78
+   },
+   "filmGrain": {
+    "enabled": true,
+    "strength": 0.015
+   },
+   "vignette": {
+    "enabled": true,
+    "strength": 0.2
+   },
+   "chromaticAberration": {
+    "enabled": true,
+    "strength": 0.015
+   },
+   "glitch": {
+    "enabled": true,
+    "maximumStrength": 0.08,
+    "useOnlyOnMajorBeats": true
+   }
+  },
+  "safeArea": {
+   "topPercent": 10,
+   "bottomPercent": 18,
+   "leftPercent": 7,
+   "rightPercent": 7
+  },
+  "durationSeconds": 42.23,
+  "fps": 30,
+  "totalFrames": 1267
+ },
+ "brandSystem": {
+  "fontFamily": {
+   "primary": "Inter",
+   "secondary": "Space Grotesk",
+   "monospace": "JetBrains Mono"
+  },
+  "defaultPalette": {
+   "background": "#05070D",
+   "primary": "#00D9FF",
+   "secondary": "#775CFF",
+   "accent": "#FFCC33",
+   "danger": "#FF3B6B",
+   "textPrimary": "#FFFFFF",
+   "textSecondary": "#B8C1D9"
+  },
+  "typography": {
+   "headlineWeight": 800,
+   "bodyWeight": 500,
+   "maximumHeadlineLines": 3,
+   "uppercaseHeadlines": true,
+   "minimumReadableFontSizePixels": 48,
+   "preferredHeadlineFontSizePixels": 96,
+   "captionFontSizePixels": 54
   }
+ },
+ "randomization": {
+  "mode": "seeded",
+  "globalSeed": 20261117,
+  "reproducible": true,
+  "variationStrength": 0.6
+ },
+ "audio": {
+  "narration": {
+   "enabled": true,
+   "targetLufs": -16
+  },
+  "music": {
+   "enabled": true
+  },
+  "soundEffects": {
+   "enabled": true,
+   "maximumEffectsPerScene": 3
+  },
+  "beatSync": {
+   "enabled": true,
+   "minimumSecondsBetweenMajorActions": 1.2
+  }
+ },
+ "captions": {
+  "enabled": true,
+  "format": "word-by-word",
+  "maximumWordsPerCaption": 5,
+  "highlightColor": "#FFCC33",
+  "defaultColor": "#FFFFFF",
+  "bottomOffsetPercent": 19
+ },
+ "director": {
+  "storyRules": {
+   "hookWithinSeconds": 2.5,
+   "maximumSceneDurationSeconds": 6,
+   "minimumSceneDurationSeconds": 1.5,
+   "maximumWordsPerTextElement": 8,
+   "maximumTextElementsPerScene": 3,
+   "maximumNarrationWordsPerMinute": 165,
+   "requiredStoryPhases": [
+    "hook",
+    "problem",
+    "context",
+    "development",
+    "reveal",
+    "payoff",
+    "call-to-action"
+   ],
+   "requireOpenLoop": true,
+   "openLoopCloseBeforeSeconds": 55,
+   "requirePatternInterruptEverySeconds": 7,
+   "requireVisualChangeEverySeconds": 3
+  },
+  "selectionRules": {
+   "maximumConsecutiveSameSceneType": 1,
+   "maximumCameraReuseWithinScenes": 3,
+   "maximumTransitionReuseWithinScenes": 4,
+   "maximumPaletteReuseWithinScenes": 5,
+   "minimumSceneTypeVariety": 5
+  }
+ },
+ "validation": {
+  "maximumAllowedTimelineDriftSeconds": 0.1,
+  "minimumContrastRatio": 4.5,
+  "onWarning": "continue",
+  "onError": "fail"
+ },
+ "job": {
+  "jobId": "what-if-sun-vanished-20261117"
+ },
+ "creativeBrief": {
+  "format": "short",
+  "topic": "What if the Sun vanished? (you would still see it for eight minutes)",
+  "niche": "Space & Universe",
+  "cluster": "The Sun",
+  "objective": "Explain, in one story, that the Sun's light and gravity both take about eight minutes to reach Earth, so nothing would change at first.",
+  "targetDurationSeconds": 50,
+  "visualStyle": {
+   "tone": [
+    "cinematic",
+    "energetic",
+    "intelligent"
+   ]
+  },
+  "language": "en-IN",
+  "platform": "youtube-shorts",
+  "aspectRatio": "9:16",
+  "resolution": {
+   "width": 1080,
+   "height": 1920
+  },
+  "framesPerSecond": 30
+ },
+ "story": {
+  "title": "What If the Sun Vanished?",
+  "hook": "The Sun vanishes right now. And for eight minutes, nothing happens.",
+  "openLoop": "What happens after those eight minutes?",
+  "payoff": "The news arrives at minute eight: Earth flies off in a straight line, and the cold begins.",
+  "callToAction": "What would you do with eight minutes?",
+  "gateScore": 82,
+  "followUps": [
+   "What if the Moon disappeared?",
+   "What if Earth stopped spinning?",
+   "What if a black hole replaced the Sun?"
+  ]
+ },
+ "thumbnail": {
+  "headline": "8 MINUTES",
+  "concept": "a glowing Sun core with Earth-like shards orbiting an empty centre: the consequence (nothing happens yet), not the title",
+  "sceneType": "geometry-swarm",
+  "environment": "particle-space",
+  "accentWords": {
+   "MINUTES": "#FFCC33"
+  }
+ },
+ "scenes": [
+  {
+   "sceneId": "scene-001",
+   "storyPhase": "hook",
+   "sceneType": "kinetic-typography",
+   "narration": {
+    "text": "The Sun vanishes right now. And for eight minutes, nothing happens.",
+    "startSeconds": 0.12,
+    "endSeconds": 4.52
+   },
+   "textElements": [
+    {
+     "id": "s1-text",
+     "text": "NOTHING HAPPENS",
+     "animation": "impact-zoom",
+     "style": {
+      "accentWords": {
+       "NOTHING": "#FFCC33"
+      },
+      "scale": 1.25
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 0.27,
+     "durationSeconds": 3.96
+    }
+   ],
+   "objects": [
+    {
+     "id": "burst",
+     "type": "particles",
+     "count": 900,
+     "behavior": "explode",
+     "color": "#FFCC33",
+     "audioReactive": true
+    }
+   ],
+   "order": 1,
+   "seed": 1001,
+   "energy": 0.95,
+   "mood": "urgent",
+   "durationSeconds": 4.77,
+   "startSeconds": 0.0,
+   "endSeconds": 4.77,
+   "environment": {
+    "preset": "abstract-dark",
+    "fogDensity": 0.08,
+    "backgroundMotion": "forward"
+   },
+   "camera": {
+    "preset": "fast-dolly-in",
+    "target": "",
+    "speed": 0.87,
+    "shake": 0.02,
+    "fov": 50
+   },
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "light-sweep",
+    "durationSeconds": 0.55
+   }
+  },
+  {
+   "sceneId": "scene-002",
+   "storyPhase": "problem",
+   "sceneType": "particle-world",
+   "narration": {
+    "text": "You can still see it. The sky stays bright. The day stays warm.",
+    "startSeconds": 4.89,
+    "endSeconds": 10.03
+   },
+   "textElements": [
+    {
+     "id": "s2-text",
+     "text": "STILL THERE",
+     "animation": "word-punch",
+     "style": {
+      "accentWords": {
+       "STILL": "#00D9FF"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 5.04,
+     "durationSeconds": 4.626
+    }
+   ],
+   "order": 2,
+   "seed": 1002,
+   "energy": 0.7,
+   "mood": "anticipation",
+   "durationSeconds": 5.51,
+   "startSeconds": 4.77,
+   "endSeconds": 10.28,
+   "environment": {
+    "preset": "particle-space",
+    "fogDensity": 0.08,
+    "backgroundMotion": "drift"
+   },
+   "camera": {
+    "preset": "dolly-out",
+    "target": "",
+    "speed": 0.73,
+    "shake": 0,
+    "fov": 50
+   },
+   "objects": [
+    {
+     "id": "obj-1",
+     "type": "particles",
+     "count": 1400,
+     "behavior": "spiral",
+     "color": "#00D9FF",
+     "audioReactive": true
+    }
+   ],
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "particle-dissolve",
+    "durationSeconds": 0.55
+   }
+  },
+  {
+   "sceneId": "scene-003",
+   "storyPhase": "context",
+   "sceneType": "data-tunnel",
+   "narration": {
+    "text": "Why? Sunlight needs about eight minutes and twenty seconds to reach you.",
+    "startSeconds": 10.4,
+    "endSeconds": 15.17
+   },
+   "textElements": [
+    {
+     "id": "s3-text",
+     "text": "8 MIN 20 SEC",
+     "animation": "slide-and-lock",
+     "style": {
+      "accentWords": {
+       "20": "#FFCC33"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 10.55,
+     "durationSeconds": 4.293
+    }
+   ],
+   "objects": [
+    {
+     "id": "photons",
+     "type": "particles",
+     "count": 520,
+     "behavior": "follow-path",
+     "color": "#FFCC33",
+     "audioReactive": true
+    }
+   ],
+   "order": 3,
+   "seed": 1003,
+   "energy": 0.55,
+   "mood": "explanatory",
+   "durationSeconds": 5.14,
+   "startSeconds": 10.28,
+   "endSeconds": 15.42,
+   "environment": {
+    "preset": "energy-tunnel",
+    "fogDensity": 0.08,
+    "backgroundMotion": "drift"
+   },
+   "camera": {
+    "preset": "whip-pan-left",
+    "target": "",
+    "speed": 0.65,
+    "shake": 0,
+    "fov": 50
+   },
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "whip-pan",
+    "durationSeconds": 0.55,
+    "direction": "right"
+   }
+  },
+  {
+   "sceneId": "scene-004",
+   "storyPhase": "development",
+   "sceneType": "geometry-swarm",
+   "narration": {
+    "text": "Gravity travels at that speed too. So Earth keeps circling an empty spot.",
+    "startSeconds": 15.54,
+    "endSeconds": 20.68
+   },
+   "textElements": [
+    {
+     "id": "s4-text",
+     "text": "GRAVITY WAITS TOO",
+     "animation": "tracking-reveal",
+     "style": {
+      "accentWords": {
+       "GRAVITY": "#775CFF"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 15.69,
+     "durationSeconds": 4.626
+    }
+   ],
+   "objects": [
+    {
+     "id": "sun",
+     "type": "central-control-orb",
+     "count": 1,
+     "behavior": "pulse",
+     "color": "#FFCC33",
+     "audioReactive": true
+    },
+    {
+     "id": "earth",
+     "type": "tetrahedron",
+     "count": 10,
+     "behavior": "orbit",
+     "color": "#00D9FF",
+     "audioReactive": false
+    }
+   ],
+   "order": 4,
+   "seed": 1004,
+   "energy": 0.8,
+   "mood": "momentum",
+   "durationSeconds": 5.51,
+   "startSeconds": 15.42,
+   "endSeconds": 20.93,
+   "environment": {
+    "preset": "dark-tech",
+    "fogDensity": 0.08,
+    "backgroundMotion": "forward"
+   },
+   "camera": {
+    "preset": "orbit-left",
+    "target": "",
+    "speed": 0.79,
+    "shake": 0,
+    "fov": 50
+   },
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "zoom-tunnel",
+    "durationSeconds": 0.55
+   }
+  },
+  {
+   "sceneId": "scene-005",
+   "storyPhase": "reveal",
+   "sceneType": "timeline-3d",
+   "narration": {
+    "text": "At minute eight, the news arrives. Earth flies off in a straight line.",
+    "startSeconds": 21.05,
+    "endSeconds": 26.19
+   },
+   "textElements": [
+    {
+     "id": "s5-text",
+     "text": "STRAIGHT INTO THE DARK",
+     "animation": "depth-reveal",
+     "style": {
+      "accentWords": {
+       "DARK": "#FF3B6B"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 21.2,
+     "durationSeconds": 4.626
+    }
+   ],
+   "order": 5,
+   "seed": 1005,
+   "energy": 0.75,
+   "mood": "reveal",
+   "durationSeconds": 5.51,
+   "startSeconds": 20.93,
+   "endSeconds": 26.44,
+   "environment": {
+    "preset": "digital-city",
+    "fogDensity": 0.08,
+    "backgroundMotion": "forward"
+   },
+   "camera": {
+    "preset": "push-orbit",
+    "target": "",
+    "speed": 0.76,
+    "shake": 0,
+    "fov": 50
+   },
+   "objects": [
+    {
+     "id": "obj-1",
+     "type": "timeline-nodes",
+     "count": 8,
+     "behavior": "follow-path",
+     "color": "#00D9FF",
+     "audioReactive": true
+    }
+   ],
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "camera-fly-through",
+    "durationSeconds": 0.55
+   }
+  },
+  {
+   "sceneId": "scene-006",
+   "storyPhase": "payoff",
+   "sceneType": "wave-field",
+   "narration": {
+    "text": "Then it gets cold. Within weeks, the average surface falls to freezing.",
+    "startSeconds": 26.56,
+    "endSeconds": 31.33
+   },
+   "textElements": [
+    {
+     "id": "s6-text",
+     "text": "WEEKS TO FREEZE",
+     "animation": "word-stack",
+     "style": {
+      "accentWords": {
+       "FREEZE": "#00D9FF"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 26.71,
+     "durationSeconds": 4.293
+    }
+   ],
+   "order": 6,
+   "seed": 1006,
+   "energy": 0.7,
+   "mood": "confident",
+   "durationSeconds": 5.14,
+   "startSeconds": 26.44,
+   "endSeconds": 31.58,
+   "environment": {
+    "preset": "wave-space",
+    "fogDensity": 0.08,
+    "backgroundMotion": "drift"
+   },
+   "camera": {
+    "preset": "orbit-right",
+    "target": "",
+    "speed": 0.73,
+    "shake": 0,
+    "fov": 50
+   },
+   "objects": [
+    {
+     "id": "obj-1",
+     "type": "columns",
+     "count": 20,
+     "behavior": "wave",
+     "color": "#00D9FF",
+     "audioReactive": true
+    }
+   ],
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "particle-dissolve",
+    "durationSeconds": 0.55
+   }
+  },
+  {
+   "sceneId": "scene-007",
+   "storyPhase": "payoff",
+   "sceneType": "network-nodes",
+   "narration": {
+    "text": "Plants stop making food. But life near deep-sea vents could carry on.",
+    "startSeconds": 31.7,
+    "endSeconds": 36.47
+   },
+   "textElements": [
+    {
+     "id": "s7-text",
+     "text": "LIFE WITHOUT SUNLIGHT",
+     "animation": "mask-reveal",
+     "style": {
+      "accentWords": {
+       "SUNLIGHT": "#FFCC33"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 31.85,
+     "durationSeconds": 4.293
+    }
+   ],
+   "order": 7,
+   "seed": 1007,
+   "energy": 0.7,
+   "mood": "confident",
+   "durationSeconds": 5.14,
+   "startSeconds": 31.58,
+   "endSeconds": 36.72,
+   "environment": {
+    "preset": "data-network",
+    "fogDensity": 0.08,
+    "backgroundMotion": "drift"
+   },
+   "camera": {
+    "preset": "parallax-slide",
+    "target": "",
+    "speed": 0.73,
+    "shake": 0,
+    "fov": 50
+   },
+   "objects": [
+    {
+     "id": "obj-1",
+     "type": "sphere",
+     "count": 1,
+     "behavior": "pulse",
+     "color": "#775CFF",
+     "audioReactive": true
+    },
+    {
+     "id": "obj-2",
+     "type": "network-node",
+     "count": 18,
+     "behavior": "float",
+     "color": "#00D9FF",
+     "audioReactive": false
+    }
+   ],
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "match-motion",
+    "durationSeconds": 0.55,
+    "direction": "right"
+   }
+  },
+  {
+   "sceneId": "scene-008",
+   "storyPhase": "call-to-action",
+   "sceneType": "finale",
+   "narration": {
+    "text": "What would you do with eight minutes? Tell me below. Next: the Moon.",
+    "startSeconds": 36.84,
+    "endSeconds": 41.98
+   },
+   "textElements": [
+    {
+     "id": "s8-text",
+     "text": "8 MINUTES LEFT",
+     "animation": "particle-assemble",
+     "style": {
+      "accentWords": {
+       "8": "#FFCC33",
+       "LEFT": "#FF3B6B"
+      }
+     },
+     "position": {
+      "x": 0,
+      "y": 0.2,
+      "z": 0
+     },
+     "startSeconds": 36.99,
+     "durationSeconds": 4.626
+    }
+   ],
+   "order": 8,
+   "seed": 1008,
+   "energy": 0.92,
+   "mood": "inspiring",
+   "durationSeconds": 5.51,
+   "startSeconds": 36.72,
+   "endSeconds": 42.23,
+   "environment": {
+    "preset": "particle-space",
+    "fogDensity": 0.08,
+    "backgroundMotion": "forward"
+   },
+   "camera": {
+    "preset": "crane-down",
+    "target": "",
+    "speed": 0.86,
+    "shake": 0.02,
+    "fov": 50
+   },
+   "objects": [
+    {
+     "id": "obj-1",
+     "type": "particles",
+     "count": 2200,
+     "behavior": "magnetize",
+     "color": "#00D9FF",
+     "audioReactive": true
+    }
+   ],
+   "lights": [
+    {
+     "type": "point",
+     "color": "#00D9FF",
+     "intensity": 2.5,
+     "position": {
+      "x": -2,
+      "y": 2,
+      "z": 2
+     }
+    }
+   ],
+   "transitionOut": {
+    "type": "fade-through-black",
+    "durationSeconds": 0.8
+   }
+  }
+ ],
+ "publishingMetadata": {
+  "title": "What If the Sun Vanished? Nothing Happens for 8 Minutes",
+  "description": "What if the Sun vanished right now? For about eight minutes, nothing would change: sunlight and gravity both need that long to reach Earth. Then Earth flies off in a straight line and the cold begins. #WhatIf #Space #Science",
+  "tags": [
+   "what if the sun disappeared",
+   "what if the sun vanished",
+   "sun disappears",
+   "speed of light",
+   "gravity",
+   "space explained",
+   "what if",
+   "science explained"
+  ],
+  "hashtags": [
+   "#WhatIf",
+   "#Space",
+   "#Science"
+  ],
+  "nextVideo": "What if the Moon disappeared?",
+  "pinnedComment": "What would you do with your last eight minutes of sunlight?",
+  "visibility": "private"
+ },
+ "localizations": {
+  "hi": {
+   "title": "अगर सूरज ग़ायब हो जाए? 8 मिनट तक कुछ नहीं होगा",
+   "description": "अगर सूरज अभी ग़ायब हो जाए तो क्या होगा? करीब आठ मिनट तक कुछ नहीं बदलेगा, क्योंकि रोशनी और गुरुत्वाकर्षण दोनों को पृथ्वी तक पहुँचने में इतना समय लगता है। फिर धरती सीधी रेखा में निकल जाएगी और ठंड शुरू होगी। #अगर #अंतरिक्ष #विज्ञान",
+   "tags": [
+    "अगर सूरज ग़ायब हो जाए",
+    "सूरज गायब",
+    "प्रकाश की गति",
+    "गुरुत्वाकर्षण",
+    "अंतरिक्ष",
+    "what if hindi",
+    "science in hindi",
+    "विज्ञान"
+   ],
+   "hashtags": [
+    "#अगर",
+    "#अंतरिक्ष",
+    "#विज्ञान"
+   ],
+   "nextVideo": "अगर चाँद ग़ायब हो जाए तो?",
+   "pinnedComment": "सूरज की आख़िरी आठ मिनट की रोशनी में आप क्या करेंगे?",
+   "thumbnailText": "8 मिनट",
+   "thumbnailAccent": {
+    "मिनट": "#FFCC33"
+   },
+   "scenes": {
+    "scene-001": {
+     "narration": "सूरज अभी ग़ायब हो जाए। और आठ मिनट तक कुछ नहीं होगा।",
+     "text": {
+      "s1-text": "कुछ नहीं होगा"
+     },
+     "accentWords": {
+      "s1-text": {
+       "नहीं": "#FFCC33"
+      }
+     }
+    },
+    "scene-002": {
+     "narration": "आपको वह दिखता रहेगा। आसमान रोशन और दिन गर्म रहेगा।",
+     "text": {
+      "s2-text": "अभी भी दिखेगा"
+     },
+     "accentWords": {
+      "s2-text": {
+       "दिखेगा": "#00D9FF"
+      }
+     }
+    },
+    "scene-003": {
+     "narration": "वजह? सूरज की रोशनी को आप तक पहुँचने में लगभग आठ मिनट बीस सेकंड लगते हैं।",
+     "text": {
+      "s3-text": "8 मिनट 20 सेकंड"
+     },
+     "accentWords": {
+      "s3-text": {
+       "20": "#FFCC33"
+      }
+     }
+    },
+    "scene-004": {
+     "narration": "गुरुत्वाकर्षण भी इसी रफ़्तार से चलता है। इसलिए धरती खाली जगह के चक्कर लगाती रहेगी।",
+     "text": {
+      "s4-text": "गुरुत्व भी इंतज़ार करता है"
+     },
+     "accentWords": {
+      "s4-text": {
+       "गुरुत्व": "#775CFF"
+      }
+     }
+    },
+    "scene-005": {
+     "narration": "आठवें मिनट पर ख़बर पहुँचेगी, और धरती सीधी रेखा में अंधेरे में निकल जाएगी।",
+     "text": {
+      "s5-text": "सीधे अंधेरे में"
+     },
+     "accentWords": {
+      "s5-text": {
+       "अंधेरे": "#FF3B6B"
+      }
+     }
+    },
+    "scene-006": {
+     "narration": "फिर ठंड बढ़ेगी। कुछ हफ़्तों में सतह का औसत तापमान जमाव बिंदु पर आ जाएगा।",
+     "text": {
+      "s6-text": "हफ़्तों में जमाव"
+     },
+     "accentWords": {
+      "s6-text": {
+       "जमाव": "#00D9FF"
+      }
+     }
+    },
+    "scene-007": {
+     "narration": "पौधे खाना बनाना बंद कर देंगे। पर गहरे समुद्र के वेंट के आसपास जीवन चलता रह सकता है।",
+     "text": {
+      "s7-text": "बिना सूरज का जीवन"
+     },
+     "accentWords": {
+      "s7-text": {
+       "सूरज": "#FFCC33"
+      }
+     }
+    },
+    "scene-008": {
+     "narration": "आप उन आठ मिनटों में क्या करेंगे? कमेंट में बताइए। अगला: चाँद।",
+     "text": {
+      "s8-text": "8 मिनट बाकी"
+     },
+     "accentWords": {
+      "s8-text": {
+       "8": "#FFCC33"
+      }
+     }
+    }
+   }
+  }
+ }
 }
