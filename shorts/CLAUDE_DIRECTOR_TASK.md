@@ -15,6 +15,13 @@ Works for **Shorts** (1080x1920, 30 fps, about 45-59 s) and **documentaries** (1
 
 ## Steps
 
+**Strategy:** apply the `video-strategy` skill (research evidence, title test, thumbnail concepts, 30-second rule, retention, QA gate).
+Every manifest carries a designed **thumbnail**: `"thumbnail": {"headline": "1-4 big words", "concept": "why it works",
+"sceneType": "object-assembly", "environment": "holographic-room", "accentWords": {"WORD": "#FFCC33"}}` plus
+`localizations.<lang>.thumbnailText`. The title explains the premise, the thumbnail shows the consequence (never the same words). The
+workflow renders it with the engine (1280x720, or 720x1280 for Shorts), uploads it with the video and keeps it in the upload queue when
+YouTube refuses the video.
+
 1. **Topic and research.** Same as the daily task (`CLAUDE_DAILY_TASK.md` steps 1-3 for a Short,
    `CLAUDE_DOCUMENTARY_TASK.md` for a documentary): check `data/history.json` / `data/documentary_history.json`, pick a
    topic, verify every number with two sources. Never put an unchecked fact in the narration.
@@ -30,7 +37,7 @@ Works for **Shorts** (1080x1920, 30 fps, about 45-59 s) and **documentaries** (1
    workflow artifacts (add `keep_in_repo: true` to also commit them).
 5. Check the run's log: the engine prints `Manifest check:` warnings, a preflight (a sparse test render that reports text
    that does not fit) and the quality checks (black or frozen frames, loudness). The artifact contains `render-report.json`,
-   `thumbnail.png`, `contact-sheet.png` and `captions.srt` per language.
+   `thumbnail.jpg`, `contact-sheet.png` and `captions.srt` per language.
 
 ## The manifest, compact form
 

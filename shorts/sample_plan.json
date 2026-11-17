@@ -120,7 +120,8 @@
           "prop": "heart"
         }
       }
-    ]
+    ],
+    "thumbnail_text": "Your body wants fur"
   },
   "hindi": {
     "title": "रोंगटे खड़े क्यों होते हैं? फ़र वाला पुराना रिफ़्लेक्स",
@@ -239,6 +240,7 @@
           "prop": "heart"
         }
       }
-    ]
+    ],
+    "thumbnail_text": "शरीर को चाहिए फ़र"
   }
 }

@@ -341,6 +341,14 @@ def validate(m: dict) -> tuple[list[str], list[str]]:
     tgt = m["creativeBrief"]["targetDurationSeconds"]
     if abs(total - tgt) > 0.2 * tgt:
         warns.append(f"planned length {total:.0f}s is far from the target {tgt}s")
+    th = m.get("thumbnail") or {}
+    if th.get("headline") and (len(words(th["headline"])) > 4 or len(th["headline"]) > 24):
+        warns.append("thumbnail.headline should be 1-4 big words (at most 24 characters)")
+    if not th.get("headline"):
+        warns.append("no thumbnail.headline: the hook text is used (write 1-4 words that show the consequence, not the title)")
+    for lang, loc in (m.get("localizations") or {}).items():
+        if not loc.get("thumbnailText"):
+            warns.append(f"localizations.{lang}.thumbnailText is missing: the thumbnail uses the hook text of that language")
     if doc and not m.get("chapters"):
         warns.append("no chapters listed: YouTube chapter markers are made from `chapters` ([{title, firstScene}])")
     if doc and not (4 * 60 <= total <= 11 * 60):

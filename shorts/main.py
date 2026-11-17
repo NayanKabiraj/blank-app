@@ -14,18 +14,21 @@ import sys
 from pathlib import Path
 
 from . import compose, config, pending, upload
+from .director import thumbnail as thumbs
 from .plan import Plan, validate
 
 log = logging.getLogger("shorts")
 
 
-def _store(video: Path, script, lang: str) -> str:
+def _store(video: Path, script, lang: str, thumb: Path | None = None) -> str:
     """Keep every video in videos/<date>/ (uploaded or not), together with the title,
     description and tags, so it can be re-used or uploaded by hand."""
     day = config.VIDEOS_DIR / dt.date.today().isoformat()
     day.mkdir(parents=True, exist_ok=True)
     dest = day / f"{lang}.mp4"
     shutil.copy2(video, dest)
+    if thumb:
+        shutil.copy2(thumb, day / f"{lang}_thumbnail.jpg")
     (day / f"{lang}_youtube.txt").write_text(
         f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{script.description}\n\n"
         f"TAGS:\n{', '.join(script.tags)}\n", encoding="utf-8")
@@ -62,12 +65,13 @@ def main() -> int:
             video = compose.build(scripts[lang], lang, plan.mood, out / f"work_{lang}", plan.niche)
             final = out / f"{dt.date.today().isoformat()}_{lang}.mp4"
             shutil.move(video, final)
+            thumb = thumbs.for_script(scripts[lang], plan.niche, lang, out / f"{dt.date.today().isoformat()}_{lang}.jpg", short=True)
             # Always keep a copy first, so the video is saved even if the upload fails
-            entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang)}
+            entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang, thumb)}
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
-                entry.update(pending.publish(final, scripts[lang], lang, topic=plan.topic))
+                entry.update(pending.publish(final, scripts[lang], lang, topic=plan.topic, thumbnail=thumb))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so one language can still publish
             log.exception("Failed to produce the %s Short", lang)

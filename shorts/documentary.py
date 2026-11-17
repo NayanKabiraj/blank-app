@@ -20,6 +20,7 @@ import sys
 from pathlib import Path
 
 from . import compose, config, pending, upload
+from .director import thumbnail as thumbs
 from .plan import DocPlan, doc_seconds, validate_doc
 
 log = logging.getLogger("shorts.documentary")
@@ -66,6 +67,7 @@ def main() -> int:
             log.info("Documentary %s: about %.1f minutes planned", lang, doc_seconds(script, lang) / 60)
             video, chapters = compose.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
             desc = chapter_description(script.description, chapters)
+            thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_documentary_{lang}.jpg", short=False)
             final = out / f"{today}_documentary_{lang}.mp4"
             shutil.move(video, final)
             (out / f"{today}_documentary_{lang}_youtube.txt").write_text(
@@ -80,7 +82,7 @@ def main() -> int:
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
-                entry.update(pending.publish(final, script, lang, short=False, description=desc, topic=plan.topic))
+                entry.update(pending.publish(final, script, lang, short=False, description=desc, topic=plan.topic, thumbnail=thumb))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so the other language can still be made
             log.exception("Failed to produce the %s documentary", lang)

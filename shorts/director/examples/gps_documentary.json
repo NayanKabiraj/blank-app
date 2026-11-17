@@ -466,7 +466,20 @@
             }
           }
         }
+      },
+      "thumbnailText": "कभी सिग्नल नहीं भेजा",
+      "thumbnailAccent": {
+        "नहीं": "#FF3B6B"
       }
+    }
+  },
+  "thumbnail": {
+    "headline": "NEVER SENT A SIGNAL",
+    "concept": "a glowing satellite core: your phone only listens, yet finds you",
+    "sceneType": "geometry-swarm",
+    "environment": "particle-space",
+    "accentWords": {
+      "NEVER": "#FF3B6B"
     }
   }
 }
