@@ -1,0 +1,284 @@
+{
+  "niche": "Science Explained",
+  "topic": "Why do doorknobs zap you in winter? (dry air traps your static charge)",
+  "research_summary": "Candidates (estimated scores /40): (1) static shocks in winter 35; (2) why your breath fogs in the cold 32; (3) how Google Maps sees traffic 31; also considered: chapped lips in winter 29, why planes leave contrails 28, how a pressure cooker works 27, Black Friday price anchoring 27 (prices-99 was done), why onions make you cry 26, Mpemba effect 24 (contested, rejected), why we yawn 22 (contested, rejected). Winner: static shocks, because winter dryness is arriving across North India now, everyone has been zapped by a doorknob, and the mechanism (charge builds, dry air removes the leaking water film) is visual. Science Explained was last used two days ago, so it is not cooling down. Mechanism: rubbing moves electrons onto the body; a thin water film on surfaces normally leaks the charge away; heated winter air is dry so the film disappears and charge accumulates until it jumps to a conductor. Facts and sources: University of Kentucky Physics (sciworks, static in winter: water film conducts, dry conditions cause shocks); Scripps News (less water vapour, higher voltage); EPA guidance of 30 to 50 percent indoor humidity; Desco/ESD Association handbook: a person feels a discharge at roughly 3,000 V (some sources say 2,000 to 4,000 V, so the number is marked approximate), sees it above roughly 5,000 V.",
+  "mood": "upbeat",
+  "english": {
+    "title": "Why do doorknobs zap you in winter?",
+    "description": "Why does a doorknob zap you in winter? Your body builds up charge and dry air stops it leaking away. #static #winter #science",
+    "tags": [
+      "static shock",
+      "why do I get shocked in winter",
+      "static electricity",
+      "dry air",
+      "science explained",
+      "winter science",
+      "electrons",
+      "animated explainer"
+    ],
+    "hook_text": "Thousands of volts. Unfelt.",
+    "scenes": [
+      {
+        "text": "In winter, your body can carry thousands of volts. You just can't feel it.",
+        "keyword": "thousands of volts",
+        "graphic": {
+          "kind": "title",
+          "headline": "Thousands of volts?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "bulb"
+        }
+      },
+      {
+        "text": "Ever touched a doorknob and got zapped? Let's ask why.",
+        "keyword": "zapped",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Quick chat",
+          "caption": "",
+          "items": [
+            "Why do doorknobs zap me?",
+            "Your body is charged up",
+            "Charged? From what?",
+            "Rubbing, in dry air"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Rubbing shoes on carpet moves electrons, tiny charged particles, onto you. Where do they go?",
+        "keyword": "electrons",
+        "graphic": {
+          "kind": "flow",
+          "headline": "How you charge up",
+          "caption": "",
+          "items": [
+            "Shoes rub carpet",
+            "Electrons move",
+            "Charge builds on you",
+            "Spark at the knob"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Quick quiz: what makes winter zaps worse? The cold, the wind, or drier air? It's the drier air.",
+        "keyword": "drier air",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "What makes winter zaps worse?",
+          "caption": "",
+          "items": [
+            "Colder air",
+            "Drier air",
+            "Faster wind"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "Normally a thin, invisible film of water on surfaces lets charge leak away. Heated winter air is dry, so the film vanishes and the charge stays trapped.",
+        "keyword": "film of water",
+        "graphic": {
+          "kind": "build",
+          "headline": "Why charge stays",
+          "caption": "",
+          "items": [
+            "Heated, dry air",
+            "Water film gone",
+            "Charge trapped"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Guess how many volts you need to feel a zap? About three thousand!",
+        "keyword": "three thousand",
+        "graphic": {
+          "kind": "stat",
+          "headline": "3,000 V",
+          "caption": "to feel a zap, roughly",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So how do you stop it? Keep room humidity around thirty to fifty percent, or touch metal with your keys first.",
+        "keyword": "humidity",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "30-50% humidity",
+          "caption": "lets charge leak away",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "cloud"
+        }
+      },
+      {
+        "text": "So you carry thousands of volts, and dry air keeps them. Which doorknob got you? Tell me below! Follow to understand one new thing every day.",
+        "keyword": "dry air",
+        "graphic": {
+          "kind": "title",
+          "headline": "Your own charge",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "heart"
+        }
+      }
+    ]
+  },
+  "hindi": {
+    "title": "सर्दियों में हैंडल से झटका क्यों लगता है?",
+    "description": "सर्दियों में दरवाज़े का हैंडल छूते ही झटका क्यों लगता है? शरीर पर चार्ज जमा होता है और सूखी हवा उसे बहने नहीं देती। #स्टैटिक #सर्दी #विज्ञान",
+    "tags": [
+      "सर्दी में झटका क्यों लगता है",
+      "स्टैटिक बिजली",
+      "सूखी हवा",
+      "विज्ञान",
+      "science in hindi",
+      "इलेक्ट्रॉन",
+      "सर्दियों का विज्ञान",
+      "animated explainer"
+    ],
+    "hook_text": "हज़ारों वोल्ट, महसूस नहीं",
+    "scenes": [
+      {
+        "text": "सर्दियों में आपका शरीर हज़ारों वोल्ट लिए घूमता है, और आपको पता भी नहीं चलता।",
+        "keyword": "हज़ारों वोल्ट",
+        "graphic": {
+          "kind": "title",
+          "headline": "हज़ारों वोल्ट?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "bulb"
+        }
+      },
+      {
+        "text": "कभी दरवाज़े का हैंडल छूते ही झटका लगा है? तो पूछते हैं, क्यों?",
+        "keyword": "झटका",
+        "graphic": {
+          "kind": "chat",
+          "headline": "छोटी बातचीत",
+          "caption": "",
+          "items": [
+            "हैंडल झटका क्यों देता है?",
+            "आपके शरीर में चार्ज है",
+            "चार्ज? कहाँ से?",
+            "सूखी हवा में रगड़ से"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "कालीन पर जूते रगड़ने से इलेक्ट्रॉन, यानी आवेशित कण, शरीर पर आ जाते हैं। ये जाएँ कहाँ?",
+        "keyword": "इलेक्ट्रॉन",
+        "graphic": {
+          "kind": "flow",
+          "headline": "चार्ज कैसे चढ़ता है",
+          "caption": "",
+          "items": [
+            "जूते कालीन पर",
+            "इलेक्ट्रॉन खिसके",
+            "शरीर पर चार्ज",
+            "हैंडल पर चिंगारी"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "छोटा क्विज़: झटके सर्दी में ज़्यादा क्यों? ठंड, हवा या सूखापन? जवाब: सूखी हवा।",
+        "keyword": "सूखी हवा",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "सर्दी में झटके ज़्यादा क्यों?",
+          "caption": "",
+          "items": [
+            "ज़्यादा ठंड",
+            "सूखी हवा",
+            "तेज़ हवा"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "सतहों पर पानी की परत चार्ज को बहा देती है। सर्दी की गरम हवा सूखी है, परत ग़ायब, चार्ज फँसा।",
+        "keyword": "पानी की परत",
+        "graphic": {
+          "kind": "build",
+          "headline": "चार्ज क्यों फँसता है",
+          "caption": "",
+          "items": [
+            "गरम, सूखी हवा",
+            "पानी की परत ग़ायब",
+            "चार्ज फँसा"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "अंदाज़ा लगाइए, झटका महसूस होने के लिए कितने वोल्ट चाहिए? करीब तीन हज़ार!",
+        "keyword": "तीन हज़ार",
+        "graphic": {
+          "kind": "stat",
+          "headline": "3,000 वोल्ट",
+          "caption": "झटके के लिए, लगभग",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो बचें कैसे? कमरे की नमी तीस से पचास प्रतिशत रखें, या पहले चाबी से धातु छुएँ।",
+        "keyword": "नमी",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "30-50% नमी",
+          "caption": "चार्ज बहता रहता है",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "cloud"
+        }
+      },
+      {
+        "text": "हज़ारों वोल्ट आप लिए घूमते हैं, सूखी हवा उन्हें रोकती है। कौन सा हैंडल झटका दे गया? कमेंट में बताइए! रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "keyword": "सूखी हवा",
+        "graphic": {
+          "kind": "title",
+          "headline": "आपका अपना चार्ज",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "heart"
+        }
+      }
+    ]
+  }
+}

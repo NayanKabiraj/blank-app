@@ -140,5 +140,25 @@
     "mood": "dramatic",
     "engine": "director",
     "videos": {}
+  },
+  {
+    "date": "2026-11-17",
+    "niche": "Science Explained",
+    "topic": "Why do doorknobs zap you in winter? (dry air traps your static charge)",
+    "mood": "upbeat",
+    "videos": {
+      "en": {
+        "file": "2026-11-17_en.mp4",
+        "saved_to": "videos/2026-11-17/en.mp4",
+        "queued": "videos/unpublished/2026-11-17_short_en",
+        "error": "daily upload limit already reached in this run"
+      },
+      "hi": {
+        "file": "2026-11-17_hi.mp4",
+        "saved_to": "videos/2026-11-17/hi.mp4",
+        "queued": "videos/unpublished/2026-11-17_short_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
