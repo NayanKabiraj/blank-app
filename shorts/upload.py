@@ -28,8 +28,20 @@ def _clean_tags(tags: list[str]) -> list[str]:
     return out
 
 
+def set_thumbnail(yt, video_id: str, thumbnail: Path) -> bool:
+    """Upload a custom thumbnail (JPEG/PNG under 2 MB; the channel must be verified). Never raises: a missing thumbnail
+    must not lose or re-queue a video that is already on YouTube."""
+    try:
+        yt.thumbnails().set(videoId=video_id, media_body=MediaFileUpload(str(thumbnail), mimetype="image/jpeg")).execute()
+        log.info("Thumbnail set for %s", video_id)
+        return True
+    except Exception as e:  # noqa: BLE001
+        log.warning("Thumbnail upload failed for %s: %s", video_id, str(e)[:200])
+        return False
+
+
 def upload(video: Path, script, lang: str, short: bool = True, description: str | None = None,
-           privacy: str | None = None) -> str:
+           privacy: str | None = None, thumbnail: Path | None = None) -> str:
     """Upload a Short (default) or a long-form video. `description` overrides the script's (chapters added)."""
     creds = Credentials(
         None,
@@ -72,5 +84,7 @@ def upload(video: Path, script, lang: str, short: bool = True, description: str 
         if status:
             log.info("Upload %d%%", int(status.progress() * 100))
     vid = response["id"]
+    if thumbnail and Path(thumbnail).exists():
+        set_thumbnail(yt, vid, Path(thumbnail))
     log.info("Uploaded %s: https://youtube.com/%s%s", lang, "shorts/" if short else "watch?v=", vid)
     return vid

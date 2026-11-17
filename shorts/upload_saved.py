@@ -80,7 +80,8 @@ def main() -> int:
             log.error("YouTube credentials missing for %s", lang)
             failures.append(lang)
         else:
-            ids[lang] = upload.upload(video, scripts[lang], lang)
+            thumb = day / f"{lang}_thumbnail.jpg"
+            ids[lang] = upload.upload(video, scripts[lang], lang, thumbnail=thumb if thumb.exists() else None)
             log.info("Uploaded %s (privacy: %s), video id %s", lang, config.YT_PRIVACY, ids[lang])
     for entry in hist:  # remember the video ids in the history
         if entry.get("date") == args.date:

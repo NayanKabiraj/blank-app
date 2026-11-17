@@ -77,6 +77,8 @@ class LangScript(BaseModel):
     description: str = Field(description="2-3 sentence YouTube description plus 3-5 hashtags.")
     tags: List[str] = Field(description="8-12 search tags.")
     hook_text: str = Field(description="On-screen hook shown in the first 3 seconds, max 6 words.")
+    thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
+                                "(not a copy of the title). Empty = the hook text is used.")
     scenes: List[Scene] = Field(description="6-9 scenes; first is the hook, last is a call to follow.")
 
 
@@ -119,6 +121,16 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
+def _thumb_problems(lang: str, s) -> list[str]:
+    t = (getattr(s, "thumbnail_text", "") or "").strip()
+    out = []
+    if t and (len(t.split()) > 4 or len(t) > 24):
+        out.append(f"{lang}: thumbnail_text {t!r} is too long, use 1-4 big words (at most 24 characters)")
+    if t and t.lower().strip("?!. ") == s.title.lower().strip("?!. "):
+        out.append(f"{lang}: thumbnail_text repeats the title; the thumbnail should show the consequence, the title the premise")
+    return out
+
+
 def validate(plan: Plan) -> list[str]:
     """Extra checks beyond the schema. Returns a list of problems."""
     problems = []
@@ -130,6 +142,7 @@ def validate(plan: Plan) -> list[str]:
             problems.append(f"{lang}: {len(s.scenes)} scenes, expected 6-9")
         if len(s.title) > 90:
             problems.append(f"{lang}: title longer than 90 characters")
+        problems += _thumb_problems(lang, s)
         first = s.scenes[0].text if s.scenes else ""
         if len(first.split()) > 18:
             problems.append(f"{lang}: the hook (scene 1) is {len(first.split())} words, aim for 14 or fewer")
@@ -182,6 +195,8 @@ class DocScript(BaseModel):
     description: str = Field(description="3-5 sentence description plus 3-5 hashtags. Chapter timestamps are "
                              "added automatically.")
     tags: List[str] = Field(description="8-15 search tags.")
+    thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
+                                "(not a copy of the title). Empty = the first words of the title are used.")
     chapters: List[Chapter] = Field(description="3-12 chapters in order; chapter 1 is the cold open.")
 
     @property
@@ -221,6 +236,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
             problems.append(f"{lang}: {len(s.chapters)} chapters, expected 3-12")
         if len(s.title) > 90:
             problems.append(f"{lang}: title longer than 90 characters")
+        problems += _thumb_problems(lang, s)
         for c, ch in enumerate(s.chapters, 1):
             if len(ch.title) > 50:
                 problems.append(f"{lang} chapter {c}: title longer than 50 characters")

@@ -147,13 +147,16 @@ def main() -> int:
                 name = f"documentary_{lang}" if doc else lang
                 shutil.copy2(final, day / f"{name}.mp4")
                 shutil.copy2(out / f"{final.stem}_youtube.txt", day / f"{name}_youtube.txt")
+                if Path(rep["files"]["thumbnail"]).exists():
+                    shutil.copy2(rep["files"]["thumbnail"], day / f"{name}_thumbnail.jpg")
                 entry["saved_to"] = f"videos/{today}/{name}.mp4"
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
                 priv = M.privacy(ml, config.YT_PRIVACY)
                 entry.update(pending.publish(final, script, lang, short=not doc, description=desc, privacy=priv,
-                                             topic=m["creativeBrief"].get("topic", ""), date=today))
+                                             topic=m["creativeBrief"].get("topic", ""), date=today,
+                                             thumbnail=Path(rep["files"]["thumbnail"]) if Path(rep["files"]["thumbnail"]).exists() else None))
                 entry["privacy"] = priv
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so the other language can still be made

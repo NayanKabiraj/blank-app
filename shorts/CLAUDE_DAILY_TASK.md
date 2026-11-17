@@ -6,6 +6,14 @@ To change how Claude picks topics or writes scripts, edit this file.
 
 ## Steps
 
+**Strategy:** the research, packaging (title + thumbnail), retention and QA rules in the `video-strategy` skill apply to every
+video. In this task that means: a title that passes the curiosity test, a **thumbnail** (below), a first line that proves the premise,
+a payoff, and a pointer to the next video in the close.
+
+**Thumbnail.** The workflow draws and uploads one per language (`shorts/director/thumbnail.py`). Write `thumbnail_text` for both
+`english` and `hindi`: 1-4 big words (24 characters at most) that show the *consequence*, not a copy of the title ("Your body wants
+fur", not "Why do we get goosebumps?"). Without it the hook text is used.
+
 The channel is an **explainer channel**: every Short answers one clear "how does X work?"
 or "why does X happen?" question, in simple words, with animated explainer graphics. **The
 goal of every video is watch-through and shares**: pick the question people are itching to

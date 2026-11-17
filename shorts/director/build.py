@@ -242,14 +242,17 @@ def build(m: dict, lang: str, work: Path, out_dir: Path) -> dict:
     narr.write_bytes(voice.read_bytes())
     video_out = out_dir / "final.mp4"
     video_out.write_bytes(final.read_bytes())
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{min(1.6, total / 4):.2f}", "-i", str(video_out), "-frames:v", "1", str(out_dir / "thumbnail.png")], check=False)
+    from . import thumbnail   # the designed thumbnail (focal subject + a few big words); a frame of the video is the fallback
+    thumb = thumbnail.for_manifest(m, lang, out_dir / "thumbnail.jpg")
+    if thumb is None:
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{min(1.6, total / 4):.2f}", "-i", str(video_out), "-frames:v", "1", "-q:v", "3", str(out_dir / "thumbnail.jpg")], check=False)
     step = max(2, int(total / 12))
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(video_out), "-vf", f"fps=1/{step},scale=360:-1,tile=6x2", "-frames:v", "1", str(out_dir / "contact-sheet.png")], check=False)
     checks = qc(video_out, m, work)
     report = {"lang": lang, "seconds": round(total, 2), "scenes": len(timed["scenes"]), "frames": render["frames"], "renderSeconds": round(render["seconds"]),
               "textOverflow": render["textOverflow"], "voiceEngine": config.TTS_ENGINE, "music": mood, "checks": checks,
               "timeline": [{"sceneId": s["sceneId"], "start": s["startSeconds"], "end": s["endSeconds"]} for s in timed["scenes"]],
-              "files": {"video": str(video_out), "thumbnail": str(out_dir / "thumbnail.png"), "captions": str(out_dir / "captions.srt")}}
+              "files": {"video": str(video_out), "thumbnail": str(out_dir / "thumbnail.jpg"), "captions": str(out_dir / "captions.srt")}}
     (out_dir / "render-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8")
     log.info("Rendered %s %.1fs, issues: %s", lang, total, checks["issues"] or "none")
     chap_t = []

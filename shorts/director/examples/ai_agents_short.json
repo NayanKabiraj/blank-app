@@ -1641,7 +1641,20 @@
             }
           }
         }
+      },
+      "thumbnailText": "एआई अब रुकता नहीं",
+      "thumbnailAccent": {
+        "रुकता": "#FFCC33"
       }
+    }
+  },
+  "thumbnail": {
+    "headline": "AI STOPS WAITING",
+    "concept": "a glowing agent core assembling itself: the consequence of the claim (AI acts on its own), not the title",
+    "sceneType": "object-assembly",
+    "environment": "holographic-room",
+    "accentWords": {
+      "WAITING": "#FFCC33"
     }
   }
 }

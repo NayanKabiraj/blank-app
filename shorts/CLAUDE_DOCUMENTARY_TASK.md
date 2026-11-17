@@ -12,6 +12,10 @@ It runs every day right after the daily Shorts task, in the same Claude session:
 
 ## Steps
 
+**Strategy:** follow the `video-strategy` skill too (research evidence, title and thumbnail, retention, pre-render QA). Write
+`thumbnail_text` for English and Hindi (1-4 big words, at most 24 characters, showing the consequence rather than repeating the title);
+the workflow draws a 1280x720 thumbnail from it and uploads it with the video.
+
 1. **Check the history.** In `NayanKabiraj/blank-app` on `main`, read `data/documentary_history.json`
    (it may not exist yet), `data/history.json` and `python -m shorts.niches recent`. Never repeat a
    topic. If `NICHE_HINT.txt` exists, it overrides the choices below.
