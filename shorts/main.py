@@ -15,6 +15,7 @@ from pathlib import Path
 
 from . import compose, config, pending, upload
 from .director import thumbnail as thumbs
+from . import strategy
 from .plan import Plan, validate
 
 log = logging.getLogger("shorts")
@@ -30,8 +31,8 @@ def _store(video: Path, script, lang: str, thumb: Path | None = None) -> str:
     if thumb:
         shutil.copy2(thumb, day / f"{lang}_thumbnail.jpg")
     (day / f"{lang}_youtube.txt").write_text(
-        f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{script.description}\n\n"
-        f"TAGS:\n{', '.join(script.tags)}\n", encoding="utf-8")
+        f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{strategy.up_next(script.description, script.next_video, lang)}\n\n"
+        f"TAGS:\n{', '.join(script.tags)}\n\nPINNED COMMENT:\n{script.pinned_comment}\n", encoding="utf-8")
     log.info("Saved %s", dest)
     return str(dest.relative_to(config.ROOT))
 
@@ -71,7 +72,8 @@ def main() -> int:
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
-                entry.update(pending.publish(final, scripts[lang], lang, topic=plan.topic, thumbnail=thumb))
+                entry.update(pending.publish(final, scripts[lang], lang, description=strategy.up_next(scripts[lang].description, scripts[lang].next_video, lang),
+                                             topic=plan.topic, thumbnail=thumb))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so one language can still publish
             log.exception("Failed to produce the %s Short", lang)
@@ -81,7 +83,9 @@ def main() -> int:
         config.DATA_DIR.mkdir(exist_ok=True)
         hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []
         hist.append({"date": dt.date.today().isoformat(), "niche": plan.niche,
-                     "topic": plan.topic, "mood": plan.mood, "videos": results})
+                     "topic": plan.topic, "mood": plan.mood, "cluster": plan.cluster,
+                     "follow_ups": plan.follow_ups, "next_video": plan.english.next_video, "gate_score": plan.gate_score,
+                     "thumbnail_text": plan.english.thumbnail_text, "videos": results})
         plans_dir = config.DATA_DIR / "plans"
         plans_dir.mkdir(exist_ok=True)
         (plans_dir / f"{dt.date.today().isoformat()}.json").write_text(

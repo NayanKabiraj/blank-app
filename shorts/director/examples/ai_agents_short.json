@@ -49,7 +49,8 @@
         "third-party-logos"
       ]
     },
-    "niche": "Technology"
+    "niche": "Technology",
+    "cluster": "AI at Work"
   },
   "director": {
     "role": "Claude acts as the creative director. Claude creates the script, narration, timing, emotional beats, visual concepts and scene instructions. Claude must not generate implementation-specific Three.js source code inside this manifest.",
@@ -414,7 +415,13 @@
     "openLoop": "The real shift happens when AI stops waiting for every instruction.",
     "payoff": "Developers will increasingly direct, review and govern AI-driven workflows instead of manually executing every step.",
     "callToAction": "Learn to direct the systems, not just use the tools.",
-    "fullNarration": "The biggest change in software development will not be better autocomplete. Today, most AI tools wait for you to ask a question. AI agents work differently. Give an agent a goal and it can break that goal into tasks, inspect files, write code, run tests and correct failures. That does not remove developers from the process. It changes where developers create value. Less time may go into repetitive execution, while more time goes into architecture, judgment, security and validation. The developer of the future may not write every line manually. But they will be responsible for directing the system, reviewing its decisions and proving that the result is safe. Learn to direct the systems, not just use the tools."
+    "fullNarration": "The biggest change in software development will not be better autocomplete. Today, most AI tools wait for you to ask a question. AI agents work differently. Give an agent a goal and it can break that goal into tasks, inspect files, write code, run tests and correct failures. That does not remove developers from the process. It changes where developers create value. Less time may go into repetitive execution, while more time goes into architecture, judgment, security and validation. The developer of the future may not write every line manually. But they will be responsible for directing the system, reviewing its decisions and proving that the result is safe. Learn to direct the systems, not just use the tools.",
+    "gateScore": 80,
+    "followUps": [
+      "What can an AI agent still not do?",
+      "How does an AI agent test its own code?",
+      "Will AI agents need managers?"
+    ]
   },
   "scenes": [
     {
@@ -1491,7 +1498,9 @@
     ],
     "category": "Science & Technology",
     "madeForKids": false,
-    "visibility": "private"
+    "visibility": "private",
+    "nextVideo": "How does an AI agent test its own code?",
+    "pinnedComment": "Would you let an AI agent merge code on its own, or always review it first?"
   },
   "localizations": {
     "hi": {
@@ -1645,7 +1654,9 @@
       "thumbnailText": "एआई अब रुकता नहीं",
       "thumbnailAccent": {
         "रुकता": "#FFCC33"
-      }
+      },
+      "nextVideo": "एआई एजेंट अपना कोड कैसे टेस्ट करता है?",
+      "pinnedComment": "क्या आप एआई एजेंट को खुद कोड मर्ज करने देंगे, या हमेशा खुद जाँचेंगे?"
     }
   },
   "thumbnail": {

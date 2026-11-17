@@ -13,6 +13,37 @@ particle counts, behaviours, text animation, transitions), so two videos on the 
 Works for **Shorts** (1080x1920, 30 fps, about 45-59 s) and **documentaries** (1920x1080, 24 fps, 5-10 min), in
 **English and Hindi** from the same manifest (`localizations.hi`).
 
+## Standing strategy (applies to every video, from now on)
+
+Every video is built around one journey: topic -> impression -> click -> first 30 seconds -> watch time -> satisfaction -> next video ->
+returning viewer. The full rules are in the `video-strategy` skill (`.claude/skills/video-strategy/SKILL.md`); this is the checklist for
+the task. Do not try to hack the algorithm: maximize curiosity x clarity x story x retention x satisfaction x series continuity.
+
+1. **Start from what is already researched.** `python -m shorts.niches recent` also prints `researched_queue` (concepts researched and
+   scored in `strategy/research-queue.json`, whose date window is open and which are not made yet) and `open_follow_ups` (ideas earlier
+   videos promised). A researched concept of the right kind (Short or documentary) wins unless another candidate beats its gate score by 4 or
+   more points; a follow-up continues a cluster and gets a tie-break bonus. Read the concept's `dossier` first and re-verify its facts.
+2. **Research before writing, and record it** in the manifest `story` and `creativeBrief` notes (the validator checks `story.gateScore`, `creativeBrief.cluster`, `story.followUps`, `nextVideo`, `pinnedComment`): `Candidates:` (top three with
+   scores), `Titles:` (at least ten, scored /50 for curiosity, clarity, emotional pull, thumbnail synergy, originality; the chosen one and
+   two backups), `Thumbnails:` (three materially different concepts: different subject, event or emotion, not recolours; the chosen one),
+   `Hooks:` (five openers, the chosen one), the facts with their sources and status (VERIFIED / PARTIALLY VERIFIED / FICTIONAL
+   ASSUMPTION / UNVERIFIED), the risks, and the quality gate. Separate FACT, OBSERVATION, INFERENCE and RECOMMENDATION. Never invent
+   metrics, views, CTR, retention, sources or numbers; if vidIQ credits are low or a tool is unavailable, say the competitor data is
+   NOT PUBLICLY VERIFIABLE and continue with web research.
+3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, 1-4 big words, never a copy of
+   the title). The first line proves the premise within 10 seconds; the first 30 seconds escalate. Every 20-40 seconds there is a reason to keep
+   watching. Every narration sentence says what the viewer sees.
+4. **Quality gate (`gate_score`, /100):** topic, curiosity, title, thumbnail, opening, story, visual potential, emotional engagement,
+   retention design, series potential, /10 each. 85-100 proceed; 75-84 improve the weakest parts first, then proceed; below 75 do not render
+   this concept, rework it or take the next candidate.
+5. **Audience growth loop (series and returning viewers).** Name the `cluster` (a 5-10 video series the idea belongs to) and write three
+   `follow_ups`. The close hands the viewer on: current question -> bigger question -> the next video, saved as `next_video` for each language
+   (the description gets an "Up next:" line automatically). In a manifest these are `creativeBrief.cluster`, `story.followUps`, `story.gateScore`, `publishingMetadata.nextVideo` / `pinnedComment` and `localizations.<lang>.nextVideo` / `pinnedComment`. Write one `pinned_comment` per language: a single viewer decision tied to the
+   central dilemma, as a question (saved in the `*_youtube.txt` file to pin). The history stores the cluster, follow-ups and next video, so the next
+   day's task can continue the series.
+6. **QA before the workflow starts** (the checklist in the skill: promise clear, hook immediate, no repeated scene, narration matches the picture,
+   no unsupported claim, safe areas, an ending that leads to another video) and run the validator. The workflow only renders and uploads.
+
 ## Steps
 
 **Strategy:** apply the `video-strategy` skill (research evidence, title test, thumbnail concepts, 30-second rule, retention, QA gate).

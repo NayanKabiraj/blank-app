@@ -35,6 +35,19 @@ before building. Do not rebuild a working pipeline, add a library, duplicate a c
 | render, QC, upload | the workflow `daily-shorts.yml` (`format: director` / `director-documentary` / `shorts` / `documentary`): render, quality checks, thumbnail, private upload, queue if YouTube refuses |
 | videos/<slug>/ research files | `strategy/<slug>/` (research.md, strategy.md, titles.md, thumbnail.md, script.md) only when the owner runs RESEARCH or BUILD interactively. The scheduled daily tasks commit nothing. `videos/` is for rendered videos and is cleaned automatically |
 
+## 1b. Standing rules (apply to every video, interactive or scheduled)
+
+- The research output is part of the plan, not a separate chore: `research_summary` records candidates, titles, thumbnails, hooks, facts with
+  status, risks and the gate; plans carry `cluster`, `follow_ups`, `gate_score`, per-language `thumbnail_text`, `next_video`, `pinned_comment`
+  (director manifests: `creativeBrief.cluster`, `story.followUps`, `story.gateScore`, `thumbnail`, `publishingMetadata.nextVideo/pinnedComment`).
+  The validators report anything missing; fix it before starting the workflow.
+- Researched concepts live in `strategy/research-queue.json` with a dossier under `strategy/<slug>/research.md`. After a RESEARCH command that
+  the owner asks you to keep, add the concept there (topic, niche, `match` keywords, date `window`, `gate_score`, title, `thumbnail_text`, hooks,
+  follow-ups, next video). `python -m shorts.niches recent` and `python -m shorts.strategy queue` show what is open; the daily tasks use it first.
+- The audience growth loop: cluster -> follow-ups -> "Up next" line and a close that points to the next video -> a pinned decision question ->
+  the history remembers it all so tomorrow continues the series.
+- No unverifiable numbers, ever. If vidIQ credits are low, say so and use public web research.
+
 ## 2. Pipeline for every video
 
 Research -> topic selection -> packaging (title + thumbnail) -> story design -> script -> storyboard -> scene JSON -> asset plan ->

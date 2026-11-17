@@ -1,0 +1,36 @@
+[
+  {
+    "kind": "short",
+    "topic": "Why does the supermoon look huge? (it is only about 7% bigger, your brain does the rest)",
+    "niche": "Space & Universe",
+    "match": ["supermoon"],
+    "window": {"from": "2026-11-18", "to": "2026-11-25"},
+    "gate_score": 79,
+    "title": "Why Does the Supermoon Look HUGE? (It Isn't)",
+    "thumbnail_text": "SAME SIZE?",
+    "hooks": [
+      "Next Tuesday's supermoon is only seven percent bigger. So why will it feel enormous?",
+      "The moon rising next Tuesday is lying to your brain.",
+      "Hold a pea at arm's length. The 'giant' moon fits behind it."
+    ],
+    "follow_ups": ["Why does the Moon always show the same face?", "How does the Moon move the tides?", "What if the Moon disappeared?"],
+    "next_video": "How does the Moon move the tides?",
+    "dossier": "strategy/supermoon-illusion/research.md",
+    "notes": "Full 'Beaver' supermoon 24 Nov 2026, 14:54 UTC (NASA). Verify the exact size and brightness percentages and the pea-at-arm's-length claim before writing; weakest parts of the gate: story and emotional close."
+  },
+  {
+    "kind": "documentary",
+    "topic": "How the Moon runs the tides",
+    "niche": "Earth & Nature",
+    "match": ["tides", "tide"],
+    "window": {"from": "2026-11-18", "to": "2026-12-31"},
+    "gate_score": 72,
+    "title": "How the Moon Moves the Ocean (and Why There Are Two Tides a Day)",
+    "thumbnail_text": "TWO TIDES?",
+    "hooks": ["The Moon pulls the sea up on the side facing it, and on the opposite side too. Why?"],
+    "follow_ups": ["Why does the Moon always show the same face?", "What are spring and neap tides?", "How do tides make electricity?"],
+    "next_video": "What if the Moon disappeared?",
+    "dossier": "strategy/supermoon-illusion/research.md",
+    "notes": "Documentary slot idea tied to the supermoon (supermoon tides are slightly higher). Needs its own research and fact check; gate score is a first estimate."
+  }
+]

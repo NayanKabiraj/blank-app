@@ -1,7 +1,7 @@
 {
   "niche": "India Explained",
   "topic": "How a UPI payment really works, from the tap to the bank",
-  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) How a UPI payment really works: 34 (4,5,4,5,4,5,4,3 on verifiability because the flow is documented mostly in explainers, not NPCI's own pages), India's most universal daily tech and timely with record October numbers. (2) Why prices end in 99: 35, used for today's third Short instead. (3) Why the sky changes colour at sunrise: 30. (4) How Wi-Fi works: 29. Winner for a documentary because it has a clear multi-step mechanism, a surprise (the app does not hold your money, the PIN is checked at your bank), real numbers and everyday stakes. Verified (16 Nov 2026) against several news reports of NPCI data: October 2026 UPI volume 25.47 billion transactions (up 23% year on year), value about 31.53 lakh crore rupees (first month above 30 lakh crore), about 822 million transactions a day and an average of more than 1 lakh crore rupees a day; August 24.51 billion and September 24.07 billion transactions. Flow of a payment from explainer sources: app sends the request, NPCI acts as the central switch and finds the beneficiary bank from the UPI ID (VPA), the remitter bank checks the UPI PIN and debits, the beneficiary bank credits, confirmations travel back; UPI runs round the clock including holidays. UPI launched in 2016 (NPCI). Not verified and left out: fees or MDR (NPCI deferred an MDR rollout on some merchant payments until after Diwali), exact timings in seconds, per-transaction limits. Reversal of failed debits and reference numbers are stated in general terms only.",
+  "research_summary": "Candidates (score out of 40: curiosity, universality, timeliness, search, surprise, visual, shareability, verifiability): (1) How a UPI payment really works: 34 (4,5,4,5,4,5,4,3 on verifiability because the flow is documented mostly in explainers, not NPCI's own pages), India's most universal daily tech and timely with record October numbers. (2) Why prices end in 99: 35, used for today's third Short instead. (3) Why the sky changes colour at sunrise: 30. (4) How Wi-Fi works: 29. Winner for a documentary because it has a clear multi-step mechanism, a surprise (the app does not hold your money, the PIN is checked at your bank), real numbers and everyday stakes. Verified (16 Nov 2026) against several news reports of NPCI data: October 2026 UPI volume 25.47 billion transactions (up 23% year on year), value about 31.53 lakh crore rupees (first month above 30 lakh crore), about 822 million transactions a day and an average of more than 1 lakh crore rupees a day; August 24.51 billion and September 24.07 billion transactions. Flow of a payment from explainer sources: app sends the request, NPCI acts as the central switch and finds the beneficiary bank from the UPI ID (VPA), the remitter bank checks the UPI PIN and debits, the beneficiary bank credits, confirmations travel back; UPI runs round the clock including holidays. UPI launched in 2016 (NPCI). Not verified and left out: fees or MDR (NPCI deferred an MDR rollout on some merchant payments until after Diwali), exact timings in seconds, per-transaction limits. Reversal of failed debits and reference numbers are stated in general terms only. Titles considered (/50): 'How a UPI payment really works' 44, 'What happens when you press Pay on UPI' 43, 'UPI: the 25 billion tap mystery' 38; chosen: the first. Thumbnails: A a glowing coin crossing two banks (chosen, 'TAP. TWO BANKS.'), B a phone with a stopwatch, C a giant 25 BILLION counter. Hooks: 'Twenty-five billion. That is how many times Indians tapped Pay in one month' (chosen), 'Your money never touches the app', 'Two banks, one tap, moments'. Quality gate 82: improve the payoff chapter.",
   "mood": "upbeat",
   "target_minutes": 5,
   "english": {
@@ -338,7 +338,10 @@
           }
         ]
       }
-    ]
+    ],
+    "next_video": "What happens when a UPI payment fails?",
+    "pinned_comment": "Would you trust one app for every payment, or keep a backup?",
+    "thumbnail_text": "TAP. TWO BANKS."
   },
   "hindi": {
     "title": "यूपीआई भुगतान असल में कैसे काम करता है? (आपके टैप से बैंक तक)",
@@ -674,6 +677,16 @@
           }
         ]
       }
-    ]
-  }
+    ],
+    "next_video": "UPI पेमेंट फेल होने पर क्या होता है?",
+    "pinned_comment": "क्या आप हर पेमेंट के लिए एक ही ऐप पर भरोसा करेंगे, या बैकअप रखेंगे?",
+    "thumbnail_text": "एक टैप, दो बैंक"
+  },
+  "cluster": "How India Pays",
+  "gate_score": 82,
+  "follow_ups": [
+    "How does a QR code store a payment?",
+    "What happens when a UPI payment fails?",
+    "How does Aadhaar prove it is you?"
+  ]
 }

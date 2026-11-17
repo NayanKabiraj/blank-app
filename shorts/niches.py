@@ -6,7 +6,7 @@ niches, and the topic's closest niche becomes the label; niches also act as a va
 (`recent` shows the ones used in the last two videos). `next` is the old rotation, kept as a
 fallback: the niche that has gone longest without a video. Edit NICHES to change the line-up.
 
-    python -m shorts.niches recent   # last videos, niche counts, cooling-down niches, all niches
+    python -m shorts.niches recent   # researched queue, open follow-ups, last videos, niche counts, cooling-down niches, all niches
     python -m shorts.niches next     # fallback: the niche longest without a video
     python -m shorts.niches list     # all niches
 """
@@ -110,7 +110,10 @@ def recent(history: list[dict] | None = None, n: int = 10) -> dict:
     counts: dict[str, int] = {}
     for h in history[-14:]:
         counts[h.get("niche")] = counts.get(h.get("niche"), 0) + 1
+    from . import strategy
     return {
+        "researched_queue": strategy.researched_queue(history),
+        "open_follow_ups": strategy.open_follow_ups(history),
         "last_videos": last,
         "niche_counts_last_14": counts,
         "cooling_down": [h.get("niche") for h in history[-2:]],

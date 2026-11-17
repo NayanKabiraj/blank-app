@@ -21,7 +21,8 @@
         "intelligent",
         "warm"
       ]
-    }
+    },
+    "cluster": "How Everyday Tech Works"
   },
   "randomization": {
     "globalSeed": 20261117
@@ -31,7 +32,13 @@
     "hook": "Your phone has never sent a single signal to space, yet it knows exactly where you are.",
     "openLoop": "How does a silent phone work out its position?",
     "payoff": "Four satellites, one clock fix, and a relativity correction.",
-    "callToAction": "What other everyday technology hides surprises like this?"
+    "callToAction": "What other everyday technology hides surprises like this?",
+    "gateScore": 79,
+    "followUps": [
+      "How does Google Maps see traffic?",
+      "Why is your phone clock always right?",
+      "How does a QR code store a link?"
+    ]
   },
   "chapters": [
     {
@@ -308,7 +315,9 @@
       "#Science",
       "#Technology"
     ],
-    "visibility": "private"
+    "visibility": "private",
+    "nextVideo": "How does Google Maps see traffic?",
+    "pinnedComment": "Would you give up location sharing for better maps, or keep it off?"
   },
   "localizations": {
     "hi": {
@@ -470,7 +479,9 @@
       "thumbnailText": "कभी सिग्नल नहीं भेजा",
       "thumbnailAccent": {
         "नहीं": "#FF3B6B"
-      }
+      },
+      "nextVideo": "गूगल मैप्स को ट्रैफ़िक कैसे दिखता है?",
+      "pinnedComment": "क्या आप बेहतर मैप के लिए लोकेशन शेयर करेंगे, या बंद रखेंगे?"
     }
   },
   "thumbnail": {

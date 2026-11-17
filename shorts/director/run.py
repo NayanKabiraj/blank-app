@@ -17,7 +17,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from .. import config, pending, upload
+from .. import config, pending, strategy, upload
 from . import build, manifest as M
 
 log = logging.getLogger("shorts.director")
@@ -53,11 +53,17 @@ def write_history(m: dict, results: dict, today: str) -> None:
     if is_doc(m):
         hist_file = config.DATA_DIR / "documentary_history.json"
         hist = json.loads(hist_file.read_text()) if hist_file.exists() else []
-        hist.append({"date": today, "niche": niche, "topic": topic, "minutes": round(m["scenes"][-1]["endSeconds"] / 60, 1), "engine": "director", "videos": results})
+        hist.append({"date": today, "niche": niche, "topic": topic, "minutes": round(m["scenes"][-1]["endSeconds"] / 60, 1), "engine": "director",
+                     "cluster": m["creativeBrief"].get("cluster", ""), "follow_ups": m.get("story", {}).get("followUps", []),
+                     "next_video": m.get("publishingMetadata", {}).get("nextVideo", ""), "gate_score": m.get("story", {}).get("gateScore", 0),
+                     "videos": results})
         hist_file.write_text(json.dumps(hist[-200:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     else:
         hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []
-        hist.append({"date": today, "niche": niche, "topic": topic, "mood": build.music_mood(m), "engine": "director", "videos": results})
+        hist.append({"date": today, "niche": niche, "topic": topic, "mood": build.music_mood(m), "engine": "director",
+                     "cluster": m["creativeBrief"].get("cluster", ""), "follow_ups": m.get("story", {}).get("followUps", []),
+                     "next_video": m.get("publishingMetadata", {}).get("nextVideo", ""), "gate_score": m.get("story", {}).get("gateScore", 0),
+                     "videos": results})
         plans = config.DATA_DIR / "plans"
         plans.mkdir(exist_ok=True)
         (plans / f"{today}.json").write_text(json.dumps(m, ensure_ascii=False, indent=1), encoding="utf-8")
@@ -132,14 +138,14 @@ def main() -> int:
             ml = M.localize(m, lang)
             rep = build.build(ml, lang, out / f"work_{lang}", out / lang)
             script = M.script(ml)
-            desc = script.description
+            desc = strategy.up_next(script.description, script.next_video, lang)
             if doc and rep.get("chapters"):
                 lines = "\n".join(f"{_stamp(t)} {title}" for title, t in rep["chapters"])
                 desc = f"{desc}\n\nChapters:\n{lines}\n"
             final = out / f"{today}_{'documentary_' if doc else ''}{lang}.mp4"
             shutil.copy2(rep["files"]["video"], final)
             (out / f"{today}_{'documentary_' if doc else ''}{lang}_youtube.txt").write_text(
-                f"TITLE:\n{script.title}{'' if doc else ' #Shorts'}\n\nDESCRIPTION:\n{desc}\n\nTAGS:\n{', '.join(script.tags)}\n", encoding="utf-8")
+                f"TITLE:\n{script.title}{'' if doc else ' #Shorts'}\n\nDESCRIPTION:\n{desc}\n\nTAGS:\n{', '.join(script.tags)}\n\nPINNED COMMENT:\n{script.pinned_comment}\n", encoding="utf-8")
             entry = {"file": final.name, "seconds": rep["seconds"], "issues": rep["checks"]["issues"], "engine": "director"}
             if not doc or args.keep_in_repo:   # Shorts are small enough to keep in the repo; documentaries are only artifacts
                 day = config.VIDEOS_DIR / today
