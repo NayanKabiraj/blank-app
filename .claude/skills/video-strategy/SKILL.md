@@ -79,6 +79,12 @@ Think in **content clusters**, not random videos: a selected concept yields the 
 should be able to grow into a 5-10 video cluster (for example SUPERPOWERS: every superpower, stop time, invincible, read minds,
 everyone gets powers, powers change daily, governments find out).
 
+## 4b. The "What if" series
+
+"What if" hypotheticals are a core format here (see `strategy/what-if-ideas.md` for the scored sweep and the formula). They are ideas until the research
+gate and fact-check are done: state which parts are physics (sources, status) and which are invented rules (FICTIONAL ASSUMPTION), never dress fiction up
+as fact, and keep medical, political and tragedy-adjacent premises out.
+
 ## 5. Titles
 
 At least 10 titles, scored /50 (curiosity, clarity, emotional pull, thumbnail synergy, originality). Priorities: curiosity +
@@ -105,6 +111,11 @@ focal 3D subject + the headline, 1280x720 for long videos, 720x1280 for Shorts, 
 - nothing written: the hook text is used, which is a fallback, not a design.
 The workflow uploads it with the video (`thumbnails.set`, needs a verified channel), keeps it next to a queued video if YouTube
 refuses the upload, and uploads it when the queue drains. Preview: `python -m shorts.director.thumbnail --manifest-file m.json --lang en --out t.jpg`.
+
+**Lettering** (added automatically): the headline is drawn with a thick dark outline, a warm gradient fill, a slight tilt and the accent colour on
+the key word, plus a small **tag chip** in the top corner: "WHAT IF?" when the title starts with What if / What happens / What would, otherwise
+the niche's subject (TECH, SPACE, SCIENCE, YOUR BODY, MONEY, EARTH, INDIA...). Override with `thumbnail.tag` (manifest) or leave it. Keep the
+headline to the consequence in 1-4 words; the chip is the category, not a second headline.
 
 ## 6b. Story engine and the first 30 seconds
 

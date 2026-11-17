@@ -4,7 +4,8 @@ Every video is part of a cluster. The daily task starts from `python -m shorts.n
 - `researched_queue`: concepts someone already researched and scored (strategy/research-queue.json) that are not made yet and whose
   window (a news hook with dates) is still open, and
 - `open_follow_ups`: the follow-up ideas earlier videos promised and nobody has made.
-A researched concept that fits today wins ties: it already passed the research gate, and series continuity is what brings viewers back.
+Entries have a `status`: "researched" (dossier and facts checked, ready) or "idea" (a scored starting point: do the research gate and
+fact-check first). A researched concept that fits today wins ties: it already passed the research gate, and series continuity is what brings viewers back.
 
     python -m shorts.strategy queue          # print what is open today
 """
@@ -45,9 +46,14 @@ def researched_queue(history: list[dict], today: dt.date | None = None) -> list[
         start = dt.date.fromisoformat(win["from"]) if win.get("from") else dt.date.min
         end = dt.date.fromisoformat(win["to"]) if win.get("to") else dt.date.max
         if start <= today <= end and not _covered(q.get("match") or [q.get("topic", "")], history):
-            out.append({k: q.get(k) for k in ("kind", "topic", "niche", "gate_score", "window", "title", "thumbnail_text", "hooks",
-                                              "follow_ups", "next_video", "dossier", "notes")})
-    return sorted(out, key=lambda q: (-(q.get("gate_score") or 0), (q.get("window") or {}).get("to", "9999")))
+            out.append({k: q.get(k) for k in ("kind", "status", "topic", "niche", "cluster", "gate_score", "window", "title", "thumbnail_text",
+                                              "hooks", "follow_ups", "next_video", "dossier", "notes")})
+    # time-boxed researched concepts first (a news hook expires), then other researched ones, then bare ideas; best score first within each
+    def rank(q):
+        timed = bool((q.get("window") or {}).get("to"))
+        tier = 0 if timed and q.get("status") != "idea" else 1 if q.get("status") != "idea" else 2
+        return (tier, (q.get("window") or {}).get("to", "9999"), -(q.get("gate_score") or 0))
+    return sorted(out, key=rank)
 
 
 STOP = {"why", "how", "does", "what", "when", "the", "that", "with", "from", "your", "this", "are", "you", "did", "for", "and", "can", "will"}

@@ -39,6 +39,11 @@ NICHE_LOOK = {
     "India Explained": ("kinetic-typography", "abstract-dark"), "History of Ideas": ("timeline-3d", "digital-city"),
 }
 ACCENTS = ["#FFCC33", "#00D9FF", "#FF3B6B"]
+# a short tag chip (top corner) is part of the lettering: "WHAT IF?" for hypotheticals, otherwise the subject of the channel's niche
+NICHE_TAG = {"How Tech Works": "TECH", "AI Explained": "AI", "Science Explained": "SCIENCE", "Space & Universe": "SPACE", "Human Body": "YOUR BODY",
+             "Brain & Psychology": "YOUR BRAIN", "Money Explained": "MONEY", "Earth & Nature": "EARTH", "How It's Made": "HOW IT'S MADE",
+             "Engineering Marvels": "ENGINEERING", "India Explained": "INDIA", "History of Ideas": "HISTORY", "Technology": "TECH"}
+WHAT_IF = re.compile(r"^\s*(what\s+(if|happens|would)|अगर|क्या\s+हो\s+अगर)", re.I)
 HERO_SCENES = {"object-assembly", "geometry-swarm", "network-nodes", "diagram-3d", "wave-field", "timeline-3d"}   # scenes with one clear focal subject
 
 
@@ -63,6 +68,14 @@ def _accent_words(headline: str, given: dict | None, lang: str) -> dict:
     return {re.sub(r"[?!.,]", "", pick): ACCENTS[0]}
 
 
+def pick_tag(title: str, niche: str, given: str | None, lang: str = "en") -> str:
+    if given is not None:
+        return given[:14]
+    if WHAT_IF.search(title or ""):
+        return "अगर?" if lang == "hi" else "WHAT IF?"
+    return NICHE_TAG.get(niche, "")
+
+
 def spec_from_manifest(m: dict, lang: str) -> dict:
     """The thumbnail spec of a (completed) director manifest for one language."""
     t = copy.deepcopy(m.get("thumbnail") or {})
@@ -79,7 +92,8 @@ def spec_from_manifest(m: dict, lang: str) -> dict:
     return {"headline": headline, "lang": lang, "sceneType": t.get("sceneType") or hero,
             "environment": t.get("environment") or first["environment"]["preset"], "objects": t.get("objects") or (first.get("objects") if hero == first["sceneType"] else None),
             "accentWords": _accent_words(headline, (loc.get("thumbnailAccent") or t.get("accentWords")), lang),
-            "palette": m["brandSystem"]["defaultPalette"], "seed": m["randomization"]["globalSeed"], "concept": t.get("concept", "")}
+            "palette": m["brandSystem"]["defaultPalette"], "seed": m["randomization"]["globalSeed"], "concept": t.get("concept", ""),
+            "tag": pick_tag(M.localize(m, lang).get("publishingMetadata", {}).get("title", ""), m["creativeBrief"].get("niche", ""), loc.get("thumbnailTag", t.get("tag")) if lang != "en" or "tag" in t else None, lang)}
 
 
 def spec_from_script(script, niche: str, lang: str) -> dict:
@@ -91,7 +105,8 @@ def spec_from_script(script, niche: str, lang: str) -> dict:
     headline = shorten(text)
     return {"headline": headline, "lang": lang, "sceneType": scene_type, "environment": env, "objects": None,
             "accentWords": _accent_words(headline, None, lang), "palette": M.DEFAULTS["brandSystem"]["defaultPalette"],
-            "seed": sum(map(ord, script.title)) % 100000, "concept": ""}
+            "seed": sum(map(ord, script.title)) % 100000, "concept": "",
+            "tag": pick_tag(script.title, niche, getattr(script, "thumbnail_tag", None), lang)}
 
 
 def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
@@ -101,7 +116,11 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
              "camera": {"preset": "dolly-out", "speed": 0.3, "fov": 46}, "energy": 0.9, "durationSeconds": 4.0,
              "textElements": [{"id": "headline", "text": spec["headline"], "animation": "kinetic-sentence",
                                "position": {"x": 0, "y": -3.3 if land else -2.6, "z": 0},
-                               "style": {"scale": 1.0 if land else 1.1, "accentWords": spec["accentWords"]}}]}
+                               "style": {"scale": 1.0 if land else 1.1, "accentWords": spec["accentWords"], "outline": True,
+                                         "gradient": ["#FFFFFF", "#FFE9A6"], "tilt": -2.5}}]}
+    if spec.get("tag"):
+        scene["textElements"].append({"id": "tag", "text": spec["tag"], "animation": "kinetic-sentence", "position": {"x": -3.1 if land else -1.3, "y": 4.4 if land else 3.5, "z": 0},
+                                      "style": {"scale": 0.42, "color": "#05070D", "chip": spec["palette"].get("accent", "#FFCC33"), "tilt": -4, "outline": False}})
     if spec.get("objects"):
         scene["objects"] = spec["objects"]
     m = {"creativeBrief": {"format": "documentary" if land else "short", "targetDurationSeconds": 4,

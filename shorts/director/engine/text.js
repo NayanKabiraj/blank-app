@@ -19,6 +19,7 @@ export class TextElement {
     const st = spec.style || {};
     this.weight = st.weight || 800;
     this.color = st.color || ctx.palette.textPrimary;
+    this.outline = !!st.outline; this.gradient = st.gradient || null; this.chip = st.chip || null; this.tilt = st.tilt || 0;
     this.accent = {};
     Object.entries(st.accentWords || {}).forEach(([k, v]) => { this.accent[strip(k)] = v; });
     const fam = { primary: ctx.fonts.primary, secondary: ctx.fonts.secondary, monospace: ctx.fonts.monospace, inter: ctx.fonts.primary }[st.font || 'primary'] || ctx.fonts.primary;
@@ -112,12 +113,23 @@ export class TextElement {
     c.textAlign = 'left'; c.textBaseline = 'middle';
     if (this.ctx.lang !== 'hi') c.letterSpacing = `${(this.size * 0.01).toFixed(1)}px`;
     c.globalAlpha = alpha;
+    if (this.chip) {   // a rounded tag behind the text ("WHAT IF?"), with a thick outline
+      const x = this.pad * 0.35, y = this.pad * 0.35, w = this.cw - x * 2, h = this.chh - y * 2, r = h * 0.28;
+      c.save(); c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath();
+      c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = this.size * 0.2; c.shadowOffsetY = this.size * 0.08; c.fillStyle = this.chip; c.fill();
+      c.shadowColor = 'transparent'; c.lineWidth = this.size * 0.07; c.strokeStyle = '#05070d'; c.stroke(); c.restore();
+    }
   }
   glyph(c, text, x, y, color, accent, a = 1) {
     const s = this.size;
     c.save();
     c.globalAlpha *= a;
     if (text === '→') { this.arrow(c, x, y, s * 0.9, color); c.restore(); return; }
+    if (this.outline) {   // thumbnail lettering: a thick dark outline under the fill, readable at phone size
+      c.lineJoin = 'round'; c.miterLimit = 2; c.lineWidth = s * 0.2; c.strokeStyle = '#05070d'; c.shadowColor = 'rgba(0,0,0,0.85)'; c.shadowBlur = s * 0.12; c.shadowOffsetY = s * 0.07;
+      c.strokeText(text, x, y); c.shadowColor = 'transparent';
+      if (this.gradient && !accent) { const g = c.createLinearGradient(0, y - s * 0.5, 0, y + s * 0.5); g.addColorStop(0, this.gradient[0]); g.addColorStop(1, this.gradient[1]); color = g; }
+    }
     // dark outline-ish shadow for contrast on any background, coloured glow for accent words
     c.shadowColor = 'rgba(0,0,0,0.7)'; c.shadowBlur = s * 0.18; c.shadowOffsetY = s * 0.04;
     c.fillStyle = color; c.fillText(text, x, y);
@@ -258,7 +270,7 @@ export class TextElement {
     const k = this.ctx.pxToWorld / OVERSAMPLE;
     this.mesh.scale.set(this.canvas.width * k * sx * pulse, this.canvas.height * k * sx * pulse, 1);
     this.mesh.position.z = this.baseZ + mz;
-    this.mesh.rotation.y = rotY;
+    this.mesh.rotation.y = rotY; this.mesh.rotation.z = THREE.MathUtils.degToRad(this.tilt);
     if (this.pointsObj) { this.pointsObj.position.z = this.baseZ; this.pointsObj.scale.setScalar(pulse); }
   }
 
