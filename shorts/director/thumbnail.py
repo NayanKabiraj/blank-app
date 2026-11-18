@@ -24,7 +24,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from . import build, manifest as M
+from . import build, manifest as M, stock
 
 log = logging.getLogger(__name__)
 DIR = Path(__file__).resolve().parent
@@ -144,6 +144,31 @@ def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], lis
     return objs, st
 
 
+STOCK_QUERY = {"moon": "full moon", "sun": "sun solar", "earth": "Earth from space"}
+
+
+def stock_query(spec: dict, kind: str | None) -> str:
+    return spec.get("stock_query") or STOCK_QUERY.get(kind or "") or re.sub(r"[?!.,]", "", spec.get("headline", ""))
+
+
+def composite_photo(jpg_in: Path, photo: Path, out: Path, land: bool) -> None:
+    """Paste the stock photo as a round, white-rimmed 'porthole' on the subject spot (where the 3D body would be), with a soft shadow."""
+    from PIL import Image, ImageDraw, ImageFilter, ImageOps
+    base = Image.open(jpg_in).convert("RGB"); W, H = base.size
+    d = int(H * 0.56) if land else int(W * 0.56)
+    cx, cy = (int(W * 0.76), int(H * 0.34)) if land else (int(W * 0.5), int(H * 0.34))
+    img = ImageOps.fit(Image.open(photo).convert("RGB"), (d, d), Image.LANCZOS)
+    mask = Image.new("L", (d * 4, d * 4), 0); ImageDraw.Draw(mask).ellipse((0, 0, d * 4 - 1, d * 4 - 1), fill=255); mask = mask.resize((d, d), Image.LANCZOS)
+    rim = max(8, d // 40)
+    shadow = Image.new("L", (d + 2 * rim + 60, d + 2 * rim + 60), 0); ImageDraw.Draw(shadow).ellipse((30, 30, d + 2 * rim + 30, d + 2 * rim + 30), fill=150)
+    shadow = shadow.filter(ImageFilter.GaussianBlur(14))
+    base.paste((0, 0, 0), (cx - d // 2 - rim - 30 + 10, cy - d // 2 - rim - 30 + 14), shadow)
+    ring = Image.new("L", (d + 2 * rim, d + 2 * rim), 0); ImageDraw.Draw(ring).ellipse((0, 0, d + 2 * rim - 1, d + 2 * rim - 1), fill=255)
+    base.paste((255, 255, 255), (cx - d // 2 - rim, cy - d // 2 - rim), ring)
+    base.paste(img, (cx - d // 2, cy - d // 2), mask)
+    base.save(out, quality=92)
+
+
 def stickers_for(spec: dict, land: bool) -> list[dict]:
     """Click-catching, friendly extras: a reaction face looking at the subject, a ring around the subject, a "?" badge. Faces and
     curiosity cues are what make people tap; `spec["stickers"] = False` turns them off, a list replaces them."""
@@ -182,9 +207,11 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
                                       "style": {"scale": 0.42, "color": "#05070D", "chip": spec["palette"].get("accent", "#FFCC33"), "tilt": -4, "outline": False}})
     kind = None if spec.get("stickers") is False and spec.get("objects") else pick_subject(spec)
     if kind and not spec.get("objects") and spec.get("variant") != "classic":
-        spec.setdefault("variant", VARIANTS[spec["seed"] % 3])
+        spec.setdefault("variant", "hero")
         scene["sceneType"], scene["environment"]["preset"] = "kinetic-typography", BRIGHT.get(kind, BRIGHT_BY_SEED[spec["seed"] % 4])
         scene["objects"], scene["stickers"] = _subject_objects(spec, kind, land)
+        if spec.get("photo"):
+            scene["objects"] = []     # the stock photo is composited over the spot afterwards
     else:
         if spec.get("objects"):
             scene["objects"] = spec["objects"]
@@ -225,6 +252,17 @@ def render(spec: dict, out_jpg: Path, kind: str = "long") -> Path | None:
             log.warning("Thumbnail render failed: %s", e)
             return None
         out_jpg.parent.mkdir(parents=True, exist_ok=True)
+        got = stock.fetch(stock_query(spec, pick_subject(spec)), Path(td), "stock") if spec.get("stock", True) and spec.get("variant", "hero") == "hero" and pick_subject(spec) else None
+        if got:     # a relevant public-domain photo replaces the 3D body; on any failure the textured 3D body version stays
+            png2 = Path(td) / "thumb_photo.png"
+            try:
+                cfg_path.write_text(json.dumps(_engine_cfg({**spec, "photo": True}, w, h, png2), ensure_ascii=False), encoding="utf-8")
+                subprocess.run(["node", str(DIR / "still.cjs"), str(cfg_path)], check=True, cwd=DIR, timeout=300)
+                composite_photo(png2, got["path"], Path(td) / "thumb_photo.jpg", w > h)
+                png = Path(td) / "thumb_photo.jpg"
+                log.info("Thumbnail photo credit: %s", got["credit"])
+            except Exception as e:  # noqa: BLE001
+                log.warning("Stock composite failed, keeping the 3D body: %s", e)
         for q in (2, 4, 7, 12):     # smaller and smaller until it is under YouTube's 2 MB limit
             subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(png), "-q:v", str(q), str(out_jpg)], check=True)
             if out_jpg.stat().st_size < 1_900_000:

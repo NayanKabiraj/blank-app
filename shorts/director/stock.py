@@ -1,0 +1,65 @@
+"""Copyright-free stock photos for thumbnails: Wikimedia Commons files that are public domain or CC0 (NASA images are the common case).
+
+    fetch("full moon", dir)  ->  {"path": Path, "credit": "...", "source": "https://commons.wikimedia.org/wiki/File:..."} or None
+
+Only files whose license is Public domain / CC0 / PD-USGov are accepted, so no attribution is legally required; the credit is still
+written next to the image and into the video's history. Needs internet (GitHub Actions has it); returns None offline.
+"""
+from __future__ import annotations
+
+import json
+import logging
+import re
+import urllib.parse
+import urllib.request
+from pathlib import Path
+
+log = logging.getLogger(__name__)
+API = "https://commons.wikimedia.org/w/api.php"
+UA = "faceless-explainers-thumbnail/1.0 (public-domain image lookup)"
+FREE = re.compile(r"public domain|\bpd\b|pd-|cc0|cc-0|no known copyright", re.I)
+NONFREE = re.compile(r"cc[- ]by|share ?alike|fair use|non-?free|gpl", re.I)
+
+
+def _get(url: str, timeout: int = 25) -> bytes:
+    with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=timeout) as r:
+        return r.read()
+
+
+def search(query: str, limit: int = 12) -> list[dict]:
+    q = {"action": "query", "format": "json", "generator": "search", "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": limit,
+         "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 1100}
+    data = json.loads(_get(API + "?" + urllib.parse.urlencode(q)))
+    pages = sorted((data.get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
+    out = []
+    for p in pages:
+        ii = (p.get("imageinfo") or [{}])[0]
+        meta = ii.get("extmetadata") or {}
+        lic = (meta.get("LicenseShortName") or {}).get("value", "") + " " + (meta.get("UsageTerms") or {}).get("value", "")
+        if not FREE.search(lic) or NONFREE.search(lic):
+            continue
+        if ii.get("mime") not in ("image/jpeg", "image/png") or min(ii.get("width", 0), ii.get("height", 0)) < 700:
+            continue
+        artist = re.sub(r"<[^>]+>", "", (meta.get("Artist") or {}).get("value", "")).strip()
+        out.append({"url": ii.get("thumburl") or ii["url"], "title": p["title"], "license": lic.strip(),
+                    "credit": f"{artist or 'Unknown'} / Wikimedia Commons ({lic.strip()})", "source": ii.get("descriptionurl", "")})
+    return out
+
+
+def fetch(query: str, out_dir: Path, name: str = "stock") -> dict | None:
+    """Download the best public-domain match for `query`. None on any failure (offline, no match): the caller falls back."""
+    out_dir = Path(out_dir)
+    try:
+        for hit in search(query):
+            ext = ".png" if hit["url"].lower().endswith(".png") else ".jpg"
+            path = out_dir / f"{name}{ext}"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(_get(hit["url"], 40))
+            if path.stat().st_size < 20_000:
+                continue
+            (out_dir / f"{name}.credit.txt").write_text(f"{hit['credit']}\n{hit['source']}\n", encoding="utf-8")
+            log.info("Stock image for %r: %s (%s)", query, hit["title"], hit["license"])
+            return {"path": path, "credit": hit["credit"], "source": hit["source"]}
+    except Exception as e:     # noqa: BLE001 - network, JSON, anything: thumbnails must never fail because of a photo
+        log.warning("Stock image lookup failed for %r: %s", query, e)
+    return None
