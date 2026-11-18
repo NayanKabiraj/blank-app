@@ -110,6 +110,40 @@ def spec_from_script(script, niche: str, lang: str) -> dict:
             "title": script.title, "tag": pick_tag(script.title, niche, getattr(script, "thumbnail_tag", None), lang)}
 
 
+SUBJECTS = [("moon", re.compile(r"\b(moon|lunar|supermoon|eclipse)\b|चाँद|चांद|चंद्र", re.I)), ("sun", re.compile(r"\b(sun|solar|star)\b|सूरज|सूर्य", re.I)),
+            ("earth", re.compile(r"\b(earth|planet|gravity|ocean|tides?|world|globe)\b|पृथ्वी|धरती", re.I))]
+BRIGHT = {"moon": "thumb-grape", "sun": "thumb-ocean", "earth": "thumb-sunset"}
+BRIGHT_BY_SEED = ["thumb-sunset", "thumb-ocean", "thumb-grape", "thumb-lime"]
+VARIANTS = ("hero", "duo", "giant")
+
+
+def pick_subject(spec: dict) -> str | None:
+    text = " ".join([spec.get("title", ""), spec.get("headline", ""), spec.get("concept", "")])
+    for kind, rx in SUBJECTS:
+        if rx.search(text):
+            return kind
+    return None
+
+
+def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], list[dict]]:
+    """(objects, stickers) of the three variants. hero: one big body + friendly face; duo: two bodies + a "=?" burst; giant: one huge body, no face."""
+    v, accent = spec.get("variant") or "hero", spec["palette"].get("accent", "#FFCC33")
+    q = "?" in spec["headline"] or spec.get("tag") in ("WHAT IF?", "अगर?")
+    mood = spec.get("mood") or ("surprised" if q else "happy")
+    def body(x, y, sc, t=None):
+        return {"id": f"b{x}", "type": t or kind, "position": {"x": x, "y": y, "z": 0}, "scale": sc, "spin": 0.1}
+    if v == "duo":
+        objs = [body(-2.9, 1.0, 0.62), body(2.4, 1.0, 0.9)] if land else [body(-1.5, 2.2, 0.8), body(1.4, 0.2, 1.1)]
+        st = [{"type": "burst", "nx": 0.0, "ny": 0.28 if land else 0.1, "size": 0.34, "color": accent, "text": "?!"}]
+        return objs, st
+    if v == "giant":
+        objs = [body(1.9, 0.9, 1.05)] if land else [body(0.0, 1.6, 1.5)]
+        return objs, [{"type": "arrow", "nx": -0.5 if land else -0.55, "ny": 0.2 if land else 0.25, "size": 0.3, "color": accent}] if q else []
+    objs = [body(2.4, 0.9, 0.85)] if land else [body(0.0, 1.8, 1.25)]
+    st = [{"type": "face", "mood": mood, "nx": -0.6 if land else -0.55, "ny": 0.1 if land else 0.5, "size": 0.3 if land else 0.34, "look": 0.7, "tilt": -6}]
+    return objs, st
+
+
 def stickers_for(spec: dict, land: bool) -> list[dict]:
     """Click-catching, friendly extras: a reaction face looking at the subject, a ring around the subject, a "?" badge. Faces and
     curiosity cues are what make people tap; `spec["stickers"] = False` turns them off, a list replaces them."""
@@ -146,15 +180,21 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
     if spec.get("tag"):
         scene["textElements"].append({"id": "tag", "text": spec["tag"], "animation": "kinetic-sentence", "position": {"x": -3.1 if land else -1.3, "y": 4.4 if land else 3.5, "z": 0},
                                       "style": {"scale": 0.42, "color": "#05070D", "chip": spec["palette"].get("accent", "#FFCC33"), "tilt": -4, "outline": False}})
-    if spec.get("objects"):
-        scene["objects"] = spec["objects"]
-    scene["stickers"] = stickers_for(spec, land)
+    kind = None if spec.get("stickers") is False and spec.get("objects") else pick_subject(spec)
+    if kind and not spec.get("objects") and spec.get("variant") != "classic":
+        spec.setdefault("variant", VARIANTS[spec["seed"] % 3])
+        scene["sceneType"], scene["environment"]["preset"] = "kinetic-typography", BRIGHT.get(kind, BRIGHT_BY_SEED[spec["seed"] % 4])
+        scene["objects"], scene["stickers"] = _subject_objects(spec, kind, land)
+    else:
+        if spec.get("objects"):
+            scene["objects"] = spec["objects"]
+        scene["stickers"] = stickers_for(spec, land)
     m = {"creativeBrief": {"format": "documentary" if land else "short", "targetDurationSeconds": 4,
                            "resolution": {"width": w, "height": h}, "framesPerSecond": 30},
          "randomization": {"globalSeed": spec["seed"]}, "scenes": [scene],
          "renderSettings": {"safeArea": {"topPercent": 4, "bottomPercent": 4, "leftPercent": 4, "rightPercent": 4},
-                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.42},
-                                            "look": {"saturation": 1.4, "gain": 1.05}}},   # brighter and more saturated than the video
+                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.3},
+                                            "look": {"saturation": 1.25, "gain": 1.0}}},   # brighter and more saturated than the video
          "brandSystem": {"defaultPalette": spec["palette"], "typography": {"preferredHeadlineFontSizePixels": 96}}}
     m = M.complete(m)
     sc = m["scenes"][0]
