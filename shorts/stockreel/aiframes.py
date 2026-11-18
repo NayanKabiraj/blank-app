@@ -53,7 +53,7 @@ def huggingface_image(prompt: str, w: int, h: int, model: str = "black-forest-la
     token = os.environ.get("HF_TOKEN", "")
     if not token:
         return None
-    url = f"https://api-inference.huggingface.co/models/{model}"
+    url = f"https://router.huggingface.co/hf-inference/models/{model}"
     payload = json.dumps({"inputs": prompt, "parameters": {"width": w, "height": h}}).encode("utf-8")
     try:
         req = urllib.request.Request(url, data=payload, headers={
