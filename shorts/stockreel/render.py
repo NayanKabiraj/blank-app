@@ -35,13 +35,13 @@ def scene_query(scene, niche: str, lang: str) -> str:
     return " ".join(picked) or niche or "abstract background"
 
 
-def _clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int, fps: int) -> Path:
-    """A clip covering `duration` seconds at w x h: a Ken-Burns-animated Commons photo, or a gradient placeholder
-    when nothing was found."""
+def _clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int, fps: int) -> tuple[Path, bool]:
+    """A clip covering `duration` seconds at w x h: an AI-generated image, a Ken-Burns-animated Commons photo, or
+    a gradient placeholder when nothing was found. Returns (clip, used_ai_image)."""
     clip, credit = fetch.clip_for(query, out, w, h, duration, seed=seed, fps=fps)
     if credit:
         log.info("Stock photo for %r: %s", query, credit["credit"])
-    return clip
+    return clip, bool(credit and credit.get("ai"))
 
 
 def _concat(clips: list[Path], out: Path, work: Path) -> None:
@@ -61,19 +61,21 @@ def _burn_captions(video_in: Path, srt_path: Path, out: Path, work: Path, land: 
 
 
 def render(scenes, lang: str, niche: str, timeline: list[tuple[float, float, str]], total: float, work: Path,
-           layout: str = "portrait", fps: int = 30) -> None:
+           layout: str = "portrait", fps: int = 30) -> bool:
     """Write `work/video.mp4`: stock footage cut to the real scene timing, with burned captions. Same call shape
-    as `shorts.animate.render`, so `shorts.compose.build`/`build_documentary` could call either one."""
+    as `shorts.animate.render`, so `shorts.compose.build`/`build_documentary` could call either one. Returns
+    True if any scene used an AI-generated image (the caller should then flag the upload as synthetic media)."""
     w, h = (1080, 1920) if layout == "portrait" else (1920, 1080)
     land = layout != "portrait"
     work.mkdir(parents=True, exist_ok=True)
-    clips = []
+    clips, used_ai = [], False
     prev_end = 0.0
     for i, (sc, (s, e, _text)) in enumerate(zip(scenes, timeline)):
         q = scene_query(sc, niche, lang)
         d = max(0.6, e - prev_end)   # covers this scene's speech AND the silent lead-in/gap before it: no gaps in the picture
-        clip = _clip_for(q, work / f"scene_{i}.mp4", w, h, d, seed=hash((q, i)) & 0xFFFF, fps=fps)
+        clip, ai = _clip_for(q, work / f"scene_{i}.mp4", w, h, d, seed=hash((q, i)) & 0xFFFF, fps=fps)
         clips.append(clip)
+        used_ai = used_ai or ai
         prev_end = e
     if total > timeline[-1][1]:   # the mix pads with a tail (outro music/breathing room): hold the last frame
         tail = work / "tail.mp4"
@@ -90,3 +92,4 @@ def render(scenes, lang: str, niche: str, timeline: list[tuple[float, float, str
     srt_path = work / "captions.srt"
     dbuild.srt(chunks, srt_path)
     _burn_captions(joined, srt_path, work / "video.mp4", work, land)
+    return used_ai

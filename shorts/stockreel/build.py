@@ -13,18 +13,20 @@ from . import render as footage
 MOODS = {"calm": "calm", "upbeat": "upbeat", "dramatic": "dramatic", "inspiring": "inspiring", "mysterious": "mysterious"}
 
 
-def build_short(script, lang: str, mood: str, work: Path, niche: str = "") -> Path:
+def build_short(script, lang: str, mood: str, work: Path, niche: str = "") -> tuple[Path, bool]:
+    """Returns (video path, used_ai_image) - the caller flags the upload as synthetic media when True."""
     work = work.resolve()
     work.mkdir(parents=True, exist_ok=True)
     voice, timeline, voice_end = compose._voice_track(script.scenes, lang, work, window=(config.MIN_DURATION, config.MAX_DURATION))
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
-    footage.render(script.scenes, lang, niche, timeline, total, work, layout="portrait")
+    used_ai = footage.render(script.scenes, lang, niche, timeline, total, work, layout="portrait")
     out = work / f"stockreel_{lang}.mp4"
     compose._mix(work, voice, total, MOODS.get(mood, "dramatic"), out)
-    return out
+    return out, used_ai
 
 
-def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "") -> tuple[Path, list[tuple[str, float]]]:
+def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "") -> tuple[Path, list[tuple[str, float]], bool]:
+    """Returns (video path, chapters, used_ai_image)."""
     work = work.resolve()
     work.mkdir(parents=True, exist_ok=True)
     scenes = script.scenes
@@ -34,8 +36,8 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "")
         n += len(ch.scenes)
     voice, timeline, voice_end = compose._voice_track(scenes, lang, work, chapter_starts=frozenset(starts), style="documentary")
     total = voice_end + 3.0
-    footage.render(scenes, lang, niche, timeline, total, work, layout="landscape", fps=config.DOC_FPS)
+    used_ai = footage.render(scenes, lang, niche, timeline, total, work, layout="landscape", fps=config.DOC_FPS)
     out = work / f"stockreel_documentary_{lang}.mp4"
     compose._mix(work, voice, total, MOODS.get(mood, "dramatic"), out, lufs=-16, music_volume=0.22)
     chapters = [(title, 0.0 if i == 0 else timeline[i][0]) for i, title in sorted(starts.items())]
-    return out, chapters
+    return out, chapters, used_ai

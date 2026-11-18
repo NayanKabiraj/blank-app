@@ -15,10 +15,15 @@ it - a city, weather, nature, a kitchen, hands at work, crowds, traffic, oceans,
 comparison, an abstract concept or a "what if" thought experiment, which stay on the whiteboard or director
 pipelines. This is an addition, never the default; most days still use the other two.
 
-**No AI-generated or fabricated imagery, and nothing to sign up for.** Clips are real public-domain/CC0 photography
-from Wikimedia Commons, matched by a search phrase and turned into motion with a pan/zoom, never an AI
-video/image generator and never anything the channel claims is something it is not - this keeps the channel's
-anti-hallucination rule intact for pictures as well as facts.
+**The picture source, in order** (`shorts/stockreel/fetch.py` -> `aiframes.py`): an AI-generated image if a source is
+configured (Pollinations, then Hugging Face's free Inference API, then - only with `IMAGE_ENGINE=local` - a small
+model run on the runner's own CPU), else a real Wikimedia Commons public-domain/CC0 photo, else a plain gradient.
+None of this needs a key to run at all: with nothing configured it is exactly the free, no-signup Wikimedia path.
+**Any video that used even one AI-generated image is uploaded with YouTube's "altered or synthetic content" label
+set automatically** (regardless of the channel-wide `YT_AI_DISCLOSURE` setting) - this is handled in code
+(`shorts.stockreel.build`/`run` thread a `used_ai` flag through to `pending.publish`/`upload.upload`), not something
+to remember per video. Never claim or imply an AI-generated image is real footage in a title, description or
+narration - the anti-hallucination rule covers pictures exactly like it covers facts.
 
 ## Standing strategy checklist (same as the other two formats)
 
@@ -45,5 +50,10 @@ python -m shorts.stockreel.run --plan-file plan.json --dry-run                  
 python -m shorts.stockreel.run --plan-file doc.json --documentary --dry-run     # documentary
 ```
 
-No secret or signup needed. A scene whose search finds no public-domain/CC0 match renders as a plain gradient
-instead of real footage - the run still completes, it just has no real "stock footage" look for that scene.
+No secret or signup is required for the base path (Wikimedia + gradient). Optional, to prefer an AI-generated
+image per scene over a real photo: `POLLINATIONS_API_KEY` (free key from enter.pollinations.ai) and/or `HF_TOKEN`
+(the same free Hugging Face token already used for Indic Parler-TTS) as repository secrets, tried in that order;
+`IMAGE_ENGINE=local` (a repository variable) additionally installs and runs a small model (`stabilityai/sd-turbo`)
+on the CPU runner itself when both of those are unset or fail - no key, but slow, so it is opt-in. A scene whose
+search/generation finds nothing at any configured source renders as a plain gradient instead - the run still
+completes, it just has no real "stock footage" look for that scene.
