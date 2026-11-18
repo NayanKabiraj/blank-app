@@ -98,12 +98,14 @@ Return BEST TITLE, BACKUP A, BACKUP B. Whiteboard Shorts: 60 characters or fewer
 The title explains the premise; the thumbnail **shows the consequence**. Do not repeat the title. Construction: CHARACTER or
 SUBJECT + IMPOSSIBLE EVENT + CONSEQUENCE (title "What If You Woke Up With Every Superpower?" -> an ordinary person floating above
 a wrecked bedroom, hands glowing, furniture suspended, shocked face). Rules: one obvious focal subject, one to three big ideas,
-readable at phone size, strong silhouette, strong contrast, one clear emotion, minimal clutter, no tiny details, **one short sentence (up to 8 words)
-at most (24 characters)**. Always produce three **materially different** concepts (A/B/C: different subject, event or emotion, not
-recoloured copies), then recommend one.
+readable at phone size, strong silhouette, strong contrast, one clear emotion, minimal clutter, no tiny details, **one short sentence
+(up to 8 words, 46 characters at most)**. Always consider three **materially different** concepts (A/B/C: different subject,
+event or emotion, not recoloured copies) when writing `thumbnail.concept`, then pick one to build.
 
-How it is produced here: `shorts/director/thumbnail.py` draws a single frame with the same Three.js engine (environment + one
-focal 3D subject + the headline, 1280x720 for long videos, 720x1280 for Shorts, JPEG under 2 MB). You steer it:
+How it is produced here: `shorts/director/thumbnail.py` draws a frame with the same Three.js engine: a bright sunburst backdrop,
+a friendly reaction-face sticker, the headline — and, for the common subjects (Moon, Sun, Earth), a relevant **public-domain
+photo** (Wikimedia Commons, Public domain/CC0 only) filling the whole frame, with a textured 3D body as the fallback when no
+photo is found. 1280x720 for long videos, 720x1280 for Shorts, JPEG under 2 MB. You steer it:
 - director manifest: `"thumbnail": {"headline": "SILENT. YET FOUND YOU", "sceneType": "object-assembly", "environment": "holographic-room",
   "objects": [...optional...], "accentWords": {"FOUND": "#FFCC33"}, "concept": "why it works"}` and
   `localizations.<lang>.thumbnailText` for every other language (the render warns when it is missing);
@@ -127,6 +129,26 @@ expects you to save people -> enemies appear -> your family is vulnerable).
 The first 30 seconds are a separate production problem. Never "Hi guys", "Welcome back", "Today we're going to", "Before we
 start", "Don't forget to subscribe". 0-5 s the impossible event; 5-15 s proof; 15-30 s escalation. The opening must immediately
 validate the promise of the title and thumbnail. (Explainer Shorts: the hook formulas in `animated-explainer-method/references/viral-playbook.md`.)
+
+## 6c. Short-form production spec (format, voice pace, captions)
+
+For every whiteboard or director Short (9:16, 1080x1920, 30-55 s):
+
+- **Timing**: 0-3 s hook; 3-10 s curiosity/problem; 10-30 s the central idea; 30-45 s payoff; final 3-5 s a subtle CTA or
+  curiosity loop (not "thanks for watching"). No static scene longer than 2.5 s; a meaningful visual change every 1.5-3 s;
+  scene changes normally every 2-4 s. Never random motion just to look busy.
+- **Narration speed** (guides word choice and sentence length; `config.SPEECH_PACE` sets the TTS multiplier, EN faster than
+  HI): hook 150-165 WPM; normal explanation 140-150 WPM; the surprising/important reveal 125-140 WPM (slow down for it);
+  CTA 140-150 WPM. Vary sentence length (short / short / medium / very-short emphasis / medium); write spoken language
+  ("Here's the strange part.") not article prose ("Interestingly, research has demonstrated that..."). Never "Hello
+  everyone", "Welcome back", "In today's video".
+- **Pauses** (natural, not identical after every line): comma 80-150 ms; sentence end 180-300 ms; question 300-450 ms;
+  important reveal 350-550 ms; scene transition 400-650 ms.
+- **Captions**: 2-6 words on screen at a time, changing with the spoken phrase, never running ahead of the narration;
+  highlight one important word when it matters (the engine's caption chunking and the highlighter keyword already do this;
+  do not write a caption as a full sentence).
+- **Hook**: the first frame must make sense muted — an unusual visual, a surprising statement, a question or a
+  contradiction, decided before any audio plays.
 
 ## 7. Retention and visual pacing
 
@@ -161,6 +183,13 @@ Every video should introduce the next one: current question -> bigger question -
 there's a power far harder to control. What happens when you can stop time?"), not only "thanks for watching". Ask one viewer
 decision connected to the central dilemma ("Would you reveal your powers or hide them?"), never "what do you think?".
 
+Write (keep in `research_summary`/`thumbnail.concept`, publish only the chosen title): **5 title candidates + 1 recommended**
+(front-load the curiosity, ~35-60 characters where practical, never misleading); **description** as three short lines —
+curiosity/promise, then what the viewer learns, then an engagement question or related CTA — followed by hashtags;
+**3-6 hashtags** (always `#Shorts` plus topic-specific ones; never bare `#viral`/`#trending`/`#fyp` unless genuinely
+relevant); **10-20 search tags** (primary topic, variations, a question form, the broader category, named entities, common
+search phrases — never keyword-stuffed into the description).
+
 ## 10. Pre-render QA (check before declaring done)
 
 Title promise clear; thumbnail represents the premise; hook starts immediately; first 30 seconds escalate; protagonist consistent;
@@ -175,6 +204,10 @@ you caused. **Never say something works unless it was actually tested.**
 Score /10 each: topic, curiosity, title, thumbnail, opening, story, visual potential, emotional engagement, retention design, series
 potential. 85-100 strong production candidate; 75-84 improve the weak parts; below 75 do not proceed automatically, rework the
 weakest components first.
+
+For a finished Short, score /10 each of: **Hook, Voice, Pacing, Visuals, Captions, Story, Retention, Ending, Thumbnail,
+Metadata**. Any score below 7 requires revision before it ships — rewrite the narration (not just the voice engine) if the
+TTS sounds like someone *reading* rather than someone *talking*; that failure mode outranks every other fix.
 
 ## 12. Post-publish analysis (only with numbers the owner provides)
 
