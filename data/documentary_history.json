@@ -261,8 +261,9 @@
             "start": 186.5
           }
         ],
-        "queued": "videos/unpublished/2026-11-18_documentary_en",
-        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+        "queued": false,
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "video_id": "WmKvkO7H8gs"
       },
       "hi": {
         "file": "2026-11-18_documentary_hi.mp4",
@@ -288,8 +289,9 @@
             "start": 240.7
           }
         ],
-        "queued": "videos/unpublished/2026-11-18_documentary_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "N71Pbd1wRCo"
       }
     }
   }

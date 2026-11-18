@@ -236,8 +236,9 @@
       "hi": {
         "file": "2026-11-18_hi.mp4",
         "saved_to": "videos/2026-11-18/hi.mp4",
-        "queued": "videos/unpublished/2026-11-18_short_hi",
-        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+        "queued": false,
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "video_id": "ZR_P25-Oo90"
       }
     }
   }
