@@ -1,0 +1,36 @@
+name: Check a video's status on YouTube
+
+# One-off: looks up upload/processing status for already-uploaded video IDs - useful when a video shows a blank
+# thumbnail or "No views" right after upload, to tell "still processing" from "actually failed".
+on:
+  workflow_dispatch:
+    inputs:
+      video_ids:
+        description: "Space or comma separated YouTube video IDs"
+        required: true
+      lang:
+        description: "Which account's credentials to use (en or hi)"
+        default: "en"
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -q -r shorts/requirements.txt
+      - env:
+          IN_IDS: ${{ inputs.video_ids }}
+          IN_LANG: ${{ inputs.lang }}
+        run: python -m shorts.check_video ${IN_IDS//,/ } --lang "$IN_LANG"
