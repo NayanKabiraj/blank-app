@@ -93,6 +93,7 @@ def spec_from_manifest(m: dict, lang: str) -> dict:
             "environment": t.get("environment") or first["environment"]["preset"], "objects": t.get("objects") or (first.get("objects") if hero == first["sceneType"] else None),
             "accentWords": _accent_words(headline, (loc.get("thumbnailAccent") or t.get("accentWords")), lang),
             "palette": m["brandSystem"]["defaultPalette"], "seed": m["randomization"]["globalSeed"], "concept": t.get("concept", ""),
+            "title": M.localize(m, lang).get("publishingMetadata", {}).get("title", ""),
             "tag": pick_tag(M.localize(m, lang).get("publishingMetadata", {}).get("title", ""), m["creativeBrief"].get("niche", ""), loc.get("thumbnailTag", t.get("tag")) if lang != "en" or "tag" in t else None, lang)}
 
 
@@ -106,7 +107,31 @@ def spec_from_script(script, niche: str, lang: str) -> dict:
     return {"headline": headline, "lang": lang, "sceneType": scene_type, "environment": env, "objects": None,
             "accentWords": _accent_words(headline, None, lang), "palette": M.DEFAULTS["brandSystem"]["defaultPalette"],
             "seed": sum(map(ord, script.title)) % 100000, "concept": "",
-            "tag": pick_tag(script.title, niche, getattr(script, "thumbnail_tag", None), lang)}
+            "title": script.title, "tag": pick_tag(script.title, niche, getattr(script, "thumbnail_tag", None), lang)}
+
+
+def stickers_for(spec: dict, land: bool) -> list[dict]:
+    """Click-catching, friendly extras: a reaction face looking at the subject, a ring around the subject, a "?" badge. Faces and
+    curiosity cues are what make people tap; `spec["stickers"] = False` turns them off, a list replaces them."""
+    given = spec.get("stickers")
+    if given is False:
+        return []
+    if isinstance(given, list):
+        return given
+    q = "?" in spec["headline"] or WHAT_IF.search(spec.get("title", "") or "") is not None or spec.get("tag") in ("WHAT IF?", "अगर?")
+    mood = spec.get("mood") or ("surprised" if q else "happy")
+    accent = spec["palette"].get("accent", "#FFCC33")
+    if land:
+        out = [{"type": "ring", "nx": -0.12, "ny": 0.2, "size": 0.66, "color": "#FF3B6B"},
+               {"type": "face", "mood": mood, "nx": 0.72, "ny": 0.28, "size": 0.44, "look": -0.8, "tilt": 6}]
+        if q:
+            out.append({"type": "qmark", "nx": -0.84, "ny": 0.1, "size": 0.28, "color": accent, "tilt": -12})
+    else:
+        out = [{"type": "ring", "nx": 0.0, "ny": 0.16, "size": 0.62, "color": "#FF3B6B"},
+               {"type": "face", "mood": mood, "nx": 0.52, "ny": 0.6, "size": 0.4, "look": -0.8, "tilt": 6}]
+        if q:
+            out.append({"type": "qmark", "nx": -0.5, "ny": 0.45, "size": 0.26, "color": accent, "tilt": -10})
+    return out
 
 
 def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
@@ -123,11 +148,13 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
                                       "style": {"scale": 0.42, "color": "#05070D", "chip": spec["palette"].get("accent", "#FFCC33"), "tilt": -4, "outline": False}})
     if spec.get("objects"):
         scene["objects"] = spec["objects"]
+    scene["stickers"] = stickers_for(spec, land)
     m = {"creativeBrief": {"format": "documentary" if land else "short", "targetDurationSeconds": 4,
                            "resolution": {"width": w, "height": h}, "framesPerSecond": 30},
          "randomization": {"globalSeed": spec["seed"]}, "scenes": [scene],
          "renderSettings": {"safeArea": {"topPercent": 4, "bottomPercent": 4, "leftPercent": 4, "rightPercent": 4},
-                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.5}}},
+                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.42},
+                                            "look": {"saturation": 1.4, "gain": 1.05}}},   # brighter and more saturated than the video
          "brandSystem": {"defaultPalette": spec["palette"], "typography": {"preferredHeadlineFontSizePixels": 96}}}
     m = M.complete(m)
     sc = m["scenes"][0]

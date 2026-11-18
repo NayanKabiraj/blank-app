@@ -4,6 +4,7 @@ import { mulberry32, clamp, lerp, smooth, easeOutCubic, wrap, fract } from './ut
 import { buildEnvironment, bgColor, softSprite } from './environment.js';
 import { ObjectSystem } from './objects.js';
 import { TextElement } from './text.js';
+import { Sticker } from './stickers.js';
 
 export const SCENE_TYPES = ['kinetic-typography', 'particle-world', 'geometry-swarm', 'data-tunnel', 'procedural-grid', 'object-assembly', 'diagram-3d', 'image-parallax', 'timeline-3d', 'wave-field', 'network-nodes', 'finale'];
 const LIGHT_GAIN = 38;
@@ -183,6 +184,9 @@ export class SceneContent {
       this.overlay.add(el.mesh); if (el.pointsObj) { el.pointsObj.position.set(el.mesh.position.x, el.mesh.position.y, el.baseZ); this.overlay.add(el.pointsObj); }
       return el;
     });
+    // thumbnail stickers (faces, arrows, rings, badges) on the same overlay
+    const vh = 2 * ctx.textDist * tanH, view = { w: vh * aspect, h: vh };
+    this.stickers = (spec.stickers || []).map(st => { const sk = new Sticker(st, { view, dist: ctx.textDist }); this.overlay.add(sk.mesh); return sk; });
     // camera focus
     const target = spec.camera?.target, sysT = this.systems.find(s => s.id === target);
     const F = new THREE.Vector3(0, 0, 0);
@@ -225,6 +229,6 @@ export class SceneContent {
   }
 
   textOverflow() { return this.texts.filter(t => t.overflow).map(t => t.spec.id); }
-  dispose() { this.texts.forEach(t => t.dispose()); this.systems.forEach(s => s.dispose()); this.scene.traverse(o => { if (o.geometry) o.geometry.dispose(); }); }
+  dispose() { this.texts.forEach(t => t.dispose()); (this.stickers || []).forEach(t => t.dispose()); this.systems.forEach(s => s.dispose()); this.scene.traverse(o => { if (o.geometry) o.geometry.dispose(); }); }
 }
 import { cameraPose, ALT_CAMERA } from './camera.js';
