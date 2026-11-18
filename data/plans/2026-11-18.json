@@ -1,0 +1,295 @@
+{
+  "niche": "Space & Universe",
+  "topic": "Why does the supermoon look huge? (it is only about 7% bigger, your brain does the rest)",
+  "research_summary": "Candidates (from the researched queue, re-checked 18 Nov 2026): (1) the supermoon illusion 80 (researched, its news window 18-25 Nov is open, wins as a time-boxed concept); (2) what if the Sun vanished 84 (already made 17 Nov, not repeated); (3) what if Earth stopped spinning 82 (idea, no hook this week). Titles (/50): 'Why Does the Supermoon Look HUGE? (It Isn't)' 44 (chosen); 'The Supermoon Is Lying to Your Brain' 43; 'Is the Supermoon Really Bigger?' 41. Thumbnails: C two identical moons, one low one high, question mark (chosen, headline SAME SIZE?); A a giant moon over a skyline with a +7% ruler; B a pea covering the moon. Hooks: 'Tuesday's supermoon is only seven percent bigger. So why will it feel huge?' (chosen); 'The moon rising Tuesday is lying to your brain'; 'Hold a pea at arm's length. The giant moon fits behind it.' Quality gate 80: topic 8, curiosity 8, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 7, retention 8, series 9; the weakest part is the emotional close, improved with a viewer decision in the pinned comment. Facts and status: the full Beaver supermoon is 24 Nov 2026 at 14:54 UTC (NASA via search results; Farmers' Almanac) PARTIALLY VERIFIED; perigee about 360,768 km (Brunei Astronomy, Farmers' Almanac, Sterngucker), against an average distance of about 384,400 km, which gives a diameter about 6.5 percent larger, matching the sources' 'up to about 7 percent bigger than an average full moon' (and up to 14 percent against a micromoon), PARTIALLY VERIFIED (the video says about seven percent, versus an average full moon); the Moon is about half a degree wide (university and textbook sources) VERIFIED; a pea or small pebble at arm's length covers it (Wikipedia's Moon illusion article uses an 8.4 mm pebble at 64 cm; the pea is my wording) PARTIALLY VERIFIED; the horizon Moon is not larger and the moon illusion is a brain effect, researchers still debate the explanation (Farmers' Almanac, astronomy.com, National Geographic) VERIFIED for the illusion, UNVERIFIED for the mechanism, so the video says scientists still debate it. Left out because unverified: brightness percentages, the planets before sunrise. Risks: weather and visibility vary by city; the supermoon is modest, so the hook is the myth-bust; the Tuesday date assumes the viewer's local date is 24 Nov.",
+  "mood": "mysterious",
+  "cluster": "The Moon",
+  "follow_ups": [
+    "How does the Moon move the tides?",
+    "Why does the Moon always show the same face?",
+    "What if the Moon disappeared?"
+  ],
+  "gate_score": 80,
+  "english": {
+    "title": "Why does the supermoon look huge? (It isn't)",
+    "description": "Tuesday's supermoon is only about seven percent bigger than an average full moon, so why does it look so huge? The Moon's oval orbit makes the supermoon, and your brain does the rest. #supermoon #moon #science",
+    "tags": [
+      "supermoon",
+      "why does the moon look so big",
+      "moon illusion",
+      "supermoon 2026",
+      "beaver moon",
+      "space explained",
+      "full moon",
+      "animated explainer"
+    ],
+    "hook_text": "Only seven percent bigger",
+    "thumbnail_text": "SAME SIZE?",
+    "next_video": "How does the Moon move the tides?",
+    "pinned_comment": "Which did you see on Tuesday: a huge moon, or a normal one with a very clever brain?",
+    "scenes": [
+      {
+        "text": "Tuesday's supermoon is only seven percent bigger. So why will it feel huge?",
+        "keyword": "seven percent",
+        "graphic": {
+          "kind": "title",
+          "headline": "Only 7% bigger?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "planet"
+        }
+      },
+      {
+        "text": "Ever seen a giant moon rising and gasped? Let's ask why.",
+        "keyword": "gasped",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Quick chat",
+          "caption": "",
+          "items": [
+            "Why does the moon look huge?",
+            "It's a supermoon",
+            "Is it that much bigger?",
+            "Barely. Your brain does the rest"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The Moon's orbit is an oval. Once a month it swings closer, and a full moon then is a supermoon.",
+        "keyword": "oval",
+        "graphic": {
+          "kind": "flow",
+          "headline": "How a supermoon happens",
+          "caption": "",
+          "items": [
+            "Oval orbit",
+            "Moon swings closer",
+            "Full moon then",
+            "Supermoon"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Guess how much bigger it really is? Only about seven percent, next to an average full moon.",
+        "keyword": "seven percent",
+        "graphic": {
+          "kind": "stat",
+          "headline": "~7%",
+          "caption": "bigger than average",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Quick quiz: is a moon rising on the horizon actually bigger? Nope. It's the same size.",
+        "keyword": "same size",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "Is the horizon moon bigger?",
+          "caption": "",
+          "items": [
+            "Yes, it's closer",
+            "No, same size",
+            "Yes, air magnifies it"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "Think the air magnifies it? That's the myth. It's an illusion, and scientists still debate exactly how it works.",
+        "keyword": "illusion",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Huge moon?",
+          "caption": "",
+          "items": [
+            "The air makes it bigger",
+            "Your brain misjudges its size"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Test it yourself. Hold a pea at arm's length. It covers the Moon, whether it's low or high.",
+        "keyword": "pea",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "The pea test",
+          "caption": "covers the Moon, high or low",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
+      },
+      {
+        "text": "So Tuesday's supermoon is only seven percent bigger. Your brain added the rest. Which did you see? Tell me below! Follow to understand one new thing every day.",
+        "keyword": "brain",
+        "graphic": {
+          "kind": "title",
+          "headline": "Your brain zoomed",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      }
+    ]
+  },
+  "hindi": {
+    "title": "सुपरमून इतना विशाल क्यों दिखता है? (असल में नहीं)",
+    "description": "मंगलवार का सुपरमून औसत पूर्णिमा से सिर्फ़ सात प्रतिशत बड़ा है, फिर वह इतना विशाल क्यों लगता है? चाँद की अंडाकार कक्षा सुपरमून बनाती है, और बाक़ी खेल आपके दिमाग़ का है। #सुपरमून #चाँद #विज्ञान",
+    "tags": [
+      "सुपरमून",
+      "चाँद इतना बड़ा क्यों दिखता है",
+      "चाँद का भ्रम",
+      "सुपरमून 2026",
+      "बीवर मून",
+      "अंतरिक्ष",
+      "science in hindi",
+      "animated explainer"
+    ],
+    "hook_text": "सिर्फ़ सात प्रतिशत बड़ा",
+    "thumbnail_text": "एक ही साइज़?",
+    "next_video": "चाँद ज्वार-भाटा कैसे लाता है?",
+    "pinned_comment": "मंगलवार को आपने क्या देखा: विशाल चाँद, या सामान्य चाँद और चालाक दिमाग़?",
+    "scenes": [
+      {
+        "text": "मंगलवार का सुपरमून सिर्फ़ सात प्रतिशत बड़ा होगा। फिर वह इतना विशाल क्यों लगेगा?",
+        "keyword": "सात प्रतिशत",
+        "graphic": {
+          "kind": "title",
+          "headline": "सिर्फ़ 7% बड़ा?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "planet"
+        }
+      },
+      {
+        "text": "क्या कभी उगता चाँद देखकर आप चौंके हैं? तो पूछते हैं, क्यों?",
+        "keyword": "चौंके",
+        "graphic": {
+          "kind": "chat",
+          "headline": "छोटी बातचीत",
+          "caption": "",
+          "items": [
+            "चाँद इतना बड़ा क्यों दिखता?",
+            "वह सुपरमून है",
+            "क्या सच में इतना बड़ा?",
+            "मुश्किल से। बाक़ी दिमाग़ का खेल"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "चाँद की कक्षा अंडाकार है। महीने में एक बार वह पास आता है, और तब की पूर्णिमा सुपरमून कहलाती है।",
+        "keyword": "अंडाकार",
+        "graphic": {
+          "kind": "flow",
+          "headline": "सुपरमून कैसे बनता है",
+          "caption": "",
+          "items": [
+            "अंडाकार कक्षा",
+            "चाँद पास आया",
+            "तब पूर्णिमा",
+            "सुपरमून"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "अंदाज़ा लगाइए, कितना बड़ा? औसत पूर्णिमा से सिर्फ़ सात प्रतिशत।",
+        "keyword": "सात प्रतिशत",
+        "graphic": {
+          "kind": "stat",
+          "headline": "लगभग 7%",
+          "caption": "औसत से बड़ा",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "छोटा क्विज़: क्षितिज पर चाँद क्या सच में बड़ा होता है? जवाब: नहीं, वही आकार।",
+        "keyword": "वही आकार",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "क्षितिज का चाँद बड़ा है?",
+          "caption": "",
+          "items": [
+            "हाँ, पास है",
+            "नहीं, वही आकार",
+            "हाँ, हवा बड़ा करती है"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "क्या हवा उसे बड़ा करती है? यही मिथक है। यह भ्रम है, और वैज्ञानिक अब भी बहस करते हैं।",
+        "keyword": "भ्रम",
+        "graphic": {
+          "kind": "myth",
+          "headline": "विशाल चाँद?",
+          "caption": "",
+          "items": [
+            "हवा उसे बड़ा करती है",
+            "दिमाग़ आकार ग़लत आँकता है"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "ख़ुद आज़माइए। हाथ बढ़ाकर मटर का दाना पकड़िए। वह चाँद को ढक लेगा, चाहे चाँद नीचे हो या ऊपर।",
+        "keyword": "मटर का दाना",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "मटर का टेस्ट",
+          "caption": "चाँद नीचे हो या ऊपर",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
+      },
+      {
+        "text": "तो मंगलवार का सुपरमून सिर्फ़ सात प्रतिशत बड़ा है। बाक़ी दिमाग़ ने जोड़ा। आपने क्या देखा? कमेंट में बताइए! रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "keyword": "दिमाग़",
+        "graphic": {
+          "kind": "title",
+          "headline": "दिमाग़ ने ज़ूम किया",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      }
+    ]
+  }
+}
