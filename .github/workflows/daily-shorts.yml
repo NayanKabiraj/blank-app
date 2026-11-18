@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       format:
-        description: "shorts (default: the daily 45-55 second whiteboard Shorts), documentary (5-15 minute whiteboard videos; plan schema: python -m shorts.plan doc-schema), director (Claude-directed dynamic Three.js Short from a manifest in manifest_json), director-documentary (the same, 5-10 minute landscape), voicelab (voice samples, no video), ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
+        description: "shorts (default: the daily 45-55 second whiteboard Shorts), documentary (5-15 minute whiteboard videos; plan schema: python -m shorts.plan doc-schema), director (Claude-directed dynamic Three.js Short from a manifest in manifest_json), director-documentary (the same, 5-10 minute landscape), stockreel (real Wikimedia Commons stock-footage Short, Ken Burns pan/zoom, from the same plan schema as shorts; no API key needed), stockreel-documentary (the same, long-form), voicelab (voice samples, no video), ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
         type: string
         default: "shorts"
       auth_code:
@@ -43,7 +43,7 @@ permissions:
 
 concurrency:
   # a documentary (hours of rendering) must not block, or cancel, the Shorts that are started next to it
-  group: ${{ (inputs.format == 'documentary' || inputs.format == 'director-documentary') && 'documentary' || 'shorts-pipeline' }}
+  group: ${{ (inputs.format == 'documentary' || inputs.format == 'director-documentary' || inputs.format == 'stockreel-documentary') && 'documentary' || 'shorts-pipeline' }}
   cancel-in-progress: false
 
 jobs:
@@ -133,7 +133,7 @@ jobs:
             || echo "::warning::Parler-TTS could not be installed, the Piper voice will be used"
 
       - uses: actions/setup-node@v4
-        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'stockreel') }}
         with:
           node-version: "22"
           cache: npm
@@ -142,14 +142,14 @@ jobs:
             shorts/director/package-lock.json
 
       - name: Install the animation renderer (Playwright + headless Chromium)
-        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' && !startsWith(inputs.format, 'director') && !startsWith(inputs.format, 'stockreel') }}
         working-directory: shorts/explainer
         run: |
           npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
 
       - name: Install the director engine (Three.js + fonts + Playwright + headless Chromium; also draws the thumbnails)
-        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' && inputs.format != 'voicelab' }}
+        if: ${{ inputs.format != 'upload' && inputs.format != 'ytauth' && inputs.format != 'voicelab' && !startsWith(inputs.format, 'stockreel') }}
         working-directory: shorts/director
         run: |
           npm ci --no-audit --no-fund
@@ -201,7 +201,7 @@ jobs:
           IN_PLAN: ${{ inputs.plan_json }}
           IN_FORMAT: ${{ inputs.format || 'shorts' }}
         run: |
-          if [ "$IN_FORMAT" = "documentary" ]; then SAMPLE=shorts/sample_documentary_plan.json; CHECK=validate-doc; else SAMPLE=shorts/sample_plan.json; CHECK=validate; fi
+          if [ "$IN_FORMAT" = "documentary" ] || [ "$IN_FORMAT" = "stockreel-documentary" ]; then SAMPLE=shorts/sample_documentary_plan.json; CHECK=validate-doc; else SAMPLE=shorts/sample_plan.json; CHECK=validate; fi
           if [ -n "$IN_PLAN" ]; then
             printf '%s' "$IN_PLAN" > "$RUNNER_TEMP/plan.json"
           else
@@ -235,6 +235,11 @@ jobs:
           if [ "$IN_FORMAT" = "documentary" ]; then
             if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
             python -m shorts.documentary "${ARGS[@]}"
+          elif [ "$IN_FORMAT" = "stockreel-documentary" ]; then
+            if [ "$IN_KEEP" = "true" ]; then ARGS+=(--keep-in-repo); fi
+            python -m shorts.stockreel.run "${ARGS[@]}" --documentary
+          elif [ "$IN_FORMAT" = "stockreel" ]; then
+            python -m shorts.stockreel.run "${ARGS[@]}"
           else
             python -m shorts.main "${ARGS[@]}"
           fi
@@ -252,6 +257,11 @@ jobs:
             output_documentary/*.jpg
             output_documentary/*_youtube.txt
             output_documentary/plan.json
+            output_stockreel/*.mp4
+            output_stockreel/*.jpg
+            output_stockreel/*_youtube.txt
+            output_stockreel/plan.json
+            output_stockreel/result.json
             output_director/*.mp4
             output_director/*_youtube.txt
             output_director/manifest.json

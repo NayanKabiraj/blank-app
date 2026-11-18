@@ -18,7 +18,9 @@ first, the algorithm second, technical complexity last.
 ## 1. Repository first
 
 Before creating anything, look at what exists and reuse it: `shorts/README.md`, `shorts/CLAUDE_DAILY_TASK.md` (whiteboard
-Shorts), `shorts/CLAUDE_DOCUMENTARY_TASK.md`, `shorts/CLAUDE_DIRECTOR_TASK.md` (dynamic Three.js videos from a manifest), the
+Shorts), `shorts/CLAUDE_DOCUMENTARY_TASK.md`, `shorts/CLAUDE_DIRECTOR_TASK.md` (dynamic Three.js videos from a manifest),
+`shorts/CLAUDE_STOCKREEL_TASK.md` (real stock footage, same plan schema as the whiteboard Short - pick it only when real
+footage reads better than a coded scene, a city/nature/hands-at-work topic rather than a diagram or a "what if"), the
 `director-manifest`, `explainer-diagram` and `animated-explainer-method` skills, `shorts/director/engine/` (scene types, camera
 presets, text animations, transitions, environments), `shorts/director/thumbnail.py`, `shorts/pending.py` (upload queue). Search
 before building. Do not rebuild a working pipeline, add a library, duplicate a component or touch unrelated files.
