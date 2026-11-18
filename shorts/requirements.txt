@@ -8,3 +8,4 @@ google-api-python-client>=2.130
 google-auth>=2.29
 google-auth-oauthlib>=1.2
 # Indic Parler-TTS (torch, torchaudio, parler-tts) is installed by its own optional workflow step
+pillow>=10

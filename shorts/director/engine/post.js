@@ -71,10 +71,10 @@ export const MixShader = {
 };
 
 export const FxShader = {
-  uniforms: { tDiffuse: { value: null }, time: { value: 0 }, grain: { value: 0.08 }, vig: { value: 0.2 }, ca: { value: 0.015 }, glitch: { value: 0 }, seed: { value: 0 } },
+  uniforms: { tDiffuse: { value: null }, time: { value: 0 }, grain: { value: 0.08 }, vig: { value: 0.2 }, ca: { value: 0.015 }, glitch: { value: 0 }, seed: { value: 0 }, sat: { value: 1 }, gain: { value: 1 } },
   vertexShader: VERT,
   fragmentShader: `
-    varying vec2 vUv; uniform sampler2D tDiffuse; uniform float time, grain, vig, ca, glitch, seed;
+    varying vec2 vUv; uniform sampler2D tDiffuse; uniform float time, grain, vig, ca, glitch, seed, sat, gain;
     float hash(vec2 s){ return fract(sin(dot(s, vec2(12.9898,78.233)) + seed)*43758.5453); }
     void main(){
       vec2 uv = vUv;
@@ -84,6 +84,7 @@ export const FxShader = {
       vec3 col = vec3(r,g,b);
       float v = 1. - vig*smoothstep(0.35, 0.95, length(d)*1.25); col *= v;
       col += (hash(uv*vec2(1920.,1080.) + floor(time*24.)) - .5)*grain*0.35;
+      float l = dot(col, vec3(0.299, 0.587, 0.114)); col = mix(vec3(l), col, sat) * gain;
       gl_FragColor = vec4(col, 1.);
     }`,
 };

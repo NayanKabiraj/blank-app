@@ -48,6 +48,7 @@ window.setup = async cfg => {
   S.comp = comp;
   const fx = S.fx.uniforms, on = k => pp.enabled !== false && (pp[k]?.enabled !== false);
   fx.grain.value = on('filmGrain') ? pp.filmGrain?.strength ?? 0.08 : 0; fx.vig.value = on('vignette') ? pp.vignette?.strength ?? 0.2 : 0; fx.ca.value = on('chromaticAberration') ? pp.chromaticAberration?.strength ?? 0.015 : 0;
+  const look = pp.look || {}; fx.sat.value = look.saturation ?? 1; fx.gain.value = look.gain ?? 1;   // thumbnails: more saturated, brighter
   S.glitchMax = on('glitch') ? pp.glitch?.maximumStrength ?? 0.08 : 0;
   S.mix.uniforms.seed.value = (cfg.manifest.randomization?.globalSeed || 1) % 997;
   // shared scene context

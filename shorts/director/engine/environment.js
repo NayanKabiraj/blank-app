@@ -14,6 +14,11 @@ const PRESETS = {
   'digital-city':      { top: '#10204a', bottom: '#04060e', glow: '#FFCC33', decor: ['city', 'floorgrid'] },
   'wave-space':        { top: '#08224a', bottom: '#03060f', glow: '#00D9FF', decor: ['wavegrid', 'dust'] },
   'holographic-room':  { top: '#0a2a3a', bottom: '#030a12', glow: '#00D9FF', decor: ['holoroom', 'dust'] },
+  // bright, saturated backdrops for thumbnails (a sunburst of rays behind the subject)
+  'thumb-sunset':      { top: '#ff9f1c', bottom: '#d81b60', glow: '#ffe066', decor: ['rays'] },
+  'thumb-ocean':       { top: '#26e0ff', bottom: '#1f4dff', glow: '#ffffff', decor: ['rays'] },
+  'thumb-grape':       { top: '#c04bff', bottom: '#3a2bd8', glow: '#ffe066', decor: ['rays'] },
+  'thumb-lime':        { top: '#c6f23c', bottom: '#00a86b', glow: '#ffffff', decor: ['rays'] },
 };
 export const ENV_NAMES = Object.keys(PRESETS);
 export const bgColor = name => (PRESETS[name] || PRESETS['abstract-dark']).bottom;
@@ -39,6 +44,12 @@ export function buildEnvironment(name, motion, ctx, rng) {
 
   const fwd = { forward: 1.0, 'slow-forward': 0.45, 'fast-forward': 2.4, drift: 0.25, 'subtle-drift': 0.15, 'slow-orbit': 0.2, 'rotate-slow': 0.2, wave: 0.5, converge: 0.8 }[motion] ?? 0.4;
   const mk = {
+    rays() {   // sunburst: alternating wedges fanned out behind the subject
+      const cv = document.createElement('canvas'); cv.width = cv.height = 1024; const c = cv.getContext('2d'); c.translate(512, 512);
+      for (let i = 0; i < 24; i++) { c.rotate(6.2832 / 24); c.fillStyle = 'rgba(255,255,255,0.20)'; c.beginPath(); c.moveTo(0, 0); c.lineTo(-30, -520); c.lineTo(30, -520); c.closePath(); c.fill(); }
+      const tex = new THREE.CanvasTexture(cv); const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: tex, transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, fog: false }));
+      m.scale.set(60, 60, 1); m.position.z = -24; g.add(m); items.push(t => { m.rotation.z = t * 0.02; });
+    },
     stars() {
       const n = 900, a = new Float32Array(n * 3);
       for (let i = 0; i < n; i++) { a[i * 3] = (rng() - 0.5) * 60 * S; a[i * 3 + 1] = (rng() - 0.5) * 60 * S; a[i * 3 + 2] = -rng() * 60; }

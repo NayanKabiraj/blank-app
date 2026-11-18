@@ -4,9 +4,10 @@
 import * as THREE from 'three';
 import { mulberry32, clamp, lerp, easeOutCubic, easeInOutCubic, wrap, smooth } from './util.js';
 import { softSprite } from './environment.js';
+import { bodyMaterial } from './bodies.js';
 
-export const OBJECT_TYPES = ['particles', 'sphere', 'central-control-orb', 'network-node', 'decision-node', 'approval-gate', 'icosahedron', 'torus', 'tetrahedron', 'columns', 'light-bars', 'instanced-code-blocks', 'task-nodes', 'workflow-blocks', 'timeline-nodes'];
-const GROUP = { particles: 'points', sphere: 'sphere', 'network-node': 'node', 'decision-node': 'node', 'central-control-orb': 'orb', 'approval-gate': 'gate', icosahedron: 'shards', torus: 'torus', tetrahedron: 'tetra', columns: 'column', 'light-bars': 'bar', 'instanced-code-blocks': 'code', 'task-nodes': 'task', 'workflow-blocks': 'block', 'timeline-nodes': 'timeline' };
+export const OBJECT_TYPES = ['moon', 'earth', 'sun', 'particles', 'sphere', 'central-control-orb', 'network-node', 'decision-node', 'approval-gate', 'icosahedron', 'torus', 'tetrahedron', 'columns', 'light-bars', 'instanced-code-blocks', 'task-nodes', 'workflow-blocks', 'timeline-nodes'];
+const GROUP = { particles: 'points', sphere: 'sphere', 'network-node': 'node', 'decision-node': 'node', 'central-control-orb': 'orb', 'approval-gate': 'gate', icosahedron: 'shards', torus: 'torus', tetrahedron: 'tetra', columns: 'column', 'light-bars': 'bar', 'instanced-code-blocks': 'code', 'task-nodes': 'task', 'workflow-blocks': 'block', 'timeline-nodes': 'timeline', moon: 'body', earth: 'body', sun: 'body' };
 
 const tmpV = new THREE.Vector3(), tmpO = new THREE.Object3D(), tmpC = new THREE.Color();
 const dir3 = r => { const a = r[0] * 6.2832, z = r[1] * 2 - 1, s = Math.sqrt(1 - z * z); return [Math.cos(a) * s, z, Math.sin(a) * s]; };
@@ -159,6 +160,14 @@ export class ObjectSystem {
       this.mat = new THREE.MeshStandardMaterial({ color: col, emissive: col.clone().multiplyScalar(0.55), emissiveIntensity: 1, metalness: 0.5, roughness: 0.28, flatShading: true, transparent: true });
       this.mesh = new THREE.Mesh(g0, this.mat); this.group3.add(this.mesh);
       this.edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(1.27 * ctx.unit, 1)), new THREE.LineBasicMaterial({ color: col.clone().multiplyScalar(1.8), transparent: true, opacity: 0 })); this.group3.add(this.edges);
+    } else if (this.group === 'body') {   // a textured planet: moon / earth / sun (used by thumbnails and what-if scenes)
+      const R = 1.6 * ctx.unit * (spec.scale || 1), P = spec.position || {};
+      this.bodyMesh = new THREE.Mesh(new THREE.SphereGeometry(R, 72, 54), bodyMaterial(spec.type, seed)); this.bodyMesh.position.set(P.x || 0, P.y || 0, P.z || 0);
+      this.group3.add(this.bodyMesh);
+      const glow = { moon: '#cfd8ff', earth: '#58a6ff', sun: '#ffb020' }[spec.type];
+      this.halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: softSprite(), color: new THREE.Color(glow).multiplyScalar(spec.type === 'sun' ? 1.8 : 1.1), transparent: true, opacity: spec.type === 'sun' ? 0.9 : 0.28, depthWrite: false, blending: THREE.AdditiveBlending }));
+      this.halo.scale.setScalar(R * (spec.type === 'sun' ? 6 : 3.6)); this.halo.position.copy(this.bodyMesh.position); this.halo.position.z -= 0.2; this.group3.add(this.halo);
+      this.bodyR = R; this.spin = spec.spin ?? 0.12;
     } else if (this.group === 'gate') {
       this.mat = new THREE.MeshStandardMaterial({ color: col, emissive: col, emissiveIntensity: 1.1, metalness: 0.3, roughness: 0.3 });
       this.rings = [1.5, 1.1, 0.7].map((rad, j) => { const m = new THREE.Mesh(new THREE.TorusGeometry(rad * ctx.unit, 0.045 * ctx.unit, 10, 80), this.mat); this.group3.add(m); return m; });
@@ -182,6 +191,7 @@ export class ObjectSystem {
     const o = {}, k = this.k;
     const react = this.audioReactive ? 1 : 0;
     const l2 = react ? { ...ls } : ls;
+    if (this.group === 'body') { this.bodyMesh.rotation.y = 1.2 + ls.t * this.spin; this.bodyMesh.rotation.x = 0.18; return; }
     if (this.group === 'shards') return this.updateShards(ls);
     if (this.group === 'gate') return this.updateGate(ls);
     for (let i = 0; i < this.n; i++) {
