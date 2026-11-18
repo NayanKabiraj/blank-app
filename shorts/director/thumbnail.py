@@ -144,7 +144,7 @@ def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], lis
     return objs, st
 
 
-STOCK_QUERY = {"moon": "full moon lunar", "sun": "sun solar", "earth": "Earth from space"}
+STOCK_QUERY = {"moon": "full moon", "sun": "sun solar", "earth": "Earth from space"}
 
 
 def stock_query(spec: dict, kind: str | None) -> str:
