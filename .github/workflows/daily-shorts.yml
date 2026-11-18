@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       format:
-        description: "shorts (default: the daily 45-55 second whiteboard Shorts), documentary (5-15 minute whiteboard videos; plan schema: python -m shorts.plan doc-schema), director (Claude-directed dynamic Three.js Short from a manifest in manifest_json), director-documentary (the same, 5-10 minute landscape), stockreel (real Pexels stock-footage Short from the same plan schema as shorts; needs the PEXELS_API_KEY secret), stockreel-documentary (the same, long-form), voicelab (voice samples, no video), ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
+        description: "shorts (default: the daily 45-55 second whiteboard Shorts), documentary (5-15 minute whiteboard videos; plan schema: python -m shorts.plan doc-schema), director (Claude-directed dynamic Three.js Short from a manifest in manifest_json), director-documentary (the same, 5-10 minute landscape), stockreel (real Wikimedia Commons stock-footage Short, Ken Burns pan/zoom, from the same plan schema as shorts; no API key needed), stockreel-documentary (the same, long-form), voicelab (voice samples, no video), ytauth (one-time YouTube sign-in) or upload (upload an already saved day to YouTube, or just check the credentials with dry_run)"
         type: string
         default: "shorts"
       auth_code:
@@ -81,7 +81,6 @@ jobs:
       YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
       # Optional repository variables (Settings > Secrets and variables > Actions > Variables)
       YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
-      PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}   # stockreel only: a free key from pexels.com/api; without it, scenes render as a plain gradient
       # YouTube's "altered or synthetic content" label: off unless the YT_AI_DISCLOSURE variable is "on"
       YT_AI_DISCLOSURE: ${{ vars.YT_AI_DISCLOSURE || 'off' }}
       PIPER_VOICE_EN: ${{ vars.PIPER_VOICE_EN || 'en_US-ryan-high' }}

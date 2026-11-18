@@ -65,6 +65,51 @@ def search(query: str, limit: int = 12, title: str | None = None) -> list[dict]:
     return sorted(out, key=lambda h: (h["bad"], not re.search(re.escape(query.split()[0]), h["title"], re.I), len(h["title"])))      # keep the search order, but plain subject photos before scenery
 
 
+def search_broad(query: str, limit: int = 12, min_width: int = 640) -> list[dict]:
+    """A looser search for general stock photography (shorts/stockreel): no `intitle:` restriction (that's tuned
+    for a single named subject like the Moon, far too narrow for "city skyline at night"), no bias against
+    buildings/trees/people/vehicles - those are exactly what a general scene wants. Still only Public domain/CC0."""
+    q = {"action": "query", "format": "json", "generator": "search", "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6,
+         "gsrlimit": limit, "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 1600}
+    data = json.loads(_get(API + "?" + urllib.parse.urlencode(q)))
+    pages = sorted((data.get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
+    out = []
+    for p in pages:
+        ii = (p.get("imageinfo") or [{}])[0]
+        meta = ii.get("extmetadata") or {}
+        lic = (meta.get("LicenseShortName") or {}).get("value", "") + " " + (meta.get("UsageTerms") or {}).get("value", "")
+        if not FREE.search(lic) or NONFREE.search(lic):
+            continue
+        if ii.get("mime") not in ("image/jpeg", "image/png") or min(ii.get("width", 0), ii.get("height", 0)) < min_width:
+            continue
+        artist = re.sub(r"<[^>]+>", "", (meta.get("Artist") or {}).get("value", "")).strip()
+        out.append({"url": ii.get("thumburl") or ii["url"], "title": p["title"], "width": ii.get("width", 0), "height": ii.get("height", 0),
+                    "license": lic.strip(), "credit": f"{artist or 'Unknown'} / Wikimedia Commons ({lic.strip()})", "source": ii.get("descriptionurl", "")})
+    return out
+
+
+def fetch_broad(query: str, out_dir: Path, name: str = "stock", min_width: int = 640) -> dict | None:
+    """Like `fetch`, but using `search_broad` (no single-subject bias) - what shorts/stockreel uses for an
+    arbitrary scene's search phrase. None on any failure or no match: the caller falls back to a placeholder."""
+    out_dir = Path(out_dir)
+    try:
+        hits = search_broad(query, min_width=min_width) or search_broad(query.split()[0], min_width=min_width)
+        log.info("Stock candidates for %r: %s", query, [h["title"] for h in hits[:5]])
+        for hit in hits:
+            ext = ".png" if hit["url"].lower().endswith(".png") else ".jpg"
+            path = out_dir / f"{name}{ext}"
+            out_dir.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(_get(hit["url"], 40))
+            if path.stat().st_size < 20_000:
+                continue
+            (out_dir / f"{name}.credit.txt").write_text(f"{hit['credit']}\n{hit['source']}\n", encoding="utf-8")
+            log.info("Stock photo for %r: %s (%s)", query, hit["title"], hit["license"])
+            return {"path": path, "credit": hit["credit"], "source": hit["source"], "width": hit["width"], "height": hit["height"]}
+    except Exception as e:  # noqa: BLE001 - network, JSON, anything: a render must never fail because of a photo
+        log.warning("Stock photo lookup failed for %r: %s", query, e)
+    return None
+
+
 def fetch(query: str, out_dir: Path, name: str = "stock", subject: str | None = None) -> dict | None:
     """Download the best public-domain match for `query`. None on any failure (offline, no match): the caller falls back."""
     out_dir = Path(out_dir)

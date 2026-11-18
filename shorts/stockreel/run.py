@@ -6,8 +6,9 @@ with the same upload queue, thumbnail-with-headline and history as the other two
     python -m shorts.stockreel.run --plan-file doc.json --documentary          # documentary
     python -m shorts.stockreel.run --plan-file plan.json --dry-run             # render only
 
-Needs `PEXELS_API_KEY` (a free key from pexels.com/api) to fetch real clips; without it every scene renders as a
-soft gradient placeholder instead, so a missing key degrades the look rather than failing the run.
+Uses Wikimedia Commons (public domain/CC0 photos, no API key, no signup) animated with a slow Ken Burns pan/zoom;
+a scene whose search finds nothing renders as a soft gradient placeholder instead, so a miss degrades the look
+rather than failing the run.
 """
 from __future__ import annotations
 
@@ -21,7 +22,7 @@ from pathlib import Path
 
 from .. import config, pending, strategy, upload
 from ..plan import DocPlan, Plan, doc_seconds, validate, validate_doc
-from . import build, fetch, thumbnail as thumbs
+from . import build, thumbnail as thumbs
 
 log = logging.getLogger("shorts.stockreel")
 
@@ -29,11 +30,6 @@ log = logging.getLogger("shorts.stockreel")
 def _stamp(sec: float) -> str:
     sec = int(sec)
     return f"{sec // 60}:{sec % 60:02d}" if sec < 3600 else f"{sec // 3600}:{sec % 3600 // 60:02d}:{sec % 60:02d}"
-
-
-def _check_key() -> None:
-    if not fetch.api_key():
-        log.warning("PEXELS_API_KEY is not set: every scene will render as a plain gradient instead of real footage")
 
 
 def run_short(plan: Plan, langs: list[str], out: Path, dry_run: bool) -> dict:
@@ -145,7 +141,6 @@ def main() -> int:
         problems = validate(plan)
     for p in problems:
         log.warning("Plan check: %s", p)
-    _check_key()
     if args.validate_only:
         log.info("Plan OK: %s | %d problem(s)", plan.topic, len(problems))
         return 0

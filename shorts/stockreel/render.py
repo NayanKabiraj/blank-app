@@ -1,7 +1,8 @@
-"""Compose the stock-footage picture: one Pexels clip per scene (trimmed or looped to the scene's real spoken
-length), cut together, with burned-in captions (2-6 words at a time, one highlighted) timed to the voice-over.
-Reuses the director pipeline's caption chunker (same word-by-word timing math, same `maximumWordsPerCaption`
-spec) so captions look and behave the same across all three video styles.
+"""Compose the stock-footage picture: one Wikimedia Commons photo per scene (public domain/CC0 only, no API key),
+animated with a slow Ken Burns pan/zoom for the scene's real spoken length, cut together, with burned-in captions
+(2-6 words at a time) timed to the voice-over. Reuses the director pipeline's caption chunker (same word-by-word
+timing math, same `maximumWordsPerCaption` spec) so captions look and behave the same across all three video
+styles.
 """
 from __future__ import annotations
 
@@ -34,19 +35,13 @@ def scene_query(scene, niche: str, lang: str) -> str:
     return " ".join(picked) or niche or "abstract background"
 
 
-def _clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int) -> Path:
-    """A clip covering `duration` seconds at w x h: a downloaded Pexels clip (trimmed or looped), or a gradient
-    placeholder when nothing was found."""
-    orientation = "portrait" if h > w else "landscape"
-    raw = out.with_suffix(".src.mp4")
-    got = fetch.download_clip(query, raw, orientation, min_duration=min(2.0, duration), seed=seed)
-    if not got:
-        return fetch.placeholder_clip(out, duration, w, h, seed=seed)
-    # cover-fit to w x h, then loop if the clip is shorter than the scene, trim if longer
-    vf = f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1"
-    _run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", raw.name, "-t", f"{duration:.2f}",
-          "-vf", vf, "-an", "-r", "30", str(out)], cwd=out.parent)
-    return out
+def _clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int, fps: int) -> Path:
+    """A clip covering `duration` seconds at w x h: a Ken-Burns-animated Commons photo, or a gradient placeholder
+    when nothing was found."""
+    clip, credit = fetch.clip_for(query, out, w, h, duration, seed=seed, fps=fps)
+    if credit:
+        log.info("Stock photo for %r: %s", query, credit["credit"])
+    return clip
 
 
 def _concat(clips: list[Path], out: Path, work: Path) -> None:
@@ -77,7 +72,7 @@ def render(scenes, lang: str, niche: str, timeline: list[tuple[float, float, str
     for i, (sc, (s, e, _text)) in enumerate(zip(scenes, timeline)):
         q = scene_query(sc, niche, lang)
         d = max(0.6, e - prev_end)   # covers this scene's speech AND the silent lead-in/gap before it: no gaps in the picture
-        clip = _clip_for(q, work / f"scene_{i}.mp4", w, h, d, seed=hash((q, i)) & 0xFFFF)
+        clip = _clip_for(q, work / f"scene_{i}.mp4", w, h, d, seed=hash((q, i)) & 0xFFFF, fps=fps)
         clips.append(clip)
         prev_end = e
     if total > timeline[-1][1]:   # the mix pads with a tail (outro music/breathing room): hold the last frame

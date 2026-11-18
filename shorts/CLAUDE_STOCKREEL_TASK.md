@@ -2,7 +2,8 @@
 
 The channel has three looks now: the whiteboard explainer (`shorts/CLAUDE_DAILY_TASK.md`/`CLAUDE_DOCUMENTARY_TASK.md`),
 the director's dynamic Three.js scenes (`shorts/CLAUDE_DIRECTOR_TASK.md`), and this one: **real stock footage**
-(Pexels, free to use, no attribution required) behind the same voice-over, captions, music and upload pipeline.
+(Wikimedia Commons, public domain/CC0 only, no API key, no signup - the same source already used for thumbnails,
+animated with a slow Ken Burns pan/zoom) behind the same voice-over, captions, music and upload pipeline.
 Claude writes the exact same plan JSON as the whiteboard Short/documentary (`shorts.plan.Plan` / `DocPlan`, the
 `graphic` field is simply unused) and passes `format: stockreel` / `stockreel-documentary` to the workflow instead
 of `shorts`/`documentary`. Everything mechanical - voice, the upload queue, the thumbnail, history - is identical;
@@ -14,9 +15,10 @@ it - a city, weather, nature, a kitchen, hands at work, crowds, traffic, oceans,
 comparison, an abstract concept or a "what if" thought experiment, which stay on the whiteboard or director
 pipelines. This is an addition, never the default; most days still use the other two.
 
-**No AI-generated or fabricated imagery.** Clips are real camera footage from Pexels, matched by a search phrase,
-never an AI video/image generator and never anything the channel claims is something it is not - this keeps the
-channel's anti-hallucination rule intact for pictures as well as facts.
+**No AI-generated or fabricated imagery, and nothing to sign up for.** Clips are real public-domain/CC0 photography
+from Wikimedia Commons, matched by a search phrase and turned into motion with a pan/zoom, never an AI
+video/image generator and never anything the channel claims is something it is not - this keeps the channel's
+anti-hallucination rule intact for pictures as well as facts.
 
 ## Standing strategy checklist (same as the other two formats)
 
@@ -27,9 +29,12 @@ nothing about the strategy changes for this style, only the renderer.
 ## Writing the scene-level search phrase
 
 Each scene's `keyword` field (already part of the plan schema) doubles as the stock-footage search phrase: write
-it as a short, concrete, filmable noun phrase ("city skyline at night", "hands typing on a laptop", "ocean waves
-from above"), not an abstract term ("the economy", "trust") - Pexels can't film an abstraction. Without a
-`keyword`, the renderer falls back to the scene's first few meaningful words, then the niche name.
+it as a short, concrete, photographable noun phrase ("city skyline at night", "hands typing on a laptop", "ocean
+waves from above"), not an abstract term ("the economy", "trust") - there's no photo of an abstraction. Without a
+`keyword`, the renderer falls back to the scene's first few meaningful words, then the niche name. Commons' free
+public-domain/CC0 inventory is smaller than a commercial stock library, so a specific or recent subject may find
+nothing; that scene then gets a plain gradient instead (never a broken render) - prefer generic, commonly
+photographed phrases over narrow or brand-specific ones.
 
 ## Running it
 
@@ -40,6 +45,5 @@ python -m shorts.stockreel.run --plan-file plan.json --dry-run                  
 python -m shorts.stockreel.run --plan-file doc.json --documentary --dry-run     # documentary
 ```
 
-Needs the `PEXELS_API_KEY` repository secret (a free key from pexels.com/api). Without it every scene renders as a
-plain gradient instead of real footage - the run still completes, it just has no real "stock footage" look, so
-check the key is set before relying on this format for a real upload.
+No secret or signup needed. A scene whose search finds no public-domain/CC0 match renders as a plain gradient
+instead of real footage - the run still completes, it just has no real "stock footage" look for that scene.

@@ -2,7 +2,7 @@
 
 This repository makes faceless YouTube explainers (Shorts and documentaries, English + Hindi): whiteboard template videos
 (`shorts/explainer/`), Claude-directed dynamic Three.js videos (`shorts/director/`), and real stock-footage videos
-(`shorts/stockreel/`, Pexels, free to use, no attribution required - never an AI-generated clip), rendered and uploaded
+(`shorts/stockreel/`, Wikimedia Commons, public domain/CC0 only, no API key - never an AI-generated clip), rendered and uploaded
 (private) by the GitHub Actions workflow `daily-shorts.yml`. Claude researches and writes; the workflow renders.
 
 ## Always

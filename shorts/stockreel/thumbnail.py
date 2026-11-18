@@ -1,7 +1,8 @@
-"""Thumbnail for the stock-footage style: a Pexels photo (same library, same free/no-attribution licence as the
-clips) as the background, with the headline, tag chip and accent colour drawn in PIL - no Three.js engine here,
-since there is no 3D scene to render a frame from. Reuses the director thumbnail module's text planning
-(`shorten`, `_accent_words`, `pick_tag`) so headlines read the same way across every video style.
+"""Thumbnail for the stock-footage style: a Wikimedia Commons photo (same source and licence filter as
+`render.py`'s clips: Public domain/CC0 only, no API key) as the background, with the headline, tag chip and
+accent colour drawn in PIL - no Three.js engine here, since there is no 3D scene to render a frame from. Reuses
+the director thumbnail module's text planning (`shorten`, `_accent_words`, `pick_tag`) so headlines read the
+same way across every video style.
 
     python -m shorts.stockreel.thumbnail "city skyline at night" "Why Cities Never Really Sleep" --lang en --out t.jpg
 """
@@ -11,15 +12,11 @@ import argparse
 import logging
 import re
 import tempfile
-import urllib.error
-import urllib.parse
-import urllib.request
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 
-from ..director import thumbnail as T
-from . import fetch
+from ..director import stock, thumbnail as T
 
 log = logging.getLogger(__name__)
 SIZES = {"short": (720, 1280), "long": (1280, 720)}
@@ -34,26 +31,9 @@ def _font_for(text: str) -> Path:
     return FONT_DEVANAGARI if any("\u0900" <= ch <= "\u097f" for ch in text) else FONT_LATIN
 
 
-def _photo(query: str, w: int, h: int, out: Path) -> Path | None:
-    key = fetch.api_key()
-    if not key:
-        return None
-    url = "https://api.pexels.com/v1/search?" + urllib.parse.urlencode(
-        {"query": query, "orientation": "landscape" if w > h else "portrait", "per_page": 1, "size": "medium"})
-    try:
-        req = urllib.request.Request(url, headers={"Authorization": key, "User-Agent": fetch.UA})
-        with urllib.request.urlopen(req, timeout=20) as r:
-            import json
-            data = json.loads(r.read())
-        photo = (data.get("photos") or [None])[0]
-        if not photo:
-            return None
-        src = photo["src"].get("large2x") or photo["src"]["large"]
-        urllib.request.urlretrieve(src, out)  # noqa: S310 - a Pexels CDN URL from their own API response
-        return out if out.exists() and out.stat().st_size > 10_000 else None
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, KeyError, ValueError) as e:
-        log.warning("Pexels photo lookup failed for %r: %s", query, e)
-        return None
+def _photo(query: str, out_dir: Path) -> Path | None:
+    got = stock.fetch_broad(query, out_dir, "photo")
+    return got["path"] if got else None
 
 
 def _wrap(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.FreeTypeFont, max_w: int) -> list[str]:
@@ -74,10 +54,10 @@ def render(query: str, headline: str, tag: str, accent: str, out_jpg: Path, kind
     w, h = SIZES[kind]
     land = w > h
     with tempfile.TemporaryDirectory() as td:
-        photo = _photo(query, w, h, Path(td) / "photo.jpg")
+        photo = _photo(query, Path(td))
         if photo:
             img = ImageOps.fit(Image.open(photo).convert("RGB"), (w, h), Image.LANCZOS)
-        else:   # no key / no match: a plain dark gradient keeps the thumbnail complete rather than blank
+        else:   # no match: a plain dark gradient keeps the thumbnail complete rather than blank
             img = Image.new("RGB", (w, h), (18, 20, 30))
             grad = Image.new("L", (1, h), 0)
             for y in range(h):
