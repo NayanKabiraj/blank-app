@@ -1,8 +1,9 @@
 # Instructions for Claude in this repository
 
 This repository makes faceless YouTube explainers (Shorts and documentaries, English + Hindi): whiteboard template videos
-(`shorts/explainer/`) and Claude-directed dynamic Three.js videos (`shorts/director/`), rendered and uploaded (private) by the GitHub
-Actions workflow `daily-shorts.yml`. Claude researches and writes; the workflow renders.
+(`shorts/explainer/`), Claude-directed dynamic Three.js videos (`shorts/director/`), and real stock-footage videos
+(`shorts/stockreel/`, Pexels, free to use, no attribution required - never an AI-generated clip), rendered and uploaded
+(private) by the GitHub Actions workflow `daily-shorts.yml`. Claude researches and writes; the workflow renders.
 
 ## Always
 
@@ -11,7 +12,8 @@ Actions workflow `daily-shorts.yml`. Claude researches and writes; the workflow 
    (title + thumbnail) before story, retention design, the quality gate, and the audience growth loop (cluster, follow-ups, "Up next", pinned
    question). Commands: `RESEARCH <topic>`, `BUILD <topic>`, `OPTIMIZE <video>`, `VARIANTS <video>`.
 2. **Task files**: `shorts/CLAUDE_DAILY_TASK.md` (whiteboard Short), `shorts/CLAUDE_DOCUMENTARY_TASK.md`, `shorts/CLAUDE_DIRECTOR_TASK.md`
-   (director manifests). Each starts with the standing strategy checklist.
+   (director manifests), `shorts/CLAUDE_STOCKREEL_TASK.md` (real stock footage, for topics that read better with real footage than a
+   coded scene - a third style, never the default). Each starts with the standing strategy checklist.
 3. **Start from what is researched**: `python -m shorts.niches recent` shows the researched queue (`strategy/research-queue.json`), open follow-ups
    and recent videos. Never repeat a topic.
 4. **Never fabricate** metrics, competitor analytics, sources, commands run, tests run, render success, URLs or API responses. Unavailable data is
