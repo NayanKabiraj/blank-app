@@ -363,7 +363,7 @@ def validate(m: dict) -> tuple[list[str], list[str]]:
     if th.get("headline") and (len(words(th["headline"])) > 4 or len(th["headline"]) > 24):
         warns.append("thumbnail.headline should be 1-4 big words (at most 24 characters)")
     if not th.get("headline"):
-        warns.append("no thumbnail.headline: the hook text is used (write 1-4 words that show the consequence, not the title)")
+        warns.append("no thumbnail.headline: the hook text is used (write one short sentence (up to 8 words) that shows the consequence, not the title)")
     for lang, loc in (m.get("localizations") or {}).items():
         if not loc.get("thumbnailText"):
             warns.append(f"localizations.{lang}.thumbnailText is missing: the thumbnail uses the hook text of that language")

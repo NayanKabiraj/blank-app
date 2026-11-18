@@ -107,7 +107,7 @@ focal 3D subject + the headline, 1280x720 for long videos, 720x1280 for Shorts, 
 - director manifest: `"thumbnail": {"headline": "SILENT. YET FOUND YOU", "sceneType": "object-assembly", "environment": "holographic-room",
   "objects": [...optional...], "accentWords": {"FOUND": "#FFCC33"}, "concept": "why it works"}` and
   `localizations.<lang>.thumbnailText` for every other language (the render warns when it is missing);
-- whiteboard plans: `thumbnail_text` in each language (1-4 words showing the consequence, not a copy of the title);
+- whiteboard plans: `thumbnail_text` in each language (one short sentence of up to 8 words showing the consequence, not a copy of the title);
 - nothing written: the hook text is used, which is a fallback, not a design.
 The workflow uploads it with the video (`thumbnails.set`, needs a verified channel), keeps it next to a queued video if YouTube
 refuses the upload, and uploads it when the queue drains. Preview: `python -m shorts.director.thumbnail --manifest-file m.json --lang en --out t.jpg`.
@@ -115,7 +115,7 @@ refuses the upload, and uploads it when the queue drains. Preview: `python -m sh
 **Lettering** (added automatically): the headline is drawn with a thick dark outline, a warm gradient fill, a slight tilt and the accent colour on
 the key word, plus a small **tag chip** in the top corner: "WHAT IF?" when the title starts with What if / What happens / What would, otherwise
 the niche's subject (TECH, SPACE, SCIENCE, YOUR BODY, MONEY, EARTH, INDIA...). Override with `thumbnail.tag` (manifest) or leave it. Keep the
-headline to the consequence in 1-4 words; the chip is the category, not a second headline.
+headline to the consequence in one short sentence (up to 8 words); the chip is the category, not a second headline.
 
 ## 6b. Story engine and the first 30 seconds
 

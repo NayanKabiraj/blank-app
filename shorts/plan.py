@@ -155,8 +155,8 @@ def _strategy_problems(plan) -> list[str]:
 def _thumb_problems(lang: str, s) -> list[str]:
     t = (getattr(s, "thumbnail_text", "") or "").strip()
     out = []
-    if t and (len(t.split()) > 4 or len(t) > 24):
-        out.append(f"{lang}: thumbnail_text {t!r} is too long, use 1-4 big words (at most 24 characters)")
+    if t and (len(t.split()) > 8 or len(t) > 46):
+        out.append(f"{lang}: thumbnail_text {t!r} is too long, write one short sentence (at most 8 words, 46 characters)")
     if t and t.lower().strip("?!. ") == s.title.lower().strip("?!. "):
         out.append(f"{lang}: thumbnail_text repeats the title; the thumbnail should show the consequence, the title the premise")
     return out

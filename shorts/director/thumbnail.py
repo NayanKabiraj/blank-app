@@ -1,4 +1,4 @@
-"""Thumbnails, designed like the video: one focal subject, one to four huge words, strong contrast, readable at phone size.
+"""Thumbnails, designed like the video: one focal subject, one short sentence in huge letters, strong contrast, readable at phone size.
 
 The same Three.js engine that renders the videos draws a single frame (shorts/director/still.cjs): an environment, a
 focal 3D subject and the headline. A thumbnail spec is small:
@@ -47,8 +47,8 @@ WHAT_IF = re.compile(r"^\s*(what\s+(if|happens|would)|अगर|क्या\s+�
 HERO_SCENES = {"object-assembly", "geometry-swarm", "network-nodes", "diagram-3d", "wave-field", "timeline-3d"}   # scenes with one clear focal subject
 
 
-def shorten(text: str, max_words: int = 4, max_chars: int = 22) -> str:
-    """A thumbnail headline is one to four words, a few characters per word."""
+def shorten(text: str, max_words: int = 8, max_chars: int = 46) -> str:
+    """A thumbnail headline is a short sentence: at most eight words, 46 characters."""
     ws = M.words(text.replace("\n", " "))
     out: list[str] = []
     for w in ws:
@@ -140,7 +140,7 @@ def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], lis
         objs = [body(1.9, 0.9, 1.05)] if land else [body(0.0, 1.6, 1.5)]
         return objs, [{"type": "arrow", "nx": -0.5 if land else -0.55, "ny": 0.2 if land else 0.25, "size": 0.3, "color": accent}] if q else []
     objs = [body(2.4, 0.9, 0.85)] if land else [body(0.0, 1.8, 1.25)]
-    st = [{"type": "face", "mood": mood, "nx": -0.6 if land else -0.56, "ny": 0.1 if land else 0.56, "size": 0.3 if land else 0.26, "look": 0.7, "tilt": -6}]
+    st = [{"type": "face", "mood": mood, "nx": -0.62 if land else -0.56, "ny": 0.2 if land else 0.56, "size": 0.3 if land else 0.26, "look": 0.7, "tilt": -6}]
     return objs, st
 
 
@@ -199,6 +199,13 @@ def stickers_for(spec: dict, land: bool) -> list[dict]:
     return out
 
 
+def _headline_scale(text: str, land: bool) -> float:
+    """Short headlines are huge, a full sentence is smaller but still readable on a phone (it wraps to two or three lines)."""
+    n = len(text)
+    base = 1.0 if n <= 14 else 0.82 if n <= 26 else 0.7 if n <= 38 else 0.62
+    return base if land else base * 1.05
+
+
 def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
     land = w > h
     scene = {"sceneType": spec["sceneType"], "storyPhase": "hook", "narration": {"text": "thumbnail", "startSeconds": 0.1, "endSeconds": 3.5},
@@ -206,7 +213,7 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
              "camera": {"preset": "dolly-out", "speed": 0.3, "fov": 46}, "energy": 0.9, "durationSeconds": 4.0,
              "textElements": [{"id": "headline", "text": spec["headline"], "animation": "kinetic-sentence",
                                "position": {"x": 0, "y": -3.3 if land else -2.6, "z": 0},
-                               "style": {"scale": 1.0 if land else 1.1, "accentWords": spec["accentWords"], "outline": True,
+                               "style": {"scale": _headline_scale(spec["headline"], land) * (1.2 if spec["lang"] == "hi" else 1.0), "accentWords": spec["accentWords"], "outline": True,
                                          "gradient": ["#FFFFFF", "#FFE9A6"], "tilt": -2.5}}]}
     if spec.get("tag"):
         scene["textElements"].append({"id": "tag", "text": spec["tag"], "animation": "kinetic-sentence", "position": {"x": -3.1 if land else -1.3, "y": 4.4 if land else 3.5, "z": 0},
