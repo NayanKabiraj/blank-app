@@ -41,9 +41,10 @@ def search(query: str, limit: int = 12) -> list[dict]:
         if ii.get("mime") not in ("image/jpeg", "image/png") or min(ii.get("width", 0), ii.get("height", 0)) < 700:
             continue
         artist = re.sub(r"<[^>]+>", "", (meta.get("Artist") or {}).get("value", "")).strip()
-        out.append({"url": ii.get("thumburl") or ii["url"], "title": p["title"], "license": lic.strip(),
+        bad = bool(re.search(r"atmosphere|horizon|rise|set\b|silhouette|tree|building|city|diagram|map|logo|icon", p["title"], re.I))
+        out.append({"bad": bad, "url": ii.get("thumburl") or ii["url"], "title": p["title"], "license": lic.strip(),
                     "credit": f"{artist or 'Unknown'} / Wikimedia Commons ({lic.strip()})", "source": ii.get("descriptionurl", "")})
-    return out
+    return sorted(out, key=lambda h: h["bad"])      # keep the search order, but plain subject photos before scenery
 
 
 def fetch(query: str, out_dir: Path, name: str = "stock") -> dict | None:
