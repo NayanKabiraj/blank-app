@@ -222,5 +222,75 @@
         "video_id": "NQ-GnC2OtCQ"
       }
     }
+  },
+  {
+    "date": "2026-11-18",
+    "niche": "Earth & Nature",
+    "topic": "How the Moon runs the tides (two bulges, spring and neap tides, and the Moon slowly drifting away)",
+    "minutes": 5,
+    "cluster": "The Moon",
+    "follow_ups": [
+      "What if the Moon disappeared?",
+      "Why does the Moon always show the same face?",
+      "What if Earth stopped spinning?"
+    ],
+    "next_video": "What if the Moon disappeared?",
+    "gate_score": 77,
+    "videos": {
+      "en": {
+        "file": "2026-11-18_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "Why the sea rises twice a day",
+            "start": 0.0
+          },
+          {
+            "title": "What the Moon does to the ocean",
+            "start": 35.4
+          },
+          {
+            "title": "Spring tides, neap tides and the Sun",
+            "start": 91.2
+          },
+          {
+            "title": "Why some tides are huge",
+            "start": 138.8
+          },
+          {
+            "title": "The Moon is slowly drifting away",
+            "start": 186.5
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-18_documentary_en",
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+      },
+      "hi": {
+        "file": "2026-11-18_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "समुद्र दिन में दो बार क्यों चढ़ता है",
+            "start": 0.0
+          },
+          {
+            "title": "चाँद समुद्र के साथ क्या करता है",
+            "start": 51.0
+          },
+          {
+            "title": "बड़े ज्वार, छोटे ज्वार और सूरज",
+            "start": 118.2
+          },
+          {
+            "title": "कुछ ज्वार इतने विशाल क्यों",
+            "start": 176.7
+          },
+          {
+            "title": "चाँद धीरे-धीरे दूर जा रहा है",
+            "start": 240.7
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-18_documentary_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
