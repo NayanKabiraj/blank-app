@@ -22,8 +22,19 @@ NONFREE = re.compile(r"cc[- ]by|share ?alike|fair use|non-?free|gpl", re.I)
 
 
 def _get(url: str, timeout: int = 25) -> bytes:
-    with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=timeout) as r:
-        return r.read()
+    import time
+    import urllib.error
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=timeout) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 2:
+                raise
+            wait = int(e.headers.get("Retry-After", 20)) if e.headers else 20
+            log.warning("Wikimedia rate limit (429), waiting %ss (attempt %d/3)", wait, attempt + 1)
+            time.sleep(min(wait, 45))
+    raise RuntimeError("unreachable")
 
 
 # curated public-domain NASA files for the common subjects (checked in CI logs): title -> (focus x, focus y, zoom) for the round crop
