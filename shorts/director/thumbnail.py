@@ -110,7 +110,7 @@ def spec_from_script(script, niche: str, lang: str) -> dict:
             "title": script.title, "tag": pick_tag(script.title, niche, getattr(script, "thumbnail_tag", None), lang)}
 
 
-SUBJECTS = [("moon", re.compile(r"\b(moon|lunar|supermoon|eclipse)\b|चाँद|चांद|चंद्र", re.I)), ("sun", re.compile(r"\b(sun|solar|star)\b|सूरज|सूर्य", re.I)),
+SUBJECTS = [("moon", re.compile(r"\b(moon|lunar|supermoon|eclipse)\b|चाँद|चांद|चंद्र|सुपरमून", re.I)), ("sun", re.compile(r"\b(sun|solar|star)\b|सूरज|सूर्य", re.I)),
             ("earth", re.compile(r"\b(earth|planet|gravity|ocean|tides?|world|globe)\b|पृथ्वी|धरती", re.I))]
 BRIGHT = {"moon": "thumb-grape", "sun": "thumb-ocean", "earth": "thumb-sunset"}
 BRIGHT_BY_SEED = ["thumb-sunset", "thumb-ocean", "thumb-grape", "thumb-lime"]
