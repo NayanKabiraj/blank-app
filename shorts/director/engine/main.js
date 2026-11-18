@@ -6,7 +6,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { SceneContent } from './sceneTypes.js';
 import { MixShader, FxShader, TRANSITIONS } from './post.js';
-import { clamp, hexToRgb } from './util.js';
+import { clamp, hexToRgb, pendingTextures } from './util.js';
 
 const S = { cfg: null, cache: new Map() };
 
@@ -97,7 +97,7 @@ function drawCaptions(t) {
   const age = clamp((t - c.start) / 0.12); S.cap.style.opacity = String(age * clamp((c.end + 0.08 - t) / 0.08)); S.cap.style.transform = `translateY(${(1 - age) * 14}px)`;
 }
 
-window.renderFrame = t => {
+window.renderFrame = async t => {
   const sc = S.scenes, last = sc.length - 1;
   let idx = sc.findIndex(s => t >= s.t0 && t < s.t1); if (idx < 0) idx = t < sc[0].t0 ? 0 : last;
   const audio = audioAt(t);
@@ -105,6 +105,8 @@ window.renderFrame = t => {
   // inside a transition window? (window k blends scene k into scene k+1; the final window fades to black)
   let win = null;
   for (const w of S.windows) if (t >= w.a && t <= w.b && (w.i < last || sc[w.i].transitionOut)) { win = w; break; }
+  getScene(idx); if (win) getScene(win.i < last ? win.i + 1 : win.i);   // build the scene(s) now, so any texture they start loading (e.g. a thumbnail
+  if (pendingTextures.length) await Promise.all(pendingTextures.splice(0, pendingTextures.length));   // body's real photo) is ready before this frame is captured
   const drawn = [];
   const draw = (i, rt) => { drawn.push(i); const s = getScene(i), d = S.scenes[i].t1 - S.scenes[i].t0; s.frame(t - S.scenes[i].t0, d, audio); S.r.setRenderTarget(rt); S.r.render(s.scene, s.camera); };
   if (win) {
