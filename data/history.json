@@ -241,5 +241,32 @@
         "video_id": "ZR_P25-Oo90"
       }
     }
+  },
+  {
+    "date": "2026-11-18",
+    "niche": "Earth & Nature",
+    "topic": "What if Earth suddenly stopped spinning?",
+    "mood": "dramatic",
+    "cluster": "Earth",
+    "follow_ups": [
+      "What if a day lasted 48 hours?",
+      "What if the Moon disappeared?",
+      "Why is Earth's rotation slowing down?"
+    ],
+    "next_video": "What if a day lasted 48 hours?",
+    "gate_score": 81,
+    "thumbnail_text": "YOU'D STILL BE FLYING EAST",
+    "videos": {
+      "en": {
+        "file": "2026-11-18_en.mp4",
+        "saved_to": "videos/2026-11-18/en.mp4",
+        "video_id": "CLJlgbfc1F0"
+      },
+      "hi": {
+        "file": "2026-11-18_hi.mp4",
+        "saved_to": "videos/2026-11-18/hi.mp4",
+        "video_id": "c_XT-arbwHg"
+      }
+    }
   }
 ]

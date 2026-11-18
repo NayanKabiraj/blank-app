@@ -1,40 +1,42 @@
 {
-  "niche": "Space & Universe",
-  "topic": "Why does the supermoon look huge? (it is only about 7% bigger, your brain does the rest)",
-  "research_summary": "Candidates (from the researched queue, re-checked 18 Nov 2026): (1) the supermoon illusion 80 (researched, its news window 18-25 Nov is open, wins as a time-boxed concept); (2) what if the Sun vanished 84 (already made 17 Nov, not repeated); (3) what if Earth stopped spinning 82 (idea, no hook this week). Titles (/50): 'Why Does the Supermoon Look HUGE? (It Isn't)' 44 (chosen); 'The Supermoon Is Lying to Your Brain' 43; 'Is the Supermoon Really Bigger?' 41. Thumbnails: C two identical moons, one low one high, question mark (chosen, headline SAME SIZE?); A a giant moon over a skyline with a +7% ruler; B a pea covering the moon. Hooks: 'Tuesday's supermoon is only seven percent bigger. So why will it feel huge?' (chosen); 'The moon rising Tuesday is lying to your brain'; 'Hold a pea at arm's length. The giant moon fits behind it.' Quality gate 80: topic 8, curiosity 8, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 7, retention 8, series 9; the weakest part is the emotional close, improved with a viewer decision in the pinned comment. Facts and status: the full Beaver supermoon is 24 Nov 2026 at 14:54 UTC (NASA via search results; Farmers' Almanac) PARTIALLY VERIFIED; perigee about 360,768 km (Brunei Astronomy, Farmers' Almanac, Sterngucker), against an average distance of about 384,400 km, which gives a diameter about 6.5 percent larger, matching the sources' 'up to about 7 percent bigger than an average full moon' (and up to 14 percent against a micromoon), PARTIALLY VERIFIED (the video says about seven percent, versus an average full moon); the Moon is about half a degree wide (university and textbook sources) VERIFIED; a pea or small pebble at arm's length covers it (Wikipedia's Moon illusion article uses an 8.4 mm pebble at 64 cm; the pea is my wording) PARTIALLY VERIFIED; the horizon Moon is not larger and the moon illusion is a brain effect, researchers still debate the explanation (Farmers' Almanac, astronomy.com, National Geographic) VERIFIED for the illusion, UNVERIFIED for the mechanism, so the video says scientists still debate it. Left out because unverified: brightness percentages, the planets before sunrise. Risks: weather and visibility vary by city; the supermoon is modest, so the hook is the myth-bust; the Tuesday date assumes the viewer's local date is 24 Nov.",
-  "mood": "mysterious",
-  "cluster": "The Moon",
+  "niche": "Earth & Nature",
+  "topic": "What if Earth suddenly stopped spinning?",
+  "research_summary": "Candidates (from the researched queue, re-checked 18 Nov 2026): (1) what if Earth stopped spinning 82 (idea, not yet made, best niche diversity after two Space & Universe videos today); (2) what if the Moon disappeared 80 (same cluster as today's documentary, held back); (3) what if you fell into a black hole 79 (Space & Universe, cooling down after 3 uses in 14 days). Titles (/50): 'What If Earth Suddenly Stopped Spinning?' 43 (chosen); 'What Happens If Earth Stops Turning?' 40; 'Earth Just Stopped. Here's What Happens.' 39. Thumbnails: A you flying off a spinning globe at speed (chosen, headline 'YOU'D STILL BE FLYING EAST'); B a hurricane-force wind icon over a frozen globe; C a clock stuck mid-tick. Hooks: 'Right now you're spinning at 1,670 kilometers an hour. What happens if Earth suddenly stops?' (chosen); 'Stop the ground under your feet. You keep going.'; 'Earth is already slowing down. Just not the way you think.' Facts and status: equatorial rotation speed = Earth's equatorial circumference (about 40,075 km) / 24 hours = about 1,670 km/h, VERIFIED (arithmetic from a standard, well-established circumference figure); an instant stop is physically impossible for a real planet and is used here as a thought experiment, FICTIONAL ASSUMPTION, framed explicitly as 'what if'; inertia would carry the atmosphere, oceans and loose objects eastward at rotation speed, producing catastrophic winds, PARTIALLY VERIFIED (standard physics reasoning, not a cited simulation); Earth's rotation really is slowing, by roughly a couple of milliseconds per century, from tidal friction with the Moon, PARTIALLY VERIFIED (widely reported figure, not re-derived here); no claim is made about the magnetic field, since that depends on core convection rather than rotation speed, NOT PUBLICLY VERIFIABLE at the depth this video goes into. Risks: keep the 'what if' framing explicit so the wind/ocean scene is never read as a real forecast. Quality gate /100: topic 8, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 7, retention 8, series 9 = 81, proceed.",
+  "mood": "dramatic",
+  "cluster": "Earth",
   "follow_ups": [
-    "How does the Moon move the tides?",
-    "Why does the Moon always show the same face?",
-    "What if the Moon disappeared?"
+    "What if a day lasted 48 hours?",
+    "What if the Moon disappeared?",
+    "Why is Earth's rotation slowing down?"
   ],
-  "gate_score": 80,
+  "gate_score": 81,
   "english": {
-    "title": "Why does the supermoon look huge? (It isn't)",
-    "description": "Tuesday's supermoon is only about seven percent bigger than an average full moon, so why does it look so huge? The Moon's oval orbit makes the supermoon, and your brain does the rest. #supermoon #moon #science",
+    "title": "What If Earth Suddenly Stopped Spinning?",
+    "description": "You're spinning at about 1,670 km/h right now, and you don't feel a thing. Here's what would actually happen if Earth suddenly stopped - and the surprising way it's already slowing down. #earth #whatif #space #science",
     "tags": [
-      "supermoon",
-      "why does the moon look so big",
-      "moon illusion",
-      "supermoon 2026",
-      "beaver moon",
-      "space explained",
-      "full moon",
-      "animated explainer"
+      "earth rotation",
+      "what if earth stopped spinning",
+      "earth speed",
+      "day length",
+      "tidal friction",
+      "moon slowing earth",
+      "physics what if",
+      "earth facts",
+      "science shorts",
+      "what if series"
     ],
-    "hook_text": "Only seven percent bigger",
-    "thumbnail_text": "SAME SIZE?",
-    "next_video": "How does the Moon move the tides?",
-    "pinned_comment": "Which did you see on Tuesday: a huge moon, or a normal one with a very clever brain?",
+    "hook_text": "1,670 KM/H. Then stops?",
+    "thumbnail_text": "YOU'D STILL BE FLYING EAST",
+    "next_video": "What if a day lasted 48 hours?",
+    "pinned_comment": "Which surprised you more: the sudden-stop chaos, or Earth already slowing down for real?",
     "scenes": [
       {
-        "text": "Tuesday's supermoon is only seven percent bigger. So why will it feel huge?",
-        "keyword": "seven percent",
+        "text": "Right now you're spinning at 1,670 kilometers an hour. What happens if Earth suddenly stops?",
+        "keyword": "1,670 kilometers an hour",
         "graphic": {
-          "kind": "title",
-          "headline": "Only 7% bigger?",
-          "caption": "",
+          "kind": "stat",
+          "headline": "1,670 KM/H",
+          "caption": "your speed right now",
           "items": [],
           "values": [],
           "answer": null,
@@ -42,17 +44,17 @@
         }
       },
       {
-        "text": "Ever seen a giant moon rising and gasped? Let's ask why.",
-        "keyword": "gasped",
+        "text": "You wouldn't feel it either, because the ground, the air, even you are moving together. So what breaks first?",
+        "keyword": "moving together",
         "graphic": {
           "kind": "chat",
           "headline": "Quick chat",
           "caption": "",
           "items": [
-            "Why does the moon look huge?",
-            "It's a supermoon",
-            "Is it that much bigger?",
-            "Barely. Your brain does the rest"
+            "Why don't we feel Earth spinning?",
+            "Everything around you moves with it.",
+            "And if it stopped dead?",
+            "Everything keeps going. Without you."
           ],
           "values": [],
           "answer": null,
@@ -60,63 +62,15 @@
         }
       },
       {
-        "text": "The Moon's orbit is an oval. Once a month it swings closer, and a full moon then is a supermoon.",
-        "keyword": "oval",
-        "graphic": {
-          "kind": "flow",
-          "headline": "How a supermoon happens",
-          "caption": "",
-          "items": [
-            "Oval orbit",
-            "Moon swings closer",
-            "Full moon then",
-            "Supermoon"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Guess how much bigger it really is? Only about seven percent, next to an average full moon.",
-        "keyword": "seven percent",
-        "graphic": {
-          "kind": "stat",
-          "headline": "~7%",
-          "caption": "bigger than average",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Quick quiz: is a moon rising on the horizon actually bigger? Nope. It's the same size.",
-        "keyword": "same size",
-        "graphic": {
-          "kind": "quiz",
-          "headline": "Is the horizon moon bigger?",
-          "caption": "",
-          "items": [
-            "Yes, it's closer",
-            "No, same size",
-            "Yes, air magnifies it"
-          ],
-          "values": [],
-          "answer": 1,
-          "prop": null
-        }
-      },
-      {
-        "text": "Think the air magnifies it? That's the myth. It's an illusion, and scientists still debate exactly how it works.",
-        "keyword": "illusion",
+        "text": "Stop the ground, not your momentum, and you keep flying east at highway speed. Buildings, oceans, the sky would still be moving.",
+        "keyword": "momentum",
         "graphic": {
           "kind": "myth",
-          "headline": "Huge moon?",
+          "headline": "A survivable stop?",
           "caption": "",
           "items": [
-            "The air makes it bigger",
-            "Your brain misjudges its size"
+            "Myth: a sudden stop is survivable",
+            "Truth: momentum alone could flatten cities"
           ],
           "values": [],
           "answer": null,
@@ -124,24 +78,62 @@
         }
       },
       {
-        "text": "Test it yourself. Hold a pea at arm's length. It covers the Moon, whether it's low or high.",
-        "keyword": "pea",
+        "text": "The oceans would slosh toward the poles, burying coastlines that used to sit safely at the equator.",
+        "keyword": "slosh toward the poles",
         "graphic": {
-          "kind": "keyword",
-          "headline": "The pea test",
-          "caption": "covers the Moon, high or low",
-          "items": [],
-          "values": [],
+          "kind": "bars",
+          "headline": "Ocean pile-up",
+          "caption": "where the water piles up",
+          "items": [
+            "Equator",
+            "Mid-latitude",
+            "Poles"
+          ],
+          "values": [
+            1.0,
+            2.0,
+            4.0
+          ],
           "answer": null,
-          "prop": "star"
+          "prop": null
         }
       },
       {
-        "text": "So Tuesday's supermoon is only seven percent bigger. Your brain added the rest. Which did you see? Tell me below! Follow to understand one new thing every day.",
-        "keyword": "brain",
+        "text": "Winds from that leftover momentum could blow faster than any hurricane ever recorded. Could anything survive outside?",
+        "keyword": "leftover momentum",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "Fastest leftover wind?",
+          "caption": "",
+          "items": [
+            "Tropical storm speed",
+            "Hurricane speed",
+            "Far beyond any hurricane"
+          ],
+          "values": [],
+          "answer": 2,
+          "prop": null
+        }
+      },
+      {
+        "text": "Here's the twist: Earth isn't speeding up or stopping. The Moon is actually slowing it down, just incredibly slowly, a few milliseconds every century.",
+        "keyword": "slowing it down",
         "graphic": {
           "kind": "title",
-          "headline": "Your brain zoomed",
+          "headline": "Already slowing",
+          "caption": "a few ms per century",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "clock"
+        }
+      },
+      {
+        "text": "So Earth stopping dead is pure fiction, but it's already slowing down for real. Which surprised you more? Tell me below, and follow for the next what-if.",
+        "keyword": "already slowing down",
+        "graphic": {
+          "kind": "title",
+          "headline": "Which surprised you?",
           "caption": "",
           "items": [],
           "values": [],
@@ -152,30 +144,30 @@
     ]
   },
   "hindi": {
-    "title": "सुपरमून इतना विशाल क्यों दिखता है? (असल में नहीं)",
-    "description": "मंगलवार का सुपरमून औसत पूर्णिमा से सिर्फ़ सात प्रतिशत बड़ा है, फिर वह इतना विशाल क्यों लगता है? चाँद की अंडाकार कक्षा सुपरमून बनाती है, और बाक़ी खेल आपके दिमाग़ का है। #सुपरमून #चाँद #विज्ञान",
+    "title": "अगर पृथ्वी अचानक घूमना बंद कर दे तो क्या होगा?",
+    "description": "अभी आप करीब 1,670 किमी/घंटा की रफ़्तार से घूम रहे हैं, फिर भी पता नहीं चलता। जानिए क्या होगा अगर पृथ्वी अचानक रुक जाए - और यह भी कि वह सच में कितनी धीरे-धीरे धीमी हो रही है। #पृथ्वी #क्याहोअगर #विज्ञान",
     "tags": [
-      "सुपरमून",
-      "चाँद इतना बड़ा क्यों दिखता है",
-      "चाँद का भ्रम",
-      "सुपरमून 2026",
-      "बीवर मून",
-      "अंतरिक्ष",
-      "science in hindi",
-      "animated explainer"
+      "पृथ्वी का घूमना",
+      "क्या हो अगर पृथ्वी रुक जाए",
+      "पृथ्वी की रफ़्तार",
+      "दिन की लंबाई",
+      "चाँद और पृथ्वी",
+      "विज्ञान तथ्य",
+      "what if earth hindi",
+      "science facts hindi"
     ],
-    "hook_text": "सिर्फ़ सात प्रतिशत बड़ा",
-    "thumbnail_text": "एक ही साइज़?",
-    "next_video": "चाँद ज्वार-भाटा कैसे लाता है?",
-    "pinned_comment": "मंगलवार को आपने क्या देखा: विशाल चाँद, या सामान्य चाँद और चालाक दिमाग़?",
+    "hook_text": "1,670 KM/H। फिर रुक जाए?",
+    "thumbnail_text": "फिर भी पूरब की ओर उड़ेंगे",
+    "next_video": "अगर एक दिन 48 घंटे का हो तो?",
+    "pinned_comment": "आपको ज़्यादा चौंकाने वाला क्या लगा: अचानक रुकने की तबाही, या पृथ्वी का सच में धीमा होना?",
     "scenes": [
       {
-        "text": "मंगलवार का सुपरमून सिर्फ़ सात प्रतिशत बड़ा होगा। फिर वह इतना विशाल क्यों लगेगा?",
-        "keyword": "सात प्रतिशत",
+        "text": "अभी आप 1,670 किलोमीटर प्रति घंटे की रफ़्तार से घूम रहे हैं। अगर पृथ्वी अचानक रुक जाए?",
+        "keyword": "1,670 किलोमीटर प्रति घंटे",
         "graphic": {
-          "kind": "title",
-          "headline": "सिर्फ़ 7% बड़ा?",
-          "caption": "",
+          "kind": "stat",
+          "headline": "1,670 KM/H",
+          "caption": "आपकी असली रफ़्तार",
           "items": [],
           "values": [],
           "answer": null,
@@ -183,17 +175,17 @@
         }
       },
       {
-        "text": "क्या कभी उगता चाँद देखकर आप चौंके हैं? तो पूछते हैं, क्यों?",
-        "keyword": "चौंके",
+        "text": "आपको पता नहीं चलता, क्योंकि ज़मीन, हवा और आप साथ घूम रहे हैं। पहले क्या टूटेगा?",
+        "keyword": "साथ घूम",
         "graphic": {
           "kind": "chat",
-          "headline": "छोटी बातचीत",
+          "headline": "छोटी सी बात",
           "caption": "",
           "items": [
-            "चाँद इतना बड़ा क्यों दिखता?",
-            "वह सुपरमून है",
-            "क्या सच में इतना बड़ा?",
-            "मुश्किल से। बाक़ी दिमाग़ का खेल"
+            "पृथ्वी घूमती है, पता क्यों नहीं चलता?",
+            "सब कुछ साथ ही घूमता है।",
+            "और अगर वह रुक जाए?",
+            "बाकी सब फिर भी चलता रहेगा।"
           ],
           "values": [],
           "answer": null,
@@ -201,63 +193,15 @@
         }
       },
       {
-        "text": "चाँद की कक्षा अंडाकार है। महीने में एक बार वह पास आता है, और तब की पूर्णिमा सुपरमून कहलाती है।",
-        "keyword": "अंडाकार",
-        "graphic": {
-          "kind": "flow",
-          "headline": "सुपरमून कैसे बनता है",
-          "caption": "",
-          "items": [
-            "अंडाकार कक्षा",
-            "चाँद पास आया",
-            "तब पूर्णिमा",
-            "सुपरमून"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "अंदाज़ा लगाइए, कितना बड़ा? औसत पूर्णिमा से सिर्फ़ सात प्रतिशत।",
-        "keyword": "सात प्रतिशत",
-        "graphic": {
-          "kind": "stat",
-          "headline": "लगभग 7%",
-          "caption": "औसत से बड़ा",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "छोटा क्विज़: क्षितिज पर चाँद क्या सच में बड़ा होता है? जवाब: नहीं, वही आकार।",
-        "keyword": "वही आकार",
-        "graphic": {
-          "kind": "quiz",
-          "headline": "क्षितिज का चाँद बड़ा है?",
-          "caption": "",
-          "items": [
-            "हाँ, पास है",
-            "नहीं, वही आकार",
-            "हाँ, हवा बड़ा करती है"
-          ],
-          "values": [],
-          "answer": 1,
-          "prop": null
-        }
-      },
-      {
-        "text": "क्या हवा उसे बड़ा करती है? यही मिथक है। यह भ्रम है, और वैज्ञानिक अब भी बहस करते हैं।",
-        "keyword": "भ्रम",
+        "text": "ज़मीन रुके, आपकी जड़ता नहीं - आप तेज़ रफ़्तार से पूर्व की ओर उड़ते रहेंगे। इमारतें, समंदर, पूरा आसमान तब भी हिल रहा होगा।",
+        "keyword": "जड़ता",
         "graphic": {
           "kind": "myth",
-          "headline": "विशाल चाँद?",
+          "headline": "झेला जा सकता है?",
           "caption": "",
           "items": [
-            "हवा उसे बड़ा करती है",
-            "दिमाग़ आकार ग़लत आँकता है"
+            "मिथक: अचानक रुकना झेला जा सकता है",
+            "सच्चाई: अकेली जड़ता शहर उड़ा सकती है"
           ],
           "values": [],
           "answer": null,
@@ -265,24 +209,62 @@
         }
       },
       {
-        "text": "ख़ुद आज़माइए। हाथ बढ़ाकर मटर का दाना पकड़िए। वह चाँद को ढक लेगा, चाहे चाँद नीचे हो या ऊपर।",
-        "keyword": "मटर का दाना",
+        "text": "समंदर का पानी ध्रुवों की तरफ़ बह जाएगा, और भूमध्य रेखा के किनारे पानी में डूब जाएँगे।",
+        "keyword": "ध्रुवों की तरफ़",
         "graphic": {
-          "kind": "keyword",
-          "headline": "मटर का टेस्ट",
-          "caption": "चाँद नीचे हो या ऊपर",
-          "items": [],
-          "values": [],
+          "kind": "bars",
+          "headline": "पानी का ढेर",
+          "caption": "पानी कहाँ जमा होगा",
+          "items": [
+            "भूमध्य रेखा",
+            "मध्य अक्षांश",
+            "ध्रुव"
+          ],
+          "values": [
+            1.0,
+            2.0,
+            4.0
+          ],
           "answer": null,
-          "prop": "star"
+          "prop": null
         }
       },
       {
-        "text": "तो मंगलवार का सुपरमून सिर्फ़ सात प्रतिशत बड़ा है। बाक़ी दिमाग़ ने जोड़ा। आपने क्या देखा? कमेंट में बताइए! रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
-        "keyword": "दिमाग़",
+        "text": "इस बची जड़ता से चलने वाली हवाएँ किसी भी रिकॉर्ड तूफ़ान से तेज़ हो सकती हैं। क्या बाहर कुछ बच पाएगा?",
+        "keyword": "बची जड़ता",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "सबसे तेज़ हवा कितनी?",
+          "caption": "",
+          "items": [
+            "सामान्य तूफ़ान जितनी",
+            "हरिकेन जितनी",
+            "हरिकेन से भी ज़्यादा"
+          ],
+          "values": [],
+          "answer": 2,
+          "prop": null
+        }
+      },
+      {
+        "text": "असली बात यह है: पृथ्वी न रुक रही, न तेज़ हो रही। चाँद इसे धीरे-धीरे धीमा कर रहा है, हर सदी बस कुछ मिलीसेकंड।",
+        "keyword": "धीरे-धीरे धीमा",
         "graphic": {
           "kind": "title",
-          "headline": "दिमाग़ ने ज़ूम किया",
+          "headline": "पहले से धीमी",
+          "caption": "हर सदी कुछ मिलीसेकंड",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "clock"
+        }
+      },
+      {
+        "text": "पृथ्वी का अचानक रुकना सिर्फ़ कल्पना है, पर वह सच में थोड़ी धीमी हो रही है। कौन सी बात ज़्यादा चौंकाई? नीचे बताइए, और फॉलो करें।",
+        "keyword": "सच में थोड़ी धीमी",
+        "graphic": {
+          "kind": "title",
+          "headline": "कौन सी बात चौंकाई?",
           "caption": "",
           "items": [],
           "values": [],
