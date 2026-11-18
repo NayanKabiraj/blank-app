@@ -1,4 +1,4 @@
-"""Check an already-uploaded video's status on YouTube (processing state, privacy, any failure reason) - useful
+"""Check an already-uploaded video's status on YouTube (upload status, privacy, any failure/rejection reason) - useful
 when a video shows a blank thumbnail or "No views" right after upload and it's unclear whether it's still
 processing or actually failed.
 
@@ -24,7 +24,7 @@ def check(video_ids: list[str], lang: str) -> list[dict]:
                         client_id=config.YT_CLIENT_ID, client_secret=config.YT_CLIENT_SECRET, scopes=upload.SCOPES)
     creds.refresh(Request())
     yt = build("youtube", "v3", credentials=creds)
-    resp = yt.videos().list(part="status,processingDetails,snippet,contentDetails", id=",".join(video_ids)).execute()
+    resp = yt.videos().list(part="status,snippet,contentDetails", id=",".join(video_ids)).execute()
     found = {v["id"]: v for v in resp.get("items", [])}
     out = []
     for vid in video_ids:
@@ -32,10 +32,9 @@ def check(video_ids: list[str], lang: str) -> list[dict]:
         if not v:
             out.append({"id": vid, "found": False})
             continue
-        st, pd = v.get("status", {}), v.get("processingDetails", {})
+        st = v.get("status", {})
         out.append({"id": vid, "found": True, "title": v.get("snippet", {}).get("title", ""), "privacyStatus": st.get("privacyStatus"),
                     "uploadStatus": st.get("uploadStatus"), "failureReason": st.get("failureReason"), "rejectionReason": st.get("rejectionReason"),
-                    "processingStatus": pd.get("processingStatus"), "processingFailureReason": pd.get("processingFailureReason"),
                     "duration": v.get("contentDetails", {}).get("duration")})
     return out
 
