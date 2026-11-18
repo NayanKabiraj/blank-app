@@ -279,13 +279,36 @@ def for_script(script, niche: str, lang: str, out_jpg: Path, short: bool) -> Pat
     return render(spec_from_script(script, niche, lang), out_jpg, "short" if short else "long")
 
 
+# headlines for queued videos: meta.json "thumbnail_text" wins, else a short hook from the topic
+def refresh_queue(root: Path = Path("videos/unpublished")) -> int:
+    """Redraw thumbnail.jpg of every queued video with the current design (run in CI, where the stock photo lookup has internet)."""
+    n = 0
+    for meta_path in sorted(root.glob("*/meta.json")):
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+        title = meta.get("title", "")
+        head = meta.get("thumbnail_text") or shorten(re.sub(r"\(.*?\)", "", title).strip() or meta.get("topic", ""))
+        lang = meta.get("lang", "en")
+        spec = {"headline": head, "lang": lang, "sceneType": "object-assembly", "environment": "abstract-dark", "objects": None,
+                "accentWords": _accent_words(head, None, lang), "palette": M.DEFAULTS["brandSystem"]["defaultPalette"],
+                "seed": sum(map(ord, title)) % 100000, "concept": meta.get("topic", ""), "title": title or meta.get("topic", ""),
+                "tag": pick_tag(title, "Space & Universe", None, lang)}
+        if render(spec, meta_path.parent / "thumbnail.jpg", "short" if meta.get("short") else "long"):
+            n += 1
+    return n
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--manifest-file", required=True)
+    ap.add_argument("--refresh-queue", action="store_true", help="redraw the thumbnails of videos waiting in videos/unpublished/")
+    ap.add_argument("--manifest-file")
     ap.add_argument("--lang", default="en")
     ap.add_argument("--out", default="thumbnail.jpg")
     a = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
+    if a.refresh_queue:
+        return 0 if refresh_queue() else 1
+    if not a.manifest_file:
+        ap.error("--manifest-file or --refresh-queue is required")
     m = M.complete(M.load(a.manifest_file))
     p = for_manifest(m, a.lang, Path(a.out))
     return 0 if p else 1

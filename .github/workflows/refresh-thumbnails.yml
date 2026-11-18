@@ -1,0 +1,41 @@
+name: Refresh queued thumbnails
+
+# Redraws thumbnail.jpg of the videos waiting in videos/unpublished/ with the current thumbnail design (and a public-domain stock photo).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: shorts-pipeline
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -q -r shorts/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install the director engine
+        working-directory: shorts/director
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - run: python -m shorts.director.thumbnail --refresh-queue
+      - name: Save
+        run: |
+          if [ -n "$(git status --porcelain videos/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add videos/
+            git commit -m "chore: refresh queued thumbnails [skip ci]"
+            for i in 1 2 3 4 5 6; do git pull --rebase -q && git push && break; sleep $((i * 7)); done
+          fi
