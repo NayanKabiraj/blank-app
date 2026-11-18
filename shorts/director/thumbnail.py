@@ -263,8 +263,10 @@ def render(spec: dict, out_jpg: Path, kind: str = "long") -> Path | None:
                 log.info("Thumbnail photo credit: %s", got["credit"])
             except Exception as e:  # noqa: BLE001
                 log.warning("Stock composite failed, keeping the 3D body: %s", e)
-        for q in (2, 4, 7, 12):     # smaller and smaller until it is under YouTube's 2 MB limit
-            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(png), "-q:v", str(q), str(out_jpg)], check=True)
+        from PIL import Image
+        img = Image.open(png).convert("RGB")
+        for q in (92, 85, 75, 60):     # smaller and smaller until it is under YouTube's 2 MB limit
+            img.save(out_jpg, quality=q, optimize=True)
             if out_jpg.stat().st_size < 1_900_000:
                 break
     log.info("Thumbnail %s (%d KB): %s", out_jpg.name, out_jpg.stat().st_size // 1024, spec["headline"])
