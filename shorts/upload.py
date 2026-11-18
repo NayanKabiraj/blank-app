@@ -41,7 +41,7 @@ def set_thumbnail(yt, video_id: str, thumbnail: Path) -> bool:
 
 
 def upload(video: Path, script, lang: str, short: bool = True, description: str | None = None,
-           privacy: str | None = None, thumbnail: Path | None = None) -> str:
+           privacy: str | None = None, thumbnail: Path | None = None, synthetic: bool | None = None) -> str:
     """Upload a Short (default) or a long-form video. `description` overrides the script's (chapters added)."""
     creds = Credentials(
         None,
@@ -72,8 +72,9 @@ def upload(video: Path, script, lang: str, short: bool = True, description: str 
         "status": {
             "privacyStatus": privacy or config.YT_PRIVACY,
             "selfDeclaredMadeForKids": False,
-            # YouTube's synthetic-media label: only when YT_AI_DISCLOSURE=on (see config.py)
-            "containsSyntheticMedia": config.YT_AI_DISCLOSURE,
+            # YouTube's synthetic-media label: the repository default (see config.py), unless this upload
+            # overrides it (e.g. shorts/stockreel used an AI-generated image, which gets flagged regardless)
+            "containsSyntheticMedia": config.YT_AI_DISCLOSURE if synthetic is None else synthetic,
         },
     }
     media = MediaFileUpload(str(video), mimetype="video/mp4", chunksize=-1, resumable=True)

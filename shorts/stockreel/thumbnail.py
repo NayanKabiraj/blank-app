@@ -17,6 +17,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 from ..director import stock, thumbnail as T
+from . import aiframes
 
 log = logging.getLogger(__name__)
 SIZES = {"short": (720, 1280), "long": (1280, 720)}
@@ -32,7 +33,7 @@ def _font_for(text: str) -> Path:
 
 
 def _photo(query: str, out_dir: Path) -> Path | None:
-    got = stock.fetch_broad(query, out_dir, "photo")
+    got = aiframes.generate_image(query, out_dir / "photo.jpg", 1280, 1280) or stock.fetch_broad(query, out_dir, "photo")
     return got["path"] if got else None
 
 

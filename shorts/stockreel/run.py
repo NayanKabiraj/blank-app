@@ -41,14 +41,14 @@ def run_short(plan: Plan, langs: list[str], out: Path, dry_run: bool) -> dict:
     for lang in langs:
         try:
             script = scripts[lang]
-            video = build.build_short(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
+            video, used_ai = build.build_short(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
             final = out / f"{today}_{lang}.mp4"
             shutil.move(video, final)
             thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_{lang}.jpg", short=True)
             desc = strategy.up_next(script.description, script.next_video, lang)
             (out / f"{today}_{lang}_youtube.txt").write_text(
                 f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{desc}\n\nTAGS:\n{', '.join(script.tags)}\n\nPINNED COMMENT:\n{script.pinned_comment}\n", encoding="utf-8")
-            entry = {"file": final.name, "engine": "stockreel"}
+            entry = {"file": final.name, "engine": "stockreel", "synthetic": used_ai}
             day = config.VIDEOS_DIR / today
             day.mkdir(parents=True, exist_ok=True)
             shutil.copy2(final, day / f"{lang}.mp4")
@@ -59,7 +59,7 @@ def run_short(plan: Plan, langs: list[str], out: Path, dry_run: bool) -> dict:
             if dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:
-                entry.update(pending.publish(final, script, lang, description=desc, topic=plan.topic, thumbnail=thumb))
+                entry.update(pending.publish(final, script, lang, description=desc, topic=plan.topic, thumbnail=thumb, synthetic=used_ai))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so the other language can still be made
             log.exception("Failed to produce the %s stock-footage Short", lang)
@@ -87,7 +87,7 @@ def run_documentary(plan: DocPlan, langs: list[str], out: Path, dry_run: bool, k
         try:
             script = scripts[lang]
             log.info("Stock-footage documentary %s: about %.1f minutes planned", lang, doc_seconds(script, lang) / 60)
-            video, chapters = build.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
+            video, chapters, used_ai = build.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
             lines = "\n".join(f"{_stamp(s)} {t}" for t, s in chapters)
             desc = f"{strategy.up_next(script.description, script.next_video, lang)}\n\nChapters:\n{lines}\n"
             thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_documentary_{lang}.jpg", short=False)
@@ -95,7 +95,7 @@ def run_documentary(plan: DocPlan, langs: list[str], out: Path, dry_run: bool, k
             shutil.move(video, final)
             (out / f"{today}_documentary_{lang}_youtube.txt").write_text(
                 f"TITLE:\n{script.title}\n\nDESCRIPTION:\n{desc}\nTAGS:\n{', '.join(script.tags)}\n\nPINNED COMMENT:\n{script.pinned_comment}\n", encoding="utf-8")
-            entry = {"file": final.name, "engine": "stockreel", "chapters": [{"title": t, "start": round(s, 1)} for t, s in chapters]}
+            entry = {"file": final.name, "engine": "stockreel", "synthetic": used_ai, "chapters": [{"title": t, "start": round(s, 1)} for t, s in chapters]}
             if keep_in_repo:
                 day = config.VIDEOS_DIR / today
                 day.mkdir(parents=True, exist_ok=True)
@@ -105,7 +105,7 @@ def run_documentary(plan: DocPlan, langs: list[str], out: Path, dry_run: bool, k
             if dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:
-                entry.update(pending.publish(final, script, lang, short=False, description=desc, topic=plan.topic, thumbnail=thumb))
+                entry.update(pending.publish(final, script, lang, short=False, description=desc, topic=plan.topic, thumbnail=thumb, synthetic=used_ai))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so the other language can still be made
             log.exception("Failed to produce the %s stock-footage documentary", lang)

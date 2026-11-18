@@ -15,14 +15,20 @@ import subprocess
 from pathlib import Path
 
 from ..director import stock
+from . import aiframes
 
 log = logging.getLogger(__name__)
 
 
 def download_photo(query: str, out_dir: Path, name: str = "stock") -> dict | None:
-    """The best Wikimedia Commons public-domain/CC0 photo for `query`. None on any failure (offline, no match) -
-    the caller falls back to `placeholder_clip`."""
-    return stock.fetch_broad(query, Path(out_dir), name)
+    """An image for `query`: an AI-generated picture if a source is configured (`aiframes.generate_image` -
+    Pollinations/Hugging Face/a local model, tried in that order), else the best Wikimedia Commons
+    public-domain/CC0 photo. None on any failure (offline, no match, nothing configured) - the caller falls
+    back to `placeholder_clip`."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    got = aiframes.generate_image(query, out_dir / f"{name}.jpg", 1024, 1024)
+    return got or stock.fetch_broad(query, out_dir, name)
 
 
 def ken_burns_clip(photo: Path, out: Path, duration: float, w: int, h: int, seed: int = 0, fps: int = 30) -> Path:

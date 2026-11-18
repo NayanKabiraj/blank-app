@@ -55,7 +55,8 @@ def _fit(video: Path, dest: Path) -> bool:
 
 
 def enqueue(video: Path, script, lang: str, short: bool, description: str | None, privacy: str | None,
-            topic: str = "", date: str | None = None, error: str = "", thumbnail: Path | None = None) -> Path | None:
+            topic: str = "", date: str | None = None, error: str = "", thumbnail: Path | None = None,
+            synthetic: bool | None = None) -> Path | None:
     date = date or dt.date.today().isoformat()
     name = f"{date}_{'short' if short else 'documentary'}_{lang}"
     folder = QUEUE / name
@@ -67,8 +68,8 @@ def enqueue(video: Path, script, lang: str, short: bool, description: str | None
         shutil.copy2(thumbnail, folder / "thumbnail.jpg")
     meta = {"lang": lang, "short": short, "date": date, "topic": topic, "title": script.title,
             "description": description if description is not None else script.description, "tags": list(script.tags),
-            "privacy": privacy or config.YT_PRIVACY, "attempts": 0, "queued_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-            "last_error": error[:300]}
+            "privacy": privacy or config.YT_PRIVACY, "synthetic": synthetic, "attempts": 0,
+            "queued_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "last_error": error[:300]}
     (folder / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
     log.warning("Queued %s for the next upload (%s)", name, error[:120] or "not uploaded")
     return folder
@@ -110,7 +111,7 @@ def flush(langs: list[str] | None = None) -> dict:
         try:
             thumb = folder / "thumbnail.jpg"
             vid = upload.upload(folder / "video.mp4", script, meta["lang"], short=meta["short"], description=meta["description"],
-                                privacy=meta["privacy"], thumbnail=thumb if thumb.exists() else None)
+                                privacy=meta["privacy"], thumbnail=thumb if thumb.exists() else None, synthetic=meta.get("synthetic"))
         except Exception as e:  # noqa: BLE001
             meta["attempts"] += 1
             meta["last_error"] = str(e)[:300]
@@ -132,7 +133,7 @@ def flush(langs: list[str] | None = None) -> dict:
 
 
 def publish(video: Path, script, lang: str, short: bool = True, description: str | None = None, privacy: str | None = None,
-            topic: str = "", date: str | None = None, thumbnail: Path | None = None) -> dict:
+            topic: str = "", date: str | None = None, thumbnail: Path | None = None, synthetic: bool | None = None) -> dict:
     """Upload a new video, or queue it when the limit was reached (or the upload fails). Returns the history fields."""
     from . import upload
     if not upload.can_upload(lang):
@@ -143,13 +144,13 @@ def publish(video: Path, script, lang: str, short: bool = True, description: str
         err = "daily upload limit already reached in this run"
     else:
         try:
-            return {"video_id": upload.upload(video, script, lang, short=short, description=description, privacy=privacy, thumbnail=thumbnail)}
+            return {"video_id": upload.upload(video, script, lang, short=short, description=description, privacy=privacy, thumbnail=thumbnail, synthetic=synthetic)}
         except Exception as e:  # noqa: BLE001
             err = str(e)
             if is_quota_error(e):
                 _state["quota"] = True
             log.error("Upload failed: %s", err[:300])
-    folder = enqueue(Path(video), script, lang, short, description, privacy, topic, date, err, thumbnail)
+    folder = enqueue(Path(video), script, lang, short, description, privacy, topic, date, err, thumbnail, synthetic)
     return {"queued": f"videos/unpublished/{folder.name}" if folder else None, "error": err[:200]}
 
 
