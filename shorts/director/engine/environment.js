@@ -15,6 +15,8 @@ const PRESETS = {
   'wave-space':        { top: '#08224a', bottom: '#03060f', glow: '#00D9FF', decor: ['wavegrid', 'dust'] },
   'holographic-room':  { top: '#0a2a3a', bottom: '#030a12', glow: '#00D9FF', decor: ['holoroom', 'dust'] },
   // bright, saturated backdrops for thumbnails (a sunburst of rays behind the subject)
+  'matte-black':       { top: '#000000', bottom: '#000000', glow: '#000000', decor: [] },   // flat backdrops for matting the overlay out of a render
+  'matte-white':       { top: '#ffffff', bottom: '#ffffff', glow: '#ffffff', decor: [] },
   'thumb-sunset':      { top: '#ff9f1c', bottom: '#d81b60', glow: '#ffe066', decor: ['rays'] },
   'thumb-ocean':       { top: '#26e0ff', bottom: '#1f4dff', glow: '#ffffff', decor: ['rays'] },
   'thumb-grape':       { top: '#c04bff', bottom: '#3a2bd8', glow: '#ffe066', decor: ['rays'] },
