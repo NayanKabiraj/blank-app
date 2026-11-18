@@ -27,7 +27,7 @@ the task. Do not try to hack the algorithm: maximize curiosity x clarity x story
    ASSUMPTION / UNVERIFIED), the risks, and the quality gate. Separate FACT, OBSERVATION, INFERENCE and RECOMMENDATION. Never invent
    metrics, views, CTR, retention, sources or numbers; if vidIQ credits are low or a tool is unavailable, say the competitor data is
    NOT PUBLICLY VERIFIABLE and continue with web research.
-3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, 1-4 big words, never a copy of
+3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, one short sentence (up to 8 words), never a copy of
    the title). The first line proves the premise within 10 seconds; the first 30 seconds escalate. Every 20-40 seconds there is a reason to keep
    watching. Every narration sentence says what the viewer sees.
 4. **Quality gate (`gate_score`, /100):** topic, curiosity, title, thumbnail, opening, story, visual potential, emotional engagement,
@@ -44,7 +44,7 @@ the task. Do not try to hack the algorithm: maximize curiosity x clarity x story
 ## Steps
 
 **Strategy:** follow the `video-strategy` skill too (research evidence, title and thumbnail, retention, pre-render QA). Write
-`thumbnail_text` for English and Hindi (1-4 big words, at most 24 characters, showing the consequence rather than repeating the title);
+`thumbnail_text` for English and Hindi (one short sentence, up to 8 words and 46 characters, showing the consequence rather than repeating the title);
 the workflow draws a 1280x720 thumbnail from it and uploads it with the video.
 
 1. **Check the history.** In `NayanKabiraj/blank-app` on `main`, read `data/documentary_history.json`

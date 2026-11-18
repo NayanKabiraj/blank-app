@@ -30,7 +30,7 @@ the task. Do not try to hack the algorithm: maximize curiosity x clarity x story
    ASSUMPTION / UNVERIFIED), the risks, and the quality gate. Separate FACT, OBSERVATION, INFERENCE and RECOMMENDATION. Never invent
    metrics, views, CTR, retention, sources or numbers; if vidIQ credits are low or a tool is unavailable, say the competitor data is
    NOT PUBLICLY VERIFIABLE and continue with web research.
-3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, 1-4 big words, never a copy of
+3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, one short sentence (up to 8 words), never a copy of
    the title). The first line proves the premise within 10 seconds; the first 30 seconds escalate. Every 20-40 seconds there is a reason to keep
    watching. Every narration sentence says what the viewer sees.
 4. **Quality gate (`gate_score`, /100):** topic, curiosity, title, thumbnail, opening, story, visual potential, emotional engagement,
@@ -47,7 +47,7 @@ the task. Do not try to hack the algorithm: maximize curiosity x clarity x story
 ## Steps
 
 **Strategy:** apply the `video-strategy` skill (research evidence, title test, thumbnail concepts, 30-second rule, retention, QA gate).
-Every manifest carries a designed **thumbnail**: `"thumbnail": {"headline": "1-4 big words", "concept": "why it works",
+Every manifest carries a designed **thumbnail**: `"thumbnail": {"headline": "one short sentence (up to 8 words)", "concept": "why it works",
 "sceneType": "object-assembly", "environment": "holographic-room", "accentWords": {"WORD": "#FFCC33"}}` plus
 `localizations.<lang>.thumbnailText`. The title explains the premise, the thumbnail shows the consequence (never the same words). The
 workflow renders it with the engine (1280x720, or 720x1280 for Shorts), uploads it with the video and keeps it in the upload queue when
