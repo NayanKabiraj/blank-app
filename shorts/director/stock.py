@@ -39,7 +39,7 @@ def _get(url: str, timeout: int = 25) -> bytes:
 
 # curated public-domain NASA files for the common subjects (checked in CI logs): title -> (focus x, focus y, zoom) for the round crop
 CURATED = {"moon": ("File:Full moon partially obscured by atmosphere.jpg", (0.51, 0.54, 2.5)),
-           "sun": ("File:The Sun by the Atmospheric Imaging Assembly of NASA's Solar Dynamics Observatory - 20100819.jpg", (0.5, 0.5, 1.0))}
+           "sun": ("File:The Sun by the Atmospheric Imaging Assembly of NASA's Solar Dynamics Observatory - 20100819.jpg", (0.5, 0.5, 2.2))}
 
 
 def search(query: str, limit: int = 12, title: str | None = None) -> list[dict]:
