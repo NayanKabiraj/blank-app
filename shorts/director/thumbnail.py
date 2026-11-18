@@ -140,7 +140,7 @@ def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], lis
         objs = [body(1.9, 0.9, 1.05)] if land else [body(0.0, 1.6, 1.5)]
         return objs, [{"type": "arrow", "nx": -0.5 if land else -0.55, "ny": 0.2 if land else 0.25, "size": 0.3, "color": accent}] if q else []
     objs = [body(2.4, 0.9, 0.85)] if land else [body(0.0, 1.8, 1.25)]
-    st = [{"type": "face", "mood": mood, "nx": -0.6 if land else -0.72, "ny": 0.1 if land else 0.56, "size": 0.3 if land else 0.26, "look": 0.7, "tilt": -6}]
+    st = [{"type": "face", "mood": mood, "nx": -0.6 if land else -0.56, "ny": 0.1 if land else 0.56, "size": 0.3 if land else 0.26, "look": 0.7, "tilt": -6}]
     return objs, st
 
 
@@ -151,24 +151,28 @@ def stock_query(spec: dict, kind: str | None) -> str:
     return spec.get("stock_query") or STOCK_QUERY.get(kind or "") or re.sub(r"[?!.,]", "", spec.get("headline", ""))
 
 
-def composite_photo(jpg_in: Path, photo: Path, out: Path, land: bool, focus=(0.5, 0.5, 1.0)) -> None:
-    """Paste the stock photo as a round, white-rimmed 'porthole' on the subject spot (where the 3D body would be), with a soft shadow."""
-    from PIL import Image, ImageDraw, ImageFilter, ImageOps
-    base = Image.open(jpg_in).convert("RGB"); W, H = base.size
-    d = int(H * 0.56) if land else int(W * 0.56)
-    cx, cy = (int(W * 0.76), int(H * 0.34)) if land else (int(W * 0.56), int(H * 0.34))
-    src = Image.open(photo).convert("RGB"); side = min(src.size) / max(focus[2], 1.0)     # square crop around the focus point, zoomed in
-    x0 = min(max(focus[0] * src.width - side / 2, 0), src.width - side); y0 = min(max(focus[1] * src.height - side / 2, 0), src.height - side)
-    img = src.crop((int(x0), int(y0), int(x0 + side), int(y0 + side))).resize((d, d), Image.LANCZOS)
-    mask = Image.new("L", (d * 4, d * 4), 0); ImageDraw.Draw(mask).ellipse((0, 0, d * 4 - 1, d * 4 - 1), fill=255); mask = mask.resize((d, d), Image.LANCZOS)
-    rim = max(8, d // 40)
-    shadow = Image.new("L", (d + 2 * rim + 60, d + 2 * rim + 60), 0); ImageDraw.Draw(shadow).ellipse((30, 30, d + 2 * rim + 30, d + 2 * rim + 30), fill=150)
-    shadow = shadow.filter(ImageFilter.GaussianBlur(14))
-    base.paste((0, 0, 0), (cx - d // 2 - rim - 30 + 10, cy - d // 2 - rim - 30 + 14), shadow)
-    ring = Image.new("L", (d + 2 * rim, d + 2 * rim), 0); ImageDraw.Draw(ring).ellipse((0, 0, d + 2 * rim - 1, d + 2 * rim - 1), fill=255)
-    base.paste((255, 255, 255), (cx - d // 2 - rim, cy - d // 2 - rim), ring)
-    base.paste(img, (cx - d // 2, cy - d // 2), mask)
-    base.save(out, quality=92)
+def composite_photo_bg(black_png: Path, white_png: Path, photo: Path, out: Path, land: bool, focus=(0.5, 0.5, 1.0)) -> None:
+    """The stock photo fills the whole frame; the lettering and stickers are matted out of two renders (on black and on white) and laid on top.
+    With B = colour*alpha on black and Wh = colour*alpha + (1-alpha) on white: alpha = 1 - (Wh - B), result = photo*(1-alpha) + B."""
+    import numpy as np
+    from PIL import Image
+    B = np.asarray(Image.open(black_png).convert("RGB"), dtype=np.float32) / 255.0
+    Wh = np.asarray(Image.open(white_png).convert("RGB"), dtype=np.float32) / 255.0
+    W, H = Image.open(black_png).size
+    alpha = np.clip(1.0 - (Wh - B).mean(axis=2, keepdims=True), 0.0, 1.0)
+    src = Image.open(photo).convert("RGB"); sw, sh = src.size
+    fx, fy, zoom = focus
+    unit = min(sw, sh) / max(zoom, 1.0)                                   # the shorter side of the crop, in source pixels
+    cw, ch = (unit * W / H, unit) if land else (unit, unit * H / W)
+    k = min(1.0, sw / cw, sh / ch); cw, ch = cw * k, ch * k
+    tx, ty = (0.68, 0.38) if land else (0.5, 0.3)                           # where the photo's subject should sit in the frame
+    x0 = min(max(fx * sw - tx * cw, 0), sw - cw); y0 = min(max(fy * sh - ty * ch, 0), sh - ch)
+    bg = np.asarray(src.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch))).resize((W, H), Image.LANCZOS), dtype=np.float32) / 255.0
+    yy = np.linspace(0, 1, H, dtype=np.float32)[:, None, None]
+    bg = bg * (1.0 - 0.55 * np.clip((yy - 0.5) / 0.5, 0, 1))              # a dark scrim at the bottom so the headline reads on any photo
+    bg = np.clip((bg - 0.5) * 1.12 + 0.5 + 0.02, 0, 1)                    # a touch more contrast
+    out_img = bg * (1.0 - alpha) + B
+    Image.fromarray((np.clip(out_img, 0, 1) * 255).astype(np.uint8)).save(out, quality=95)
 
 
 def stickers_for(spec: dict, land: bool) -> list[dict]:
@@ -213,7 +217,8 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
         scene["sceneType"], scene["environment"]["preset"] = "kinetic-typography", BRIGHT.get(kind, BRIGHT_BY_SEED[spec["seed"] % 4])
         scene["objects"], scene["stickers"] = _subject_objects(spec, kind, land)
         if spec.get("photo"):
-            scene["objects"] = []     # the stock photo is composited over the spot afterwards
+            scene["objects"] = []     # the stock photo is the background; only lettering and stickers are drawn, on a flat matte colour
+            scene["environment"]["preset"], scene["environment"]["fogDensity"] = spec.get("matte", "matte-black"), 0.0
     else:
         if spec.get("objects"):
             scene["objects"] = spec["objects"]
@@ -222,8 +227,8 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
                            "resolution": {"width": w, "height": h}, "framesPerSecond": 30},
          "randomization": {"globalSeed": spec["seed"]}, "scenes": [scene],
          "renderSettings": {"safeArea": {"topPercent": 4, "bottomPercent": 4, "leftPercent": 4, "rightPercent": 4},
-                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.3},
-                                            "look": {"saturation": 1.25, "gain": 1.0}}},   # brighter and more saturated than the video
+                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.0 if spec.get("photo") else 0.3},
+                                            "look": {"saturation": 1.0 if spec.get("photo") else 1.25, "gain": 1.0}}},   # brighter and more saturated than the video
          "brandSystem": {"defaultPalette": spec["palette"], "typography": {"preferredHeadlineFontSizePixels": 96}}}
     m = M.complete(m)
     sc = m["scenes"][0]
@@ -256,11 +261,13 @@ def render(spec: dict, out_jpg: Path, kind: str = "long") -> Path | None:
         out_jpg.parent.mkdir(parents=True, exist_ok=True)
         got = stock.fetch(stock_query(spec, pick_subject(spec)), Path(td), "stock", pick_subject(spec)) if spec.get("stock", True) and spec.get("variant", "hero") == "hero" and pick_subject(spec) else None
         if got:     # a relevant public-domain photo replaces the 3D body; on any failure the textured 3D body version stays
-            png2 = Path(td) / "thumb_photo.png"
             try:
-                cfg_path.write_text(json.dumps(_engine_cfg({**spec, "photo": True}, w, h, png2), ensure_ascii=False), encoding="utf-8")
-                subprocess.run(["node", str(DIR / "still.cjs"), str(cfg_path)], check=True, cwd=DIR, timeout=300)
-                composite_photo(png2, got["path"], Path(td) / "thumb_photo.jpg", w > h, got.get("focus", (0.5, 0.5, 1.0)))
+                pngs = {}
+                for matte in ("matte-black", "matte-white"):
+                    pngs[matte] = Path(td) / f"{matte}.png"
+                    cfg_path.write_text(json.dumps(_engine_cfg({**spec, "photo": True, "matte": matte}, w, h, pngs[matte]), ensure_ascii=False), encoding="utf-8")
+                    subprocess.run(["node", str(DIR / "still.cjs"), str(cfg_path)], check=True, cwd=DIR, timeout=300)
+                composite_photo_bg(pngs["matte-black"], pngs["matte-white"], got["path"], Path(td) / "thumb_photo.jpg", w > h, got.get("focus", (0.5, 0.5, 1.0)))
                 png = Path(td) / "thumb_photo.jpg"
                 log.info("Thumbnail photo credit: %s", got["credit"])
             except Exception as e:  # noqa: BLE001

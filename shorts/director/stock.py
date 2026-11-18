@@ -33,9 +33,9 @@ CURATED = {"moon": ("File:Full moon partially obscured by atmosphere.jpg", (0.51
 
 def search(query: str, limit: int = 12, title: str | None = None) -> list[dict]:
     q = {"action": "query", "format": "json", "generator": "search", "gsrsearch": f'intitle:"{query}" filetype:bitmap', "gsrnamespace": 6, "gsrlimit": limit,
-         "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 1100}
+         "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 2000}
     if title:
-        q = {"action": "query", "format": "json", "titles": title, "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 1100}
+        q = {"action": "query", "format": "json", "titles": title, "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 2000}
     data = json.loads(_get(API + "?" + urllib.parse.urlencode(q)))
     pages = sorted((data.get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
     out = []
