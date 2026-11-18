@@ -210,7 +210,7 @@ def validate(plan: Plan) -> list[str]:
 
 
 # ------------------------------------------------------------------ documentaries (5-15 minutes)
-WORDS_PER_SEC = {"en": 3.3, "hi": 2.45}   # Piper pace measured on the same paragraph (en_US-ryan-high, hi_IN-rohan-medium)
+WORDS_PER_SEC = {"en": 2.9, "hi": 2.45}   # Piper pace measured on the same paragraph (en_US-ryan-high, hi_IN-rohan-medium)
 SCENE_PAUSE, CHAPTER_PAUSE = 0.4, 1.0
 
 

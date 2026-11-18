@@ -60,6 +60,7 @@ _raw: dict = {}                           # (text, lang, style) -> unscaled Parl
 
 def synthesize(text: str, out_wav: Path, lang: str, length_scale: float = 1.0, style: str = "shorts") -> float:
     """Render `text` to a mono WAV and return its duration in seconds. `length_scale` > 1 slows it down."""
+    length_scale = length_scale * config.SPEECH_PACE.get(lang, 1.0)   # slower, calmer delivery (see config.SPEECH_PACE)
     if os.getenv("SHORTS_FAKE_TTS"):  # offline testing only: placeholder tone
         return _fake(text, out_wav, length_scale)
     if config.TTS_ENGINE == "parler" and _state["parler"] is not False:

@@ -33,6 +33,9 @@ VOICES = {
     "en": os.getenv("PIPER_VOICE_EN", "en_US-ryan-high"),
     "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-rohan-medium"),
 }
+# Pace of the narration: > 1 is slower (Piper length_scale). English was judged rushed: 1.15 = about 13 % slower. Override with the
+# SPEECH_PACE_EN / SPEECH_PACE_HI variables. The Shorts length window still adjusts the speed when a script would run too long.
+SPEECH_PACE = {"en": float(os.getenv("SPEECH_PACE_EN", "1.15")), "hi": float(os.getenv("SPEECH_PACE_HI", "1.0"))}
 FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
 # --- Visuals ---
