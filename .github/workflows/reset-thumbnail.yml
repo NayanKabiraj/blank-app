@@ -1,0 +1,49 @@
+name: Reset one video's thumbnail
+
+# One-off: redraw and re-upload the thumbnail of an already-published video with the current design, e.g. after a thumbnail
+# design change. Never touches the video file, description or title.
+on:
+  workflow_dispatch:
+    inputs:
+      video_id:
+        required: true
+      headline:
+        required: true
+      lang:
+        default: "en"
+      short:
+        default: "false"
+      title:
+        default: ""
+      tag:
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_REFRESH_TOKEN_HI: ${{ secrets.YT_REFRESH_TOKEN_HI }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -q -r shorts/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install the director engine
+        working-directory: shorts/director
+        run: |
+          npm ci --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - run: |
+          python -m shorts.retitle_thumbnail --video-id "${{ inputs.video_id }}" --headline "${{ inputs.headline }}" \
+            --lang "${{ inputs.lang }}" --short "${{ inputs.short }}" --title "${{ inputs.title }}" --tag "${{ inputs.tag }}"
