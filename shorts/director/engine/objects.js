@@ -4,7 +4,8 @@
 import * as THREE from 'three';
 import { mulberry32, clamp, lerp, easeOutCubic, easeInOutCubic, wrap, smooth } from './util.js';
 import { softSprite } from './environment.js';
-import { bodyMaterial } from './bodies.js';
+import { bodyMaterial, applyPhotoTexture } from './bodies.js';
+import { pendingTextures } from './util.js';
 
 export const OBJECT_TYPES = ['moon', 'earth', 'sun', 'particles', 'sphere', 'central-control-orb', 'network-node', 'decision-node', 'approval-gate', 'icosahedron', 'torus', 'tetrahedron', 'columns', 'light-bars', 'instanced-code-blocks', 'task-nodes', 'workflow-blocks', 'timeline-nodes'];
 const GROUP = { particles: 'points', sphere: 'sphere', 'network-node': 'node', 'decision-node': 'node', 'central-control-orb': 'orb', 'approval-gate': 'gate', icosahedron: 'shards', torus: 'torus', tetrahedron: 'tetra', columns: 'column', 'light-bars': 'bar', 'instanced-code-blocks': 'code', 'task-nodes': 'task', 'workflow-blocks': 'block', 'timeline-nodes': 'timeline', moon: 'body', earth: 'body', sun: 'body' };
@@ -164,6 +165,7 @@ export class ObjectSystem {
       const R = 1.6 * ctx.unit * (spec.scale || 1), P = spec.position || {};
       this.bodyMesh = new THREE.Mesh(new THREE.SphereGeometry(R, 72, 54), bodyMaterial(spec.type, seed)); this.bodyMesh.position.set(P.x || 0, P.y || 0, P.z || 0);
       this.group3.add(this.bodyMesh);
+      if (spec.photoDataUrl) pendingTextures.push(applyPhotoTexture(this.bodyMesh, spec.photoDataUrl));   // real photo, else the procedural texture above stands
       const glow = { moon: '#cfd8ff', earth: '#58a6ff', sun: '#ffb020' }[spec.type];
       this.halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: softSprite(), color: new THREE.Color(glow).multiplyScalar(spec.type === 'sun' ? 1.8 : 1.1), transparent: true, opacity: spec.type === 'sun' ? 0.9 : 0.28, depthWrite: false, blending: THREE.AdditiveBlending }));
       this.halo.scale.setScalar(R * (spec.type === 'sun' ? 6 : 3.6)); this.halo.position.copy(this.bodyMesh.position); this.halo.position.z -= 0.2; this.group3.add(this.halo);

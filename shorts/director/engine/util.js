@@ -23,3 +23,7 @@ export const wobble = (t, s = 0) => Math.sin(t * 1.3 + s * 11.1) * 0.5 + Math.si
 export const hexToRgb = h => { const n = parseInt(h.replace('#', ''), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
 export const rgba = (h, a) => { const [r, g, b] = hexToRgb(h); return `rgba(${r},${g},${b},${a})`; };
 export const hashStr = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
+
+// Pending async work (currently: real-photo textures for thumbnail bodies) that a frame must wait for before it is
+// captured. window.renderFrame drains this after building the scene and before rendering it.
+export const pendingTextures = [];

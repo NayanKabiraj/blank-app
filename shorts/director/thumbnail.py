@@ -131,7 +131,10 @@ def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], lis
     q = "?" in spec["headline"] or spec.get("tag") in ("WHAT IF?", "अगर?")
     mood = spec.get("mood") or ("surprised" if q else "happy")
     def body(x, y, sc, t=None):
-        return {"id": f"b{x}", "type": t or kind, "position": {"x": x, "y": y, "z": 0}, "scale": sc, "spin": 0.1}
+        o = {"id": f"b{x}", "type": t or kind, "position": {"x": x, "y": y, "z": 0}, "scale": sc, "spin": 0.1}
+        if spec.get("photo_data_url"):
+            o["photoDataUrl"] = spec["photo_data_url"]     # a real public-domain photo textures the sphere; the coded procedural
+        return o                                            # texture (shorts/director/engine/bodies.js) is the fallback/default
     if v == "duo":
         objs = [body(-2.9, 1.0, 0.62), body(2.4, 1.0, 0.9)] if land else [body(-1.5, 2.2, 0.8), body(1.4, 0.2, 1.1)]
         st = [{"type": "burst", "nx": 0.0, "ny": 0.28 if land else 0.1, "size": 0.34, "color": accent, "text": "?!"}]
@@ -151,28 +154,20 @@ def stock_query(spec: dict, kind: str | None) -> str:
     return spec.get("stock_query") or STOCK_QUERY.get(kind or "") or re.sub(r"[?!.,]", "", spec.get("headline", ""))
 
 
-def composite_photo_bg(black_png: Path, white_png: Path, photo: Path, out: Path, land: bool, focus=(0.5, 0.5, 1.0)) -> None:
-    """The stock photo fills the whole frame; the lettering and stickers are matted out of two renders (on black and on white) and laid on top.
-    With B = colour*alpha on black and Wh = colour*alpha + (1-alpha) on white: alpha = 1 - (Wh - B), result = photo*(1-alpha) + B."""
-    import numpy as np
+def photo_data_url(photo: Path, focus=(0.5, 0.5, 1.0), size: int = 640) -> str:
+    """A square crop of the downloaded photo around its focus point, as a base64 data: URL for the engine to use as the
+    sphere's texture map (data: URLs travel in the JSON config; the engine is a headless browser with no other way to
+    reach a local file)."""
+    import base64
+    from io import BytesIO
     from PIL import Image
-    B = np.asarray(Image.open(black_png).convert("RGB"), dtype=np.float32) / 255.0
-    Wh = np.asarray(Image.open(white_png).convert("RGB"), dtype=np.float32) / 255.0
-    W, H = Image.open(black_png).size
-    alpha = np.clip(1.0 - (Wh - B).mean(axis=2, keepdims=True), 0.0, 1.0)
     src = Image.open(photo).convert("RGB"); sw, sh = src.size
     fx, fy, zoom = focus
-    unit = min(sw, sh) / max(zoom, 1.0)                                   # the shorter side of the crop, in source pixels
-    cw, ch = (unit * W / H, unit) if land else (unit, unit * H / W)
-    k = min(1.0, sw / cw, sh / ch); cw, ch = cw * k, ch * k
-    tx, ty = (0.68, 0.38) if land else (0.5, 0.3)                           # where the photo's subject should sit in the frame
-    x0 = min(max(fx * sw - tx * cw, 0), sw - cw); y0 = min(max(fy * sh - ty * ch, 0), sh - ch)
-    bg = np.asarray(src.crop((int(x0), int(y0), int(x0 + cw), int(y0 + ch))).resize((W, H), Image.LANCZOS), dtype=np.float32) / 255.0
-    yy = np.linspace(0, 1, H, dtype=np.float32)[:, None, None]
-    bg = bg * (1.0 - 0.55 * np.clip((yy - 0.5) / 0.5, 0, 1))              # a dark scrim at the bottom so the headline reads on any photo
-    bg = np.clip((bg - 0.5) * 1.12 + 0.5 + 0.02, 0, 1)                    # a touch more contrast
-    out_img = bg * (1.0 - alpha) + B
-    Image.fromarray((np.clip(out_img, 0, 1) * 255).astype(np.uint8)).save(out, quality=95)
+    side = min(sw, sh) / max(zoom, 1.0)
+    x0 = min(max(fx * sw - side / 2, 0), sw - side); y0 = min(max(fy * sh - side / 2, 0), sh - side)
+    img = src.crop((int(x0), int(y0), int(x0 + side), int(y0 + side))).resize((size, size), Image.LANCZOS)
+    buf = BytesIO(); img.save(buf, format="JPEG", quality=88)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
 
 
 def stickers_for(spec: dict, land: bool) -> list[dict]:
@@ -223,9 +218,6 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
         spec.setdefault("variant", "hero")
         scene["sceneType"], scene["environment"]["preset"] = "kinetic-typography", BRIGHT.get(kind, BRIGHT_BY_SEED[spec["seed"] % 4])
         scene["objects"], scene["stickers"] = _subject_objects(spec, kind, land)
-        if spec.get("photo"):
-            scene["objects"] = []     # the stock photo is the background; only lettering and stickers are drawn, on a flat matte colour
-            scene["environment"]["preset"], scene["environment"]["fogDensity"] = spec.get("matte", "matte-black"), 0.0
     else:
         if spec.get("objects"):
             scene["objects"] = spec["objects"]
@@ -234,8 +226,8 @@ def _engine_cfg(spec: dict, w: int, h: int, still_path: Path) -> dict:
                            "resolution": {"width": w, "height": h}, "framesPerSecond": 30},
          "randomization": {"globalSeed": spec["seed"]}, "scenes": [scene],
          "renderSettings": {"safeArea": {"topPercent": 4, "bottomPercent": 4, "leftPercent": 4, "rightPercent": 4},
-                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.0 if spec.get("photo") else 0.3},
-                                            "look": {"saturation": 1.0 if spec.get("photo") else 1.25, "gain": 1.0}}},   # brighter and more saturated than the video
+                            "postProcessing": {"glitch": {"enabled": False}, "filmGrain": {"strength": 0.0}, "bloom": {"strength": 0.3},
+                                            "look": {"saturation": 1.25, "gain": 1.0}}},   # brighter and more saturated than the video
          "brandSystem": {"defaultPalette": spec["palette"], "typography": {"preferredHeadlineFontSizePixels": 96}}}
     m = M.complete(m)
     sc = m["scenes"][0]
@@ -259,6 +251,15 @@ def render(spec: dict, out_jpg: Path, kind: str = "long") -> Path | None:
     with tempfile.TemporaryDirectory() as td:
         png = Path(td) / "thumb.png"
         cfg_path = Path(td) / "cfg.json"
+        subj = pick_subject(spec)
+        got = (stock.fetch(stock_query(spec, subj), Path(td), "stock", subj)
+               if spec.get("stock", True) and spec.get("variant", "hero") != "classic" and subj else None)
+        if got:   # a relevant public-domain photo textures the 3D sphere; on any failure the coded procedural texture stays
+            try:
+                spec = {**spec, "photo_data_url": photo_data_url(got["path"], got.get("focus", (0.5, 0.5, 1.0)))}
+                log.info("Thumbnail photo credit: %s", got["credit"])
+            except Exception as e:  # noqa: BLE001
+                log.warning("Could not prepare the stock photo as a texture, keeping the coded 3D body: %s", e)
         cfg_path.write_text(json.dumps(_engine_cfg(spec, w, h, png), ensure_ascii=False), encoding="utf-8")
         try:
             subprocess.run(["node", str(DIR / "still.cjs"), str(cfg_path)], check=True, cwd=DIR, timeout=300)
@@ -266,19 +267,6 @@ def render(spec: dict, out_jpg: Path, kind: str = "long") -> Path | None:
             log.warning("Thumbnail render failed: %s", e)
             return None
         out_jpg.parent.mkdir(parents=True, exist_ok=True)
-        got = stock.fetch(stock_query(spec, pick_subject(spec)), Path(td), "stock", pick_subject(spec)) if spec.get("stock", True) and spec.get("variant", "hero") == "hero" and pick_subject(spec) else None
-        if got:     # a relevant public-domain photo replaces the 3D body; on any failure the textured 3D body version stays
-            try:
-                pngs = {}
-                for matte in ("matte-black", "matte-white"):
-                    pngs[matte] = Path(td) / f"{matte}.png"
-                    cfg_path.write_text(json.dumps(_engine_cfg({**spec, "photo": True, "matte": matte}, w, h, pngs[matte]), ensure_ascii=False), encoding="utf-8")
-                    subprocess.run(["node", str(DIR / "still.cjs"), str(cfg_path)], check=True, cwd=DIR, timeout=300)
-                composite_photo_bg(pngs["matte-black"], pngs["matte-white"], got["path"], Path(td) / "thumb_photo.jpg", w > h, got.get("focus", (0.5, 0.5, 1.0)))
-                png = Path(td) / "thumb_photo.jpg"
-                log.info("Thumbnail photo credit: %s", got["credit"])
-            except Exception as e:  # noqa: BLE001
-                log.warning("Stock composite failed, keeping the 3D body: %s", e)
         from PIL import Image
         img = Image.open(png).convert("RGB")
         for q in (92, 85, 75, 60):     # smaller and smaller until it is under YouTube's 2 MB limit

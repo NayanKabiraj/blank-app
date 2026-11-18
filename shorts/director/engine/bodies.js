@@ -36,3 +36,22 @@ export function bodyMaterial(kind, seed) {
   if (kind === 'sun') return new THREE.MeshBasicMaterial({ map, color: new THREE.Color(1.5, 1.25, 0.9), toneMapped: false });
   return new THREE.MeshStandardMaterial({ map, roughness: kind === 'moon' ? 0.95 : 0.6, metalness: 0, emissive: new THREE.Color(kind === 'earth' ? '#06204a' : '#1a1a22'), emissiveIntensity: 0.55 });
 }
+
+// Replace a body's procedural texture with a real open-source photo (a data: URL, already fetched and cropped by
+// shorts/director/thumbnail.py from a public-domain/CC0 source) once it has loaded. The coded procedural texture from
+// bodyMaterial() above stays on screen as the fallback until then, and permanently if the photo never loads (offline,
+// no match, a broken data URL): this must never throw or leave the sphere untextured.
+export function applyPhotoTexture(mesh, dataUrl) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const tex = new THREE.Texture(img); tex.colorSpace = THREE.SRGBColorSpace; tex.needsUpdate = true;
+        mesh.material.map = tex; mesh.material.needsUpdate = true;
+      } catch { /* keep the procedural texture */ }
+      resolve();
+    };
+    img.onerror = () => resolve();
+    img.src = dataUrl;
+  });
+}
