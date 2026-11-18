@@ -151,13 +151,15 @@ def stock_query(spec: dict, kind: str | None) -> str:
     return spec.get("stock_query") or STOCK_QUERY.get(kind or "") or re.sub(r"[?!.,]", "", spec.get("headline", ""))
 
 
-def composite_photo(jpg_in: Path, photo: Path, out: Path, land: bool) -> None:
+def composite_photo(jpg_in: Path, photo: Path, out: Path, land: bool, focus=(0.5, 0.5, 1.0)) -> None:
     """Paste the stock photo as a round, white-rimmed 'porthole' on the subject spot (where the 3D body would be), with a soft shadow."""
     from PIL import Image, ImageDraw, ImageFilter, ImageOps
     base = Image.open(jpg_in).convert("RGB"); W, H = base.size
     d = int(H * 0.56) if land else int(W * 0.56)
     cx, cy = (int(W * 0.76), int(H * 0.34)) if land else (int(W * 0.56), int(H * 0.34))
-    img = ImageOps.fit(Image.open(photo).convert("RGB"), (d, d), Image.LANCZOS)
+    src = Image.open(photo).convert("RGB"); side = min(src.size) / max(focus[2], 1.0)     # square crop around the focus point, zoomed in
+    x0 = min(max(focus[0] * src.width - side / 2, 0), src.width - side); y0 = min(max(focus[1] * src.height - side / 2, 0), src.height - side)
+    img = src.crop((int(x0), int(y0), int(x0 + side), int(y0 + side))).resize((d, d), Image.LANCZOS)
     mask = Image.new("L", (d * 4, d * 4), 0); ImageDraw.Draw(mask).ellipse((0, 0, d * 4 - 1, d * 4 - 1), fill=255); mask = mask.resize((d, d), Image.LANCZOS)
     rim = max(8, d // 40)
     shadow = Image.new("L", (d + 2 * rim + 60, d + 2 * rim + 60), 0); ImageDraw.Draw(shadow).ellipse((30, 30, d + 2 * rim + 30, d + 2 * rim + 30), fill=150)
@@ -252,13 +254,13 @@ def render(spec: dict, out_jpg: Path, kind: str = "long") -> Path | None:
             log.warning("Thumbnail render failed: %s", e)
             return None
         out_jpg.parent.mkdir(parents=True, exist_ok=True)
-        got = stock.fetch(stock_query(spec, pick_subject(spec)), Path(td), "stock") if spec.get("stock", True) and spec.get("variant", "hero") == "hero" and pick_subject(spec) else None
+        got = stock.fetch(stock_query(spec, pick_subject(spec)), Path(td), "stock", pick_subject(spec)) if spec.get("stock", True) and spec.get("variant", "hero") == "hero" and pick_subject(spec) else None
         if got:     # a relevant public-domain photo replaces the 3D body; on any failure the textured 3D body version stays
             png2 = Path(td) / "thumb_photo.png"
             try:
                 cfg_path.write_text(json.dumps(_engine_cfg({**spec, "photo": True}, w, h, png2), ensure_ascii=False), encoding="utf-8")
                 subprocess.run(["node", str(DIR / "still.cjs"), str(cfg_path)], check=True, cwd=DIR, timeout=300)
-                composite_photo(png2, got["path"], Path(td) / "thumb_photo.jpg", w > h)
+                composite_photo(png2, got["path"], Path(td) / "thumb_photo.jpg", w > h, got.get("focus", (0.5, 0.5, 1.0)))
                 png = Path(td) / "thumb_photo.jpg"
                 log.info("Thumbnail photo credit: %s", got["credit"])
             except Exception as e:  # noqa: BLE001
