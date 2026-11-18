@@ -98,7 +98,7 @@ Return BEST TITLE, BACKUP A, BACKUP B. Whiteboard Shorts: 60 characters or fewer
 The title explains the premise; the thumbnail **shows the consequence**. Do not repeat the title. Construction: CHARACTER or
 SUBJECT + IMPOSSIBLE EVENT + CONSEQUENCE (title "What If You Woke Up With Every Superpower?" -> an ordinary person floating above
 a wrecked bedroom, hands glowing, furniture suspended, shocked face). Rules: one obvious focal subject, one to three big ideas,
-readable at phone size, strong silhouette, strong contrast, one clear emotion, minimal clutter, no tiny details, **1-4 big words
+readable at phone size, strong silhouette, strong contrast, one clear emotion, minimal clutter, no tiny details, **one short sentence (up to 8 words)
 at most (24 characters)**. Always produce three **materially different** concepts (A/B/C: different subject, event or emotion, not
 recoloured copies), then recommend one.
 

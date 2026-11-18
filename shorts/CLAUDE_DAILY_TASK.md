@@ -21,7 +21,7 @@ the task. Do not try to hack the algorithm: maximize curiosity x clarity x story
    ASSUMPTION / UNVERIFIED), the risks, and the quality gate. Separate FACT, OBSERVATION, INFERENCE and RECOMMENDATION. Never invent
    metrics, views, CTR, retention, sources or numbers; if vidIQ credits are low or a tool is unavailable, say the competitor data is
    NOT PUBLICLY VERIFIABLE and continue with web research.
-3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, 1-4 big words, never a copy of
+3. **Packaging gate.** The title explains the premise, the thumbnail shows the consequence (`thumbnail_text`, one short sentence (up to 8 words), never a copy of
    the title). The first line proves the premise within 10 seconds; the first 30 seconds escalate. Every 20-40 seconds there is a reason to keep
    watching. Every narration sentence says what the viewer sees.
 4. **Quality gate (`gate_score`, /100):** topic, curiosity, title, thumbnail, opening, story, visual potential, emotional engagement,
@@ -42,7 +42,7 @@ video. In this task that means: a title that passes the curiosity test, a **thum
 a payoff, and a pointer to the next video in the close.
 
 **Thumbnail.** The workflow draws and uploads one per language (`shorts/director/thumbnail.py`). Write `thumbnail_text` for both
-`english` and `hindi`: 1-4 big words (24 characters at most) that show the *consequence*, not a copy of the title ("Your body wants
+`english` and `hindi`: one short sentence (up to 8 words, 46 characters at most) that show the *consequence*, not a copy of the title ("Your body wants
 fur", not "Why do we get goosebumps?"). Without it the hook text is used.
 
 The channel is an **explainer channel**: every Short answers one clear "how does X work?"
