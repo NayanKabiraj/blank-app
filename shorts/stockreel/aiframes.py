@@ -49,25 +49,33 @@ def pollinations_image(prompt: str, w: int, h: int) -> bytes | None:
         return None
 
 
-def huggingface_image(prompt: str, w: int, h: int, model: str = "black-forest-labs/FLUX.1-schnell") -> bytes | None:
+# Which model a provider serves through HF's `hf-inference` route shifts over time (a model can be dropped from
+# one provider and only reachable through another); try a short list rather than pin to one that may 404/410.
+HF_MODELS = ["black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-xl-base-1.0",
+             "stabilityai/stable-diffusion-3-medium-diffusers", "runwayml/stable-diffusion-v1-5"]
+
+
+def huggingface_image(prompt: str, w: int, h: int, models: list[str] = HF_MODELS) -> bytes | None:
     token = os.environ.get("HF_TOKEN", "")
     if not token:
         return None
-    url = f"https://router.huggingface.co/hf-inference/models/{model}"
     payload = json.dumps({"inputs": prompt, "parameters": {"width": w, "height": h}}).encode("utf-8")
-    try:
-        req = urllib.request.Request(url, data=payload, headers={
-            "Authorization": f"Bearer {token}", "Content-Type": "application/json", "User-Agent": UA})
-        with urllib.request.urlopen(req, timeout=90) as r:
-            body = r.read()
-        if r.headers.get("Content-Type", "").startswith("application/json"):
-            # the model is still loading: HF returns JSON with an "estimated_time", not an image, yet
-            log.warning("Hugging Face image not ready for %r: %s", prompt, body[:200])
-            return None
-        return body
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
-        log.warning("Hugging Face image failed for %r: %s", prompt, e)
-        return None
+    for model in models:
+        url = f"https://router.huggingface.co/hf-inference/models/{model}"
+        try:
+            req = urllib.request.Request(url, data=payload, headers={
+                "Authorization": f"Bearer {token}", "Content-Type": "application/json", "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=90) as r:
+                body = r.read()
+            if r.headers.get("Content-Type", "").startswith("application/json"):
+                # the model is still loading: HF returns JSON with an "estimated_time", not an image, yet
+                log.warning("Hugging Face image (%s) not ready for %r: %s", model, prompt, body[:200])
+                continue
+            return body
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+            log.warning("Hugging Face image (%s) failed for %r: %s", model, prompt, e)
+            continue
+    return None
 
 
 def local_image(prompt: str, w: int, h: int, model: str = "stabilityai/sd-turbo") -> bytes | None:
