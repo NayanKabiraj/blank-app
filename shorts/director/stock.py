@@ -27,7 +27,7 @@ def _get(url: str, timeout: int = 25) -> bytes:
 
 
 def search(query: str, limit: int = 12) -> list[dict]:
-    q = {"action": "query", "format": "json", "generator": "search", "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": limit,
+    q = {"action": "query", "format": "json", "generator": "search", "gsrsearch": f'intitle:"{query}" filetype:bitmap', "gsrnamespace": 6, "gsrlimit": limit,
          "prop": "imageinfo", "iiprop": "url|size|extmetadata|mime", "iiurlwidth": 1100}
     data = json.loads(_get(API + "?" + urllib.parse.urlencode(q)))
     pages = sorted((data.get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
@@ -41,17 +41,19 @@ def search(query: str, limit: int = 12) -> list[dict]:
         if ii.get("mime") not in ("image/jpeg", "image/png") or min(ii.get("width", 0), ii.get("height", 0)) < 700:
             continue
         artist = re.sub(r"<[^>]+>", "", (meta.get("Artist") or {}).get("value", "")).strip()
-        bad = bool(re.search(r"atmosphere|horizon|rise|set\b|silhouette|tree|building|city|diagram|map|logo|icon|crater|surface|mountain|rover|landing|tower|eclipse", p["title"], re.I))
+        bad = bool(re.search(r"atmosphere|horizon|rise|set\b|silhouette|tree|building|city|diagram|map|logo|icon|crater|surface|mountain|rover|landing|tower|eclipse|shuttle|launch|pad\b|rocket|apollo|station|aircraft|plane|bird|people|man\b|woman|flag|painting|drawing", p["title"], re.I))
         out.append({"bad": bad, "url": ii.get("thumburl") or ii["url"], "title": p["title"], "license": lic.strip(),
                     "credit": f"{artist or 'Unknown'} / Wikimedia Commons ({lic.strip()})", "source": ii.get("descriptionurl", "")})
-    return sorted(out, key=lambda h: (h["bad"], not re.search(re.escape(query.split()[0]), h["title"], re.I)))      # keep the search order, but plain subject photos before scenery
+    return sorted(out, key=lambda h: (h["bad"], not re.search(re.escape(query.split()[0]), h["title"], re.I), len(h["title"])))      # keep the search order, but plain subject photos before scenery
 
 
 def fetch(query: str, out_dir: Path, name: str = "stock") -> dict | None:
     """Download the best public-domain match for `query`. None on any failure (offline, no match): the caller falls back."""
     out_dir = Path(out_dir)
     try:
-        for hit in search(query):
+        hits = search(query) or search(query.split()[0])    # no title match: the plain keyword
+        log.info("Stock candidates for %r: %s", query, [h["title"] for h in hits[:5]])
+        for hit in hits:
             ext = ".png" if hit["url"].lower().endswith(".png") else ".jpg"
             path = out_dir / f"{name}{ext}"
             out_dir.mkdir(parents=True, exist_ok=True)
