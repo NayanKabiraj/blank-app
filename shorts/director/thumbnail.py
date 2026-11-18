@@ -140,11 +140,11 @@ def _subject_objects(spec: dict, kind: str, land: bool) -> tuple[list[dict], lis
         objs = [body(1.9, 0.9, 1.05)] if land else [body(0.0, 1.6, 1.5)]
         return objs, [{"type": "arrow", "nx": -0.5 if land else -0.55, "ny": 0.2 if land else 0.25, "size": 0.3, "color": accent}] if q else []
     objs = [body(2.4, 0.9, 0.85)] if land else [body(0.0, 1.8, 1.25)]
-    st = [{"type": "face", "mood": mood, "nx": -0.6 if land else -0.55, "ny": 0.1 if land else 0.5, "size": 0.3 if land else 0.34, "look": 0.7, "tilt": -6}]
+    st = [{"type": "face", "mood": mood, "nx": -0.6 if land else -0.72, "ny": 0.1 if land else 0.56, "size": 0.3 if land else 0.26, "look": 0.7, "tilt": -6}]
     return objs, st
 
 
-STOCK_QUERY = {"moon": "full moon", "sun": "sun solar", "earth": "Earth from space"}
+STOCK_QUERY = {"moon": "full moon lunar", "sun": "sun solar", "earth": "Earth from space"}
 
 
 def stock_query(spec: dict, kind: str | None) -> str:
@@ -156,7 +156,7 @@ def composite_photo(jpg_in: Path, photo: Path, out: Path, land: bool) -> None:
     from PIL import Image, ImageDraw, ImageFilter, ImageOps
     base = Image.open(jpg_in).convert("RGB"); W, H = base.size
     d = int(H * 0.56) if land else int(W * 0.56)
-    cx, cy = (int(W * 0.76), int(H * 0.34)) if land else (int(W * 0.5), int(H * 0.34))
+    cx, cy = (int(W * 0.76), int(H * 0.34)) if land else (int(W * 0.56), int(H * 0.34))
     img = ImageOps.fit(Image.open(photo).convert("RGB"), (d, d), Image.LANCZOS)
     mask = Image.new("L", (d * 4, d * 4), 0); ImageDraw.Draw(mask).ellipse((0, 0, d * 4 - 1, d * 4 - 1), fill=255); mask = mask.resize((d, d), Image.LANCZOS)
     rim = max(8, d // 40)

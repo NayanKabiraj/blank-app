@@ -18,5 +18,6 @@
  "privacy": "private",
  "attempts": 0,
  "queued_at": "2026-11-18T03:09:28+00:00",
- "last_error": "daily upload limit already reached in this run"
+ "last_error": "daily upload limit already reached in this run",
+ "thumbnail_text": "दो ज्वार?"
 }
