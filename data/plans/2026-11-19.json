@@ -1,73 +1,73 @@
 {
-  "niche": "Science Explained",
-  "topic": "Why do traffic jams happen with nothing blocking the road?",
-  "research_summary": "Candidates (scored /40, 19 Nov 2026, stockreel format - a third, real-footage video style, different topic from today's whiteboard Short (deja vu, Brain & Psychology) and today's documentary (Surat diamond cutting, How It's Made); picked for subjects real stock footage actually shows well): (1) Why do traffic jams happen with nothing blocking the road? (phantom traffic jams, Science Explained) 34 - curiosity5 universality5 timeliness3 search4 surprise4 visual4 shareability4 verifiability5 (chosen: universal frustration, a real peer-reviewed experiment to show, good highway/brake-light stock footage, niche not cooling down); (2) Why do starling flocks turn together with no leader? (murmuration, Earth & Nature) 33 - excellent footage but Earth & Nature is cooling down (used in the last 2 videos), kept as a follow-up instead; (3) Why does a crowd start clapping in rhythm all on its own? (Science Explained) 32 - also strong, kept as a follow-up; (4) Why do cities feel hotter than the countryside at night? (urban heat island, Earth & Nature) 29; (5) Why do fingers go wrinkly in water? (Human Body) 27; (6) Why did London's Millennium Bridge sway on its opening day? (crowd-synchronised resonance, Engineering Marvels) 30 - kept as a follow-up, close enough in theme to the winner that back-to-back would repeat the idea; (7) Why do onions make you cry? (Science Explained) 26; (8) Why do ocean waves always break toward the shore? (Earth & Nature) 26; (9) Why do assembly-line workers' hands move without looking? (Human Body/How It's Made) 23; (10) Why does bread mould faster in a bag than in open air? (Science Explained) 21; (11) Why do coffee shops smell better than the coffee tastes? (Science Explained) 22. Why now: no video on this channel has used the stockreel format yet; this topic's subject (highways, brake lights, a test track) is exactly the kind of real, photographable scene Wikimedia Commons actually has pictures of, unlike an abstract concept. Research (web search, each fact checked against two sources where possible): a phantom/ghost traffic jam forms with no accident, no construction and no bottleneck at all - one driver's small, unnecessary brake tap forces the next driver to brake harder, and that reaction cascades backward through the traffic, VERIFIED (multiple engineering explainers and the original physics paper below agree on this mechanism); in 2008, Sugiyama et al. put 22 cars on a 230-metre circular test track and told the drivers to hold a steady 30 km/h with safe following distance - a jam still formed and crept backward around the loop with no obstacle anywhere, VERIFIED (Sugiyama Y. et al., 'Traffic jams without bottlenecks - experimental evidence for the physical mechanism of the formation of a jam', New Journal of Physics 10 (2008) 033001, cross-checked against the IOP Publishing page and a phys.org summary of the same paper); traffic physicists model this as a kinematic wave whose backward speed depends on vehicle density, commonly cited at roughly 15 km/h regardless of how fast traffic was originally moving, PARTIALLY VERIFIED (consistent across several popular physics explainers and traffic-wave write-ups, but not pinned to one single peer-reviewed number); these jams are also called 'jamitons' (jam + soliton) in the traffic-engineering literature, PARTIALLY VERIFIED (used by multiple explainers, treated here as terminology, not a load-bearing claim). Myth: the assumption that a visible jam always means a driver up ahead is at fault - the Sugiyama experiment shows traffic itself can jam with nobody doing anything wrong. Titles (/50): 'Why Do Traffic Jams Happen With Nothing Blocking the Road?' 42 (chosen); 'The Traffic Jam With No Cause (And Why It Moves Backward)' 40; 'Scientists Recreated a Traffic Jam With No Accident' 38; 'One Driver Taps the Brakes. The Whole Highway Stops.' 39; 'Why Traffic Jams Appear Out of Nowhere' 36; 'The Physics Behind a Jam With No Accident' 35; 'The Invisible Wave Behind Every Traffic Jam' 37; 'Why Highways Jam With Nothing Blocking Them' 35; 'The Traffic Jam That Has No Beginning' 33; 'Why Does Traffic Stop for No Reason At All?' 34. Thumbnails: A a highway full of brake lights at dusk with a big question mark (chosen, headline 'NO CRASH. STILL STUCK.'); B an aerial view of a circular test track with cars spaced evenly; C a single red brake light close-up. Hooks: 'Ever seen a highway jam with no crash and no construction at all?' (chosen); 'One driver's light tap on the brakes just froze an entire highway.' (chosen for hook_text); 'Scientists put 22 cars on a track and a traffic jam built itself.'; 'The jam you were stuck in may have started from nothing at all.'; 'Traffic can jam itself, with no accident anywhere.'. Quality gate /100: topic 9, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 7, emotional 7, retention 8, series 8 = 80, proceed.",
-  "mood": "mysterious",
+  "niche": "Earth & Nature",
+  "topic": "Why do starling flocks turn together with no leader?",
+  "research_summary": "Candidates (scored /40, 19 Nov 2026, second stockreel-format video - also the first run to test the just-merged Gemini free-image source and the exhaustion-rotation fallback in shorts/stockreel/aiframes.py; this topic was already queued as today's earlier stockreel Short's next_video, continuing the 'Hidden Patterns' cluster): (1) Why do starling flocks turn together with no leader? (murmuration, Earth & Nature) 33 - curiosity5 universality4 timeliness2 search3 surprise5 visual5 shareability5 verifiability4 (chosen: iconic, widely-photographed real footage, peer-reviewed mechanism, directly continues today's traffic-jam Short's follow-up); (2) Why do fireflies flash in sync with no conductor? (Earth & Nature) 32 - just as strong, kept as a future video so the niche doesn't repeat back-to-back; (3) Why does a crowd start clapping in rhythm all on its own? (Science Explained) 32 - kept as a follow-up, and Science Explained is cooling down today anyway; (4) Why did London's Millennium Bridge sway on its opening day? (Engineering Marvels) 30 - kept as a follow-up; (5) Why do schools of fish turn as one shimmering shape? (Earth & Nature) 29 - too close in theme to the winner for the same day, held back; (6) Why do ant colonies find the shortest path with no map? (Earth & Nature) 28; (7) Why do geese fly in a V formation? (Earth & Nature) 26; (8) What is the honeybee waggle dance actually saying? (Earth & Nature) 27; (9) Why can a slime mould solve a maze with no brain? (Science Explained) 25; (10) Why do locust swarms suddenly turn into plagues? (Earth & Nature) 24 - score held down, risks a political/agricultural-disaster framing. Research (web search, each fact checked against two sources where possible): each starling tracks only about seven of its nearest neighbours, no matter how dense or large the flock gets - a topological rule, not a fixed distance, VERIFIED (Ballerini M. et al., 'Interaction ruling animal collective behavior depends on topological rather than metric distance', PNAS 105(4) 2008, cross-checked against National Geographic's summary of the same Rome 'STARFLAG' study); there is no leader bird and no central signal - the turn is a self-organized, emergent pattern built from simple local rules (separation, alignment, cohesion - Craig Reynolds' 1987 'boids' model), VERIFIED (standard across the animal-behaviour and computer-graphics literature; Charlotte Hemelrijk's simulation work reproduced the real Rome flock data using those same three rules plus basic aerodynamics); once one bird turns, that turning signal spreads through the rest of the flock with very little weakening or delay bird-to-bird, PARTIALLY VERIFIED (Attanasi A. et al., 'Information transfer and behavioural inertia in starling flocks', Nature Physics 10 2014 - used here only as the qualitative claim the paper actually supports; a specific propagation-speed figure seen in a secondary, AI-generated source could not be verified against the primary paper and is deliberately left out). Myth: the assumption that one bird (or a small group) must be steering from the front - the real finding is that nobody is in charge at all. Titles (/50): 'Why Do Starling Flocks Turn Together With No Leader?' 41 (chosen); 'No Bird Is In Charge, and Thousands Still Move As One' 39; 'The Science Behind Nature's Most Mesmerizing Flock' 35; 'How Do Birds Turn Together With No Leader?' 37; 'Scientists Found the Secret Behind Starling Flocks' 36; 'This Flock Has No Leader. Watch It Turn Anyway.' 38; 'The Hidden Rule Behind Every Starling Flock' 36; 'Why Thousands of Birds Move As One Shape' 34; 'Nature's Flock Has No Leader, and That's the Secret' 37; 'The Physics of a Flock With No Leader' 33. Thumbnails: A a swirling black cloud of starlings against an orange sunset sky (chosen, headline 'NO LEADER AT ALL'); B a single bird highlighted inside a huge flock with a question mark; C a diagram-like close-up of seven birds circled within a larger flock. Hooks: 'Watch a flock of starlings turn in the sky as one shape - who's actually leading that turn?' (chosen); 'No leader bird. No signal. And yet thousands turn together in a heartbeat.'; 'Scientists found the real secret behind this: just seven neighbours.'; 'Nobody is steering this flock, and that's exactly the point.'; 'This shape in the sky has no leader at all.'. Quality gate /100: topic 9, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 9, emotional 8, retention 8, series 8 = 83, proceed.",
+  "mood": "inspiring",
   "cluster": "Hidden Patterns",
   "follow_ups": [
-    "Why do starling flocks turn together with no leader?",
     "Why does a crowd start clapping in rhythm all on its own?",
-    "Why did London's Millennium Bridge start swaying on its opening day?"
+    "Why did London's Millennium Bridge start swaying on its opening day?",
+    "Why do schools of fish swim and turn as one shimmering shape?"
   ],
-  "gate_score": 80,
+  "gate_score": 83,
   "english": {
-    "title": "Why Do Traffic Jams Happen With Nothing Blocking the Road?",
-    "description": "Sometimes a highway jams with no accident, no construction, nothing blocking it at all - and physicists can prove it. One driver's small brake tap forces the next car to brake harder, and that wave rolls backward through traffic all on its own. Up next: why starling flocks turn together with no leader. #traffic #physics #science #phantomtrafficjam",
+    "title": "Why Do Starling Flocks Turn Together With No Leader?",
+    "description": "Thousands of birds in the sky suddenly turn together with no leader at all. Scientists found each bird only tracks seven nearby neighbors, not the whole flock - and that's the whole secret. Up next: why a crowd starts clapping in rhythm all on its own. #starlings #murmuration #birds #nature",
     "tags": [
-      "phantom traffic jam",
-      "why does traffic jam",
-      "traffic wave physics",
-      "no reason traffic jam",
-      "science explained",
-      "traffic jam no accident",
-      "kinematic wave traffic",
-      "highway traffic jam",
-      "physics of traffic",
-      "why traffic stops"
+      "starling murmuration",
+      "bird flock behavior",
+      "why do birds flock together",
+      "murmuration explained",
+      "no leader animal behavior",
+      "flocking science",
+      "collective behavior birds",
+      "emergent behavior nature",
+      "bird swarm intelligence",
+      "nature science facts"
     ],
-    "hook_text": "No Crash. No Cause. Still Jammed.",
-    "thumbnail_text": "NO CRASH. STILL STUCK.",
-    "next_video": "Why do starling flocks turn together with no leader?",
-    "pinned_comment": "Ever been stuck in a jam that had no cause at all? What was it like?",
+    "hook_text": "No Leader. Still One Shape.",
+    "thumbnail_text": "NO LEADER AT ALL",
+    "next_video": "Why does a crowd start clapping in rhythm all on its own?",
+    "pinned_comment": "Ever watched thousands of birds turn together like that? What did it feel like?",
     "scenes": [
       {
-        "text": "Ever seen a highway jam with no crash and no construction at all?",
-        "keyword": "highway jam",
+        "text": "Watch a flock of starlings bend through the sky as one shape - who's leading that turn?",
+        "keyword": "flock of starlings",
         "graphic": {
           "kind": "title",
-          "headline": "Traffic Jam. No Cause?",
+          "headline": "Who's Leading This?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "clock"
+          "prop": "bulb"
         }
       },
       {
-        "text": "That's not an accident - it's physics. Could one driver's light tap on the brakes really freeze an entire highway?",
-        "keyword": "tap on the brakes",
+        "text": "No one is. There's no leader bird, no signal, and yet thousands turn together in a heartbeat.",
+        "keyword": "no leader bird",
         "graphic": {
           "kind": "keyword",
-          "headline": "One Tiny Tap",
-          "caption": "freezes a highway",
+          "headline": "No Leader Bird",
+          "caption": "yet thousands turn together",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "gear"
+          "prop": "cloud"
         }
       },
       {
-        "text": "Your brake tap doesn't disappear - it forces the car behind you to brake harder, and the one behind that, harder still.",
-        "keyword": "car behind you",
+        "text": "So how does a flock pull this off? Scientists found each starling only tracks seven nearest neighbors, not the whole sky full of birds.",
+        "keyword": "seven nearest neighbors",
         "graphic": {
           "kind": "chat",
           "headline": "Quick Chat",
           "caption": "",
           "items": [
-            "Why does one tap jam it all?",
-            "Each driver reacts late.",
-            "And it keeps going?",
-            "Yes - backward, car by car."
+            "How does a bird know where to turn?",
+            "It just watches its neighbors.",
+            "Just a few, not the whole flock?",
+            "Exactly - about seven, every time."
           ],
           "values": [],
           "answer": null,
@@ -75,12 +75,12 @@
         }
       },
       {
-        "text": "In 2008, scientists tested this on a circular track with twenty-two cars told to drive at a steady thirty kilometers an hour.",
-        "keyword": "circular track",
+        "text": "That's the real secret: not a leader, not the whole group, just seven neighbors, repeated bird after bird after bird.",
+        "keyword": "just seven neighbors",
         "graphic": {
           "kind": "stat",
-          "headline": "22 Cars",
-          "caption": "one empty track, no bottleneck",
+          "headline": "Just 7",
+          "caption": "neighbors each bird tracks",
           "items": [],
           "values": [],
           "answer": null,
@@ -88,16 +88,16 @@
         }
       },
       {
-        "text": "No obstacle, no crash - and still, a jam formed and crawled backward around the loop, all on its own.",
-        "keyword": "around the loop",
+        "text": "One bird banks, the next copies it, and that single turn spreads outward through the whole flock almost without slowing down.",
+        "keyword": "one bird banks",
         "graphic": {
           "kind": "flow",
-          "headline": "How The Wave Forms",
+          "headline": "How It Spreads",
           "caption": "",
           "items": [
-            "Small speed change",
-            "Brake ripples back",
-            "Jam creeps back"
+            "One bird turns",
+            "Next bird copies",
+            "Turn ripples out"
           ],
           "values": [],
           "answer": null,
@@ -105,15 +105,15 @@
         }
       },
       {
-        "text": "So no, it's not always someone up ahead braking for no reason - sometimes there's nothing up ahead at all.",
-        "keyword": "braking for no reason",
+        "text": "So no, there's no single starling steering the show from the front - the shape itself is just thousands of tiny, local decisions.",
+        "keyword": "no single starling steering",
         "graphic": {
           "kind": "myth",
-          "headline": "Someone Up Ahead?",
+          "headline": "A Leader Bird?",
           "caption": "",
           "items": [
-            "Myth: driver ahead is to blame",
-            "Truth: nobody is at fault"
+            "Myth: one bird leads the flock",
+            "Truth: no bird is in charge"
           ],
           "values": [],
           "answer": null,
@@ -121,76 +121,76 @@
         }
       },
       {
-        "text": "So next time you're stuck for no reason, you're riding inside a wave of brake lights that built itself. Ever caught yourself in one of these? Tell me below!",
-        "keyword": "brake lights",
+        "text": "So next time birds swirl like smoke across the sky, remember: nobody's in charge, and that's exactly why it works. Ever watched a murmuration in person? Tell me below!",
+        "keyword": "nobody's in charge",
         "graphic": {
           "kind": "title",
-          "headline": "You're Inside The Wave",
+          "headline": "Nobody's In Charge",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "clock"
+          "prop": "heart"
         }
       }
     ]
   },
   "hindi": {
-    "title": "हाईवे पर बिना किसी रुकावट के जाम क्यों लगता है?",
-    "description": "हाईवे पर कभी-कभी कोई एक्सीडेंट या निर्माण नहीं होता, फिर भी जाम लग जाता है। 2008 के एक प्रयोग ने दिखाया कि एक छोटा ब्रेक पूरे ट्रैक पर अपने आप एक लहर जैसा जाम बना देता है। आगे: बिना किसी नेता के पक्षियों का झुंड एक साथ कैसे मुड़ जाता है। #ट्रैफिक #विज्ञान #भारत #फिजिक्स",
+    "title": "बिना नेता के पक्षियों का झुंड एक साथ कैसे मुड़ जाता है?",
+    "description": "हज़ारों पक्षी आसमान में बिना किसी नेता के अचानक एक साथ मुड़ जाते हैं। वैज्ञानिकों ने पाया कि हर पक्षी सिर्फ़ अपने सात साथियों को देखता है, पूरे झुंड को नहीं - और यही राज़ है। आगे: भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है। #पक्षी #विज्ञान #प्रकृति #भारत",
     "tags": [
-      "ट्रैफिक जाम क्यों",
-      "फैंटम ट्रैफिक जाम",
-      "ट्रैफिक फिजिक्स",
-      "बिना वजह जाम",
-      "साइंस एक्सप्लेंड",
-      "हाईवे जाम",
-      "traffic jam hindi",
-      "physics of traffic hindi"
+      "पक्षियों का झुंड",
+      "मुर्मुरेशन हिंदी",
+      "बिना नेता के झुंड",
+      "पक्षी विज्ञान",
+      "प्रकृति के रहस्य",
+      "starling murmuration hindi",
+      "flock behavior hindi",
+      "bird flock science"
     ],
-    "hook_text": "कोई एक्सीडेंट नहीं, फिर भी जाम",
-    "thumbnail_text": "कोई टक्कर नहीं, फिर भी जाम",
-    "next_video": "बिना किसी नेता के पक्षियों का झुंड एक साथ कैसे मुड़ जाता है?",
-    "pinned_comment": "क्या आप कभी ऐसे जाम में फँसे हैं जिसकी कोई वजह ही नहीं थी? कैसा लगा था?",
+    "hook_text": "कोई नेता नहीं, फिर भी एकसाथ",
+    "thumbnail_text": "कोई नेता नहीं है",
+    "next_video": "भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है?",
+    "pinned_comment": "क्या आपने कभी हज़ारों पक्षियों को आसमान में एक साथ मुड़ते देखा है? कैसा लगा?",
     "scenes": [
       {
-        "text": "हाईवे पर जाम लगता है, न एक्सीडेंट, न निर्माण - फिर भी गाड़ियाँ रुकती हैं, क्यों?",
-        "keyword": "न एक्सीडेंट, न निर्माण",
+        "text": "आकाश में पक्षियों का झुंड एक साथ मुड़ता है - कौन नेतृत्व करता है?",
+        "keyword": "पक्षियों का झुंड",
         "graphic": {
           "kind": "title",
-          "headline": "कोई वजह नहीं?",
+          "headline": "कौन नेतृत्व करता है?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "clock"
+          "prop": "bulb"
         }
       },
       {
-        "text": "यह हादसा नहीं, भौतिकी है - क्या एक हल्का ब्रेक पूरे हाईवे को रोक सकता है?",
-        "keyword": "हल्का ब्रेक",
+        "text": "कोई नेता नहीं है। कोई संकेत नहीं, फिर भी हज़ारों पक्षी साथ मुड़ जाते हैं।",
+        "keyword": "कोई नेता नहीं",
         "graphic": {
           "kind": "keyword",
-          "headline": "एक हल्का ब्रेक",
-          "caption": "पूरा हाईवे रुक सकता है",
+          "headline": "कोई नेता नहीं",
+          "caption": "फिर भी सब साथ मुड़ते हैं",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "gear"
+          "prop": "cloud"
         }
       },
       {
-        "text": "आपका ब्रेक गायब नहीं होता - वह पीछे वाली गाड़ी को तेज़ ब्रेक लगाने पर मजबूर करता है, और उससे पीछे वाली को उससे भी तेज़।",
-        "keyword": "पीछे वाली गाड़ी",
+        "text": "तो यह झुंड यह कैसे करता है? वैज्ञानिकों ने पाया कि हर पक्षी सिर्फ़ अपने सात साथियों को देखता है, पूरे आसमान को नहीं।",
+        "keyword": "सात साथियों",
         "graphic": {
           "kind": "chat",
           "headline": "छोटी सी बात",
           "caption": "",
           "items": [
-            "एक टैप से जाम क्यों?",
-            "हर ड्राइवर देर से रुकता है।",
-            "और यह चलता रहता है?",
-            "हाँ - पीछे की ओर, गाड़ी दर गाड़ी।"
+            "पक्षी को मुड़ना कैसे पता चलता है?",
+            "वह बस अपने साथियों को देखता है।",
+            "सिर्फ़ कुछ साथी, पूरा झुंड नहीं?",
+            "हाँ - सिर्फ़ सात, हर बार।"
           ],
           "values": [],
           "answer": null,
@@ -198,12 +198,12 @@
         }
       },
       {
-        "text": "2008 में वैज्ञानिकों ने एक गोल ट्रैक पर बाईस गाड़ियों से यह परखा, सबको तीस किमी प्रति घंटा रखने को कहा गया।",
-        "keyword": "गोल ट्रैक",
+        "text": "यही असली राज़ है - कोई नेता नहीं, पूरा झुंड नहीं, बस सात साथी, हर पक्षी में बार-बार दोहराए जाते हैं।",
+        "keyword": "बस सात साथी",
         "graphic": {
           "kind": "stat",
-          "headline": "22 गाड़ियाँ",
-          "caption": "एक खाली ट्रैक, कोई रुकावट नहीं",
+          "headline": "सिर्फ़ 7",
+          "caption": "हर पक्षी जितने साथी देखता है",
           "items": [],
           "values": [],
           "answer": null,
@@ -211,16 +211,16 @@
         }
       },
       {
-        "text": "कोई बाधा नहीं, कोई टक्कर नहीं - फिर भी जाम बना और ट्रैक पर पीछे की ओर खुद खिसकता रहा।",
-        "keyword": "पीछे की ओर",
+        "text": "एक पक्षी मुड़ता है, अगला उसकी नकल करता है, और वही एक मोड़ पूरे झुंड में बिना रुके फैल जाता है।",
+        "keyword": "एक पक्षी मुड़ता है",
         "graphic": {
           "kind": "flow",
-          "headline": "लहर कैसे बनती है",
+          "headline": "यह कैसे फैलता है",
           "caption": "",
           "items": [
-            "छोटा बदलाव शुरू",
-            "ब्रेक पीछे फैलता",
-            "जाम पीछे खिसकता"
+            "एक पक्षी मुड़ता",
+            "अगला उसकी नकल करता",
+            "मोड़ आगे फैलता"
           ],
           "values": [],
           "answer": null,
@@ -228,15 +228,15 @@
         }
       },
       {
-        "text": "तो नहीं, आगे वाला ड्राइवर दोषी नहीं होता - कभी आगे कुछ नहीं होता, फिर भी जाम लगता है।",
-        "keyword": "आगे वाला ड्राइवर दोषी नहीं",
+        "text": "तो नहीं, कोई एक पक्षी झुंड को आगे से नहीं चलाता - यह आकार बस हज़ारों छोटे फ़ैसलों से बनता है।",
+        "keyword": "पक्षी झुंड को आगे से नहीं चलाता",
         "graphic": {
           "kind": "myth",
-          "headline": "आगे कोई दोषी?",
+          "headline": "क्या कोई नेता है?",
           "caption": "",
           "items": [
-            "मिथक: आगे वाला दोषी होता है",
-            "सच: कोई दोषी नहीं होता"
+            "मिथक: एक पक्षी झुंड चलाता है",
+            "सच: कोई पक्षी ज़िम्मेदार नहीं"
           ],
           "values": [],
           "answer": null,
@@ -244,11 +244,11 @@
         }
       },
       {
-        "text": "अगली बार बिना वजह फँसे तो याद रखिए - आप एक ऐसी लहर में हैं जो खुद बनी है। क्या आपके साथ हुआ है? नीचे बताइए!",
-        "keyword": "एक ऐसी लहर",
+        "text": "अगली बार जब पक्षी आसमान में धुएँ जैसे मुड़ें, याद रखिए - कोई इंचार्ज नहीं, फिर भी यह काम करता है। क्या आपने यह देखा है? नीचे बताइए!",
+        "keyword": "कोई इंचार्ज नहीं",
         "graphic": {
           "kind": "title",
-          "headline": "आप लहर के अंदर हैं",
+          "headline": "कोई इंचार्ज नहीं",
           "caption": "",
           "items": [],
           "values": [],
