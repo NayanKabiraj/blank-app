@@ -95,7 +95,9 @@ jobs:
       POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_KEY || secrets.POLLINATIONS_API_KEY }}   # stockreel, optional: a free key from enter.pollinations.ai (repo secret is named POLLINATIONS_KEY)
       # stockreel, optional: "local" runs a small diffusion model (stabilityai/sd-turbo) on the runner's own CPU
       # instead of (or after) an API - no key needed, but slow; installed only when this is set to "local"
-      IMAGE_ENGINE: ${{ vars.IMAGE_ENGINE || '' }}
+      # Repo variable is named IMAGEENGINE (no underscore - GitHub Actions variable names in this repo can't
+      # take one); the internal flag/env var stays IMAGE_ENGINE, read as os.environ.get("IMAGE_ENGINE").
+      IMAGE_ENGINE: ${{ vars.IMAGEENGINE || '' }}
       # voice engine: piper (default, fast) or parler (Indic Parler-TTS, Rohit / Thoma, slow); set the TTS_ENGINE variable
       TTS_ENGINE: ${{ vars.TTS_ENGINE || 'piper' }}
     steps:
@@ -127,7 +129,7 @@ jobs:
           key: parler-indic-v1
 
       - name: Cache the local image model
-        if: ${{ vars.IMAGE_ENGINE == 'local' && startsWith(inputs.format, 'stockreel') }}
+        if: ${{ vars.IMAGEENGINE == 'local' && startsWith(inputs.format, 'stockreel') }}
         uses: actions/cache@v4
         with:
           path: .cache/hf
@@ -145,8 +147,8 @@ jobs:
             && python -c "from sentencepiece import sentencepiece_model_pb2" \
             || echo "::warning::Parler-TTS could not be installed, the Piper voice will be used"
 
-      - name: Install a local image model (stockreel, optional - IMAGE_ENGINE=local; without it Pollinations/Hugging Face/Wikimedia are used)
-        if: ${{ vars.IMAGE_ENGINE == 'local' && startsWith(inputs.format, 'stockreel') }}
+      - name: Install a local image model (stockreel, optional - repo variable IMAGEENGINE=local; without it Pollinations/Hugging Face/Wikimedia are used)
+        if: ${{ vars.IMAGEENGINE == 'local' && startsWith(inputs.format, 'stockreel') }}
         run: |
           pip install torch --index-url https://download.pytorch.org/whl/cpu \
             && pip install diffusers transformers accelerate \

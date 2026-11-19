@@ -16,9 +16,10 @@ comparison, an abstract concept or a "what if" thought experiment, which stay on
 pipelines. This is an addition, never the default; most days still use the other two.
 
 **The picture source, in order** (`shorts/stockreel/fetch.py` -> `aiframes.py`): an AI-generated image if a source is
-configured (Pollinations, then Hugging Face's free Inference API, then - only with `IMAGE_ENGINE=local` - a small
-model run on the runner's own CPU), else a real Wikimedia Commons public-domain/CC0 photo, else a plain gradient.
-None of this needs a key to run at all: with nothing configured it is exactly the free, no-signup Wikimedia path.
+configured - the local diffusion model first (only with the repo variable `IMAGEENGINE=local` - a small model run
+on the runner's own CPU), then Pollinations, then Hugging Face's free Inference API - else a real Wikimedia
+Commons public-domain/CC0 photo, else a plain gradient. None of this needs a key to run at all: with nothing
+configured it is exactly the free, no-signup Wikimedia path.
 **Any video that used even one AI-generated image is uploaded with YouTube's "altered or synthetic content" label
 set automatically** (regardless of the channel-wide `YT_AI_DISCLOSURE` setting) - this is handled in code
 (`shorts.stockreel.build`/`run` thread a `used_ai` flag through to `pending.publish`/`upload.upload`), not something
@@ -51,9 +52,11 @@ python -m shorts.stockreel.run --plan-file doc.json --documentary --dry-run     
 ```
 
 No secret or signup is required for the base path (Wikimedia + gradient). Optional, to prefer an AI-generated
-image per scene over a real photo: `POLLINATIONS_API_KEY` (free key from enter.pollinations.ai) and/or `HF_TOKEN`
-(the same free Hugging Face token already used for Indic Parler-TTS) as repository secrets, tried in that order;
-`IMAGE_ENGINE=local` (a repository variable) additionally installs and runs a small model (`stabilityai/sd-turbo`)
-on the CPU runner itself when both of those are unset or fail - no key, but slow, so it is opt-in. A scene whose
-search/generation finds nothing at any configured source renders as a plain gradient instead - the run still
-completes, it just has no real "stock footage" look for that scene.
+image per scene over a real photo: the repository variable `IMAGEENGINE` (named without an underscore - this
+repo's variable names can't take one) set to `local` installs and runs a small model (`stabilityai/sd-turbo`)
+on the CPU runner itself - no key needed, but slow, so it is opt-in and tried *first* whenever it's set,
+for both a still image and an animated (crossfaded) clip; `POLLINATIONS_API_KEY` and/or `HF_TOKEN` (the same
+free Hugging Face token already used for Indic Parler-TTS) as repository secrets are the fallback, tried in
+that order, whether or not the local model is on. A scene whose search/generation finds nothing at any
+configured source renders as a plain gradient instead - the run still completes, it just has no real "stock
+footage" look for that scene.
