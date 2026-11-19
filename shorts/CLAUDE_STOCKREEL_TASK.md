@@ -16,12 +16,16 @@ comparison, an abstract concept or a "what if" thought experiment, which stay on
 pipelines. This is an addition, never the default; most days still use the other two.
 
 **The picture source, in order** (`shorts/stockreel/fetch.py` -> `aiframes.py`): an AI-generated image if a source is
-configured - the local diffusion model first (only with the repo variable `IMAGEENGINE=local` - a small model run
-on the runner's own CPU), then Gemini's free image generation, then Pollinations, then Hugging Face's free
-Inference API - else a real Wikimedia Commons public-domain/CC0 photo, else a plain gradient. None of this needs a
-key to run at all: with nothing configured it is exactly the free, no-signup Wikimedia path. Whichever networked
-source answers with a rate-limit/quota error is skipped for the rest of that run (`_EXHAUSTED` in `aiframes.py`),
-so the next scene goes straight to the next source instead of repeating a call that would just fail again.
+configured - Gemini's free image generation first (`GEMINI_API_KEY`), then the local diffusion model (only with
+the repo variable `IMAGEENGINE=local` - a small model run on the runner's own CPU), then Pollinations, then
+Hugging Face's free Inference API - else a real Wikimedia Commons public-domain/CC0 photo, else a plain gradient.
+None of this needs a key to run at all: with nothing configured it is exactly the free, no-signup Wikimedia path.
+Whichever networked source answers with a rate-limit/quota error is skipped for the rest of that run
+(`_EXHAUSTED` in `aiframes.py`), so the next scene goes straight to the next source instead of repeating a call
+that would just fail again. Every scene's search/generation phrase is always built from the **English** scene's
+`keyword` (`query_scenes` threaded through `run.py` -> `build.py` -> `render.py`), even when rendering Hindi:
+image/video models read English far better than Hindi-script prompts, and the two languages' scenes describe
+the same picture anyway, so the Hindi render would otherwise come back blurry or off-topic for no benefit.
 **Any video that used even one AI-generated image is uploaded with YouTube's "altered or synthetic content" label
 set automatically** (regardless of the channel-wide `YT_AI_DISCLOSURE` setting) - this is handled in code
 (`shorts.stockreel.build`/`run` thread a `used_ai` flag through to `pending.publish`/`upload.upload`), not something
@@ -56,12 +60,13 @@ python -m shorts.stockreel.run --plan-file doc.json --documentary --dry-run     
 No secret or signup is required for the base path (Wikimedia + gradient). Optional, to prefer an AI-generated
 image per scene over a real photo, in priority order:
 
-1. The repository variable `IMAGEENGINE` (named without an underscore - this repo's variable names can't take
+1. `GEMINI_API_KEY` (a free key, no billing required, from aistudio.google.com/apikey) - Google's free-tier
+   image generation. Tried *first* whenever it's set, for both a still image and an animated (crossfaded)
+   clip.
+2. The repository variable `IMAGEENGINE` (named without an underscore - this repo's variable names can't take
    one) set to `local` installs and runs a small model (`stabilityai/sd-turbo`) on the CPU runner itself - no
-   key needed, but slow, so it is opt-in and tried *first* whenever it's set, for both a still image and an
-   animated (crossfaded) clip.
-2. `GEMINI_API_KEY` (a free key, no billing required, from aistudio.google.com/apikey) - Google's free-tier
-   image generation.
+   key needed, but slow, so it is opt-in; tried next, for the same reason Gemini is (it can't produce real
+   video either, so this is its only way to ever get picked over Pollinations' video below).
 3. `POLLINATIONS_API_KEY` (a free key from enter.pollinations.ai).
 4. `HF_TOKEN` (the same free Hugging Face token already used for Indic Parler-TTS) - Hugging Face's free
    Inference API.
