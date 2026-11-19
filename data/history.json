@@ -287,12 +287,14 @@
       "en": {
         "file": "2026-11-19_en.mp4",
         "saved_to": "videos/2026-11-19/en.mp4",
-        "video_id": "B7Lljx8QtMY"
+        "video_id": "cwb_sHbjxwE",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-19_hi.mp4",
         "saved_to": "videos/2026-11-19/hi.mp4",
-        "video_id": "dkdFdy1FXgQ"
+        "video_id": "_C7-AoEGrD0",
+        "queued": false
       }
     }
   },
@@ -316,16 +318,18 @@
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/en.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_en",
-        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+        "queued": false,
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "video_id": "cwb_sHbjxwE"
       },
       "hi": {
         "file": "2026-11-19_hi.mp4",
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/hi.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "_C7-AoEGrD0"
       }
     }
   },
@@ -349,16 +353,18 @@
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/en.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "cwb_sHbjxwE"
       },
       "hi": {
         "file": "2026-11-19_hi.mp4",
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/hi.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "_C7-AoEGrD0"
       }
     }
   },
@@ -382,16 +388,18 @@
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/en.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "cwb_sHbjxwE"
       },
       "hi": {
         "file": "2026-11-19_hi.mp4",
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/hi.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "_C7-AoEGrD0"
       }
     }
   },
@@ -415,16 +423,18 @@
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/en.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "cwb_sHbjxwE"
       },
       "hi": {
         "file": "2026-11-19_hi.mp4",
         "engine": "stockreel",
         "synthetic": true,
         "saved_to": "videos/2026-11-19/hi.mp4",
-        "queued": "videos/unpublished/2026-11-19_short_hi",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "_C7-AoEGrD0"
       }
     }
   }
