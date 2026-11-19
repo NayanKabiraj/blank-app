@@ -1,12 +1,15 @@
 """Optional AI-generated pictures for a scene, tried in order before the free, no-key Wikimedia photo
-and the gradient placeholder - `fetch.clip_for` is what actually calls these, in the
-order: AI video, then AI stills blended into motion, then a single AI/Wikimedia still with Ken Burns:
+and the gradient placeholder - `fetch.clip_for` is what actually calls these. The local diffusion model is
+given first priority, for both a still image and an animated (crossfaded, "gif-like") clip, whenever it is
+enabled; everything else is a fallback, tried only once the step above it is unavailable or fails:
 
-    1. Pollinations video (`POLLINATIONS_API_KEY`) - real AI-generated motion, gen.pollinations.ai/video/...
-    2. Pollinations image (same key) - gen.pollinations.ai/image/...
-    3. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
-    4. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
-       see daily-shorts.yml - heavy and slow on a CPU runner, so it is opt-in, never on by default)
+    1. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
+       see daily-shorts.yml - heavy and slow on a CPU runner, so it is opt-in, never on by default). First
+       priority for both a still image (`local_image`) and the animated two-still crossfade `fetch.clip_for`
+       builds from it (`shorts/stockreel/fetch.py`'s own first step, ahead of Pollinations video).
+    2. Pollinations video (`POLLINATIONS_API_KEY`) - real AI-generated motion, gen.pollinations.ai/video/...
+    3. Pollinations image (same key) - gen.pollinations.ai/image/...
+    4. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
 
 Each step is independent and never raises: a missing key, a network error, a model that refuses to load, all
 just mean "try the next source/step". `generate_image`/`generate_video` return None when every configured
@@ -127,10 +130,17 @@ def huggingface_image(prompt: str, w: int, h: int, models: list[str] = HF_MODELS
     return None
 
 
+def local_enabled() -> bool:
+    return os.environ.get("IMAGE_ENGINE") == "local"
+
+
 def local_image(prompt: str, w: int, h: int, model: str = "stabilityai/sd-turbo") -> bytes | None:
-    """A small single-step diffusion model, loaded once and kept warm for the rest of the run. Requires
-    torch+diffusers (installed only when IMAGE_ENGINE=local, see daily-shorts.yml); returns None if they are
-    not installed, or on any generation error."""
+    """A small single-step diffusion model, loaded once and kept warm for the rest of the run. A no-op unless
+    IMAGE_ENGINE=local (so it can sit first in SOURCES without being tried when it isn't set up); requires
+    torch+diffusers (installed only in that case, see daily-shorts.yml); returns None if they are not
+    installed, or on any generation error."""
+    if not local_enabled():
+        return None
     global _LOCAL_PIPE
     try:
         if _LOCAL_PIPE is None:
@@ -151,7 +161,9 @@ def local_image(prompt: str, w: int, h: int, model: str = "stabilityai/sd-turbo"
         return None
 
 
-SOURCES = [("pollinations", pollinations_image), ("huggingface", huggingface_image)]
+# Local first: it is the preferred source whenever IMAGE_ENGINE=local is set (local_image no-ops otherwise,
+# so this adds no cost when it isn't). Pollinations and Hugging Face are the fallback, in that order.
+SOURCES = [("local", local_image), ("pollinations", pollinations_image), ("huggingface", huggingface_image)]
 NO_TEXT = "photographic, no text, no words, no letters, no caption, no watermark, no logo"
 
 
@@ -159,7 +171,7 @@ def any_source_configured() -> bool:
     """True if at least one AI picture source is set up - the caller uses this to decide whether two AI stills
     are worth generating for a motion blend (never worth trying against two real Wikimedia photos: they would
     be two different real things, not two takes of the same scene)."""
-    return bool(os.environ.get("POLLINATIONS_API_KEY") or os.environ.get("HF_TOKEN") or os.environ.get("IMAGE_ENGINE") == "local")
+    return bool(os.environ.get("POLLINATIONS_API_KEY") or os.environ.get("HF_TOKEN") or local_enabled())
 
 
 def generate_video(prompt: str, out: Path, w: int, h: int, duration: float) -> dict | None:
@@ -184,12 +196,7 @@ def generate_image(prompt: str, out: Path, w: int, h: int) -> dict | None:
         data = fn(prompt, w, h)
         if data and len(data) > 5_000:
             out.write_bytes(data)
-            log.info("AI image (%s) for %r", name, prompt)
-            return {"path": out, "credit": f"AI-generated ({name}), not a photograph", "source": "", "ai": True}
-    if os.environ.get("IMAGE_ENGINE") == "local":
-        data = local_image(prompt, w, h)
-        if data and len(data) > 5_000:
-            out.write_bytes(data)
-            log.info("AI image (local model) for %r", prompt)
-            return {"path": out, "credit": "AI-generated (local model), not a photograph", "source": "", "ai": True}
+            label = "local model" if name == "local" else name
+            log.info("AI image (%s) for %r", label, prompt)
+            return {"path": out, "credit": f"AI-generated ({label}), not a photograph", "source": "", "ai": True}
     return None
