@@ -1,73 +1,73 @@
 {
-  "niche": "Engineering Marvels",
-  "topic": "Why did London's Millennium Bridge start swaying on its opening day?",
-  "research_summary": "Candidates (scored /40, 19 Nov 2026, third stockreel-format video - this run also verifies two fixes just made after the murmuration Short's Hindi images came back irrelevant: Gemini is now tried before the local model, and every scene's image/video search phrase is always built from the English keyword even for the Hindi render): (1) Why did London's Millennium Bridge start swaying on its opening day? (Engineering Marvels) 32 - curiosity5 universality3 timeliness2 search3 surprise5 visual5 shareability4 verifiability5 (chosen: already queued as a follow-up from the murmuration Short's 'Hidden Patterns' cluster, a fresh niche today, strong real-footage subject - a famous bridge, crowds walking); (2) Why does a crowd start clapping in rhythm all on its own? (Science Explained) 32 - just as strong, but Science Explained is cooling down today, kept as a follow-up; (3) Why do schools of fish swim and turn as one shimmering shape? (Earth & Nature) 29 - also cooling down today (3 uses in the last 14), held back; (4) Why did the Tacoma Narrows Bridge tear itself apart in the wind? (Engineering Marvels) 31 - just as strong but a near-duplicate of today's bridge/resonance theme, kept as a follow-up for a later day; (5) Why do skyscrapers have a giant weight hanging inside them? (tuned mass dampers, Engineering Marvels) 28; (6) Why do opera singers shatter glasses with their voice? (Science Explained, cooling) 24; (7) Why does a wine glass hum when you run a wet finger around the rim? (Science Explained, cooling) 23; (8) How do noise-cancelling headphones erase sound? (already covered, excluded); (9) Why do suspension bridge cables sing in high wind? (Engineering Marvels) 27; (10) Why do stadium roofs sometimes sway under a bouncing crowd? (Engineering Marvels) 26. Research (web search, each fact checked against two sources where possible): the Millennium Bridge opened to the public on 10 June 2000 and was closed just two days later after a pronounced sideways sway developed as crowds walked across it, VERIFIED (Wikipedia's 'Millennium Bridge, London' article, cross-checked against New Civil Engineer's 2021 report on the same event); on opening day, up to about two thousand people were on the bridge at once (out of a much larger total footfall that day, with sources giving figures from roughly 80,000 to 100,000 over the whole day), PARTIALLY VERIFIED (exact day-total figures vary across sources, so the script uses only the better-agreed 'up to two thousand at once' figure); Arup's engineers attributed the sway to a feedback effect they called 'synchronous lateral excitation' - as the deck moved slightly sideways, each walker's own balance reflex nudged it a little further to stay steady, and that fed back into more sway as more people crossed, PARTIALLY VERIFIED (this is the classic, most widely reported explanation from Arup's own engineers; a 2021 study by Georgia State University and the University of Bristol has since argued the mechanism is more about individual balance correction than everyone consciously synchronising their footsteps, which is why the script explicitly says nobody tried to sync up on purpose, rather than claiming people deliberately matched steps); the bridge reopened in 2002 after engineers added dampers to absorb the motion, at a cost reported around five million pounds, VERIFIED (Wikipedia and ingenia.org.uk's Arup retrospective both confirm the retrofit and the roughly two-year closure; the exact damper count is left out since sources disagree, 37 versus 91 across different reports). Myth: the assumption that thousands of strangers consciously marched in step together - the real finding is that nobody was trying to synchronise at all; each person's own instinct to stay balanced was enough. Titles (/50): 'Why Did London's Millennium Bridge Start Swaying on Its Opening Day?' 40 (chosen); 'The Bridge That Swayed Itself Shut in Two Days' 38; 'A Brand-New Bridge Had to Close After Two Days. Here's Why.' 37; 'The Physics Behind London's Wobbly Bridge' 35; 'Why Thousands of Footsteps Nearly Broke a New Bridge' 36; 'London's Bridge That Swayed Itself Off Balance' 34; 'The Hidden Feedback Loop That Shut Down a Bridge' 37; 'Why a Crowd Made a Bridge Sway Out of Control' 35; 'The Bridge Problem Nobody Saw Coming' 33; 'How a Crowd Nearly Broke a Brand-New Bridge' 34. Thumbnails: A a crowded bridge deck with a motion-blur sway effect (chosen, headline 'IT HAD TO CLOSE'); B a side view of a bridge with wavy distortion lines; C a single walker's feet with balance arrows. Hooks: 'On opening day in London, a brand-new bridge suddenly started swaying side to side - why?' (chosen); 'Thousands of footsteps, and a brand-new bridge had to close within two days.'; 'Nobody tried to synchronise their steps - and that's exactly why it swayed.'; 'A bridge this famous once swayed itself shut.'; 'Engineers didn't see this coming until thousands of people showed up.'. Quality gate /100: topic 9, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 8, retention 8, series 8 = 82, proceed.",
-  "mood": "dramatic",
+  "niche": "Brain & Psychology",
+  "topic": "Why does a crowd start clapping in rhythm all on its own?",
+  "research_summary": "Candidates (scored /40, 19 Nov 2026, fourth stockreel-format video today - this run specifically tests whether Gemini's free image generation actually gets used now that IMAGEENGINE has been turned off, after the previous bridge run showed Gemini hit a rate-limit/quota error on its first call and fell through to the local model): (1) Why does a crowd start clapping in rhythm all on its own? (categorised as Brain & Psychology, crowd behaviour, rather than Science Explained, which is cooling down today) 32 - curiosity5 universality4 timeliness2 search3 surprise5 visual4 shareability5 verifiability4 (chosen: already queued as the next_video from both the murmuration and Millennium Bridge Shorts' 'Hidden Patterns' cluster, a niche not cooling down today, strong real-footage subject - concert and stadium crowds); (2) Why do schools of fish swim and turn as one shimmering shape? (Earth & Nature) 29 - cooling down today, kept as a follow-up; (3) Why did the Tacoma Narrows Bridge tear itself apart in the wind? (Engineering Marvels) 31 - strong, kept as a follow-up so today doesn't repeat the Millennium Bridge's exact theme; (4) Why do heart cells beating in a dish start beating together? (Human Body) 27 - kept as a follow-up; (5) Why do pendulum clocks on the same wall slowly sync their swing? (Science Explained, cooling) 26; (6) Why do fireflies flash in sync with no conductor? (Earth & Nature, cooling) 31; (7) Why do opera singers shatter glasses with their voice? (Science Explained, cooling) 24; (8) Why do strangers start walking in step without meaning to? (near-duplicate of the Millennium Bridge Short, excluded); (9) Why do traffic lights across a city sometimes turn green in a wave? (How Tech Works) 25; (10) Why do choirs drift in and out of tune without anyone noticing? (Science Explained, cooling) 22. Research (web search, each fact checked against two sources where possible): tumultuous, chaotic applause from a real audience can suddenly flip into rhythmic, synchronized clapping, and that synchrony can appear and disappear several times during the same ovation, VERIFIED (Neda Z., Ravasz E., Brechet Y., Vicsek T., Barabasi A.-L., 'Self-organizing processes: the sound of many hands clapping', Nature 403, 849-850, 24 February 2000, cross-checked against a 2000 Physical Review E follow-up, 'Physics of the rhythmic applause', by the same group); the authors frame this as a human-scale example of the same kind of self-organized synchronization seen in other natural systems, among them fireflies flashing together, VERIFIED (stated explicitly in the Nature paper's own framing); to fall into the synchronized rhythm, individuals actually clap at roughly half their previous rate - trading loudness for timing, since synchronized clapping is quieter on average even though each clap lands harder, VERIFIED (the period-doubling finding is the central result of the Physical Review E follow-up paper). Myth: the assumption that someone or something cues the crowd to start clapping together - the papers describe it as emergent and self-organized, with no leader or external signal; each person is simply responding to the people nearest them. Titles (/50): 'Why Does a Crowd Start Clapping in Rhythm All on Its Own?' 40 (chosen); 'No One Leads It, Yet a Whole Crowd Claps as One' 38; 'The Physics Behind Synchronized Applause' 34; 'Why Clapping Crowds Suddenly Fall Into Rhythm' 37; 'The Hidden Pattern Behind Every Standing Ovation' 36; 'How a Crowd Claps as One With No Leader' 37; 'The Secret Rhythm Behind Applause' 32; 'Why Your Clapping Syncs With Everyone Else's' 35; 'The Science of Synchronized Clapping' 31; 'What Makes a Crowd Clap Together on Its Own?' 36. Thumbnails: A a packed, blurred-motion crowd with hands mid-clap and a rhythm-wave graphic (chosen, headline 'EVERYONE IN SYNC'); B a single spotlighted clapper inside a dark crowd; C a sound-wave visualization splitting into two synced halves. Hooks: 'A crowd claps loudly, then with no leader, everyone claps in rhythm - how does that happen?' (chosen); 'Thousands of people, no conductor, and somehow they all clap on the same beat.'; 'Physicists actually recorded this happening in a real theatre.'; 'Your clapping might already be syncing with strangers around you.'; 'This happens every time a crowd claps for long enough.'. Quality gate /100: topic 8, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 8, retention 8, series 8 = 81, proceed.",
+  "mood": "mysterious",
   "cluster": "Hidden Patterns",
   "follow_ups": [
-    "Why does a crowd start clapping in rhythm all on its own?",
     "Why do schools of fish swim and turn as one shimmering shape?",
-    "Why did the Tacoma Narrows Bridge tear itself apart in the wind?"
+    "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+    "Why do heart cells beating in a dish start beating together?"
   ],
-  "gate_score": 82,
+  "gate_score": 81,
   "english": {
-    "title": "Why Did London's Millennium Bridge Start Swaying on Its Opening Day?",
-    "description": "On opening day in 2000, thousands of people walked onto London's brand-new Millennium Bridge - and it swayed so hard it had to close two days later. Each walker's own balance reflex fed the sway, with nobody trying to sync up on purpose. Up next: why a crowd starts clapping in rhythm all on its own. #millenniumbridge #engineering #london #physics",
+    "title": "Why Does a Crowd Start Clapping in Rhythm All on Its Own?",
+    "description": "A crowd claps loudly, and then - with no one leading it - everyone falls into the same rhythm together. It's the same kind of self-organized sync that makes fireflies flash as one. Up next: why the Tacoma Narrows Bridge tore itself apart in the wind. #clapping #synchronization #crowdscience #physics",
     "tags": [
-      "millennium bridge wobble",
-      "synchronous lateral excitation",
-      "why did the bridge sway",
-      "london millennium bridge",
-      "bridge engineering facts",
-      "crowd dynamics bridge",
-      "engineering marvels",
-      "bridge resonance explained",
-      "structural engineering facts",
-      "millennium bridge 2000"
+      "crowd clapping synchronization",
+      "why does clapping sync up",
+      "self organized synchronization",
+      "rhythmic applause science",
+      "fireflies synchronize",
+      "crowd behavior science",
+      "physics of applause",
+      "emergent behavior crowd",
+      "brain and psychology facts",
+      "synchronized clapping explained"
     ],
-    "hook_text": "A Bridge That Swayed Itself",
-    "thumbnail_text": "IT HAD TO CLOSE",
-    "next_video": "Why does a crowd start clapping in rhythm all on its own?",
-    "pinned_comment": "Ever felt a bridge or floor move under a crowd like that? What did it feel like?",
+    "hook_text": "No Leader. Same Rhythm.",
+    "thumbnail_text": "EVERYONE IN SYNC",
+    "next_video": "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+    "pinned_comment": "Ever caught yourself clapping in sync with a crowd? What was that like?",
     "scenes": [
       {
-        "text": "On opening day in London, a brand-new bridge suddenly started swaying side to side - why?",
-        "keyword": "brand-new bridge",
+        "text": "A crowd claps loudly, then with no leader, everyone claps in rhythm - how does that happen?",
+        "keyword": "crowd claps loudly",
         "graphic": {
           "kind": "title",
-          "headline": "Why Did It Sway?",
+          "headline": "Clapping In Rhythm?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "gear"
+          "prop": "star"
         }
       },
       {
-        "text": "This was London's Millennium Bridge. On its opening day in 2000, it swayed so hard it had to close two days later.",
-        "keyword": "Millennium Bridge",
+        "text": "Scientists call this self-organized synchronization - the same phenomenon that makes fireflies flash together in the dark.",
+        "keyword": "self-organized synchronization",
         "graphic": {
           "kind": "keyword",
-          "headline": "Millennium Bridge",
-          "caption": "closed just two days later",
+          "headline": "Self-Organized Sync",
+          "caption": "like fireflies flashing together",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "clock"
+          "prop": "bulb"
         }
       },
       {
-        "text": "So what made a brand-new bridge do this? Thousands of footsteps, and the bridge itself started to sway gently side to side.",
-        "keyword": "thousands of footsteps",
+        "text": "In 2000, physicists recorded real audiences - but why does loud, chaotic applause keep flipping into synchronized clapping, then back again?",
+        "keyword": "synchronized clapping",
         "graphic": {
           "kind": "chat",
           "headline": "Quick Chat",
           "caption": "",
           "items": [
-            "Why did it sway like that?",
-            "Thousands of footsteps all at once.",
-            "Just footsteps did that?",
-            "That, and the bridge itself moving."
+            "Why does clapping sync up like that?",
+            "Loud applause flips into rhythm.",
+            "And then it breaks again?",
+            "Yes - then sometimes it syncs again."
           ],
           "values": [],
           "answer": null,
@@ -75,12 +75,12 @@
         }
       },
       {
-        "text": "Up to two thousand people were on the bridge at once that day - and that sway only grew stronger as more people crossed.",
-        "keyword": "two thousand people",
+        "text": "To fall into that rhythm, each person actually claps about half as often as before, trading loudness for timing.",
+        "keyword": "half as often",
         "graphic": {
           "kind": "stat",
-          "headline": "2,000 People",
-          "caption": "on the bridge at once",
+          "headline": "Half The Rate",
+          "caption": "to fall into rhythm",
           "items": [],
           "values": [],
           "answer": null,
@@ -88,16 +88,16 @@
         }
       },
       {
-        "text": "As the deck moved, each walker's own balance reflex nudged it a little further, step after step, until the whole bridge was swaying hard.",
-        "keyword": "each walker's own balance reflex",
+        "text": "One section slows down first, a few neighbors copy the new beat, and the pattern spreads until the whole room is clapping as one.",
+        "keyword": "one section slows down first",
         "graphic": {
           "kind": "flow",
-          "headline": "How It Built Up",
+          "headline": "How It Spreads",
           "caption": "",
           "items": [
-            "Deck sways a bit",
-            "Walker corrects",
-            "Sway builds up"
+            "One section slows",
+            "Neighbors copy it",
+            "Pattern spreads"
           ],
           "values": [],
           "answer": null,
@@ -105,15 +105,15 @@
         }
       },
       {
-        "text": "So no, people didn't deliberately fall into step together - each person was just trying to stay balanced, and that's what fed the sway.",
-        "keyword": "didn't deliberately fall into step",
+        "text": "So no, nobody signals anyone else to start - each person is just quietly listening to the people nearest them.",
+        "keyword": "nobody signals anyone else",
         "graphic": {
           "kind": "myth",
-          "headline": "Everyone In Step?",
+          "headline": "Someone Signals?",
           "caption": "",
           "items": [
-            "Myth: everyone marched in step",
-            "Truth: each walker stayed balanced"
+            "Myth: someone cues the crowd",
+            "Truth: everyone just listens nearby"
           ],
           "values": [],
           "answer": null,
@@ -121,11 +121,11 @@
         }
       },
       {
-        "text": "Engineers closed the bridge, added dampers to soak up the motion, and reopened it two years later. Ever felt a bridge move under your feet? Tell me below!",
-        "keyword": "added dampers",
+        "text": "Then, just as suddenly, the rhythm breaks apart into loud chaos again. Ever caught yourself clapping in sync with a crowd? Tell me below!",
+        "keyword": "rhythm breaks apart",
         "graphic": {
           "kind": "title",
-          "headline": "Fixed... Two Years Later",
+          "headline": "Then It Breaks Apart",
           "caption": "",
           "items": [],
           "values": [],
@@ -136,61 +136,61 @@
     ]
   },
   "hindi": {
-    "title": "लंदन का मिलेनियम ब्रिज उद्घाटन के दिन ही क्यों झूलने लगा?",
-    "description": "साल 2000 में उद्घाटन के दिन, हज़ारों लोग लंदन के नए मिलेनियम ब्रिज पर चढ़े - और यह इतना झूला कि दो दिन बाद ही बंद करना पड़ा। हर चलने वाले के संतुलन ने झूलने को बढ़ाया, बिना किसी के जानबूझकर कदम मिलाए। आगे: भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है। #मिलेनियमब्रिज #इंजीनियरिंग #लंदन #भारत",
+    "title": "भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है?",
+    "description": "भीड़ ज़ोर से ताली बजाती है, और फिर बिना किसी के कहे सब एक ही लय में ताली बजाने लगते हैं। यह वही खुद-ब-खुद तालमेल है जो जुगनुओं को एक साथ चमकाता है। आगे: तेज़ हवा में टाकोमा नैरोज़ पुल खुद को क्यों तोड़ बैठा। #तालियाँ #विज्ञान #भारत #फिजिक्स",
     "tags": [
-      "मिलेनियम ब्रिज",
-      "पुल क्यों झूला",
-      "लंदन ब्रिज हिंदी",
-      "इंजीनियरिंग के चमत्कार",
-      "पुल विज्ञान",
-      "millennium bridge hindi",
-      "bridge engineering hindi",
-      "crowd dynamics hindi"
+      "तालियों की लय",
+      "खुद-ब-खुद तालमेल",
+      "भीड़ विज्ञान",
+      "तालियाँ क्यों मिलती हैं",
+      "जुगनू तालमेल",
+      "crowd clapping hindi",
+      "synchronization hindi",
+      "physics of applause hindi"
     ],
-    "hook_text": "एक पुल जो खुद झूल गया",
-    "thumbnail_text": "दो दिन में बंद",
-    "next_video": "भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है?",
-    "pinned_comment": "क्या आपने कभी किसी पुल या फर्श को भीड़ के नीचे हिलते हुए महसूस किया है? कैसा लगा?",
+    "hook_text": "बिना नेता, फिर भी एक लय",
+    "thumbnail_text": "सब एक लय में",
+    "next_video": "तेज़ हवा में टाकोमा नैरोज़ पुल खुद को क्यों तोड़ बैठा?",
+    "pinned_comment": "क्या आप कभी भीड़ के साथ लय में ताली बजाते पकड़े गए हैं? कैसा लगा था?",
     "scenes": [
       {
-        "text": "लंदन में उद्घाटन के दिन, एक नया पुल अचानक एक तरफ़ झूलने लगा - क्यों?",
-        "keyword": "नया पुल",
+        "text": "भीड़ ताली बजाती है, फिर सब एक लय में बजाने लगते हैं - ऐसा कैसे होता है?",
+        "keyword": "ताली बजाती है",
         "graphic": {
           "kind": "title",
-          "headline": "यह क्यों झूला?",
+          "headline": "लय में ताली?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "gear"
+          "prop": "star"
         }
       },
       {
-        "text": "यह लंदन का मिलेनियम ब्रिज था। साल 2000 में उद्घाटन के दिन यह झूला, और दो दिन बाद बंद करना पड़ा।",
-        "keyword": "मिलेनियम ब्रिज",
+        "text": "वैज्ञानिक इसे खुद-ब-खुद तालमेल कहते हैं - वही जो अंधेरे में जुगनुओं को एक साथ चमकाता है।",
+        "keyword": "खुद-ब-खुद तालमेल",
         "graphic": {
           "kind": "keyword",
-          "headline": "मिलेनियम ब्रिज",
-          "caption": "दो दिन बाद ही बंद",
+          "headline": "खुद-ब-खुद तालमेल",
+          "caption": "जुगनुओं जैसा",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "clock"
+          "prop": "bulb"
         }
       },
       {
-        "text": "ऐसा क्यों हुआ? पुल पर हज़ारों कदम पड़ रहे थे, और पुल खुद धीरे-धीरे एक तरफ़ झूलने लगा।",
-        "keyword": "हज़ारों कदम",
+        "text": "2000 में वैज्ञानिकों ने असली भीड़ पर यह देखा - तेज़ तालियाँ लय में क्यों बदल जाती हैं, फिर बिखर जाती हैं?",
+        "keyword": "तालियाँ लय में",
         "graphic": {
           "kind": "chat",
           "headline": "छोटी सी बात",
           "caption": "",
           "items": [
-            "पुल क्यों झूलने लगा?",
-            "हज़ारों कदम एक साथ पड़े।",
-            "सिर्फ़ कदमों से?",
-            "और पुल के खुद हिलने से भी।"
+            "तालियाँ लय में क्यों बदलती हैं?",
+            "तेज़ तालियाँ अचानक लय पकड़ लेती हैं।",
+            "फिर बिखर जाती हैं?",
+            "हाँ - और कभी फिर लय में आ जाती हैं।"
           ],
           "values": [],
           "answer": null,
@@ -198,12 +198,12 @@
         }
       },
       {
-        "text": "उस दिन करीब दो हज़ार लोग पुल पर थे - और जितने लोग बढ़े, झूलना उतना तेज़ होता गया।",
-        "keyword": "दो हज़ार लोग",
+        "text": "उस लय में आने के लिए, हर कोई पहले से आधी बार ताली बजाता है - आवाज़ की जगह लय चुनता है।",
+        "keyword": "आधी बार ताली बजाता",
         "graphic": {
           "kind": "stat",
-          "headline": "2,000 लोग",
-          "caption": "एक साथ पुल पर",
+          "headline": "आधी रफ़्तार",
+          "caption": "लय पकड़ने के लिए",
           "items": [],
           "values": [],
           "answer": null,
@@ -211,16 +211,16 @@
         }
       },
       {
-        "text": "जैसे-जैसे पुल हिलता, हर चलने वाले का संतुलन थोड़ा झुकाव बढ़ा देता, कदम दर कदम, और पूरा पुल ज़ोर से झूलने लगा।",
-        "keyword": "हर चलने वाले का संतुलन",
+        "text": "एक हिस्सा धीमा होता है, पास वाले उसी लय में आ जाते हैं, और यह पूरे कमरे में फैल जाता है।",
+        "keyword": "एक हिस्सा धीमा",
         "graphic": {
           "kind": "flow",
-          "headline": "यह कैसे बढ़ा",
+          "headline": "यह कैसे फैलता है",
           "caption": "",
           "items": [
-            "पुल थोड़ा हिला",
-            "संतुलन संभाला",
-            "झूलना बढ़ता गया"
+            "एक हिस्सा धीमा हुआ",
+            "पास वाले नकल करते",
+            "लय पूरे कमरे में"
           ],
           "values": [],
           "answer": null,
@@ -228,15 +228,15 @@
         }
       },
       {
-        "text": "तो नहीं, लोगों ने जानबूझकर कदम नहीं मिलाए - हर कोई अपना संतुलन बनाए रख रहा था, और उसी से झूलना बढ़ा।",
-        "keyword": "जानबूझकर कदम नहीं मिलाए",
+        "text": "तो नहीं, कोई किसी को इशारा नहीं करता - हर कोई बस पास वालों को सुन रहा होता है।",
+        "keyword": "कोई किसी को इशारा नहीं करता",
         "graphic": {
           "kind": "myth",
-          "headline": "सब साथ चल रहे थे?",
+          "headline": "कोई इशारा करता है?",
           "caption": "",
           "items": [
-            "मिथक: सब जानबूझकर साथ चले",
-            "सच: हर कोई बस संतुलन बना रहा था"
+            "मिथक: कोई भीड़ को इशारा करता है",
+            "सच: हर कोई बस पास वालों को सुनता है"
           ],
           "values": [],
           "answer": null,
@@ -244,11 +244,11 @@
         }
       },
       {
-        "text": "इंजीनियरों ने पुल बंद किया, डैम्पर लगाए, और दो साल बाद इसे फिर खोला। क्या आपने कभी किसी पुल को हिलते हुए महसूस किया है? नीचे बताइए!",
-        "keyword": "डैम्पर लगाए",
+        "text": "फिर अचानक यह लय टूट जाती है और तालियाँ फिर बेतरतीब हो जाती हैं। क्या आपने कभी भीड़ के साथ लय में ताली बजाई है? नीचे बताइए!",
+        "keyword": "यह लय टूट जाती है",
         "graphic": {
           "kind": "title",
-          "headline": "दो साल बाद ठीक हुआ",
+          "headline": "फिर टूट जाती है लय",
           "caption": "",
           "items": [],
           "values": [],

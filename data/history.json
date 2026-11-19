@@ -394,5 +394,38 @@
         "error": "daily upload limit already reached in this run"
       }
     }
+  },
+  {
+    "date": "2026-11-19",
+    "niche": "Brain & Psychology",
+    "topic": "Why does a crowd start clapping in rhythm all on its own?",
+    "mood": "mysterious",
+    "cluster": "Hidden Patterns",
+    "follow_ups": [
+      "Why do schools of fish swim and turn as one shimmering shape?",
+      "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+      "Why do heart cells beating in a dish start beating together?"
+    ],
+    "next_video": "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+    "gate_score": 81,
+    "engine": "stockreel",
+    "videos": {
+      "en": {
+        "file": "2026-11-19_en.mp4",
+        "engine": "stockreel",
+        "synthetic": true,
+        "saved_to": "videos/2026-11-19/en.mp4",
+        "queued": "videos/unpublished/2026-11-19_short_en",
+        "error": "daily upload limit already reached in this run"
+      },
+      "hi": {
+        "file": "2026-11-19_hi.mp4",
+        "engine": "stockreel",
+        "synthetic": true,
+        "saved_to": "videos/2026-11-19/hi.mp4",
+        "queued": "videos/unpublished/2026-11-19_short_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
