@@ -295,5 +295,38 @@
         "video_id": "dkdFdy1FXgQ"
       }
     }
+  },
+  {
+    "date": "2026-11-19",
+    "niche": "Science Explained",
+    "topic": "Why do traffic jams happen with nothing blocking the road?",
+    "mood": "mysterious",
+    "cluster": "Hidden Patterns",
+    "follow_ups": [
+      "Why do starling flocks turn together with no leader?",
+      "Why does a crowd start clapping in rhythm all on its own?",
+      "Why did London's Millennium Bridge start swaying on its opening day?"
+    ],
+    "next_video": "Why do starling flocks turn together with no leader?",
+    "gate_score": 80,
+    "engine": "stockreel",
+    "videos": {
+      "en": {
+        "file": "2026-11-19_en.mp4",
+        "engine": "stockreel",
+        "synthetic": true,
+        "saved_to": "videos/2026-11-19/en.mp4",
+        "queued": "videos/unpublished/2026-11-19_short_en",
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+      },
+      "hi": {
+        "file": "2026-11-19_hi.mp4",
+        "engine": "stockreel",
+        "synthetic": true,
+        "saved_to": "videos/2026-11-19/hi.mp4",
+        "queued": "videos/unpublished/2026-11-19_short_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
