@@ -1,8 +1,9 @@
-"""Stock photos from Wikimedia Commons (the same source and licence filter `shorts/director/stock.py` already
-uses for thumbnails: Public domain / CC0 only, so no attribution is legally required, no API key, no signup).
-A still photo becomes moving footage with a slow Ken Burns pan/zoom (`ken_burns_clip`) - real photography, never
-an AI-generated image, and nothing to sign up for. A scene whose search finds nothing gets a plain gradient
-instead (`placeholder_clip`), so a render never breaks for want of a match.
+"""Turns a scene's search phrase into a clip. `clip_for` is the entry point the renderer calls; it tries, in
+order: a real AI-generated video (`aiframes.generate_video`), two AI stills crossfaded into motion
+(`crossfade_clip`), one AI or Wikimedia still animated with a Ken Burns pan/zoom (`ken_burns_clip`), and
+finally a plain gradient (`placeholder_clip`) so a render never breaks for want of a match. The Wikimedia photo
+(`shorts/director/stock.py`, Public domain/CC0 only) is always available with no API key or signup; the AI
+steps are optional and only run when a source is configured (see `aiframes.py`).
 
     python -m shorts.stockreel.fetch "city skyline at night" --orientation portrait --out clip.mp4
 """
@@ -18,17 +19,6 @@ from ..director import stock
 from . import aiframes
 
 log = logging.getLogger(__name__)
-
-
-def download_photo(query: str, out_dir: Path, name: str = "stock") -> dict | None:
-    """An image for `query`: an AI-generated picture if a source is configured (`aiframes.generate_image` -
-    Pollinations/Hugging Face/a local model, tried in that order), else the best Wikimedia Commons
-    public-domain/CC0 photo. None on any failure (offline, no match, nothing configured) - the caller falls
-    back to `placeholder_clip`."""
-    out_dir = Path(out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    got = aiframes.generate_image(query, out_dir / f"{name}.jpg", 1024, 1024)
-    return got or stock.fetch_broad(query, out_dir, name)
 
 
 def ken_burns_clip(photo: Path, out: Path, duration: float, w: int, h: int, seed: int = 0, fps: int = 30) -> Path:
@@ -53,6 +43,32 @@ def ken_burns_clip(photo: Path, out: Path, duration: float, w: int, h: int, seed
     return out
 
 
+def _fit_video(raw: Path, out: Path, duration: float, w: int, h: int, fps: int) -> Path:
+    """Cover-fit a downloaded video clip to w x h, then trim or loop it to exactly `duration` seconds."""
+    vf = f"scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},setsar=1,fps={fps}"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-stream_loop", "-1", "-i", str(raw), "-t", f"{duration:.2f}",
+                    "-vf", vf, "-an", "-c:v", "libx264", "-pix_fmt", "yuv420p", str(out)], check=True)
+    return out
+
+
+def crossfade_clip(photo1: Path, photo2: Path, out: Path, duration: float, w: int, h: int, seed: int = 0, fps: int = 30) -> Path:
+    """Two AI stills of the same described scene, each gently Ken-Burns'd, crossfaded into one another - a
+    cheap, fully local stand-in for real video motion: the picture visibly changes partway through instead of
+    just panning across one frame."""
+    overlap = min(0.8, duration * 0.3)
+    half = duration / 2 + overlap / 2
+    with_dir = out.parent
+    a = ken_burns_clip(photo1, with_dir / f"{out.stem}_a.mp4", half, w, h, seed, fps)
+    b = ken_burns_clip(photo2, with_dir / f"{out.stem}_b.mp4", half, w, h, seed + 1, fps)
+    offset = max(0.0, half - overlap)
+    subprocess.run([
+        "ffmpeg", "-y", "-loglevel", "error", "-i", a.name, "-i", b.name,
+        "-filter_complex", f"[0:v][1:v]xfade=transition=fade:duration={overlap:.2f}:offset={offset:.2f},format=yuv420p",
+        "-t", f"{duration:.2f}", "-c:v", "libx264", str(out),
+    ], check=True, cwd=with_dir)
+    return out
+
+
 def placeholder_clip(out: Path, duration: float, w: int, h: int, seed: int = 0, fps: int = 30) -> Path:
     """A slow-drifting gradient (never a flat dead frame) for a scene whose stock search found nothing - the
     render must still produce a complete video."""
@@ -68,10 +84,33 @@ def placeholder_clip(out: Path, duration: float, w: int, h: int, seed: int = 0, 
 
 
 def clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int = 0, fps: int = 30) -> tuple[Path, dict | None]:
-    """A `duration`-second clip at w x h for `query`: a Ken-Burns-animated Commons photo, or a gradient
-    placeholder when nothing was found. Returns (clip path, credit dict or None)."""
-    with_photo = out.with_suffix(".photo.jpg")
-    got = download_photo(query, out.parent, out.stem + "_photo")
+    """A `duration`-second clip at w x h for `query`, best first:
+
+    1. a real AI-generated video clip (Pollinations, if configured) - actual motion, not a pan/zoom;
+    2. two AI stills of the same scene, Ken-Burns'd and crossfaded together (only when an AI source is
+       configured - crossfading two different real Wikimedia photos would just be a nonsensical jump cut);
+    3. one AI or Wikimedia still, animated with a Ken Burns pan/zoom (the original, always-available path);
+    4. a plain gradient placeholder when nothing was found at all.
+
+    Returns (clip path, credit dict or None)."""
+    raw = out.with_suffix(".src.mp4")
+    vid = aiframes.generate_video(query, raw, w, h, duration)
+    if vid:
+        try:
+            return _fit_video(vid["path"], out, duration, w, h, fps), vid
+        except subprocess.SubprocessError as e:
+            log.warning("Could not fit the AI video clip for %r, falling back: %s", query, e)
+    if aiframes.any_source_configured():
+        img1 = aiframes.generate_image(query, out.with_suffix(".a.jpg"), w, h)
+        img2 = aiframes.generate_image(query, out.with_suffix(".b.jpg"), w, h)
+        if img1 and img2:
+            try:
+                return crossfade_clip(img1["path"], img2["path"], out, duration, w, h, seed, fps), img1
+            except subprocess.SubprocessError as e:
+                log.warning("Could not blend the two AI stills for %r, falling back: %s", query, e)
+        if img1:
+            return ken_burns_clip(img1["path"], out, duration, w, h, seed, fps), img1
+    got = stock.fetch_broad(query, out.parent, out.stem + "_photo")
     if not got:
         return placeholder_clip(out, duration, w, h, seed, fps), None
     return ken_burns_clip(got["path"], out, duration, w, h, seed, fps), got
