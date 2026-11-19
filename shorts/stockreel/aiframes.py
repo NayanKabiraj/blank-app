@@ -1,20 +1,26 @@
 """Optional AI-generated pictures for a scene, tried in order before the free, no-key Wikimedia photo
 and the gradient placeholder - `fetch.clip_for` is what actually calls these. The local diffusion model is
 given first priority, for both a still image and an animated (crossfaded, "gif-like") clip, whenever it is
-enabled; everything else is a fallback, tried only once the step above it is unavailable or fails:
+enabled; everything else is a pool of free/key-based AI sources that rotate as they run dry:
 
     1. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
        see daily-shorts.yml - heavy and slow on a CPU runner, so it is opt-in, never on by default). First
        priority for both a still image (`local_image`) and the animated two-still crossfade `fetch.clip_for`
        builds from it (`shorts/stockreel/fetch.py`'s own first step, ahead of Pollinations video).
-    2. Pollinations video (`POLLINATIONS_API_KEY`) - real AI-generated motion, gen.pollinations.ai/video/...
-    3. Pollinations image (same key) - gen.pollinations.ai/image/...
-    4. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
+    2. Gemini's free image generation (`GEMINI_API_KEY` - a free key from aistudio.google.com/apikey).
+    3. Pollinations video (`POLLINATIONS_API_KEY`) - real AI-generated motion, gen.pollinations.ai/video/...
+    4. Pollinations image (same key) - gen.pollinations.ai/image/...
+    5. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
 
 Each step is independent and never raises: a missing key, a network error, a model that refuses to load, all
 just mean "try the next source/step". `generate_image`/`generate_video` return None when every configured
 source failed (or none is configured), and the caller falls back the next step down, eventually to the real
 Wikimedia photo.
+
+Rotation on exhaustion: a networked source (Gemini, Pollinations, Hugging Face) that answers with a rate-limit
+or quota error (HTTP 429) is added to `_EXHAUSTED` and skipped for the rest of this run - the next scene goes
+straight to the next source in line instead of wasting a call on one that is already out of free quota for the
+day. This resets on the next workflow run (a fresh process), not within the run.
 
 Every picture is a *picture of the prompt*, drawn by a model, not a photograph of a real event: label it as what
 it is. The channel's own rule against fabricated imagery (shorts/CLAUDE_STOCKREEL_TASK.md) applies here - this
@@ -23,6 +29,7 @@ flag), and it is still never used for a claim that something is real footage of 
 """
 from __future__ import annotations
 
+import base64
 import json
 import logging
 import os
@@ -34,6 +41,17 @@ from pathlib import Path
 log = logging.getLogger(__name__)
 UA = "faceless-explainers-stockreel/1.0"
 _LOCAL_PIPE = None   # the local diffusion pipeline, loaded once and reused across scenes/languages
+_EXHAUSTED: set[str] = set()   # source names that answered with a rate-limit/quota error this run; skip them
+
+
+def _rate_limited(name: str, e: urllib.error.HTTPError) -> bool:
+    """True (and remembers it) if `e` is a rate-limit/quota response (HTTP 429, or Google's 403
+    RESOURCE_EXHAUSTED) - the caller should stop trying this source for the rest of the run."""
+    if e.code == 429 or (e.code == 403 and b"RESOURCE_EXHAUSTED" in (e.read() or b"")):
+        _EXHAUSTED.add(name)
+        log.warning("%s is rate-limited/out of quota, switching to the next source for the rest of this run", name)
+        return True
+    return False
 
 
 def _get_bytes(url: str, headers: dict, timeout: int = 60) -> bytes:
@@ -48,7 +66,7 @@ def pollinations_video(prompt: str, w: int, h: int, duration: float) -> bytes | 
     tried with a generous timeout and a short poll loop for an async job; any failure (no key, timeout, a
     provider that needs a different flow) just means the caller tries the next, cheaper option."""
     key = os.environ.get("POLLINATIONS_API_KEY", "")
-    if not key:
+    if not key or "pollinations" in _EXHAUSTED:
         return None
     dur = max(2, min(10, round(duration)))   # clamp to what the available video models commonly support
     aspect = "9:16" if h > w else "16:9"
@@ -83,20 +101,28 @@ def pollinations_video(prompt: str, w: int, h: int, duration: float) -> bytes | 
                 return None
         log.warning("Pollinations video job for %r did not finish in time", prompt)
         return None
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, json.JSONDecodeError) as e:
+    except urllib.error.HTTPError as e:
+        if not _rate_limited("pollinations", e):
+            log.warning("Pollinations video failed for %r: %s", prompt, e)
+        return None
+    except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError) as e:
         log.warning("Pollinations video failed for %r: %s", prompt, e)
         return None
 
 
 def pollinations_image(prompt: str, w: int, h: int) -> bytes | None:
     key = os.environ.get("POLLINATIONS_API_KEY", "")
-    if not key:
+    if not key or "pollinations" in _EXHAUSTED:
         return None
     url = "https://gen.pollinations.ai/image/" + urllib.parse.quote(prompt) + "?" + urllib.parse.urlencode(
         {"width": w, "height": h, "nologo": "true"})
     try:
         return _get_bytes(url, {"Authorization": f"Bearer {key}"})
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+    except urllib.error.HTTPError as e:
+        if not _rate_limited("pollinations", e):
+            log.warning("Pollinations image failed for %r: %s", prompt, e)
+        return None
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
         log.warning("Pollinations image failed for %r: %s", prompt, e)
         return None
 
@@ -109,7 +135,7 @@ HF_MODELS = ["black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-x
 
 def huggingface_image(prompt: str, w: int, h: int, models: list[str] = HF_MODELS) -> bytes | None:
     token = os.environ.get("HF_TOKEN", "")
-    if not token:
+    if not token or "huggingface" in _EXHAUSTED:
         return None
     payload = json.dumps({"inputs": prompt, "parameters": {"width": w, "height": h}}).encode("utf-8")
     for model in models:
@@ -124,8 +150,56 @@ def huggingface_image(prompt: str, w: int, h: int, models: list[str] = HF_MODELS
                 log.warning("Hugging Face image (%s) not ready for %r: %s", model, prompt, body[:200])
                 continue
             return body
-        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError) as e:
+        except urllib.error.HTTPError as e:
+            if _rate_limited("huggingface", e):
+                return None   # out of quota account-wide; trying the next model would hit the same wall
             log.warning("Hugging Face image (%s) failed for %r: %s", model, prompt, e)
+            continue
+        except (urllib.error.URLError, TimeoutError, OSError) as e:
+            log.warning("Hugging Face image (%s) failed for %r: %s", model, prompt, e)
+            continue
+    return None
+
+
+# Gemini's image-capable model names have shifted (preview -> GA); try a short list for the same reason as
+# HF_MODELS above.
+GEMINI_MODELS = ["gemini-2.5-flash-image", "gemini-2.0-flash-preview-image-generation"]
+
+
+def gemini_image(prompt: str, w: int, h: int, models: list[str] = GEMINI_MODELS) -> bytes | None:
+    """Google's free-tier Gemini image generation (a free API key from aistudio.google.com/apikey, no billing
+    required). The API has no explicit width/height control, so the aspect ratio is asked for in the prompt
+    instead - the caller crops/scales the result to the real frame afterward either way."""
+    key = os.environ.get("GEMINI_API_KEY", "")
+    if not key or "gemini" in _EXHAUSTED:
+        return None
+    aspect_hint = "vertical 9:16 portrait orientation" if h > w else "wide 16:9 landscape orientation"
+    body = json.dumps({
+        "contents": [{"parts": [{"text": f"{prompt}, {aspect_hint}"}]}],
+        "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]},
+    }).encode("utf-8")
+    for model in models:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        try:
+            req = urllib.request.Request(url, data=body, headers={
+                "Content-Type": "application/json", "x-goog-api-key": key, "User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=90) as r:
+                resp = json.loads(r.read())
+            parts = (resp.get("candidates") or [{}])[0].get("content", {}).get("parts", [])
+            for part in parts:
+                data = (part.get("inlineData") or {}).get("data")
+                if data:
+                    return base64.b64decode(data)
+            log.warning("Gemini image (%s) returned no image for %r", model, prompt)
+            continue
+        except urllib.error.HTTPError as e:
+            if _rate_limited("gemini", e):
+                return None
+            log.warning("Gemini image (%s) failed for %r: %s", model, prompt, e)
+            continue
+        except (urllib.error.URLError, TimeoutError, OSError, json.JSONDecodeError, KeyError, IndexError,
+                ValueError) as e:
+            log.warning("Gemini image (%s) failed for %r: %s", model, prompt, e)
             continue
     return None
 
@@ -162,8 +236,10 @@ def local_image(prompt: str, w: int, h: int, model: str = "stabilityai/sd-turbo"
 
 
 # Local first: it is the preferred source whenever IMAGE_ENGINE=local is set (local_image no-ops otherwise,
-# so this adds no cost when it isn't). Pollinations and Hugging Face are the fallback, in that order.
-SOURCES = [("local", local_image), ("pollinations", pollinations_image), ("huggingface", huggingface_image)]
+# so this adds no cost when it isn't). The rest is a pool of free/key-based AI sources, tried in this order
+# and skipped once rate-limited (see _EXHAUSTED) - each already no-ops when its own key isn't set.
+SOURCES = [("local", local_image), ("gemini", gemini_image), ("pollinations", pollinations_image),
+           ("huggingface", huggingface_image)]
 NO_TEXT = "photographic, no text, no words, no letters, no caption, no watermark, no logo"
 
 
@@ -171,7 +247,8 @@ def any_source_configured() -> bool:
     """True if at least one AI picture source is set up - the caller uses this to decide whether two AI stills
     are worth generating for a motion blend (never worth trying against two real Wikimedia photos: they would
     be two different real things, not two takes of the same scene)."""
-    return bool(os.environ.get("POLLINATIONS_API_KEY") or os.environ.get("HF_TOKEN") or local_enabled())
+    return bool(os.environ.get("POLLINATIONS_API_KEY") or os.environ.get("HF_TOKEN")
+                or os.environ.get("GEMINI_API_KEY") or local_enabled())
 
 
 def generate_video(prompt: str, out: Path, w: int, h: int, duration: float) -> dict | None:
@@ -193,6 +270,8 @@ def generate_image(prompt: str, out: Path, w: int, h: int) -> dict | None:
     # for a clean photo instead. The caller's own headline/captions are drawn separately, on top.
     prompt = f"{prompt}, {NO_TEXT}"
     for name, fn in SOURCES:
+        if name in _EXHAUSTED:
+            continue
         data = fn(prompt, w, h)
         if data and len(data) > 5_000:
             out.write_bytes(data)

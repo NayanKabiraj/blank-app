@@ -93,6 +93,9 @@ jobs:
       # Pollinations and before the real Wikimedia photo - see shorts/stockreel/aiframes.py.
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_KEY || secrets.POLLINATIONS_API_KEY }}   # stockreel, optional: a free key from enter.pollinations.ai (repo secret is named POLLINATIONS_KEY)
+      # stockreel, optional: a free key from aistudio.google.com/apikey - tried before Pollinations/Hugging
+      # Face and skipped for the rest of the run if it answers with a quota error (shorts/stockreel/aiframes.py)
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       # stockreel, optional: "local" runs a small diffusion model (stabilityai/sd-turbo) on the runner's own CPU
       # instead of (or after) an API - no key needed, but slow; installed only when this is set to "local"
       # Repo variable is named IMAGEENGINE (no underscore - GitHub Actions variable names in this repo can't
