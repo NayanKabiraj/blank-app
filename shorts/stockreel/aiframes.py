@@ -108,6 +108,10 @@ SOURCES = [("pollinations", pollinations_image), ("huggingface", huggingface_ima
 def generate_image(prompt: str, out: Path, w: int, h: int) -> dict | None:
     """Try every configured AI source in order; the first one that returns image bytes wins. None if none are
     configured/available, so the caller falls back to a real Wikimedia photo."""
+    # Diffusion models try to literally render words they are given, which is a problem when the "prompt" is a
+    # headline or a caption-shaped phrase (it comes back with garbled text baked into the picture): always ask
+    # for a clean photo instead. The caller's own headline/captions are drawn separately, on top.
+    prompt = f"{prompt}, photographic, no text, no words, no letters, no caption, no watermark, no logo"
     for name, fn in SOURCES:
         data = fn(prompt, w, h)
         if data and len(data) > 5_000:

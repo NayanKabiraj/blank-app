@@ -110,7 +110,9 @@ def for_script(script, niche: str, lang: str, out_jpg: Path, short: bool, query:
     headline = T.shorten(text)
     accent = T.M.DEFAULTS["brandSystem"]["defaultPalette"].get("accent", "#FFCC33")
     tag = T.pick_tag(script.title, niche, getattr(script, "thumbnail_tag", None), lang)
-    q = query or re.sub(r"[?!.,]", "", headline)
+    # the headline is drawn separately, on top - the image query is the subject it's about, not the caption
+    # text itself (an image model asked for "YOU'D STILL BE FLYING EAST" tries to paint those actual words)
+    q = query or re.sub(r"[?!.,'\"]", "", script.title)
     return render(q, headline, tag, accent, out_jpg, "short" if short else "long")
 
 
