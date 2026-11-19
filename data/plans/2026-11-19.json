@@ -1,0 +1,261 @@
+{
+  "niche": "Brain & Psychology",
+  "topic": "Why does déjà vu feel so real?",
+  "research_summary": "Candidates (scored /40, from 11 across all niches, 19 Nov 2026): (1) Why does déjà vu feel so real? (Brain & Psychology) 34 - curiosity5 universality5 timeliness2 search5 surprise4 visual4 shareability5 verifiability4 (chosen: highest score, fresh niche - Brain & Psychology wasn't used in the last 14 videos, and the two cooling-down niches are Space & Universe and Earth & Nature, not this one); (2) Why does popcorn pop? (Science Explained) 31 - great visual (steam-pressure build) but a flatter emotional hook than déjà vu; (3) Why does chai taste better from a kulhad? (India Explained) 29 - strong India-first angle, held for a future video since it needs a longer dossier on geosmin/petrichor chemistry. Other candidates considered: how a diamond is cut in Surat (27), how was zero invented in India (26), why do we yawn when others yawn (28, rejected: the science is too contested to state plainly in 50 seconds), how does a bullet train stop so precisely (25). Why now: no single news hook, so the pick is the strongest evergreen curiosity gap in a niche the channel hasn't used in two weeks. Titles (/50 for curiosity+clarity+emotional pull+thumbnail synergy+originality): 'Why Does Déjà Vu Feel So Real?' 44 (chosen); 'Your Brain Just Faked a Memory. Here's How' 41; 'The Déjà Vu Glitch Nobody Can Fully Explain' 40; 'That \"I've Been Here Before\" Feeling, Explained' 37; 'Déjà Vu Isn't a Memory. Here's What It Actually Is' 36; 'Why Your Brain Lies About Déjà Vu' 35; 'Déjà Vu: Your Brain's Favorite Lie' 35; 'Why Do We Get Déjà Vu?' 33; 'The Science Behind That Weird Feeling' 30; 'Why Déjà Vu Happens (It's Not What You Think)' 32. Thumbnails: A a person mid-step freezing with a shocked face and a ghostly repeated outline behind them (chosen, headline 'IT NEVER ACTUALLY HAPPENED'); B a brain with two switches, one lit, one dark; C a rewind icon over a doorway. Hooks: 'You walk into a room and think: haven't I done this exact thing before?' (chosen); 'Your brain just told you a memory that never happened.'; 'That eerie feeling has a name, and it isn't magic.'; 'Scientists still argue about this one.'; 'Sixty to seventy percent of people feel this. Have you?'. Facts and status: about 60-70% of people report experiencing déjà vu at least once in their life, PARTIALLY VERIFIED (estimates across sources range from about 60% to two-thirds; Live Science and Bustle both cite experts in this 60-70% band, one outlier source claims 97% and was rejected as low quality); the leading scientific explanation is a mismatch between a 'this feels familiar' signal from the parahippocampal/perirhinal cortex and the hippocampus's actual memory recall - the familiarity fires without a real matching memory behind it, PARTIALLY VERIFIED (BrainFacts/Howard Eichenbaum's familiarity-vs-recollection account; no single mechanism is established as definitive, which the script states plainly rather than overclaiming); reported déjà vu frequency decreases with age, PARTIALLY VERIFIED (cited in the same Live Science piece). Risks: avoid any claim linking déjà vu to epilepsy or implying it is a medical symptom - the script stays with the benign, universal experience only, never medical advice. Quality gate /100: topic 9, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 8, retention 8, series 8 = 90, proceed.",
+  "mood": "mysterious",
+  "cluster": "Mind Glitches",
+  "follow_ups": [
+    "Why do we forget our dreams so fast?",
+    "Why does time feel like it speeds up as we age?",
+    "Why do songs get stuck in our head?"
+  ],
+  "gate_score": 90,
+  "english": {
+    "title": "Why Does Déjà Vu Feel So Real?",
+    "description": "You walk into a room and think: haven't I done this exact thing before? Here's the strange part - déjà vu isn't a real memory at all, it's your brain's familiarity switch firing alone. #dejavu #brain #psychology #science",
+    "tags": [
+      "deja vu",
+      "why do we get deja vu",
+      "brain facts",
+      "psychology explained",
+      "memory science",
+      "deja vu explained",
+      "brain glitch",
+      "how memory works",
+      "neuroscience facts",
+      "mind tricks"
+    ],
+    "hook_text": "Haven't I done this before?",
+    "thumbnail_text": "IT NEVER ACTUALLY HAPPENED",
+    "next_video": "Why do we forget our dreams so fast?",
+    "pinned_comment": "Have you ever had déjà vu so strong it gave you chills? Tell me below!",
+    "scenes": [
+      {
+        "text": "You walk into a room and think: haven't I done this exact thing before?",
+        "keyword": "exact thing before",
+        "graphic": {
+          "kind": "title",
+          "headline": "Déjà Vu Again?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      },
+      {
+        "text": "That jolt is déjà vu, and here's the strange part: it isn't a real memory at all.",
+        "keyword": "isn't a real memory",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Not A Real Memory",
+          "caption": "the déjà vu glitch",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "gear"
+        }
+      },
+      {
+        "text": "Your brain has a 'this feels familiar' switch, and sometimes it flips on by mistake.",
+        "keyword": "flips on by mistake",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Quick chat",
+          "caption": "",
+          "items": [
+            "Why does this place feel so familiar?",
+            "Because one part of your brain says it's familiar.",
+            "But I've never been here!",
+            "Exactly. That's the glitch."
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Normally, feeling familiar and actually remembering happen together. In déjà vu, only the familiar switch fires.",
+        "keyword": "only the familiar switch",
+        "graphic": {
+          "kind": "flow",
+          "headline": "How it breaks",
+          "caption": "",
+          "items": [
+            "Eyes see the room",
+            "Familiar switch fires alone",
+            "No real memory matches"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "About sixty to seventy percent of people feel this at some point in life. Ever had it?",
+        "keyword": "sixty to seventy percent",
+        "graphic": {
+          "kind": "stat",
+          "headline": "60-70%",
+          "caption": "people get déjà vu",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "No, it's not a past life. Your brain's 'familiar' alarm just tripped over its own wiring.",
+        "keyword": "tripped over its own wiring",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Past life?",
+          "caption": "",
+          "items": [
+            "Myth: you saw this in a past life",
+            "Truth: your brain's alarm just tripped over itself"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So that eerie feeling? Just a familiar alarm, firing a beat too early. Ever felt it? Tell me below, and follow to understand one new thing every day.",
+        "keyword": "a beat too early",
+        "graphic": {
+          "kind": "title",
+          "headline": "Just An Early Alarm",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      }
+    ]
+  },
+  "hindi": {
+    "title": "डेजा वू इतना असली क्यों लगता है?",
+    "description": "आप किसी कमरे में जाते हैं और सोचते हैं - क्या मैं पहले भी यहाँ आ चुका हूँ? अजीब बात यह है कि डेजा वू असली याद नहीं है, यह दिमाग के 'पहचान' स्विच की गड़बड़ी है। #डेजावू #दिमाग #मनोविज्ञान",
+    "tags": [
+      "डेजा वू",
+      "डेजा वू क्यों होता है",
+      "दिमाग के तथ्य",
+      "मनोविज्ञान",
+      "याददाश्त विज्ञान",
+      "deja vu hindi",
+      "brain facts hindi",
+      "मन की बातें"
+    ],
+    "hook_text": "पहले भी यहाँ आया था?",
+    "thumbnail_text": "ये सच में हुआ ही नहीं",
+    "next_video": "हम सपने इतनी जल्दी क्यों भूल जाते हैं?",
+    "pinned_comment": "क्या कभी आपको इतना तेज़ डेजा वू हुआ कि रोंगटे खड़े हो गए? नीचे बताइए!",
+    "scenes": [
+      {
+        "text": "आप किसी कमरे में जाते हैं और सोचते हैं - क्या मैं पहले भी यहाँ आ चुका हूँ?",
+        "keyword": "पहले भी यहाँ आ चुका",
+        "graphic": {
+          "kind": "title",
+          "headline": "फिर वही एहसास?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      },
+      {
+        "text": "उस झटके को डेजा वू कहते हैं, और अजीब बात यह है - यह असली याद नहीं है।",
+        "keyword": "असली याद नहीं है",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "असली याद नहीं",
+          "caption": "डेजा वू की गड़बड़ी",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "gear"
+        }
+      },
+      {
+        "text": "दिमाग में एक 'पहचान' वाला स्विच है, और कभी-कभी वह गलती से ऑन हो जाता है।",
+        "keyword": "गलती से ऑन हो जाता",
+        "graphic": {
+          "kind": "chat",
+          "headline": "छोटी सी बात",
+          "caption": "",
+          "items": [
+            "ये जगह इतनी जानी-पहचानी क्यों लग रही है?",
+            "क्योंकि दिमाग का एक हिस्सा कहता है - पहचानी लगती है।",
+            "पर मैं तो कभी आया ही नहीं!",
+            "बिलकुल। यही तो गड़बड़ है।"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "आमतौर पर पहचान और याद साथ आती हैं। डेजा वू में सिर्फ़ पहचान वाला स्विच चलता है।",
+        "keyword": "सिर्फ़ पहचान वाला स्विच",
+        "graphic": {
+          "kind": "flow",
+          "headline": "कहाँ गड़बड़ी होती है",
+          "caption": "",
+          "items": [
+            "आँखें कमरा देखती हैं",
+            "पहचान वाला स्विच अकेला चलता है",
+            "कोई असली याद नहीं मिलती"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "करीब साठ से सत्तर प्रतिशत लोग जीवन में कभी न कभी यह महसूस करते हैं। आपको हुआ है?",
+        "keyword": "साठ से सत्तर प्रतिशत",
+        "graphic": {
+          "kind": "stat",
+          "headline": "60-70%",
+          "caption": "लोग इसे महसूस करते हैं",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "नहीं, यह पिछला जन्म नहीं है। दिमाग का 'पहचान' अलार्म बस अपने ही तार में उलझ गया।",
+        "keyword": "अपने ही तार में उलझ",
+        "graphic": {
+          "kind": "myth",
+          "headline": "पिछला जन्म?",
+          "caption": "",
+          "items": [
+            "मिथक: यह पिछले जन्म की याद है",
+            "सच्चाई: दिमाग का अलार्म बस उलझ गया"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो वह अजीब एहसास? बस एक अलार्म है, जो थोड़ा जल्दी बज गया। आपको कभी हुआ है? नीचे बताइए, और रोज़ एक नई चीज़ समझने के लिए फ़ॉलो करें।",
+        "keyword": "थोड़ा जल्दी बज गया",
+        "graphic": {
+          "kind": "title",
+          "headline": "बस जल्दी बजा अलार्म",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      }
+    ]
+  }
+}
