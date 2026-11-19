@@ -41,7 +41,8 @@ def run_short(plan: Plan, langs: list[str], out: Path, dry_run: bool) -> dict:
     for lang in langs:
         try:
             script = scripts[lang]
-            video, used_ai = build.build_short(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
+            video, used_ai = build.build_short(script, lang, plan.mood, out / f"work_{lang}", plan.niche,
+                                                query_scenes=plan.english.scenes)
             final = out / f"{today}_{lang}.mp4"
             shutil.move(video, final)
             thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_{lang}.jpg", short=True)
@@ -87,7 +88,8 @@ def run_documentary(plan: DocPlan, langs: list[str], out: Path, dry_run: bool, k
         try:
             script = scripts[lang]
             log.info("Stock-footage documentary %s: about %.1f minutes planned", lang, doc_seconds(script, lang) / 60)
-            video, chapters, used_ai = build.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
+            video, chapters, used_ai = build.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche,
+                                                                 query_scenes=plan.english.scenes)
             lines = "\n".join(f"{_stamp(s)} {t}" for t, s in chapters)
             desc = f"{strategy.up_next(script.description, script.next_video, lang)}\n\nChapters:\n{lines}\n"
             thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_documentary_{lang}.jpg", short=False)

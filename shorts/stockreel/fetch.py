@@ -88,8 +88,9 @@ def placeholder_clip(out: Path, duration: float, w: int, h: int, seed: int = 0, 
 def clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int = 0, fps: int = 30) -> tuple[Path, dict | None]:
     """A `duration`-second clip at w x h for `query`, best first:
 
-    1. two stills from the local diffusion model, Ken-Burns'd and crossfaded (only when IMAGE_ENGINE=local -
-       first priority, ahead of every networked source, for both a still image and this animated clip);
+    1. two stills from Gemini, then the local diffusion model, Ken-Burns'd and crossfaded (only when one of
+       them is configured - first priority, ahead of every networked video/still source, for both a still
+       image and this animated clip - see `aiframes.priority_image`);
     2. a real AI-generated video clip (Pollinations, if configured) - actual motion, not a pan/zoom;
     3. two AI stills of the same scene, Ken-Burns'd and crossfaded together (only when an AI source is
        configured - crossfading two different real Wikimedia photos would just be a nonsensical jump cut);
@@ -98,18 +99,20 @@ def clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int =
 
     Returns (clip path, credit dict or None)."""
     raw = out.with_suffix(".src.mp4")
-    if aiframes.local_enabled():
+    if aiframes.priority_configured():
         prompt = f"{query}, {aiframes.NO_TEXT}"
-        data1, data2 = aiframes.local_image(prompt, w, h), aiframes.local_image(prompt, w, h)
+        data1, name1 = aiframes.priority_image(prompt, w, h)
+        data2, name2 = aiframes.priority_image(prompt, w, h)
         if data1 and data2:
             img1, img2 = out.with_suffix(".a.jpg"), out.with_suffix(".b.jpg")
             img1.write_bytes(data1)
             img2.write_bytes(data2)
+            label = "local model" if name1 == "local" else name1
             try:
-                credit = {"path": img1, "credit": "AI-generated (local model), not a photograph", "source": "", "ai": True}
+                credit = {"path": img1, "credit": f"AI-generated ({label}), not a photograph", "source": "", "ai": True}
                 return crossfade_clip(img1, img2, out, duration, w, h, seed, fps), credit
             except subprocess.SubprocessError as e:
-                log.warning("Could not blend the two local AI stills for %r, falling back: %s", query, e)
+                log.warning("Could not blend the two %s AI stills for %r, falling back: %s", label, query, e)
     vid = aiframes.generate_video(query, raw, w, h, duration)
     if vid:
         try:

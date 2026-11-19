@@ -1,13 +1,15 @@
 """Optional AI-generated pictures for a scene, tried in order before the free, no-key Wikimedia photo
-and the gradient placeholder - `fetch.clip_for` is what actually calls these. The local diffusion model is
-given first priority, for both a still image and an animated (crossfaded, "gif-like") clip, whenever it is
-enabled; everything else is a pool of free/key-based AI sources that rotate as they run dry:
+and the gradient placeholder - `fetch.clip_for` is what actually calls these. Gemini is given first priority,
+for both a still image and an animated (crossfaded, "gif-like") clip, whenever it is configured; everything
+else is a pool of free/key-based AI sources that rotate as they run dry:
 
-    1. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
-       see daily-shorts.yml - heavy and slow on a CPU runner, so it is opt-in, never on by default). First
-       priority for both a still image (`local_image`) and the animated two-still crossfade `fetch.clip_for`
+    1. Gemini's free image generation (`GEMINI_API_KEY` - a free key from aistudio.google.com/apikey). First
+       priority for both a still image (`gemini_image`) and the animated two-still crossfade `fetch.clip_for`
        builds from it (`shorts/stockreel/fetch.py`'s own first step, ahead of Pollinations video).
-    2. Gemini's free image generation (`GEMINI_API_KEY` - a free key from aistudio.google.com/apikey).
+    2. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
+       see daily-shorts.yml - heavy and slow on a CPU runner, so it is opt-in, never on by default). Tried
+       next, for the same reason Gemini is: it can't produce real video either, so this is its only way to
+       ever get picked over Pollinations' video.
     3. Pollinations video (`POLLINATIONS_API_KEY`) - real AI-generated motion, gen.pollinations.ai/video/...
     4. Pollinations image (same key) - gen.pollinations.ai/image/...
     5. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
@@ -235,10 +237,10 @@ def local_image(prompt: str, w: int, h: int, model: str = "stabilityai/sd-turbo"
         return None
 
 
-# Local first: it is the preferred source whenever IMAGE_ENGINE=local is set (local_image no-ops otherwise,
-# so this adds no cost when it isn't). The rest is a pool of free/key-based AI sources, tried in this order
-# and skipped once rate-limited (see _EXHAUSTED) - each already no-ops when its own key isn't set.
-SOURCES = [("local", local_image), ("gemini", gemini_image), ("pollinations", pollinations_image),
+# Gemini first, then the local model, then the rest of the pool (Pollinations, Hugging Face), in this order.
+# Each already no-ops when its own key/flag isn't set, so this list costs nothing when nothing is configured.
+# Sources are skipped once rate-limited (see _EXHAUSTED).
+SOURCES = [("gemini", gemini_image), ("local", local_image), ("pollinations", pollinations_image),
            ("huggingface", huggingface_image)]
 NO_TEXT = "photographic, no text, no words, no letters, no caption, no watermark, no logo"
 
@@ -249,6 +251,22 @@ def any_source_configured() -> bool:
     be two different real things, not two takes of the same scene)."""
     return bool(os.environ.get("POLLINATIONS_API_KEY") or os.environ.get("HF_TOKEN")
                 or os.environ.get("GEMINI_API_KEY") or local_enabled())
+
+
+def priority_configured() -> bool:
+    """True if Gemini or the local model is available - the two sources `fetch.clip_for` tries, as a still
+    crossfade, before Pollinations' real AI video (a Pollinations/Hugging Face still would be a worse result
+    than Pollinations' own video, so they stay in the normal fallback chain instead)."""
+    return bool(os.environ.get("GEMINI_API_KEY")) or local_enabled()
+
+
+def priority_image(prompt: str, w: int, h: int) -> tuple[bytes | None, str | None]:
+    """Gemini, then the local model - see `priority_configured`. Returns (bytes, source name) or (None, None)."""
+    for name, fn in (("gemini", gemini_image), ("local", local_image)):
+        data = fn(prompt, w, h)
+        if data and len(data) > 5_000:
+            return data, name
+    return None, None
 
 
 def generate_video(prompt: str, out: Path, w: int, h: int, duration: float) -> dict | None:

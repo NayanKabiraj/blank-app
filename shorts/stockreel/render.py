@@ -61,17 +61,24 @@ def _burn_captions(video_in: Path, srt_path: Path, out: Path, work: Path, land: 
 
 
 def render(scenes, lang: str, niche: str, timeline: list[tuple[float, float, str]], total: float, work: Path,
-           layout: str = "portrait", fps: int = 30) -> bool:
+           layout: str = "portrait", fps: int = 30, query_scenes=None) -> bool:
     """Write `work/video.mp4`: stock footage cut to the real scene timing, with burned captions. Same call shape
     as `shorts.animate.render`, so `shorts.compose.build`/`build_documentary` could call either one. Returns
-    True if any scene used an AI-generated image (the caller should then flag the upload as synthetic media)."""
+    True if any scene used an AI-generated image (the caller should then flag the upload as synthetic media).
+
+    `query_scenes`, if given, is the same scene list in the OTHER language (always the English one in
+    practice) used only to build each scene's search/generation phrase, never its narration or timing: AI
+    image/video models are trained overwhelmingly on English captions, so a Hindi-script keyword tends to come
+    back blurry or off-topic, while the same scene's English keyword describes the identical picture and
+    generates far more reliably. English rendering passes its own scenes here too, which is a harmless no-op."""
     w, h = (1080, 1920) if layout == "portrait" else (1920, 1080)
     land = layout != "portrait"
     work.mkdir(parents=True, exist_ok=True)
     clips, used_ai = [], False
     prev_end = 0.0
+    q_scenes = query_scenes if query_scenes is not None else scenes
     for i, (sc, (s, e, _text)) in enumerate(zip(scenes, timeline)):
-        q = scene_query(sc, niche, lang)
+        q = scene_query(q_scenes[i], niche, "en" if query_scenes is not None else lang)
         d = max(0.6, e - prev_end)   # covers this scene's speech AND the silent lead-in/gap before it: no gaps in the picture
         clip, ai = _clip_for(q, work / f"scene_{i}.mp4", w, h, d, seed=hash((q, i)) & 0xFFFF, fps=fps)
         clips.append(clip)
