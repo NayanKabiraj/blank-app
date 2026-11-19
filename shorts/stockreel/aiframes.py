@@ -1,16 +1,19 @@
-"""Optional AI-generated images for a scene, tried in order before the free, no-key Wikimedia photo
-(`fetch.download_photo`) and the gradient placeholder:
+"""Optional AI-generated pictures for a scene, tried in order before the free, no-key Wikimedia photo
+and the gradient placeholder - `fetch.clip_for` is what actually calls these, in the
+order: AI video, then AI stills blended into motion, then a single AI/Wikimedia still with Ken Burns:
 
-    1. Pollinations (`POLLINATIONS_API_KEY` secret: https://enter.pollinations.ai) - gen.pollinations.ai/image/...
-    2. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
-    3. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
+    1. Pollinations video (`POLLINATIONS_API_KEY`) - real AI-generated motion, gen.pollinations.ai/video/...
+    2. Pollinations image (same key) - gen.pollinations.ai/image/...
+    3. Hugging Face Inference (`HF_TOKEN` secret - the same one already used for Indic Parler-TTS, if set)
+    4. A small diffusion model run locally in the job (`IMAGE_ENGINE=local`; needs torch+diffusers installed,
        see daily-shorts.yml - heavy and slow on a CPU runner, so it is opt-in, never on by default)
 
 Each step is independent and never raises: a missing key, a network error, a model that refuses to load, all
-just mean "try the next source". `generate_image` returns None when every configured source failed (or none is
-configured), and the caller (`fetch.clip_for`) falls back to the real Wikimedia photo.
+just mean "try the next source/step". `generate_image`/`generate_video` return None when every configured
+source failed (or none is configured), and the caller falls back the next step down, eventually to the real
+Wikimedia photo.
 
-Every image is a *picture of the prompt*, drawn by a model, not a photograph of a real event: label it as what
+Every picture is a *picture of the prompt*, drawn by a model, not a photograph of a real event: label it as what
 it is. The channel's own rule against fabricated imagery (shorts/CLAUDE_STOCKREEL_TASK.md) applies here - this
 path exists because the owner asked for it, it is opt-in per source (nothing fires without a key or the local
 flag), and it is still never used for a claim that something is real footage of a real thing.
@@ -34,6 +37,52 @@ def _get_bytes(url: str, headers: dict, timeout: int = 60) -> bytes:
     req = urllib.request.Request(url, headers={**headers, "User-Agent": UA})
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read()
+
+
+def pollinations_video(prompt: str, w: int, h: int, duration: float) -> bytes | None:
+    """A short AI-generated video clip (real motion, not a pan/zoom) from Pollinations - same key as the image
+    path. Video generation is slower and the API shape is less settled than the image endpoint, so this is
+    tried with a generous timeout and a short poll loop for an async job; any failure (no key, timeout, a
+    provider that needs a different flow) just means the caller tries the next, cheaper option."""
+    key = os.environ.get("POLLINATIONS_API_KEY", "")
+    if not key:
+        return None
+    dur = max(2, min(10, round(duration)))   # clamp to what the available video models commonly support
+    aspect = "9:16" if h > w else "16:9"
+    url = "https://gen.pollinations.ai/video/" + urllib.parse.quote(prompt) + "?" + urllib.parse.urlencode(
+        {"duration": dur, "aspectRatio": aspect})
+    try:
+        req = urllib.request.Request(url, headers={"Authorization": f"Bearer {key}", "User-Agent": UA})
+        with urllib.request.urlopen(req, timeout=180) as r:
+            content_type, body = r.headers.get("Content-Type", ""), r.read()
+        if content_type.startswith("video/"):
+            return body
+        if not content_type.startswith("application/json"):
+            return None
+        # an async job was queued instead of a direct video: poll for it to finish, a few times, then give up
+        job = json.loads(body)
+        job_id = job.get("id") or job.get("job") or job.get("job_id")
+        if not job_id:
+            log.warning("Pollinations video: unrecognized response for %r: %s", prompt, body[:200])
+            return None
+        import time
+        for _ in range(6):
+            time.sleep(10)
+            poll = json.loads(_get_bytes(f"https://gen.pollinations.ai/v1/jobs/{job_id}", {"Authorization": f"Bearer {key}"}, 30))
+            status = (poll.get("status") or "").lower()
+            if status in ("completed", "succeeded", "done"):
+                result_url = poll.get("result_url") or poll.get("url") or poll.get("output")
+                if not result_url:
+                    return None
+                return _get_bytes(result_url, {"Authorization": f"Bearer {key}"}, 60)
+            if status in ("failed", "error"):
+                log.warning("Pollinations video job failed for %r: %s", prompt, poll)
+                return None
+        log.warning("Pollinations video job for %r did not finish in time", prompt)
+        return None
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, OSError, json.JSONDecodeError) as e:
+        log.warning("Pollinations video failed for %r: %s", prompt, e)
+        return None
 
 
 def pollinations_image(prompt: str, w: int, h: int) -> bytes | None:
@@ -103,6 +152,25 @@ def local_image(prompt: str, w: int, h: int, model: str = "stabilityai/sd-turbo"
 
 
 SOURCES = [("pollinations", pollinations_image), ("huggingface", huggingface_image)]
+NO_TEXT = "photographic, no text, no words, no letters, no caption, no watermark, no logo"
+
+
+def any_source_configured() -> bool:
+    """True if at least one AI picture source is set up - the caller uses this to decide whether two AI stills
+    are worth generating for a motion blend (never worth trying against two real Wikimedia photos: they would
+    be two different real things, not two takes of the same scene)."""
+    return bool(os.environ.get("POLLINATIONS_API_KEY") or os.environ.get("HF_TOKEN") or os.environ.get("IMAGE_ENGINE") == "local")
+
+
+def generate_video(prompt: str, out: Path, w: int, h: int, duration: float) -> dict | None:
+    """A short AI-generated video clip for `prompt`, if Pollinations is configured. None otherwise (including
+    on any failure), so the caller falls back to a still image."""
+    data = pollinations_video(f"{prompt}, {NO_TEXT}", w, h, duration)
+    if data and len(data) > 20_000:
+        out.write_bytes(data)
+        log.info("AI video (pollinations) for %r", prompt)
+        return {"path": out, "credit": "AI-generated video (pollinations), not real footage", "source": "", "ai": True}
+    return None
 
 
 def generate_image(prompt: str, out: Path, w: int, h: int) -> dict | None:
@@ -111,7 +179,7 @@ def generate_image(prompt: str, out: Path, w: int, h: int) -> dict | None:
     # Diffusion models try to literally render words they are given, which is a problem when the "prompt" is a
     # headline or a caption-shaped phrase (it comes back with garbled text baked into the picture): always ask
     # for a clean photo instead. The caller's own headline/captions are drawn separately, on top.
-    prompt = f"{prompt}, photographic, no text, no words, no letters, no caption, no watermark, no logo"
+    prompt = f"{prompt}, {NO_TEXT}"
     for name, fn in SOURCES:
         data = fn(prompt, w, h)
         if data and len(data) > 5_000:
