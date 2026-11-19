@@ -92,7 +92,7 @@ jobs:
       # stockreel also tries this same token for Hugging Face's free Inference API (an AI image per scene), after
       # Pollinations and before the real Wikimedia photo - see shorts/stockreel/aiframes.py.
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_API_KEY }}   # stockreel, optional: a free key from enter.pollinations.ai
+      POLLINATIONS_API_KEY: ${{ secrets.POLLINATIONS_KEY || secrets.POLLINATIONS_API_KEY }}   # stockreel, optional: a free key from enter.pollinations.ai (repo secret is named POLLINATIONS_KEY)
       # stockreel, optional: "local" runs a small diffusion model (stabilityai/sd-turbo) on the runner's own CPU
       # instead of (or after) an API - no key needed, but slow; installed only when this is set to "local"
       IMAGE_ENGINE: ${{ vars.IMAGE_ENGINE || '' }}
