@@ -268,5 +268,32 @@
         "video_id": "c_XT-arbwHg"
       }
     }
+  },
+  {
+    "date": "2026-11-19",
+    "niche": "Brain & Psychology",
+    "topic": "Why does déjà vu feel so real?",
+    "mood": "mysterious",
+    "cluster": "Mind Glitches",
+    "follow_ups": [
+      "Why do we forget our dreams so fast?",
+      "Why does time feel like it speeds up as we age?",
+      "Why do songs get stuck in our head?"
+    ],
+    "next_video": "Why do we forget our dreams so fast?",
+    "gate_score": 90,
+    "thumbnail_text": "IT NEVER ACTUALLY HAPPENED",
+    "videos": {
+      "en": {
+        "file": "2026-11-19_en.mp4",
+        "saved_to": "videos/2026-11-19/en.mp4",
+        "video_id": "B7Lljx8QtMY"
+      },
+      "hi": {
+        "file": "2026-11-19_hi.mp4",
+        "saved_to": "videos/2026-11-19/hi.mp4",
+        "video_id": "dkdFdy1FXgQ"
+      }
+    }
   }
 ]

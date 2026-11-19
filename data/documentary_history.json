@@ -294,5 +294,113 @@
         "video_id": "N71Pbd1wRCo"
       }
     }
+  },
+  {
+    "date": "2026-11-19",
+    "niche": "How It's Made",
+    "topic": "How Surat cuts nine out of every ten diamonds in the world",
+    "minutes": 6,
+    "cluster": "India Explained: How It's Made",
+    "follow_ups": [
+      "How is a diamond actually graded, and why do two identical-looking stones sell for very different prices?",
+      "How are lab-grown diamonds actually made?",
+      "How does Mumbai's dabbawala network deliver 200,000 lunchboxes without a single address?"
+    ],
+    "next_video": "How is a diamond actually graded, and why do two identical stones sell for very different prices?",
+    "gate_score": 80,
+    "videos": {
+      "en": {
+        "file": "2026-11-19_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "One City, Nine In Ten",
+            "start": 0.0
+          },
+          {
+            "title": "Why Surat, Of All Places?",
+            "start": 29.0
+          },
+          {
+            "title": "The Rough Stone Arrives",
+            "start": 59.4
+          },
+          {
+            "title": "Step One: The Plan",
+            "start": 90.2
+          },
+          {
+            "title": "Cleaving, Sawing, Shaping",
+            "start": 122.6
+          },
+          {
+            "title": "Faceting: Cutting the Light In",
+            "start": 154.6
+          },
+          {
+            "title": "The Final Polish",
+            "start": 182.9
+          },
+          {
+            "title": "A City Built on This Craft",
+            "start": 212.1
+          },
+          {
+            "title": "A New Pressure",
+            "start": 242.1
+          },
+          {
+            "title": "From Rough Rock to Ring",
+            "start": 272.3
+          }
+        ],
+        "video_id": "0A6Y4R5qo8Y"
+      },
+      "hi": {
+        "file": "2026-11-19_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "एक शहर, दस में नौ",
+            "start": 0.0
+          },
+          {
+            "title": "सूरत ही क्यों?",
+            "start": 34.4
+          },
+          {
+            "title": "कच्चा पत्थर पहुँचता है",
+            "start": 70.8
+          },
+          {
+            "title": "पहला कदम: योजना",
+            "start": 105.2
+          },
+          {
+            "title": "काटना, चीरना, आकार देना",
+            "start": 144.0
+          },
+          {
+            "title": "फ़ेसेटिंग: चमक भरना",
+            "start": 180.5
+          },
+          {
+            "title": "आखिरी पॉलिश",
+            "start": 213.9
+          },
+          {
+            "title": "इस हुनर पर टिका शहर",
+            "start": 247.5
+          },
+          {
+            "title": "एक नई मुश्किल",
+            "start": 285.4
+          },
+          {
+            "title": "कच्चे पत्थर से अंगूठी तक",
+            "start": 321.3
+          }
+        ],
+        "video_id": "u9VBRRNKNQk"
+      }
+    }
   }
 ]
