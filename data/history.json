@@ -361,5 +361,38 @@
         "error": "daily upload limit already reached in this run"
       }
     }
+  },
+  {
+    "date": "2026-11-19",
+    "niche": "Engineering Marvels",
+    "topic": "Why did London's Millennium Bridge start swaying on its opening day?",
+    "mood": "dramatic",
+    "cluster": "Hidden Patterns",
+    "follow_ups": [
+      "Why does a crowd start clapping in rhythm all on its own?",
+      "Why do schools of fish swim and turn as one shimmering shape?",
+      "Why did the Tacoma Narrows Bridge tear itself apart in the wind?"
+    ],
+    "next_video": "Why does a crowd start clapping in rhythm all on its own?",
+    "gate_score": 82,
+    "engine": "stockreel",
+    "videos": {
+      "en": {
+        "file": "2026-11-19_en.mp4",
+        "engine": "stockreel",
+        "synthetic": true,
+        "saved_to": "videos/2026-11-19/en.mp4",
+        "queued": "videos/unpublished/2026-11-19_short_en",
+        "error": "daily upload limit already reached in this run"
+      },
+      "hi": {
+        "file": "2026-11-19_hi.mp4",
+        "engine": "stockreel",
+        "synthetic": true,
+        "saved_to": "videos/2026-11-19/hi.mp4",
+        "queued": "videos/unpublished/2026-11-19_short_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]

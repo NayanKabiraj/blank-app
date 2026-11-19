@@ -1,73 +1,73 @@
 {
-  "niche": "Earth & Nature",
-  "topic": "Why do starling flocks turn together with no leader?",
-  "research_summary": "Candidates (scored /40, 19 Nov 2026, second stockreel-format video - also the first run to test the just-merged Gemini free-image source and the exhaustion-rotation fallback in shorts/stockreel/aiframes.py; this topic was already queued as today's earlier stockreel Short's next_video, continuing the 'Hidden Patterns' cluster): (1) Why do starling flocks turn together with no leader? (murmuration, Earth & Nature) 33 - curiosity5 universality4 timeliness2 search3 surprise5 visual5 shareability5 verifiability4 (chosen: iconic, widely-photographed real footage, peer-reviewed mechanism, directly continues today's traffic-jam Short's follow-up); (2) Why do fireflies flash in sync with no conductor? (Earth & Nature) 32 - just as strong, kept as a future video so the niche doesn't repeat back-to-back; (3) Why does a crowd start clapping in rhythm all on its own? (Science Explained) 32 - kept as a follow-up, and Science Explained is cooling down today anyway; (4) Why did London's Millennium Bridge sway on its opening day? (Engineering Marvels) 30 - kept as a follow-up; (5) Why do schools of fish turn as one shimmering shape? (Earth & Nature) 29 - too close in theme to the winner for the same day, held back; (6) Why do ant colonies find the shortest path with no map? (Earth & Nature) 28; (7) Why do geese fly in a V formation? (Earth & Nature) 26; (8) What is the honeybee waggle dance actually saying? (Earth & Nature) 27; (9) Why can a slime mould solve a maze with no brain? (Science Explained) 25; (10) Why do locust swarms suddenly turn into plagues? (Earth & Nature) 24 - score held down, risks a political/agricultural-disaster framing. Research (web search, each fact checked against two sources where possible): each starling tracks only about seven of its nearest neighbours, no matter how dense or large the flock gets - a topological rule, not a fixed distance, VERIFIED (Ballerini M. et al., 'Interaction ruling animal collective behavior depends on topological rather than metric distance', PNAS 105(4) 2008, cross-checked against National Geographic's summary of the same Rome 'STARFLAG' study); there is no leader bird and no central signal - the turn is a self-organized, emergent pattern built from simple local rules (separation, alignment, cohesion - Craig Reynolds' 1987 'boids' model), VERIFIED (standard across the animal-behaviour and computer-graphics literature; Charlotte Hemelrijk's simulation work reproduced the real Rome flock data using those same three rules plus basic aerodynamics); once one bird turns, that turning signal spreads through the rest of the flock with very little weakening or delay bird-to-bird, PARTIALLY VERIFIED (Attanasi A. et al., 'Information transfer and behavioural inertia in starling flocks', Nature Physics 10 2014 - used here only as the qualitative claim the paper actually supports; a specific propagation-speed figure seen in a secondary, AI-generated source could not be verified against the primary paper and is deliberately left out). Myth: the assumption that one bird (or a small group) must be steering from the front - the real finding is that nobody is in charge at all. Titles (/50): 'Why Do Starling Flocks Turn Together With No Leader?' 41 (chosen); 'No Bird Is In Charge, and Thousands Still Move As One' 39; 'The Science Behind Nature's Most Mesmerizing Flock' 35; 'How Do Birds Turn Together With No Leader?' 37; 'Scientists Found the Secret Behind Starling Flocks' 36; 'This Flock Has No Leader. Watch It Turn Anyway.' 38; 'The Hidden Rule Behind Every Starling Flock' 36; 'Why Thousands of Birds Move As One Shape' 34; 'Nature's Flock Has No Leader, and That's the Secret' 37; 'The Physics of a Flock With No Leader' 33. Thumbnails: A a swirling black cloud of starlings against an orange sunset sky (chosen, headline 'NO LEADER AT ALL'); B a single bird highlighted inside a huge flock with a question mark; C a diagram-like close-up of seven birds circled within a larger flock. Hooks: 'Watch a flock of starlings turn in the sky as one shape - who's actually leading that turn?' (chosen); 'No leader bird. No signal. And yet thousands turn together in a heartbeat.'; 'Scientists found the real secret behind this: just seven neighbours.'; 'Nobody is steering this flock, and that's exactly the point.'; 'This shape in the sky has no leader at all.'. Quality gate /100: topic 9, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 9, emotional 8, retention 8, series 8 = 83, proceed.",
-  "mood": "inspiring",
+  "niche": "Engineering Marvels",
+  "topic": "Why did London's Millennium Bridge start swaying on its opening day?",
+  "research_summary": "Candidates (scored /40, 19 Nov 2026, third stockreel-format video - this run also verifies two fixes just made after the murmuration Short's Hindi images came back irrelevant: Gemini is now tried before the local model, and every scene's image/video search phrase is always built from the English keyword even for the Hindi render): (1) Why did London's Millennium Bridge start swaying on its opening day? (Engineering Marvels) 32 - curiosity5 universality3 timeliness2 search3 surprise5 visual5 shareability4 verifiability5 (chosen: already queued as a follow-up from the murmuration Short's 'Hidden Patterns' cluster, a fresh niche today, strong real-footage subject - a famous bridge, crowds walking); (2) Why does a crowd start clapping in rhythm all on its own? (Science Explained) 32 - just as strong, but Science Explained is cooling down today, kept as a follow-up; (3) Why do schools of fish swim and turn as one shimmering shape? (Earth & Nature) 29 - also cooling down today (3 uses in the last 14), held back; (4) Why did the Tacoma Narrows Bridge tear itself apart in the wind? (Engineering Marvels) 31 - just as strong but a near-duplicate of today's bridge/resonance theme, kept as a follow-up for a later day; (5) Why do skyscrapers have a giant weight hanging inside them? (tuned mass dampers, Engineering Marvels) 28; (6) Why do opera singers shatter glasses with their voice? (Science Explained, cooling) 24; (7) Why does a wine glass hum when you run a wet finger around the rim? (Science Explained, cooling) 23; (8) How do noise-cancelling headphones erase sound? (already covered, excluded); (9) Why do suspension bridge cables sing in high wind? (Engineering Marvels) 27; (10) Why do stadium roofs sometimes sway under a bouncing crowd? (Engineering Marvels) 26. Research (web search, each fact checked against two sources where possible): the Millennium Bridge opened to the public on 10 June 2000 and was closed just two days later after a pronounced sideways sway developed as crowds walked across it, VERIFIED (Wikipedia's 'Millennium Bridge, London' article, cross-checked against New Civil Engineer's 2021 report on the same event); on opening day, up to about two thousand people were on the bridge at once (out of a much larger total footfall that day, with sources giving figures from roughly 80,000 to 100,000 over the whole day), PARTIALLY VERIFIED (exact day-total figures vary across sources, so the script uses only the better-agreed 'up to two thousand at once' figure); Arup's engineers attributed the sway to a feedback effect they called 'synchronous lateral excitation' - as the deck moved slightly sideways, each walker's own balance reflex nudged it a little further to stay steady, and that fed back into more sway as more people crossed, PARTIALLY VERIFIED (this is the classic, most widely reported explanation from Arup's own engineers; a 2021 study by Georgia State University and the University of Bristol has since argued the mechanism is more about individual balance correction than everyone consciously synchronising their footsteps, which is why the script explicitly says nobody tried to sync up on purpose, rather than claiming people deliberately matched steps); the bridge reopened in 2002 after engineers added dampers to absorb the motion, at a cost reported around five million pounds, VERIFIED (Wikipedia and ingenia.org.uk's Arup retrospective both confirm the retrofit and the roughly two-year closure; the exact damper count is left out since sources disagree, 37 versus 91 across different reports). Myth: the assumption that thousands of strangers consciously marched in step together - the real finding is that nobody was trying to synchronise at all; each person's own instinct to stay balanced was enough. Titles (/50): 'Why Did London's Millennium Bridge Start Swaying on Its Opening Day?' 40 (chosen); 'The Bridge That Swayed Itself Shut in Two Days' 38; 'A Brand-New Bridge Had to Close After Two Days. Here's Why.' 37; 'The Physics Behind London's Wobbly Bridge' 35; 'Why Thousands of Footsteps Nearly Broke a New Bridge' 36; 'London's Bridge That Swayed Itself Off Balance' 34; 'The Hidden Feedback Loop That Shut Down a Bridge' 37; 'Why a Crowd Made a Bridge Sway Out of Control' 35; 'The Bridge Problem Nobody Saw Coming' 33; 'How a Crowd Nearly Broke a Brand-New Bridge' 34. Thumbnails: A a crowded bridge deck with a motion-blur sway effect (chosen, headline 'IT HAD TO CLOSE'); B a side view of a bridge with wavy distortion lines; C a single walker's feet with balance arrows. Hooks: 'On opening day in London, a brand-new bridge suddenly started swaying side to side - why?' (chosen); 'Thousands of footsteps, and a brand-new bridge had to close within two days.'; 'Nobody tried to synchronise their steps - and that's exactly why it swayed.'; 'A bridge this famous once swayed itself shut.'; 'Engineers didn't see this coming until thousands of people showed up.'. Quality gate /100: topic 9, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 8, retention 8, series 8 = 82, proceed.",
+  "mood": "dramatic",
   "cluster": "Hidden Patterns",
   "follow_ups": [
     "Why does a crowd start clapping in rhythm all on its own?",
-    "Why did London's Millennium Bridge start swaying on its opening day?",
-    "Why do schools of fish swim and turn as one shimmering shape?"
+    "Why do schools of fish swim and turn as one shimmering shape?",
+    "Why did the Tacoma Narrows Bridge tear itself apart in the wind?"
   ],
-  "gate_score": 83,
+  "gate_score": 82,
   "english": {
-    "title": "Why Do Starling Flocks Turn Together With No Leader?",
-    "description": "Thousands of birds in the sky suddenly turn together with no leader at all. Scientists found each bird only tracks seven nearby neighbors, not the whole flock - and that's the whole secret. Up next: why a crowd starts clapping in rhythm all on its own. #starlings #murmuration #birds #nature",
+    "title": "Why Did London's Millennium Bridge Start Swaying on Its Opening Day?",
+    "description": "On opening day in 2000, thousands of people walked onto London's brand-new Millennium Bridge - and it swayed so hard it had to close two days later. Each walker's own balance reflex fed the sway, with nobody trying to sync up on purpose. Up next: why a crowd starts clapping in rhythm all on its own. #millenniumbridge #engineering #london #physics",
     "tags": [
-      "starling murmuration",
-      "bird flock behavior",
-      "why do birds flock together",
-      "murmuration explained",
-      "no leader animal behavior",
-      "flocking science",
-      "collective behavior birds",
-      "emergent behavior nature",
-      "bird swarm intelligence",
-      "nature science facts"
+      "millennium bridge wobble",
+      "synchronous lateral excitation",
+      "why did the bridge sway",
+      "london millennium bridge",
+      "bridge engineering facts",
+      "crowd dynamics bridge",
+      "engineering marvels",
+      "bridge resonance explained",
+      "structural engineering facts",
+      "millennium bridge 2000"
     ],
-    "hook_text": "No Leader. Still One Shape.",
-    "thumbnail_text": "NO LEADER AT ALL",
+    "hook_text": "A Bridge That Swayed Itself",
+    "thumbnail_text": "IT HAD TO CLOSE",
     "next_video": "Why does a crowd start clapping in rhythm all on its own?",
-    "pinned_comment": "Ever watched thousands of birds turn together like that? What did it feel like?",
+    "pinned_comment": "Ever felt a bridge or floor move under a crowd like that? What did it feel like?",
     "scenes": [
       {
-        "text": "Watch a flock of starlings bend through the sky as one shape - who's leading that turn?",
-        "keyword": "flock of starlings",
+        "text": "On opening day in London, a brand-new bridge suddenly started swaying side to side - why?",
+        "keyword": "brand-new bridge",
         "graphic": {
           "kind": "title",
-          "headline": "Who's Leading This?",
+          "headline": "Why Did It Sway?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "bulb"
+          "prop": "gear"
         }
       },
       {
-        "text": "No one is. There's no leader bird, no signal, and yet thousands turn together in a heartbeat.",
-        "keyword": "no leader bird",
+        "text": "This was London's Millennium Bridge. On its opening day in 2000, it swayed so hard it had to close two days later.",
+        "keyword": "Millennium Bridge",
         "graphic": {
           "kind": "keyword",
-          "headline": "No Leader Bird",
-          "caption": "yet thousands turn together",
+          "headline": "Millennium Bridge",
+          "caption": "closed just two days later",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "cloud"
+          "prop": "clock"
         }
       },
       {
-        "text": "So how does a flock pull this off? Scientists found each starling only tracks seven nearest neighbors, not the whole sky full of birds.",
-        "keyword": "seven nearest neighbors",
+        "text": "So what made a brand-new bridge do this? Thousands of footsteps, and the bridge itself started to sway gently side to side.",
+        "keyword": "thousands of footsteps",
         "graphic": {
           "kind": "chat",
           "headline": "Quick Chat",
           "caption": "",
           "items": [
-            "How does a bird know where to turn?",
-            "It just watches its neighbors.",
-            "Just a few, not the whole flock?",
-            "Exactly - about seven, every time."
+            "Why did it sway like that?",
+            "Thousands of footsteps all at once.",
+            "Just footsteps did that?",
+            "That, and the bridge itself moving."
           ],
           "values": [],
           "answer": null,
@@ -75,12 +75,12 @@
         }
       },
       {
-        "text": "That's the real secret: not a leader, not the whole group, just seven neighbors, repeated bird after bird after bird.",
-        "keyword": "just seven neighbors",
+        "text": "Up to two thousand people were on the bridge at once that day - and that sway only grew stronger as more people crossed.",
+        "keyword": "two thousand people",
         "graphic": {
           "kind": "stat",
-          "headline": "Just 7",
-          "caption": "neighbors each bird tracks",
+          "headline": "2,000 People",
+          "caption": "on the bridge at once",
           "items": [],
           "values": [],
           "answer": null,
@@ -88,16 +88,16 @@
         }
       },
       {
-        "text": "One bird banks, the next copies it, and that single turn spreads outward through the whole flock almost without slowing down.",
-        "keyword": "one bird banks",
+        "text": "As the deck moved, each walker's own balance reflex nudged it a little further, step after step, until the whole bridge was swaying hard.",
+        "keyword": "each walker's own balance reflex",
         "graphic": {
           "kind": "flow",
-          "headline": "How It Spreads",
+          "headline": "How It Built Up",
           "caption": "",
           "items": [
-            "One bird turns",
-            "Next bird copies",
-            "Turn ripples out"
+            "Deck sways a bit",
+            "Walker corrects",
+            "Sway builds up"
           ],
           "values": [],
           "answer": null,
@@ -105,15 +105,15 @@
         }
       },
       {
-        "text": "So no, there's no single starling steering the show from the front - the shape itself is just thousands of tiny, local decisions.",
-        "keyword": "no single starling steering",
+        "text": "So no, people didn't deliberately fall into step together - each person was just trying to stay balanced, and that's what fed the sway.",
+        "keyword": "didn't deliberately fall into step",
         "graphic": {
           "kind": "myth",
-          "headline": "A Leader Bird?",
+          "headline": "Everyone In Step?",
           "caption": "",
           "items": [
-            "Myth: one bird leads the flock",
-            "Truth: no bird is in charge"
+            "Myth: everyone marched in step",
+            "Truth: each walker stayed balanced"
           ],
           "values": [],
           "answer": null,
@@ -121,11 +121,11 @@
         }
       },
       {
-        "text": "So next time birds swirl like smoke across the sky, remember: nobody's in charge, and that's exactly why it works. Ever watched a murmuration in person? Tell me below!",
-        "keyword": "nobody's in charge",
+        "text": "Engineers closed the bridge, added dampers to soak up the motion, and reopened it two years later. Ever felt a bridge move under your feet? Tell me below!",
+        "keyword": "added dampers",
         "graphic": {
           "kind": "title",
-          "headline": "Nobody's In Charge",
+          "headline": "Fixed... Two Years Later",
           "caption": "",
           "items": [],
           "values": [],
@@ -136,61 +136,61 @@
     ]
   },
   "hindi": {
-    "title": "बिना नेता के पक्षियों का झुंड एक साथ कैसे मुड़ जाता है?",
-    "description": "हज़ारों पक्षी आसमान में बिना किसी नेता के अचानक एक साथ मुड़ जाते हैं। वैज्ञानिकों ने पाया कि हर पक्षी सिर्फ़ अपने सात साथियों को देखता है, पूरे झुंड को नहीं - और यही राज़ है। आगे: भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है। #पक्षी #विज्ञान #प्रकृति #भारत",
+    "title": "लंदन का मिलेनियम ब्रिज उद्घाटन के दिन ही क्यों झूलने लगा?",
+    "description": "साल 2000 में उद्घाटन के दिन, हज़ारों लोग लंदन के नए मिलेनियम ब्रिज पर चढ़े - और यह इतना झूला कि दो दिन बाद ही बंद करना पड़ा। हर चलने वाले के संतुलन ने झूलने को बढ़ाया, बिना किसी के जानबूझकर कदम मिलाए। आगे: भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है। #मिलेनियमब्रिज #इंजीनियरिंग #लंदन #भारत",
     "tags": [
-      "पक्षियों का झुंड",
-      "मुर्मुरेशन हिंदी",
-      "बिना नेता के झुंड",
-      "पक्षी विज्ञान",
-      "प्रकृति के रहस्य",
-      "starling murmuration hindi",
-      "flock behavior hindi",
-      "bird flock science"
+      "मिलेनियम ब्रिज",
+      "पुल क्यों झूला",
+      "लंदन ब्रिज हिंदी",
+      "इंजीनियरिंग के चमत्कार",
+      "पुल विज्ञान",
+      "millennium bridge hindi",
+      "bridge engineering hindi",
+      "crowd dynamics hindi"
     ],
-    "hook_text": "कोई नेता नहीं, फिर भी एकसाथ",
-    "thumbnail_text": "कोई नेता नहीं है",
+    "hook_text": "एक पुल जो खुद झूल गया",
+    "thumbnail_text": "दो दिन में बंद",
     "next_video": "भीड़ खुद अपने आप तालियों की लय में कैसे आ जाती है?",
-    "pinned_comment": "क्या आपने कभी हज़ारों पक्षियों को आसमान में एक साथ मुड़ते देखा है? कैसा लगा?",
+    "pinned_comment": "क्या आपने कभी किसी पुल या फर्श को भीड़ के नीचे हिलते हुए महसूस किया है? कैसा लगा?",
     "scenes": [
       {
-        "text": "आकाश में पक्षियों का झुंड एक साथ मुड़ता है - कौन नेतृत्व करता है?",
-        "keyword": "पक्षियों का झुंड",
+        "text": "लंदन में उद्घाटन के दिन, एक नया पुल अचानक एक तरफ़ झूलने लगा - क्यों?",
+        "keyword": "नया पुल",
         "graphic": {
           "kind": "title",
-          "headline": "कौन नेतृत्व करता है?",
+          "headline": "यह क्यों झूला?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "bulb"
+          "prop": "gear"
         }
       },
       {
-        "text": "कोई नेता नहीं है। कोई संकेत नहीं, फिर भी हज़ारों पक्षी साथ मुड़ जाते हैं।",
-        "keyword": "कोई नेता नहीं",
+        "text": "यह लंदन का मिलेनियम ब्रिज था। साल 2000 में उद्घाटन के दिन यह झूला, और दो दिन बाद बंद करना पड़ा।",
+        "keyword": "मिलेनियम ब्रिज",
         "graphic": {
           "kind": "keyword",
-          "headline": "कोई नेता नहीं",
-          "caption": "फिर भी सब साथ मुड़ते हैं",
+          "headline": "मिलेनियम ब्रिज",
+          "caption": "दो दिन बाद ही बंद",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "cloud"
+          "prop": "clock"
         }
       },
       {
-        "text": "तो यह झुंड यह कैसे करता है? वैज्ञानिकों ने पाया कि हर पक्षी सिर्फ़ अपने सात साथियों को देखता है, पूरे आसमान को नहीं।",
-        "keyword": "सात साथियों",
+        "text": "ऐसा क्यों हुआ? पुल पर हज़ारों कदम पड़ रहे थे, और पुल खुद धीरे-धीरे एक तरफ़ झूलने लगा।",
+        "keyword": "हज़ारों कदम",
         "graphic": {
           "kind": "chat",
           "headline": "छोटी सी बात",
           "caption": "",
           "items": [
-            "पक्षी को मुड़ना कैसे पता चलता है?",
-            "वह बस अपने साथियों को देखता है।",
-            "सिर्फ़ कुछ साथी, पूरा झुंड नहीं?",
-            "हाँ - सिर्फ़ सात, हर बार।"
+            "पुल क्यों झूलने लगा?",
+            "हज़ारों कदम एक साथ पड़े।",
+            "सिर्फ़ कदमों से?",
+            "और पुल के खुद हिलने से भी।"
           ],
           "values": [],
           "answer": null,
@@ -198,12 +198,12 @@
         }
       },
       {
-        "text": "यही असली राज़ है - कोई नेता नहीं, पूरा झुंड नहीं, बस सात साथी, हर पक्षी में बार-बार दोहराए जाते हैं।",
-        "keyword": "बस सात साथी",
+        "text": "उस दिन करीब दो हज़ार लोग पुल पर थे - और जितने लोग बढ़े, झूलना उतना तेज़ होता गया।",
+        "keyword": "दो हज़ार लोग",
         "graphic": {
           "kind": "stat",
-          "headline": "सिर्फ़ 7",
-          "caption": "हर पक्षी जितने साथी देखता है",
+          "headline": "2,000 लोग",
+          "caption": "एक साथ पुल पर",
           "items": [],
           "values": [],
           "answer": null,
@@ -211,16 +211,16 @@
         }
       },
       {
-        "text": "एक पक्षी मुड़ता है, अगला उसकी नकल करता है, और वही एक मोड़ पूरे झुंड में बिना रुके फैल जाता है।",
-        "keyword": "एक पक्षी मुड़ता है",
+        "text": "जैसे-जैसे पुल हिलता, हर चलने वाले का संतुलन थोड़ा झुकाव बढ़ा देता, कदम दर कदम, और पूरा पुल ज़ोर से झूलने लगा।",
+        "keyword": "हर चलने वाले का संतुलन",
         "graphic": {
           "kind": "flow",
-          "headline": "यह कैसे फैलता है",
+          "headline": "यह कैसे बढ़ा",
           "caption": "",
           "items": [
-            "एक पक्षी मुड़ता",
-            "अगला उसकी नकल करता",
-            "मोड़ आगे फैलता"
+            "पुल थोड़ा हिला",
+            "संतुलन संभाला",
+            "झूलना बढ़ता गया"
           ],
           "values": [],
           "answer": null,
@@ -228,15 +228,15 @@
         }
       },
       {
-        "text": "तो नहीं, कोई एक पक्षी झुंड को आगे से नहीं चलाता - यह आकार बस हज़ारों छोटे फ़ैसलों से बनता है।",
-        "keyword": "पक्षी झुंड को आगे से नहीं चलाता",
+        "text": "तो नहीं, लोगों ने जानबूझकर कदम नहीं मिलाए - हर कोई अपना संतुलन बनाए रख रहा था, और उसी से झूलना बढ़ा।",
+        "keyword": "जानबूझकर कदम नहीं मिलाए",
         "graphic": {
           "kind": "myth",
-          "headline": "क्या कोई नेता है?",
+          "headline": "सब साथ चल रहे थे?",
           "caption": "",
           "items": [
-            "मिथक: एक पक्षी झुंड चलाता है",
-            "सच: कोई पक्षी ज़िम्मेदार नहीं"
+            "मिथक: सब जानबूझकर साथ चले",
+            "सच: हर कोई बस संतुलन बना रहा था"
           ],
           "values": [],
           "answer": null,
@@ -244,11 +244,11 @@
         }
       },
       {
-        "text": "अगली बार जब पक्षी आसमान में धुएँ जैसे मुड़ें, याद रखिए - कोई इंचार्ज नहीं, फिर भी यह काम करता है। क्या आपने यह देखा है? नीचे बताइए!",
-        "keyword": "कोई इंचार्ज नहीं",
+        "text": "इंजीनियरों ने पुल बंद किया, डैम्पर लगाए, और दो साल बाद इसे फिर खोला। क्या आपने कभी किसी पुल को हिलते हुए महसूस किया है? नीचे बताइए!",
+        "keyword": "डैम्पर लगाए",
         "graphic": {
           "kind": "title",
-          "headline": "कोई इंचार्ज नहीं",
+          "headline": "दो साल बाद ठीक हुआ",
           "caption": "",
           "items": [],
           "values": [],
