@@ -1,7 +1,9 @@
 """Turns a scene's search phrase into a clip. `clip_for` is the entry point the renderer calls; it tries, in
-order: a real AI-generated video (`aiframes.generate_video`), two AI stills crossfaded into motion
-(`crossfade_clip`), one AI or Wikimedia still animated with a Ken Burns pan/zoom (`ken_burns_clip`), and
-finally a plain gradient (`placeholder_clip`) so a render never breaks for want of a match. The Wikimedia photo
+order: a local-diffuser animated clip, two stills crossfaded into motion (`aiframes.local_enabled()` - first
+priority whenever the local model is on, ahead of every networked source), a real AI-generated video
+(`aiframes.generate_video`), two AI stills (any configured source) crossfaded into motion (`crossfade_clip`),
+one AI or Wikimedia still animated with a Ken Burns pan/zoom (`ken_burns_clip`), and finally a plain gradient
+(`placeholder_clip`) so a render never breaks for want of a match. The Wikimedia photo
 (`shorts/director/stock.py`, Public domain/CC0 only) is always available with no API key or signup; the AI
 steps are optional and only run when a source is configured (see `aiframes.py`).
 
@@ -86,14 +88,28 @@ def placeholder_clip(out: Path, duration: float, w: int, h: int, seed: int = 0, 
 def clip_for(query: str, out: Path, w: int, h: int, duration: float, seed: int = 0, fps: int = 30) -> tuple[Path, dict | None]:
     """A `duration`-second clip at w x h for `query`, best first:
 
-    1. a real AI-generated video clip (Pollinations, if configured) - actual motion, not a pan/zoom;
-    2. two AI stills of the same scene, Ken-Burns'd and crossfaded together (only when an AI source is
+    1. two stills from the local diffusion model, Ken-Burns'd and crossfaded (only when IMAGE_ENGINE=local -
+       first priority, ahead of every networked source, for both a still image and this animated clip);
+    2. a real AI-generated video clip (Pollinations, if configured) - actual motion, not a pan/zoom;
+    3. two AI stills of the same scene, Ken-Burns'd and crossfaded together (only when an AI source is
        configured - crossfading two different real Wikimedia photos would just be a nonsensical jump cut);
-    3. one AI or Wikimedia still, animated with a Ken Burns pan/zoom (the original, always-available path);
-    4. a plain gradient placeholder when nothing was found at all.
+    4. one AI or Wikimedia still, animated with a Ken Burns pan/zoom (the original, always-available path);
+    5. a plain gradient placeholder when nothing was found at all.
 
     Returns (clip path, credit dict or None)."""
     raw = out.with_suffix(".src.mp4")
+    if aiframes.local_enabled():
+        prompt = f"{query}, {aiframes.NO_TEXT}"
+        data1, data2 = aiframes.local_image(prompt, w, h), aiframes.local_image(prompt, w, h)
+        if data1 and data2:
+            img1, img2 = out.with_suffix(".a.jpg"), out.with_suffix(".b.jpg")
+            img1.write_bytes(data1)
+            img2.write_bytes(data2)
+            try:
+                credit = {"path": img1, "credit": "AI-generated (local model), not a photograph", "source": "", "ai": True}
+                return crossfade_clip(img1, img2, out, duration, w, h, seed, fps), credit
+            except subprocess.SubprocessError as e:
+                log.warning("Could not blend the two local AI stills for %r, falling back: %s", query, e)
     vid = aiframes.generate_video(query, raw, w, h, duration)
     if vid:
         try:
