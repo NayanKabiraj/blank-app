@@ -30,7 +30,7 @@ def _frame_at(path: Path, t: float, out: Path, w: int = 160) -> bool:
 
 
 def check_video(path: Path, expect_w: int, expect_h: int, expect_fps: int,
-                min_duration: float = 45.0, max_duration: float = 60.0) -> dict:
+                min_duration: float = config.MIN_DURATION, max_duration: float = config.MAX_DURATION) -> dict:
     """Duration/resolution/FPS/audio-track checks; returns {"ok": bool, "warnings": [...], "errors": [...]}."""
     warnings, errors = [], []
     try:
