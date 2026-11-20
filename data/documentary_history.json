@@ -402,5 +402,89 @@
         "video_id": "u9VBRRNKNQk"
       }
     }
+  },
+  {
+    "date": "2026-11-20",
+    "niche": "India Explained",
+    "topic": "How did Chandrayaan-3 land where no spacecraft had ever landed before?",
+    "minutes": 5,
+    "cluster": "Reaching the Moon",
+    "follow_ups": [
+      "How will Chandrayaan-4 bring Moon rock back to Earth?",
+      "How did Mangalyaan reach Mars on a shoestring budget?",
+      "Why did Russia's Luna-25 crash just before Chandrayaan-3 landed?"
+    ],
+    "next_video": "How will Chandrayaan-4 bring Moon rock back to Earth?",
+    "gate_score": 83,
+    "videos": {
+      "en": {
+        "file": "2026-11-20_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "The 17 Minutes of Terror",
+            "start": 0.0
+          },
+          {
+            "title": "Why the South Pole",
+            "start": 38.6
+          },
+          {
+            "title": "The Ghost of 2019",
+            "start": 79.5
+          },
+          {
+            "title": "Russia's Shadow",
+            "start": 113.8
+          },
+          {
+            "title": "No Human in the Loop",
+            "start": 138.1
+          },
+          {
+            "title": "What Pragyan Found",
+            "start": 178.3
+          },
+          {
+            "title": "The Sleep That Never Ended",
+            "start": 217.6
+          }
+        ],
+        "video_id": "tws0YvLu-O4"
+      },
+      "hi": {
+        "file": "2026-11-20_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "डर के वे सत्रह मिनट",
+            "start": 0.0
+          },
+          {
+            "title": "दक्षिणी ध्रुव ही क्यों",
+            "start": 36.6
+          },
+          {
+            "title": "2019 का साया",
+            "start": 79.0
+          },
+          {
+            "title": "रूस की परछाई",
+            "start": 118.9
+          },
+          {
+            "title": "इंसान की कोई सीधी भूमिका नहीं",
+            "start": 148.2
+          },
+          {
+            "title": "प्रज्ञान ने क्या पाया",
+            "start": 191.9
+          },
+          {
+            "title": "वह नींद जो कभी नहीं टूटी",
+            "start": 235.6
+          }
+        ],
+        "video_id": "AjiwPv09KG0"
+      }
+    }
   }
 ]
