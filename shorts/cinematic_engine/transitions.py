@@ -11,7 +11,7 @@ from pathlib import Path
 log = logging.getLogger(__name__)
 
 # A few different xfade styles so a 6-9 scene Short doesn't crossfade the same way every time.
-STYLES = ["fade", "fadeblack", "smoothleft", "smoothright", "circleopen", "diagup"]
+STYLES = ["fade", "fadeblack", "smoothleft", "smoothright", "circleopen", "diagtl"]
 
 
 def _run(cmd, cwd=None):
