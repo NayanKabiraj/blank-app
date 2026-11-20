@@ -1,0 +1,275 @@
+{
+  "niche": "Engineering Marvels",
+  "topic": "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+  "research_summary": "Candidates (scored /40, 20 Nov 2026): (1) Why did the Tacoma Narrows Bridge tear itself apart in the wind? (Engineering Marvels; Hidden Patterns cluster) 33 - curiosity5 universality4 timeliness3 search4 surprise5 visual5 shareability4 verifiability3 (chosen: explicitly promised as next_video from the crowd-clapping Short two days ago, continuing the Hidden Patterns cluster with a cinematic-engine-first render; Engineering Marvels used once in the last 2 videos (cooling), but this topic beats the cooling-down penalty: it is the only candidate that is a direct, already-promised series continuation with iconic, verifiable, highly visual footage/history); (2) Why do heart cells beating in a dish start beating together? (Human Body) 29 - kept as follow-up; (3) Why do schools of fish swim and turn as one shimmering shape? (Earth & Nature, cooling-adjacent) 28 - kept as follow-up; (4) Why do fireflies flash in sync with no conductor? (Earth & Nature) 30 - kept as follow-up; (5) Why do pendulum clocks on the same wall slowly sync their swing? (Science Explained) 27. Research (web search, each fact cross-checked against at least two independent sources): the bridge opened to traffic 1 July 1940 and collapsed 7 November 1940, about four months later, VERIFIED (multiple independent news/engineering retrospectives agree on both dates); wind that morning was about 40 mph / 64 km/h, a moderate, unremarkable wind for a bridge of that size, VERIFIED (contemporary measurement figures, consistent across sources, though exact instantaneous readings vary slightly 38-42 mph); the popular explanation that simple mechanical 'resonance' (like an opera singer shattering a glass) brought it down is a known oversimplification - modern engineering sources and a 2022 Journal of Fluid Mechanics study describe the real mechanism as aeroelastic flutter, a self-reinforcing feedback loop where the bridge's own twisting motion changed the airflow around it, which fed more energy back into the twisting, VERIFIED; the deck used solid plate girders (about 2.4 m deep) instead of open trusses, so it caught the wind like a sail/wing - contrasted explicitly with the Golden Gate Bridge's open-truss design in engineering retrospectives, VERIFIED; no human died in the collapse - the only casualty was a dog, Tubby, left in an abandoned car; Professor Farquharson tried to rescue him, was bitten, and escaped the span moments before that section fell, VERIFIED (multiple independent retrospectives, including ASCE's own history page, agree); the collapse was filmed on 16mm Kodachrome by Barney Elliott and Harbine Monroe and is famous enough to have been added to the US National Film Registry in 1998, VERIFIED; the replacement bridge (1950) used open trusses and wind-tunnel-tested aerodynamics, now standard practice for long-span suspension bridges, VERIFIED (consistent across engineering sources, though I treat the specific claim 'could 1940 engineers have predicted this' as an open, debated question rather than a settled fact - framed as a question for the viewer, not asserted). Titles (/50): 'Why Did This Bridge Tear Itself Apart in the Wind?' 42 (chosen); 'The Bridge That Destroyed Itself in Ordinary Wind' 39; 'Galloping Gertie: The Bridge That Shook Itself Apart' 37; 'This Bridge Collapsed From Wind Alone - Here's Why' 38; 'The Engineering Mistake That Brought Down a Bridge' 35; 'Why a New Bridge Twisted Itself to Pieces' 38; 'The Physics Behind a Bridge's Self-Destruction' 33; 'How a Normal Breeze Tore Down a Bridge' 36. Thumbnails: A a bridge deck violently twisting mid-collapse with a wind-speed readout (chosen, headline 'IT TORE ITSELF APART'); B a close-up crack opening down the center of the twisting deck; C a side-by-side of the original solid deck vs the rebuilt open-truss deck. Hooks: 'A brand-new bridge once swayed so hard it tore itself apart. Why?' (chosen); 'This bridge fell apart in wind barely strong enough to fly a kite.'; 'Everyone blamed resonance. The real cause was something else.'. Quality gate /100: topic 8, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 8, emotional 7, retention 8, series 9 = 81, proceed (strong candidate, two components - emotional pull and verifiability of the 'could they have known' angle - kept deliberately understated/framed as a question rather than oversold).",
+  "mood": "dramatic",
+  "cluster": "Hidden Patterns",
+  "follow_ups": [
+    "Why do schools of fish swim and turn as one shimmering shape?",
+    "Why do fireflies flash in sync with no conductor?",
+    "Why do pendulum clocks on the same wall slowly sync their swing?"
+  ],
+  "gate_score": 81,
+  "english": {
+    "title": "Why Did This Bridge Tear Itself Apart in the Wind?",
+    "description": "A brand-new bridge swayed itself apart in wind that wouldn't even bother a kite. The real cause isn't what most people think. #Shorts #Engineering #Physics #History #Science",
+    "tags": [
+      "tacoma narrows bridge",
+      "galloping gertie",
+      "aeroelastic flutter",
+      "bridge collapse",
+      "engineering failure",
+      "resonance myth",
+      "bridge physics",
+      "1940 bridge collapse",
+      "engineering disasters",
+      "wind engineering",
+      "suspension bridge",
+      "physics explained"
+    ],
+    "hook_text": "It Tore Itself Apart",
+    "thumbnail_text": "IT TORE ITSELF APART",
+    "next_video": "Why do heart cells beating in a dish start beating together?",
+    "pinned_comment": "Could the original engineers have predicted this before building it?",
+    "scenes": [
+      {
+        "text": "A brand-new bridge once swayed so hard it tore itself apart. Why?",
+        "keyword": "tore itself apart",
+        "graphic": {
+          "kind": "title",
+          "headline": "IT TORE ITSELF APART",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "This happened in 1940, only four months after the bridge opened to traffic.",
+        "keyword": "four months",
+        "graphic": {
+          "kind": "steps",
+          "headline": "TIMELINE",
+          "caption": "",
+          "items": [
+            "Opens July 1940",
+            "Sways for months",
+            "Nov 7: collapses"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The wind that morning was only about 64 kilometers an hour, barely a strong breeze.",
+        "keyword": "64 kilometers",
+        "graphic": {
+          "kind": "stat",
+          "headline": "64 km/h",
+          "caption": "barely a breeze",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So was this just resonance, like a singer shattering a glass? Not quite.",
+        "keyword": "resonance",
+        "graphic": {
+          "kind": "myth",
+          "headline": "WAS IT RESONANCE?",
+          "caption": "",
+          "items": [
+            "Simple resonance",
+            "Aeroelastic flutter"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The wind kept pumping energy into the bridge's own twisting motion until it grew out of control.",
+        "keyword": "twisting motion",
+        "graphic": {
+          "kind": "flow",
+          "headline": "HOW FLUTTER GROWS",
+          "caption": "",
+          "items": [
+            "Wind hits deck",
+            "Deck twists",
+            "Twist feeds wind",
+            "Motion grows"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Why did it fail at all? The deck was solid steel plate, built thin to save money, so wind pushed it like a sail.",
+        "keyword": "like a sail",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "BUILT LIKE A SAIL",
+          "caption": "to save money",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Engineers rebuilt it with open trusses and wind-tunnel testing, now standard on every big bridge. Do you think the first builders could have caught this?",
+        "keyword": "wind-tunnel testing",
+        "graphic": {
+          "kind": "build",
+          "headline": "REBUILT STRONGER",
+          "caption": "",
+          "items": [
+            "Open truss deck",
+            "Wind-tunnel tested",
+            "Standard today"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      }
+    ]
+  },
+  "hindi": {
+    "title": "यह पुल हवा में खुद ही क्यों टूट गया?",
+    "description": "एक नया पुल इतनी हल्की हवा में खुद को तोड़ बैठा, जितनी हवा पतंग उड़ाने लायक भी नहीं थी। असली वजह वह नहीं है जो ज़्यादातर लोग सोचते हैं। #Shorts #Engineering #Physics #History #Science",
+    "tags": [
+      "tacoma narrows bridge",
+      "galloping gertie",
+      "aeroelastic flutter",
+      "bridge collapse",
+      "engineering failure",
+      "resonance myth",
+      "bridge physics",
+      "1940 bridge collapse",
+      "engineering disasters",
+      "wind engineering",
+      "suspension bridge",
+      "physics explained"
+    ],
+    "hook_text": "यह खुद टूट गया",
+    "thumbnail_text": "यह खुद टूट गया",
+    "next_video": "दिल की कोशिकाएं एक साथ धड़कना क्यों शुरू कर देती हैं?",
+    "pinned_comment": "क्या पहले इंजीनियर इसे पुल बनाने से पहले भांप सकते थे?",
+    "scenes": [
+      {
+        "text": "एक बिल्कुल नया पुल इतनी ज़ोर से हिला कि वह खुद ही टूट गया। आखिर क्यों?",
+        "keyword": "खुद ही टूट गया",
+        "graphic": {
+          "kind": "title",
+          "headline": "यह खुद टूट गया",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "यह 1940 में हुआ, पुल खुलने के सिर्फ चार महीने बाद।",
+        "keyword": "चार महीने",
+        "graphic": {
+          "kind": "steps",
+          "headline": "समयरेखा",
+          "caption": "",
+          "items": [
+            "जुलाई 1940: खुला",
+            "महीनों हिलता रहा",
+            "7 नवंबर: गिरा"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "उस सुबह हवा की रफ़्तार लगभग 64 किलोमीटर प्रति घंटा थी, बस एक सामान्य हवा।",
+        "keyword": "64 किलोमीटर",
+        "graphic": {
+          "kind": "stat",
+          "headline": "64 किमी/घं",
+          "caption": "सामान्य हवा थी",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो क्या यह सिर्फ अनुनाद था, जैसे गायक गिलास तोड़ देता है? बिल्कुल नहीं।",
+        "keyword": "अनुनाद",
+        "graphic": {
+          "kind": "myth",
+          "headline": "क्या यह अनुनाद था?",
+          "caption": "",
+          "items": [
+            "सरल अनुनाद",
+            "वायु-प्रत्यास्थ स्पंदन"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "हवा पुल की अपनी मरोड़ में लगातार ऊर्जा भरती गई, जब तक यह काबू से बाहर न हो गई।",
+        "keyword": "मरोड़",
+        "graphic": {
+          "kind": "flow",
+          "headline": "स्पंदन कैसे बढ़ा",
+          "caption": "",
+          "items": [
+            "हवा डेक से टकराई",
+            "डेक मुड़ा",
+            "मरोड़ ने हवा बढ़ाई",
+            "गति बढ़ी"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "यह फेल क्यों हुआ? डेक ठोस स्टील प्लेट का था, पैसे बचाने के लिए पतला बनाया गया, तो हवा उसे पाल की तरह धकेलती रही।",
+        "keyword": "पाल की तरह",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "पाल जैसा बना",
+          "caption": "पैसे बचाने को",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "इंजीनियरों ने इसे खुले ढांचे और पवन-सुरंग परीक्षण से दोबारा बनाया, जो अब हर बड़े पुल में आम है। क्या तुम्हें लगता है पहले इंजीनियर यह भांप सकते थे?",
+        "keyword": "पवन-सुरंग परीक्षण",
+        "graphic": {
+          "kind": "build",
+          "headline": "और मज़बूत बना",
+          "caption": "",
+          "items": [
+            "खुला ढांचा डेक",
+            "पवन-सुरंग जांचा",
+            "आज का मानक"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      }
+    ]
+  }
+}

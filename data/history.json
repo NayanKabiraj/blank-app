@@ -437,5 +437,84 @@
         "video_id": "_C7-AoEGrD0"
       }
     }
+  },
+  {
+    "date": "2026-11-20",
+    "niche": "Engineering Marvels",
+    "topic": "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+    "mood": "dramatic",
+    "cluster": "Hidden Patterns",
+    "follow_ups": [
+      "Why do schools of fish swim and turn as one shimmering shape?",
+      "Why do fireflies flash in sync with no conductor?",
+      "Why do pendulum clocks on the same wall slowly sync their swing?"
+    ],
+    "next_video": "Why do heart cells beating in a dish start beating together?",
+    "gate_score": 81,
+    "engine": "cinematic",
+    "videos": {
+      "en": {
+        "file": "2026-11-20_en.mp4",
+        "engine": "cinematic",
+        "saved_to": "videos/2026-11-20/en.mp4",
+        "report": {
+          "topic": "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+          "language": "en",
+          "layout": "portrait",
+          "engine": "cinematic",
+          "duration": 41.866667,
+          "resolution": "1080x1920",
+          "fps": 30.0,
+          "has_audio": true,
+          "render_seconds": 117.3,
+          "video": {
+            "ok": false,
+            "errors": [
+              "duration 41.9s outside 45.0-60.0s"
+            ],
+            "warnings": []
+          },
+          "subtitles": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "cues": 25
+          },
+          "ok": false,
+          "output": "output_cinematic/2026-11-20_en.mp4"
+        },
+        "contact_sheet": "output_cinematic/2026-11-20_en_contact-sheet.jpg"
+      },
+      "hi": {
+        "file": "2026-11-20_hi.mp4",
+        "engine": "cinematic",
+        "saved_to": "videos/2026-11-20/hi.mp4",
+        "report": {
+          "topic": "Why did the Tacoma Narrows Bridge tear itself apart in the wind?",
+          "language": "hi",
+          "layout": "portrait",
+          "engine": "cinematic",
+          "duration": 53.97,
+          "resolution": "1080x1920",
+          "fps": 30.0,
+          "has_audio": true,
+          "render_seconds": 140.0,
+          "video": {
+            "ok": true,
+            "errors": [],
+            "warnings": []
+          },
+          "subtitles": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "cues": 28
+          },
+          "ok": true,
+          "output": "output_cinematic/2026-11-20_hi.mp4"
+        },
+        "contact_sheet": "output_cinematic/2026-11-20_hi_contact-sheet.jpg"
+      }
+    }
   }
 ]
