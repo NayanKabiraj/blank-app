@@ -26,6 +26,7 @@
     ],
     "hook_text": "No Moon, no big tides",
     "thumbnail_text": "NO MOON?",
+    "thumbnail_question": "What if the Moon vanished tomorrow?",
     "next_video": "What if Earth suddenly stopped spinning?",
     "pinned_comment": "If the Moon vanished tomorrow, which would you miss first: the moonlit nights or the ocean tides?",
     "scenes": [
@@ -43,8 +44,8 @@
         }
       },
       {
-        "text": "Weird, right? So what else changes? Let's find out.",
-        "keyword": "else changes",
+        "text": "In this video you'll see what happens to the tides, the nights and Earth's tilt. Would you float away?",
+        "keyword": "you'll see",
         "graphic": {
           "kind": "chat",
           "headline": "Quick chat",
@@ -93,7 +94,7 @@
         }
       },
       {
-        "text": "Then the wobble. Scientists think the Moon's gravity helps keep Earth's tilt steady. Without it, the tilt could wander over a very long time.",
+        "text": "Then the wobble. The Moon's gravity helps keep Earth's tilt steady. Without it, the tilt could wander.",
         "keyword": "tilt steady",
         "graphic": {
           "kind": "flow",
@@ -156,7 +157,7 @@
         }
       }
     ],
-    "animation_pack": "moon_gone_short"
+    "animation_pack": "moon_intro_sample"
   },
   "hindi": null
 }

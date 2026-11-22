@@ -19,7 +19,7 @@
  ],
  "privacy": "private",
  "synthetic": null,
- "attempts": 2,
+ "attempts": 3,
  "queued_at": "2026-11-22T14:47:08+00:00",
  "last_error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
 }

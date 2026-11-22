@@ -702,5 +702,28 @@
         "error": "daily upload limit already reached in this run"
       }
     }
+  },
+  {
+    "date": "2026-11-22",
+    "niche": "Space & Universe",
+    "topic": "What if the Moon disappeared?",
+    "mood": "mysterious",
+    "cluster": "The Moon",
+    "follow_ups": [
+      "What if Earth suddenly stopped spinning?",
+      "Why does the Moon always show the same face?",
+      "How do tides make electricity?"
+    ],
+    "next_video": "What if Earth suddenly stopped spinning?",
+    "gate_score": 83,
+    "thumbnail_text": "NO MOON?",
+    "videos": {
+      "en": {
+        "file": "2026-11-22_en.mp4",
+        "saved_to": "videos/2026-11-22/en.mp4",
+        "queued": "videos/unpublished/2026-11-22_short_en",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
