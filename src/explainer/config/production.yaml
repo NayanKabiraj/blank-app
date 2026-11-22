@@ -1,0 +1,29 @@
+# Daily production settings for the sketch/cinematic explainer system (src/explainer/).
+# Nothing here affects the existing shorts/ pipeline or its daily-shorts.yml workflow.
+#
+# Per the owner's decision (20 Nov 2026): keep today's cadence (1 topic/day) rather than the
+# spec's full 5-topics/day x 2 languages x 2 formats scale, until quota/cost has been checked
+# at this smaller volume first. Raise topics_per_day only once that's been validated.
+production:
+  topics_per_day: 1
+  duration_min: 45
+  duration_max: 60
+
+  languages:
+    - en
+    - hi
+
+  formats:
+    - vertical
+    # - landscape   # enable once a landscape layout has been validated for this engine
+
+  visual_style: cinematic   # whiteboard | colourful | cinematic
+
+  render:
+    enabled: true
+    parallel_jobs: 1
+    quality: medium   # draft | medium | high (draft = fast manim -ql previews)
+
+  publishing:
+    enabled: false        # never auto-publish; a separate, explicit step does this
+    approval_required: true

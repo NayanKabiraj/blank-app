@@ -1,0 +1,65 @@
+name: Daily Research Prep (Explainer)
+
+# "Workflow A" from the spec, adapted to how this repo actually works: topic research, script
+# writing and storyboard authoring are an interactive step (a Claude session with real web
+# search), the same way every video in shorts/ is already researched - not something this
+# workflow can do itself, since GitHub Actions has no LLM/search credentials configured for it
+# (see src/explainer/research_engine/web_research.py's own docstring). What this workflow DOES
+# do automatically: validate that today's prepared manifest/storyboards are present and pass
+# every schema/fact-labelling check, so a broken manifest is caught before render-explainer.yml
+# ever spends CI minutes on it.
+on:
+  workflow_dispatch:
+    inputs:
+      topic_id:
+        description: "Topic id to validate (content/manifests/<topic_id>.json must already exist)"
+        type: string
+        required: true
+      topics_per_day:
+        description: "Informational only - compared against src/explainer/config/production.yaml, does not generate topics"
+        type: number
+        default: 1
+      dry_run:
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pydantic pyyaml
+
+      - name: Validate today's manifest + research + storyboards
+        run: python -m explainer.cli validate-manifest "content/manifests/${{ inputs.topic_id }}.json"
+
+      - name: Compare against production.yaml's configured cadence
+        run: |
+          python - <<'PY'
+          import sys
+          sys.path.insert(0, "src")
+          from explainer.config.settings import load_config
+          cfg = load_config()
+          print(f"production.yaml: {cfg.topics_per_day} topic(s)/day, "
+                f"{cfg.languages}, {cfg.formats}, style={cfg.visual_style}, "
+                f"{cfg.jobs_per_day} render job(s)/day")
+          requested = ${{ inputs.topics_per_day }}
+          if requested != cfg.topics_per_day:
+              print(f"::warning::requested topics_per_day={requested} differs from "
+                    f"production.yaml's {cfg.topics_per_day} - update the config to change the "
+                    "daily cadence, this workflow does not do it for you.")
+          PY
+
+      - name: Render (skipped - dry_run is the default; use render-explainer.yml to actually render)
+        if: ${{ !inputs.dry_run }}
+        run: echo "This workflow validates only. Trigger render-explainer.yml to render ${{ inputs.topic_id }}."

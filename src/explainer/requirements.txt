@@ -1,0 +1,20 @@
+# Dependencies for the sketch/cinematic explainer engine (src/explainer/). Installed separately
+# from shorts/requirements.txt and the root requirements.txt (the Streamlit app template) - this
+# is its own subsystem and does not change what either existing app installs.
+#
+# Install into a virtualenv, not the system Python: manim's own dependency (`srt`) fails to
+# build against Debian's patched distutils on system Python 3.13 (see docs/installation.md,
+# docs/troubleshooting.md). Confirmed working: Python 3.13 in a clean venv, manim 0.22.1.
+#
+# System packages this also needs (apt): ffmpeg libcairo2-dev libpango1.0-dev pkg-config
+# python3-dev fonts-noto-core fonts-noto-extra (Debian/Ubuntu names - "fonts-noto-core" may need
+# a plain "fonts-noto" on some distros; see docs/installation.md).
+manim==0.22.1
+pydantic>=2.7
+pyyaml>=6.0
+cairosvg>=2.7
+svgwrite>=1.4
+opencv-python-headless>=4.9
+numpy>=1.26
+scipy>=1.12
+pytest>=8.0

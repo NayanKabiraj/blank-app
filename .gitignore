@@ -131,6 +131,20 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+.venv-explainer/
+
+# Explainer engine: generated output (rendered videos, scene work dirs, reports) is reproducible
+# from content/ and is not committed; keep the directory placeholders (.gitkeep) only.
+generated/audio/*
+!generated/audio/.gitkeep
+generated/subtitles/*
+!generated/subtitles/.gitkeep
+generated/scenes/*
+!generated/scenes/.gitkeep
+generated/videos/*
+!generated/videos/.gitkeep
+generated/reports/*
+!generated/reports/.gitkeep
 
 # Spyder project settings
 .spyderproject

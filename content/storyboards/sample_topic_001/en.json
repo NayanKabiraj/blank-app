@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "sample_topic_001",
+  "language": "en",
+  "visual_style": "cinematic",
+  "total_duration": 55.0,
+  "scenes": [
+    {
+      "scene_id": "s1",
+      "start": 0.0,
+      "end": 4.0,
+      "template": "hook",
+      "narration": "Throw this curved stick hard and straight - and it comes right back to you. Why?",
+      "subtitle_text": "Throw this curved stick hard and straight - and it comes right back to you. Why?",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "hook_subject",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "headline",
+          "animation": "pop_in",
+          "text": "Throw this curved stick hard and str",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "slow_zoom_in",
+        "focus_on": "hook_subject"
+      },
+      "transition_out": "sketch_reveal",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s2",
+      "start": 4.0,
+      "end": 11.0,
+      "template": "explainer_diagram",
+      "narration": "Each arm of a boomerang is shaped exactly like a tiny airplane wing.",
+      "subtitle_text": "Each arm of a boomerang is shaped exactly like a tiny airplane wing.",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "main_diagram",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "caption",
+          "animation": "fade_in",
+          "text": "Each arm of a boomerang is shaped ex",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "static",
+        "focus_on": "wing_shape"
+      },
+      "transition_out": "crossfade",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s3",
+      "start": 11.0,
+      "end": 26.0,
+      "template": "explainer_diagram",
+      "narration": "As it spins through the air, one arm moves faster than the other, so it pushes harder - creating lift on just one side.",
+      "subtitle_text": "As it spins through the air, one arm moves faster than the other, so it pushes harder - creating lift on just one side.",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "main_diagram",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "caption",
+          "animation": "fade_in",
+          "text": "As it spins through the air, one arm",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "static",
+        "focus_on": "lift_diagram"
+      },
+      "transition_out": "crossfade",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s4",
+      "start": 26.0,
+      "end": 40.0,
+      "template": "comparison",
+      "narration": "That uneven push acts on a spinning object the way a nudge turns a spinning top - it curves the whole path into a circle.",
+      "subtitle_text": "That uneven push acts on a spinning object the way a nudge turns a spinning top - it curves the whole path into a circle.",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "diagram",
+          "name": "side_a",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "diagram",
+          "name": "side_b",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "vs_arrow",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "pan_left",
+        "focus_on": "spin_turn"
+      },
+      "transition_out": "line_draw",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s5",
+      "start": 40.0,
+      "end": 50.0,
+      "template": "explainer_diagram",
+      "narration": "Which is why a boomerang thrown dead straight still loops all the way back into your hand.",
+      "subtitle_text": "Which is why a boomerang thrown dead straight still loops all the way back into your hand.",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "main_diagram",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "caption",
+          "animation": "fade_in",
+          "text": "Which is why a boomerang thrown dead",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "static",
+        "focus_on": "return_path"
+      },
+      "transition_out": "crossfade",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s6",
+      "start": 50.0,
+      "end": 55.0,
+      "template": "takeaway",
+      "narration": "One curved stick. One spinning trick. Always comes home.",
+      "subtitle_text": "One curved stick. One spinning trick. Always comes home.",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "label",
+          "name": "takeaway_text",
+          "animation": "pop_in",
+          "text": "One curved stick",
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "highlight",
+          "name": "emphasis",
+          "animation": "fade_in",
+          "text": null,
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "slow_zoom_in",
+        "focus_on": "takeaway_text"
+      },
+      "transition_out": "zoom",
+      "sound_effect": null
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+name: Validate Explainer Video
+
+# Downloads a render-explainer.yml artifact (or validates a path already in the checkout) and
+# runs every quality_engine check against it: duration, resolution, fps, codecs, audio track,
+# subtitle presence/correctness, not-black. Writes generated/reports/<topic_id>_<lang>_<format>.json.
+on:
+  workflow_dispatch:
+    inputs:
+      topic_id:
+        type: string
+        required: true
+      lang:
+        type: string
+        default: "en"
+      format:
+        type: string
+        default: "vertical"
+      video_path:
+        description: "Path to the video to validate, if not the default generated/videos/<topic_id>/<lang>_<format>.mp4"
+        type: string
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: src/explainer/requirements.txt
+
+      - name: Install ffmpeg + explainer engine dependencies (quality checks only need ffprobe/ffmpeg + pydantic)
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg
+          pip install pydantic pyyaml
+
+      - name: Run quality checks
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          sys.path.insert(0, "src")
+          from pathlib import Path
+          from explainer.quality_engine import video_quality
+          from explainer.schemas.production_manifest import load_manifest
+          from explainer.video_engine.ffmpeg_renderer import RESOLUTIONS
+
+          topic_id = os.environ["IN_TOPIC"]
+          lang = os.environ["IN_LANG"]
+          fmt = os.environ["IN_FORMAT"]
+          video_path = Path(os.environ["IN_VIDEO_PATH"] or f"generated/videos/{topic_id}/{lang}_{fmt}.mp4")
+          manifest = load_manifest(Path(f"content/manifests/{topic_id}.json"))
+          width, height = RESOLUTIONS[fmt]
+
+          result = video_quality.check_video(
+              video_path, expect_width=width, expect_height=height, expect_fps=24,
+              min_duration=manifest.production.duration_seconds - 10,
+              max_duration=manifest.production.duration_seconds + 10)
+          black = video_quality.check_not_black(video_path)
+          result["black_frame_warnings"] = black
+          result["ok"] = result["ok"] and not black
+
+          out = Path("generated/reports"); out.mkdir(parents=True, exist_ok=True)
+          (out / f"{topic_id}_{lang}_{fmt}_validate.json").write_text(json.dumps(result, indent=2))
+          print(json.dumps(result, indent=2))
+          sys.exit(0 if result["ok"] else 1)
+          PY
+        env:
+          IN_TOPIC: ${{ inputs.topic_id }}
+          IN_LANG: ${{ inputs.lang }}
+          IN_FORMAT: ${{ inputs.format }}
+          IN_VIDEO_PATH: ${{ inputs.video_path }}
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: explainer-validate-${{ inputs.topic_id }}-${{ github.run_number }}
+          path: generated/reports/*_validate.json
+          retention-days: 14
+          if-no-files-found: ignore

@@ -1,0 +1,96 @@
+name: Render Explainer Video
+
+# Renders one (topic, language, format) combination from a committed manifest + storyboard
+# (src/explainer/ - the sketch/cinematic explainer engine). Independent of the existing
+# daily-shorts.yml pipeline: no steps here touch shorts/, and nothing here runs automatically
+# unless manually dispatched or scheduled explicitly (see production.yaml for the daily
+# cadence this repo currently uses: 1 topic/day, English + Hindi, vertical only, cinematic
+# style - see src/explainer/config/production.yaml).
+on:
+  workflow_dispatch:
+    inputs:
+      topic_id:
+        description: "Topic id (folder name under content/manifests, scripts, storyboards)"
+        type: string
+        required: true
+      langs:
+        description: "Comma-separated languages to render"
+        type: string
+        default: "en,hi"
+      formats:
+        description: "Comma-separated formats to render"
+        type: string
+        default: "vertical"
+      quality:
+        description: "draft (fast preview) | medium | high"
+        type: string
+        default: "medium"
+      dry_run:
+        description: "Validate the manifest and storyboards only; do not render"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-explainer-${{ inputs.topic_id }}
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      SHORTS_FAKE_TTS: ${{ vars.EXPLAINER_FAKE_TTS || '' }}   # set to 1 as a repo variable for a no-network smoke test
+      PYTHONPATH: src
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: src/explainer/requirements.txt
+
+      - name: Install system rendering dependencies (Cairo, Pango, fonts)
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg libcairo2-dev libpango1.0-dev pkg-config python3-dev fonts-noto-core fonts-noto-extra
+          fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
+
+      - name: Install explainer engine dependencies
+        run: pip install -r src/explainer/requirements.txt
+
+      - name: Install shorts/ (for its TTS adapter only - audio_engine/tts_engine.py reuses shorts.tts)
+        run: pip install -r shorts/requirements.txt
+
+      - name: Validate manifest
+        run: python -m explainer.cli validate-manifest "content/manifests/${{ inputs.topic_id }}.json"
+
+      - name: Render each language x format
+        if: ${{ !inputs.dry_run }}
+        run: |
+          IFS=',' read -ra LANGS <<< "${{ inputs.langs }}"
+          IFS=',' read -ra FORMATS <<< "${{ inputs.formats }}"
+          FAILED=0
+          for lang in "${LANGS[@]}"; do
+            for fmt in "${FORMATS[@]}"; do
+              echo "::group::render $lang $fmt"
+              python -m explainer.cli render --topic-id "${{ inputs.topic_id }}" --lang "$lang" --format "$fmt" --quality "${{ inputs.quality }}" || FAILED=1
+              echo "::endgroup::"
+            done
+          done
+          exit $FAILED
+
+      - name: Upload rendered videos + reports as artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: explainer-${{ inputs.topic_id }}-${{ github.run_number }}
+          path: |
+            generated/videos/${{ inputs.topic_id }}/*.mp4
+            generated/videos/${{ inputs.topic_id }}/*.srt
+            generated/reports/${{ inputs.topic_id }}_*.json
+          retention-days: 14
+          if-no-files-found: ignore

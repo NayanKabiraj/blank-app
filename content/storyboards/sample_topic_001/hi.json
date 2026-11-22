@@ -1,0 +1,239 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "sample_topic_001",
+  "language": "hi",
+  "visual_style": "cinematic",
+  "total_duration": 55.0,
+  "scenes": [
+    {
+      "scene_id": "s1",
+      "start": 0.0,
+      "end": 4.0,
+      "template": "hook",
+      "narration": "इस मुड़ी हुई छड़ी को सीधा और ज़ोर से फेंको, फिर भी यह तुम्हारे पास वापस आ जाती है। आखिर क्यों?",
+      "subtitle_text": "इस मुड़ी हुई छड़ी को सीधा और ज़ोर से फेंको, फिर भी यह तुम्हारे पास वापस आ जाती है। आखिर क्यों?",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "hook_subject",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "headline",
+          "animation": "pop_in",
+          "text": "इस मुड़ी हुई छड़ी को सीधा और ज़ोर से",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "slow_zoom_in",
+        "focus_on": "hook_subject"
+      },
+      "transition_out": "sketch_reveal",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s2",
+      "start": 4.0,
+      "end": 11.0,
+      "template": "explainer_diagram",
+      "narration": "बूमरैंग की हर भुजा बिल्कुल एक छोटे हवाई जहाज़ के पंख जैसी बनी होती है।",
+      "subtitle_text": "बूमरैंग की हर भुजा बिल्कुल एक छोटे हवाई जहाज़ के पंख जैसी बनी होती है।",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "main_diagram",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "caption",
+          "animation": "fade_in",
+          "text": "बूमरैंग की हर भुजा बिल्कुल एक छोटे ह",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "static",
+        "focus_on": "wing_shape"
+      },
+      "transition_out": "crossfade",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s3",
+      "start": 11.0,
+      "end": 26.0,
+      "template": "explainer_diagram",
+      "narration": "घूमते समय एक भुजा हवा में दूसरी से तेज़ चलती है, इसलिए वह ज़्यादा ज़ोर लगाती है - और एक तरफ ज़्यादा उठान बनाती है।",
+      "subtitle_text": "घूमते समय एक भुजा हवा में दूसरी से तेज़ चलती है, इसलिए वह ज़्यादा ज़ोर लगाती है - और एक तरफ ज़्यादा उठान बनाती है।",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "main_diagram",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "caption",
+          "animation": "fade_in",
+          "text": "घूमते समय एक भुजा हवा में दूसरी से त",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "static",
+        "focus_on": "lift_diagram"
+      },
+      "transition_out": "crossfade",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s4",
+      "start": 26.0,
+      "end": 40.0,
+      "template": "comparison",
+      "narration": "यह असमान धक्का ठीक वैसे काम करता है जैसे एक घूमते लट्टू को हल्का धक्का घुमा देता है - पूरा रास्ता एक घेरे में मुड़ जाता है।",
+      "subtitle_text": "यह असमान धक्का ठीक वैसे काम करता है जैसे एक घूमते लट्टू को हल्का धक्का घुमा देता है - पूरा रास्ता एक घेरे में मुड़ जाता है।",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "diagram",
+          "name": "side_a",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "diagram",
+          "name": "side_b",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "vs_arrow",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "pan_left",
+        "focus_on": "spin_turn"
+      },
+      "transition_out": "line_draw",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s5",
+      "start": 40.0,
+      "end": 50.0,
+      "template": "explainer_diagram",
+      "narration": "इसीलिए बिल्कुल सीधा फेंका गया बूमरैंग भी पूरा घूमकर तुम्हारे हाथ में वापस आ जाता है।",
+      "subtitle_text": "इसीलिए बिल्कुल सीधा फेंका गया बूमरैंग भी पूरा घूमकर तुम्हारे हाथ में वापस आ जाता है।",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "svg_illustration",
+          "name": "main_diagram",
+          "animation": "progressive_stroke_draw",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "arrow",
+          "name": "pointer",
+          "animation": "draw_from_start",
+          "text": null,
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "label",
+          "name": "caption",
+          "animation": "fade_in",
+          "text": "इसीलिए बिल्कुल सीधा फेंका गया बूमरैं",
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "static",
+        "focus_on": "return_path"
+      },
+      "transition_out": "crossfade",
+      "sound_effect": null
+    },
+    {
+      "scene_id": "s6",
+      "start": 50.0,
+      "end": 55.0,
+      "template": "takeaway",
+      "narration": "एक मुड़ी छड़ी। एक घूमता करतब। हमेशा घर लौटती है।",
+      "subtitle_text": "एक मुड़ी छड़ी। एक घूमता करतब। हमेशा घर लौटती है।",
+      "background": "textured_paper",
+      "elements": [
+        {
+          "type": "label",
+          "name": "takeaway_text",
+          "animation": "pop_in",
+          "text": "एक मुड़ी छड़ी। एक घूमता करतब। हमेशा ",
+          "color": null,
+          "position": null
+        },
+        {
+          "type": "highlight",
+          "name": "emphasis",
+          "animation": "fade_in",
+          "text": null,
+          "color": null,
+          "position": null
+        }
+      ],
+      "camera": {
+        "movement": "slow_zoom_in",
+        "focus_on": "takeaway_text"
+      },
+      "transition_out": "zoom",
+      "sound_effect": null
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "topic_id": "sample_topic_001",
+  "topic": "[DEMO] Why does a thrown boomerang curve back to you?",
+  "research": {
+    "summary": "DEMO CONTENT - bundled with the engine to exercise the pipeline end to end; not part of a daily production batch. FACT: a returning boomerang's two arms are each shaped like an airplane wing (an airfoil), VERIFIED (NASA Glenn Research Center's own boomerang aerodynamics page explains the wing-shape mechanism in these terms). FACT: as the spinning boomerang flies, the arm moving in the same direction as the throw moves faster through the air than the arm moving against it, so one side generates more lift than the other, VERIFIED (same NASA source; this lift imbalance is also described in general physics references on gyroscopic precession). INFERENCE: that uneven lift acts like a steady sideways push on a spinning body, and a spinning object responds to a push by turning (gyroscopic precession), which is why the flight path curves into a circle instead of going straight - PARTIALLY VERIFIED: the gyroscopic-precession explanation is the standard one in the sources checked, but this script simplifies the full torque/precession mathematics for a 45-60s explainer.",
+    "sources": [
+      {
+        "title": "NASA Glenn Research Center - Boomerang Aerodynamics",
+        "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/boomerang/",
+        "published": null
+      }
+    ],
+    "verification_status": "verified",
+    "uncertainties": "The precession explanation is simplified for a short video; it omits the full torque mathematics."
+  },
+  "production": {
+    "duration_seconds": 50,
+    "languages": [
+      "en",
+      "hi"
+    ],
+    "formats": [
+      "vertical"
+    ],
+    "visual_style": "cinematic",
+    "render_enabled": true
+  },
+  "scripts": {
+    "en": "content/scripts/sample_topic_001/en_script.md",
+    "hi": "content/scripts/sample_topic_001/hi_script.md"
+  },
+  "storyboards": {
+    "en": "content/storyboards/sample_topic_001/en.json",
+    "hi": "content/storyboards/sample_topic_001/hi.json"
+  },
+  "audio": {
+    "provider": "piper",
+    "enabled": true,
+    "voice_en": null,
+    "voice_hi": null
+  },
+  "publishing": {
+    "enabled": false,
+    "requires_approval": true,
+    "title": null,
+    "description": null,
+    "tags": null
+  }
+}
