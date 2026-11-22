@@ -12,6 +12,7 @@ import math
 import os
 import struct
 import subprocess
+import time
 import urllib.request
 import wave
 from functools import lru_cache
@@ -89,7 +90,15 @@ def _edge(text: str, out_wav: Path, length_scale: float) -> float:
     import edge_tts
 
     mp3 = out_wav.with_suffix(".edge.mp3")
-    asyncio.run(edge_tts.Communicate(text, config.EN_VOICE[len("edge:"):]).save(str(mp3)))
+    for attempt in range(1, 5):   # the endpoint sometimes answers "no audio" to a shared CI address: retry before giving up
+        try:
+            asyncio.run(edge_tts.Communicate(text, config.EN_VOICE[len("edge:"):]).save(str(mp3)))
+            break
+        except Exception as exc:  # noqa: BLE001
+            if attempt == 4:
+                raise
+            log.warning("edge-tts attempt %d failed (%s), retrying", attempt, type(exc).__name__)
+            time.sleep(2.0 * attempt)
     tempo = f"atempo={1.0 / length_scale:.4f}" if abs(length_scale - 1.0) > 0.01 else "anull"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af", tempo, "-ar", "22050", "-ac", "1",
                     str(out_wav)], check=True)
