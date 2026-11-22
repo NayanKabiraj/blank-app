@@ -40,7 +40,7 @@ def _store(video: Path, script, lang: str, thumb: Path | None = None) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true", help="render videos but do not upload")
-    ap.add_argument("--langs", default="en,hi", help="comma-separated: en,hi")
+    ap.add_argument("--langs", default=config.LANGS, help="comma-separated: en,hi (default: config.LANGS, English only)")
     ap.add_argument("--plan-file", required=True, help="the plan JSON written by the daily Claude task")
     ap.add_argument("--out", default="output", help="output directory")
     args = ap.parse_args()
@@ -56,7 +56,7 @@ def main() -> int:
         log.warning("Plan check: %s", problem)
     (out / "plan.json").write_text(plan.model_dump_json(indent=2), encoding="utf-8")
 
-    scripts = {"en": plan.english, "hi": plan.hindi}
+    scripts = {k: v for k, v in {"en": plan.english, "hi": plan.hindi}.items() if v is not None}
     results, failures = {}, []
     if not args.dry_run and upload.can_upload("en"):   # videos waiting from earlier runs go first
         langs0 = [l.strip() for l in args.langs.split(",") if l.strip()]

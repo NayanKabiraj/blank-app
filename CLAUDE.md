@@ -38,10 +38,13 @@ the workflow renders.
 
 10. **STRICT - Claude authors the animation of every video** (`generated_animations/AUTHORING.md`). The picture is not a template: for every Short and
    documentary Claude writes scene-specific motion animation code (orbits, signals travelling, water rising, graphs drawing as things move ...) in
-   an animation pack `generated_animations/scenes/<pack>/`, named in `animation_pack` of the plan (both languages). The generic graphic-kind cards
+   an animation pack `generated_animations/scenes/<pack>/`, named in `animation_pack` of the plan (each language in the plan). The generic graphic-kind cards
    (`kinds.py`) are only a fallback and the plan validator rejects a plan whose scenes are not all covered by shots. Videos must be dynamic, with a lot of motion.
    Scheduled daily runs follow this rule too: they write the pack, scan it, preview and inspect frames, commit it (rule 7) and only then start the workflow. Voices are strict: English = edge-tts `en-US-AndrewNeural`, Hindi =
    Piper `hi_IN-pratham-medium`; if a voice is unavailable the run fails, no other voice is ever mixed in.
+
+11. **English only for now** (owner instruction, 22 Nov 2026): videos are produced in English only. Plans have no `hindi` block, nothing is rendered or uploaded in Hindi
+   (`config.LANGS` / `VIDEO_LANGS`, default `en`; the workflow's `langs` input defaults to `en`). Hindi comes back by setting `VIDEO_LANGS=en,hi` and adding a `hindi` block.
 
 ## Quick commands
 

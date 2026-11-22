@@ -35,6 +35,8 @@ VOICES = {
 }
 # Picture engine: "generated" = the generated_animations (Manim) engine (default), "whiteboard" = the older
 # Node/Playwright whiteboard explainer. Voices are strict: English = edge Andrew, Hindi = Piper pratham, no fallback.
+# Languages produced by default. English only for now; set VIDEO_LANGS=en,hi to bring Hindi back (plans then need a `hindi` block).
+LANGS = os.getenv("VIDEO_LANGS", "en").strip()
 ENGINE = os.getenv("VIDEO_ENGINE", "generated").strip().lower()
 
 # English narration: Microsoft neural voice through edge-tts (free, no key; falls back to the Piper voice above if it is

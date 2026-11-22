@@ -124,7 +124,7 @@ def run_documentary(plan: DocPlan, langs: list[str], out: Path, dry_run: bool, k
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan-file", required=True)
-    ap.add_argument("--langs", default="en,hi")
+    ap.add_argument("--langs", default=config.LANGS)
     ap.add_argument("--documentary", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="render but do not upload")
     ap.add_argument("--validate-only", action="store_true")

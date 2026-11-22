@@ -98,7 +98,7 @@ class Plan(BaseModel):
     follow_ups: List[str] = Field(default_factory=list, description="Three follow-up video ideas that continue the cluster.")
     gate_score: int = Field(default=0, description="The /100 quality-gate score from the video-strategy skill (85+ strong, 75-84 improve, below 75 rework).")
     english: LangScript
-    hindi: LangScript
+    hindi: Optional[LangScript] = None   # English-only by default (config.LANGS); required when Hindi is produced
 
 
 def _scene_problems(sc: "Scene", where: str) -> list[str]:
@@ -131,13 +131,18 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
+def _present(plan):
+    """[(label, script)] for the languages this plan has (Hindi is optional)."""
+    return [(l, x) for l, x in (("english", plan.english), ("hindi", plan.hindi)) if x is not None]
+
+
 def _animation_problems(plan) -> list[str]:
     """Every video's picture is authored animation code (generated_animations packs), not template cards."""
     from . import config
     out = []
     if config.ENGINE != "generated":
         return out
-    for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
+    for lang, s in _present(plan):
         pack = (s.animation_pack or "").strip()
         if not pack:
             out.append(f"{lang}: animation_pack is empty - write the scene-specific animation (generated_animations/scenes/<id>/) for this video")
@@ -172,7 +177,7 @@ def _strategy_problems(plan) -> list[str]:
         out.append("cluster is missing: name the content cluster this video belongs to")
     if len(plan.follow_ups) < 3:
         out.append("follow_ups: list three follow-up video ideas that continue the cluster")
-    for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
+    for lang, s in _present(plan):
         if not s.next_video.strip():
             out.append(f"{lang}: next_video is missing (the close hands the viewer to the next video)")
         if "?" not in s.pinned_comment:
@@ -193,7 +198,7 @@ def _thumb_problems(lang: str, s) -> list[str]:
 def validate(plan: Plan) -> list[str]:
     """Extra checks beyond the schema. Returns a list of problems."""
     problems = _strategy_problems(plan)
-    for lang, s, (lo, hi) in (("english", plan.english, (100, 142)), ("hindi", plan.hindi, (85, 125))):
+    for lang, s, (lo, hi) in [(l, x, {"english": (100, 142), "hindi": (85, 125)}[l]) for l, x in _present(plan)]:
         words = sum(len(sc.text.split()) for sc in s.scenes)
         if not lo <= words <= hi:
             problems.append(f"{lang}: {words} narration words, expected {lo}-{hi} for 40-59s (the closing like/share/subscribe line is added automatically; do not write it)")
@@ -232,7 +237,7 @@ def validate(plan: Plan) -> list[str]:
     from .niches import NAMES
     if plan.niche not in NAMES:
         problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
-    if not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
+    if plan.hindi is not None and not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
         problems.append("hindi: narration is not in Devanagari script")
     return problems
 
@@ -277,7 +282,7 @@ class DocPlan(BaseModel):
     follow_ups: List[str] = Field(default_factory=list, description="Three follow-up video ideas that continue the cluster.")
     gate_score: int = Field(default=0, description="The /100 quality-gate score from the video-strategy skill (85+ strong, 75-84 improve, below 75 rework).")
     english: DocScript
-    hindi: DocScript
+    hindi: Optional[DocScript] = None
 
 
 def doc_seconds(s: DocScript, lang: str = "en") -> float:
@@ -293,7 +298,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
         problems.append(f"target_minutes {plan.target_minutes} is outside 5-15")
     if plan.target_minutes > 10:
         problems.append("target_minutes over 10: keep documentaries to 10 minutes or less (long runs risk the job limit, especially with the slow Parler voice)")
-    for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
+    for lang, s in _present(plan):
         secs = doc_seconds(s, "en" if lang == "english" else "hi")
         if not 270 <= secs <= 930:
             problems.append(f"{lang}: estimated {secs / 60:.1f} min, a documentary runs 5-15 minutes")
@@ -331,7 +336,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
     from .niches import NAMES
     if plan.niche not in NAMES:
         problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
-    if not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
+    if plan.hindi is not None and not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
         problems.append("hindi: narration is not in Devanagari script")
     return problems
 
@@ -351,7 +356,7 @@ def _cli() -> int:
             return 1
         problems = validate_doc(dplan)
         print("\n".join(problems) if problems else
-              f"OK: {dplan.niche} | {dplan.topic} | ~{doc_seconds(dplan.english, 'en') / 60:.1f} min EN, ~{doc_seconds(dplan.hindi, 'hi') / 60:.1f} min HI")
+              f"OK: {dplan.niche} | {dplan.topic} | ~{doc_seconds(dplan.english, 'en') / 60:.1f} min EN, ~{(doc_seconds(dplan.hindi, 'hi') / 60) if dplan.hindi else 0:.1f} min HI")
         return 1 if problems else 0
     if len(sys.argv) == 3 and sys.argv[1] == "validate":
         try:

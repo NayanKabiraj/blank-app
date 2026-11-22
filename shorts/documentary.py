@@ -41,7 +41,7 @@ def chapter_description(base: str, chapters: list[tuple[str, float]]) -> str:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan-file", required=True)
-    ap.add_argument("--langs", default="en,hi")
+    ap.add_argument("--langs", default=config.LANGS)
     ap.add_argument("--dry-run", action="store_true", help="render but do not upload")
     ap.add_argument("--keep-in-repo", action="store_true", help="copy the videos into videos/<date>/")
     ap.add_argument("--out", default="output_documentary")
@@ -57,7 +57,7 @@ def main() -> int:
         log.warning("Plan check: %s", problem)
     (out / "plan.json").write_text(plan.model_dump_json(indent=2), encoding="utf-8")
 
-    scripts = {"en": plan.english, "hi": plan.hindi}
+    scripts = {k: v for k, v in {"en": plan.english, "hi": plan.hindi}.items() if v is not None}
     today = dt.date.today().isoformat()
     if not args.dry_run and upload.can_upload("en"):   # videos waiting from earlier runs go first
         log.info("Queue: %s", pending.flush([x.strip() for x in args.langs.split(",") if x.strip()]))
