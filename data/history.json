@@ -624,5 +624,32 @@
         "video_id": "8-WYxQviYAw"
       }
     }
+  },
+  {
+    "date": "2026-11-22",
+    "niche": "How Tech Works",
+    "topic": "How does GPS know where you are?",
+    "mood": "upbeat",
+    "cluster": "Satellites & Navigation",
+    "follow_ups": [
+      "How does Google Maps know about traffic jams?",
+      "How do atomic clocks keep time?",
+      "Why does GPS need Einstein's relativity?"
+    ],
+    "next_video": "How does Google Maps know about traffic jams?",
+    "gate_score": 82,
+    "thumbnail_text": "Your phone only listens",
+    "videos": {
+      "en": {
+        "file": "2026-11-22_en.mp4",
+        "saved_to": "videos/2026-11-22/en.mp4",
+        "video_id": "vUuPXfpnTEg"
+      },
+      "hi": {
+        "file": "2026-11-22_hi.mp4",
+        "saved_to": "videos/2026-11-22/hi.mp4",
+        "video_id": "M9SEBDePGtI"
+      }
+    }
   }
 ]
