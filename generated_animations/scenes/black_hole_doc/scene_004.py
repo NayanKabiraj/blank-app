@@ -86,7 +86,13 @@ def animate(ctx):
     show(ctx, ctx.text(T["high"], 26, "#4CD97B", 3.0, "NORMAL").move_to(M + np.array([3.0, 1.2, 0.0])), t18 + 1.6, t_out=t19 - 0.2)
     # ---- scene 19: GPS satellite clocks are corrected
     E = C + np.array([1.2, -0.2, 0.0])
-    ctx.add(diagrams.earth(E, 1.05, tl), z=2)
+    class _Vis:
+        def __init__(self, f):
+            self.f = f
+
+        def get_value(self):
+            return max(0.001, self.f())
+    ctx.add(diagrams.earth(E, 1.05, tl, grow=_Vis(window(ctx, t19, None))), z=2)
     sat = lambda: E + np.array([2.4 * math.cos(0.7 * tl.t), 1.9 * math.sin(0.7 * tl.t), 0.0])
     sm = always_redraw(lambda: diagrams.satellite(sat(), 0.5).set_opacity(window(ctx, t19, None)()))
     sm._dynamic = True
