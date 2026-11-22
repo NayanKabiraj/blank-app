@@ -554,5 +554,75 @@
         "video_id": "BUD0PFocky4"
       }
     }
+  },
+  {
+    "date": "2026-11-22",
+    "niche": "Earth & Nature",
+    "topic": "How the Moon runs the tides",
+    "minutes": 5,
+    "cluster": "The Moon",
+    "follow_ups": [
+      "What if the Moon disappeared?",
+      "Why does the Moon always show the same face?",
+      "How do tides make electricity?"
+    ],
+    "next_video": "What if the Moon disappeared?",
+    "gate_score": 80,
+    "videos": {
+      "en": {
+        "file": "2026-11-22_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "The two-tide puzzle",
+            "start": 0.0
+          },
+          {
+            "title": "What the Moon really does",
+            "start": 39.0
+          },
+          {
+            "title": "A spinning Earth",
+            "start": 91.9
+          },
+          {
+            "title": "Enter the Sun",
+            "start": 136.3
+          },
+          {
+            "title": "Why it matters",
+            "start": 192.1
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-22_documentary_en",
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+      },
+      "hi": {
+        "file": "2026-11-22_documentary_hi.mp4",
+        "chapters": [
+          {
+            "title": "दो ज्वार की पहेली",
+            "start": 0.0
+          },
+          {
+            "title": "चाँद असल में क्या करता है",
+            "start": 43.8
+          },
+          {
+            "title": "घूमती धरती",
+            "start": 101.2
+          },
+          {
+            "title": "सूरज की एंट्री",
+            "start": 157.0
+          },
+          {
+            "title": "यह क्यों मायने रखता है",
+            "start": 215.3
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-22_documentary_hi",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]

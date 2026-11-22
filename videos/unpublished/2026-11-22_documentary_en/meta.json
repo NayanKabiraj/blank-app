@@ -1,0 +1,25 @@
+{
+ "lang": "en",
+ "short": false,
+ "date": "2026-11-22",
+ "topic": "How the Moon runs the tides",
+ "title": "Why Are There Two Tides a Day? How the Moon Moves the Ocean",
+ "description": "The Moon is on one side of the Earth, so why does the sea rise twice a day? A clear walk through tidal bulges, the fifty-minute delay, the Sun's part, spring and neap tides, and the biggest tide on Earth. #Tides #Moon #HowItWorks #Science #Ocean\n\nUp next: What if the Moon disappeared?\n\nChapters:\n0:00 The two-tide puzzle\n0:38 What the Moon really does\n1:31 A spinning Earth\n2:16 Enter the Sun\n3:12 Why it matters\n",
+ "tags": [
+  "why two tides a day",
+  "how tides work",
+  "moon and tides",
+  "spring tide neap tide",
+  "Bay of Fundy tides",
+  "tidal bulge",
+  "science explained",
+  "ocean science",
+  "moon gravity",
+  "documentary"
+ ],
+ "privacy": "private",
+ "synthetic": null,
+ "attempts": 0,
+ "queued_at": "2026-11-22T11:40:20+00:00",
+ "last_error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
+}
