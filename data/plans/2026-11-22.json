@@ -1,59 +1,59 @@
 {
-  "niche": "How Tech Works",
-  "topic": "How does GPS know where you are?",
-  "research_summary": "Candidates: (1) How does GPS know where you are? 35/40 (everyday, huge curiosity gap, clean visual mechanism, not yet covered), (2) Why does a phone get warm while charging? 31, (3) How does a QR code store data? 30. Winner: GPS; sat in the 'How Tech Works' niche that the channel has barely used, and the follow-up 'Google Maps traffic' continues the cluster. Titles considered (/50): 'How Does GPS Know Where You Are? (Your Phone Never Calls)' 43 (chosen); 'Your Phone Never Calls Anyone, Yet It Finds You' 41; 'GPS Is Just A Stopwatch' 39; 'How Satellites Find You In 0.07 Seconds' 38; 'What Your Phone Hears From Space' 37; 'GPS Without Internet?' 36; 'The Clock That Finds You' 35; 'How GPS Really Works' 33; 'Why GPS Needs Four Satellites' 34; 'The Maths Behind The Blue Dot' 37. Thumbnails: A a phone with a glowing dot and three circles crossing (chosen, 'YOUR PHONE ONLY LISTENS'), B a satellite shouting at a tiny phone, C a stopwatch over a map pin. Hooks: 'Your phone knows exactly where you are, and it never says a word' (chosen); 'Your phone never calls a satellite, yet it finds you'; 'A stopwatch finds you anywhere on Earth'; 'GPS satellites do not know you exist'; 'You are being located by a clock'. FACTS (status): GPS satellites orbit in medium Earth orbit at about 20,200 km and circle twice a day - VERIFIED (gps.gov Space Segment); about thirty operational satellites (31 on the gps.gov page, stated as 'about thirty') - VERIFIED; a receiver needs at least four satellites for a fix: three for position and one to solve its own clock error - VERIFIED (standard GPS description, gps.gov / NASA); the phone only receives and never transmits to the satellites - VERIFIED (GPS is a passive one-way system). Signal travel time about 0.067 s = 20,200 km / 299,792 km/s, own arithmetic for a satellite straight overhead - COMPUTED, labelled as computed on screen. The 2D circle picture is a simplification of 3D trilateration with spheres - PARTIALLY VERIFIED, said as 'circles'. Sources: https://archive.gps.gov/systems/gps/space/ , https://www.nasa.gov/directorates/somd/space-communications-navigation-program/gps/ . Competitor/vidIQ data: NOT PUBLICLY VERIFIABLE (not queried). Risks: oversimplifying 3D to circles (mitigated by the quiz line about the fourth satellite). Quality gate 82/100: topic 9, curiosity 9, title 8, thumbnail 8, opening 9, story 7, visual 9, emotion 6, retention 9, series 8 - improve the emotional close, then proceed.",
-  "mood": "upbeat",
-  "cluster": "Satellites & Navigation",
+  "niche": "Space & Universe",
+  "topic": "What if the Moon disappeared?",
+  "research_summary": "Candidates: (1) What if the Moon disappeared? 34/40 (curiosity gap, personal stakes, ties to the tides documentary that promised it as the next video, strong visuals), (2) What if Earth stopped spinning? 33 (made as a Short on 18 Nov), (3) What if you fell into a black hole? 33 (used for today's documentary). Winner: the Moon; continues the 'The Moon' cluster (supermoon Short, tides documentary) and is the exact 'next video' the tides documentary asks the viewer to watch. Titles considered (/50): 'What If the Moon Disappeared Tomorrow?' 44 (chosen); 'If the Moon Vanished, Would You Notice?' 40; 'Earth Without the Moon' 36; 'The Moon Is Gone: Tides, Night, Tilt' 38; 'What Your Life Looks Like With No Moon' 39; 'The Night The Moon Disappeared' 37; 'Could Earth Survive Without the Moon?' 41; 'No Moon, No Tides?' 38; 'What the Moon Quietly Does For You' 40; 'Moonless Earth Explained' 34. Thumbnails: A Earth with an empty orbit and a ghost Moon outline, text NO MOON? (chosen); B a dark landscape night with no Moon and many stars; C a tilted Earth wobbling. Hooks: 'Tomorrow night the Moon is gone. The tides shrink to a fraction.' (chosen); 'The Moon quietly does three jobs for you. Remove it and all three fail.'; 'You would see the difference within hours.'; 'The sea would calm down tomorrow.'; 'Nights would get truly dark.' FACTS (status): the Moon's tidal effect is more than twice the Sun's, so without the Moon the remaining Sun tide is much smaller - VERIFIED (NOAA education: Sun's pull ~178x the Moon's, but the Moon's tidal pull is over twice the Sun's because it is much closer); NASA's Jim Green says tides would be 'radically reduced' without the Moon - VERIFIED (NASA, Your Moon Questions Answered); a full Moon is roughly 25-150 times brighter than a clear moonless sky - COMPUTED from published illuminance values (full Moon about 0.05-0.32 lux, clear moonless sky with airglow about 0.002 lux; sources differ and some publications cite wrong full-Moon values) - PARTIALLY VERIFIED, stated as 'dozens of times' and '25 to 150 x'; the Moon's gravity helps stabilise Earth's axial tilt / climate - VERIFIED as NASA's statement (Top Moon Questions) but PARTIALLY VERIFIED as science: a NASA-hosted moonless-Earth model finds the tilt varies more but stays within a constrained range over 100,000 years, so the script says 'could wander over a very long time' and 'Scientists think'; the Moon does not hold us on Earth, Earth's gravity does - VERIFIED (basic gravity). Sources: https://oceanservice.noaa.gov/education/tutorial_tides/tides07_cycles.html , https://science.nasa.gov/moon/top-moon-questions/ , https://www.nasa.gov/podcasts/gravity-assist/gravity-assist-podcast-your-moon-questions-answered/ , https://ntrs.nasa.gov/citations/20140011208 , https://en.wikipedia.org/wiki/Orders_of_magnitude_(illuminance) . Competitor/vidIQ data: NOT PUBLICLY VERIFIABLE (not queried). Risks: overstating the tilt effect (hedged on screen and in narration), illuminance ratio (range given). Quality gate 83/100: topic 9, curiosity 9, title 8, thumbnail 8, opening 9, story 8, visual 9, emotion 7, retention 8, series 8 - improve the emotional close, then proceed.",
+  "mood": "mysterious",
+  "cluster": "The Moon",
   "follow_ups": [
-    "How does Google Maps know about traffic jams?",
-    "How do atomic clocks keep time?",
-    "Why does GPS need Einstein's relativity?"
+    "What if Earth suddenly stopped spinning?",
+    "Why does the Moon always show the same face?",
+    "How do tides make electricity?"
   ],
-  "gate_score": 82,
+  "gate_score": 83,
   "english": {
-    "title": "How Does GPS Know Where You Are? (Your Phone Never Calls)",
-    "description": "Your phone finds you without sending a single signal. Here is the stopwatch-and-geometry trick behind GPS, in under a minute. #Shorts #GPS #HowItWorks #Science #Technology",
+    "title": "What If the Moon Disappeared Tomorrow?",
+    "description": "Tomorrow night the Moon is gone. What happens to the tides, the night sky and Earth's tilt? A one-minute answer, with what scientists are sure about and what they are not. #Shorts #WhatIf #Moon #Space #Science",
     "tags": [
-      "how does GPS work",
-      "GPS explained",
-      "satellites",
-      "trilateration",
-      "how phones know location",
-      "atomic clock",
+      "what if the moon disappeared",
+      "no moon",
+      "moon gravity",
+      "tides without the moon",
+      "earth tilt moon",
+      "what if",
+      "space explained",
       "science explained",
-      "tech explained",
       "shorts"
     ],
-    "hook_text": "It never says a word",
-    "thumbnail_text": "Your phone only listens",
-    "next_video": "How does Google Maps know about traffic jams?",
-    "pinned_comment": "Could you find your way across your city for a whole day with no GPS? Yes or no?",
+    "hook_text": "No Moon, no big tides",
+    "thumbnail_text": "NO MOON?",
+    "next_video": "What if Earth suddenly stopped spinning?",
+    "pinned_comment": "If the Moon vanished tomorrow, which would you miss first: the moonlit nights or the ocean tides?",
     "scenes": [
       {
-        "text": "Your phone knows exactly where you are, and it never says a word.",
-        "keyword": "never says a word",
+        "text": "Tomorrow night the Moon is gone. The tides shrink to a fraction.",
+        "keyword": "gone",
         "graphic": {
           "kind": "title",
-          "headline": "It never calls out",
+          "headline": "The Moon vanishes",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "planet"
         }
       },
       {
-        "text": "Weird, right? So how does it know? Let's ask.",
-        "keyword": "know",
+        "text": "Weird, right? So what else changes? Let's find out.",
+        "keyword": "else changes",
         "graphic": {
           "kind": "chat",
           "headline": "Quick chat",
           "caption": "",
           "items": [
-            "How does GPS find me?",
-            "Satellites broadcast the time",
-            "The time? Not a map?",
-            "Time turns into distance"
+            "What if the Moon vanished?",
+            "The tides drop a lot",
+            "Only the tides?",
+            "The night gets darker too"
           ],
           "values": [],
           "answer": null,
@@ -61,47 +61,31 @@
         }
       },
       {
-        "text": "About thirty satellites circle twenty thousand kilometres up. Each keeps shouting its clock time. Your phone just listens.",
-        "keyword": "listens",
+        "text": "First, the sea. The Moon makes more than half of our tide. Without it, only the Sun's gentle tide is left.",
+        "keyword": "gentle tide",
         "graphic": {
-          "kind": "flow",
-          "headline": "The shout",
+          "kind": "compare",
+          "headline": "Tide strength",
           "caption": "",
           "items": [
-            "Satellite clock",
-            "Signal flies down",
-            "Phone listens"
+            "Moon's tide",
+            "Sun's tide"
           ],
-          "values": [],
+          "values": [
+            2.0,
+            1.0
+          ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Here's the trick. Light is fast, but not instant. A late signal means a far satellite.",
-        "keyword": "late signal",
-        "graphic": {
-          "kind": "steps",
-          "headline": "Delay equals distance",
-          "caption": "",
-          "items": [
-            "Satellite sends",
-            "Signal flies",
-            "Phone notes arrival",
-            "Delay = distance"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Guess how long the signal takes from space? About sixty-seven milliseconds. Faster than a blink.",
-        "keyword": "sixty-seven milliseconds",
+        "text": "Now the night. A full Moon is dozens of times brighter than a moonless sky. Nights would turn truly dark.",
+        "keyword": "truly dark",
         "graphic": {
           "kind": "stat",
-          "headline": "0.067 s",
-          "caption": "Straight overhead, computed",
+          "headline": "25 to 150 x",
+          "caption": "full Moon vs moonless sky",
           "items": [],
           "values": [],
           "answer": null,
@@ -109,192 +93,70 @@
         }
       },
       {
-        "text": "One distance puts you on a circle. A second narrows it down. A third crosses at a single point. That's you.",
-        "keyword": "single point",
+        "text": "Then the wobble. Scientists think the Moon's gravity helps keep Earth's tilt steady. Without it, the tilt could wander over a very long time.",
+        "keyword": "tilt steady",
         "graphic": {
-          "kind": "keyword",
-          "headline": "Three circles, one spot",
-          "caption": "Trilateration",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "globe"
-        }
-      },
-      {
-        "text": "Quick quiz: how many satellites does your phone really need? Three for position, plus one to fix its clock.",
-        "keyword": "plus one",
-        "graphic": {
-          "kind": "quiz",
-          "headline": "Satellites needed for a fix?",
+          "kind": "flow",
+          "headline": "The steady tilt",
           "caption": "",
           "items": [
-            "Two",
-            "Three",
-            "Four"
+            "Moon's gravity",
+            "Steady tilt",
+            "Steady seasons"
           ],
           "values": [],
-          "answer": 2,
+          "answer": null,
           "prop": null
         }
       },
       {
-        "text": "So GPS is a stopwatch and some geometry. Which app do you use GPS in the most? Tell me below!",
-        "keyword": "stopwatch",
+        "text": "Would we float off? No. The Moon doesn't hold you down. Earth's gravity does.",
+        "keyword": "Earth's gravity",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Gravity",
+          "caption": "",
+          "items": [
+            "The Moon holds us down",
+            "Earth's gravity does"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Quick quiz: what changes first? The tides and the night, right away. The tilt takes ages.",
+        "keyword": "right away",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "What changes first?",
+          "caption": "",
+          "items": [
+            "The tilt",
+            "Tides and night",
+            "The seasons"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "So no Moon means weaker tides, darker nights and a wobblier future. Would you miss it? Tell me below!",
+        "keyword": "darker nights",
         "graphic": {
           "kind": "title",
-          "headline": "A stopwatch and geometry",
+          "headline": "Would you miss it?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "clock"
+          "prop": "heart"
         }
       }
     ],
-    "animation_pack": "gps_short"
+    "animation_pack": "moon_gone_short"
   },
-  "hindi": {
-    "title": "GPS को कैसे पता चलता है आप कहाँ हैं? (फ़ोन कभी बोलता नहीं)",
-    "description": "आपका फ़ोन बिना एक भी सिग्नल भेजे आपको ढूँढ लेता है। एक मिनट से कम में जानिए GPS के पीछे की स्टॉपवॉच और ज्यामिति की चाल। #Shorts #GPS #विज्ञान #टेक्नोलॉजी",
-    "tags": [
-      "GPS कैसे काम करता है",
-      "GPS समझाया",
-      "सैटेलाइट",
-      "लोकेशन कैसे पता चलती है",
-      "परमाणु घड़ी",
-      "विज्ञान",
-      "टेक्नोलॉजी",
-      "shorts"
-    ],
-    "hook_text": "वो कुछ बोलता नहीं",
-    "thumbnail_text": "फ़ोन सिर्फ़ सुनता है",
-    "next_video": "गूगल मैप्स को ट्रैफ़िक जाम कैसे पता चलता है?",
-    "pinned_comment": "क्या आप एक पूरे दिन बिना GPS के अपने शहर में रास्ता ढूँढ पाएँगे? हाँ या नहीं?",
-    "scenes": [
-      {
-        "text": "आपका फ़ोन जानता है आप कहाँ हैं, और वो एक शब्द भी नहीं बोलता।",
-        "keyword": "एक शब्द भी",
-        "graphic": {
-          "kind": "title",
-          "headline": "वो कुछ बोलता नहीं",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "phone"
-        }
-      },
-      {
-        "text": "अजीब है ना? तो पता कैसे चलता है?",
-        "keyword": "पता कैसे",
-        "graphic": {
-          "kind": "chat",
-          "headline": "छोटी सी बातचीत",
-          "caption": "",
-          "items": [
-            "GPS मुझे कैसे ढूँढता है?",
-            "सैटेलाइट समय बताते हैं",
-            "समय? नक्शा नहीं?",
-            "समय बनता है दूरी"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "लगभग तीस सैटेलाइट घूमते हैं, हर एक अपनी घड़ी का समय बताता है। फ़ोन बस सुनता है।",
-        "keyword": "सुनता है",
-        "graphic": {
-          "kind": "flow",
-          "headline": "वो पुकार",
-          "caption": "",
-          "items": [
-            "सैटेलाइट की घड़ी",
-            "सिग्नल नीचे आता",
-            "फ़ोन सुनता है"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "असली चाल: रोशनी तेज़ है, पर तुरंत नहीं पहुँचती। देर से आया सिग्नल, यानी दूर सैटेलाइट।",
-        "keyword": "देर से आया सिग्नल",
-        "graphic": {
-          "kind": "steps",
-          "headline": "देरी मतलब दूरी",
-          "caption": "",
-          "items": [
-            "सैटेलाइट भेजता है",
-            "सिग्नल उड़ता है",
-            "फ़ोन समय देखता है",
-            "देरी = दूरी"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "अंदाज़ा लगाइए, सिग्नल कितनी देर में आता है? लगभग सड़सठ मिलीसेकंड, पलक झपकने से भी तेज़।",
-        "keyword": "सड़सठ मिलीसेकंड",
-        "graphic": {
-          "kind": "stat",
-          "headline": "0.067 सेकंड",
-          "caption": "ठीक ऊपर से, गणना से",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "एक दूरी आपको एक घेरे पर रखती है। तीन घेरे एक बिंदु पर मिलते हैं। वही आप हैं।",
-        "keyword": "एक बिंदु पर",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "तीन घेरे, एक जगह",
-          "caption": "त्रिपार्श्वीकरण",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "globe"
-        }
-      },
-      {
-        "text": "छोटा क्विज़: फ़ोन को कितने सैटेलाइट चाहिए? तीन जगह के लिए, एक घड़ी के लिए।",
-        "keyword": "घड़ी के लिए",
-        "graphic": {
-          "kind": "quiz",
-          "headline": "फ़िक्स के लिए कितने सैटेलाइट?",
-          "caption": "",
-          "items": [
-            "दो",
-            "तीन",
-            "चार"
-          ],
-          "values": [],
-          "answer": 2,
-          "prop": null
-        }
-      },
-      {
-        "text": "तो GPS स्टॉपवॉच और ज्यामिति है। आप इसे किस ऐप में सबसे ज़्यादा चलाते हैं? कमेंट में बताइए!",
-        "keyword": "स्टॉपवॉच",
-        "graphic": {
-          "kind": "title",
-          "headline": "स्टॉपवॉच और ज्यामिति",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "clock"
-        }
-      }
-    ],
-    "animation_pack": "gps_short"
-  }
+  "hindi": null
 }
