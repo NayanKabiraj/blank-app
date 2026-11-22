@@ -1,79 +1,101 @@
-"""The presenter Pip is the owner's own picture (assets/pip_base.png). This module animates it: lip-sync mouth shapes and eye blinks are
-drawn over the picture (same art style: flat fills, dark-red lips), the rest (nodding, tilting, leaning toward what he points at) is
-done by moving the whole picture. `Face.frame(mouth, blink, tilt, ...)` returns an RGBA numpy array."""
+"""The presenter Pip is the owner's own picture (assets/pip_base.png, transparent backdrop). This module animates it: lip-sync mouth
+shapes and eye blinks are painted over the picture, the rest (nodding, tilting, leaning toward what he points at) is done by moving the
+whole picture. Coordinates below are pixels of the ORIGINAL picture (assets/pip_source.jpg); P() maps them into the cut-out.
+`Face.frame(mouth, blink)` returns an RGBA numpy array."""
 from __future__ import annotations
 
+import json
 from functools import lru_cache
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 
-BASE = Path(__file__).parent / "assets" / "pip_base.png"
-SS = 4                                   # supersampling for the painted shapes
-MOUTH_C, MOUTH_HALF, MOUTH_Y0, SAG = 291.0, 78.0, 516.0, 17.0     # the picture's own smile: ends at y 516, sags to 533 in the middle
-H_OPEN = [0, 6, 12, 19, 26, 33, 40]      # mouth heights for the lip-sync levels
-W_OPEN = [1.0, 0.98, 0.92, 0.86, 0.80, 0.74, 0.70]
+ASSETS = Path(__file__).parent / "assets"
+BASE = ASSETS / "pip_base.png"
+SS = 3                                                   # supersampling for the painted shapes
+H_OPEN = [0, 10, 20, 32, 44, 56, 68]                     # mouth opening (source px) for the lip-sync levels
+W_OPEN = [1.0, 0.99, 0.96, 0.92, 0.88, 0.84, 0.8]
 LEVELS = len(H_OPEN)
-EYES = {"L": (198, 400, 42, 33), "R": (373, 395, 42, 33)}        # centre x, y, half width, half height of the eye whites
-
-
-def _curve(x):
-    u = (x - MOUTH_C) / MOUTH_HALF
-    return MOUTH_Y0 + SAG * (1 - u * u)
+# the picture's smile: the underside of the upper lip (x, y), left corner -> right corner
+LIP = [(440, 966), (480, 978), (530, 984), (580, 982), (630, 972), (680, 958), (708, 948)]
+EYES = {"L": (418, 717, 62, 30), "R": (703, 718, 62, 30)}  # eye centre x, y and half width, half height (source px)
 
 
 class Face:
     def __init__(self):
+        meta = json.loads((ASSETS / "pip_meta.json").read_text())
+        self.ox, self.oy, self.k = meta["ox"], meta["oy"], meta["scale"]
         self.base = Image.open(BASE).convert("RGBA")
         self.size = self.base.size
         self.mouths = [self._mouth(i) for i in range(1, LEVELS)]
         self.lids = {side: [self._lid(side, f) for f in (0.55, 1.0)] for side in EYES}
 
-    # -- overlays ----------------------------------------------------------------------
+    def P(self, x, y):
+        return ((x - self.ox) * self.k * SS, (y - self.oy) * self.k * SS)
+
     def _layer(self):
         return Image.new("RGBA", (self.size[0] * SS, self.size[1] * SS), (0, 0, 0, 0))
 
-    def _finish(self, layer):
-        return layer.resize(self.size, Image.LANCZOS)
+    def _finish(self, layer, blur=0.0):
+        out = layer.resize(self.size, Image.LANCZOS)
+        return out.filter(ImageFilter.GaussianBlur(blur)) if blur else out
+
+    @staticmethod
+    def _curve(pts, n=40):
+        xs = np.array([p[0] for p in pts], float)
+        ys = np.array([p[1] for p in pts], float)
+        gx = np.linspace(xs[0], xs[-1], n)
+        return gx, np.interp(gx, xs, ys)
 
     def _mouth(self, i: int):
         h, wf = H_OPEN[i], W_OPEN[i]
+        gx, gy = self._curve(LIP)
+        mid = (gx[0] + gx[-1]) / 2
+        half = (gx[-1] - gx[0]) / 2
+        keep = np.abs(gx - mid) <= half * wf
+        gx, gy = gx[keep], gy[keep]
+        u = (gx - mid) / (half * wf)
+        depth = h * np.clip(1 - u * u, 0, 1) ** 0.6
         im = self._layer()
         d = ImageDraw.Draw(im)
-        xs = np.linspace(MOUTH_C - MOUTH_HALF * wf, MOUTH_C + MOUTH_HALF * wf, 60)
-        top = [(x * SS, (_curve(x) - 4) * SS) for x in xs]
-        bot = [(x * SS, (_curve(x) + h * max(0.0, 1 - ((x - MOUTH_C) / (MOUTH_HALF * wf)) ** 2) ** 0.7) * SS) for x in xs[::-1]]
-        poly = top + bot
-        d.polygon(poly, fill=(78, 22, 34, 255))
-        if h >= 12:                                                   # upper teeth
-            th = min(9.0, h * 0.42)
-            tt = [(x * SS, (_curve(x) - 1) * SS) for x in xs[6:-6]]
-            tb = [(x * SS, (_curve(x) - 1 + th * max(0.0, 1 - ((x - MOUTH_C) / (MOUTH_HALF * wf)) ** 2) ** 0.5) * SS) for x in xs[6:-6][::-1]]
-            d.polygon(tt + tb, fill=(250, 246, 240, 255))
-        if h >= 26:                                                   # tongue
-            cx, cy = MOUTH_C, _curve(MOUTH_C) + h * 0.78
-            d.ellipse(((cx - 28) * SS, (cy - 9) * SS, (cx + 28) * SS, (cy + 6) * SS), fill=(205, 92, 104, 255))
-        d.line(top, fill=(176, 40, 66, 255), width=int(3.2 * SS), joint="curve")        # the red lip line stays on top
-        return self._finish(im)
+        lip_col = (196, 118, 96, 255)                                         # the picture's lower-lip colour
+        # lower lip: a band under the cavity (repaints chin skin/beard a little lower)
+        band = [self.P(x, y + dd - 2) for x, y, dd in zip(gx, gy, depth)] + [self.P(x, y + dd + 30 + 0.2 * h) for x, y, dd in zip(gx[::-1], gy[::-1], depth[::-1])]
+        d.polygon(band, fill=lip_col)
+        # cavity
+        cav = [self.P(x, y - 1) for x, y in zip(gx, gy)] + [self.P(x, y + dd) for x, y, dd in zip(gx[::-1], gy[::-1], depth[::-1])]
+        d.polygon(cav, fill=(58, 20, 22, 255))
+        if h >= 10:                                                           # upper teeth
+            th = min(15.0, 6 + h * 0.18)
+            t = [self.P(x, y - 1) for x, y in list(zip(gx, gy))[3:-3]] + [self.P(x, y + th * np.clip(1 - uu * uu, 0, 1) ** 0.4)
+                                                                         for x, y, uu in list(zip(gx, gy, u))[3:-3][::-1]]
+            d.polygon(t, fill=(246, 244, 240, 255))
+        if h >= 34:                                                           # tongue
+            cx = mid + 8
+            cy = float(np.interp(cx, gx, gy)) + h * 0.8
+            x0, y0 = self.P(cx - 46, cy - 14)
+            x1, y1 = self.P(cx + 46, cy + 10)
+            d.ellipse((x0, y0, x1, y1), fill=(196, 96, 98, 255))
+        return self._finish(im, 0.6)
 
-    def _skin(self, side):
-        cx, cy, _, _ = EYES[side]
+    def _sample(self, sx, sy):
         px = np.asarray(self.base)
-        return tuple(int(v) for v in px[cy + 44, cx, :3])               # lens colour just below the eye
+        x, y = int((sx - self.ox) * self.k), int((sy - self.oy) * self.k)
+        return tuple(int(v) for v in px[y - 1:y + 2, x - 1:x + 2, :3].reshape(-1, 3).mean(0))
 
     def _lid(self, side, frac):
         cx, cy, ew, eh = EYES[side]
         im = self._layer()
         d = ImageDraw.Draw(im)
-        col = self._skin(side) + (255,)
-        top = cy - eh - 6
-        bottom = top + (2 * eh + 12) * frac
-        d.ellipse(((cx - ew - 6) * SS, top * SS, (cx + ew + 6) * SS, bottom * SS), fill=col)
-        d.arc(((cx - ew) * SS, (bottom - 30) * SS, (cx + ew) * SS, (bottom + 6) * SS), 20, 160, fill=(40, 28, 28, 255), width=int(4 * SS))
-        return self._finish(im)
+        col = self._sample(cx, cy + 42) + (255,)                              # skin just under the eye
+        top = cy - eh - 4
+        bottom = top + (2 * eh + 10) * frac
+        d.ellipse((*self.P(cx - ew, top), *self.P(cx + ew, bottom)), fill=col)
+        a, b = self.P(cx - ew + 6, bottom - 22), self.P(cx + ew - 6, bottom + 8)
+        d.arc((*a, *b), 15, 165, fill=(38, 26, 24, 255), width=int(3.5 * SS))
+        return self._finish(im, 2.2)
 
-    # -- a frame -----------------------------------------------------------------------
     def frame(self, mouth: float = 0.0, blink: float = 0.0) -> np.ndarray:
         """mouth 0..1 (0 = the picture's own closed smile), blink 0..1 (1 = shut)."""
         im = self.base.copy()
