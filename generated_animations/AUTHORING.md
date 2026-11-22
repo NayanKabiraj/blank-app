@@ -30,5 +30,5 @@ picture and may direct the presenter (look, point, gesture, expression).
 2. `python -m generated_animations scan <pack>` (safety scan: allow-listed imports, no shell/network/file/secret access).
 3. Render a low-res preview and LOOK at the frames (contact sheet): `SHORTS_FAKE_TTS=1 GA_PIXEL_SCALE=0.4` with `shorts.compose.build(...)`;
    fix overlaps, clipping, dead moments (a held picture longer than ~4 s needs motion), unreadable text; re-render.
-4. The pack is code: it goes into the repository through a branch and pull request like any other change (CLAUDE.md rule 7). Scenes without a shot fall back to
-   generic cards, which is a fallback only, not acceptable for production.
+4. Interactive sessions put a pack into the repository through a branch and pull request. Scheduled daily runs commit their new pack folder (only that folder) straight to
+   `main` before dispatching the workflow (CLAUDE.md rule 7, owner-authorised). Scenes without a shot fall back to generic cards, which is a fallback only, not acceptable for production.
