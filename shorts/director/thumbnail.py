@@ -282,6 +282,13 @@ def for_manifest(m: dict, lang: str, out_jpg: Path) -> Path | None:
 
 
 def for_script(script, niche: str, lang: str, out_jpg: Path, short: bool) -> Path | None:
+    from .. import config
+    if config.ENGINE == "generated":      # question + the presenter's face (shorts/thumb_avatar.py); falls back to the 3D thumbnail
+        try:
+            from .. import thumb_avatar
+            return thumb_avatar.for_script(script, niche, lang, out_jpg, short)
+        except Exception as exc:  # noqa: BLE001
+            log.warning("avatar thumbnail failed (%s); using the 3D thumbnail", exc)
     return render(spec_from_script(script, niche, lang), out_jpg, "short" if short else "long")
 
 

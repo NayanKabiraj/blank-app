@@ -79,6 +79,8 @@ class LangScript(BaseModel):
     hook_text: str = Field(description="On-screen hook shown in the first 3 seconds, max 6 words.")
     thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
                                 "(not a copy of the title). Empty = the hook text is used.")
+    thumbnail_question: str = Field(default="", description="The question shown BIG on the thumbnail next to the presenter's face: 3-8 words, "
+                                    "ends with '?', about the topic (e.g. 'What if the Moon vanished?'). Not a copy of the title.")
     next_video: str = Field(default="", description="The next video's title or question: the close hands the viewer on, and the "
                             "description gets an 'Up next' line.")
     pinned_comment: str = Field(default="", description="One viewer decision tied to the central dilemma, to pin as the first "
@@ -209,6 +211,11 @@ def _thumb_problems(lang: str, s) -> list[str]:
         out.append(f"{lang}: thumbnail_text {t!r} is too long, write one short sentence (at most 8 words, 46 characters)")
     if t and t.lower().strip("?!. ") == s.title.lower().strip("?!. "):
         out.append(f"{lang}: thumbnail_text repeats the title; the thumbnail should show the consequence, the title the premise")
+    q = (getattr(s, "thumbnail_question", "") or "").strip()
+    if not q:
+        out.append(f"{lang}: thumbnail_question is empty - write the question shown big next to the presenter's face (3-8 words, ends with '?')")
+    elif not q.endswith("?") or not 2 <= len(q.split()) <= 8:
+        out.append(f"{lang}: thumbnail_question {q!r} must be 2-8 words and end with '?'")
     return out
 
 
@@ -279,6 +286,7 @@ class DocScript(BaseModel):
     tags: List[str] = Field(description="8-15 search tags.")
     thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
                                 "(not a copy of the title). Empty = the first words of the title are used.")
+    thumbnail_question: str = Field(default="", description="The question shown BIG on the thumbnail next to the presenter's face: 3-8 words, ends with '?'.")
     next_video: str = Field(default="", description="The next video's title or question; the description gets an 'Up next' line.")
     pinned_comment: str = Field(default="", description="One viewer decision tied to the central dilemma, to pin as the first comment.")
     chapters: List[Chapter] = Field(description="3-12 chapters in order; chapter 1 is the cold open.")
