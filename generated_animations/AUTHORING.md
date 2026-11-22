@@ -32,3 +32,8 @@ picture and may direct the presenter (look, point, gesture, expression).
    fix overlaps, clipping, dead moments (a held picture longer than ~4 s needs motion), unreadable text; re-render.
 4. Interactive sessions put a pack into the repository through a branch and pull request. Scheduled daily runs commit their new pack folder (only that folder) straight to
    `main` before dispatching the workflow (CLAUDE.md rule 7, owner-authorised). Scenes without a shot fall back to generic cards, which is a fallback only, not acceptable for production.
+
+## The intro scene (every video)
+Plan scene 2 (index 1) is the intro: right after the hook the narrator says what the video covers and what the viewer will get
+("In this video you'll see ..."). Give it its own shot: a visual roadmap - the 2-3 promised things appear as icons/mini-diagrams in step with each
+mention (`ctx.tt(1, k)`), the presenter points at each in turn, then the picture hands over to the first real scene.

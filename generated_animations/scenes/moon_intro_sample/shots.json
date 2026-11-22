@@ -1,0 +1,10 @@
+{"topic": "What if the Moon disappeared?",
+ "shots": [
+  {"module": "scene_001", "scenes": [0, 1]},
+  {"module": "scene_002", "scenes": [2]},
+  {"module": "scene_003", "scenes": [3]},
+  {"module": "scene_004", "scenes": [4]},
+  {"module": "scene_005", "scenes": [5]},
+  {"module": "scene_006", "scenes": [6]},
+  {"module": "scene_007", "scenes": [7]}
+ ]}
