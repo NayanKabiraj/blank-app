@@ -52,7 +52,7 @@ class Sparkle(VGroup):
         self.timeline, self.life, self.speed = timeline, life, speed
         self.angles = rng.uniform(0, 2 * np.pi, n)
         self.speeds = rng.uniform(0.5, 1.0, n) * speed
-        self.t0 = timeline.t
+        self.t0 = -1e9          # hidden until restart() is called
         self.dots = [Dot(center, radius=0.05, color=color) for _ in range(n)]
         self.add(*self.dots)
         self.add_updater(lambda m: m._tick())
