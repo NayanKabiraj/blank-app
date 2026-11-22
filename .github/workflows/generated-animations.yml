@@ -1,0 +1,56 @@
+name: Generated animations (Mode B render)
+
+# Manual only. Renders a topic from generated_animations/scenes/<topic> with the repo's Piper voice and
+# synthesized music, and uploads the mp4 as a workflow artifact. Never uploads to YouTube.
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: Topic id under generated_animations/scenes/
+        default: gps_how_it_works
+      allow_unapproved:
+        description: Render code that has not been approved yet (demo / Mode A review)
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      VOICES_DIR: ${{ github.workspace }}/.cache/voices
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: shorts/requirements.txt
+      - name: System packages
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg fonts-noto-core libcairo2-dev libpango1.0-dev pkg-config python3-dev
+      - name: Cache Piper voices
+        uses: actions/cache@v4
+        with:
+          path: .cache/voices
+          key: piper-en_US-ryan-high
+      - run: pip install -r shorts/requirements.txt "manim==0.22.1" pytest
+      - name: Tests
+        run: python -m pytest tests/generated_animations -q
+      - name: Safety scan
+        run: python -m generated_animations scan "${{ inputs.topic }}"
+      - name: Render (Piper voice required - no fallback)
+        run: |
+          FLAG=""
+          if [ "${{ inputs.allow_unapproved }}" = "true" ]; then FLAG="--no-approval"; fi
+          python -m generated_animations render "${{ inputs.topic }}" --voice piper --out output_generated $FLAG
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.topic }}
+          path: |
+            output_generated/${{ inputs.topic }}.mp4
+            output_generated/render_report.json
