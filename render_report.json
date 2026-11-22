@@ -1,0 +1,49 @@
+{
+  "topic_id": "gps_how_it_works",
+  "title": "How does GPS work?",
+  "resolution": [
+    720,
+    1280
+  ],
+  "fps": 24,
+  "scenes": [
+    {
+      "scene": 1,
+      "planned": 6.25,
+      "overrun": 0.0
+    },
+    {
+      "scene": 2,
+      "planned": 8.291666666666666,
+      "overrun": 0.0
+    },
+    {
+      "scene": 3,
+      "planned": 10.916666666666666,
+      "overrun": 0.0
+    },
+    {
+      "scene": 4,
+      "planned": 10.0,
+      "overrun": 0.0
+    },
+    {
+      "scene": 5,
+      "planned": 11.208333333333334,
+      "overrun": 0.0
+    }
+  ],
+  "durations": [
+    6.25,
+    8.291666666666666,
+    10.916666666666666,
+    10.0,
+    11.208333333333334
+  ],
+  "total_seconds": 46.666666666666664,
+  "narration_provider": [
+    "edge:en-US-AndrewNeural"
+  ],
+  "music": "synthesized-numpy (shorts.music)",
+  "final": "/home/runner/work/blank-app/blank-app/output_generated/gps_how_it_works.mp4"
+}
