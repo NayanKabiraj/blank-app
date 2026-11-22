@@ -9,6 +9,7 @@ import logging
 import shutil
 from pathlib import Path
 
+from . import packs
 from .layout import LANDSCAPE, VERTICAL
 
 log = logging.getLogger("generated_animations")
@@ -28,7 +29,8 @@ def boundaries(timeline, total: float):
     return edges
 
 
-def render_picture(scenes, timeline, total: float, lang: str, work: Path, voice_wav: Path, landscape: bool) -> Path:
+def render_picture(scenes, timeline, total: float, lang: str, work: Path, voice_wav: Path, landscape: bool,
+                   pack: str = "") -> Path:
     from manim import config as mc
 
     from . import audio
@@ -49,7 +51,10 @@ def render_picture(scenes, timeline, total: float, lang: str, work: Path, voice_
     mc.verbosity = "WARNING"
     mc.progress_bar = "none"
     mc.write_to_movie = True
-    scene = PlanScene(plan_scenes, boundaries(timeline, total), timeline, layout, lang, narration=narration)
+    shots = packs.load(pack) if pack else []
+    if not shots:
+        log.warning("no animation pack for this video: falling back to the generic graphic kinds")
+    scene = PlanScene(plan_scenes, boundaries(timeline, total), timeline, layout, lang, narration=narration, shots=shots)
     scene.render()
     out = work / "video.mp4"
     shutil.copy(scene.renderer.file_writer.movie_file_path, out)
@@ -74,7 +79,7 @@ def build(script, lang: str, mood: str, work: Path, niche: str = "") -> Path:
     script = outro.with_outro(script, lang)
     voice, timeline, voice_end = compose._voice_track(script.scenes, lang, work, window=(config.MIN_DURATION, config.MAX_DURATION))
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
-    render_picture(script.scenes, timeline, total, lang, work, voice, landscape=False)
+    render_picture(script.scenes, timeline, total, lang, work, voice, landscape=False, pack=getattr(script, "animation_pack", ""))
     out = work / f"short_{lang}.mp4"
     compose._mix(work, voice, total, mood, out)
     return out
@@ -93,7 +98,7 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "")
         n += len(ch.scenes)
     voice, timeline, voice_end = compose._voice_track(scenes, lang, work, chapter_starts=frozenset(starts), style="documentary")
     total = voice_end + 3.0
-    render_picture(scenes, timeline, total, lang, work, voice, landscape=True)
+    render_picture(scenes, timeline, total, lang, work, voice, landscape=True, pack=getattr(script, "animation_pack", ""))
     out = work / f"documentary_{lang}.mp4"
     compose._mix(work, voice, total, mood, out, lufs=-16, music_volume=0.22)
     return out, [(title, 0.0 if i == 0 else timeline[i][0]) for i, title in sorted(starts.items())]

@@ -92,13 +92,13 @@ class SceneContext:
         self.scene.play(*anims, **kw)
 
     # narration-synced beats -----------------------------------------------------------------
-    def sentences(self):
+    def sentences(self, text=None, t0=None, span=None):
         """[(text, start_in_scene, end_in_scene)] - narration split at sentence ends, timed by character share."""
         import re
-        parts = [p for p in re.split(r"(?<=[.!?])\s+", self.config["narration"].strip()) if p]
+        parts = [p for p in re.split(r"(?<=[.!?\u0964])\s+", (text or self.config["narration"]).strip()) if p]
         total = sum(len(p) for p in parts)
-        t = self.config.get("pad_before", 0.45)
-        span = self.config.get("narration_seconds", self.duration - 1.0)
+        t = t0 if t0 is not None else self.config.get("pad_before", 0.45)
+        span = span if span is not None else self.config.get("narration_seconds", self.duration - 1.0)
         out = []
         for p in parts:
             d = span * len(p) / total
@@ -113,6 +113,32 @@ class SceneContext:
         if show_caption:
             self.caption(text)
         return text, start, end
+
+    # shots (an authored animation that spans several narration scenes) ------------------------------
+    @property
+    def stage(self):
+        """(centre, width, height) of the free area of the screen for this layout."""
+        import numpy as np
+        L = self.layout
+        return np.array([L.stage_center[0], L.stage_center[1], 0.0]), L.stage_w, L.stage_h
+
+    def t_of(self, i: int) -> float:
+        """Seconds (from the shot's start) at which narration scene i of this shot begins."""
+        return self.config["subs"][i]["start"]
+
+    def tt(self, i: int, k: int = 0) -> float:
+        """Start time (seconds from the shot's start) of sentence k of narration scene i (clamped to the last sentence)."""
+        sub = self.config["subs"][i]
+        times = [t for _s, t, _e in self.sentences(sub["text"], sub["start"], sub["end"] - sub["start"])]
+        return times[min(k, len(times) - 1)]
+
+    def until(self, t: float):
+        """Hold until `t` seconds into the shot."""
+        self.hold(t - self.elapsed())
+
+    def text(self, s, size=34, color="#F5F7FA", width=None, weight="BOLD"):
+        size = size * (1.3 if self.layout is not None and self.layout.landscape else 1.0)
+        return typography.text(str(s), size, color, weight, width or (self.layout.stage_w * 0.9), self.lang)
 
     # layers -------------------------------------------------------------------------------
     def add(self, *mobs, z: int = 0):

@@ -384,17 +384,18 @@ def render(ctx, scene: dict):
     ctx.play(*anims, run_time=0.5)
 
 
-def caption_track(ctx, text: str):
+def caption_track(ctx, text: str, t0=None, span=None, last_of_scene: bool = True, hide_at=None):
     """The narration as caption pills, one sentence at a time, timed by each sentence's share of the speech."""
     L = ctx.layout
-    ctx.config = {**ctx.config, "narration": text}
-    sents = ctx.sentences()
+    sents = ctx.sentences(text, t0, span)
     for k, (s, t0, t1) in enumerate(sents):
         pill = typography.caption_pill(s, max_width=L.caption_w, chars=L.caption_chars, size=L.caption_size, lang=ctx.lang)
         pill.move_to((L.caption_x, L.caption_y, 0))
-        show(ctx, pill, t0, dur=0.2, pop=0, z=11, fade_out=(k == len(sents) - 1) and not ctx.is_last)
+        show(ctx, pill, t0, dur=0.2, pop=0, z=11, fade_out=(k == len(sents) - 1) and last_of_scene and not ctx.is_last)
         if k + 1 < len(sents):   # hand over to the next sentence
             _expire(ctx, pill, sents[k + 1][1])
+        elif hide_at is not None:   # last sentence of a scene inside a longer shot: hide when the next scene's caption starts
+            _expire(ctx, pill, hide_at)
 
 
 def _expire(ctx, pill, t_end):
