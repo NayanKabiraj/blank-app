@@ -1,6 +1,7 @@
 """Background music.
 
-If you drop royalty-free tracks into assets/music/ (optionally in a sub-folder named after
+Default: an original track synthesized with numpy ("classic" style, mood "inspiring") - no downloaded audio, so it cannot be a copyrighted
+recording. (Old text, only used with MUSIC_LIBRARY=on:) If you drop royalty-free tracks into assets/music/ (optionally in a sub-folder named after
 the mood, e.g. assets/music/calm/), one is picked at random. Otherwise an original
 copyright-free track is synthesized on the fly with numpy, so Content ID never flags it.
 """
@@ -31,6 +32,10 @@ MAJOR, MINOR = [0, 2, 4, 5, 7, 9, 11], [0, 2, 3, 5, 7, 8, 10]
 
 
 def pick_track(mood: str) -> Path | None:
+    """Third-party tracks from assets/music/ are IGNORED unless MUSIC_LIBRARY=on, so by default every video's music is the
+    original code-generated track below (no samples, no recordings, no downloaded audio: nothing for Content ID to match)."""
+    if os.getenv("MUSIC_LIBRARY", "off").strip().lower() != "on":
+        return None
     for folder in (config.MUSIC_DIR / mood, config.MUSIC_DIR):
         if folder.is_dir():
             tracks = [p for p in folder.iterdir() if p.suffix.lower() in AUDIO_EXT]
@@ -133,8 +138,12 @@ def synthesize_ambient(mood: str, duration: float, out_wav: Path) -> Path:
 
 
 def synthesize(mood: str, duration: float, out_wav: Path) -> Path:
-    """The background track. MUSIC_STYLE=ambient (default: warm pads, no plucks) or classic (the older pad + plucked arpeggio)."""
-    if os.getenv("MUSIC_STYLE", "ambient").strip().lower() != "classic":
+    """The background track, always generated in code. MUSIC_MOOD (default "inspiring") is used for every video; set MUSIC_MOOD=plan to
+    follow each plan's own mood. MUSIC_STYLE=classic (default: the pad + plucked-arpeggio + light drums track) or ambient (warm pads only)."""
+    chosen = os.getenv("MUSIC_MOOD", "inspiring").strip().lower()
+    if chosen != "plan":
+        mood = chosen if chosen in MOODS else "inspiring"
+    if os.getenv("MUSIC_STYLE", "classic").strip().lower() == "ambient":
         return synthesize_ambient(mood, duration, out_wav)
     return synthesize_classic(mood, duration, out_wav)
 

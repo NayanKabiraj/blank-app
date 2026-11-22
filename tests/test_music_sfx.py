@@ -30,3 +30,21 @@ def test_ambient_music_is_warm_and_not_clipped(tmp_path):
 def test_style_switch(monkeypatch, tmp_path):
     monkeypatch.setenv("MUSIC_STYLE", "classic")
     assert music.synthesize("calm", 3, tmp_path / "c.wav").exists()
+
+
+def test_default_music_is_classic_inspiring_and_ignores_library(monkeypatch, tmp_path):
+    monkeypatch.delenv("MUSIC_STYLE", raising=False)
+    monkeypatch.delenv("MUSIC_MOOD", raising=False)
+    monkeypatch.delenv("MUSIC_LIBRARY", raising=False)
+    lib = tmp_path / "lib"
+    lib.mkdir()
+    (lib / "song.mp3").write_bytes(b"x" * 10)
+    monkeypatch.setattr(music.config, "MUSIC_DIR", lib)
+    assert music.pick_track("calm") is None                      # third-party files are never picked by default
+    monkeypatch.setenv("MUSIC_LIBRARY", "on")
+    assert music.pick_track("calm") is not None
+    seen = {}
+    monkeypatch.delenv("MUSIC_LIBRARY")
+    monkeypatch.setattr(music, "synthesize_classic", lambda mood, d, o: seen.setdefault("m", mood) and o)
+    music.synthesize("mysterious", 3, tmp_path / "x.wav")
+    assert seen["m"] == "inspiring"
