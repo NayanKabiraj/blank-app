@@ -87,7 +87,7 @@ def _mix(work: Path, voice: Path, total: float, mood: str, out: Path, *, lufs: i
     else:
         music_in = ["-i", music.synthesize(mood, total, work / "music.wav")]
 
-    # Sound effects on the animation's cues (pops on reveals, a bell on each keyword)
+    # Sound effects on the animation's cues (soft pops on reveals; no bell)
     if sfx_wav is None and config.SFX:   # the director pipeline passes its own cue track
         sfx_wav = sfx.build(work / "timeline.json", total, work / "sfx.wav")
     elif not config.SFX:

@@ -50,7 +50,7 @@ FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
 # --- Visuals ---
 # Every Short is an animated explainer drawn by code (shorts/explainer/). Code-synthesized sound
-# effects (pop and bell) on the animation cues: on unless SFX=off
+# effects (soft pops, no bell) on the animation cues: on unless SFX=off
 SFX = os.getenv("SFX", "on").strip().lower() != "off"
 
 # --- YouTube upload ---
