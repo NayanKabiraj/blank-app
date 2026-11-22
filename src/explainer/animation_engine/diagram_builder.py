@@ -139,16 +139,25 @@ def reveal_time(scene: Scene) -> float:
 MOTION_STEPS = 8
 
 
+STAGGER = 0.06   # each later element starts a little after the one before (overlapping action)
+
+
+def _smoothstep(f: float) -> float:
+    """Ease-in-out: motion starts and ends gently instead of at constant speed (linear looks robotic)."""
+    f = min(1.0, max(0.0, f))
+    return f * f * (3 - 2 * f)
+
+
 def _sample_keyframes(elem: SceneElement, u: float):
-    """Position/scale/opacity of an element at fraction u (0..1) of the scene, linearly
-    interpolated between its authored keyframes."""
+    """Position/scale/opacity of an element at fraction u (0..1) of the scene, eased between its
+    authored keyframes."""
     frames = elem.keyframes
     if u <= frames[0].t:
         k = frames[0]
         return k.x, k.y, k.scale, k.opacity
     for a, b in zip(frames, frames[1:]):
         if a.t <= u <= b.t:
-            f = 0.0 if b.t == a.t else (u - a.t) / (b.t - a.t)
+            f = _smoothstep(0.0 if b.t == a.t else (u - a.t) / (b.t - a.t))
             lerp = lambda p, q: p + (q - p) * f   # noqa: E731
             return lerp(a.x, b.x), lerp(a.y, b.y), lerp(a.scale, b.scale), lerp(a.opacity, b.opacity)
     k = frames[-1]
@@ -159,7 +168,7 @@ def motion_plays(mobjects: List[Tuple[Mobject, SceneElement]], scene_seconds: fl
     """Returns the Manim plays that move every element with keyframes through its path. Steps are
     shared across elements and played together, so the whole motion takes exactly `budget`
     seconds regardless of how many elements or keyframes a scene has."""
-    moving = [(m, e) for m, e in mobjects if e.keyframes]
+    moving = [(i, m, e) for i, (m, e) in enumerate(mobjects) if e.keyframes]
     if not moving:
         return []
     per_step = scene_seconds / MOTION_STEPS
@@ -167,8 +176,8 @@ def motion_plays(mobjects: List[Tuple[Mobject, SceneElement]], scene_seconds: fl
     for step in range(1, MOTION_STEPS + 1):
         u = step / MOTION_STEPS
         anims = []
-        for mobj, elem in moving:
-            x, y, scale, opacity = _sample_keyframes(elem, u)
+        for i, mobj, elem in moving:
+            x, y, scale, opacity = _sample_keyframes(elem, min(1.0, u - i * STAGGER))
             target = mobj.copy().move_to(_frame_point(x, y)).scale(scale).set_opacity(opacity)
             anims.append(mobj.animate.become(target))
         plays.append((anims, per_step))
@@ -182,7 +191,10 @@ def animate_in(manim_scene, mobject: Mobject, elem: SceneElement) -> None:
     elif elem.animation == "draw_from_start":
         manim_scene.play(GrowArrow(mobject) if isinstance(mobject, Arrow) else Create(mobject), run_time=rt)
     elif elem.animation == "pop_in":
-        manim_scene.play(Write(mobject) if isinstance(mobject, Text) else FadeIn(mobject, scale=1.2), run_time=rt)
+        from manim.utils.rate_functions import ease_out_back
+
+        manim_scene.play(Write(mobject) if isinstance(mobject, Text) else FadeIn(mobject, scale=1.2),
+                         run_time=rt, rate_func=ease_out_back)
     elif elem.animation == "slide_in":
         manim_scene.play(FadeIn(mobject, shift=UP * 0.4), run_time=rt)
     else:   # fade_in
