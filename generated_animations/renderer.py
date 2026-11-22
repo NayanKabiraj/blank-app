@@ -37,7 +37,7 @@ class GeneratedScene(MovingCameraScene):
         self.add(sky, vig)
 
         level = (lambda t: self.narration.level(t)) if self.narration else None
-        self.avatar = Avatar(self.rig, self.timeline, mouth_level=level, position=(-2.5, -5.55), scale=0.8)
+        self.avatar = Avatar(self.rig, self.timeline, mouth_level=level, position=(-2.6, -7.85), scale=0.92)
         self.avatar.set_z_index(12)
         self.add(self.avatar)
 

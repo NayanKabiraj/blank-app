@@ -15,7 +15,7 @@ def move_to(avatar, x: float, y: float, scale: float | None = None, run_time: fl
 
 def move_aside(avatar, frame_w: float, frame_h: float, run_time: float = 0.7):
     """Shrink into the bottom corner so a full-screen illustration owns the frame."""
-    return move_to(avatar, -frame_w * 0.34, -frame_h * 0.40, 0.55, run_time)
+    return move_to(avatar, -frame_w * 0.34, -frame_h * 0.49, 0.6, run_time)
 
 
 def hop(avatar, height: float = 0.5, run_time: float = 0.5):
