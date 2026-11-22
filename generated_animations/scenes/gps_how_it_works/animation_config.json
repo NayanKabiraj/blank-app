@@ -1,0 +1,25 @@
+{
+  "topic_id": "gps_how_it_works",
+  "title": "How does GPS work?",
+  "language": "en",
+  "mood": "inspiring",
+  "resolution": [720, 1280],
+  "fps": 24,
+  "scenes": [
+    {"module": "scene_001", "min_seconds": 6.0,
+     "narration": "Your phone knows exactly where you are. Yet it never sends a single signal to ask."},
+    {"module": "scene_002", "min_seconds": 7.0,
+     "narration": "Overhead, about thirty satellites circle the Earth, each one broadcasting the time, over and over."},
+    {"module": "scene_003", "min_seconds": 10.0,
+     "narration": "Your phone listens. It measures how long each signal took to arrive. Light is fast, but not instant, so a longer delay means a farther satellite."},
+    {"module": "scene_004", "min_seconds": 10.0,
+     "narration": "One distance puts you somewhere on a circle. A second narrows it down. A third crosses at a single point. That is where you are."},
+    {"module": "scene_005", "min_seconds": 9.0,
+     "narration": "So GPS is really a stopwatch and some geometry. A fourth satellite even corrects your phone's clock. And your phone only listens. It never sends a thing."}
+  ],
+  "research": {
+    "status": "VERIFIED (orbit facts) / PARTIALLY VERIFIED (simplified 2D trilateration)",
+    "sources": ["https://archive.gps.gov/systems/gps/space/", "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/gps/"],
+    "notes": "MEO ~20,200 km, 2 orbits/day, >=4 satellites visible, ~31 operational (gps.gov). Signal ~67 ms at nadir is own arithmetic (20,200 km / c), not shown on screen. Orbit sizes and ring delays are illustrative, not to scale."
+  }
+}
