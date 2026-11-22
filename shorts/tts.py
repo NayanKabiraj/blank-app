@@ -10,6 +10,7 @@ import hashlib
 import logging
 import math
 import os
+import shutil
 import struct
 import subprocess
 import time
@@ -88,16 +89,26 @@ def _edge(text: str, out_wav: Path, length_scale: float) -> float:
     import edge_tts
 
     mp3 = out_wav.with_suffix(".edge.mp3")
-    attempts = 8
-    for attempt in range(1, attempts + 1):   # the endpoint sometimes answers "no audio" to a shared CI address: retry
-        try:
-            asyncio.run(edge_tts.Communicate(text, config.EN_VOICE[len("edge:"):]).save(str(mp3)))
-            break
-        except Exception as exc:  # noqa: BLE001
-            if attempt == attempts:
-                raise
-            log.warning("edge-tts attempt %d failed (%s), retrying", attempt, type(exc).__name__)
-            time.sleep(min(30.0, 3.0 * attempt))
+    # every synthesized line is cached (by voice + text), so a retried run only synthesizes what is still missing
+    cache = config.ROOT / ".cache" / "edge"
+    cache.mkdir(parents=True, exist_ok=True)
+    key = hashlib.sha1(f"{config.EN_VOICE}|{text}".encode("utf-8")).hexdigest()
+    cached = cache / f"{key}.mp3"
+    if cached.exists() and cached.stat().st_size > 1000:
+        shutil.copyfile(cached, mp3)
+    else:
+        attempts = 14
+        for attempt in range(1, attempts + 1):   # the endpoint sometimes answers "no audio" to a shared CI address: retry, patiently
+            try:
+                asyncio.run(edge_tts.Communicate(text, config.EN_VOICE[len("edge:"):]).save(str(mp3)))
+                break
+            except Exception as exc:  # noqa: BLE001
+                if attempt == attempts:
+                    raise
+                log.warning("edge-tts attempt %d failed (%s), retrying", attempt, type(exc).__name__)
+                time.sleep(min(60.0, 5.0 * attempt))
+        shutil.copyfile(mp3, cached)
+        time.sleep(0.6)    # be polite to the endpoint between lines
     tempo = f"atempo={1.0 / length_scale:.4f}" if abs(length_scale - 1.0) > 0.01 else "anull"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af", tempo, "-ar", "22050", "-ac", "1",
                     str(out_wav)], check=True)
