@@ -24,7 +24,9 @@ the workflow renders.
 5. **Reuse the repository**: search before building; do not rebuild a working pipeline, duplicate a component or touch unrelated files. Never say
    something works unless it was actually tested.
 6. **Uploads stay private** unless the owner changes `YT_PRIVACY`. Videos YouTube refuses wait in `videos/unpublished/` and upload first next time.
-7. Scheduled tasks commit nothing; interactive work goes on a branch and a pull request.
+7. Scheduled tasks commit nothing, with ONE exception the owner explicitly authorised (22 Nov 2026): each run commits that day's animation pack (rule 10) - only the new folder
+   `generated_animations/scenes/<pack>/`, never edits to existing packs or other code - straight to `main` before dispatching the workflow, because the workflow
+   renders from `main`. Interactive work goes on a branch and a pull request.
 
 8. **Every video ends with the closing line** "Thanks for watching the video! Please like, share and subscribe to watch more interesting
    videos like this." (Hindi equivalent in `shorts/outro.py`). It is added automatically to every Short, documentary, stock-footage and
@@ -38,7 +40,7 @@ the workflow renders.
    documentary Claude writes scene-specific motion animation code (orbits, signals travelling, water rising, graphs drawing as things move ...) in
    an animation pack `generated_animations/scenes/<pack>/`, named in `animation_pack` of the plan (both languages). The generic graphic-kind cards
    (`kinds.py`) are only a fallback and the plan validator rejects a plan whose scenes are not all covered by shots. Videos must be dynamic, with a lot of motion.
-   The animation is previewed (frames inspected) before the workflow is started. Voices are strict: English = edge-tts `en-US-AndrewNeural`, Hindi =
+   Scheduled daily runs follow this rule too: they write the pack, scan it, preview and inspect frames, commit it (rule 7) and only then start the workflow. Voices are strict: English = edge-tts `en-US-AndrewNeural`, Hindi =
    Piper `hi_IN-pratham-medium`; if a voice is unavailable the run fails, no other voice is ever mixed in.
 
 ## Quick commands
