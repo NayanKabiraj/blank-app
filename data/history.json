@@ -518,5 +518,82 @@
         "video_id": "3QJ7mIV0OhM"
       }
     }
+  },
+  {
+    "date": "2026-11-22",
+    "niche": "Human Body",
+    "topic": "Why do heart cells beating in a dish start beating together?",
+    "mood": "mysterious",
+    "cluster": "Hidden Patterns",
+    "follow_ups": [
+      "Why do schools of fish swim and turn as one shimmering shape?",
+      "Why do fireflies flash in sync with no conductor?",
+      "Why do pendulum clocks on the same wall slowly sync their swing?"
+    ],
+    "next_video": "Why do schools of fish swim and turn as one shimmering shape?",
+    "gate_score": 79,
+    "engine": "cinematic",
+    "videos": {
+      "en": {
+        "file": "2026-11-22_en.mp4",
+        "engine": "cinematic",
+        "saved_to": "videos/2026-11-22/en.mp4",
+        "report": {
+          "topic": "Why do heart cells beating in a dish start beating together?",
+          "language": "en",
+          "layout": "portrait",
+          "engine": "cinematic",
+          "duration": 45.0,
+          "resolution": "1080x1920",
+          "fps": 30.0,
+          "has_audio": true,
+          "render_seconds": 174.3,
+          "video": {
+            "ok": true,
+            "errors": [],
+            "warnings": []
+          },
+          "subtitles": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "cues": 27
+          },
+          "ok": true,
+          "output": "output_cinematic/2026-11-22_en.mp4"
+        },
+        "contact_sheet": "output_cinematic/2026-11-22_en_contact-sheet.jpg"
+      },
+      "hi": {
+        "file": "2026-11-22_hi.mp4",
+        "engine": "cinematic",
+        "saved_to": "videos/2026-11-22/hi.mp4",
+        "report": {
+          "topic": "Why do heart cells beating in a dish start beating together?",
+          "language": "hi",
+          "layout": "portrait",
+          "engine": "cinematic",
+          "duration": 54.466667,
+          "resolution": "1080x1920",
+          "fps": 30.0,
+          "has_audio": true,
+          "render_seconds": 194.8,
+          "video": {
+            "ok": true,
+            "errors": [],
+            "warnings": []
+          },
+          "subtitles": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "cues": 29
+          },
+          "ok": true,
+          "output": "output_cinematic/2026-11-22_hi.mp4"
+        },
+        "contact_sheet": "output_cinematic/2026-11-22_hi_contact-sheet.jpg"
+      }
+    }
   }
 ]

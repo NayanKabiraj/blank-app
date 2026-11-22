@@ -1,0 +1,265 @@
+{
+  "niche": "Human Body",
+  "topic": "Why do heart cells beating in a dish start beating together?",
+  "research_summary": "Candidates (scored /40, 22 Nov 2026 - catching up after the daily task missed 21 and 22 Nov due to a session interruption; running one cycle for today only): (1) Why do heart cells beating in a dish start beating together? (Human Body; Hidden Patterns cluster) 33 - curiosity5 universality4 timeliness3 search4 surprise5 visual4 shareability5 verifiability3 (chosen: explicitly promised as next_video from the Tacoma Narrows Short, continuing the Hidden Patterns cluster, Human Body niche not cooling down); (2) Why do schools of fish swim and turn as one shimmering shape? (Earth & Nature) 29 - kept as follow-up; (3) Why do fireflies flash in sync with no conductor? (Earth & Nature) 30 - kept as follow-up; (4) Why do pendulum clocks on the same wall slowly sync their swing? (Science Explained) 27 - kept as follow-up. Research (web search, each fact checked against multiple sources): an isolated single heart muscle cell in a dish keeps beating completely on its own, with no nerve or brain signal required, each at its own private rate, VERIFIED (long-established in cardiac cell biology; classic chick-embryo cardiac-cell studies, Clapham 1980 and Scott 1979, among others); when two or more such cells are placed in contact, they fall into a single shared rhythm within moments, VERIFIED (same classic aggregate studies; a coupling-clamp study on sinoatrial node cells found calculations (Noble, in DeHaan 1982) showing a gap-junction conductance of about 100 picosiemens is enough for two differently-paced cells to synchronize); the classic textbook explanation is that gap junctions (tiny direct channels between touching cell membranes) let an electrical signal pass straight through, VERIFIED as the standard explanation, but PARTIALLY VERIFIED as the *whole* story: a 2017 review (RSC) notes the role of gap junctions in cardiac cell coupling 'has been seriously questioned', proposing alternative mechanisms including ephaptic coupling; a Technion study found cardiac cells can be synchronized purely by mechanical vibration of their growth substrate, with no direct contact or shared electrical circuit at all, VERIFIED; a 2021 Scientific Reports study on cardiomyocyte clusters found their synchronized timing did not simply match that of the fastest individual cell, complicating the simple 'fastest cell wins' picture, VERIFIED as a real published finding, treated here as an open question rather than a settled answer; in a real, intact heart, the sinoatrial node is the region that beats fastest naturally, and the rest of the heart's cells (each independently capable of their own rhythm) follow its faster pace instead (the textbook 'overdrive suppression' mechanism), VERIFIED as the standard physiology explanation. Titles (/50): 'Why Do Separate Heart Cells Suddenly Beat as One?' 41 (chosen); 'A Single Heart Cell Beats Alone - Until It Isn't Alone' 38; 'How Heart Cells Agree on One Rhythm' 36; 'The Hidden Vote Every Heartbeat Takes' 34; 'Your Heart Is Secretly a Crowd That Agreed to Beat Together' 37. Thumbnails: A two glowing cell-like circles pulsing out of sync, a third joining and snapping into rhythm (chosen, headline 'THEY SYNC UP INSTANTLY'); B a single pulsing cell isolated in a dark dish; C a heart silhouette made of tiny glowing dots. Hooks: 'Pull one heart cell out and put it alone in a dish - it keeps beating, on its own private rhythm.' (chosen); 'Two heart cells, two different rhythms. Put them side by side and watch what happens.'; 'Your heart isn't one clock. It's millions of tiny clocks that agreed to sync.'. Quality gate /100: topic 8, curiosity 9, title 8, thumbnail 8, opening 8, story 8, visual 7, emotional 7, retention 8, series 8 = 79, proceed (improve opportunity: visual/emotional components are solid but not exceptional; proceeding since this is an already-promised series continuation and the facts are strongly verifiable).",
+  "mood": "mysterious",
+  "cluster": "Hidden Patterns",
+  "follow_ups": [
+    "Why do schools of fish swim and turn as one shimmering shape?",
+    "Why do fireflies flash in sync with no conductor?",
+    "Why do pendulum clocks on the same wall slowly sync their swing?"
+  ],
+  "gate_score": 79,
+  "english": {
+    "title": "Why Do Separate Heart Cells Suddenly Beat as One?",
+    "description": "Pull one heart cell out and put it alone in a dish - it keeps beating, on its own private rhythm. Put a second one next to it and something strange happens. #Shorts #Biology #HumanBody #Science #Heart",
+    "tags": [
+      "heart cells beating",
+      "cardiomyocytes",
+      "gap junctions",
+      "heart synchronization",
+      "human body facts",
+      "biology explained",
+      "sinoatrial node",
+      "pacemaker cells",
+      "cell biology",
+      "heart rhythm science",
+      "emergent synchronization",
+      "human heart facts"
+    ],
+    "hook_text": "It Beats Alone",
+    "thumbnail_text": "THEY SYNC UP INSTANTLY",
+    "next_video": "Why do schools of fish swim and turn as one shimmering shape?",
+    "pinned_comment": "If every single heart cell can keep its own beat, what do you think actually decides which rhythm wins?",
+    "scenes": [
+      {
+        "text": "Pull a heart cell out, alone in a dish. It still beats. Why?",
+        "keyword": "still beats",
+        "graphic": {
+          "kind": "title",
+          "headline": "IT BEATS ALONE",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Every single heart muscle cell can generate its own heartbeat completely by itself, no nerve or brain signal needed.",
+        "keyword": "no nerve or brain signal",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "NO NERVE NEEDED",
+          "caption": "each cell times itself",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Put two differently-timed heart cells side by side, and within moments they lock into exactly the same rhythm.",
+        "keyword": "lock into exactly the same rhythm",
+        "graphic": {
+          "kind": "steps",
+          "headline": "HOW THEY SYNC",
+          "caption": "",
+          "items": [
+            "Cells touch",
+            "Tiny channels open",
+            "Signal passes through",
+            "Both beat as one"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So is it just these tiny channels doing all the work? Not quite.",
+        "keyword": "tiny channels",
+        "graphic": {
+          "kind": "myth",
+          "headline": "IS THAT THE WHOLE STORY?",
+          "caption": "",
+          "items": [
+            "Only the channels",
+            "Something more"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Some researchers have synced heart cells using nothing but tiny mechanical vibrations, no physical contact at all.",
+        "keyword": "mechanical vibrations",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "SYNCED BY VIBRATION",
+          "caption": "no contact needed",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Inside your real heart, one region beats naturally faster than every other cell, and the rest simply follow its pace.",
+        "keyword": "beats naturally faster",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "YOUR HEART'S PACEMAKER",
+          "caption": "sets the pace for all",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "If every single cell in your heart can keep its own beat, what do you think actually decides which rhythm wins?",
+        "keyword": "decides which rhythm wins",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "WHO SETS THE RHYTHM?",
+          "caption": "",
+          "items": [
+            "The fastest single cell",
+            "Something more complex"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      }
+    ]
+  },
+  "hindi": {
+    "title": "अलग-अलग दिल की कोशिकाएं अचानक एक साथ क्यों धड़कने लगती हैं?",
+    "description": "एक दिल की कोशिका निकालो और उसे अकेला एक डिश में रखो, वह अपनी ही धुन में धड़कती रहती है। अब उसके बगल में एक और रखो, और कुछ अजीब होता है। #Shorts #Biology #HumanBody #Science #Heart",
+    "tags": [
+      "heart cells beating",
+      "cardiomyocytes",
+      "gap junctions",
+      "heart synchronization",
+      "human body facts",
+      "biology explained",
+      "sinoatrial node",
+      "pacemaker cells",
+      "cell biology",
+      "heart rhythm science",
+      "emergent synchronization",
+      "human heart facts"
+    ],
+    "hook_text": "यह अकेली धड़कती है",
+    "thumbnail_text": "तुरंत एक लय में आ जाती हैं",
+    "next_video": "मछलियों के झुंड एक चमकते आकार में साथ क्यों मुड़ते हैं?",
+    "pinned_comment": "अगर दिल की हर कोशिका अपनी ही धड़कन रख सकती है, तो तुम्हें क्या लगता है आखिर किसकी लय जीतती है?",
+    "scenes": [
+      {
+        "text": "एक दिल की कोशिका निकालो, अकेली डिश में। वह फिर भी धड़कती है। क्यों?",
+        "keyword": "फिर भी धड़कती है",
+        "graphic": {
+          "kind": "title",
+          "headline": "यह अकेली धड़कती है",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "दिल की हर एक मांसपेशी कोशिका खुद अपनी धड़कन बना सकती है, बिना किसी नस या दिमाग के संकेत के।",
+        "keyword": "बिना किसी नस या दिमाग के संकेत",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "नस की ज़रूरत नहीं",
+          "caption": "हर कोशिका खुद समय तय करती है",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "दो अलग-अलग गति वाली दिल की कोशिकाओं को पास रखो, और कुछ ही पलों में दोनों बिल्कुल एक ही लय में आ जाती हैं।",
+        "keyword": "बिल्कुल एक ही लय में आ जाती हैं",
+        "graphic": {
+          "kind": "steps",
+          "headline": "कैसे जुड़ती हैं",
+          "caption": "",
+          "items": [
+            "कोशिकाएं छूती हैं",
+            "छोटे रास्ते खुलते हैं",
+            "संकेत पार जाता है",
+            "दोनों एक साथ धड़कती हैं"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो क्या यह सिर्फ इन छोटे रास्तों का काम है? बिल्कुल नहीं।",
+        "keyword": "छोटे रास्तों",
+        "graphic": {
+          "kind": "myth",
+          "headline": "क्या यही पूरी कहानी है?",
+          "caption": "",
+          "items": [
+            "सिर्फ ये रास्ते",
+            "कुछ और भी है"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "कुछ शोधकर्ताओं ने दिल की कोशिकाओं को सिर्फ हल्के यांत्रिक कंपन से जोड़ दिया, बिना किसी सीधे संपर्क के।",
+        "keyword": "यांत्रिक कंपन",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "कंपन से जुड़ीं",
+          "caption": "संपर्क की ज़रूरत नहीं",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तुम्हारे असली दिल में, एक हिस्सा बाकी सबसे स्वाभाविक रूप से तेज़ धड़कता है, और बाकी कोशिकाएं बस उसी की रफ़्तार अपना लेती हैं।",
+        "keyword": "स्वाभाविक रूप से तेज़ धड़कता है",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "तुम्हारे दिल का पेसमेकर",
+          "caption": "सबकी रफ़्तार यही तय करता है",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "अगर दिल की हर कोशिका अपनी ही धड़कन रख सकती है, तो तुम्हें क्या लगता है आखिर किसकी लय जीतती है?",
+        "keyword": "किसकी लय जीतती है",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "लय किसकी चलती है?",
+          "caption": "",
+          "items": [
+            "सबसे तेज़ अकेली कोशिका",
+            "कुछ ज़्यादा उलझा हुआ"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      }
+    ]
+  }
+}

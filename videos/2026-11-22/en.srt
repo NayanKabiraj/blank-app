@@ -1,0 +1,107 @@
+1
+00:00:00,400 --> 00:00:01,921
+Pull a heart cell out,
+
+2
+00:00:01,921 --> 00:00:03,057
+alone in a dish.
+
+3
+00:00:03,057 --> 00:00:04,100
+It still beats.
+
+4
+00:00:04,100 --> 00:00:04,679
+Why?
+
+5
+00:00:04,679 --> 00:00:06,775
+Every single heart muscle cell can
+
+6
+00:00:06,775 --> 00:00:09,199
+generate its own heartbeat completely by
+
+7
+00:00:09,199 --> 00:00:11,189
+itself, no nerve or brain signal
+
+8
+00:00:11,189 --> 00:00:11,906
+needed.
+
+9
+00:00:11,906 --> 00:00:14,287
+Put two differently-timed heart cells side
+
+10
+00:00:14,287 --> 00:00:14,807
+by side,
+
+11
+00:00:14,807 --> 00:00:16,728
+and within moments they lock into
+
+12
+00:00:16,728 --> 00:00:18,379
+exactly the same rhythm.
+
+13
+00:00:18,379 --> 00:00:19,847
+So is it just these tiny
+
+14
+00:00:19,847 --> 00:00:21,490
+channels doing all the work?
+
+15
+00:00:21,490 --> 00:00:22,367
+Not quite.
+
+16
+00:00:22,367 --> 00:00:24,832
+Some researchers have synced heart cells
+
+17
+00:00:24,832 --> 00:00:27,574
+using nothing but tiny mechanical vibrations,
+
+18
+00:00:27,574 --> 00:00:29,536
+no physical contact at all.
+
+19
+00:00:29,536 --> 00:00:31,010
+Inside your real heart,
+
+20
+00:00:31,010 --> 00:00:33,389
+one region beats naturally faster than
+
+21
+00:00:33,389 --> 00:00:34,493
+every other cell,
+
+22
+00:00:34,493 --> 00:00:36,424
+and the rest simply follow its
+
+23
+00:00:36,424 --> 00:00:37,042
+pace.
+
+24
+00:00:37,042 --> 00:00:38,649
+If every single cell in your
+
+25
+00:00:38,649 --> 00:00:40,256
+heart can keep its own beat,
+
+26
+00:00:40,256 --> 00:00:42,159
+what do you think actually decides
+
+27
+00:00:42,159 --> 00:00:43,185
+which rhythm wins?
