@@ -54,13 +54,20 @@ STYLES = {  # how the narrator sounds; Parler reads these words as a voice direc
     "documentary": "speaks in a warm, engaging documentary narrator tone with natural pauses and gentle emphasis, at a moderate pace.",
 }
 WORDS_PER_SEC = {"en": 2.6, "hi": 2.3}   # rough speech pace, only used to spot broken generations
-_state = {"parler": None}                 # None = untried, True = loaded, False = fell back to Piper
+_state = {"parler": None, "edge": None}                 # None = untried, True = loaded, False = fell back to Piper
 _raw: dict = {}                           # (text, lang, style) -> unscaled Parler wav, so re-fitting costs nothing
 
 
 def synthesize(text: str, out_wav: Path, lang: str, length_scale: float = 1.0, style: str = "shorts") -> float:
     """Render `text` to a mono WAV and return its duration in seconds. `length_scale` > 1 slows it down."""
+    raw_scale = length_scale
     length_scale = length_scale * config.SPEECH_PACE.get(lang, 1.0)   # slower, calmer delivery (see config.SPEECH_PACE)
+    if lang == "en" and config.EN_VOICE.startswith("edge:") and _state["edge"] is not False and not os.getenv("SHORTS_FAKE_TTS"):
+        try:
+            return _edge(text, out_wav, raw_scale)   # Andrew's own pace is natural: SPEECH_PACE is a Piper correction
+        except Exception:  # noqa: BLE001 - endpoint unreachable: keep the run going on Piper
+            log.exception("edge-tts voice %s unavailable, falling back to Piper for this run", config.EN_VOICE)
+            _state["edge"] = False
     if os.getenv("SHORTS_FAKE_TTS"):  # offline testing only: placeholder tone
         return _fake(text, out_wav, length_scale)
     if config.TTS_ENGINE == "parler" and _state["parler"] is not False:
@@ -73,6 +80,21 @@ def synthesize(text: str, out_wav: Path, lang: str, length_scale: float = 1.0, s
                           "falling back to Piper for this run")
             _state["parler"] = False
     return _piper(text, out_wav, lang, length_scale)
+
+
+def _edge(text: str, out_wav: Path, length_scale: float) -> float:
+    """English narration with a Microsoft neural voice (edge-tts). `length_scale` > 1 slows it down (ffmpeg atempo)."""
+    import asyncio
+
+    import edge_tts
+
+    mp3 = out_wav.with_suffix(".edge.mp3")
+    asyncio.run(edge_tts.Communicate(text, config.EN_VOICE[len("edge:"):]).save(str(mp3)))
+    tempo = f"atempo={1.0 / length_scale:.4f}" if abs(length_scale - 1.0) > 0.01 else "anull"
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af", tempo, "-ar", "22050", "-ac", "1",
+                    str(out_wav)], check=True)
+    mp3.unlink()
+    return wav_duration(out_wav)
 
 
 def _piper(text: str, out_wav: Path, lang: str, length_scale: float) -> float:

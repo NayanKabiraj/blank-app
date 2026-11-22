@@ -31,8 +31,8 @@ the workflow renders.
    cinematic video (`shorts.outro.with_outro`) and to every `generated_animations` topic (animated outro scene) - plans must NOT write it
    themselves (the word budget already leaves room). Director-manifest videos are the one style not covered yet.
 9. **generated_animations** (`generated_animations/`, README there): per-topic Python scene modules written by Claude, rendered by Mode B
-   (`python -m generated_animations render <topic>`, workflow `generated-animations.yml`). Voices per topic in `animation_config.json`
-   (English: edge-tts `en-US-AndrewNeural`; Hindi: Piper `hi_IN-pratham-medium`). Code is approved by a human before scheduled use.
+   (`python -m generated_animations render <topic>`, workflow `generated-animations.yml`). Voices (all videos, daily pipeline and generated_animations): English = edge-tts `en-US-AndrewNeural` (falls back to Piper
+   if unreachable; `EN_VOICE=piper` forces Piper), Hindi = Piper `hi_IN-pratham-medium`. Code is approved by a human before scheduled use.
 
 ## Quick commands
 
