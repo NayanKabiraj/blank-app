@@ -1,11 +1,13 @@
 TITLE:
-Why Do Separate Heart Cells Suddenly Beat as One? #Shorts
+How Does GPS Know Where You Are? (Your Phone Never Calls) #Shorts
 
 DESCRIPTION:
-Pull one heart cell out and put it alone in a dish - it keeps beating, on its own private rhythm. Put a second one next to it and something strange happens. #Shorts #Biology #HumanBody #Science #Heart
+Your phone finds you without sending a single signal. Here is the stopwatch-and-geometry trick behind GPS, in under a minute. #Shorts #GPS #HowItWorks #Science #Technology
+
+Up next: How does Google Maps know about traffic jams?
 
 TAGS:
-heart cells beating, cardiomyocytes, gap junctions, heart synchronization, human body facts, biology explained, sinoatrial node, pacemaker cells, cell biology, heart rhythm science, emergent synchronization, human heart facts
+how does GPS work, GPS explained, satellites, trilateration, how phones know location, atomic clock, science explained, tech explained, shorts
 
 PINNED COMMENT:
-If every single heart cell can keep its own beat, what do you think actually decides which rhythm wins?
+Could you find your way across your city for a whole day with no GPS? Yes or no?
