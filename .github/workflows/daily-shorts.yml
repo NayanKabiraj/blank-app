@@ -118,6 +118,14 @@ jobs:
           sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core libcairo2-dev libpango1.0-dev pkg-config python3-dev
           fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
 
+      - name: Cache synthesized English lines (a retried run reuses them)
+        uses: actions/cache@v4
+        with:
+          path: .cache/edge
+          key: edge-${{ github.run_id }}
+          restore-keys: edge-
+          save-always: true
+
       - name: Cache Piper voices
         uses: actions/cache@v4
         with:
