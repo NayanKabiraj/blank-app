@@ -7,10 +7,18 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .. import compose, config
+from .. import compose, config, outro
 from . import render as footage
 
 MOODS = {"calm": "calm", "upbeat": "upbeat", "dramatic": "dramatic", "inspiring": "inspiring", "mysterious": "mysterious"}
+
+
+def _with_outro_scene(query_scenes, lang: str):
+    """`query_scenes` is the English scene list used for footage search; it needs the outro scene too."""
+    if not query_scenes:
+        return query_scenes
+    scenes = list(query_scenes)
+    return scenes if outro.has_outro(type('S', (), {'scenes': scenes}), 'en') else [*scenes, outro.outro_scene('en')]
 
 
 def build_short(script, lang: str, mood: str, work: Path, niche: str = "", query_scenes=None) -> tuple[Path, bool]:
@@ -19,6 +27,8 @@ def build_short(script, lang: str, mood: str, work: Path, niche: str = "", query
     image/video search phrase per scene - see `render.render`'s docstring for why."""
     work = work.resolve()
     work.mkdir(parents=True, exist_ok=True)
+    script = outro.with_outro(script, lang)
+    query_scenes = _with_outro_scene(query_scenes, lang)
     voice, timeline, voice_end = compose._voice_track(script.scenes, lang, work, window=(config.MIN_DURATION, config.MAX_DURATION))
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
     used_ai = footage.render(script.scenes, lang, niche, timeline, total, work, layout="portrait", query_scenes=query_scenes)
@@ -31,6 +41,8 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "",
     """Returns (video path, chapters, used_ai_image). `query_scenes` - see `build_short`."""
     work = work.resolve()
     work.mkdir(parents=True, exist_ok=True)
+    script = outro.with_outro(script, lang)
+    query_scenes = _with_outro_scene(query_scenes, lang)
     scenes = script.scenes
     starts, n = {}, 0
     for ch in script.chapters:

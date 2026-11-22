@@ -7,7 +7,7 @@ import subprocess
 import wave
 from pathlib import Path
 
-from . import animate, config, music, sfx, tts
+from . import animate, config, music, outro, sfx, tts
 from .plan import LangScript
 
 log = logging.getLogger(__name__)
@@ -115,6 +115,7 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     """Render one Short (1080x1920, 40-59 s) and return its path."""
     work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
     work.mkdir(parents=True, exist_ok=True)
+    script = outro.with_outro(script, lang)   # every video ends: "Thanks for watching ... like, share and subscribe"
     voice, timeline, voice_end = _voice_track(script.scenes, lang, work, window=(config.MIN_DURATION, config.MAX_DURATION))
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
     animate.render(script, lang, niche, timeline, total, work)  # writes work/video.mp4 (the picture)
@@ -127,6 +128,7 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "")
     """Render one documentary (1920x1080, natural length). Returns (video path, [(chapter title, start second)])."""
     work = work.resolve()
     work.mkdir(parents=True, exist_ok=True)
+    script = outro.with_outro(script, lang)
     scenes = script.scenes
     starts, n = {}, 0
     for ch in script.chapters:

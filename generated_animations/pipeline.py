@@ -28,7 +28,7 @@ def plan_durations(cfg: dict, narration_secs: list[float], fps: int) -> list[flo
 def render_topic(topic_id: str, out_dir: Path, *, preview: bool = False, voice: str = "auto",
                  require_approved: bool = True, narrate: bool = True) -> dict:
     from . import audio
-    cfg = reg.load_config(topic_id)
+    cfg = reg.with_outro(reg.load_config(topic_id))   # every video ends with the like/share/subscribe outro
     problems = safety.scan_dir(reg.topic_dir(topic_id))
     if problems:
         raise SystemExit("safety scan failed:\n  " + "\n  ".join(problems))
@@ -45,7 +45,9 @@ def render_topic(topic_id: str, out_dir: Path, *, preview: bool = False, voice: 
     # 1. narration per scene (existing TTS, offline fallback is recorded as provenance)
     wavs, secs, providers = [], [], set()
     for i, s in enumerate(cfg["scenes"]):
-        wav, prov = audio.synthesize_line(s["narration"], work / f"line_{i + 1:02d}.wav", cfg.get("language", "en"), voice)
+        lang = cfg.get("language", "en")
+        chosen = voice if voice != "auto" else cfg.get("voices", {}).get(lang, "auto")
+        wav, prov = audio.synthesize_line(s["narration"], work / f"line_{i + 1:02d}.wav", lang, chosen)
         wavs.append(wav); secs.append(audio.wav_seconds(wav)); providers.add(prov)
     durations = plan_durations(cfg, secs, 24)
     starts, t = [], 0.0
@@ -67,7 +69,7 @@ def render_topic(topic_id: str, out_dir: Path, *, preview: bool = False, voice: 
     mc.verbosity = "WARNING"
     mc.progress_bar = "none"
     mc.write_to_movie = True
-    modules = reg.scene_modules(topic_id)
+    modules = reg.scene_modules(topic_id, cfg)
     scene_cfgs = [{**c, "narration_seconds": n} for c, n in zip(cfg["scenes"], secs)]
     scene = GeneratedScene(modules, durations, scene_cfgs, narration=narration)
     scene.render()

@@ -20,7 +20,7 @@ def main(argv=None):
         p = sub.add_parser(name)
         p.add_argument("topic")
         p.add_argument("--out", default="output_generated")
-        p.add_argument("--voice", default="auto", choices=["auto", "piper", "flite"])
+        p.add_argument("--voice", default="auto", help="auto (use the topic config), piper, flite, edge:<name> or piper:<name>")
         p.add_argument("--reviewer", default="")
         p.add_argument("--no-approval", action="store_true", help="Mode A only: render unapproved code")
     a = ap.parse_args(argv)

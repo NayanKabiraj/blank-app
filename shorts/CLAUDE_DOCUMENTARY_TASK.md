@@ -106,3 +106,5 @@ the workflow draws a 1280x720 thumbnail from it and uploads it with the video.
 9. **Report back** in a few lines: the topic, its score and the runner-up, both titles, the length and
    chapter list, whether the run succeeded, and where the videos are (YouTube links if uploaded,
    otherwise the run's artifacts, `videos-<n>`, kept for 14 days). Don't commit anything.
+
+**Closing line:** do not write a "thanks for watching / like, share and subscribe" ending - the pipeline appends it to every video automatically (shorts/outro.py).

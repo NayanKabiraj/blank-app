@@ -223,3 +223,5 @@ labels and a variety guard: **the topic decides the niche, not the other way rou
    the run succeeded, and where the videos are: YouTube links if they were uploaded,
    otherwise `videos/<date>/` on `main`. Don't commit or push anything. The workflow
    records history on its own.
+
+**Closing line:** do not write a "thanks for watching / like, share and subscribe" ending - the pipeline appends it to every video automatically (shorts/outro.py).

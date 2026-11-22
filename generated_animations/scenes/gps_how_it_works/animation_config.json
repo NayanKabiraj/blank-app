@@ -2,6 +2,7 @@
   "topic_id": "gps_how_it_works",
   "title": "How does GPS work?",
   "language": "en",
+  "voices": {"en": "edge:en-US-AndrewNeural", "hi": "piper:hi_IN-pratham-medium"},
   "mood": "inspiring",
   "resolution": [720, 1280],
   "fps": 24,

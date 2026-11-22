@@ -88,3 +88,10 @@ def test_every_scene_module_imports():
     pytest.importorskip("manim")
     for m in reg.scene_modules(TOPIC):
         assert callable(m.animate)
+
+
+def test_outro_appended_to_every_topic_once():
+    cfg = reg.with_outro(reg.load_config(TOPIC))
+    assert cfg["scenes"][-1]["module"] == reg.OUTRO_MODULE and "subscribe" in cfg["scenes"][-1]["narration"].lower()
+    assert reg.with_outro(cfg) is cfg
+    assert len(cfg["scenes"]) == len(reg.load_config(TOPIC)["scenes"]) + 1

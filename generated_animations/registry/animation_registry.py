@@ -54,8 +54,22 @@ def check_approved(topic_id: str) -> tuple[bool, str]:
     return True, f"approved by {rec['reviewer']} on {rec['approved_at']}"
 
 
-def scene_modules(topic_id: str):
+def with_outro(cfg: dict) -> dict:
+    """Config copy with the standard closing scene appended (shorts.outro text; see shared/outro_scene.py)."""
+    from shorts.outro import OUTRO_TEXT
+    lang = cfg.get("language", "en")
+    if any(s["module"] == OUTRO_MODULE for s in cfg["scenes"]):
+        return cfg
+    return {**cfg, "scenes": [*cfg["scenes"], {"module": OUTRO_MODULE, "min_seconds": 7.0, "lang": lang,
+                                               "narration": OUTRO_TEXT[lang]}]}
+
+
+OUTRO_MODULE = "generated_animations.shared.outro_scene"
+
+
+def scene_modules(topic_id: str, cfg: dict | None = None):
     """Import the topic's scene modules in config order (call only after the safety scan has passed)."""
     import importlib
-    cfg = load_config(topic_id)
-    return [importlib.import_module(f"generated_animations.scenes.{topic_id}.{s['module']}") for s in cfg["scenes"]]
+    cfg = cfg or load_config(topic_id)
+    return [importlib.import_module(s["module"] if "." in s["module"] else f"generated_animations.scenes.{topic_id}.{s['module']}")
+            for s in cfg["scenes"]]
