@@ -45,7 +45,9 @@ def render_topic(topic_id: str, out_dir: Path, *, preview: bool = False, voice: 
     # 1. narration per scene (existing TTS, offline fallback is recorded as provenance)
     wavs, secs, providers = [], [], set()
     for i, s in enumerate(cfg["scenes"]):
-        wav, prov = audio.synthesize_line(s["narration"], work / f"line_{i + 1:02d}.wav", cfg.get("language", "en"), voice)
+        lang = cfg.get("language", "en")
+        chosen = voice if voice != "auto" else cfg.get("voices", {}).get(lang, "auto")
+        wav, prov = audio.synthesize_line(s["narration"], work / f"line_{i + 1:02d}.wav", lang, chosen)
         wavs.append(wav); secs.append(audio.wav_seconds(wav)); providers.add(prov)
     durations = plan_durations(cfg, secs, 24)
     starts, t = [], 0.0

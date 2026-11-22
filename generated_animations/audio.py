@@ -31,8 +31,37 @@ def flite_voice(text: str, out_wav: Path, voice: str = "slt") -> Path:
     return out_wav
 
 
+def edge_voice(text: str, out_wav: Path, voice: str) -> Path:
+    """Microsoft neural voice through the edge-tts package (free, no key, unofficial endpoint)."""
+    import asyncio
+    import edge_tts
+    mp3 = out_wav.with_suffix(".mp3")
+    asyncio.run(edge_tts.Communicate(text, voice).save(str(mp3)))
+    _ffmpeg("-i", str(mp3), "-ar", str(SR), "-ac", "1", str(out_wav))
+    mp3.unlink()
+    return out_wav
+
+
+def piper_named(text: str, out_wav: Path, voice: str) -> Path:
+    """A specific Piper voice by name (e.g. hi_IN-pratham-medium); the model is downloaded once and cached."""
+    from piper import PiperVoice
+    from shorts import tts
+    onnx, cfg = tts._voice_files(voice)
+    raw = out_wav.with_suffix(".raw.wav")
+    with wave.open(str(raw), "wb") as wf:
+        PiperVoice.load(onnx, config_path=cfg).synthesize_wav(text, wf)
+    _ffmpeg("-i", str(raw), "-ar", str(SR), "-ac", "1", str(out_wav))
+    raw.unlink()
+    return out_wav
+
+
 def synthesize_line(text: str, out_wav: Path, lang: str = "en", voice: str = "auto") -> tuple[Path, str]:
-    """Returns (wav, provider)."""
+    """Returns (wav, provider). `voice` is 'edge:<name>', 'piper:<name>' (strict: no fallback), or
+    'auto' / 'piper' / 'flite' (the repo's default engine, falling back to flite)."""
+    if voice.startswith("edge:"):
+        return edge_voice(text, out_wav, voice[5:]), voice
+    if voice.startswith("piper:"):
+        return piper_named(text, out_wav, voice[6:]), voice
     if voice in ("auto", "piper"):
         try:
             from shorts import tts

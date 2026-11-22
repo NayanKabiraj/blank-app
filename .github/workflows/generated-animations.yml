@@ -37,17 +37,17 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .cache/voices
-          key: piper-en_US-ryan-high
-      - run: pip install -r shorts/requirements.txt "manim==0.22.1" pytest
+          key: piper-hi_IN-pratham-medium
+      - run: pip install -r shorts/requirements.txt "manim==0.22.1" pytest edge-tts
       - name: Tests
         run: python -m pytest tests/generated_animations -q
       - name: Safety scan
         run: python -m generated_animations scan "${{ inputs.topic }}"
-      - name: Render (Piper voice required - no fallback)
+      - name: Render (voices come from the topic's animation_config.json; no fallback)
         run: |
           FLAG=""
           if [ "${{ inputs.allow_unapproved }}" = "true" ]; then FLAG="--no-approval"; fi
-          python -m generated_animations render "${{ inputs.topic }}" --voice piper --out output_generated $FLAG
+          python -m generated_animations render "${{ inputs.topic }}" --out output_generated $FLAG
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.topic }}
