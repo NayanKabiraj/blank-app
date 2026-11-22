@@ -31,8 +31,12 @@ PARLER_SPEAKERS = {"en": os.getenv("PARLER_SPEAKER_EN", "Thoma"), "hi": os.geten
 # Piper (open source, fallback): https://github.com/OHF-Voice/piper1-gpl
 VOICES = {
     "en": os.getenv("PIPER_VOICE_EN", "en_US-ryan-high"),
-    "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-rohan-medium"),
+    "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-pratham-medium"),
 }
+# English narration: Microsoft neural voice through edge-tts (free, no key; falls back to the Piper voice above if it is
+# unreachable). Set EN_VOICE=piper to use Piper for English. Hindi stays on Piper.
+EN_VOICE = os.getenv("EN_VOICE", "edge:en-US-AndrewNeural").strip()
+
 # Pace of the narration: > 1 is slower (Piper length_scale). English was judged rushed: 1.15 = about 13 % slower. Override with the
 # SPEECH_PACE_EN / SPEECH_PACE_HI variables. The Shorts length window still adjusts the speed when a script would run too long.
 SPEECH_PACE = {"en": float(os.getenv("SPEECH_PACE_EN", "1.15")), "hi": float(os.getenv("SPEECH_PACE_HI", "1.0"))}
