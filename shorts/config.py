@@ -33,6 +33,10 @@ VOICES = {
     "en": os.getenv("PIPER_VOICE_EN", "en_US-ryan-high"),
     "hi": os.getenv("PIPER_VOICE_HI", "hi_IN-pratham-medium"),
 }
+# Picture engine: "generated" = the generated_animations (Manim) engine (default), "whiteboard" = the older
+# Node/Playwright whiteboard explainer. Voices are strict: English = edge Andrew, Hindi = Piper pratham, no fallback.
+ENGINE = os.getenv("VIDEO_ENGINE", "generated").strip().lower()
+
 # English narration: Microsoft neural voice through edge-tts (free, no key; falls back to the Piper voice above if it is
 # unreachable). Set EN_VOICE=piper to use Piper for English. Hindi stays on Piper.
 EN_VOICE = os.getenv("EN_VOICE", "edge:en-US-AndrewNeural").strip()

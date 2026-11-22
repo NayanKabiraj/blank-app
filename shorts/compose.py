@@ -115,6 +115,9 @@ def build(script: LangScript, lang: str, mood: str, work: Path, niche: str = "")
     """Render one Short (1080x1920, 40-59 s) and return its path."""
     work = work.resolve()  # FFmpeg runs with cwd=work, so every path must be absolute
     work.mkdir(parents=True, exist_ok=True)
+    if config.ENGINE == "generated":
+        from generated_animations import plan_render
+        return plan_render.build(script, lang, mood, work, niche)
     script = outro.with_outro(script, lang)   # every video ends: "Thanks for watching ... like, share and subscribe"
     voice, timeline, voice_end = _voice_track(script.scenes, lang, work, window=(config.MIN_DURATION, config.MAX_DURATION))
     total = min(config.MAX_DURATION, max(config.MIN_DURATION, voice_end + config.TAIL))
@@ -128,6 +131,9 @@ def build_documentary(script, lang: str, mood: str, work: Path, niche: str = "")
     """Render one documentary (1920x1080, natural length). Returns (video path, [(chapter title, start second)])."""
     work = work.resolve()
     work.mkdir(parents=True, exist_ok=True)
+    if config.ENGINE == "generated":
+        from generated_animations import plan_render
+        return plan_render.build_documentary(script, lang, mood, work, niche)
     script = outro.with_outro(script, lang)
     scenes = script.scenes
     starts, n = {}, 0

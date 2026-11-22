@@ -34,6 +34,13 @@ the workflow renders.
    (`python -m generated_animations render <topic>`, workflow `generated-animations.yml`). Voices (all videos, daily pipeline and generated_animations): English = edge-tts `en-US-AndrewNeural` (falls back to Piper
    if unreachable; `EN_VOICE=piper` forces Piper), Hindi = Piper `hi_IN-pratham-medium`. Code is approved by a human before scheduled use.
 
+10. **STRICT - Claude authors the animation of every video** (`generated_animations/AUTHORING.md`). The picture is not a template: for every Short and
+   documentary Claude writes scene-specific motion animation code (orbits, signals travelling, water rising, graphs drawing as things move ...) in
+   an animation pack `generated_animations/scenes/<pack>/`, named in `animation_pack` of the plan (both languages). The generic graphic-kind cards
+   (`kinds.py`) are only a fallback and the plan validator rejects a plan whose scenes are not all covered by shots. Videos must be dynamic, with a lot of motion.
+   The animation is previewed (frames inspected) before the workflow is started. Voices are strict: English = edge-tts `en-US-AndrewNeural`, Hindi =
+   Piper `hi_IN-pratham-medium`; if a voice is unavailable the run fails, no other voice is ever mixed in.
+
 ## Quick commands
 
 ```bash

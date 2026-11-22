@@ -84,6 +84,9 @@ class LangScript(BaseModel):
     pinned_comment: str = Field(default="", description="One viewer decision tied to the central dilemma, to pin as the first "
                                 "comment (saved in the *_youtube.txt file).")
     scenes: List[Scene] = Field(description="6-9 scenes; first is the hook, last is a call to follow.")
+    animation_pack: str = Field(default="", description="id of the animation pack Claude wrote for this video: the folder "
+                                "generated_animations/scenes/<id>/ with shots.json + one Python module per shot (scene-specific "
+                                "motion animation). Required: the generic graphic kinds are only a fallback.")
 
 
 class Plan(BaseModel):
@@ -128,9 +131,34 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
+def _animation_problems(plan) -> list[str]:
+    """Every video's picture is authored animation code (generated_animations packs), not template cards."""
+    from . import config
+    out = []
+    if config.ENGINE != "generated":
+        return out
+    for lang, s in (("english", plan.english), ("hindi", plan.hindi)):
+        pack = (s.animation_pack or "").strip()
+        if not pack:
+            out.append(f"{lang}: animation_pack is empty - write the scene-specific animation (generated_animations/scenes/<id>/) for this video")
+            continue
+        try:
+            from generated_animations import packs
+            have = packs.covered(pack)
+        except Exception as exc:  # noqa: BLE001
+            out.append(f"{lang}: animation pack {pack!r} cannot be read ({exc})")
+            continue
+        missing = [i + 1 for i in range(len(s.scenes)) if i not in have]
+        if not have:
+            out.append(f"{lang}: animation pack {pack!r} has no shots.json / shots")
+        elif missing:
+            out.append(f"{lang}: scenes {missing} have no authored animation in pack {pack!r}")
+    return out
+
+
 def _strategy_problems(plan) -> list[str]:
     """The standing strategy (skills/video-strategy): researched packaging, a quality gate, a cluster and a next video."""
-    out = []
+    out = _animation_problems(plan)
     rs = plan.research_summary.lower()
     for marker, label in (("title", "the title options and why this one"), ("thumbnail", "the thumbnail concepts and the chosen one"),
                           ("hook", "the opening hook options")):
@@ -231,6 +259,8 @@ class DocScript(BaseModel):
     next_video: str = Field(default="", description="The next video's title or question; the description gets an 'Up next' line.")
     pinned_comment: str = Field(default="", description="One viewer decision tied to the central dilemma, to pin as the first comment.")
     chapters: List[Chapter] = Field(description="3-12 chapters in order; chapter 1 is the cold open.")
+    animation_pack: str = Field(default="", description="id of the animation pack Claude wrote for this video "
+                                "(generated_animations/scenes/<id>/). Required; the generic graphic kinds are only a fallback.")
 
     @property
     def scenes(self) -> List[Scene]:

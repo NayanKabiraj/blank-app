@@ -5,24 +5,26 @@ from manim import DOWN, FadeIn, LaggedStart, RoundedRectangle, Text, UP, VGroup,
 
 from .motion import ease_out_back
 
-FONT = "Noto Sans"
+FONTS = {"en": "Noto Sans", "hi": "Noto Sans Devanagari"}
 
 
-def text(content: str, size: int = 40, color: str = "#FFFFFF", weight: str = "BOLD", max_width: float = 8.0) -> Text:
-    t = Text(content, font_size=size, color=color, weight=weight)
+def text(content: str, size: int = 40, color: str = "#FFFFFF", weight: str = "BOLD", max_width: float = 8.0,
+         lang: str = "en") -> Text:
+    t = Text(content, font_size=size, color=color, weight=weight, font=FONTS.get(lang, FONTS["en"]))
     if t.width > max_width:
         t.scale_to_fit_width(max_width)
     return t
 
 
-def headline(content: str, color: str = "#F5F7FA", size: int = 52, max_width: float = 7.4) -> Text:
-    return text(content, size, color, "BOLD", max_width)
+def headline(content: str, color: str = "#F5F7FA", size: int = 52, max_width: float = 7.4, lang: str = "en") -> Text:
+    return text(content, size, color, "BOLD", max_width, lang)
 
 
-def caption_pill(content: str, color: str = "#FFFFFF", fill: str = "#0B1020", max_width: float = 8.0) -> VGroup:
+def caption_pill(content: str, color: str = "#FFFFFF", fill: str = "#0B1020", max_width: float = 8.0,
+                 chars: int = 34, size: int = 32, lang: str = "en") -> VGroup:
     """Caption on a rounded translucent pill - stays legible over any background."""
     import textwrap
-    t = text("\n".join(textwrap.wrap(content, 34)), 32, color, "SEMIBOLD", max_width - 0.6)
+    t = text("\n".join(textwrap.wrap(content, chars)), size, color, "SEMIBOLD", max_width - 0.6, lang)
     pill = RoundedRectangle(corner_radius=0.3, width=t.width + 0.6, height=t.height + 0.4, stroke_width=0,
                             fill_color=fill, fill_opacity=0.72)
     pill.move_to(t)

@@ -1,0 +1,11 @@
+{"topic": "How the Moon runs the tides",
+ "shots": [
+  {"module": "scene_001", "scenes": [0, 1, 2, 3]},
+  {"module": "scene_002", "scenes": [4, 5]},
+  {"module": "scene_003", "scenes": [6, 7, 8, 9]},
+  {"module": "scene_004", "scenes": [10, 11, 12, 13, 14, 15]},
+  {"module": "scene_005", "scenes": [16, 17, 18]},
+  {"module": "scene_006", "scenes": [19, 20, 21, 22]},
+  {"module": "scene_007", "scenes": [23, 24, 25]},
+  {"module": "scene_008", "scenes": [26, 27, 28, 29]}
+ ]}
