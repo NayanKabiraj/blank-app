@@ -39,6 +39,6 @@ Plan scene 2 (index 1) is the intro: right after the hook the narrator says what
 mention (`ctx.tt(1, k)`), the presenter points at each in turn, then the picture hands over to the first real scene.
 
 ## The presenter
-Pip is the owner's own cartoon picture (`avatar/assets/pip_base.png`), animated by `avatar/face.py` + `controller.py`: lip-sync, blinks, sway, and leaning/tilting toward
+Pip is the owner's own 3D-style cartoon picture (bearded, glasses, hoodie) (`avatar/assets/pip_base.png`), animated by `avatar/face.py` + `controller.py`: lip-sync, blinks, sway, and leaning/tilting toward
 whatever he looks at or points at. He is a bust (no arms), so `point_at`, `wave`, `present` and `shrug` act as body language (lean, sway, tilt, lift); direct attention with
-`ctx.avatar.look_at(...)` and put the thing being pointed at in the picture itself (an arrow or a highlight). `avatar/assets/pip_speaking.gif` shows the speaking animation.
+`ctx.avatar.look_at(...)` and put the thing being pointed at in the picture itself (an arrow or a highlight). `avatar/assets/pip_speaking.gif` (transparent) shows the speaking animation.
