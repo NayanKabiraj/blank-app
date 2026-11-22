@@ -14,7 +14,7 @@ on:
         default: true
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   render:
@@ -54,3 +54,14 @@ jobs:
           path: |
             output_generated/${{ inputs.topic }}.mp4
             output_generated/render_report.json
+      - name: Publish the render to an output branch (so it can be fetched with git)
+        run: |
+          mkdir -p /tmp/out && cp output_generated/${{ inputs.topic }}.mp4 output_generated/render_report.json /tmp/out/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan generated-animations-output
+          git rm -rf -q . || true
+          cp /tmp/out/* .
+          git add ${{ inputs.topic }}.mp4 render_report.json
+          git commit -q -m "Render of ${{ inputs.topic }}"
+          git push -f origin generated-animations-output
