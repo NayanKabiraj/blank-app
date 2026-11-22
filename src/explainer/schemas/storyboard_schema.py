@@ -4,7 +4,7 @@ differ in length, so their scene timings differ too, even for the same topic).
 """
 from __future__ import annotations
 
-from typing import List, Literal, Optional
+from typing import List, Literal, Optional, Tuple
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -17,6 +17,17 @@ ElementAnimation = Literal["progressive_stroke_draw", "draw_from_start", "fade_i
 SceneTemplate = Literal["hook", "explainer_diagram", "comparison", "timeline", "takeaway"]
 
 
+class Keyframe(BaseModel):
+    """One motion keyframe for an element, authored in the storyboard (AI-written, not renderer-
+    hardcoded). `t` is 0..1 across the scene's own duration; x/y are fractions of the frame
+    (-0.5..0.5, centre is 0,0), so the same keyframes adapt to vertical and landscape."""
+    t: float = Field(ge=0, le=1)
+    x: float = Field(ge=-0.5, le=0.5)
+    y: float = Field(ge=-0.5, le=0.5)
+    scale: float = Field(default=1.0, gt=0, le=4)
+    opacity: float = Field(default=1.0, ge=0, le=1)
+
+
 class SceneElement(BaseModel):
     """One visual layer inside a scene: an illustration, an arrow, a label, a highlight, a
     character pose, or a diagram built from the storyboard's own primitives (no external asset
@@ -26,7 +37,8 @@ class SceneElement(BaseModel):
     animation: ElementAnimation = "fade_in"
     text: Optional[str] = Field(default=None, description="Label/caption text, if any (EN or HI).")
     color: Optional[str] = Field(default=None, description="Hex override; default comes from the style palette.")
-    position: Optional[str] = Field(default=None, description="e.g. 'center', 'top', 'left', 'right'")
+    position: Optional[Tuple[float, float]] = Field(default=None, description="Start (x, y) as frame fractions, -0.5..0.5")
+    keyframes: List[Keyframe] = Field(default_factory=list, description="Motion path over the scene; empty = stays at position")
 
 
 class SceneCamera(BaseModel):
@@ -38,7 +50,7 @@ class Scene(BaseModel):
     scene_id: str
     start: float = Field(ge=0)
     end: float = Field(gt=0)
-    template: SceneTemplate = "explainer_diagram"
+    template: SceneTemplate = "explainer_diagram"   # descriptive label only; layout comes from elements/keyframes
     narration: str = Field(description="The spoken line(s) this scene covers (same text as the script).")
     subtitle_text: str = Field(description="What appears on screen; usually equal to narration.")
     background: str = Field(default="textured_paper", description="Background look, style-dependent.")

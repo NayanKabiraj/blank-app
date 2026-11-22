@@ -31,3 +31,7 @@ def apply(manim_scene, transition: str, mobjects: list[tuple[Mobject, object]]) 
         manim_scene.play(*[FadeOut(m) for m in group], run_time=0.5)
 
     camera_controller.reset(manim_scene)
+
+
+def duration(transition: str) -> float:
+    return 0.6 if transition in ("erase", "paper_wipe", "zoom", "line_draw") else 0.5

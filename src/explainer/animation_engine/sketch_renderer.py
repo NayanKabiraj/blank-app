@@ -63,11 +63,17 @@ class SketchRenderScene(MovingCameraScene):
         for index, scene in enumerate(self.storyboard.scenes):
             mobjects = diagram_builder.build_elements(scene, self.palette, self.lang)
             camera_controller.apply(self, scene.camera, mobjects)
+            scene_seconds = scene.end - scene.start
             for mobj, elem in mobjects:
                 diagram_builder.animate_in(self, mobj, elem)
-            hold = (scene.end - scene.start) - diagram_builder.reveal_time(scene)
-            if hold > 0:
-                self.wait(hold)
+            used = diagram_builder.reveal_time(scene) + camera_controller.duration(scene.camera)
+            used += transition_engine.duration(scene.transition_out) if index < len(self.storyboard.scenes) - 1 else 0.3
+            motion_budget = max(0.5, scene_seconds - used)
+            plays = diagram_builder.motion_plays(mobjects, motion_budget)
+            for anims, seconds in plays:
+                self.play(*anims, run_time=seconds)
+            if not plays and motion_budget > 0:
+                self.wait(motion_budget)
             is_last = index == len(self.storyboard.scenes) - 1
             if not is_last:
                 transition_engine.apply(self, scene.transition_out, mobjects)

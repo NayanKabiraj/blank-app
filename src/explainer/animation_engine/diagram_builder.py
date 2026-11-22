@@ -78,31 +78,26 @@ def animate_diagram(manim_scene, parts: List[Mobject], run_time: float = 1.0) ->
 # ---------------------------------------------------------------- per-template layout
 
 def _label(text: str, colour: str, lang: str, size: int = 40) -> Text:
+    """Text sized to fit the live frame width, so a long caption wraps in scale rather than
+    running off the edge of a narrow vertical frame."""
+    from manim import config as manim_config
+
     kwargs = {"font_size": size, "color": colour}
     font = _font_for(lang)
     if font:
         kwargs["font"] = font
-    return Text(text, **kwargs)
+    label = Text(text, **kwargs)
+    max_w = manim_config.frame_width * 0.85
+    if label.width > max_w:
+        label.scale_to_fit_width(max_w)
+    return label
 
 
-def _positions_for(template: str, count: int) -> List[Tuple[float, float]]:
-    """Fractions of the actual Manim frame size, not hardcoded units - a vertical (9:16) frame
-    is much narrower than a landscape (16:9) one, so a fixed x-offset that fits one overflows
-    the other. Reading `manim.config` here (set by video_engine before the scene renders) is
-    what lets the same storyboard produce a correctly laid-out vertical AND landscape video."""
+def _frame_point(x: float, y: float) -> Tuple[float, float, float]:
+    """Frame fractions (-0.5..0.5) -> Manim scene coordinates for the live frame size."""
     from manim import config as manim_config
 
-    fw, fh = manim_config.frame_width, manim_config.frame_height
-    margin_x, margin_y = fw * 0.32, fh * 0.18
-
-    if template == "comparison":
-        xs = [-margin_x, margin_x] if count <= 2 else [-margin_x + 2 * margin_x * i / (count - 1) for i in range(count)]
-        return [(x, 0) for x in xs]
-    if template == "timeline":
-        xs = [-margin_x + 2 * margin_x * i / max(1, count - 1) for i in range(count)]
-        return [(x, -fh * 0.08) for x in xs]
-    step = min(margin_y, fh * 0.32 / max(1, count))
-    return [(0, (count - 1) * step / 2 - step * i) for i in range(count)]
+    return (x * manim_config.frame_width, y * manim_config.frame_height, 0)
 
 
 def build_elements(scene: Scene, palette: Palette, lang: str) -> List[Tuple[Mobject, SceneElement]]:
@@ -111,9 +106,8 @@ def build_elements(scene: Scene, palette: Palette, lang: str) -> List[Tuple[Mobj
     coordinate units, which `video_engine` maps onto whichever pixel resolution is requested -
     the layout logic here never hardcodes pixels)."""
     out: List[Tuple[Mobject, SceneElement]] = []
-    positions = _positions_for(scene.template, max(1, len(scene.elements)))
     for i, elem in enumerate(scene.elements):
-        colour = accent_for(palette, i)
+        colour = accent_for(palette, i)  # palette colour is the only style default left
         if elem.type == "character":
             mobj = create_doodle_character(elem.name, colour)
         elif elem.type in ("svg_illustration", "diagram"):
@@ -124,8 +118,12 @@ def build_elements(scene: Scene, palette: Palette, lang: str) -> List[Tuple[Mobj
             mobj = SurroundingRectangle(Circle(radius=0.6), color=colour)
         else:   # label
             mobj = _label(elem.text or elem.name, palette.ink if elem.type == "label" else colour, lang)
-        x, y = positions[i] if i < len(positions) else (0, 0)
-        mobj.move_to((x, y, 0))
+        start = elem.keyframes[0] if elem.keyframes else None
+        if start is not None:
+            mobj.move_to(_frame_point(start.x, start.y))
+            mobj.scale(start.scale).set_opacity(start.opacity)
+        elif elem.position is not None:
+            mobj.move_to(_frame_point(*elem.position))
         out.append((mobj, elem))
     return out
 
@@ -136,6 +134,45 @@ _ANIM_RUNTIME = {"progressive_stroke_draw": 1.1, "draw_from_start": 0.8, "fade_i
 
 def reveal_time(scene: Scene) -> float:
     return sum(_ANIM_RUNTIME.get(e.animation, 0.5) for e in scene.elements) + 0.3
+
+
+MOTION_STEPS = 8
+
+
+def _sample_keyframes(elem: SceneElement, u: float):
+    """Position/scale/opacity of an element at fraction u (0..1) of the scene, linearly
+    interpolated between its authored keyframes."""
+    frames = elem.keyframes
+    if u <= frames[0].t:
+        k = frames[0]
+        return k.x, k.y, k.scale, k.opacity
+    for a, b in zip(frames, frames[1:]):
+        if a.t <= u <= b.t:
+            f = 0.0 if b.t == a.t else (u - a.t) / (b.t - a.t)
+            lerp = lambda p, q: p + (q - p) * f   # noqa: E731
+            return lerp(a.x, b.x), lerp(a.y, b.y), lerp(a.scale, b.scale), lerp(a.opacity, b.opacity)
+    k = frames[-1]
+    return k.x, k.y, k.scale, k.opacity
+
+
+def motion_plays(mobjects: List[Tuple[Mobject, SceneElement]], scene_seconds: float):
+    """Returns the Manim plays that move every element with keyframes through its path. Steps are
+    shared across elements and played together, so the whole motion takes exactly `budget`
+    seconds regardless of how many elements or keyframes a scene has."""
+    moving = [(m, e) for m, e in mobjects if e.keyframes]
+    if not moving:
+        return []
+    per_step = scene_seconds / MOTION_STEPS
+    plays = []
+    for step in range(1, MOTION_STEPS + 1):
+        u = step / MOTION_STEPS
+        anims = []
+        for mobj, elem in moving:
+            x, y, scale, opacity = _sample_keyframes(elem, u)
+            target = mobj.copy().move_to(_frame_point(x, y)).scale(scale).set_opacity(opacity)
+            anims.append(mobj.animate.become(target))
+        plays.append((anims, per_step))
+    return plays
 
 
 def animate_in(manim_scene, mobject: Mobject, elem: SceneElement) -> None:

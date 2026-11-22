@@ -48,3 +48,8 @@ def reset(manim_scene) -> None:
     one scene's zoom/pan doesn't carry into the next."""
     manim_scene.play(manim_scene.camera.frame.animate.set(width=manim_scene.camera.frame_width)
                      .move_to((0, 0, 0)), run_time=0.6)
+
+
+def duration(camera: SceneCamera) -> float:
+    """Seconds the camera move itself takes (so the scene budget can account for it)."""
+    return 0.0 if camera.movement == "static" else 1.2

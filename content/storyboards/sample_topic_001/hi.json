@@ -20,15 +20,38 @@
           "animation": "progressive_stroke_draw",
           "text": null,
           "color": null,
-          "position": null
+          "position": [
+            0.0,
+            0.12
+          ],
+          "keyframes": [
+            {
+              "t": 0.0,
+              "x": 0.0,
+              "y": 0.12,
+              "scale": 0.8,
+              "opacity": 1.0
+            },
+            {
+              "t": 1.0,
+              "x": 0.0,
+              "y": 0.05,
+              "scale": 1.0,
+              "opacity": 1.0
+            }
+          ]
         },
         {
           "type": "label",
           "name": "headline",
           "animation": "pop_in",
-          "text": "इस मुड़ी हुई छड़ी को सीधा और ज़ोर से",
+          "text": "Why does it come back?",
           "color": null,
-          "position": null
+          "position": [
+            0.0,
+            -0.22
+          ],
+          "keyframes": []
         }
       ],
       "camera": {
@@ -49,11 +72,30 @@
       "elements": [
         {
           "type": "svg_illustration",
-          "name": "main_diagram",
+          "name": "wing_shape",
           "animation": "progressive_stroke_draw",
           "text": null,
           "color": null,
-          "position": null
+          "position": [
+            -0.25,
+            0.0
+          ],
+          "keyframes": [
+            {
+              "t": 0.0,
+              "x": -0.3,
+              "y": 0.0,
+              "scale": 1.0,
+              "opacity": 1.0
+            },
+            {
+              "t": 1.0,
+              "x": -0.1,
+              "y": 0.0,
+              "scale": 1.0,
+              "opacity": 1.0
+            }
+          ]
         },
         {
           "type": "arrow",
@@ -61,15 +103,11 @@
           "animation": "draw_from_start",
           "text": null,
           "color": null,
-          "position": null
-        },
-        {
-          "type": "label",
-          "name": "caption",
-          "animation": "fade_in",
-          "text": "बूमरैंग की हर भुजा बिल्कुल एक छोटे ह",
-          "color": null,
-          "position": null
+          "position": [
+            0.15,
+            0.0
+          ],
+          "keyframes": []
         }
       ],
       "camera": {
@@ -89,32 +127,47 @@
       "background": "textured_paper",
       "elements": [
         {
-          "type": "svg_illustration",
-          "name": "main_diagram",
+          "type": "diagram",
+          "name": "lift_diagram",
           "animation": "progressive_stroke_draw",
           "text": null,
           "color": null,
-          "position": null
-        },
-        {
-          "type": "arrow",
-          "name": "pointer",
-          "animation": "draw_from_start",
-          "text": null,
-          "color": null,
-          "position": null
+          "position": [
+            0.0,
+            0.1
+          ],
+          "keyframes": [
+            {
+              "t": 0.0,
+              "x": -0.1,
+              "y": 0.1,
+              "scale": 1.0,
+              "opacity": 0.5
+            },
+            {
+              "t": 1.0,
+              "x": 0.1,
+              "y": 0.1,
+              "scale": 1.0,
+              "opacity": 1.0
+            }
+          ]
         },
         {
           "type": "label",
           "name": "caption",
           "animation": "fade_in",
-          "text": "घूमते समय एक भुजा हवा में दूसरी से त",
+          "text": "One side pushes harder",
           "color": null,
-          "position": null
+          "position": [
+            0.0,
+            -0.25
+          ],
+          "keyframes": []
         }
       ],
       "camera": {
-        "movement": "static",
+        "movement": "pan_right",
         "focus_on": "lift_diagram"
       },
       "transition_out": "crossfade",
@@ -131,27 +184,57 @@
       "elements": [
         {
           "type": "diagram",
-          "name": "side_a",
+          "name": "spin_a",
           "animation": "progressive_stroke_draw",
           "text": null,
           "color": null,
-          "position": null
+          "position": [
+            -0.25,
+            0.0
+          ],
+          "keyframes": [
+            {
+              "t": 0.0,
+              "x": -0.25,
+              "y": 0.0,
+              "scale": 1.0,
+              "opacity": 1.0
+            },
+            {
+              "t": 1.0,
+              "x": -0.1,
+              "y": 0.0,
+              "scale": 1.1,
+              "opacity": 1.0
+            }
+          ]
         },
         {
           "type": "diagram",
-          "name": "side_b",
+          "name": "spin_b",
           "animation": "progressive_stroke_draw",
           "text": null,
           "color": null,
-          "position": null
-        },
-        {
-          "type": "arrow",
-          "name": "vs_arrow",
-          "animation": "draw_from_start",
-          "text": null,
-          "color": null,
-          "position": null
+          "position": [
+            0.25,
+            0.0
+          ],
+          "keyframes": [
+            {
+              "t": 0.0,
+              "x": 0.25,
+              "y": 0.0,
+              "scale": 1.0,
+              "opacity": 1.0
+            },
+            {
+              "t": 1.0,
+              "x": 0.1,
+              "y": 0.0,
+              "scale": 1.1,
+              "opacity": 1.0
+            }
+          ]
         }
       ],
       "camera": {
@@ -172,27 +255,30 @@
       "elements": [
         {
           "type": "svg_illustration",
-          "name": "main_diagram",
-          "animation": "progressive_stroke_draw",
-          "text": null,
-          "color": null,
-          "position": null
-        },
-        {
-          "type": "arrow",
-          "name": "pointer",
+          "name": "return_path",
           "animation": "draw_from_start",
           "text": null,
           "color": null,
-          "position": null
-        },
-        {
-          "type": "label",
-          "name": "caption",
-          "animation": "fade_in",
-          "text": "इसीलिए बिल्कुल सीधा फेंका गया बूमरैं",
-          "color": null,
-          "position": null
+          "position": [
+            0.0,
+            0.0
+          ],
+          "keyframes": [
+            {
+              "t": 0.0,
+              "x": -0.3,
+              "y": 0.1,
+              "scale": 1.0,
+              "opacity": 1.0
+            },
+            {
+              "t": 1.0,
+              "x": 0.3,
+              "y": -0.1,
+              "scale": 1.0,
+              "opacity": 1.0
+            }
+          ]
         }
       ],
       "camera": {
@@ -215,17 +301,13 @@
           "type": "label",
           "name": "takeaway_text",
           "animation": "pop_in",
-          "text": "एक मुड़ी छड़ी। एक घूमता करतब। हमेशा ",
+          "text": "Always comes home",
           "color": null,
-          "position": null
-        },
-        {
-          "type": "highlight",
-          "name": "emphasis",
-          "animation": "fade_in",
-          "text": null,
-          "color": null,
-          "position": null
+          "position": [
+            0.0,
+            0.0
+          ],
+          "keyframes": []
         }
       ],
       "camera": {

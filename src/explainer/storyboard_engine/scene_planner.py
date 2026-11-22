@@ -1,14 +1,12 @@
-"""Builds Scene objects from authored script lines plus a per-line template/headline choice.
-A thin layer: the creative call (which beat gets which template) is made by whoever authors
-the topic; this module just assembles the schema object with sensible visual defaults filled
-in via visual_planner, and keeps scene start/end times contiguous.
-"""
+"""Builds Scene objects from authored visuals. Each PlannedLine carries the AI-authored elements
+(with positions and keyframes), camera move and transition; this module assembles them into the
+validated schema without adding any layout or motion of its own."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Optional
 
-from ..schemas.storyboard_schema import Scene, SceneTemplate
+from ..schemas.storyboard_schema import Scene, SceneCamera, SceneElement, SceneTemplate, Transition
 from . import visual_planner as vp
 
 
@@ -18,14 +16,14 @@ class PlannedLine:
     start: float
     end: float
     narration: str
+    elements: List[SceneElement] = field(default_factory=list)
+    camera: Optional[SceneCamera] = None
+    transition: Transition = "crossfade"
     template: SceneTemplate = "explainer_diagram"
-    headline: str = ""
-    focus_on: Optional[str] = None
     sound_effect: Optional[str] = None
 
 
 def build_scene(line: PlannedLine) -> Scene:
-    headline = line.headline or line.narration.split(".")[0][:40]
     return Scene(
         scene_id=line.scene_id,
         start=line.start,
@@ -33,9 +31,9 @@ def build_scene(line: PlannedLine) -> Scene:
         template=line.template,
         narration=line.narration,
         subtitle_text=line.narration,
-        elements=vp.default_elements(line.template, headline),
-        camera=vp.default_camera(line.template, line.focus_on),
-        transition_out=vp.default_transition(line.template),
+        elements=vp.elements_or_empty(line.elements),
+        camera=vp.camera_or_static(line.camera),
+        transition_out=line.transition,
         sound_effect=line.sound_effect,
     )
 
