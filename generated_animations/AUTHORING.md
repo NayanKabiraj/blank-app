@@ -37,3 +37,8 @@ picture and may direct the presenter (look, point, gesture, expression).
 Plan scene 2 (index 1) is the intro: right after the hook the narrator says what the video covers and what the viewer will get
 ("In this video you'll see ..."). Give it its own shot: a visual roadmap - the 2-3 promised things appear as icons/mini-diagrams in step with each
 mention (`ctx.tt(1, k)`), the presenter points at each in turn, then the picture hands over to the first real scene.
+
+## The presenter
+Pip is the owner's own cartoon picture (`avatar/assets/pip_base.png`), animated by `avatar/face.py` + `controller.py`: lip-sync, blinks, sway, and leaning/tilting toward
+whatever he looks at or points at. He is a bust (no arms), so `point_at`, `wave`, `present` and `shrug` act as body language (lean, sway, tilt, lift); direct attention with
+`ctx.avatar.look_at(...)` and put the thing being pointed at in the picture itself (an arrow or a highlight). `avatar/assets/pip_speaking.gif` shows the speaking animation.
