@@ -667,5 +667,48 @@
         "error": "daily upload limit already reached in this run"
       }
     }
+  },
+  {
+    "date": "2026-11-22",
+    "niche": "Space & Universe",
+    "topic": "What really happens if you fall into a black hole?",
+    "minutes": 5,
+    "cluster": "Black Holes",
+    "follow_ups": [
+      "How is a black hole born?",
+      "What is inside a black hole?",
+      "Could a black hole destroy Earth?"
+    ],
+    "next_video": "How is a black hole born?",
+    "gate_score": 82,
+    "videos": {
+      "en": {
+        "file": "2026-11-22_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "The point of no return",
+            "start": 0.0
+          },
+          {
+            "title": "The long fall",
+            "start": 54.3
+          },
+          {
+            "title": "Stretched like spaghetti",
+            "start": 106.2
+          },
+          {
+            "title": "Time goes strange",
+            "start": 151.9
+          },
+          {
+            "title": "What is at the center",
+            "start": 197.9
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-22_documentary_en",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]

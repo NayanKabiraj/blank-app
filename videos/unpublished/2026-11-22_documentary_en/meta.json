@@ -4,7 +4,7 @@
  "date": "2026-11-22",
  "topic": "What really happens if you fall into a black hole?",
  "title": "What Really Happens If You Fall Into a Black Hole?",
- "description": "Stretching, slowing time and a point of no return: a clear tour of what physics says would happen if you fell into a black hole, what NASA's simulations show, and what nobody knows yet. #BlackHole #Space #Science #Physics #Documentary\n\nUp next: How is a black hole born?\n\nChapters:\n0:00 The point of no return\n0:46 The long fall\n1:38 Stretched like spaghetti\n2:23 Time goes strange\n3:09 What is at the center\n",
+ "description": "Stretching, slowing time and a point of no return: a clear tour of what physics says would happen if you fell into a black hole, what NASA's simulations show, and what nobody knows yet. #BlackHole #Space #Science #Physics #Documentary\n\nUp next: How is a black hole born?\n\nChapters:\n0:00 The point of no return\n0:54 The long fall\n1:46 Stretched like spaghetti\n2:31 Time goes strange\n3:17 What is at the center\n",
  "tags": [
   "what happens if you fall into a black hole",
   "black hole explained",
@@ -19,7 +19,7 @@
  ],
  "privacy": "private",
  "synthetic": null,
- "attempts": 3,
- "queued_at": "2026-11-22T14:47:08+00:00",
- "last_error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
+ "attempts": 0,
+ "queued_at": "2026-11-22T19:26:07+00:00",
+ "last_error": "daily upload limit already reached in this run"
 }
