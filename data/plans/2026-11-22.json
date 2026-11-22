@@ -151,7 +151,8 @@
           "prop": "clock"
         }
       }
-    ]
+    ],
+    "animation_pack": "gps_short"
   },
   "hindi": {
     "title": "GPS को कैसे पता चलता है आप कहाँ हैं? (फ़ोन कभी बोलता नहीं)",
@@ -293,6 +294,7 @@
           "prop": "clock"
         }
       }
-    ]
+    ],
+    "animation_pack": "gps_short"
   }
 }

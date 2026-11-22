@@ -1,0 +1,23 @@
+{
+ "lang": "hi",
+ "short": true,
+ "date": "2026-11-22",
+ "topic": "How does GPS know where you are?",
+ "title": "GPS को कैसे पता चलता है आप कहाँ हैं? (फ़ोन कभी बोलता नहीं)",
+ "description": "आपका फ़ोन बिना एक भी सिग्नल भेजे आपको ढूँढ लेता है। एक मिनट से कम में जानिए GPS के पीछे की स्टॉपवॉच और ज्यामिति की चाल। #Shorts #GPS #विज्ञान #टेक्नोलॉजी\n\nअगला वीडियो: गूगल मैप्स को ट्रैफ़िक जाम कैसे पता चलता है?",
+ "tags": [
+  "GPS कैसे काम करता है",
+  "GPS समझाया",
+  "सैटेलाइट",
+  "लोकेशन कैसे पता चलती है",
+  "परमाणु घड़ी",
+  "विज्ञान",
+  "टेक्नोलॉजी",
+  "shorts"
+ ],
+ "privacy": "private",
+ "synthetic": null,
+ "attempts": 0,
+ "queued_at": "2026-11-22T11:32:08+00:00",
+ "last_error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
+}
