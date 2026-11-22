@@ -26,6 +26,14 @@ the workflow renders.
 6. **Uploads stay private** unless the owner changes `YT_PRIVACY`. Videos YouTube refuses wait in `videos/unpublished/` and upload first next time.
 7. Scheduled tasks commit nothing; interactive work goes on a branch and a pull request.
 
+8. **Every video ends with the closing line** "Thanks for watching the video! Please like, share and subscribe to watch more interesting
+   videos like this." (Hindi equivalent in `shorts/outro.py`). It is added automatically to every Short, documentary, stock-footage and
+   cinematic video (`shorts.outro.with_outro`) and to every `generated_animations` topic (animated outro scene) - plans must NOT write it
+   themselves (the word budget already leaves room). Director-manifest videos are the one style not covered yet.
+9. **generated_animations** (`generated_animations/`, README there): per-topic Python scene modules written by Claude, rendered by Mode B
+   (`python -m generated_animations render <topic>`, workflow `generated-animations.yml`). Voices per topic in `animation_config.json`
+   (English: edge-tts `en-US-AndrewNeural`; Hindi: Piper `hi_IN-pratham-medium`). Code is approved by a human before scheduled use.
+
 ## Quick commands
 
 ```bash

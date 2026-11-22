@@ -22,7 +22,7 @@ import sys
 import time
 from pathlib import Path
 
-from . import compose, config
+from . import compose, config, outro
 from .cinematic_engine import quality as cquality
 from .cinematic_engine import renderer as crenderer
 from .cinematic_engine import effects, typography
@@ -79,7 +79,7 @@ def run(plan: Plan, langs: list[str], out: Path) -> dict:
     for lang in langs:
         t0 = time.time()
         try:
-            script = scripts[lang]
+            script = outro.with_outro(scripts[lang], lang)
             work = (out / f"work_{lang}").resolve()
             work.mkdir(parents=True, exist_ok=True)
             voice, timeline, voice_end = compose._voice_track(

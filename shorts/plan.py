@@ -165,10 +165,10 @@ def _thumb_problems(lang: str, s) -> list[str]:
 def validate(plan: Plan) -> list[str]:
     """Extra checks beyond the schema. Returns a list of problems."""
     problems = _strategy_problems(plan)
-    for lang, s, (lo, hi) in (("english", plan.english, (100, 160)), ("hindi", plan.hindi, (85, 145))):
+    for lang, s, (lo, hi) in (("english", plan.english, (100, 142)), ("hindi", plan.hindi, (85, 125))):
         words = sum(len(sc.text.split()) for sc in s.scenes)
         if not lo <= words <= hi:
-            problems.append(f"{lang}: {words} narration words, expected {lo}-{hi} for 40-59s")
+            problems.append(f"{lang}: {words} narration words, expected {lo}-{hi} for 40-59s (the closing like/share/subscribe line is added automatically; do not write it)")
         if not 5 <= len(s.scenes) <= 10:
             problems.append(f"{lang}: {len(s.scenes)} scenes, expected 6-9")
         if len(s.title) > 90:
@@ -253,7 +253,8 @@ class DocPlan(BaseModel):
 def doc_seconds(s: DocScript, lang: str = "en") -> float:
     """Estimated running time of a documentary script."""
     words = sum(len(sc.text.split()) for sc in s.scenes)
-    return words / WORDS_PER_SEC[lang] + SCENE_PAUSE * len(s.scenes) + CHAPTER_PAUSE * len(s.chapters) + 3
+    from .outro import OUTRO_SECONDS
+    return words / WORDS_PER_SEC[lang] + SCENE_PAUSE * (len(s.scenes) + 1) + CHAPTER_PAUSE * len(s.chapters) + 3 + OUTRO_SECONDS[lang]
 
 
 def validate_doc(plan: DocPlan) -> list[str]:
