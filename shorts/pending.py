@@ -170,7 +170,7 @@ def main() -> int:
     f.add_argument("--langs", default="")
     s = sub.add_parser("enqueue-saved")
     s.add_argument("--date", required=True)
-    s.add_argument("--langs", default="en,hi")
+    s.add_argument("--langs", default=config.LANGS)
     e = sub.add_parser("enqueue-file")
     e.add_argument("video")
     e.add_argument("--lang", required=True)

@@ -74,7 +74,7 @@ def _thumbnail(script, accent: str, lang: str, out_jpg: Path) -> Path:
 
 def run(plan: Plan, langs: list[str], out: Path) -> dict:
     today = dt.date.today().isoformat()
-    scripts = {"en": plan.english, "hi": plan.hindi}
+    scripts = {k: v for k, v in {"en": plan.english, "hi": plan.hindi}.items() if v is not None}
     results, failures = {}, []
     for lang in langs:
         t0 = time.time()
@@ -149,7 +149,7 @@ def run(plan: Plan, langs: list[str], out: Path) -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--plan-file", required=True, help="the plan JSON written by the daily Claude task")
-    ap.add_argument("--langs", default="en,hi", help="comma-separated: en,hi")
+    ap.add_argument("--langs", default=config.LANGS, help="comma-separated: en,hi")
     ap.add_argument("--out", default="output_cinematic", help="output directory")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")

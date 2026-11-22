@@ -36,7 +36,7 @@ on:
       langs:
         description: "Languages to produce"
         type: string
-        default: "en,hi"
+        default: "en"
 
 permissions:
   contents: write   # to commit data/history.json (topic memory)
@@ -57,7 +57,7 @@ jobs:
       - id: m
         env:
           IN_FORMAT: ${{ inputs.format }}
-          IN_LANGS: ${{ inputs.langs || 'en,hi' }}
+          IN_LANGS: ${{ inputs.langs || 'en' }}
         run: |
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
           import json, os
