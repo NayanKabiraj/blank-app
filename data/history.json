@@ -562,7 +562,8 @@
           "ok": true,
           "output": "output_cinematic/2026-11-22_en.mp4"
         },
-        "contact_sheet": "output_cinematic/2026-11-22_en_contact-sheet.jpg"
+        "contact_sheet": "output_cinematic/2026-11-22_en_contact-sheet.jpg",
+        "video_id": "nrcb3-NjWbc"
       },
       "hi": {
         "file": "2026-11-22_hi.mp4",
@@ -592,7 +593,8 @@
           "ok": true,
           "output": "output_cinematic/2026-11-22_hi.mp4"
         },
-        "contact_sheet": "output_cinematic/2026-11-22_hi_contact-sheet.jpg"
+        "contact_sheet": "output_cinematic/2026-11-22_hi_contact-sheet.jpg",
+        "video_id": "9KihZueSvJc"
       }
     }
   }
