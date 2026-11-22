@@ -55,14 +55,13 @@ def cues_from_timeline(cfg: dict) -> list[tuple[float, str]]:
         elif kind == "quiz" and n:                       # options land, then the answer is revealed
             cues.append((start + intro, "pop"))
             rev = min(end - 0.9, max(start + 2.0, hit if hit and hit > start + 2.0 else start + (end - start) * 0.68))
-            cues.append((rev, "bell"))
+            cues.append((rev, "pop"))
         elif kind == "myth":                             # the myth is struck out, the fact stamps in
             strike = start + max(1.0, (hit - start) if hit else (end - start) * 0.42)
             cues += [(strike, "pop"), (strike + 0.35, "pop")]
         else:                                            # diagrams: flow, steps, build, cycle, race, compare, bars
             cues.append((start + 0.12, "pop"))
-        if hit:
-            cues.append((hit - 0.03, "bell"))
+        # (no chime on the keyword: it was annoying; the caption highlight carries the emphasis)
     return [(t, k) for t, k in sorted(cues) if t >= 0]
 
 
@@ -70,7 +69,7 @@ def build(cfg_path: Path, total: float, out: Path, volume: float = 0.35) -> Path
     if not cfg_path.exists():
         return None
     cfg = json.loads(cfg_path.read_text(encoding="utf-8"))
-    sounds = {"pop": pop(), "bell": bell()}
+    sounds = {"pop": pop()}
     track = np.zeros(int(SR * (total + 1)))
     for t, kind in cues_from_timeline(cfg):
         snd = sounds[kind]
