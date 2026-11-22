@@ -131,6 +131,23 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
+INTRO_CUE = re.compile(r"\b(in this video|in the next|by the end|you'?ll (see|learn|discover|find out|know|get)|you will|we'?ll|we will)\b", re.I)
+
+
+def _intro_problems(scenes, lang: str, max_words: int) -> list[str]:
+    """Scene 2 is the intro: right after the hook it says what the video is about and what the viewer will get."""
+    if len(scenes) < 2:
+        return []
+    text = scenes[1].text
+    out = []
+    if not INTRO_CUE.search(text):
+        out.append(f"{lang}: scene 2 must be the intro - after the hook, say what this video covers and what the viewer will "
+                   "get (e.g. \"In this video you'll see X, Y and Z - and the answer to ...\")")
+    if len(text.split()) > max_words:
+        out.append(f"{lang}: the intro (scene 2) is {len(text.split())} words, keep it to {max_words} or fewer")
+    return out
+
+
 def _present(plan):
     """[(label, script)] for the languages this plan has (Hindi is optional)."""
     return [(l, x) for l, x in (("english", plan.english), ("hindi", plan.hindi)) if x is not None]
@@ -214,6 +231,7 @@ def validate(plan: Plan) -> list[str]:
             problems.append(f"{lang}: the hook opens with a greeting or filler ({first.strip()[:25]!r}); start with the surprising fact")
         if len(s.hook_text.split()) > 6:
             problems.append(f"{lang}: hook_text has {len(s.hook_text.split())} words, max 6 (5 is better)")
+        problems += _intro_problems(s.scenes, lang, 34)
         for i, sc in enumerate(s.scenes, 1):
             if len(sc.text.split()) > 30:
                 problems.append(f"{lang} scene {i}: {len(sc.text.split())} words, split it (max about 30)")
@@ -318,6 +336,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
                 if len(sc.text.split()) > 45:
                     problems.append(f"{lang} chapter {c} scene {i}: {len(sc.text.split())} words, split it (max about 40)")
                 problems += _scene_problems(sc, f"{lang} chapter {c} scene {i}")
+        problems += _intro_problems(s.scenes, lang, 48)
         scenes = s.scenes
         if scenes and WEAK_OPENER.match(scenes[0].text.strip()):
             problems.append(f"{lang}: the cold open starts with a greeting or filler; start with the story")

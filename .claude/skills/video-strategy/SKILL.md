@@ -246,3 +246,7 @@ success, URLs or API responses; if unavailable, say so; if uncertain, label it; 
 The decision loop for every video: why would someone click? -> does the first 10 seconds prove the premise? -> is there a reason to watch
 the next 30 seconds? -> is something changing visually or narratively? -> is the story escalating? -> is there a satisfying payoff? ->
 what should they watch next? If any answer is weak, fix that before adding complexity.
+
+## Intro (standing rule)
+Every video: scene 1 = hook, **scene 2 = the intro** - what the video is about, 2-3 concrete things the viewer will see or learn, and the payoff question that is answered
+by the end (Shorts <= 34 words, documentaries <= 48). It keeps the hook's promise, tells the viewer what to expect (lowering early drop-off) and is checked by `shorts.plan validate`.
