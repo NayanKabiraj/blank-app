@@ -63,12 +63,10 @@ def synthesize(text: str, out_wav: Path, lang: str, length_scale: float = 1.0, s
     """Render `text` to a mono WAV and return its duration in seconds. `length_scale` > 1 slows it down."""
     raw_scale = length_scale
     length_scale = length_scale * config.SPEECH_PACE.get(lang, 1.0)   # slower, calmer delivery (see config.SPEECH_PACE)
-    if lang == "en" and config.EN_VOICE.startswith("edge:") and _state["edge"] is not False and not os.getenv("SHORTS_FAKE_TTS"):
-        try:
-            return _edge(text, out_wav, raw_scale)   # Andrew's own pace is natural: SPEECH_PACE is a Piper correction
-        except Exception:  # noqa: BLE001 - endpoint unreachable: keep the run going on Piper
-            log.exception("edge-tts voice %s unavailable, falling back to Piper for this run", config.EN_VOICE)
-            _state["edge"] = False
+    if lang == "en" and config.EN_VOICE.startswith("edge:") and not os.getenv("SHORTS_FAKE_TTS"):
+        # Strict: English is always this voice. If the endpoint stays unreachable the run fails (no other voice is
+        # ever mixed in); the retries inside _edge ride out the endpoint's occasional empty answers.
+        return _edge(text, out_wav, raw_scale)   # Andrew's own pace is natural: SPEECH_PACE is a Piper correction
     if os.getenv("SHORTS_FAKE_TTS"):  # offline testing only: placeholder tone
         return _fake(text, out_wav, length_scale)
     if config.TTS_ENGINE == "parler" and _state["parler"] is not False:
@@ -90,15 +88,16 @@ def _edge(text: str, out_wav: Path, length_scale: float) -> float:
     import edge_tts
 
     mp3 = out_wav.with_suffix(".edge.mp3")
-    for attempt in range(1, 5):   # the endpoint sometimes answers "no audio" to a shared CI address: retry before giving up
+    attempts = 8
+    for attempt in range(1, attempts + 1):   # the endpoint sometimes answers "no audio" to a shared CI address: retry
         try:
             asyncio.run(edge_tts.Communicate(text, config.EN_VOICE[len("edge:"):]).save(str(mp3)))
             break
         except Exception as exc:  # noqa: BLE001
-            if attempt == 4:
+            if attempt == attempts:
                 raise
             log.warning("edge-tts attempt %d failed (%s), retrying", attempt, type(exc).__name__)
-            time.sleep(2.0 * attempt)
+            time.sleep(min(30.0, 3.0 * attempt))
     tempo = f"atempo={1.0 / length_scale:.4f}" if abs(length_scale - 1.0) > 0.01 else "anull"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(mp3), "-af", tempo, "-ar", "22050", "-ac", "1",
                     str(out_wav)], check=True)

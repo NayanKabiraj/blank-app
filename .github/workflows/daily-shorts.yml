@@ -115,7 +115,7 @@ jobs:
       - name: Install FFmpeg and fonts (English + Devanagari)
         run: |
           sudo apt-get update -q
-          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core
+          sudo apt-get install -y -q ffmpeg fonts-noto-core fonts-noto-ui-core libcairo2-dev libpango1.0-dev pkg-config python3-dev
           fc-list | grep -i -E "NotoSans(Devanagari)?-" | head -5
 
       - name: Cache Piper voices
@@ -139,7 +139,7 @@ jobs:
           key: sd-turbo-v1
 
       - name: Install Python packages
-        run: pip install -r shorts/requirements.txt
+        run: pip install -r shorts/requirements.txt "manim==0.22.1"   # manim: the generated_animations picture engine
 
       - name: Install Parler-TTS (optional, without it the Piper voice is used)
         if: ${{ vars.TTS_ENGINE == 'parler' && inputs.format != 'upload' && inputs.format != 'ytauth' }}

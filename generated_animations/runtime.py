@@ -44,7 +44,14 @@ class Timeline:
         return self
 
     def make_clock(self) -> Mobject:
-        return Mobject()
+        """A mobject with a time-based (dt) updater. Manim only runs updaters during wait() when at least one
+        mobject has one; without it every wait() is rendered as a single frozen frame."""
+        clock = Mobject()
+
+        def tick(_m, dt):
+            pass
+        clock.add_updater(tick)
+        return clock
 
 
 @dataclass
@@ -62,6 +69,9 @@ class SceneContext:
     objects: list = field(default_factory=list)
     caption_mob: object = None
     overrun: float = 0.0
+    layout: object = None          # shared.layout.Layout when rendering a plan
+    lang: str = "en"
+    is_last: bool = False
 
     # time ---------------------------------------------------------------------------------
     def elapsed(self) -> float:
@@ -113,6 +123,11 @@ class SceneContext:
         return mobs[0] if len(mobs) == 1 else mobs
 
     def headline(self, text: str, color: str = "#F5F7FA"):
+        if self.layout is not None:
+            h = typography.headline(text, color, max_width=self.layout.headline_w, lang=self.lang)
+            h.move_to((0, self.layout.headline_y, 0))
+            self.add(h, z=10)
+            return h
         h = typography.headline(text, color)
         h.move_to((0, HEADLINE_Y, 0))
         self.rig.pin(h)
