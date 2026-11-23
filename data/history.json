@@ -755,5 +755,27 @@
         "video_id": "oF2anyi3SyM"
       }
     }
+  },
+  {
+    "date": "2026-11-23",
+    "niche": "Brain & Psychology",
+    "topic": "Why does time feel faster as you get older?",
+    "mood": "inspiring",
+    "cluster": "Mind Glitches",
+    "follow_ups": [
+      "Why do we forget our dreams so fast?",
+      "Why do songs get stuck in our head?",
+      "Why do holidays feel shorter than ordinary weeks?"
+    ],
+    "next_video": "Why do we forget our dreams so fast?",
+    "gate_score": 84,
+    "thumbnail_text": "YEARS FLY",
+    "videos": {
+      "en": {
+        "file": "2026-11-23_en.mp4",
+        "saved_to": "videos/2026-11-23/en.mp4",
+        "video_id": "Ve6sULeRWUk"
+      }
+    }
   }
 ]

@@ -1,61 +1,57 @@
 {
-  "niche": "Earth & Nature",
-  "topic": "What if you dove to the bottom of the Mariana Trench?",
-  "research_summary": "Candidates: (1) What if you dove to the bottom of the Mariana Trench? 33/40 (curiosity gap, personal stakes, huge numbers, strong visual of a descent, verifiable, not Space so it passes the variety guard; researched-queue gate 78), (2) What if all the ice on Earth melted? 30 (strong, but a documentary slot today), (3) What if you could stop time? 27 (fictional physics, weaker visual). Space & Universe is cooling down, so no space topic. Winner: the Mariana Trench dive; starts the 'The Deep Sea' cluster. Titles (/50): 'What If You Dove to the Deepest Point on Earth?' 44 (chosen); 'What If You Sank to the Bottom of the Ocean?' 41; 'Mariana Trench: The Dive' 33; '1,000x Pressure: Could You Survive?' 40; 'Diving 11 Kilometres Down' 36; 'The Deepest Place on Earth, Explained' 38; 'What the Bottom of the Ocean Does to You' 39; 'Would You Dive Into the Dark?' 37; 'The Darkest Dive' 31; 'Could Anything Live at the Bottom?' 36. Thumbnails: A the face with a tiny sub and the words 1,000x PRESSURE (chosen); B a pitch-black column with one lamp and the question 'How deep?'; C a crushed cup next to a normal cup. Hooks: 'Dive eleven kilometres down and the water presses a thousand times harder than air.' (chosen); 'No sunlight has ever touched the place you are sinking toward.'; 'Every ten metres, the sea squeezes you a little harder.'; 'The bottom of the ocean is colder than your fridge.'; 'The deepest dive ever made took four hours just to go down.' FACTS (status): Challenger Deep is about 10,935 m deep (NOAA 2021 estimate +/- 6 m; other surveys give up to about 10,994 m +/- 40 m, so the script says 'eleven kilometres') - PARTIALLY VERIFIED; pressure at the bottom is over 1,000 atmospheres (about 16,000 psi) - VERIFIED (NASA, NOAA-affiliated study, 1,000+ x sea level); over a tonne per square centimetre follows from 1,000 atm (about 1.03 kgf per cm2 per atm) - COMPUTED, stated as 'about a tonne on every fingernail' - PARTIALLY VERIFIED; bottom water about 1-4 C (2.45 C measured minimum in a NOAA-affiliated profile; Royal Museums Greenwich 1-4 C) - VERIFIED; sunlight is rarely significant beyond 200 m and absent below about 1,000 m (NOAA) - VERIFIED; amphipods swarm at depths over 10,000 m and are the snailfish's main food (JAMSTEC, Schmidt Ocean Institute) - VERIFIED; fish appear limited to about 8,000-8,500 m by the TMAO limit (hypothesis; the deepest confirmed fish is 8,336 m in the Izu-Ogasawara Trench) - PARTIALLY VERIFIED, so the script says 'fish seem to stop near eight thousand metres'; the 1960 Trieste dive took about 4 hours 47 minutes to descend (US Navy history office) - VERIFIED (one popular source says nine hours; the Navy figure is used). Left out: Vescovo's 2019 descent time (sources disagree), any claims about what a human body would feel (no gore, no unsupported physiology). Sources: https://repository.library.noaa.gov/view/noaa/33477 , https://oceanservice.noaa.gov/facts/light_travel.html , https://www.rmg.co.uk/stories/ocean/challenger-deep-deepest-point-ocean , https://tos.org/oceanography/article/ambient-sound-at-challenger-deep-mariana-trench , https://history.navy.mil/about-us/leadership/director/directors-corner/h-grams/h-gram-041/h-041-6.html , https://www.jamstec.go.jp/e/about/press_release/archive/2017/20170824.pdf , https://schmidtocean.org/?p=2029 . Competitor/vidIQ data: NOT PUBLICLY VERIFIABLE (not queried). Risks: depth figure differs between surveys (hedged), fish-depth limit is a hypothesis (hedged). Quality gate 84/100: topic 9, curiosity 9, title 8, thumbnail 9, opening 9, story 8, visual 9, emotion 7, retention 8, series 8 - improve the emotional close, then proceed.",
-  "mood": "mysterious",
-  "cluster": "The Deep Sea",
+  "niche": "Brain & Psychology",
+  "topic": "Why does time feel faster as you get older?",
+  "research_summary": "Channel check: NOT AVAILABLE: the YouTube sign-in has no read scopes yet (data/channel_trends.json says 'insufficient authentication scopes'); vidIQ shows only public totals (47 subscribers, 11,241 views, 140 videos) and has 3 credits, so there is no per-video data. No change was made because of channel data; the variety guard decided (Space and Earth & Nature are cooling down). Candidates: (1) Why does time feel faster as you get older? 34/40 (universal, shareable, evergreen, memory-and-novelty angle with a practical fix, simple visuals), (2) Why do we forget our dreams so fast? 31, (3) How does Google Maps know about traffic jams? 30 (continues the GPS cluster but less universal). Winner: the time question; continues the open 'Mind Glitches' follow-ups (deja vu video). Titles (/50): 'Why Does Time Feel Faster as You Get Older?' 45 (chosen); 'Why Do Years Fly By as You Age?' 42; 'Why Summer Felt Endless as a Kid' 40; 'Your Brain Is Shrinking Your Years' 38; 'The Memory Trick Behind Fast Years' 37; 'Why Is Every Year Shorter?' 36; 'How to Slow Down Time (Science)' 39; 'Why 40 Feels Faster Than 8' 36; 'Time Speeds Up: Here Is Why' 38; 'Why Weeks Vanish' 30. Thumbnails: A the face with a clock racing and the words 'Why does time speed up?' (chosen); B a calendar with pages flying; C a child and an adult with the same clock. Hooks: 'A year felt endless at eight. Now one disappears in a blink.' (chosen); 'You are not imagining it: years really do feel shorter.'; 'Your childhood summers were not longer. Your memories were.'; 'One experiment asked five hundred people how fast a decade felt.'; 'The same year, two different lengths.' Gap: most existing videos give only the 'a year is a smaller fraction of your life' story or the novelty story; this one sets the two side by side (flagging the first as unproven), explains the holiday effect with the same mechanism, cites the age survey, and ends with a practical test (try one new thing). Claims: (1) Wittmann and Lehnhoff 2005 surveyed 499 people aged 14 to 94; short intervals did not feel faster with age, but a decade did for older people - sources: Scientific American, University of Geneva archive - PARTIALLY VERIFIED (press coverage of the paper; one account says the effect was weaker, so the script says 'felt faster to the older ones'); (2) novelty builds more memories and routine fewer, so busy same-again years look short in hindsight - Wittmann, Hammond - PARTIALLY VERIFIED hypothesis, stated as 'Theory two'; (3) a year is a smaller fraction of life as you age (Janet's ratio idea, 1877) - an old idea, NOT proven, stated as 'never proven'; (4) holiday effect: trips feel long in hindsight because of many new memories (Hammond, 'Time Warped') - PARTIALLY VERIFIED, the 6-9 memories per day figure comes from a conference report so it is left out; (5) Bejan 2019 mental-image-rate model - no independent test found, LEFT OUT. Sources: https://www.scientificamerican.com/article/why-does-time-seem-to-speed-up-with-age/ , https://www.psychologicalscience.org/observer/vacation-not-what-you-remember , https://www.npr.org/sections/krulwich/2010/02/01/122322542/why-does-time-fly-by-as-you-get-older . Competitor/vidIQ data: NOT PUBLICLY VERIFIABLE. Risks: the age survey effect is modest and sources differ (hedged); 'practical fix' is a suggestion, not medical advice. Quality gate 84/100: topic 9, curiosity 9, title 8, thumbnail 8, opening 9, story 8, visual 8, emotion 8, retention 8, series 8 - improve the visuals of the survey scene, then proceed.",
+  "mood": "inspiring",
+  "cluster": "Mind Glitches",
   "follow_ups": [
-    "Why do deep-sea fish glow in the dark?",
-    "What if all the ice on Earth melted?",
-    "What lives in the ocean's darkest zone?"
+    "Why do we forget our dreams so fast?",
+    "Why do songs get stuck in our head?",
+    "Why do holidays feel shorter than ordinary weeks?"
   ],
   "gate_score": 84,
   "english": {
-    "title": "What If You Dove to the Deepest Point on Earth?",
-    "description": "Eleven kilometres down, the sea presses over a thousand times harder than air. What happens to light, pressure and life on the way to the bottom of the Mariana Trench? A one-minute answer with the numbers checked. #Shorts #WhatIf #MarianaTrench #Ocean #Science",
+    "title": "Why Does Time Feel Faster as You Get Older?",
+    "description": "Why does a year feel endless at eight and gone in a blink at forty? Two old theories, the memory trick behind the holiday effect, a famous age survey and one simple way to slow your years down. #Shorts #Psychology #TimePerception",
     "tags": [
-      "what if you dove to the bottom of the ocean",
-      "mariana trench",
-      "challenger deep",
-      "deepest place on earth",
-      "ocean pressure",
-      "deep sea",
-      "what if",
-      "ocean explained",
-      "science explained",
-      "shorts"
+      "why does time feel faster as you get older",
+      "time perception",
+      "why time flies as you age",
+      "novelty and memory",
+      "brain explained",
+      "psychology explained"
     ],
-    "hook_text": "1,000 times harder",
-    "thumbnail_text": "1,000x PRESSURE",
-    "thumbnail_question": "What if you dove 11 km down?",
-    "next_video": "Why do deep-sea fish glow in the dark?",
-    "pinned_comment": "If a perfectly safe sub could take you to the bottom of the Mariana Trench, would you go: yes or no?",
+    "hook_text": "Why years fly",
+    "thumbnail_text": "YEARS FLY",
+    "thumbnail_question": "Why does time speed up?",
+    "next_video": "Why do we forget our dreams so fast?",
+    "pinned_comment": "What is the last 'first' you did that made a week feel longer: a place, a food, a skill?",
     "scenes": [
       {
-        "text": "Dive eleven kilometres down and the water presses a thousand times harder than air.",
-        "keyword": "kilometres down",
+        "text": "A year felt endless at eight. Now one disappears in a blink.",
+        "keyword": "endless",
         "graphic": {
           "kind": "title",
-          "headline": "The deepest dive",
+          "headline": "Why years fly",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "globe"
+          "prop": "clock"
         }
       },
       {
-        "text": "In this video you'll see where the light dies, how the pressure builds, and what lives there. Ready to sink?",
+        "text": "In this video you'll see two old theories, a memory trick, and how to slow your years down. Ready?",
         "keyword": "you'll see",
         "graphic": {
           "kind": "chat",
           "headline": "Quick chat",
           "caption": "",
           "items": [
-            "What if you dove to the bottom?",
-            "It gets dark, fast",
-            "And the pressure?",
-            "It builds and builds"
+            "Why do years fly?",
+            "Two old theories",
+            "And a memory trick?",
+            "Yes, plus a fix"
           ],
           "values": [],
           "answer": null,
@@ -63,50 +59,65 @@
         }
       },
       {
-        "text": "First, the light. Sunlight is nearly gone by two hundred metres. Below a thousand, it is pitch dark.",
-        "keyword": "pitch dark",
+        "text": "Theory one: a year is an eighth of an eight-year-old's life, but a fortieth at forty. An old idea, never proven.",
+        "keyword": "never proven",
         "graphic": {
-          "kind": "steps",
-          "headline": "Where light dies",
+          "kind": "compare",
+          "headline": "One year as a share of life",
           "caption": "",
           "items": [
-            "Sunlight 0-200 m",
-            "Twilight to 1,000 m",
-            "Pitch dark below"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Then the squeeze. At the bottom, the pressure is over a thousand atmospheres. Picture a tonne pressing on every fingernail.",
-        "keyword": "a tonne",
-        "graphic": {
-          "kind": "bars",
-          "headline": "Pressure vs the surface",
-          "caption": "",
-          "items": [
-            "Surface",
-            "5 km down",
-            "Bottom"
+            "Age 8",
+            "Age 40"
           ],
           "values": [
-            1.0,
-            500.0,
-            1086.0
+            12.5,
+            2.5
           ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Is it hot down there? No. The water is just one to four degrees Celsius.",
-        "keyword": "one to four degrees",
+        "text": "Theory two: novelty. New things build strong memories; routine leaves almost none. So same-again years look short.",
+        "keyword": "novelty",
+        "graphic": {
+          "kind": "flow",
+          "headline": "How memories stretch time",
+          "caption": "",
+          "items": [
+            "New things",
+            "Strong memories",
+            "A long-feeling year"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "That is the holiday effect. Why do trips feel long afterwards? They are packed with firsts.",
+        "keyword": "holiday effect",
+        "graphic": {
+          "kind": "steps",
+          "headline": "Why trips feel long",
+          "caption": "",
+          "items": [
+            "Many firsts",
+            "Many memories",
+            "A long trip"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "A survey of nearly five hundred people, aged fourteen to ninety-four: a decade felt faster to the older ones.",
+        "keyword": "a decade felt faster",
         "graphic": {
           "kind": "stat",
-          "headline": "1 to 4 C",
-          "caption": "bottom water",
+          "headline": "499 people",
+          "caption": "aged 14 to 94",
           "items": [],
           "values": [],
           "answer": null,
@@ -114,32 +125,16 @@
         }
       },
       {
-        "text": "Does anything live there? Yes! Tiny shrimp-like amphipods swarm the bottom. Fish seem to stop near eight thousand metres.",
-        "keyword": "amphipods",
-        "graphic": {
-          "kind": "myth",
-          "headline": "Life at the bottom",
-          "caption": "",
-          "items": [
-            "Nothing lives that deep",
-            "Amphipods swarm the bottom"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Quick quiz. How long did the first dive down take, back in 1960? Four hours forty-seven minutes.",
-        "keyword": "forty-seven minutes",
+        "text": "Quick quiz. Which year feels longer afterwards: a routine one, or one full of firsts? Firsts.",
+        "keyword": "Quick quiz",
         "graphic": {
           "kind": "quiz",
-          "headline": "How long was the 1960 dive down?",
+          "headline": "Which year feels longer?",
           "caption": "",
           "items": [
-            "47 minutes",
-            "4 h 47 min",
-            "A whole day"
+            "A routine year",
+            "A year of firsts",
+            "Exactly the same"
           ],
           "values": [],
           "answer": 1,
@@ -147,20 +142,20 @@
         }
       },
       {
-        "text": "So the bottom is dark, cold and crushing, but not empty. Would you dive down?",
-        "keyword": "not empty",
+        "text": "So stretch your years: try one new thing this week. What will you try first? Tell me below!",
+        "keyword": "one new thing",
         "graphic": {
           "kind": "title",
-          "headline": "Would you dive?",
+          "headline": "Try one new thing",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "heart"
+          "prop": "star"
         }
       }
     ],
-    "animation_pack": "mariana_dive_short"
+    "animation_pack": "time_flies_short"
   },
   "hindi": null
 }
