@@ -267,3 +267,6 @@ are vendor guides and unverified, so treat numeric claims (CTR benchmarks, reten
 New animation packs use the **vox look** (paper cut-out explainer style): `"look": "vox"` in `shots.json`, drawn with `generated_animations/shared/vox.py` as described in the "vox look" section of
 `generated_animations/AUTHORING.md` (model pack: `generated_animations/scenes/time_flies_vox/`). The validator rejects a pack without it. The avatar stays, as a sticker. No photos are fetched (drawn paper cut-outs only), so no network
 or image licences are involved.
+
+**Newspaper clippings (vox look, owner instruction, 23 Nov 2026):** when a scene reports a dated/historical event, a named incident, an announcement, discovery, record, law or study, show it as a newspaper clipping that flies in
+(`vox.newspaper` + `vox.arrive`; rules and timing in AUTHORING.md, "Newspaper clippings: when to use them"). You decide per scene; keep headlines and dates inside the verified Claims.
