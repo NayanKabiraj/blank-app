@@ -80,6 +80,18 @@ def open_follow_ups(history: list[dict], limit: int = 12) -> list[dict]:
     return out[:limit]
 
 
+def with_sources(description: str, research_summary: str, n: int = 3) -> str:
+    """Appends a 'Sources:' line with up to n links found in the plan's research_summary (viewers and the algorithm both read the description)."""
+    urls = []
+    for u in re.findall(r"https?://[^\s,;)]+", research_summary or ""):
+        u = u.rstrip(".")
+        if u not in urls and "wikipedia" not in u:
+            urls.append(u)
+    if not urls or "sources:" in description.lower():
+        return description
+    return f"{description.rstrip()}\n\nSources:\n" + "\n".join(urls[:n])
+
+
 def up_next(description: str, next_video: str, lang: str = "en") -> str:
     """The description with a pointer to the next video (viewers who finish one should be handed the next)."""
     next_video = (next_video or "").strip()

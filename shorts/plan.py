@@ -73,9 +73,9 @@ class Scene(BaseModel):
 
 
 class LangScript(BaseModel):
-    title: str = Field(description="Catchy YouTube title, max 80 characters, no hashtags.")
-    description: str = Field(description="2-3 sentence YouTube description plus 3-5 hashtags.")
-    tags: List[str] = Field(description="8-12 search tags.")
+    title: str = Field(description="Catchy YouTube title, 65 characters max, the topic keyword within the first 40 characters, a curiosity gap that the video pays off, no hashtags.")
+    description: str = Field(description="2-3 sentence YouTube description: the topic keyword and the promise in the first two lines, then 2-3 hashtags. A Sources line is added automatically.")
+    tags: List[str] = Field(description="5-8 accurate search tags, the exact topic phrase first (tags are a minor signal; no stuffing).")
     hook_text: str = Field(description="On-screen hook shown in the first 3 seconds, max 6 words.")
     thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
                                 "(not a copy of the title). Empty = the hook text is used.")
@@ -188,6 +188,11 @@ def _strategy_problems(plan) -> list[str]:
                           ("hook", "the opening hook options")):
         if marker not in rs:
             out.append(f"research_summary should also record {label} (see the video-strategy skill)")
+    for marker, label in (("claims:", "a 'Claims:' table (each number with two sources and a status; where sources differ say which you used and hedge the narration)"),
+                          ("gap:", "a 'Gap:' line: the angle the top existing videos on this question miss, and how this video covers it"),
+                          ("channel check:", "a 'Channel check:' line: what the channel's own recent numbers say (data/channel_trends.json or vidIQ) and the change you made to the topic/niche/format because of it, or 'NOT AVAILABLE: <reason>'")):
+        if marker not in rs:
+            out.append(f"research_summary should also contain {label}")
     if not plan.gate_score:
         out.append("gate_score is missing: score the concept /100 with the quality gate (85+ proceed, 75-84 improve, below 75 rework)")
     elif plan.gate_score < 75:
@@ -201,6 +206,20 @@ def _strategy_problems(plan) -> list[str]:
             out.append(f"{lang}: next_video is missing (the close hands the viewer to the next video)")
         if "?" not in s.pinned_comment:
             out.append(f"{lang}: pinned_comment should be one viewer decision tied to the central dilemma, as a question")
+    return out
+
+
+def _seo_problems(lang: str, s) -> list[str]:
+    """Title length (65 for English), 5-8 tags, 2-3 hashtags in the description."""
+    out = []
+    limit = 65 if lang == "english" else 90
+    if len(s.title) > limit:
+        out.append(f"{lang}: title is {len(s.title)} characters, keep it to {limit} with the topic keyword in the first 40")
+    if lang == "english" and not 5 <= len(s.tags) <= 8:
+        out.append(f"{lang}: {len(s.tags)} tags, use 5-8 accurate ones with the exact topic phrase first (tags are a minor signal)")
+    n = len(re.findall(r"(?<!\w)#\w+", s.description))
+    if lang == "english" and not 2 <= n <= 3:
+        out.append(f"{lang}: {n} hashtags in the description, use 2-3 (the first three show above the title)")
     return out
 
 
@@ -228,8 +247,7 @@ def validate(plan: Plan) -> list[str]:
             problems.append(f"{lang}: {words} narration words, expected {lo}-{hi} for 40-59s (the closing like/share/subscribe line is added automatically; do not write it)")
         if not 5 <= len(s.scenes) <= 10:
             problems.append(f"{lang}: {len(s.scenes)} scenes, expected 6-9")
-        if len(s.title) > 90:
-            problems.append(f"{lang}: title longer than 90 characters")
+        problems += _seo_problems(lang, s)
         problems += _thumb_problems(lang, s)
         first = s.scenes[0].text if s.scenes else ""
         if len(first.split()) > 18:
@@ -238,7 +256,7 @@ def validate(plan: Plan) -> list[str]:
             problems.append(f"{lang}: the hook opens with a greeting or filler ({first.strip()[:25]!r}); start with the surprising fact")
         if len(s.hook_text.split()) > 6:
             problems.append(f"{lang}: hook_text has {len(s.hook_text.split())} words, max 6 (5 is better)")
-        problems += _intro_problems(s.scenes, lang, 34)
+        problems += _intro_problems(s.scenes, lang, 22)
         for i, sc in enumerate(s.scenes, 1):
             if len(sc.text.split()) > 30:
                 problems.append(f"{lang} scene {i}: {len(sc.text.split())} words, split it (max about 30)")
@@ -280,10 +298,10 @@ class Chapter(BaseModel):
 
 
 class DocScript(BaseModel):
-    title: str = Field(description="YouTube title, max 90 characters, no hashtags.")
+    title: str = Field(description="YouTube title, 65 characters max, the topic keyword within the first 40 characters, no hashtags.")
     description: str = Field(description="3-5 sentence description plus 3-5 hashtags. Chapter timestamps are "
                              "added automatically.")
-    tags: List[str] = Field(description="8-15 search tags.")
+    tags: List[str] = Field(description="5-8 accurate search tags, the exact topic phrase first.")
     thumbnail_text: str = Field(default="", description="Thumbnail headline, 1-4 big words that show the consequence "
                                 "(not a copy of the title). Empty = the first words of the title are used.")
     thumbnail_question: str = Field(default="", description="The question shown BIG on the thumbnail next to the presenter's face: 3-8 words, ends with '?'.")
@@ -332,8 +350,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
             problems.append(f"{lang}: estimated {secs / 60:.1f} min but target_minutes is {plan.target_minutes} (stay within 20 %)")
         if not 3 <= len(s.chapters) <= 12:
             problems.append(f"{lang}: {len(s.chapters)} chapters, expected 3-12")
-        if len(s.title) > 90:
-            problems.append(f"{lang}: title longer than 90 characters")
+        problems += _seo_problems(lang, s)
         problems += _thumb_problems(lang, s)
         for c, ch in enumerate(s.chapters, 1):
             if len(ch.title) > 50:

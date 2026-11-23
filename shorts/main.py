@@ -21,7 +21,7 @@ from .plan import Plan, validate
 log = logging.getLogger("shorts")
 
 
-def _store(video: Path, script, lang: str, thumb: Path | None = None) -> str:
+def _store(video: Path, script, lang: str, thumb: Path | None = None, description: str | None = None) -> str:
     """Keep every video in videos/<date>/ (uploaded or not), together with the title,
     description and tags, so it can be re-used or uploaded by hand."""
     day = config.VIDEOS_DIR / dt.date.today().isoformat()
@@ -31,7 +31,7 @@ def _store(video: Path, script, lang: str, thumb: Path | None = None) -> str:
     if thumb:
         shutil.copy2(thumb, day / f"{lang}_thumbnail.jpg")
     (day / f"{lang}_youtube.txt").write_text(
-        f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{strategy.up_next(script.description, script.next_video, lang)}\n\n"
+        f"TITLE:\n{script.title} #Shorts\n\nDESCRIPTION:\n{description or strategy.up_next(script.description, script.next_video, lang)}\n\n"
         f"TAGS:\n{', '.join(script.tags)}\n\nPINNED COMMENT:\n{script.pinned_comment}\n", encoding="utf-8")
     log.info("Saved %s", dest)
     return str(dest.relative_to(config.ROOT))
@@ -68,11 +68,12 @@ def main() -> int:
             shutil.move(video, final)
             thumb = thumbs.for_script(scripts[lang], plan.niche, lang, out / f"{dt.date.today().isoformat()}_{lang}.jpg", short=True)
             # Always keep a copy first, so the video is saved even if the upload fails
-            entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang, thumb)}
+            desc = strategy.with_sources(strategy.up_next(scripts[lang].description, scripts[lang].next_video, lang), plan.research_summary)
+            entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang, thumb, desc)}
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)
             else:   # uploads, or queues the video in videos/unpublished/ when YouTube refuses (daily limit)
-                entry.update(pending.publish(final, scripts[lang], lang, description=strategy.up_next(scripts[lang].description, scripts[lang].next_video, lang),
+                entry.update(pending.publish(final, scripts[lang], lang, description=desc,
                                              topic=plan.topic, thumbnail=thumb))
             results[lang] = entry
         except Exception:  # noqa: BLE001 - keep going so one language can still publish

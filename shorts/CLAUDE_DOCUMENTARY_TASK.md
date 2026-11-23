@@ -124,3 +124,22 @@ nothing"). `python -m shorts.plan validate` / `validate-doc` fails the plan unti
 Write an animation shot for it (a roadmap of the chapters appearing as each is named).
 
 **Thumbnail (owner instruction, 22 Nov 2026):** write `thumbnail_question` in the `english` block: 3-8 words, ends with "?" ("Can anything escape a black hole?"). The thumbnail shows it BIG next to the presenter's face.
+
+
+## Channel check, research template and SEO (owner instruction, 23 Nov 2026) - do these in order
+
+**Step 0, BEFORE choosing a topic: the channel check.** Run `python -m shorts.channel_trends summary` (it reads `data/channel_trends.json`, refreshed daily by `channel-trends.yml` from the
+YouTube Data + Analytics APIs) and, if the vidIQ tools are connected, `vidiq_user_channels` (0 credits; spend paid vidIQ calls only when `vidiq_balance` shows at least 10 credits).
+Read the digest: Shorts vs documentaries, views and average view percentage per niche, the top and bottom videos, and its `signals`. Then decide and RECORD what you changed:
+double down on the niche, cluster or format that is working, change the hook style of videos with a low average view percentage, and avoid the weakest niche unless a candidate clearly beats it.
+With fewer than about 8 videos of data the signals are hints, not proof; say so. If the digest says `available: false`, write `Channel check: NOT AVAILABLE: <the reason>` and continue with the normal rubric.
+`research_summary` must contain a line starting `Channel check:` (the validator checks it).
+
+**Research template.** `research_summary` also contains `Claims:` (a table: each number or claim, two sources, status VERIFIED / PARTIALLY VERIFIED / FICTIONAL ASSUMPTION / UNVERIFIED; where sources disagree say which
+one you used and hedge the narration, e.g. "eleven kilometres" for 10,935 m vs 10,994 m) and `Gap:` (the angle the top three existing videos on this question miss, and how this video covers it). Before dispatching, re-check
+every number in the narration against the Claims table.
+
+**SEO rules (checked by the validator where possible).** Title: 65 characters at most, the topic keyword within the first 40 characters, a curiosity gap that the video pays off, never a copy of the thumbnail question.
+Tags: 5-8 accurate tags, the exact topic phrase first (YouTube calls tags a minor signal; title, thumbnail and description matter more). Description: the keyword and the promise in the first two lines, then 2-3 hashtags
+(the first three show above the title); a `Sources:` line with up to 3 of the plan's research URLs is appended automatically. Sources of these rules: YouTube's own help pages for tags and Test & Compare; the rest
+are vendor guides and unverified, so treat numeric claims (CTR benchmarks, retention rates) as hypotheses to test against the channel's own data.

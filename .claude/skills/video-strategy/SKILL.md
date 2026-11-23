@@ -250,3 +250,8 @@ what should they watch next? If any answer is weak, fix that before adding compl
 ## Intro (standing rule)
 Every video: scene 1 = hook, **scene 2 = the intro** - what the video is about, 2-3 concrete things the viewer will see or learn, and the payoff question that is answered
 by the end (Shorts <= 34 words, documentaries <= 48). It keeps the hook's promise, tells the viewer what to expect (lowering early drop-off) and is checked by `shorts.plan validate`.
+
+## Channel check and research template (standing rule, 23 Nov 2026)
+Start every day with the channel check (`python -m shorts.channel_trends summary`): what the channel's own numbers say about niche, format and hook style, and the change made because of it (`Channel check:` in `research_summary`).
+Research records `Claims:` (every number, two sources, status) and `Gap:` (the angle competitors miss). SEO: title <= 65 characters with the keyword in the first 40, 5-8 tags, 2-3 hashtags, a Sources line (automatic).
+Short intro <= 22 words. Numeric benchmarks from blogs are hypotheses, not facts.
