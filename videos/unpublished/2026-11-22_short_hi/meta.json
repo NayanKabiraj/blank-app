@@ -17,7 +17,7 @@
  ],
  "privacy": "private",
  "synthetic": null,
- "attempts": 0,
+ "attempts": 1,
  "queued_at": "2026-11-22T11:32:08+00:00",
- "last_error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domain': 'youtube.video', 'reason': 'uploadLimitExceeded'}]\">"
+ "last_error": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
 }
