@@ -75,7 +75,7 @@ def animate(ctx):
     ctx.add(back, z=6)
     # scene 23: the whole trip in four steps
     for i, key in enumerate(T["step"]):
-        show(ctx, chip(ctx, f"{i + 1}  {key}", ("#7FD6FF", "#FFD166", "#FF8FA3", "#9BE59B")[i], C + v(-3.9 + 2.65 * i * 1.0 + 1.3, 1.2 - 0.0 * i), 2.5, 21), t22 + 0.4 + 0.9 * i, pop=0.25, z=6)
+        show(ctx, chip(ctx, f"{i + 1}  {key}", ("#7FD6FF", "#FFD166", "#FF8FA3", "#9BE59B")[i], C + v(-3.9 + 2.6 * i, 1.2), 2.5, 21), t22 + 0.4 + 0.9 * i, pop=0.25, z=6)
     clockbar = always_redraw(lambda: Rectangle(width=max(0.02, 9.0 * ease(level(ctx, t22 + 0.6, 4.0))), height=0.4, stroke_width=0, fill_color="#FFD166", fill_opacity=0.9 * window(ctx, t22, t23 - 0.2)()).move_to(C + v(-4.5 + max(0.02, 9.0 * ease(level(ctx, t22 + 0.6, 4.0))) / 2, -0.6)))
     clockbar._dynamic = True
     ctx.add(clockbar, z=4)

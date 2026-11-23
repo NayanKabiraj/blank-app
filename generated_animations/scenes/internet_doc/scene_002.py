@@ -49,7 +49,7 @@ def rack(p, a=1.0, col="#7FD6FF"):
     return VGroup(*[Rectangle(width=0.9, height=0.22, stroke_color=col, stroke_width=2, fill_color="#10163A", fill_opacity=a).move_to(p + v(0, 0.3 - 0.27 * i)) for i in range(4)]).set_stroke(opacity=a)
 
 
-T = {"phone": "phone", "help": "helper", "root": "root", "tld": ".com", "auth": "site's server", "q": "address?", "ans": "203.0.113.7", "n13": "13 names", "n19": "~1,900 copies", "ops": "12 operators",
+T = {"phone": "phone", "help": "helper", "root": "root", "tld": ".com", "auth": "website", "q": "address?", "ans": "203.0.113.7", "n13": "13 names", "n19": "~1,900 copies", "ops": "12 operators",
      "no": "reach the root: < 1 %", "yes": "answered by a helper: > 99 %", "m": "~350 million names"}
 
 
@@ -57,7 +57,7 @@ def animate(ctx):
     C, W, H = ctx.stage
     tl = ctx.timeline
     t5, t6, t7, t8, t9 = ctx.t_of(0), ctx.t_of(1), ctx.t_of(2), ctx.t_of(3), ctx.t_of(4)
-    xs = [-4.2, -1.9, 0.4, 2.7, 5.0]
+    xs = [-4.2, -2.2, -0.2, 1.8, 3.8]
     names = ("phone", "help", "root", "tld", "auth")
     cols = ("#EAF6FF", "#FFD166", "#FF8FA3", "#7FD6FF", "#9BE59B")
     pts = [C + v(x, 0.6) for x in xs]
@@ -91,9 +91,9 @@ def animate(ctx):
     rng = np.random.default_rng(3)
     cp = [v(rng.uniform(-5.0, 5.0), rng.uniform(-2.2, 0.5)) for _ in range(60)]
     for i, p in enumerate(cp):
-        show(ctx, Dot(radius=0.06, color="#FFD166").move_to(C + p), ctx.tt(0, 1) + 0.5 + 0.03 * i, t_out=t8 - 0.2, pop=0.1, z=5)
-    show(ctx, ctx.text(T["n19"], 40, "#FFD166", 6.0).move_to(C + v(2.5, 2.3)), ctx.tt(0, 1) + 1.0, t_out=t8 - 0.2, z=6)
-    show(ctx, ctx.text(T["ops"], 28, "#EAF6FF", 4.0).move_to(C + v(0, -2.45)), ctx.tt(0, 1) + 2.0, t_out=t8 - 0.2, z=6)
+        show(ctx, Dot(radius=0.06, color="#FFD166").move_to(C + p), ctx.tt(2, 1) + 0.5 + 0.03 * i, t_out=t8 - 0.2, pop=0.1, z=5)
+    show(ctx, ctx.text(T["n19"], 40, "#FFD166", 6.0).move_to(C + v(2.5, 2.3)), ctx.tt(2, 1) + 1.0, t_out=t8 - 0.2, z=6)
+    show(ctx, ctx.text(T["ops"], 28, "#EAF6FF", 4.0).move_to(C + v(0, -2.45)), ctx.tt(2, 1) + 2.0, t_out=t8 - 0.2, z=6)
     # scene 8: the myth - almost every question stops at a helper
     wd = lambda: 10.0 * ease(level(ctx, t8 + 0.6, 1.6))
     bar = always_redraw(lambda: Rectangle(width=max(0.02, wd() * 0.99), height=0.9, stroke_width=0, fill_color="#FFD166", fill_opacity=0.95 * window(ctx, t8, t9 - 0.2)()).move_to(C + v(-5.0 + max(0.02, wd() * 0.99) / 2, 0.4)))

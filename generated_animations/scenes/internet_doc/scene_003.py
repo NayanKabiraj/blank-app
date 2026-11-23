@@ -56,7 +56,7 @@ def animate(ctx):
     C, W, H = ctx.stage
     tl = ctx.timeline
     t10, t11, t12, t13, t14 = ctx.t_of(0), ctx.t_of(1), ctx.t_of(2), ctx.t_of(3), ctx.t_of(4)
-    src, dst = C + v(-4.4, 0.4), C + v(5.0, 0.4)
+    src, dst = C + v(-4.6, 0.4), C + v(4.1, 0.4)
     # scene 10-11: the page splits into 12 packets
     show(ctx, RoundedRectangle(corner_radius=0.12, width=1.3, height=1.7, stroke_color="#EAF6FF", stroke_width=4, fill_color="#10163A", fill_opacity=0.95).move_to(src), 0.3, t_out=t11 + 1.2, z=3)
     show(ctx, ctx.text(T["page"], 26, "#EAF6FF", 3.0).move_to(src + v(0, -1.3)), 0.4, t_out=t11 + 1.2, z=6)
@@ -93,7 +93,7 @@ def animate(ctx):
     show(ctx, ctx.text(T["who"], 32, "#9BE59B", 8.0).move_to(C + v(2.5, -2.0)), ctx.tt(3, 2) + 0.2, t_out=t14 - 0.2, z=7)
     # scene 14: a lost packet is asked for again
     show(ctx, Arrow(dst + v(-0.8, -0.2), routers[4] + v(0.3, -0.1), buff=0, color="#FF4D6D", stroke_width=7), t14 + 0.6, z=7)
-    show(ctx, ctx.text(T["ask"], 40, "#FF8FA3", 7.0).move_to(C + v(0.0, 1.9)), t14 + 0.4, z=7)
+    show(ctx, ctx.text(T["ask"], 40, "#FF8FA3", 7.0).move_to(C + v(0.0, -2.0)), t14 + 0.4, z=7)
     again = always_redraw(lambda: Rectangle(width=0.26, height=0.2, stroke_width=0, fill_color="#FFD166", fill_opacity=0.95 * level(ctx, t14 + 1.4, 0.2) * (1 if level(ctx, t14 + 1.4, 3.0) < 0.995 else 0)).move_to(routers[4] + (dst - routers[4]) * level(ctx, t14 + 1.4, 3.0)))
     again._dynamic = True
     ctx.add(again, z=7)

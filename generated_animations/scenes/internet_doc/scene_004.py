@@ -57,11 +57,11 @@ def animate(ctx):
     tl = ctx.timeline
     t15, t16, t17, t18, t19 = ctx.t_of(0), ctx.t_of(1), ctx.t_of(2), ctx.t_of(3), ctx.t_of(4)
     # scenes 15-16: two continents and many cables drawn across the sea
-    for x, w, h in ((-3.8, 2.6, 2.0), (5.8, 2.6, 2.0), (1.0, 1.6, 1.2)):
+    for x, w, h in ((-3.8, 2.6, 2.0), (4.2, 2.6, 2.0), (1.0, 1.6, 1.2)):
         show(ctx, Ellipse(width=w, height=h, stroke_width=0, fill_color="#3FA76B", fill_opacity=0.9).move_to(C + v(x, -0.2)), 0.2, t_out=t17 - 0.2, pop=0, z=2)
     for k in range(7):
         y0 = -1.0 + 0.3 * k
-        pa, pm, pb = C + v(-2.9, y0), C + v(1.0, -2.0 - 0.15 * k + 0.9), C + v(4.8, 0.6 - 0.3 * k)
+        pa, pm, pb = C + v(-2.9, y0), C + v(1.0, -2.0 - 0.15 * k + 0.9), C + v(3.6, 0.6 - 0.3 * k)
         prog = (lambda k=k: ease(level(ctx, 0.5 + 0.35 * k, 1.6)))
         cab = always_redraw(lambda pa=pa, pm=pm, pb=pb, prog=prog: VGroup(*[Line(bez(pa, pm, pb, 0.04 * i * prog()), bez(pa, pm, pb, 0.04 * (i + 1) * prog()), color="#FFD166", stroke_width=4, stroke_opacity=window(ctx, 0.3, t17 - 0.2)()) for i in range(25)]))
         cab._dynamic = True
@@ -75,17 +75,19 @@ def animate(ctx):
     pulses = always_redraw(lambda: VGroup(*[Rectangle(width=0.5, height=0.2, stroke_width=0, fill_color="#FFF3B0", fill_opacity=window(ctx, t17 + 0.8, t18 - 0.2)()).move_to(cx + v(-1.2 + 5.8 * ((tl.t * 0.35 + k / 4) % 1.0), 0.0)) for k in range(4)]))
     pulses._dynamic = True
     ctx.add(pulses, z=6)
-    show(ctx, ctx.text(T["core"], 28, "#BFE9FF", 6.0).move_to(cx + v(1.7, -0.9)), ctx.tt(0, 1) + 0.2, t_out=t18 - 0.2, z=6)
-    show(ctx, ctx.text(T["light"], 32, "#FFD166", 7.0).move_to(cx + v(1.7, 1.2)), ctx.tt(0, 1) + 0.9, t_out=t18 - 0.2, z=6)
+    show(ctx, ctx.text(T["core"], 28, "#BFE9FF", 6.0).move_to(cx + v(1.7, -0.9)), ctx.tt(2, 1) + 0.2, t_out=t18 - 0.2, z=6)
+    show(ctx, ctx.text(T["light"], 32, "#FFD166", 7.0).move_to(cx + v(1.7, 1.2)), ctx.tt(2, 1) + 0.9, t_out=t18 - 0.2, z=6)
     # scene 18: delay grows with distance (5, 35, 69 ms one way)
     for k, (lab, val, col) in enumerate((("1,000 km", 5, "#7FD6FF"), ("7,000 km", 35, "#FFD166"), ("14,000 km", 69, "#FF8FA3"))):
         t_in = t18 + 0.5 + 1.1 * k
-        w = (lambda val=val, t_in=t_in: 8.0 * (val / 69.0) * ease(level(ctx, t_in, 1.4)))
+        w = (lambda val=val, t_in=t_in: 6.0 * (val / 69.0) * ease(level(ctx, t_in, 1.4)))
         bar = always_redraw(lambda k=k, col=col, w=w: Rectangle(width=max(0.02, w()), height=0.62, stroke_width=0, fill_color=col, fill_opacity=0.95 * window(ctx, t18, t19 - 0.2)()).move_to(C + v(-3.0 + max(0.02, w()) / 2, 1.6 - 1.05 * k)))
         bar._dynamic = True
         ctx.add(bar, z=4)
         show(ctx, ctx.text(lab, 24, col, 3.0).move_to(C + v(-4.3, 1.6 - 1.05 * k)), t_in, t_out=t19 - 0.2, z=6)
-        show(ctx, ctx.text(f"{val} {T['ms']}", 26, col, 4.0).move_to(C + v(-3.0 + 8.0 * (val / 69.0) + 1.3, 1.6 - 1.05 * k)), t_in + 0.9, t_out=t19 - 0.2, z=6)
+        txt = ctx.text(f"{val} {T['ms']}", 26, col, 4.0).move_to(v(0, C[1] + 1.6 - 1.05 * k))
+        txt.shift(v(C[0] - 3.0 + 6.0 * (val / 69.0) + 0.25 - txt.get_left()[0], 0))
+        show(ctx, txt, t_in + 0.9, t_out=t19 - 0.2, z=6)
     # scene 19: cables carry almost all, satellites a small share
     for k, (key, wd, col) in enumerate((("c", 9.0, "#FFD166"), ("s", 0.7, "#8892B0"))):
         t_in = t19 + 0.8 + 1.2 * k

@@ -65,16 +65,16 @@ def animate(ctx):
     ph = always_redraw(lambda: phone(C + v(-3.9, -0.6), al()))
     ph._dynamic = True
     ctx.add(ph, z=4)
-    sv = always_redraw(lambda: rack(C + v(6.4 - 0.0, 0.7), al()))
+    sv = always_redraw(lambda: rack(C + v(4.9, 0.7), al()))
     sv._dynamic = True
     ctx.add(sv, z=4)
-    p0, p1, p2 = C + v(-3.6, -0.3), C + v(1.2, 3.6), C + v(6.0, 0.9)
+    p0, p1, p2 = C + v(-3.6, -0.3), C + v(0.8, 3.6), C + v(4.5, 0.9)
     pk = always_redraw(lambda: VGroup(*[Circle(radius=0.14 - 0.03 * k, stroke_width=0, fill_color="#FFD166", fill_opacity=al() * (1 - 0.3 * k)).move_to(bez(p0, p1, p2, max(0.0, ((tl.t * 0.3) % 1.0) - 0.04 * k))) for k in range(4)]))
     pk._dynamic = True
     ctx.add(pk, z=6)
     show(ctx, ctx.text("tap", 30, "#FFD166", 2.0).move_to(C + v(-3.9, -1.4)), 0.4, t_out=t2 - 0.2, z=6)
     for n, (key, col) in enumerate((("c1", "#7FD6FF"), ("c2", "#FFD166"), ("c3", "#9BE59B"))):
-        show(ctx, chip(ctx, f"{n + 1}  {T[key]}", col, C + v(-2.2 + 3.6 * n, C[1] * 0 + 2.55), 3.4, 22), t1 + 0.8 + 1.4 * n, t_out=t2 - 0.3, pop=0.25, z=7)
+        show(ctx, chip(ctx, f"{n + 1}  {T[key]}", col, C + v(-3.6 + 3.6 * n, 2.55), 3.4, 22), t1 + 0.8 + 1.4 * n, t_out=t2 - 0.3, pop=0.25, z=7)
     # six billion people online: 15 of 20 lit
     for i in range(20):
         x, y = C[0] - 3.6 + 0.62 * (i % 10) + 0.5, C[1] + 0.9 - 0.9 * (i // 10) + 0.3
