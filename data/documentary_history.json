@@ -525,7 +525,8 @@
             "start": 192.1
           }
         ],
-        "video_id": "uyrFT7bAc8g"
+        "video_id": "qf-UeA0pKao",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-22_documentary_hi.mp4",
@@ -593,8 +594,9 @@
             "start": 192.1
           }
         ],
-        "queued": "videos/unpublished/2026-11-22_documentary_en",
-        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+        "queued": false,
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "video_id": "qf-UeA0pKao"
       },
       "hi": {
         "file": "2026-11-22_documentary_hi.mp4",
@@ -663,8 +665,9 @@
             "start": 189.9
           }
         ],
-        "queued": "videos/unpublished/2026-11-22_documentary_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "qf-UeA0pKao"
       }
     }
   },
@@ -706,8 +709,51 @@
             "start": 197.9
           }
         ],
-        "queued": "videos/unpublished/2026-11-22_documentary_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "qf-UeA0pKao"
+      }
+    }
+  },
+  {
+    "date": "2026-11-23",
+    "niche": "Earth & Nature",
+    "topic": "What if all the ice on Earth melted?",
+    "minutes": 5,
+    "cluster": "Extremes of the Planet",
+    "follow_ups": [
+      "What if the Greenland ice sheet disappeared first?",
+      "How do scientists measure the thickness of an ice sheet?",
+      "Which cities would flood first at one metre of sea level rise?"
+    ],
+    "next_video": "What if the Greenland ice sheet disappeared first?",
+    "gate_score": 83,
+    "videos": {
+      "en": {
+        "file": "2026-11-23_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "A frozen bank account",
+            "start": 0.0
+          },
+          {
+            "title": "Greenland first",
+            "start": 62.6
+          },
+          {
+            "title": "Antarctica, the giant",
+            "start": 124.1
+          },
+          {
+            "title": "The new map",
+            "start": 188.8
+          },
+          {
+            "title": "How fast is it real?",
+            "start": 262.0
+          }
+        ],
+        "video_id": "GOmKtQvKMX8"
       }
     }
   }

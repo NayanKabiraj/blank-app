@@ -563,7 +563,8 @@
           "output": "output_cinematic/2026-11-22_en.mp4"
         },
         "contact_sheet": "output_cinematic/2026-11-22_en_contact-sheet.jpg",
-        "video_id": "nrcb3-NjWbc"
+        "video_id": "zx56v1qrtuI",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-22_hi.mp4",
@@ -616,7 +617,8 @@
       "en": {
         "file": "2026-11-22_en.mp4",
         "saved_to": "videos/2026-11-22/en.mp4",
-        "video_id": "W11M-ZlzvyI"
+        "video_id": "zx56v1qrtuI",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-22_hi.mp4",
@@ -643,7 +645,8 @@
       "en": {
         "file": "2026-11-22_en.mp4",
         "saved_to": "videos/2026-11-22/en.mp4",
-        "video_id": "vUuPXfpnTEg"
+        "video_id": "zx56v1qrtuI",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-22_hi.mp4",
@@ -670,7 +673,8 @@
       "en": {
         "file": "2026-11-22_en.mp4",
         "saved_to": "videos/2026-11-22/en.mp4",
-        "video_id": "QEDE7B2SeBc"
+        "video_id": "zx56v1qrtuI",
+        "queued": false
       },
       "hi": {
         "file": "2026-11-22_hi.mp4",
@@ -698,8 +702,9 @@
       "en": {
         "file": "2026-11-22_en.mp4",
         "saved_to": "videos/2026-11-22/en.mp4",
-        "queued": "videos/unpublished/2026-11-22_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "zx56v1qrtuI"
       }
     }
   },
@@ -721,8 +726,9 @@
       "en": {
         "file": "2026-11-22_en.mp4",
         "saved_to": "videos/2026-11-22/en.mp4",
-        "queued": "videos/unpublished/2026-11-22_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "zx56v1qrtuI"
       }
     }
   },
@@ -744,8 +750,9 @@
       "en": {
         "file": "2026-11-23_en.mp4",
         "saved_to": "videos/2026-11-23/en.mp4",
-        "queued": "videos/unpublished/2026-11-23_short_en",
-        "error": "daily upload limit already reached in this run"
+        "queued": false,
+        "error": "daily upload limit already reached in this run",
+        "video_id": "oF2anyi3SyM"
       }
     }
   }
