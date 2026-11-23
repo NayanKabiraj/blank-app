@@ -96,7 +96,7 @@ def animate(ctx):
     show(ctx, ctx.text(T["land"], 30, "#BFE9FF", 7.0).move_to(C + v(-1.2, 2.3)), t4 + 0.6, z=7)
     for k, x in enumerate((C[0] + 3.4, C[0] + 4.6)):
         show(ctx, Polygon(v(x - 0.4, base + 0.85), v(x + 0.4, base + 0.85), v(x + 0.25, base + 1.05), v(x - 0.25, base + 1.05), stroke_color=ICE, stroke_width=2, fill_color=ICE, fill_opacity=0.9), ctx.tt(4, 2) + 0.2 + 0.3 * k, z=7)
-    show(ctx, ctx.text(T["float"], 28, "#FFD166", 7.0).move_to(C + v(3.6, 1.7)), ctx.tt(4, 2) + 0.4, z=7)
+    show(ctx, ctx.text(T["float"], 24, "#FFD166", 5.0).move_to(C + v(2.6, 1.8)), ctx.tt(4, 2) + 0.4, z=7)
     ctx.avatar.look_at(v(C[0] + 2.5, C[1]))
     ctx.play(expressions.set_expression(ctx.avatar, "curious", 0.4), run_time=0.5)
     ctx.until(t1)

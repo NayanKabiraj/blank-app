@@ -72,13 +72,13 @@ def animate(ctx):
     show(ctx, ctx.text(T["a"], 40, "#7FD6FF", 8.0).move_to(v(C[0], base + 4.2)), 0.5, t_out=t11 - 0.2, z=6)
     show(ctx, ctx.text("East", 34, "#0A1330", 3.0).move_to(cx + v(1.2, 0.0)), 1.2, t_out=t11 - 0.2, z=6)
     show(ctx, ctx.text("West", 34, "#0A1330", 3.0).move_to(cx + v(-1.8, 0.1)), 1.8, t_out=t11 - 0.2, z=6)
-    for k, (key, hh, col, xo) in enumerate((("w", 0.3, "#FF8FA3", -1.6), ("e", 3.2, "#7FD6FF", 1.6))):
+    for k, (key, hh, col, xo) in enumerate((("w", 0.3, "#FF8FA3", -2.3), ("e", 3.2, "#7FD6FF", 2.3))):
         t_in = t11 + 0.5 + 1.1 * k
         grow = (lambda t_in=t_in: ease(level(ctx, t_in, 1.4)))
         bar = always_redraw(lambda k=k, hh=hh, col=col, xo=xo, grow=grow: Rectangle(width=1.5, height=max(0.02, hh * grow()), stroke_width=0, fill_color=col, fill_opacity=0.95 * window(ctx, t11, t12 - 0.2)()).move_to(v(C[0] + xo, base + 0.3 + max(0.02, hh * grow()) / 2)))
         bar._dynamic = True
         ctx.add(bar, z=4)
-        show(ctx, ctx.text(T[key], 28, col, 3.2).move_to(v(C[0] + xo, base + 0.0)), t_in, t_out=t12 - 0.2, z=6)
+        show(ctx, ctx.text(T[key], 22, col, 3.0).move_to(v(C[0] + xo, base + 0.0)), t_in, t_out=t12 - 0.2, z=6)
     arrows = always_redraw(lambda: VGroup(*[Arrow(v(C[0] - 4.2 + 2.0 * ((tl.t * 0.5 + k / 3) % 1.0), base + 0.9), v(C[0] - 3.5 + 2.0 * ((tl.t * 0.5 + k / 3) % 1.0), base + 0.9), buff=0, color="#FF8A5B", stroke_width=6, max_tip_length_to_length_ratio=0.5,
                                             stroke_opacity=window(ctx, ctx.tt(1, 1), t12 - 0.2)()).set_fill(opacity=window(ctx, ctx.tt(1, 1), t12 - 0.2)()) for k in range(3)]))
     arrows._dynamic = True

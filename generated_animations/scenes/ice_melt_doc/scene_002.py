@@ -69,8 +69,8 @@ def animate(ctx):
     dm._dynamic = True
     ctx.add(dm, z=3)
     show(ctx, Rectangle(width=6.4, height=0.5, stroke_width=0, fill_color="#5A4A3A", fill_opacity=1).move_to(v(C[0], base + 0.35)), 0.2, t_out=t7 - 0.2, pop=0, z=2)
-    show(ctx, ctx.text(T["g"], 40, "#FFFFFF", 5.0).move_to(v(C[0], base + 3.2)), 0.4, t_out=t7 - 0.2, z=6)
-    show(ctx, ctx.text(T["km"], 28, "#7FD6FF", 6.0).move_to(v(C[0] - 2.6, base + 2.6)), 1.2, t_out=t6 - 0.2, z=6)
+    show(ctx, ctx.text(T["g"], 40, "#FFFFFF", 5.0).move_to(v(C[0] - 1.0, base + 3.2)), 0.4, t_out=t7 - 0.2, z=6)
+    show(ctx, ctx.text(T["km"], 26, "#7FD6FF", 6.0).move_to(v(C[0] - 2.2, base + 3.9)), 1.2, t_out=t6 - 0.2, z=6)
     show(ctx, Arrow(v(C[0] - 3.6, base + 0.6), v(C[0] - 3.6, base + 2.8), buff=0, color="#7FD6FF", stroke_width=5), 1.0, t_out=t6 - 0.2, z=6)
     hx = C[0] + 2.8
     col_h = lambda: 2.1 * ease(level(ctx, t6 + 0.4, 2.0))
@@ -79,7 +79,7 @@ def animate(ctx):
     ctx.add(water, z=4)
     show(ctx, VGroup(Rectangle(width=1.2, height=2.1, stroke_color="#C9CFE0", stroke_width=3, fill_color="#1A2040", fill_opacity=0.9), Polygon(v(-0.7, 1.05), v(0.7, 1.05), v(0, 1.7), stroke_color="#C9CFE0", stroke_width=3, fill_color="#8A5A44", fill_opacity=1),
                      Line(v(-0.6, 0.0), v(0.6, 0.0), color="#C9CFE0", stroke_width=3)).move_to(v(hx + 0.4, base + 0.4 + 1.2)), t6 + 0.2, t_out=t7 - 0.2, z=4)
-    show(ctx, ctx.text(T["seven"], 60, "#FFD166", 4.0).move_to(v(hx - 1.3, base + 3.1)), t6 + 1.8, t_out=t7 - 0.2, z=6)
+    show(ctx, ctx.text(T["seven"], 60, "#FFD166", 4.0).move_to(v(hx + 1.9, base + 3.2)), t6 + 1.8, t_out=t7 - 0.2, z=6)
     show(ctx, ctx.text(T["w1"], 30, "#FFB38A", 6.0).move_to(C + v(0.0, 2.35)), t7 + 0.2, t_out=t8 - 0.2, z=6)
     sun_x = C[0] - 2.6
     show(ctx, Circle(radius=0.35, fill_color="#FFD84D", fill_opacity=1, stroke_width=0).move_to(v(sun_x, base + 3.3)), t7 + 0.2, t_out=t8 - 0.2, z=6)
