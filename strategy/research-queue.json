@@ -303,5 +303,214 @@
     "next_video": "How does the internet cross oceans?",
     "dossier": "strategy/what-if-ideas.md",
     "notes": "First estimate from the what-if idea sweep (17 Nov 2026), not yet researched. Do the research gate and fact-check before writing: which services depend on connectivity (UPI, rail booking, airports, hospitals); verify any statistic; explanatory, not alarmist."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "Why do tiny habits beat big goals? (systems vs goals, Atomic Habits)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "tiny habits",
+      "atomic habits",
+      "systems vs goals"
+    ],
+    "window": {},
+    "gate_score": 76,
+    "cluster": "Laws of Life",
+    "title": "Why Tiny Habits Beat Big Goals",
+    "thumbnail_text": "1% BETTER",
+    "hooks": [
+      "You do not rise to the level of your goals. You fall to the level of your systems."
+    ],
+    "follow_ups": [
+      "What is the two-minute rule?",
+      "Why does the plateau of latent potential feel like failure?"
+    ],
+    "next_video": "What is the two-minute rule?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "James Clear, Atomic Habits: the four laws of behaviour change, systems vs goals, identity-based habits. Check which effects have research behind them and which are the author's framing. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What did Marcus Aurelius tell himself every morning? (Meditations)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "marcus aurelius",
+      "meditations",
+      "stoic"
+    ],
+    "window": {},
+    "gate_score": 75,
+    "cluster": "Laws of Life",
+    "title": "What Marcus Aurelius Told Himself Every Morning",
+    "thumbnail_text": "MORNING RULE",
+    "hooks": [
+      "He ruled the Roman Empire and still wrote notes to himself about difficult people."
+    ],
+    "follow_ups": [
+      "What is the Stoic dichotomy of control?",
+      "What did Seneca say about time?"
+    ],
+    "next_video": "What is the Stoic dichotomy of control?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Meditations is a private journal, not a book written for readers: say so. Use a reputable translation (e.g. Hays, Waterfield) and quote briefly; separate Marcus's text from modern 'Stoicism for self-help' reinterpretations. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What does 'never outshine the master' really mean? (48 Laws of Power, Law 1)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "48 laws",
+      "laws of power",
+      "never outshine"
+    ],
+    "window": {},
+    "gate_score": 74,
+    "cluster": "Laws of Life",
+    "title": "Never Outshine the Master: Law 1 Explained",
+    "thumbnail_text": "LAW 1",
+    "hooks": [
+      "Law 1 got a courtier ruined. Here is what Robert Greene says to do instead."
+    ],
+    "follow_ups": [
+      "Which law is about reputation?",
+      "Is the book advice or a warning?"
+    ],
+    "next_video": "Is the 48 Laws of Power advice or a warning?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Robert Greene frames the book as an exposé of how power works, and concedes some laws are manipulative and others common sense; present it as description, not endorsement. Use the book's own historical examples and check them against history. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "documentary",
+    "status": "idea",
+    "topic": "What Viktor Frankl noticed about people who found meaning in suffering (Man's Search for Meaning)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "frankl",
+      "search for meaning",
+      "logotherapy"
+    ],
+    "window": {},
+    "gate_score": 72,
+    "cluster": "Laws of Life",
+    "title": "Frankl: How People Find Meaning in Suffering",
+    "thumbnail_text": "MEANING?",
+    "hooks": [
+      "He lost almost everything, and still wrote that the last human freedom cannot be taken."
+    ],
+    "follow_ups": [
+      "What is logotherapy?",
+      "What is the difference between happiness and meaning?"
+    ],
+    "next_video": "What is logotherapy?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Handle with care: the setting is the Holocaust. Use Frankl's own account, the viktorfrankl.org archive clips and scholarly sources; do not dramatise or invent; separate his memoir from later clinical research on meaning. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "Why is your first instinct often wrong? (System 1 vs System 2, Thinking, Fast and Slow)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "system 1",
+      "system 2",
+      "fast and slow",
+      "kahneman"
+    ],
+    "window": {},
+    "gate_score": 77,
+    "cluster": "Laws of Life",
+    "title": "Why Your First Instinct Is Often Wrong",
+    "thumbnail_text": "THINK TWICE",
+    "hooks": [
+      "A bat and a ball cost $1.10. The bat costs $1 more. What does the ball cost?"
+    ],
+    "follow_ups": [
+      "What is anchoring?",
+      "What is loss aversion?"
+    ],
+    "next_video": "What is loss aversion?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Daniel Kahneman, Thinking, Fast and Slow. Note that some priming studies discussed in the book did not replicate (Kahneman acknowledged this); stick to the heuristics-and-biases results that have held up. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What is the power of the word 'yet'? (growth mindset, Mindset)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "growth mindset",
+      "power of yet",
+      "carol dweck"
+    ],
+    "window": {},
+    "gate_score": 75,
+    "cluster": "Laws of Life",
+    "title": "The Power of 'Yet': Growth Mindset Explained",
+    "thumbnail_text": "NOT YET",
+    "hooks": [
+      "Failing a test is not 'I failed'. It is 'not yet'."
+    ],
+    "follow_ups": [
+      "Does growth mindset really work?",
+      "What is deliberate practice?"
+    ],
+    "next_video": "Does growth mindset really work?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Carol Dweck, Mindset (TED talk 'The power of believing that you can improve'). Include the honest caveat that large replications and meta-analyses find small average effects from school growth-mindset interventions; label the claim strength. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "short",
+    "status": "idea",
+    "topic": "What stands in the way becomes the way: what does it mean? (The Obstacle Is the Way / Ego Is the Enemy)",
+    "niche": "Brain & Psychology",
+    "match": [
+      "obstacle is the way",
+      "ryan holiday",
+      "ego is the enemy"
+    ],
+    "window": {},
+    "gate_score": 73,
+    "cluster": "Laws of Life",
+    "title": "The Obstacle Is the Way, Explained",
+    "thumbnail_text": "OBSTACLE = PATH",
+    "hooks": [
+      "The impediment to action advances action. What stands in the way becomes the way."
+    ],
+    "follow_ups": [
+      "What is the Stoic view of ego?",
+      "What is amor fati?"
+    ],
+    "next_video": "What is the Stoic dichotomy of control?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Ryan Holiday popularises Marcus Aurelius and the Stoics; trace each example back to the primary source (Meditations 5.20) and check the modern anecdotes before use. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
+  },
+  {
+    "kind": "documentary",
+    "status": "idea",
+    "topic": "Seven laws of life from seven books: what holds up and what does not",
+    "niche": "Brain & Psychology",
+    "match": [
+      "laws of life",
+      "books summary",
+      "self-mastery"
+    ],
+    "window": {},
+    "gate_score": 78,
+    "cluster": "Laws of Life",
+    "title": "7 Laws of Life From 7 Books (Fact-Checked)",
+    "thumbnail_text": "WHAT HOLDS UP?",
+    "hooks": [
+      "Seven famous books. Seven big rules. How many survive a fact-check?"
+    ],
+    "follow_ups": [
+      "Which law has the strongest research?",
+      "Which famous claim failed to replicate?"
+    ],
+    "next_video": "Which famous self-help claim failed to replicate?",
+    "dossier": "strategy/laws-of-life.md",
+    "notes": "Umbrella documentary for the cluster: Atomic Habits, Meditations, 48 Laws of Power, Man's Search for Meaning, Thinking Fast and Slow, Mindset, The Obstacle Is the Way (plus the Almanack of Naval Ravikant if a seventh strong source is needed). Rate each law VERIFIED / PARTIALLY VERIFIED / the author's opinion. First estimate (owner request 23 Nov 2026), not yet researched or fact-checked: read the book's own text and the cited studies first, quote only briefly, label what is the author's claim vs established science, and check the reference videos in the dossier against the source."
   }
 ]
