@@ -1,0 +1,6 @@
+{
+ "available": false,
+ "generated": "2026-11-23T06:30:06+00:00",
+ "days": 28,
+ "reason": "YouTube Data API: <HttpError 403 when requesting https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails%2Cstatistics&mine=true&alt=json returned \"Request had insufficient authentication scopes.\". Detail (the sign-in needs the youtube.readonly scope: python -m shorts.ytauth url)"
+}
