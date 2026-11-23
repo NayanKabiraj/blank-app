@@ -756,5 +756,48 @@
         "video_id": "GOmKtQvKMX8"
       }
     }
+  },
+  {
+    "date": "2026-11-23",
+    "niche": "How Tech Works",
+    "topic": "How does the internet actually work?",
+    "minutes": 5,
+    "cluster": "Satellites & Navigation",
+    "follow_ups": [
+      "How does Google Maps know about traffic jams?",
+      "Why does your video buffer at night?",
+      "How does a VPN hide where you are?"
+    ],
+    "next_video": "How does Google Maps know about traffic jams?",
+    "gate_score": 84,
+    "videos": {
+      "en": {
+        "file": "2026-11-23_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "One tap, a hundred steps",
+            "start": 0.0
+          },
+          {
+            "title": "The phone book",
+            "start": 56.2
+          },
+          {
+            "title": "Cut into pieces",
+            "start": 110.3
+          },
+          {
+            "title": "Under the sea",
+            "start": 165.1
+          },
+          {
+            "title": "The road home",
+            "start": 222.0
+          }
+        ],
+        "saved_to": "videos/2026-11-23/documentary_en.mp4",
+        "video_id": "kytb1ypPG4s"
+      }
+    }
   }
 ]
