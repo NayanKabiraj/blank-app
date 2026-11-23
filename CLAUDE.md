@@ -51,6 +51,9 @@ the workflow renders.
    `research_summary`; also `Claims:` and `Gap:`. Scene 1 = hook, scene 2 = intro (Shorts 22 words max), `thumbnail_question` required, title <= 65 characters, 5-8 tags,
    2-3 hashtags, a Sources line is added to the description automatically. The validator checks all of it.
 
+13. **Vox look** (owner instruction, 23 Nov 2026): every new animation pack uses the paper cut-out explainer style (`"look": "vox"` in `shots.json`, helpers in `generated_animations/shared/vox.py`, guide in `AUTHORING.md`);
+   the presenter stays as a sticker. The validator requires it; `VIDEO_LOOK=classic` restores the dark theme.
+
 ## Quick commands
 
 ```bash

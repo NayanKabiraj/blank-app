@@ -1,0 +1,8 @@
+{"topic": "Why does time feel faster as you get older?",
+ "look": "vox",
+ "shots": [
+  {"module": "scene_001", "scenes": [0, 1]},
+  {"module": "scene_002", "scenes": [2, 3]},
+  {"module": "scene_003", "scenes": [4, 5]},
+  {"module": "scene_004", "scenes": [6, 7]}
+ ]}

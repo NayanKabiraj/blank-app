@@ -22,7 +22,7 @@ HEIGHT = 4.6          # canonical height (frame units) of the picture at scale 1
 
 
 class Avatar(Group):
-    def __init__(self, rig, timeline, mouth_level=None, position=(-2.6, -8.0), scale: float = 0.92, seed: int = 11):
+    def __init__(self, rig, timeline, mouth_level=None, position=(-2.6, -8.0), scale: float = 0.92, seed: int = 11, sticker: bool = False):
         super().__init__()
         self.rig, self.timeline = rig, timeline
         self.mouth_level = mouth_level or (lambda t: 0.0)
@@ -37,7 +37,8 @@ class Avatar(Group):
         self._mouth = 0.0
         self._lv = 0
         self._face = face.get()
-        arr = self._face.frame(0, 0)
+        self._sticker = sticker
+        arr = self._face.frame(0, 0, sticker)
         self._h, self._w = arr.shape[:2]
         self._img = ImageMobject(arr)
         self._template = self._img.points.copy()
@@ -103,7 +104,7 @@ class Avatar(Group):
         key = (lv, blink_lv)
         if key != getattr(self, "_key", None):
             self._key = key
-            self._img.pixel_array = self._face.frame(lv / (face.LEVELS - 1), 0.0 if blink_lv == 0 else (0.5 if blink_lv == 1 else 1.0))
+            self._img.pixel_array = self._face.frame(lv / (face.LEVELS - 1), 0.0 if blink_lv == 0 else (0.5 if blink_lv == 1 else 1.0), self._sticker)
         head_world = self._world((x, y + HEIGHT * s * 0.62, 0))
         gx, gy = self._direction(self.look_fn, head_world)
         px, py = self._direction(self.point_fn, head_world) if w["point"] > 0.01 else (0.0, 0.0)

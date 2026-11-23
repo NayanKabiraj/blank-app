@@ -42,3 +42,12 @@ mention (`ctx.tt(1, k)`), the presenter points at each in turn, then the picture
 Pip is the owner's own 3D-style cartoon picture (bearded, glasses, hoodie) (`avatar/assets/pip_base.png`), animated by `avatar/face.py` + `controller.py`: lip-sync, blinks, sway, and leaning/tilting toward
 whatever he looks at or points at. He is a bust (no arms), so `point_at`, `wave`, `present` and `shrug` act as body language (lean, sway, tilt, lift); direct attention with
 `ctx.avatar.look_at(...)` and put the thing being pointed at in the picture itself (an arrow or a highlight). `avatar/assets/pip_speaking.gif` (transparent) shows the speaking animation.
+
+## The vox look (default for every new pack since 23 Nov 2026)
+Packs draw in the paper cut-out explainer style: `shots.json` has `"look": "vox"` (the plan validator requires it; `VIDEO_LOOK=classic` brings the dark space theme back). The renderer then
+uses a warm paper background, cream caption pills with ink text and the presenter as a white-bordered sticker. Shots draw with `generated_animations/shared/vox.py`:
+`vox.torn_card(w, h, seed, rot)` (torn paper card: put drawings on top), `vox.cutout(group)` (white border + shadow for any drawing, e.g. little people or buildings), `vox.marker(ctx, text_mob, t_in, dur)`
+(yellow highlighter swipe behind a key word), `vox.tape(ctx, "LABEL", center, color)` (tape label / stamp), `vox.doodle_arrow(start, end, color)`, and the palette (`INK` for text, `YEL`, `BLUE`, `RED`, `GREEN`, `ORANGE`, `PINK`).
+Rules of the look: text is `vox.INK` (dark) in BIG bold capitals for headlines and short labels; one marker swipe per key word; 3-6 torn cards or cut-outs per shot, slightly rotated (-4..+4 degrees);
+colour fills with an ink outline (stroke_color=INK, stroke_width 3-6); things still move a lot (bars growing, fluids filling, hands turning, people popping in, arrows drawing), because rule 10 still applies.
+Model pack: `scenes/time_flies_vox/` (a vertical Short). Keep everything inside the stage; the sticker presenter sits bottom-left.

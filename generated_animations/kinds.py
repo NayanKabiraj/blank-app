@@ -339,7 +339,7 @@ def outro(ctx):
     """Closing scene: Like / Share / Subscribe buttons pop in one after another."""
     from .shared.outro_scene import COLORS, LABELS, _button
     L, C, W, H = _lay(ctx)
-    h = typography.headline("Thanks for watching!" if ctx.lang == "en" else "धन्यवाद!", "#FFD166",
+    h = typography.headline("Thanks for watching!" if ctx.lang == "en" else "धन्यवाद!", "#221E1C" if getattr(ctx, "look", "classic") == "vox" else "#FFD166",
                             max_width=ctx.layout.headline_w, lang=ctx.lang).move_to((0, ctx.layout.headline_y, 0))
     show(ctx, h, 0.1, pop=0, z=10)
     times = slots(ctx, 3, lead=0.5)
@@ -389,7 +389,9 @@ def caption_track(ctx, text: str, t0=None, span=None, last_of_scene: bool = True
     L = ctx.layout
     sents = ctx.sentences(text, t0, span)
     for k, (s, t0, t1) in enumerate(sents):
-        pill = typography.caption_pill(s, max_width=L.caption_w, chars=L.caption_chars, size=L.caption_size, lang=ctx.lang)
+        vox = getattr(ctx, "look", "classic") == "vox"
+        pill = typography.caption_pill(s, color="#221E1C" if vox else "#FFFFFF", fill="#FFFDF5" if vox else "#0B1020", opacity=0.94 if vox else 0.72,
+                                       max_width=L.caption_w, chars=L.caption_chars, size=L.caption_size, lang=ctx.lang)
         pill.move_to((L.caption_x, L.caption_y, 0))
         show(ctx, pill, t0, dur=0.2, pop=0, z=11, fade_out=(k == len(sents) - 1) and last_of_scene and not ctx.is_last)
         if k + 1 < len(sents):   # hand over to the next sentence

@@ -32,6 +32,12 @@ def load(pack_id: str) -> list[Shot]:
     return [Shot(importlib.import_module(f"generated_animations.scenes.{pack_id}.{s['module']}"), list(s["scenes"])) for s in spec]
 
 
+def look(pack_id: str) -> str:
+    """The pack's look: "vox" (paper cut-out explainer style, shared/vox.py) or "classic" (the dark space theme). shots.json: {"look": "vox", ...}"""
+    f = SCENES / pack_id / "shots.json"
+    return (json.loads(f.read_text(encoding="utf-8")).get("look") or "classic") if f.exists() else "classic"
+
+
 def covered(pack_id: str) -> set[int]:
     d = SCENES / pack_id / "shots.json"
     if not d.exists():

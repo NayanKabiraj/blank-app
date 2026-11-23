@@ -172,6 +172,8 @@ def _animation_problems(plan) -> list[str]:
         except Exception as exc:  # noqa: BLE001
             out.append(f"{lang}: animation pack {pack!r} cannot be read ({exc})")
             continue
+        if config.LOOK == "vox" and packs.look(pack) != "vox":
+            out.append(f"{lang}: animation pack {pack!r} must use the vox look: shots.json needs \"look\": \"vox\" and the shots must draw with generated_animations/shared/vox.py (paper cut-outs, ink text; see AUTHORING.md)")
         missing = [i + 1 for i in range(len(s.scenes)) if i not in have]
         if not have:
             out.append(f"{lang}: animation pack {pack!r} has no shots.json / shots")
