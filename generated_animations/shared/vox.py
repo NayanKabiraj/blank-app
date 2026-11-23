@@ -180,7 +180,7 @@ def arrive(ctx, mob, t_in: float, t_out=None, dur: float = 0.6, side: str = "rig
     def upd(m):
         fin = back(level(ctx, t_in, dur))
         fout = 0.0 if t_out is None else max(0.0, min(1.0, level(ctx, t_out, 0.45)))
-        pos = final + off * (1 - fin) - off * 0.6 * fout
+        pos = final + off * (1 - fin) - off * 1.3 * fout
         want = spin * (1 - fin) - spin * 0.4 * fout
         m.rotate(math.radians(want - st["a"]), about_point=m.get_center())
         st["a"] = want
