@@ -1,0 +1,166 @@
+{
+  "niche": "Earth & Nature",
+  "topic": "What if you dove to the bottom of the Mariana Trench?",
+  "research_summary": "Candidates: (1) What if you dove to the bottom of the Mariana Trench? 33/40 (curiosity gap, personal stakes, huge numbers, strong visual of a descent, verifiable, not Space so it passes the variety guard; researched-queue gate 78), (2) What if all the ice on Earth melted? 30 (strong, but a documentary slot today), (3) What if you could stop time? 27 (fictional physics, weaker visual). Space & Universe is cooling down, so no space topic. Winner: the Mariana Trench dive; starts the 'The Deep Sea' cluster. Titles (/50): 'What If You Dove to the Deepest Point on Earth?' 44 (chosen); 'What If You Sank to the Bottom of the Ocean?' 41; 'Mariana Trench: The Dive' 33; '1,000x Pressure: Could You Survive?' 40; 'Diving 11 Kilometres Down' 36; 'The Deepest Place on Earth, Explained' 38; 'What the Bottom of the Ocean Does to You' 39; 'Would You Dive Into the Dark?' 37; 'The Darkest Dive' 31; 'Could Anything Live at the Bottom?' 36. Thumbnails: A the face with a tiny sub and the words 1,000x PRESSURE (chosen); B a pitch-black column with one lamp and the question 'How deep?'; C a crushed cup next to a normal cup. Hooks: 'Dive eleven kilometres down and the water presses a thousand times harder than air.' (chosen); 'No sunlight has ever touched the place you are sinking toward.'; 'Every ten metres, the sea squeezes you a little harder.'; 'The bottom of the ocean is colder than your fridge.'; 'The deepest dive ever made took four hours just to go down.' FACTS (status): Challenger Deep is about 10,935 m deep (NOAA 2021 estimate +/- 6 m; other surveys give up to about 10,994 m +/- 40 m, so the script says 'eleven kilometres') - PARTIALLY VERIFIED; pressure at the bottom is over 1,000 atmospheres (about 16,000 psi) - VERIFIED (NASA, NOAA-affiliated study, 1,000+ x sea level); over a tonne per square centimetre follows from 1,000 atm (about 1.03 kgf per cm2 per atm) - COMPUTED, stated as 'about a tonne on every fingernail' - PARTIALLY VERIFIED; bottom water about 1-4 C (2.45 C measured minimum in a NOAA-affiliated profile; Royal Museums Greenwich 1-4 C) - VERIFIED; sunlight is rarely significant beyond 200 m and absent below about 1,000 m (NOAA) - VERIFIED; amphipods swarm at depths over 10,000 m and are the snailfish's main food (JAMSTEC, Schmidt Ocean Institute) - VERIFIED; fish appear limited to about 8,000-8,500 m by the TMAO limit (hypothesis; the deepest confirmed fish is 8,336 m in the Izu-Ogasawara Trench) - PARTIALLY VERIFIED, so the script says 'fish seem to stop near eight thousand metres'; the 1960 Trieste dive took about 4 hours 47 minutes to descend (US Navy history office) - VERIFIED (one popular source says nine hours; the Navy figure is used). Left out: Vescovo's 2019 descent time (sources disagree), any claims about what a human body would feel (no gore, no unsupported physiology). Sources: https://repository.library.noaa.gov/view/noaa/33477 , https://oceanservice.noaa.gov/facts/light_travel.html , https://www.rmg.co.uk/stories/ocean/challenger-deep-deepest-point-ocean , https://tos.org/oceanography/article/ambient-sound-at-challenger-deep-mariana-trench , https://history.navy.mil/about-us/leadership/director/directors-corner/h-grams/h-gram-041/h-041-6.html , https://www.jamstec.go.jp/e/about/press_release/archive/2017/20170824.pdf , https://schmidtocean.org/?p=2029 . Competitor/vidIQ data: NOT PUBLICLY VERIFIABLE (not queried). Risks: depth figure differs between surveys (hedged), fish-depth limit is a hypothesis (hedged). Quality gate 84/100: topic 9, curiosity 9, title 8, thumbnail 9, opening 9, story 8, visual 9, emotion 7, retention 8, series 8 - improve the emotional close, then proceed.",
+  "mood": "mysterious",
+  "cluster": "The Deep Sea",
+  "follow_ups": [
+    "Why do deep-sea fish glow in the dark?",
+    "What if all the ice on Earth melted?",
+    "What lives in the ocean's darkest zone?"
+  ],
+  "gate_score": 84,
+  "english": {
+    "title": "What If You Dove to the Deepest Point on Earth?",
+    "description": "Eleven kilometres down, the sea presses over a thousand times harder than air. What happens to light, pressure and life on the way to the bottom of the Mariana Trench? A one-minute answer with the numbers checked. #Shorts #WhatIf #MarianaTrench #Ocean #Science",
+    "tags": [
+      "what if you dove to the bottom of the ocean",
+      "mariana trench",
+      "challenger deep",
+      "deepest place on earth",
+      "ocean pressure",
+      "deep sea",
+      "what if",
+      "ocean explained",
+      "science explained",
+      "shorts"
+    ],
+    "hook_text": "1,000 times harder",
+    "thumbnail_text": "1,000x PRESSURE",
+    "thumbnail_question": "What if you dove 11 km down?",
+    "next_video": "Why do deep-sea fish glow in the dark?",
+    "pinned_comment": "If a perfectly safe sub could take you to the bottom of the Mariana Trench, would you go: yes or no?",
+    "scenes": [
+      {
+        "text": "Dive eleven kilometres down and the water presses a thousand times harder than air.",
+        "keyword": "kilometres down",
+        "graphic": {
+          "kind": "title",
+          "headline": "The deepest dive",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "globe"
+        }
+      },
+      {
+        "text": "In this video you'll see where the light dies, how the pressure builds, and what lives there. Ready to sink?",
+        "keyword": "you'll see",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Quick chat",
+          "caption": "",
+          "items": [
+            "What if you dove to the bottom?",
+            "It gets dark, fast",
+            "And the pressure?",
+            "It builds and builds"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "First, the light. Sunlight is nearly gone by two hundred metres. Below a thousand, it is pitch dark.",
+        "keyword": "pitch dark",
+        "graphic": {
+          "kind": "steps",
+          "headline": "Where light dies",
+          "caption": "",
+          "items": [
+            "Sunlight 0-200 m",
+            "Twilight to 1,000 m",
+            "Pitch dark below"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Then the squeeze. At the bottom, the pressure is over a thousand atmospheres. Picture a tonne pressing on every fingernail.",
+        "keyword": "a tonne",
+        "graphic": {
+          "kind": "bars",
+          "headline": "Pressure vs the surface",
+          "caption": "",
+          "items": [
+            "Surface",
+            "5 km down",
+            "Bottom"
+          ],
+          "values": [
+            1.0,
+            500.0,
+            1086.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Is it hot down there? No. The water is just one to four degrees Celsius.",
+        "keyword": "one to four degrees",
+        "graphic": {
+          "kind": "stat",
+          "headline": "1 to 4 C",
+          "caption": "bottom water",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Does anything live there? Yes! Tiny shrimp-like amphipods swarm the bottom. Fish seem to stop near eight thousand metres.",
+        "keyword": "amphipods",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Life at the bottom",
+          "caption": "",
+          "items": [
+            "Nothing lives that deep",
+            "Amphipods swarm the bottom"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Quick quiz. How long did the first dive down take, back in 1960? Four hours forty-seven minutes.",
+        "keyword": "forty-seven minutes",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "How long was the 1960 dive down?",
+          "caption": "",
+          "items": [
+            "47 minutes",
+            "4 h 47 min",
+            "A whole day"
+          ],
+          "values": [],
+          "answer": 1,
+          "prop": null
+        }
+      },
+      {
+        "text": "So the bottom is dark, cold and crushing, but not empty. Would you dive down?",
+        "keyword": "not empty",
+        "graphic": {
+          "kind": "title",
+          "headline": "Would you dive?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "heart"
+        }
+      }
+    ],
+    "animation_pack": "mariana_dive_short"
+  },
+  "hindi": null
+}

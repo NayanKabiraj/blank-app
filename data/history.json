@@ -725,5 +725,28 @@
         "error": "daily upload limit already reached in this run"
       }
     }
+  },
+  {
+    "date": "2026-11-23",
+    "niche": "Earth & Nature",
+    "topic": "What if you dove to the bottom of the Mariana Trench?",
+    "mood": "mysterious",
+    "cluster": "The Deep Sea",
+    "follow_ups": [
+      "Why do deep-sea fish glow in the dark?",
+      "What if all the ice on Earth melted?",
+      "What lives in the ocean's darkest zone?"
+    ],
+    "next_video": "Why do deep-sea fish glow in the dark?",
+    "gate_score": 84,
+    "thumbnail_text": "1,000x PRESSURE",
+    "videos": {
+      "en": {
+        "file": "2026-11-23_en.mp4",
+        "saved_to": "videos/2026-11-23/en.mp4",
+        "queued": "videos/unpublished/2026-11-23_short_en",
+        "error": "daily upload limit already reached in this run"
+      }
+    }
   }
 ]
