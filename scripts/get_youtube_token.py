@@ -5,7 +5,7 @@
 
 A browser window opens; sign in with the Google account that owns the channel (pick the
 brand channel if asked). Copy the printed refresh token into the GitHub secret
-YT_REFRESH_TOKEN (or YT_REFRESH_TOKEN_HI for a separate Hindi channel).
+YT_REFRESH_TOKEN (one token for every language; YT_REFRESH_TOKEN_HI is ignored).
 """
 import json
 import sys

@@ -58,15 +58,14 @@ SFX = os.getenv("SFX", "on").strip().lower() != "off"
 # --- YouTube upload ---
 YT_CLIENT_ID = os.getenv("YT_CLIENT_ID", "")
 YT_CLIENT_SECRET = os.getenv("YT_CLIENT_SECRET", "")
-YT_REFRESH_TOKENS = {
-    "en": os.getenv("YT_REFRESH_TOKEN_EN") or os.getenv("YT_REFRESH_TOKEN", ""),
-    "hi": os.getenv("YT_REFRESH_TOKEN_HI") or os.getenv("YT_REFRESH_TOKEN", ""),
-}
-if YT_CLIENT_SECRET and not (YT_REFRESH_TOKENS["en"] and YT_REFRESH_TOKENS["hi"]):
+# ONE YouTube sign-in for every language (owner instruction, 23 Nov 2026): Hindi uploads use the same refresh token as English; a
+# separate YT_REFRESH_TOKEN_HI secret is ignored. (YT_REFRESH_TOKEN_EN still wins over YT_REFRESH_TOKEN for the one token.)
+_TOKEN = os.getenv("YT_REFRESH_TOKEN_EN") or os.getenv("YT_REFRESH_TOKEN", "")
+if YT_CLIENT_SECRET and not _TOKEN:
     # no secret set: use the token that `python -m shorts.ytauth exchange` saved (encrypted) in data/
     from .ytauth import load_saved_token
-    for _lang in ("en", "hi"):
-        YT_REFRESH_TOKENS[_lang] = YT_REFRESH_TOKENS[_lang] or load_saved_token(_lang)
+    _TOKEN = load_saved_token("en")
+YT_REFRESH_TOKENS = {"en": _TOKEN, "hi": _TOKEN}
 YT_PRIVACY = os.getenv("YT_PRIVACY", "private")         # private (default) | unlisted | public
 # YouTube's "altered or synthetic content" label. Off by default: the videos are animated explainers with a generic
 # synthetic narrator. Set the repository variable YT_AI_DISCLOSURE=on to flag every upload as containing synthetic media.
