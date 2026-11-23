@@ -14,27 +14,34 @@ BG = "#060912"
 
 
 class PlanScene(MovingCameraScene):
-    def __init__(self, scenes, boundaries, timeline_rows, layout, lang, narration=None, shots=(), **kwargs):
+    def __init__(self, scenes, boundaries, timeline_rows, layout, lang, narration=None, shots=(), look="classic", **kwargs):
         self.plan_scenes, self.boundaries, self.rows = scenes, boundaries, timeline_rows
         self.shots = list(shots)
-        self.layout, self.lang, self.narration = layout, lang, narration
+        self.layout, self.lang, self.narration, self.look = layout, lang, narration, look
         super().__init__(**kwargs)
 
     def construct(self):
         from manim import config
         L = self.layout
-        self.camera.background_color = BG
+        vox = self.look == "vox"
+        self.camera.background_color = "#EEE6D5" if vox else BG
         fw, fh = config.frame_width, config.frame_height
         self.timeline = Timeline(self)
         self.add(self.timeline.make_clock())
         rig = CameraRig(self)
-        sky = lighting.starfield(fw * 1.05, fh * 1.05, res=L.star_res)
-        sky.set_z_index(-10)
-        vig = lighting.vignette(fw, fh)
-        vig.set_z_index(9)
-        self.add(sky, vig)
+        if vox:
+            from .shared import vox as voxkit
+            sky = voxkit.paper_bg(fw * 1.05, fh * 1.05, res=L.star_res)
+            sky.set_z_index(-10)
+            self.add(sky)
+        else:
+            sky = lighting.starfield(fw * 1.05, fh * 1.05, res=L.star_res)
+            sky.set_z_index(-10)
+            vig = lighting.vignette(fw, fh)
+            vig.set_z_index(9)
+            self.add(sky, vig)
         level = (lambda t: self.narration.level(t)) if self.narration else None
-        self.avatar = Avatar(rig, self.timeline, mouth_level=level, position=L.avatar_pos, scale=L.avatar_scale)
+        self.avatar = Avatar(rig, self.timeline, mouth_level=level, position=L.avatar_pos, scale=L.avatar_scale, sticker=vox)
         self.avatar.set_z_index(12)
         self.add(self.avatar)
 
@@ -58,7 +65,7 @@ class PlanScene(MovingCameraScene):
             cfg = {"narration": subs[0]["text"], "pad_before": subs[0]["start"], "narration_seconds": subs[0]["end"] - subs[0]["start"],
                    "subs": subs}
             ctx = SceneContext(self, rig, self.avatar, self.timeline, win, first, cfg, fw, fh, start=start_t,
-                               layout=L, lang=self.lang, is_last=(last == n - 1))
+                               layout=L, lang=self.lang, is_last=(last == n - 1), look=self.look)
             if i in shots:
                 for k, sub in enumerate(subs):
                     nxt = subs[k + 1]["start"] if k + 1 < len(subs) else None

@@ -72,6 +72,7 @@ class SceneContext:
     layout: object = None          # shared.layout.Layout when rendering a plan
     lang: str = "en"
     is_last: bool = False
+    look: str = "classic"            # "vox" = paper cut-out look (shared/vox.py)
 
     # time ---------------------------------------------------------------------------------
     def elapsed(self) -> float:

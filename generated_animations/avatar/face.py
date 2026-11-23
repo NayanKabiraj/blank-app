@@ -96,8 +96,8 @@ class Face:
         d.arc((*a, *b), 15, 165, fill=(38, 26, 24, 255), width=int(3.5 * SS))
         return self._finish(im, 2.2)
 
-    def frame(self, mouth: float = 0.0, blink: float = 0.0) -> np.ndarray:
-        """mouth 0..1 (0 = the picture's own closed smile), blink 0..1 (1 = shut)."""
+    def frame(self, mouth: float = 0.0, blink: float = 0.0, sticker: bool = False) -> np.ndarray:
+        """mouth 0..1 (0 = the picture's own closed smile), blink 0..1 (1 = shut). sticker=True adds a white paper-cut border and a soft shadow (the vox look)."""
         im = self.base.copy()
         lv = int(round(max(0.0, min(1.0, mouth)) * (LEVELS - 1)))
         if lv > 0:
@@ -106,7 +106,25 @@ class Face:
             k = 0 if blink < 0.6 else 1
             for side in EYES:
                 im.alpha_composite(self.lids[side][k])
+        if sticker:
+            im = _sticker(im)
         return np.asarray(im)
+
+
+def _sticker(im: Image.Image, border: int = 7, pad: int = 16) -> Image.Image:
+    """White cut-out border + drop shadow around the picture's alpha."""
+    out = Image.new("RGBA", (im.width + 2 * pad, im.height + 2 * pad), (0, 0, 0, 0))
+    a = Image.new("L", out.size, 0)
+    a.paste(im.split()[3], (pad, pad))
+    edge = a.filter(ImageFilter.MaxFilter(border * 2 + 1)).filter(ImageFilter.GaussianBlur(1.0))
+    shadow = Image.new("RGBA", out.size, (34, 30, 28, 0))
+    shadow.putalpha(edge.filter(ImageFilter.GaussianBlur(5)).point(lambda v: int(v * 0.4)))
+    out.alpha_composite(shadow, (4, 6))
+    white = Image.new("RGBA", out.size, (255, 253, 245, 255))
+    white.putalpha(edge)
+    out.alpha_composite(white)
+    out.alpha_composite(im, (pad, pad))
+    return out
 
 
 @lru_cache(maxsize=1)

@@ -143,3 +143,9 @@ every number in the narration against the Claims table.
 Tags: 5-8 accurate tags, the exact topic phrase first (YouTube calls tags a minor signal; title, thumbnail and description matter more). Description: the keyword and the promise in the first two lines, then 2-3 hashtags
 (the first three show above the title); a `Sources:` line with up to 3 of the plan's research URLs is appended automatically. Sources of these rules: YouTube's own help pages for tags and Test & Compare; the rest
 are vendor guides and unverified, so treat numeric claims (CTR benchmarks, retention rates) as hypotheses to test against the channel's own data.
+
+
+## Vox look (owner instruction, 23 Nov 2026)
+New animation packs use the **vox look** (paper cut-out explainer style): `"look": "vox"` in `shots.json`, drawn with `generated_animations/shared/vox.py` as described in the "vox look" section of
+`generated_animations/AUTHORING.md` (model pack: `generated_animations/scenes/time_flies_vox/`). The validator rejects a pack without it. The avatar stays, as a sticker. No photos are fetched (drawn paper cut-outs only), so no network
+or image licences are involved.

@@ -38,6 +38,8 @@ VOICES = {
 # Languages produced by default. English only for now; set VIDEO_LANGS=en,hi to bring Hindi back (plans then need a `hindi` block).
 LANGS = os.getenv("VIDEO_LANGS", "en").strip()
 ENGINE = os.getenv("VIDEO_ENGINE", "generated").strip().lower()
+# Look of the generated_animations videos: "vox" (paper cut-out explainer style, the default from 23 Nov 2026) or "classic" (dark space theme; VIDEO_LOOK=classic).
+LOOK = os.getenv("VIDEO_LOOK", "vox").strip().lower()
 
 # English narration: Microsoft neural voice through edge-tts (free, no key; falls back to the Piper voice above if it is
 # unreachable). Set EN_VOICE=piper to use Piper for English. Hindi stays on Piper.

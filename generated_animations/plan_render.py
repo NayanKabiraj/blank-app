@@ -54,7 +54,7 @@ def render_picture(scenes, timeline, total: float, lang: str, work: Path, voice_
     shots = packs.load(pack) if pack else []
     if not shots:
         log.warning("no animation pack for this video: falling back to the generic graphic kinds")
-    scene = PlanScene(plan_scenes, boundaries(timeline, total), timeline, layout, lang, narration=narration, shots=shots)
+    scene = PlanScene(plan_scenes, boundaries(timeline, total), timeline, layout, lang, narration=narration, shots=shots, look=packs.look(pack) if pack else "classic")
     scene.render()
     out = work / "video.mp4"
     shutil.copy(scene.renderer.file_writer.movie_file_path, out)

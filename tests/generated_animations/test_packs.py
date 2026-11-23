@@ -39,4 +39,4 @@ def test_plan_validation_requires_full_coverage():
     plan = Plan.model_construct(english=mk(""), hindi=mk("gps_short"))
     problems = _animation_problems(plan)
     assert any("animation_pack is empty" in p for p in problems)
-    assert any("no authored animation" in p for p in problems) or any("gps_short" in p for p in problems) is False
+    assert any("must use the vox look" in p for p in problems)      # gps_short is a classic-look pack
