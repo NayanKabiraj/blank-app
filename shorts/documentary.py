@@ -67,7 +67,7 @@ def main() -> int:
             script = scripts[lang]
             log.info("Documentary %s: about %.1f minutes planned", lang, doc_seconds(script, lang) / 60)
             video, chapters = compose.build_documentary(script, lang, plan.mood, out / f"work_{lang}", plan.niche)
-            desc = chapter_description(strategy.up_next(script.description, script.next_video, lang), chapters)
+            desc = chapter_description(strategy.with_sources(strategy.up_next(script.description, script.next_video, lang), plan.research_summary), chapters)
             thumb = thumbs.for_script(script, plan.niche, lang, out / f"{today}_documentary_{lang}.jpg", short=False)
             final = out / f"{today}_documentary_{lang}.mp4"
             shutil.move(video, final)

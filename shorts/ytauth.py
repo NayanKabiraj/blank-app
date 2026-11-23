@@ -19,7 +19,9 @@ import requests
 from . import config
 
 REDIRECT = "http://localhost"
-SCOPE = "https://www.googleapis.com/auth/youtube.upload"
+SCOPE = " ".join(["https://www.googleapis.com/auth/youtube.upload",             # uploads
+                   "https://www.googleapis.com/auth/youtube.readonly",          # the channel check (shorts/channel_trends.py)
+                   "https://www.googleapis.com/auth/yt-analytics.readonly"])
 
 
 def _fernet():
