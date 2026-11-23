@@ -12,7 +12,7 @@ from __future__ import annotations
 import math
 
 import numpy as np
-from manim import CurvedArrow, ImageMobject, Polygon, RoundedRectangle, VGroup, always_redraw
+from manim import CurvedArrow, ImageMobject, Line, Polygon, Rectangle, RoundedRectangle, Text, VGroup, always_redraw
 
 PAPER, INK, CREAM = "#EEE6D5", "#221E1C", "#FFFDF5"
 YEL, BLUE, RED, GREEN, NAVY, ORANGE, PINK = "#FFD640", "#2E86D6", "#E2423C", "#5E9A5A", "#2B3A67", "#F08A3C", "#F2A5B8"
@@ -133,7 +133,6 @@ NEWSPRINT = "#F3EDDC"
 
 
 def _serif(text: str, size: float, color: str = INK, weight: str = "BOLD", max_width: float = 4.0):
-    from manim import Text
     t = Text(text, font_size=size, color=color, weight=weight, font=SERIF)
     if t.width > max_width:
         t.scale_to_fit_width(max_width)
@@ -147,7 +146,6 @@ def newspaper(ctx, masthead: str, headline: str, date: str = "", w: float = 4.6,
     g = VGroup(torn_card(w, h, seed=seed, fill=NEWSPRINT, amp=0.05))
     top = h / 2 - 0.45
     g.add(_serif(masthead.upper(), 26, INK, "BOLD", w - 0.8).move_to(np.array([0, top, 0.0])))
-    from manim import Line
     for dy, sw in ((top - 0.34, 4), (top - 0.42, 2)):
         g.add(Line(np.array([-w / 2 + 0.3, dy, 0.0]), np.array([w / 2 - 0.3, dy, 0.0]), color=INK, stroke_width=sw))
     if date:

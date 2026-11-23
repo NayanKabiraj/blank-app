@@ -51,3 +51,13 @@ uses a warm paper background, cream caption pills with ink text and the presente
 Rules of the look: text is `vox.INK` (dark) in BIG bold capitals for headlines and short labels; one marker swipe per key word; 3-6 torn cards or cut-outs per shot, slightly rotated (-4..+4 degrees);
 colour fills with an ink outline (stroke_color=INK, stroke_width 3-6); things still move a lot (bars growing, fluids filling, hands turning, people popping in, arrows drawing), because rule 10 still applies.
 Model pack: `scenes/time_flies_vox/` (a vertical Short). Keep everything inside the stage; the sticker presenter sits bottom-left.
+
+### Newspaper clippings (vox look): when to use them
+`vox.newspaper(ctx, masthead, headline, date, w, h, seed, rot)` builds a newspaper front-page clipping (newsprint card, serif masthead, rules, date line, big headline, hatched photo box, text columns) and
+`vox.arrive(ctx, clipping, t_in, t_out, side="right")` slaps it into frame (slides in with a little spin and overshoot, and slides out at `t_out`). Position the clipping where it should end up first.
+Decide per scene (do not use it everywhere; at most 1-3 times per Short, 2-6 per documentary, only where it helps the story):
+- **Use it** when the sentence is about a **dated or historical event** ("in 1960 ...", "in 2005 a survey ..."), a **named incident or disaster**, an **announcement, discovery, record, law or study** being reported, a **first/last** of something,
+  or anything that reads like a news item. Put the year or date in the date line and a headline that says the same thing as the narration.
+- **Do not use it** for explanations of how something works, definitions, steps, comparisons, jokes, or anything without a real date or event.
+- **Facts rule:** a clipping is a claim on screen. The headline and date must be supported by the research (Claims table); never invent a quote, an outlet or a statistic. Use a generic masthead (for example "The Curious Loop Times") instead of a real newspaper's name.
+- **Timing:** arrive on the sentence that names the event, hold about 2 seconds, then let it leave before the next visual starts. Model: `scenes/time_flies_vox/scene_003.py` (the 2005 survey).
