@@ -24,8 +24,9 @@ def paper_bg(width: float, height: float, res=(540, 960), seed: int = 1) -> Imag
     rng = np.random.default_rng(seed)
     h, w = res[1], res[0]
     base = np.ones((h, w, 3)) * np.array([238, 230, 213])
-    small = rng.random((max(2, h // 60), max(2, w // 60)))
-    blot = np.kron(small, np.ones((60, 60)))[:h, :w]
+    from PIL import Image
+    small = (rng.random((max(2, h // 70), max(2, w // 70))) * 255).astype("uint8")
+    blot = np.asarray(Image.fromarray(small).resize((w, h), Image.BICUBIC)).astype(float) / 255.0
     base += ((blot - 0.5) * 255 * 0.03)[..., None]
     base += rng.normal(0, 3.2, (h, w, 1))
     for _ in range(int(h * w / 2500)):

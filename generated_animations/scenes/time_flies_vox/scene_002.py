@@ -42,16 +42,16 @@ def animate(ctx):
         c = C + v(xo, 1.0)
         t_in = 0.4 + 1.6 * k
         card = vox.torn_card(3.3, 4.2, seed=7 + k, rot=-2 + 4 * k).move_to(c)
-        show(ctx, card, t_in, pop=0.2, z=2)
-        show(ctx, ctx.text(key, 44, INK, 3.0).move_to(c + v(0, 1.6)), t_in + 0.1, z=5)
-        show(ctx, Circle(radius=1.05, stroke_color=INK, stroke_width=6, fill_color="#FFFFFF", fill_opacity=1).move_to(c + v(0, 0.1)), t_in + 0.2, pop=0, z=4)
+        show(ctx, card, t_in, t_out=t1 - 0.2, pop=0.2, z=2)
+        show(ctx, ctx.text(key, 44, INK, 3.0).move_to(c + v(0, 1.6)), t_in + 0.1, t_out=t1 - 0.2, z=5)
+        show(ctx, Circle(radius=1.05, stroke_color=INK, stroke_width=6, fill_color="#FFFFFF", fill_opacity=1).move_to(c + v(0, 0.1)), t_in + 0.2, t_out=t1 - 0.2, pop=0, z=4)
         ang = lambda t_in=t_in, frac=frac: max(0.001, 2 * math.pi * frac * ease(level(ctx, t_in + 0.4, 1.4)))
         wedge = always_redraw(lambda c=c, ang=ang, col=col, t_in=t_in: Sector(radius=1.05, angle=ang(), start_angle=math.pi / 2, arc_center=c + v(0, 0.1), fill_color=col, fill_opacity=window(ctx, t_in, t1 - 0.2)(), stroke_width=0))
         wedge._dynamic = True
         ctx.add(wedge, z=5)
-        show(ctx, ctx.text(sk, 26, INK, 3.0).move_to(c + v(0, -1.6)), t_in + 0.9, z=5)
+        show(ctx, ctx.text(sk, 26, INK, 3.0).move_to(c + v(0, -1.6)), t_in + 0.9, t_out=t1 - 0.2, z=5)
     stamp = vox.tape(ctx, T["np"], C + v(0, -1.0), RED, 4.4, 34, -6.0)
-    show(ctx, stamp, ctx.tt(0, 1) + 0.2, pop=0.25, z=7)
+    show(ctx, stamp, ctx.tt(0, 1) + 0.2, t_out=t1 - 0.2, pop=0.25, z=7)
     # theory two: jars
     for k, (key, n, col, xo) in enumerate(((T["new"], 26, ORANGE, -2.0), (T["rt"], 5, "#8A8070", 2.0))):
         c = C + v(xo, 0.6)
