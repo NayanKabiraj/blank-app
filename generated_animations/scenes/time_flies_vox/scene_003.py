@@ -53,24 +53,27 @@ def animate(ctx):
     show(ctx, lab, ctx.tt(0, 1) + 0.3, t_out=t1 - 0.2, z=6)
     # survey
     show(ctx, vox.torn_card(7.0, 5.4, seed=23, rot=1).move_to(C + v(0, 0.5)), t1 + 0.2, pop=0.2, z=2)
+    paper = vox.newspaper(ctx, "The Curious Loop Times", "Study asks 499 people how fast a decade felt", "2005 - AGE & TIME PERCEPTION", w=4.8, h=3.9, seed=5, rot=-4)
+    paper.move_to(C + v(0.0, 0.0))
+    vox.arrive(ctx, paper, t1 + 0.1, t_out=t1 + 2.2, side="right", z=8)
     n_txt = ctx.text(T["n"], 58, INK, 6.0).move_to(C + v(0, 2.6))
-    show(ctx, n_txt, t1 + 0.3, z=5)
-    vox.marker(ctx, n_txt, t1 + 0.6, 0.7)
-    show(ctx, ctx.text(T["r"], 30, INK, 5.0).move_to(C + v(0, 1.9)), t1 + 0.7, z=5)
+    show(ctx, n_txt, t1 + 2.0, z=5)
+    vox.marker(ctx, n_txt, t1 + 2.3, 0.7)
+    show(ctx, ctx.text(T["r"], 30, INK, 5.0).move_to(C + v(0, 1.9)), t1 + 2.3, z=5)
     N = 14
     for i in range(N):
         f = i / (N - 1)
         col = BLUE if f < 0.34 else (YEL if f < 0.67 else ORANGE)
         x = C[0] - 2.7 + 5.4 * f
         person = VGroup(Circle(radius=0.2, stroke_color=INK, stroke_width=3, fill_color=col, fill_opacity=1).move_to(v(x, C[1] + 1.1)), RoundedRectangle(corner_radius=0.1, width=0.36, height=0.5, stroke_color=INK, stroke_width=3, fill_color=col, fill_opacity=1).move_to(v(x, C[1] + 0.65)))
-        show(ctx, vox.cutout(person, 5), t1 + 1.0 + 0.1 * i, pop=0.12, z=5)
+        show(ctx, vox.cutout(person, 5), t1 + 2.6 + 0.1 * i, pop=0.12, z=5)
     for k, (key, wd, col, yo) in enumerate(((T["y"], 5.4, BLUE, -0.4), (T["o"], 3.0, ORANGE, -1.5))):
-        t_in = ctx.tt(1, 0) + 0.6 + 1.0 * k
+        t_in = ctx.tt(1, 0) + 2.4 + 1.0 * k
         w = lambda wd=wd, t_in=t_in: wd * ease(level(ctx, t_in, 1.5))
         bar = always_redraw(lambda col=col, yo=yo, w=w: Rectangle(width=max(0.02, w()), height=0.55, stroke_color=INK, stroke_width=3, fill_color=col, fill_opacity=window(ctx, t1 + 0.3, None)()).move_to(v(C[0] - 2.7 + max(0.02, w()) / 2, C[1] + yo)))
         bar._dynamic = True
         ctx.add(bar, z=5)
         show(ctx, ctx.text(key, 26, INK, 5.0).move_to(v(C[0], C[1] + yo + 0.5)), t_in, z=6)
-    show(ctx, vox.tape(ctx, T["f"], C + v(0.4, -2.5), RED, 3.8, 34, -3.0), ctx.tt(1, 0) + 3.0, pop=0.25, z=7)
+    show(ctx, vox.tape(ctx, T["f"], C + v(0.4, -2.5), RED, 3.8, 34, -3.0), ctx.tt(1, 0) + 5.0, pop=0.25, z=7)
     ctx.avatar.look_at(C + v(0, 0.5))
     ctx.play(expressions.set_expression(ctx.avatar, "curious", 0.4), run_time=0.5)
