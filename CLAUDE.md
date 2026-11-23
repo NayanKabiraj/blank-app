@@ -46,6 +46,11 @@ the workflow renders.
 11. **English only for now** (owner instruction, 22 Nov 2026): videos are produced in English only. Plans have no `hindi` block, nothing is rendered or uploaded in Hindi
    (`config.LANGS` / `VIDEO_LANGS`, default `en`; the workflow's `langs` input defaults to `en`). Hindi comes back by setting `VIDEO_LANGS=en,hi` and adding a `hindi` block.
 
+12. **Every video starts with a channel check, a research template and SEO rules** (owner instruction, 23 Nov 2026; details in the task files): before choosing a topic run
+   `python -m shorts.channel_trends summary` (data from `channel-trends.yml`; "NOT AVAILABLE" until the YouTube sign-in has the read-only scopes) and record `Channel check:` in
+   `research_summary`; also `Claims:` and `Gap:`. Scene 1 = hook, scene 2 = intro (Shorts 22 words max), `thumbnail_question` required, title <= 65 characters, 5-8 tags,
+   2-3 hashtags, a Sources line is added to the description automatically. The validator checks all of it.
+
 ## Quick commands
 
 ```bash
