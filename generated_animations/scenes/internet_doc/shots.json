@@ -1,0 +1,56 @@
+{
+ "topic": "How does the internet actually work?",
+ "shots": [
+  {
+   "module": "scene_001",
+   "scenes": [
+    0,
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "module": "scene_002",
+   "scenes": [
+    5,
+    6,
+    7,
+    8,
+    9
+   ]
+  },
+  {
+   "module": "scene_003",
+   "scenes": [
+    10,
+    11,
+    12,
+    13,
+    14
+   ]
+  },
+  {
+   "module": "scene_004",
+   "scenes": [
+    15,
+    16,
+    17,
+    18,
+    19
+   ]
+  },
+  {
+   "module": "scene_005",
+   "scenes": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+   ]
+  }
+ ]
+}
