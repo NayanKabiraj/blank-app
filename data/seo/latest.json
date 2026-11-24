@@ -1,0 +1,121 @@
+{
+ "generated": "2026-11-24T19:06:38+00:00",
+ "queries": {
+  "why does my phone screen turn off near my ear": {
+   "suggest": [
+    {
+     "phrase": "why my phone screen gets off during a call",
+     "score": 17.87
+    },
+    {
+     "phrase": "how to fix screen turning off during calls",
+     "score": 6.83
+    },
+    {
+     "phrase": "why does my ear keep popping",
+     "score": 4.0
+    },
+    {
+     "phrase": "why the screen of my phone is blinking",
+     "score": 3.33
+    },
+    {
+     "phrase": "why is my phone not working when i touch the screen",
+     "score": 2.33
+    },
+    {
+     "phrase": "why does my phone screen flicker",
+     "score": 2.25
+    },
+    {
+     "phrase": "what to do if your ear won't stop ringing",
+     "score": 1.5
+    },
+    {
+     "phrase": "why does the screen of my phone flicker",
+     "score": 1.17
+    },
+    {
+     "phrase": "why does my phone screen turns on by itself",
+     "score": 1.0
+    },
+    {
+     "phrase": "when plugged in turn off my screen after",
+     "score": 0.83
+    },
+    {
+     "phrase": "why is my screen flickering on my phone",
+     "score": 0.75
+    },
+    {
+     "phrase": "why does my screen go off during a call",
+     "score": 0.67
+    },
+    {
+     "phrase": "my ear hurts and feels clogged",
+     "score": 0.58
+    },
+    {
+     "phrase": "how to fix your ear when you can't hear",
+     "score": 0.5
+    },
+    {
+     "phrase": "how to stop your phone from blinking",
+     "score": 0.33
+    },
+    {
+     "phrase": "why won't my ear pop",
+     "score": 0.33
+    },
+    {
+     "phrase": "what to do if you can't hear from one ear",
+     "score": 0.33
+    },
+    {
+     "phrase": "how to stop your phone screen from glitching",
+     "score": 0.33
+    },
+    {
+     "phrase": "why does my iphone screen turn off",
+     "score": 0.25
+    }
+   ],
+   "outliers": {
+    "available": false,
+    "reason": "no metadata returned"
+   }
+  },
+  "how does a proximity sensor work": {
+   "suggest": [
+    {
+     "phrase": "how a proximity sensor works",
+     "score": 10.48
+    },
+    {
+     "phrase": "how does a distance sensor work",
+     "score": 3.0
+    },
+    {
+     "phrase": "how does a capacitive proximity sensor work",
+     "score": 3.0
+    },
+    {
+     "phrase": "how does inductive proximity sensor work",
+     "score": 1.2
+    },
+    {
+     "phrase": "how proximity sensor works in mobile phones",
+     "score": 0.67
+    },
+    {
+     "phrase": "how do proximity sensors work",
+     "score": 0.25
+    }
+   ],
+   "outliers": {
+    "available": false,
+    "reason": "no metadata returned"
+   }
+  }
+ }
+}
