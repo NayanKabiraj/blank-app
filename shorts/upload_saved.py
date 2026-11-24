@@ -27,16 +27,12 @@ def check() -> int:
     print(f"privacy:          {config.YT_PRIVACY}")
     ok &= bool(config.YT_CLIENT_ID and config.YT_CLIENT_SECRET)
     for lang in ("en", "hi"):
-        tok = config.YT_REFRESH_TOKENS[lang]
+        from . import ytauth
+        tok = ytauth.candidates(lang)
         status = "MISSING"
         if tok and config.YT_CLIENT_ID and config.YT_CLIENT_SECRET:
             try:
-                from google.auth.transport.requests import Request
-                from google.oauth2.credentials import Credentials
-                creds = Credentials(None, refresh_token=tok, token_uri="https://oauth2.googleapis.com/token",
-                                    client_id=config.YT_CLIENT_ID, client_secret=config.YT_CLIENT_SECRET,
-                                    scopes=upload.SCOPES)
-                creds.refresh(Request())
+                ytauth.credentials(lang, upload.SCOPES)
                 status = "set, refreshes OK"
             except Exception as e:  # noqa: BLE001
                 status = f"set, but refresh FAILED ({type(e).__name__})"
