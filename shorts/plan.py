@@ -216,6 +216,7 @@ def _strategy_problems(plan) -> list[str]:
             out.append(f"research_summary should also record {label} (see the video-strategy skill)")
     for marker, label in (("claims:", "a 'Claims:' table (each number with two sources and a status; where sources differ say which you used and hedge the narration)"),
                           ("gap:", "a 'Gap:' line: the angle the top existing videos on this question miss, and how this video covers it"),
+                          ("growth:", "a 'Growth:' line: the goal is subscribers and a monetizable channel - which growth lever this video pulls (hook/retention, subscribe trigger, series follow-up, reach) and the policy check (original, not template-like, nothing off-putting, no sensitive-topic personas)"),
                           ("channel check:", "a 'Channel check:' line: what the channel's own recent numbers say (data/channel_trends.json or vidIQ) and the change you made to the topic/niche/format because of it, or 'NOT AVAILABLE: <reason>'")):
         if marker not in rs:
             out.append(f"research_summary should also contain {label}")

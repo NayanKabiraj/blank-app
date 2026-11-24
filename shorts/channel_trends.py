@@ -89,6 +89,28 @@ def _index(history: list, doc_history: list) -> dict:
     return idx
 
 
+# YouTube Partner Program thresholds (YouTube Help, checked 24 Nov 2026; third-party reports say they rise on 1 Feb 2027 to 8,000 watch hours or 20 M Shorts views - verify in YouTube Studio -> Earn)
+YPP = {"fan_funding_subs": 500, "ads_subs": 1000, "ads_watch_hours_12m": 4000, "ads_shorts_views_90d": 10_000_000}
+
+
+def monetization(data: dict) -> dict:
+    """Progress toward the Partner Program from the 28-day data (pure function, tested). Projections are plain extrapolations, labelled as such."""
+    ch = data.get("channel") or {}
+    subs = int(ch.get("subscriberCount", 0))
+    days = data.get("days") or 28
+    minutes = sum(float(r.get("estimatedMinutesWatched") or 0) for r in data.get("analytics", []))
+    shorts = next((r for r in data.get("split", []) if r.get("creatorContentType") == "shorts"), {})
+    views = sum(int(r.get("views") or 0) for r in data.get("analytics", []))
+    hours = round(minutes / 60, 1)
+    per_year = hours * 365 / days
+    not_public = [v["title"][:40] for v in data.get("videos", []) if v.get("privacy") not in (None, "public")]
+    return {"subscribers": subs, "to_500": max(0, YPP["fan_funding_subs"] - subs), "to_1000": max(0, YPP["ads_subs"] - subs),
+            "watch_hours_last_%dd" % days: hours, "watch_hours_if_pace_holds_12m": round(per_year), "needed_watch_hours_12m": YPP["ads_watch_hours_12m"],
+            "shorts_views_last_%dd" % days: int(shorts.get("views", 0)), "needed_shorts_views_90d": YPP["ads_shorts_views_90d"],
+            "subscribers_per_1000_views": round(1000 * float(ch.get("subscribersGained", 0) or sum(int(r.get("subscribersGained") or 0) for r in data.get("analytics", []))) / max(1, views), 2),
+            "videos_not_public": len(not_public), "note": "growth lever = subscribers (the slowest requirement); thresholds in channel_trends.YPP, verify in YouTube Studio -> Earn"}
+
+
 def digest(data: dict, history: list, doc_history: list) -> dict:
     """Per-niche / per-format aggregates joined to our own history, plus plain-language signals. Pure function (tested)."""
     if not data.get("available"):
@@ -132,7 +154,7 @@ def digest(data: dict, history: list, doc_history: list) -> dict:
     return {"available": True, "generated": data.get("generated"), "channel": data.get("channel"), "split": data.get("split"), "niches": niches, "formats": kinds,
             "top": [{"title": r["title"], "views": r["views"], "avg_view_pct": r.get("avg_view_pct"), "niche": r.get("niche")} for r in ranked[:3]],
             "bottom": [{"title": r["title"], "views": r["views"], "avg_view_pct": r.get("avg_view_pct"), "niche": r.get("niche")} for r in ranked[-3:]],
-            "signals": signals, "analytics_note": data.get("analytics_reason")}
+            "monetization": monetization(data), "signals": signals, "analytics_note": data.get("analytics_reason")}
 
 
 TRENDING_FILE = config.DATA_DIR / "youtube_trending.json"

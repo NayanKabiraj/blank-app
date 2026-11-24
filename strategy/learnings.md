@@ -1,5 +1,7 @@
 # Channel learnings (read at the start of every run; newest evidence first)
 
+Goal behind every rule here: grow subscribers and watch time toward monetization without breaking YouTube's policies - see `strategy/monetization.md`.
+
 How this file works: the daily task runs `python -m shorts.channel_trends summary` and `python -m shorts.channel_trends trending`, reads this file, applies the rules below
 and writes `Learning applied:` (which rule, what was changed) in `research_summary`. After the channel check, add or revise ONE dated line under "Evidence" if the new data
 says something new (never invent numbers; small samples are labelled as such). Rules move from "Test" to "Rule" only after two or more videos agree.

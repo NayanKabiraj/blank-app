@@ -298,3 +298,9 @@ topics x EN+HI + 1 documentary x EN+HI (documentary follows `shorts/CLAUDE_DOCUM
 3. **Dispatch rule**: GitHub keeps only ONE pending run per concurrency group, so never queue more than one: dispatch topic k+1 only when run k is `in_progress` or finished and no other run is queued. Author the next topic
    while the previous one renders.
 4. Quality over quota: if time runs short, ship fewer topics rather than rush; never ship a pack that failed frame inspection. Report how many of the day's uploads happened or queued and why any are missing.
+
+
+## Growth and monetization (owner instruction, 24 Nov 2026) - read `strategy/monetization.md`
+The goal of every video is subscribers and watch time toward the Partner Program, without risking it. Write a `Growth:` line in `research_summary`: which lever this video pulls (hook/retention, subscribe trigger such as a series promise in
+the first 20 s, series follow-up with `next_video` and the pinned comment, reach) and the policy check (its own angle and structure, not a clone of yesterday's video; nothing off-putting; no health/finance/legal advice). Use the
+`monetization` block of the channel check (subscribers to 1,000, watch hours, subscribers per 1,000 views) to decide what to change next.

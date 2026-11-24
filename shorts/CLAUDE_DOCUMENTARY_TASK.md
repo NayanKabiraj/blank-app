@@ -170,3 +170,9 @@ After the workflow run, if an upload is queued because of `invalid_grant` ("Goog
 
 ## Schedule change (24 Nov 2026)
 Documentaries run on **Sunday only**, English + Hindi (2 of that day's 6 uploads), gated by the learnings file (a Short on the topic must already have traction; <= 4 min until a documentary beats 25 % viewed).
+
+
+## Growth and monetization (owner instruction, 24 Nov 2026) - read `strategy/monetization.md`
+The goal of every video is subscribers and watch time toward the Partner Program, without risking it. Write a `Growth:` line in `research_summary`: which lever this video pulls (hook/retention, subscribe trigger such as a series promise in
+the first 20 s, series follow-up with `next_video` and the pinned comment, reach) and the policy check (its own angle and structure, not a clone of yesterday's video; nothing off-putting; no health/finance/legal advice). Use the
+`monetization` block of the channel check (subscribers to 1,000, watch hours, subscribers per 1,000 views) to decide what to change next.

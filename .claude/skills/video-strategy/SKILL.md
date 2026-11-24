@@ -260,3 +260,7 @@ Short intro <= 22 words. Numeric benchmarks from blogs are hypotheses, not facts
 Every RESEARCH / BUILD starts from data, not memory: `python -m shorts.channel_trends summary`, `python -m shorts.channel_trends trending`, then `strategy/learnings.md` (Rules, Tests, dated Evidence). Apply the Rules, say which one you applied
 (`Learning applied:` in `research_summary`), and update the evidence file after each channel check. A rule changes only when two or more videos agree; one video is a hint.
 
+
+## Goal: growth and monetization
+Every RESEARCH / BUILD serves subscribers and Partner Program eligibility (`strategy/monetization.md`): name the growth lever in `Growth:`, keep every video distinct (YouTube removes template-like mass-produced channels from monetization), and let the scoreboard
+(subscribers, public watch hours, subscribers per 1,000 views) steer the next change.
