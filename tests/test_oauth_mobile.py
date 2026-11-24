@@ -225,3 +225,13 @@ def test_hindi_is_back_and_stories_are_labelled_fiction(monkeypatch):
     story = p.model_copy(update={"niche": "Horror & Suspense", "hindi": None})
     assert any("fiction" in x for x in P._lang_and_fiction_problems(story))
     assert P.INTRO_CUE.search("Tonight: one hotel, one rule and a bell that rings by itself.")
+
+
+def test_monetization_scoreboard():
+    from shorts import channel_trends as ct
+    d = {"days": 28, "channel": {"subscriberCount": 47}, "split": [{"creatorContentType": "shorts", "views": 1789}],
+         "analytics": [{"estimatedMinutesWatched": 240, "views": 900, "subscribersGained": 1}, {"estimatedMinutesWatched": 60, "views": 900, "subscribersGained": 1}],
+         "videos": [{"title": "a", "privacy": "public"}, {"title": "b", "privacy": "private"}]}
+    m = ct.monetization(d)
+    assert m["to_1000"] == 953 and m["to_500"] == 453 and m["watch_hours_last_28d"] == 5.0 and m["watch_hours_if_pace_holds_12m"] == 65
+    assert m["shorts_views_last_28d"] == 1789 and m["videos_not_public"] == 1 and m["subscribers_per_1000_views"] == 1.11
