@@ -2,20 +2,33 @@
 from __future__ import annotations
 
 import logging
+import time
 from pathlib import Path
 
-from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload
 
-from . import config
+from . import config, ytauth
 
 log = logging.getLogger(__name__)
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 
 
 def can_upload(lang: str) -> bool:
-    return bool(config.YT_CLIENT_ID and config.YT_CLIENT_SECRET and config.YT_REFRESH_TOKENS[lang])
+    """The Google client is configured. A missing/expired token is not a reason to skip: upload() then asks for authorization."""
+    return bool(config.YT_CLIENT_ID and config.YT_CLIENT_SECRET)
+
+
+def _retry(fn, tries: int = 4):
+    """Rate limits, 5xx and network errors: back off and retry. Every other error (auth, quota, scope...) is raised at once."""
+    for i in range(tries):
+        try:
+            return fn()
+        except Exception as e:  # noqa: BLE001
+            if ytauth.classify(e) not in ("rate", "retry") or i == tries - 1:
+                raise
+            log.warning("YouTube said %s (%s); retrying in %d s", ytauth.classify(e), str(e)[:80], 2 ** (i + 1))
+            time.sleep(2 ** (i + 1))
 
 
 def _clean_tags(tags: list[str]) -> list[str]:
@@ -43,14 +56,7 @@ def set_thumbnail(yt, video_id: str, thumbnail: Path) -> bool:
 def upload(video: Path, script, lang: str, short: bool = True, description: str | None = None,
            privacy: str | None = None, thumbnail: Path | None = None, synthetic: bool | None = None) -> str:
     """Upload a Short (default) or a long-form video. `description` overrides the script's (chapters added)."""
-    creds = Credentials(
-        None,
-        refresh_token=config.YT_REFRESH_TOKENS[lang],
-        token_uri="https://oauth2.googleapis.com/token",
-        client_id=config.YT_CLIENT_ID,
-        client_secret=config.YT_CLIENT_SECRET,
-        scopes=SCOPES,
-    )
+    creds = _retry(lambda: ytauth.credentials(lang, SCOPES))     # silent refresh; AuthRequired on invalid_grant
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
     title = script.title.replace("<", "").replace(">", "").strip()
     description = (description or script.description).replace("<", "").replace(">", "")
@@ -81,7 +87,7 @@ def upload(video: Path, script, lang: str, short: bool = True, description: str 
     req = yt.videos().insert(part="snippet,status", body=body, media_body=media)
     response = None
     while response is None:
-        status, response = req.next_chunk()
+        status, response = _retry(req.next_chunk)
         if status:
             log.info("Upload %d%%", int(status.progress() * 100))
     vid = response["id"]

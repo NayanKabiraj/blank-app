@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>YTConnect authorization</title>
+<style>
+  body{font-family:system-ui,sans-serif;margin:0;padding:24px 16px;background:#faf6ea;color:#1b1b1b;text-align:center}
+  main{max-width:420px;margin:12vh auto}
+  a.btn{display:block;margin:20px 0;padding:16px;border-radius:12px;background:#1f7a4d;color:#fff;font-weight:700;text-decoration:none;font-size:18px}
+  small{color:#666}
+</style>
+</head>
+<body>
+<main>
+  <h2 id="h">Finishing Google authorization…</h2>
+  <p id="p">Sending the result to your workflow.</p>
+  <a id="go" class="btn" style="display:none" href="#">Tap to continue</a>
+  <small>This page holds no secrets and stores nothing. The authorization code is single-use and useless without the project's private key material.</small>
+</main>
+<script>
+(function () {
+  var REPO = "NayanKabiraj/blank-app";                   // the repository whose workflow finishes the sign-in
+  var q = new URLSearchParams(location.search);
+  var code = q.get("code"), state = q.get("state"), err = q.get("error");
+  history.replaceState(null, "", location.pathname);      // remove the code from the address bar / history at once
+  var h = document.getElementById("h"), p = document.getElementById("p"), go = document.getElementById("go");
+  if (err || !code || !state) {
+    h.textContent = "Authorization was not completed";
+    p.textContent = err ? "Google said: " + err + ". Ask Claude for a new authorization link." : "No authorization result was received. Ask Claude for a new authorization link.";
+    return;
+  }
+  // the owner-only issue "oauth-callback" starts the workflow that exchanges the code (PKCE + state + expiry are checked there)
+  var url = "https://github.com/" + REPO + "/issues/new?title=" + encodeURIComponent("oauth-callback") +
+            "&body=" + encodeURIComponent(JSON.stringify({ state: state, code: code }));
+  h.textContent = "Google authorization received";
+  p.textContent = "One last tap: on the next page press “Submit new issue”. Everything after that is automatic.";
+  go.href = url; go.style.display = "block";
+  setTimeout(function () { location.replace(url); }, 1200);
+})();
+</script>
+</body>
+</html>

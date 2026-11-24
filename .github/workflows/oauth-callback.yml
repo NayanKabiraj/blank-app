@@ -1,0 +1,86 @@
+name: Google authorization callback
+
+# Finishes the phone sign-in (shorts/ytauth.py). docs/oauth/callback.html (GitHub Pages) opens an issue titled "oauth-callback"
+# with the one-time authorization code; ONLY an issue opened by the repository owner is trusted. The workflow checks state + expiry
+# + PKCE, stores the new refresh token encrypted in data/yt_token_en.enc, redacts and closes the issue, then uploads what waits in
+# videos/unpublished/ (the checkpoint: nothing is rendered again). Nothing secret is printed.
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: shorts-pipeline
+  cancel-in-progress: false
+
+jobs:
+  finish:
+    if: ${{ github.event.issue.title == 'oauth-callback' && github.event.issue.user.login == github.repository_owner }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      YT_PRIVACY: ${{ vars.YT_PRIVACY || 'private' }}
+      YT_AI_DISCLOSURE: ${{ vars.YT_AI_DISCLOSURE || 'off' }}
+      GH_TOKEN: ${{ github.token }}
+      ISSUE_NUMBER: ${{ github.event.issue.number }}
+      ISSUE_BODY: ${{ github.event.issue.body }}
+    steps:
+      - name: Hide the authorization code at once (the issue body is replaced before anything else happens)
+        run: |
+          gh issue edit "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "[redacted - one-time authorization code]"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: shorts/requirements.txt
+      - run: pip install -q -r shorts/requirements.txt
+      - name: Exchange the code and store the new credentials
+        id: auth
+        run: |
+          set +e
+          python -m shorts.ytauth callback-issue | tee "$RUNNER_TEMP/auth.txt"
+          rc=${PIPESTATUS[0]}
+          { echo '```'; cat "$RUNNER_TEMP/auth.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
+      - name: Close the callback issue
+        if: always()
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "$(head -c 600 "$RUNNER_TEMP/auth.txt" 2>/dev/null || echo 'See the workflow run.')" || true
+          gh issue close "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --reason completed || true
+          gh issue lock "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" || true
+      - name: Save the new credentials
+        if: ${{ steps.auth.outputs.rc == '0' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "chore: Google authorization restored [skip ci]" || true
+          for i in 1 2 3 4 5 6; do git pull --rebase -q && git push && break; echo "push attempt $i failed"; git rebase --abort 2>/dev/null || true; sleep $((i * 7)); done
+      - name: Resume - upload what was waiting
+        if: ${{ steps.auth.outputs.rc == '0' }}
+        run: |
+          if ls videos/unpublished/*/meta.json >/dev/null 2>&1; then
+            python -m shorts.pending flush | tee -a "$GITHUB_STEP_SUMMARY" || true
+          else
+            echo "Nothing was waiting." | tee -a "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Save the result
+        if: ${{ steps.auth.outputs.rc == '0' }}
+        run: |
+          if [ -n "$(git status --porcelain data/ videos/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/ videos/
+            git commit -m "chore: upload queued videos after authorization [skip ci]"
+            for i in 1 2 3 4 5 6; do git pull --rebase -q && git push && break; echo "push attempt $i failed"; git rebase --abort 2>/dev/null || true; sleep $((i * 7)); done
+          fi
+      - name: Fail visibly when the authorization did not work
+        if: ${{ steps.auth.outputs.rc != '0' }}
+        run: exit 1
