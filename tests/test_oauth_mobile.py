@@ -269,3 +269,33 @@ def test_every_description_gets_a_one_tap_subscribe_link():
     d = strategy.with_subscribe("A video. #Shorts")
     assert "https://www.youtube.com/@nayankabiraj?sub_confirmation=1" in d and strategy.with_subscribe(d) == d
     assert "सब्सक्राइब" in strategy.with_subscribe("वीडियो", "hi")
+
+
+def test_seo_tools_pure_parts(monkeypatch):
+    from shorts import seo
+    ex = seo.expansions("how does gps work")
+    assert ex[0] == "how does gps work" and "why how does gps work" in ex and not any(x.startswith("how how") for x in ex) and "how does gps work a" in ex
+    assert seo.parse_suggest(["q", ["a b", "c"], {}]) == ["a b", "c"] and seo.parse_suggest("junk") == []
+    r = seo.rank([["gps in phone", "gps for kids"], ["gps in phone", "unrelated thing"]], "gps")
+    assert r[0]["phrase"] == "gps in phone" and all("unrelated" not in x["phrase"] for x in r)
+
+    class Resp:
+        def json(self):
+            return ["q", ["gps how it works", "gps accuracy"]]
+    monkeypatch.setattr("requests.get", lambda *a, **k: Resp())
+    monkeypatch.setattr(seo.time, "sleep", lambda s: None)
+    assert seo.suggest("gps")[0]["phrase"] in ("gps how it works", "gps accuracy")
+    ent = [{"title": "How GPS works?", "channel": "A", "view_count": 500000, "channel_follower_count": 10000, "upload_date": "20260101", "duration": 45, "tags": ["gps", "tech"]},
+           {"title": "GPS explained", "channel": "B", "view_count": 3000, "channel_follower_count": 2000000, "upload_date": "20250101", "duration": 600, "tags": ["gps"]},
+           {"title": "GPS in your phone", "channel": "C", "view_count": 90000, "channel_follower_count": 40000, "upload_date": "20260301", "duration": 55, "tags": ["gps"]}, None]
+    d = seo.outlier_digest(ent, today_ord=__import__("datetime").date(2026, 6, 1).toordinal())
+    assert d["videos"] == 3 and d["outliers"][0]["channel"] == "A" and d["outliers"][0]["ratio"] == 50.0 and d["share_shorts"] == 0.67 and d["common_tags"] == ["gps"]
+    assert not seo.outlier_digest([None, {"title": "x"}])["available"]
+
+
+def test_report_lists_search_terms():
+    from shorts import progress as pr
+    snap = {"date": "2026-11-29", "available": True, "uploads_7d_detail": {}}
+    text = pr.render(snap, None, [], {"available": True, "search_terms": [{"term": "how gps works", "views": 12, "minutes": 3.5}]}, {})
+    assert '"how gps works": 12 views' in text
+    assert "no search traffic" in pr.render(snap, None, [], {"available": True}, {})

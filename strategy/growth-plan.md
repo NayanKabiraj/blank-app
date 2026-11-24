@@ -33,3 +33,6 @@ nobody knows what subscribing gets them (conversion ~1 per 1,000); (3) Shorts ca
 - **5 Jan:** 250 subscribers; 20,000 Shorts views in 28 days; two long-form videos above 25 % viewed.
 - **1 Feb 2027:** re-assess against YouTube Studio -> Earn (the thresholds may rise); decide whether to aim for the 500-subscriber fan-funding tier first.
 If a checkpoint is missed by half, change the strategy (series, format, language), not the volume.
+
+## SEO toolkit (built 24 Nov 2026, free)
+`python -m shorts.seo` (workflow `seo-research.yml` -> `data/seo/latest.json`): autocomplete expansions in English and Hindi/Hinglish, yt-dlp metadata of the top results for outlier detection and title/length patterns; the weekly report lists the search terms that brought viewers to our videos (Analytics API). Public metadata, low volume.

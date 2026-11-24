@@ -312,3 +312,8 @@ message, and apply "Next week" to the coming week's topics, hooks and conversion
 ## Growth plan (read `strategy/growth-plan.md`)
 Tag every plan (cluster = the series name, niche, both languages). Until 8 Dec explore; from 9 Dec at least 60 % of topics come from the top-2 series by views and subscribers gained (see the weekly report). A Short above 300 views gets a Part 2 within 3 days (use its
 `follow_ups`). Every Short carries the conversion toolkit: the series promise inside the first 20 s, the series name on screen, `next_video` answered in `pinned_comment`; the pipeline adds the one-tap subscribe link to the description. Reports show the qualifying (long-form only) watch hours.
+
+## Free SEO research (CLAUDE.md rule 20)
+For the day's candidate topics dispatch `seo-research.yml` (queries separated by `|`, as a viewer would type them; a second run with `hl` hi and `gl` IN for the Hindi phrasing), wait about two minutes, `git pull`, read `data/seo/latest.json`:
+`suggest` = real autocomplete phrases (best one in the title and first tag), `outliers` = videos that beat their channel's size (copy their hook and length, not their wording), patterns = median length and title shape. Add the chosen phrase to `Gap:`.
+Also read `search_terms` in `python -m shorts.channel_trends summary` (what viewers typed to find us). If the data is unavailable, say so and continue.

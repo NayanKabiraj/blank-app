@@ -83,6 +83,13 @@ def fetch(days: int = 28, max_videos: int = 200) -> dict:
         out["shorts_90d"] = {"views": next((r[1] for r in s90.get("rows", []) if r[0] == "shorts"), 0)}
     except Exception as exc:  # noqa: BLE001
         out["analytics_reason"] = f"YouTube Analytics API: {str(exc)[:200]} (needs yt-analytics.readonly and the API enabled)"
+        return out
+    try:                                       # what viewers typed into YouTube search before landing on our videos (the most accurate SEO data we can get)
+        q = an.reports().query(ids="channel==MINE", startDate=(end - dt.timedelta(days=90)).isoformat(), endDate=end.isoformat(), dimensions="insightTrafficSourceDetail",
+                               filters="insightTrafficSourceType==YT_SEARCH", metrics="views,estimatedMinutesWatched", sort="-views", maxResults=25).execute()
+        out["search_terms"] = [{"term": r[0], "views": int(r[1]), "minutes": round(float(r[2]), 1)} for r in q.get("rows", [])]
+    except Exception as exc:  # noqa: BLE001
+        out["search_terms_reason"] = f"YouTube Analytics search terms: {str(exc)[:160]}"
     return out
 
 
@@ -166,7 +173,7 @@ def digest(data: dict, history: list, doc_history: list) -> dict:
     return {"available": True, "generated": data.get("generated"), "channel": data.get("channel"), "split": data.get("split"), "niches": niches, "formats": kinds,
             "top": [{"title": r["title"], "views": r["views"], "avg_view_pct": r.get("avg_view_pct"), "niche": r.get("niche")} for r in ranked[:3]],
             "bottom": [{"title": r["title"], "views": r["views"], "avg_view_pct": r.get("avg_view_pct"), "niche": r.get("niche")} for r in ranked[-3:]],
-            "monetization": monetization(data), "signals": signals, "analytics_note": data.get("analytics_reason")}
+            "monetization": monetization(data), "search_terms": data.get("search_terms", []), "signals": signals, "analytics_note": data.get("analytics_reason")}
 
 
 TRENDING_FILE = config.DATA_DIR / "youtube_trending.json"
