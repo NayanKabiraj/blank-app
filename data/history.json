@@ -777,5 +777,28 @@
         "video_id": "Ve6sULeRWUk"
       }
     }
+  },
+  {
+    "date": "2026-11-24",
+    "niche": "AI Explained",
+    "topic": "How does ChatGPT actually work?",
+    "mood": "inspiring",
+    "cluster": "How AI Thinks",
+    "follow_ups": [
+      "Why does ChatGPT make things up?",
+      "What is a token?",
+      "How is an AI image generator trained?"
+    ],
+    "next_video": "Why does ChatGPT make things up?",
+    "gate_score": 84,
+    "thumbnail_text": "JUST GUESSING",
+    "videos": {
+      "en": {
+        "file": "2026-11-24_en.mp4",
+        "saved_to": "videos/2026-11-24/en.mp4",
+        "queued": "videos/unpublished/2026-11-24_short_en",
+        "error": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+      }
+    }
   }
 ]

@@ -1,0 +1,18 @@
+TITLE:
+How Does ChatGPT Actually Work? It Guesses One Word #Shorts
+
+DESCRIPTION:
+ChatGPT does not look up the answer; it guesses the next word, again and again. See the one loop behind every reply, how it learned, why it can sound sure and be wrong, and the 2017 idea that started it. #Shorts #AI #ChatGPT
+
+Up next: Why does ChatGPT make things up?
+
+Sources:
+https://www.ucf.edu/question/how-does-chatgpt-generate-text/
+https://cset.georgetown.edu/article/the-surprising-power-of-next-word-prediction-large-language-models-explained-part-1/
+https://www.techtarget.com/ai/feature/How-do-LLMs-like-ChatGPT-work
+
+TAGS:
+how does chatgpt actually work, how chatgpt works, what is a language model, transformer ai explained, ai explained, chatgpt hallucination
+
+PINNED COMMENT:
+What is the first thing you would ask an AI that only predicts the next word?

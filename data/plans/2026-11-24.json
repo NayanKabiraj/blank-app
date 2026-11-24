@@ -1,0 +1,154 @@
+{
+  "niche": "AI Explained",
+  "topic": "How does ChatGPT actually work?",
+  "research_summary": "Channel check: NOT AVAILABLE: the YouTube sign-in still has no read scopes (data/channel_trends.json: 'insufficient authentication scopes'); vidIQ's free channel list shows only public totals (47 subscribers, 11,247 views, 142 videos), and its credits are too low for analytics, so there is no per-video data. No change was made because of channel data; the variety guard decided (Earth & Nature and Brain & Psychology are cooling down, so a different niche). Candidates: (1) How does ChatGPT actually work? 34/40 (huge search demand, timely, simple loop to explain, verifiable, AI Explained niche unused recently), (2) How does Starlink beam internet from space? 31 (needs more verification, follows the satellite cluster), (3) Why is Mount Everest still growing? 29 (Earth & Nature is cooling down). Winner: ChatGPT; documentary slot: black boxes. Titles (/50): 'How Does ChatGPT Actually Work? It Guesses One Word' 44 (chosen, 52 characters); 'ChatGPT Is Just Guessing (Here Is How)' 41; 'How ChatGPT Answers Anything' 36; 'Why ChatGPT Makes Things Up' 40; 'What Is Inside ChatGPT?' 33; 'ChatGPT Explained in 60 Seconds' 38; 'The One Trick Behind ChatGPT' 37; 'Does ChatGPT Understand You?' 39; 'How AI Writes Word by Word' 34; 'Predicting, Not Knowing' 31. Thumbnails: A the face with a typing box and the words 'Does ChatGPT really understand?' (chosen); B a speech bubble with a question mark and a dice; C a robot with a book. Hooks: 'ChatGPT does not know the answer. It guesses the next word, again and again.' (chosen); 'Every ChatGPT answer is a very good guess.'; 'It has never looked anything up, unless you gave it a search tool.'; 'One trick from 2017 sits behind the whole thing.'; 'Why it sounds so sure when it is wrong.' Gap: most existing explainers are either maths-heavy (attention, matrices) or shallow ('it is a smart autocomplete'); this one shows the single loop (score, pick, repeat), then ties training and hallucination to that same loop, and dates the story with two news-style beats (the 2017 paper, the 2023 growth estimate). Claims: (1) a language model produces text one token at a time: it scores possible next tokens, one is chosen, the loop repeats (UCF, TechRadar, Georgetown CSET) - VERIFIED; (2) training is mostly next-token guessing on huge amounts of text, with weights nudged when a guess misses (CSET, TechTarget) - VERIFIED; (3) human feedback is added later (RLHF) - VERIFIED, left out for time; (4) hallucination is a by-product of optimising for plausible text, not verified facts (UCF teaching centre) - PARTIALLY VERIFIED explanation, hedged as 'It aims for likely words, so it can sound sure and be wrong'; (5) 'Attention Is All You Need' introduced the Transformer; eight Google researchers posted it on arXiv in June 2017 and presented it at NeurIPS 2017 - VERIFIED; (6) UBS estimated about 100 million monthly active users about two months after launch (January 2023), from Similarweb data; TikTok took about nine months and Instagram about two and a half years (Sensor Tower via UBS) - VERIFIED as an ESTIMATE, stated as 'one estimate says'; (7) GPT-3 has 175 billion parameters - VERIFIED, left out. Left out: the exact ChatGPT launch date and the one-million-users-in-five-days claim (no source found), citation counts (sources conflict). Sources: https://www.ucf.edu/question/how-does-chatgpt-generate-text/ , https://cset.georgetown.edu/article/the-surprising-power-of-next-word-prediction-large-language-models-explained-part-1/ , https://www.techtarget.com/ai/feature/How-do-LLMs-like-ChatGPT-work , https://magazine.viterbi.usc.edu/?p=6785 , https://fortune.com/2023/02/02/chatgpt-fastest-growing-app-in-history-could-revolutionize-trading/ . Competitor/vidIQ data: NOT PUBLICLY VERIFIABLE. Risks: simplification (tokens are chunks, not words; the script says 'chunk' once and 'word' elsewhere), the user figure is an analyst estimate (hedged). Quality gate 84/100: topic 9, curiosity 8, title 8, thumbnail 8, opening 9, story 8, visual 8, emotion 7, retention 9, series 8 - improve the emotional close, then proceed.",
+  "mood": "inspiring",
+  "cluster": "How AI Thinks",
+  "follow_ups": [
+    "Why does ChatGPT make things up?",
+    "What is a token?",
+    "How is an AI image generator trained?"
+  ],
+  "gate_score": 84,
+  "english": {
+    "title": "How Does ChatGPT Actually Work? It Guesses One Word",
+    "description": "ChatGPT does not look up the answer; it guesses the next word, again and again. See the one loop behind every reply, how it learned, why it can sound sure and be wrong, and the 2017 idea that started it. #Shorts #AI #ChatGPT",
+    "tags": [
+      "how does chatgpt actually work",
+      "how chatgpt works",
+      "what is a language model",
+      "transformer ai explained",
+      "ai explained",
+      "chatgpt hallucination"
+    ],
+    "hook_text": "Just guessing?",
+    "thumbnail_text": "JUST GUESSING",
+    "thumbnail_question": "Does ChatGPT really understand?",
+    "next_video": "Why does ChatGPT make things up?",
+    "pinned_comment": "What is the first thing you would ask an AI that only predicts the next word?",
+    "scenes": [
+      {
+        "text": "ChatGPT does not know the answer. It guesses the next word, again and again.",
+        "keyword": "guesses",
+        "graphic": {
+          "kind": "title",
+          "headline": "Just guessing?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "brain"
+        }
+      },
+      {
+        "text": "In this video you'll see how it guesses, how it learned, and why it sometimes makes things up. Ready?",
+        "keyword": "you'll see",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Quick chat",
+          "caption": "",
+          "items": [
+            "How does it answer?",
+            "It guesses word by word",
+            "Guesses?",
+            "Very good ones"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "First, the guess. It scores every possible next chunk of text, picks one, and repeats.",
+        "keyword": "scores",
+        "graphic": {
+          "kind": "flow",
+          "headline": "How it writes",
+          "caption": "",
+          "items": [
+            "Score the next chunks",
+            "Pick one",
+            "Repeat"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The trick behind it is a design called the Transformer, published by Google researchers in 2017.",
+        "keyword": "Transformer",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "The Transformer, 2017",
+          "caption": "published by Google researchers",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "chip"
+        }
+      },
+      {
+        "text": "To learn, it guessed the next word across mountains of text; each miss nudged its numbers.",
+        "keyword": "each miss nudged",
+        "graphic": {
+          "kind": "steps",
+          "headline": "How it learned",
+          "caption": "",
+          "items": [
+            "Guess the next word",
+            "Compare with the real one",
+            "Nudge the numbers"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Does it check facts? Not on its own. It aims for likely words, so it can sound sure and be wrong.",
+        "keyword": "likely words",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Does it check facts?",
+          "caption": "",
+          "items": [
+            "It looks facts up",
+            "It predicts likely words"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "One estimate says it hit about a hundred million users in two months, a record then.",
+        "keyword": "a hundred million",
+        "graphic": {
+          "kind": "stat",
+          "headline": "~100M users",
+          "caption": "in about 2 months (UBS estimate)",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So it predicts, not knows. What will you ask it first? Tell me below!",
+        "keyword": "predicts, not knows",
+        "graphic": {
+          "kind": "title",
+          "headline": "What will you ask first?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
+      }
+    ],
+    "animation_pack": "chatgpt_vox"
+  },
+  "hindi": null
+}
