@@ -61,8 +61,9 @@ the workflow renders.
 15. **Learnings loop** (owner instruction, 24 Nov 2026; `strategy/learnings.md`): before every topic decision read `strategy/learnings.md`, run `python -m shorts.channel_trends summary` and `... trending`, apply the Rules, record
    `Learning applied:` in `research_summary` and keep the file current with dated, honest evidence. Hindi videos (when produced) follow the same vox look: every on-screen string via `vox.L(ctx, en, hi)` / `T[ctx.lang]`.
 
-16. **10 uploads a day** (owner instruction, 24 Nov 2026; decision and review rules in `strategy/learnings.md`, daily steps in `shorts/CLAUDE_DAILY_TASK.md` "Daily production plan"): 5 Short topics x EN+HI per day
-   (Sunday: 4 topics + 1 documentary x EN+HI), including one original **Horror & Suspense** story Short (new niche; bloodless, no real people/places/events, labelled fiction). Quality over quota: ship fewer rather than rush.
+16. **6 uploads a day (quota), 10 when the quota is raised** (owner instruction, 24 Nov 2026; the current target and review rules are in `strategy/learnings.md` "DECISION", daily steps in
+   `shorts/CLAUDE_DAILY_TASK.md` "Daily production plan"): 3 Short topics x EN+HI per day (Sunday: 2 topics + 1 documentary x EN+HI), including one original **Horror & Suspense** story Short (bloodless, no real
+   people/places/events, labelled fiction). Quality over quota: ship fewer rather than rush; leave nothing unmerged or unuploaded (the queue is flushed 3x a day).
 
 ## Quick commands
 
