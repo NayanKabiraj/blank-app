@@ -1,7 +1,7 @@
 """Free SEO research for the research step (owner request, 24 Nov 2026; goal: strategy/monetization.md). Three tools, no paid API:
 
     python -m shorts.seo suggest "how does gps work" [--hl en --gl US]      # YouTube autocomplete expansions: what people really type (use --hl hi --gl IN for Hindi)
-    python -m shorts.seo outliers "how does gps work" [--n 15]              # yt-dlp metadata of the top search results: views vs channel size, length, title patterns
+    python -m shorts.seo outliers "how does gps work" [--n 15]              # top search results (yt-dlp ids + official Data API numbers): views vs channel size, length, title patterns
     python -m shorts.seo summary                                            # print data/seo/latest.json (written by the seo-research.yml workflow)
     python -m shorts.channel_trends summary                                 # includes `search_terms`: the searches that brought viewers to OUR videos (Analytics API)
 
@@ -91,12 +91,42 @@ def outlier_digest(entries: list[dict], today_ord: int | None = None) -> dict:
             "outliers": [r for r in out if r["ratio"] >= 2][:8], "top_by_views": sorted(rows, key=lambda r: -r["views"])[:5]}
 
 
-def outliers(query: str, n: int = 15) -> dict:
+def search_ids(query: str, n: int = 15) -> list[str]:
+    """Video ids of the top search results. yt-dlp's flat search only reads the results page (GitHub runners are blocked for per-video pages: 'sign in to confirm you're not a bot')."""
     from yt_dlp import YoutubeDL
-    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "ignoreerrors": True, "socket_timeout": 20, "extractor_args": {"youtube": {"player_client": ["web"]}}}
+    opts = {"quiet": True, "no_warnings": True, "skip_download": True, "ignoreerrors": True, "socket_timeout": 20, "extract_flat": "in_playlist"}
     with YoutubeDL(opts) as ydl:
         info = ydl.extract_info(f"ytsearch{n}:{query}", download=False) or {}
-    return outlier_digest(info.get("entries") or [])
+    return [e["id"] for e in (info.get("entries") or []) if e and e.get("id")]
+
+
+def to_entries(videos: list[dict], channels: dict) -> list[dict]:
+    """YouTube Data API video items (+ {channelId: subscriberCount}) -> the metadata shape outlier_digest reads. 2 quota units per 50 videos."""
+    from .channel_trends import _seconds
+    out = []
+    for v in videos:
+        sn, stt = v.get("snippet", {}), v.get("statistics", {})
+        out.append({"title": sn.get("title", ""), "channel": sn.get("channelTitle", ""), "view_count": int(stt.get("viewCount", 0) or 0),
+                    "channel_follower_count": channels.get(sn.get("channelId")), "upload_date": (sn.get("publishedAt") or "")[:10].replace("-", ""),
+                    "duration": _seconds(v.get("contentDetails", {}).get("duration", "")), "tags": sn.get("tags", [])})
+    return out
+
+
+def outliers(query: str, n: int = 15) -> dict:
+    """Search results by yt-dlp (ids only), numbers by the official Data API (views, tags, length, channel size) -> outlier_digest."""
+    ids = search_ids(query, n)
+    if not ids:
+        return {"available": False, "reason": "no search results returned"}
+    from . import channel_trends as ct
+    yt = ct._service("youtube", "v3")
+    vids = yt.videos().list(part="snippet,statistics,contentDetails", id=",".join(ids[:50])).execute().get("items", [])
+    chan_ids = sorted({v["snippet"]["channelId"] for v in vids})
+    chans = {}
+    for i in range(0, len(chan_ids), 50):
+        for c in yt.channels().list(part="statistics", id=",".join(chan_ids[i:i + 50])).execute().get("items", []):
+            if not c["statistics"].get("hiddenSubscriberCount"):
+                chans[c["id"]] = int(c["statistics"].get("subscriberCount", 0))
+    return outlier_digest(to_entries(vids, chans))
 
 
 def run_queries(queries: list[str], hl: str, gl: str, n: int) -> dict:
