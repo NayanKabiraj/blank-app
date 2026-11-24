@@ -209,3 +209,19 @@ def test_trending_digest_and_hindi_vox_helpers():
     assert vox.L(ctx, "JUST GUESSING?", "सिर्फ़ अंदाज़ा?") == "सिर्फ़ अंदाज़ा?" and vox.L(type("C", (), {"lang": "en"})(), "A", "B") == "A"
     from shorts import plan
     assert not plan._pack_is_bilingual("chatgpt_vox")
+
+
+def test_hindi_is_back_and_stories_are_labelled_fiction(monkeypatch):
+    import json
+    from pathlib import Path
+    from shorts import config as cfg, niches, plan as P
+    assert "hi" in cfg.LANGS.split(",")
+    assert "Horror & Suspense" in niches.NAMES
+    p = P.Plan.model_validate(json.loads((Path(P.__file__).parent / "sample_plan.json").read_text(encoding="utf-8")))
+    en_only = p.model_copy(update={"hindi": None})
+    assert any("`hindi` block" in x for x in P._lang_and_fiction_problems(en_only))
+    monkeypatch.setattr(cfg, "LANGS", "en")
+    assert not P._lang_and_fiction_problems(en_only)
+    story = p.model_copy(update={"niche": "Horror & Suspense", "hindi": None})
+    assert any("fiction" in x for x in P._lang_and_fiction_problems(story))
+    assert P.INTRO_CUE.search("Tonight: one hotel, one rule and a bell that rings by itself.")

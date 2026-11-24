@@ -35,8 +35,9 @@ VOICES = {
 }
 # Picture engine: "generated" = the generated_animations (Manim) engine (default), "whiteboard" = the older
 # Node/Playwright whiteboard explainer. Voices are strict: English = edge Andrew, Hindi = Piper pratham, no fallback.
-# Languages produced by default. English only for now; set VIDEO_LANGS=en,hi to bring Hindi back (plans then need a `hindi` block).
-LANGS = os.getenv("VIDEO_LANGS", "en").strip()
+# Languages produced by default: English + Hindi (Hindi re-enabled 24 Nov 2026; plans need a `hindi` block, the same vox pack serves both languages).
+# VIDEO_LANGS=en makes a run English only.
+LANGS = os.getenv("VIDEO_LANGS", "en,hi").strip()
 ENGINE = os.getenv("VIDEO_ENGINE", "generated").strip().lower()
 # Look of the generated_animations videos: "vox" (paper cut-out explainer style, the default from 23 Nov 2026) or "classic" (dark space theme; VIDEO_LOOK=classic).
 LOOK = os.getenv("VIDEO_LOOK", "vox").strip().lower()

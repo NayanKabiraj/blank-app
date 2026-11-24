@@ -167,3 +167,6 @@ After the workflow run, if an upload is queued because of `invalid_grant` ("Goog
 5. Hindi (when `VIDEO_LANGS` includes `hi`): the Hindi video follows the same vox look - the pack writes every on-screen string with `vox.L(ctx, "EN", "हिन्दी")` or `T[ctx.lang]`
    (the validator fails a Hindi pack without it); same shots, same sentence indices.
 6. Documentary gate: the learnings file says documentaries are the weak format (11 % viewed). Only produce one when a Short on the same topic got traction, <= 4 min, one a week at most, unless the owner asks otherwise.
+
+## Schedule change (24 Nov 2026)
+Documentaries run on **Sunday only**, English + Hindi (2 of that day's 10 uploads), gated by the learnings file (a Short on the topic must already have traction; <= 4 min until a documentary beats 25 % viewed).

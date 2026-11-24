@@ -43,8 +43,8 @@ the workflow renders.
    Scheduled daily runs follow this rule too: they write the pack, scan it, preview and inspect frames, commit it (rule 7) and only then start the workflow. Voices are strict: English = edge-tts `en-US-AndrewNeural`, Hindi =
    Piper `hi_IN-pratham-medium`; if a voice is unavailable the run fails, no other voice is ever mixed in.
 
-11. **English only for now** (owner instruction, 22 Nov 2026): videos are produced in English only. Plans have no `hindi` block, nothing is rendered or uploaded in Hindi
-   (`config.LANGS` / `VIDEO_LANGS`, default `en`; the workflow's `langs` input defaults to `en`). Hindi comes back by setting `VIDEO_LANGS=en,hi` and adding a `hindi` block.
+11. **English + Hindi again** (owner instruction, 24 Nov 2026; replaces "English only"): every Short and documentary is produced in both languages (`config.LANGS` / `VIDEO_LANGS`, default `en,hi`; the workflow's `langs` input
+   defaults to `en,hi`). Plans carry a `hindi` block (same scenes, Devanagari narration, same `animation_pack`); the pack is bilingual (`vox.L(ctx, en, hi)` / `T[ctx.lang]`) and in the vox look. `VIDEO_LANGS=en` makes a run English only.
 
 12. **Every video starts with a channel check, a research template and SEO rules** (owner instruction, 23 Nov 2026; details in the task files): before choosing a topic run
    `python -m shorts.channel_trends summary` (data from `channel-trends.yml`; "NOT AVAILABLE" until the YouTube sign-in has the read-only scopes) and record `Channel check:` in
@@ -60,6 +60,9 @@ the workflow renders.
 
 15. **Learnings loop** (owner instruction, 24 Nov 2026; `strategy/learnings.md`): before every topic decision read `strategy/learnings.md`, run `python -m shorts.channel_trends summary` and `... trending`, apply the Rules, record
    `Learning applied:` in `research_summary` and keep the file current with dated, honest evidence. Hindi videos (when produced) follow the same vox look: every on-screen string via `vox.L(ctx, en, hi)` / `T[ctx.lang]`.
+
+16. **10 uploads a day** (owner instruction, 24 Nov 2026; decision and review rules in `strategy/learnings.md`, daily steps in `shorts/CLAUDE_DAILY_TASK.md` "Daily production plan"): 5 Short topics x EN+HI per day
+   (Sunday: 4 topics + 1 documentary x EN+HI), including one original **Horror & Suspense** story Short (new niche; bloodless, no real people/places/events, labelled fiction). Quality over quota: ship fewer rather than rush.
 
 ## Quick commands
 
