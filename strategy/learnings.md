@@ -8,19 +8,26 @@ says something new (never invent numbers; small samples are labelled as such). R
 - Channel: 11,285 views, 47 subscribers, 144 videos. Only **+2 subscribers** from ~1,840 views.
 - **Shorts carry the channel**: 1,789 views, **40 % average viewed**. **Long-form: 50 views, 11 % average viewed** (a 6 min documentary held 7 %).
 - Viewers of the better Shorts leave after **~22 s** (average view duration 16-29 s) of a ~50-55 s video: the payoff and the subscribe cue come after most viewers are gone.
-- Best reach: everyday-curiosity about the viewer's own body or phone ("Face unlock kaise kaam karta hai" 143 views, "Why Does Déjà Vu Feel So Real?" 100) and a timely hook (Leonid meteor shower 121 views, 56 %).
+- **Correction after the full upload list (24 Nov, 147 videos):** the three most-viewed videos of the last 28 days are older horror/mystery story Shorts from 7-9 Nov ("Haunted Hotel Reception" 505 views, "The Mirror's Deadly Secret" 394, a Hindi haveli story 79), before the explainer pivot. Story-format Shorts out-reached every explainer so far, at 31-35 % viewed (65 % for the Hindi one). This is a different format, not a niche rule - the owner decides whether to bring story Shorts back.
+- Best explainer reach: everyday-curiosity about the viewer's own body or phone ("Face unlock kaise kaam karta hai" 143 views, "Why Does Déjà Vu Feel So Real?" 100) and a timely hook (Leonid meteor shower 121 views, 56 %).
 - Best retention: Space & Universe (84 % over 7 videos), Earth & Nature (57 %), Engineering Marvels (56 %, but ~1 view each). Brain & Psychology has the highest reach (39 views/video) but only 30 % retention.
 - Weak: Hindi Shorts held ~31 %; "Why Does a Crowd Start Clapping in Rhythm" 30 %; "supermoon looks huge? (it isn't)" 13 views / 24 % - a myth-bust without a personal hook.
 - YouTube's own signals (vendor blogs, unverified thresholds): Shorts are shown to a small test audience and widened by viewed-vs-swiped-away and watch percentage; since Oct 2026 original content is favoured over re-uploads. Fresh trending data: `youtube_trending.json` (fetched daily by channel-trends.yml).
 
+## What YouTube itself is pushing (youtube_trending.json, 24 Nov; Science & Technology most-popular charts US/IN/GB; the Education chart does not exist in these regions - 404)
+- Almost everything on the chart is a **Short of 12-35 s** (median 30 s); 76 % are under 60 s. Titles ~50 characters, half contain a number, 16 % a question; many carry #shorts.
+- Winning shapes: "How This Device Copies Keys In Seconds" (15.6 M views), "How much does it cost to charge a phone to 100%?" (5.5 M), "What To Do If Someone Drops Your Phone In WATER?!" (2.2 M), "Why Apple needed Face ID!" (4.3 M), "How Old Antennas Worked? (3D)" (2.6 M), "How to Speed up Your Laptop" (2.8 M): **a phone/gadget the viewer owns + a practical or surprising "how/why/what if"**. The rest of the chart is product-launch and gadget showcase Shorts (not our format).
+- Our own "Face unlock kaise kaam karta hai" (143 views, best explainer) is the same pattern. The channel's How Tech Works niche has only 1 video: it is under-tested, not weak.
+
 ## Rules (apply to every Short and documentary)
-1. **Shorter Shorts: 38-45 seconds (100-112 words).** The payoff (the surprising answer) must land by second ~22; everything after it is a bonus. End with a loop: the last line leads back to the first.
+1. **Shorter Shorts: 38-45 seconds (100-112 words; the validator floor is 100)** - YouTube's own chart median is 30 s. The payoff (the surprising answer) must land by second ~22; everything after it is a bonus. End with a loop: the last line leads back to the first.
 2. **Hook = the viewer's own life in the first 2 seconds** ("Your phone knows your face in the dark. How?"). Concrete object, one question, no preamble. Prefer topics about the viewer's body, phone, home, city or sleep.
 3. **Timely beats evergreen when it is free**: check what is happening this week (sky events, launches, news) in the research step; a timely Short can ride the 24-72 h attention.
 4. **Documentaries are the weak format right now (11 % viewed).** Only build one when a Short on the same topic already got traction (>= 100 views or >= 50 % viewed), keep it <= 4 min, make every chapter pay off a question, and cut the plan to what the Short did not cover. Never more than one a week until a documentary beats 25 % viewed.
 5. **Subscribe where viewers still are**: a one-line "Follow for part 2 of this" inside the first 20 s of a Short (series promise) and a pinned comment; the generic outro stays but is not relied on.
-6. **Niche mix**: lead with Space & Universe and Earth & Nature (best retention) using Brain/Psychology-style personal hooks (best reach); treat Engineering Marvels and India Explained as tests, one per week.
-7. **Every Short gets a one-line retention check after upload**: after 48 h compare average viewed % with the 40 % channel average; note the result under "Evidence".
+6. **Everyday-tech angle first**: for the next Shorts prefer a phone/gadget/home object the viewer owns with a practical or surprising "how / why / what if" (see the trending list); title <= 55 characters, a number or a concrete object in it.
+7. **Niche mix**: lead with Space & Universe and Earth & Nature (best retention) using Brain/Psychology-style personal hooks (best reach); treat Engineering Marvels and India Explained as tests, one per week.
+8. **Every Short gets a one-line retention check after upload**: after 48 h compare average viewed % with the 40 % channel average; note the result under "Evidence".
 
 ## Tests running (move to Rules after 2 agreeing videos)
 - Short length 38-45 s vs the old 55 s: compare average viewed % and view duration.
