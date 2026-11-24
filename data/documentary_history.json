@@ -799,5 +799,48 @@
         "video_id": "kytb1ypPG4s"
       }
     }
+  },
+  {
+    "date": "2026-11-24",
+    "niche": "Engineering Marvels",
+    "topic": "How does a black box survive a plane crash?",
+    "minutes": 5,
+    "cluster": "How Safety Works",
+    "follow_ups": [
+      "Why do planes have wings that flex?",
+      "How does air traffic control keep planes apart?",
+      "How do investigators reconstruct a crash?"
+    ],
+    "next_video": "How do investigators reconstruct a crash?",
+    "gate_score": 83,
+    "videos": {
+      "en": {
+        "file": "2026-11-24_documentary_en.mp4",
+        "chapters": [
+          {
+            "title": "The box that is not black",
+            "start": 0.0
+          },
+          {
+            "title": "An idea from Melbourne",
+            "start": 55.2
+          },
+          {
+            "title": "Built to survive",
+            "start": 109.2
+          },
+          {
+            "title": "Two years under the Atlantic",
+            "start": 157.3
+          },
+          {
+            "title": "What it changed",
+            "start": 226.8
+          }
+        ],
+        "queued": "videos/unpublished/2026-11-24_documentary_en",
+        "error": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+      }
+    }
   }
 ]
