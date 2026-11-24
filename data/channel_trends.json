@@ -1,6 +1,6 @@
 {
  "available": false,
- "generated": "2026-11-24T04:25:51+00:00",
+ "generated": "2026-11-24T12:22:00+00:00",
  "days": 28,
  "reason": "YouTube Data API: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'}) (the sign-in needs the youtube.readonly scope: python -m shorts.ytauth url)"
 }
