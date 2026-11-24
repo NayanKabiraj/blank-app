@@ -1,9 +1,9 @@
 {
  "available": true,
- "generated": "2026-11-24T16:57:12+00:00",
+ "generated": "2026-11-24T18:04:11+00:00",
  "days": 28,
  "channel": {
-  "viewCount": 11294,
+  "viewCount": 11285,
   "subscriberCount": 47,
   "videoCount": 146
  },
@@ -44,7 +44,7 @@
    "published": "2026-11-24T12:22:28Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 241,
+   "views": 282,
    "likes": 0,
    "comments": 0
   },
@@ -884,7 +884,7 @@
    "published": "2022-08-18T03:09:01Z",
    "duration": "PT16S",
    "privacy": "public",
-   "views": 685,
+   "views": 687,
    "likes": 24,
    "comments": 2
   },
@@ -1601,19 +1601,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "b7JhsbWiEIA",
-   "views": 10,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 32,
-   "averageViewPercentage": 75.2,
-   "subscribersGained": 0
-  },
-  {
    "video": "yn9wXT-4-I4",
    "views": 10,
    "estimatedMinutesWatched": 1,
    "averageViewDuration": 22,
    "averageViewPercentage": 52.78,
+   "subscribersGained": 0
+  },
+  {
+   "video": "b7JhsbWiEIA",
+   "views": 10,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 32,
+   "averageViewPercentage": 75.2,
    "subscribersGained": 0
   },
   {
@@ -1625,19 +1625,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "xdpeVI0ZL4E",
-   "views": 8,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 11,
-   "averageViewPercentage": 3.19,
-   "subscribersGained": 0
-  },
-  {
    "video": "ZR_P25-Oo90",
    "views": 8,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 34,
    "averageViewPercentage": 58.21999999999999,
+   "subscribersGained": 0
+  },
+  {
+   "video": "xdpeVI0ZL4E",
+   "views": 8,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 11,
+   "averageViewPercentage": 3.19,
    "subscribersGained": 0
   },
   {
@@ -1649,14 +1649,6 @@
    "subscribersGained": 0
   },
   {
-   "video": "5UXCL5F7QKg",
-   "views": 7,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 26,
-   "averageViewPercentage": 50.57000000000001,
-   "subscribersGained": 0
-  },
-  {
    "video": "bR_gPKXgQ_k",
    "views": 7,
    "estimatedMinutesWatched": 1,
@@ -1665,27 +1657,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "sW35FxePNWI",
-   "views": 6,
+   "video": "5UXCL5F7QKg",
+   "views": 7,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 19,
-   "averageViewPercentage": 78.29,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 50.57000000000001,
    "subscribersGained": 0
   },
   {
-   "video": "7GCONoW8dcM",
-   "views": 6,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 12,
-   "averageViewPercentage": 85.97,
-   "subscribersGained": 0
-  },
-  {
-   "video": "q3yz34MDOpI",
+   "video": "cohHIAAmUJM",
    "views": 6,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 22,
-   "averageViewPercentage": 40.95,
+   "averageViewDuration": 37,
+   "averageViewPercentage": 79.86,
    "subscribersGained": 0
   },
   {
@@ -1697,11 +1681,43 @@
    "subscribersGained": 0
   },
   {
-   "video": "cohHIAAmUJM",
+   "video": "q3yz34MDOpI",
    "views": 6,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 37,
-   "averageViewPercentage": 79.86,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 40.95,
+   "subscribersGained": 0
+  },
+  {
+   "video": "7GCONoW8dcM",
+   "views": 6,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 12,
+   "averageViewPercentage": 85.97,
+   "subscribersGained": 0
+  },
+  {
+   "video": "sW35FxePNWI",
+   "views": 6,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 19,
+   "averageViewPercentage": 78.29,
+   "subscribersGained": 0
+  },
+  {
+   "video": "l_FJS639TdU",
+   "views": 5,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 4,
+   "averageViewPercentage": 26.88,
+   "subscribersGained": 0
+  },
+  {
+   "video": "7cBFp9BgU-Y",
+   "views": 5,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 30,
+   "averageViewPercentage": 87.43,
    "subscribersGained": 0
   },
   {
@@ -1721,27 +1737,11 @@
    "subscribersGained": 0
   },
   {
-   "video": "l_FJS639TdU",
-   "views": 5,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 4,
-   "averageViewPercentage": 26.88,
-   "subscribersGained": 0
-  },
-  {
    "video": "KG2RWFHfyi8",
    "views": 5,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 27,
    "averageViewPercentage": 57.79,
-   "subscribersGained": 0
-  },
-  {
-   "video": "7cBFp9BgU-Y",
-   "views": 5,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 30,
-   "averageViewPercentage": 87.43,
    "subscribersGained": 0
   },
   {
@@ -1761,14 +1761,6 @@
    "subscribersGained": 0
   },
   {
-   "video": "3VeZpL_RQ2U",
-   "views": 4,
-   "estimatedMinutesWatched": 3,
-   "averageViewDuration": 95,
-   "averageViewPercentage": 31.540000000000003,
-   "subscribersGained": 0
-  },
-  {
    "video": "fxEunP-9-3c",
    "views": 4,
    "estimatedMinutesWatched": 0,
@@ -1777,19 +1769,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "c_XT-arbwHg",
-   "views": 3,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 43,
-   "averageViewPercentage": 72.5,
+   "video": "3VeZpL_RQ2U",
+   "views": 4,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 95,
+   "averageViewPercentage": 31.540000000000003,
    "subscribersGained": 0
   },
   {
-   "video": "0A6Y4R5qo8Y",
+   "video": "oLQ-3RA85ek",
    "views": 3,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 75,
-   "averageViewPercentage": 24.66,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 24,
+   "averageViewPercentage": 43.88,
    "subscribersGained": 0
   },
   {
@@ -1809,19 +1801,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "oLQ-3RA85ek",
+   "video": "0A6Y4R5qo8Y",
    "views": 3,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 24,
-   "averageViewPercentage": 43.88,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 75,
+   "averageViewPercentage": 24.66,
    "subscribersGained": 0
   },
   {
-   "video": "xXmhxA3xUhQ",
-   "views": 2,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 146,
-   "averageViewPercentage": 55.7,
+   "video": "c_XT-arbwHg",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 43,
+   "averageViewPercentage": 72.5,
    "subscribersGained": 0
   },
   {
@@ -1833,19 +1825,27 @@
    "subscribersGained": 0
   },
   {
+   "video": "AjiwPv09KG0",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 9.36,
+   "subscribersGained": 0
+  },
+  {
+   "video": "xXmhxA3xUhQ",
+   "views": 2,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 146,
+   "averageViewPercentage": 55.7,
+   "subscribersGained": 0
+  },
+  {
    "video": "dkdFdy1FXgQ",
    "views": 2,
    "estimatedMinutesWatched": 0,
    "averageViewDuration": 25,
    "averageViewPercentage": 47.18,
-   "subscribersGained": 0
-  },
-  {
-   "video": "xkOnUp4KGfM",
-   "views": 2,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 0,
-   "averageViewPercentage": 0,
    "subscribersGained": 0
   }
  ],
@@ -1862,5 +1862,14 @@
    "estimatedMinutesWatched": 287,
    "averageViewPercentage": 39.99
   }
- ]
+ ],
+ "totals_365d": {
+  "views": 2832,
+  "estimatedMinutesWatched": 489,
+  "subscribersGained": 4,
+  "minutes": 489
+ },
+ "shorts_90d": {
+  "views": 1986
+ }
 }

@@ -1,0 +1,27 @@
+{
+ "snapshots": [
+  {
+   "date": "2026-11-24",
+   "available": true,
+   "subscribers": 47,
+   "total_views": 11285,
+   "videos": 146,
+   "watch_hours_28d": 4.7,
+   "watch_hours_365d": 8.2,
+   "shorts_views_28d": 1789,
+   "shorts_views_90d": 1986,
+   "shorts_avg_view_pct": 39.99,
+   "best_video_views": 505,
+   "subs_per_1000_views": 1.11,
+   "uploads_7d": 20,
+   "uploads_7d_detail": {
+    "short": 13,
+    "documentary": 7,
+    "en": 15,
+    "hi": 5
+   },
+   "upload_streak_days": 3
+  }
+ ],
+ "reached": {}
+}
