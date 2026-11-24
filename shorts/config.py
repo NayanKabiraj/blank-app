@@ -62,9 +62,12 @@ YT_CLIENT_SECRET = os.getenv("YT_CLIENT_SECRET", "")
 # separate YT_REFRESH_TOKEN_HI secret is ignored. (YT_REFRESH_TOKEN_EN still wins over YT_REFRESH_TOKEN for the one token.)
 _TOKEN = os.getenv("YT_REFRESH_TOKEN_EN") or os.getenv("YT_REFRESH_TOKEN", "")
 if YT_CLIENT_SECRET and not _TOKEN:
-    # no secret set: use the token that `python -m shorts.ytauth exchange` saved (encrypted) in data/
+    # no secret set: use the token the phone sign-in saved (encrypted) in data/ (shorts.ytauth; upload code also tries it first)
     from .ytauth import load_saved_token
     _TOKEN = load_saved_token("en")
+# the public HTTPS page Google redirects to after "Allow" (GitHub Pages, docs/oauth/callback.html); add it under Authorized redirect URIs
+_repo = os.getenv("GITHUB_REPOSITORY", "NayanKabiraj/blank-app")
+OAUTH_REDIRECT_URI = os.getenv("OAUTH_REDIRECT_URI") or "https://{}.github.io/{}/oauth/callback.html".format(*(_repo.split("/", 1)[0].lower(), _repo.split("/", 1)[1]))
 YT_REFRESH_TOKENS = {"en": _TOKEN, "hi": _TOKEN}
 YT_PRIVACY = os.getenv("YT_PRIVACY", "private")         # private (default) | unlisted | public
 # YouTube's "altered or synthetic content" label. Off by default: the videos are animated explainers with a generic

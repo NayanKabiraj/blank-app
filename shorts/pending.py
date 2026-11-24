@@ -28,11 +28,32 @@ log = logging.getLogger("shorts.pending")
 QUEUE = config.VIDEOS_DIR / "unpublished"
 MAX_MB = 90            # GitHub rejects files over 100 MB: a bigger video is re-encoded to fit
 MAX_ATTEMPTS = 8
-_state = {"quota": False}   # True once YouTube said the daily limit is reached during this run
+_state = {"quota": False, "auth": False, "scope": False}   # set once during a run: daily limit reached / authorization needed / scope problem
 
 
 def is_quota_error(exc: BaseException) -> bool:
     return "uploadLimitExceeded" in str(exc) or "exceeded the number of videos" in str(exc)
+
+
+def _on_error(e: BaseException, name: str) -> str:
+    """Classify an upload error and react: only invalid_grant asks the owner to authorize again (see shorts.ytauth)."""
+    from . import ytauth
+    kind = ytauth.classify(e)
+    if kind == "auth":
+        _state["auth"] = True
+        rec = ytauth.request_authorization("Refresh token expired or was revoked (invalid_grant)." if "invalid_grant" in str(e).lower() or "revoked" in str(e).lower()
+                                           else (str(e) or "Google authorization is required.")[:160])
+        ytauth.announce(rec)
+        log.warning("Authorization needed: %s stays queued and uploads when the owner has authorized", name)
+    elif kind == "quota":
+        _state["quota"] = True
+        log.warning("YouTube quota / daily upload limit reached: %s stays queued, nothing more is uploaded in this run (no new authorization needed)", name)
+    elif kind == "scope":
+        _state["scope"] = True
+        log.error("The stored Google sign-in lacks a permission (insufficient scopes): a configuration problem; re-authorize ONCE with every box ticked (python -m shorts.ytauth url)")
+    else:
+        log.error("Upload of %s failed (%s): %s", name, kind, str(e)[:200])
+    return kind
 
 
 def _fit(video: Path, dest: Path) -> bool:
@@ -104,7 +125,7 @@ def flush(langs: list[str] | None = None) -> dict:
     done, left = [], 0
     for folder in pending(langs):
         meta = json.loads((folder / "meta.json").read_text(encoding="utf-8"))
-        if _state["quota"] or not upload.can_upload(meta["lang"]):
+        if _state["quota"] or _state["auth"] or _state["scope"] or not upload.can_upload(meta["lang"]):
             left += 1
             continue
         script = SimpleNamespace(title=meta["title"], description=meta["description"], tags=meta["tags"])
@@ -113,15 +134,12 @@ def flush(langs: list[str] | None = None) -> dict:
             vid = upload.upload(folder / "video.mp4", script, meta["lang"], short=meta["short"], description=meta["description"],
                                 privacy=meta["privacy"], thumbnail=thumb if thumb.exists() else None, synthetic=meta.get("synthetic"))
         except Exception as e:  # noqa: BLE001
-            meta["attempts"] += 1
+            kind = _on_error(e, folder.name)
+            if kind not in ("auth", "quota", "scope"):          # waiting for the owner / the limit is not a failed attempt
+                meta["attempts"] += 1
             meta["last_error"] = str(e)[:300]
             (folder / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
             left += 1
-            if is_quota_error(e):
-                _state["quota"] = True
-                log.warning("YouTube's daily upload limit is reached: %s stays queued, nothing more is uploaded in this run", folder.name)
-            else:
-                log.error("Upload of queued %s failed (attempt %d): %s", folder.name, meta["attempts"], str(e)[:200])
             continue
         _remember(meta, vid)
         shutil.rmtree(folder)
@@ -129,7 +147,7 @@ def flush(langs: list[str] | None = None) -> dict:
         log.info("Uploaded queued %s as %s and removed it from the queue", folder.name, vid)
     if QUEUE.is_dir() and not any(QUEUE.iterdir()):
         QUEUE.rmdir()
-    return {"uploaded": done, "left": left, "quota": _state["quota"]}
+    return {"uploaded": done, "left": left, "quota": _state["quota"], "auth_required": _state["auth"], "scope_problem": _state["scope"]}
 
 
 def publish(video: Path, script, lang: str, short: bool = True, description: str | None = None, privacy: str | None = None,
@@ -142,15 +160,21 @@ def publish(video: Path, script, lang: str, short: bool = True, description: str
     err = ""
     if _state["quota"]:
         err = "daily upload limit already reached in this run"
+    elif _state["auth"]:
+        err = "Google authorization required (waiting for the owner)"
+    elif _state["scope"]:
+        err = "the stored Google sign-in lacks a permission (insufficient scopes)"
     else:
         try:
             return {"video_id": upload.upload(video, script, lang, short=short, description=description, privacy=privacy, thumbnail=thumbnail, synthetic=synthetic)}
         except Exception as e:  # noqa: BLE001
             err = str(e)
-            if is_quota_error(e):
-                _state["quota"] = True
             log.error("Upload failed: %s", err[:300])
+            _on_error(e, f"{date or ''} {lang} video")
     folder = enqueue(Path(video), script, lang, short, description, privacy, topic, date, err, thumbnail, synthetic)
+    if _state["auth"]:                                    # list the new queue entry as part of the interrupted operation
+        from . import ytauth
+        ytauth.request_authorization("Refresh token expired or was revoked (invalid_grant).")
     return {"queued": f"videos/unpublished/{folder.name}" if folder else None, "error": err[:200]}
 
 

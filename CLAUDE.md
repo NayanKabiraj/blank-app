@@ -54,6 +54,10 @@ the workflow renders.
 13. **Vox look** (owner instruction, 23 Nov 2026): every new animation pack uses the paper cut-out explainer style (`"look": "vox"` in `shots.json`, helpers in `generated_animations/shared/vox.py`, guide in `AUTHORING.md`);
    the presenter stays as a sticker. The validator requires it; `VIDEO_LOOK=classic` restores the dark theme.
 
+14. **Google/YouTube sign-in is phone-first** (owner instruction, 24 Nov 2026; `docs/oauth-mobile.md`, `shorts/ytauth.py`): when a run reports "Google authorization required" (or `data/oauth_pending.json` on `main`
+   has a waiting request), print the output of `python -m shorts.ytauth banner` prominently in the chat (the 🔐 message with the tappable link) - never the token/secret. The owner taps the link, Allow, then
+   "Submit new issue"; `oauth-callback.yml` stores the credentials and uploads the queue. Do not ask for terminal commands; quota/scope/rate/5xx errors are NOT authorization problems.
+
 ## Quick commands
 
 ```bash
