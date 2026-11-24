@@ -1,6 +1,6 @@
 """The channel's fixed explainer niches and the daily rotation.
 
-Every video is an explainer: it answers one "how does X work?" or "why does X happen?"
+Every video is an explainer (or, in the Horror & Suspense niche, an original fictional story): it answers one "how does X work?" or "why does X happen?"
 question. The daily task picks the topic with the best viral and curiosity potential across all
 niches, and the topic's closest niche becomes the label; niches also act as a variety guard
 (`recent` shows the ones used in the last two videos). `next` is the old rotation, kept as a
@@ -84,6 +84,11 @@ NICHES: list[Niche] = [
           ["How was zero invented in India?", "How did the printing press change the world?",
            "How did people tell time before clocks?", "How was electricity discovered?",
            "How did the first vaccine come about?"]),
+    Niche("Horror & Suspense", "डर और रहस्य",
+          "An ORIGINAL fictional short story with a twist (bloodless suspense, no gore, no real people, places or events), always labelled fiction. "
+          "The channel's story Shorts out-reached every explainer so far (strategy/learnings.md).",
+          ["The hotel reception bell that rings by itself", "The mirror that is one second late", "The village with no night",
+           "The last train announcement", "The voicemail from tomorrow"]),
 ]
 NAMES = [n.name for n in NICHES]
 

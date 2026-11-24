@@ -133,7 +133,7 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
-INTRO_CUE = re.compile(r"\b(in this video|in the next|by the end|you'?ll (see|learn|discover|find out|know|get)|you will|we'?ll|we will)\b", re.I)
+INTRO_CUE = re.compile(r"\b(in this video|in this story|tonight|today'?s story|in the next|by the end|you'?ll (see|learn|discover|find out|know|get)|you will|we'?ll|we will)\b", re.I)
 
 
 def _intro_problems(scenes, lang: str, max_words: int) -> list[str]:
@@ -147,6 +147,21 @@ def _intro_problems(scenes, lang: str, max_words: int) -> list[str]:
                    "get (e.g. \"In this video you'll see X, Y and Z - and the answer to ...\")")
     if len(text.split()) > max_words:
         out.append(f"{lang}: the intro (scene 2) is {len(text.split())} words, keep it to {max_words} or fewer")
+    return out
+
+
+def _lang_and_fiction_problems(plan) -> list[str]:
+    """Hindi is produced when config.LANGS has `hi` (then the plan needs a hindi block); story videos are labelled fiction (rule 4)."""
+    from . import config
+    out = []
+    if "hi" in [x.strip() for x in config.LANGS.split(",")] and plan.hindi is None:
+        out.append("hindi: this run produces Hindi (VIDEO_LANGS includes hi) - add a `hindi` block (same scenes, same animation_pack, Devanagari narration)")
+    if plan.niche == "Horror & Suspense":
+        for lang, s in _present(plan):
+            if "fiction" not in s.description.lower() and "काल्पनिक" not in s.description:
+                out.append(f"{lang}: a Horror & Suspense story must say it is fiction in the description (e.g. 'A fictional story.' / 'यह एक काल्पनिक कहानी है।')")
+        if "fiction" not in plan.research_summary.lower():
+            out.append("research_summary: label the story FICTIONAL ASSUMPTION / original fiction under Claims (rule 4); any real-world fact in it is verified as usual")
     return out
 
 
@@ -291,6 +306,7 @@ def validate(plan: Plan) -> list[str]:
     from .niches import NAMES
     if plan.niche not in NAMES:
         problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
+    problems += _lang_and_fiction_problems(plan)
     if plan.hindi is not None and not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
         problems.append("hindi: narration is not in Devanagari script")
     return problems
@@ -391,6 +407,7 @@ def validate_doc(plan: DocPlan) -> list[str]:
     from .niches import NAMES
     if plan.niche not in NAMES:
         problems.append(f"niche {plan.niche!r} is not one of the channel's niches: {', '.join(NAMES)}")
+    problems += _lang_and_fiction_problems(plan)
     if plan.hindi is not None and not any("\u0900" <= ch <= "\u097f" for sc in plan.hindi.scenes for ch in sc.text):
         problems.append("hindi: narration is not in Devanagari script")
     return problems
