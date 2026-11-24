@@ -1,90 +1,6 @@
 {
- "generated": "2026-11-24T19:06:38+00:00",
+ "generated": "2026-11-24T19:10:01+00:00",
  "queries": {
-  "why does my phone screen turn off near my ear": {
-   "suggest": [
-    {
-     "phrase": "why my phone screen gets off during a call",
-     "score": 17.87
-    },
-    {
-     "phrase": "how to fix screen turning off during calls",
-     "score": 6.83
-    },
-    {
-     "phrase": "why does my ear keep popping",
-     "score": 4.0
-    },
-    {
-     "phrase": "why the screen of my phone is blinking",
-     "score": 3.33
-    },
-    {
-     "phrase": "why is my phone not working when i touch the screen",
-     "score": 2.33
-    },
-    {
-     "phrase": "why does my phone screen flicker",
-     "score": 2.25
-    },
-    {
-     "phrase": "what to do if your ear won't stop ringing",
-     "score": 1.5
-    },
-    {
-     "phrase": "why does the screen of my phone flicker",
-     "score": 1.17
-    },
-    {
-     "phrase": "why does my phone screen turns on by itself",
-     "score": 1.0
-    },
-    {
-     "phrase": "when plugged in turn off my screen after",
-     "score": 0.83
-    },
-    {
-     "phrase": "why is my screen flickering on my phone",
-     "score": 0.75
-    },
-    {
-     "phrase": "why does my screen go off during a call",
-     "score": 0.67
-    },
-    {
-     "phrase": "my ear hurts and feels clogged",
-     "score": 0.58
-    },
-    {
-     "phrase": "how to fix your ear when you can't hear",
-     "score": 0.5
-    },
-    {
-     "phrase": "how to stop your phone from blinking",
-     "score": 0.33
-    },
-    {
-     "phrase": "why won't my ear pop",
-     "score": 0.33
-    },
-    {
-     "phrase": "what to do if you can't hear from one ear",
-     "score": 0.33
-    },
-    {
-     "phrase": "how to stop your phone screen from glitching",
-     "score": 0.33
-    },
-    {
-     "phrase": "why does my iphone screen turn off",
-     "score": 0.25
-    }
-   ],
-   "outliers": {
-    "available": false,
-    "reason": "no metadata returned"
-   }
-  },
   "how does a proximity sensor work": {
    "suggest": [
     {
@@ -113,8 +29,459 @@
     }
    ],
    "outliers": {
-    "available": false,
-    "reason": "no metadata returned"
+    "available": true,
+    "videos": 15,
+    "median_seconds": 351,
+    "share_shorts": 0.0,
+    "share_questions": 0.47,
+    "median_title_chars": 60,
+    "recurring_words": [
+     "sensor",
+     "proximity",
+     "inductive",
+     "what",
+     "work",
+     "explained",
+     "capacitive",
+     "sensors",
+     "they"
+    ],
+    "common_tags": [
+     "proximity sensor",
+     "inductive proximity sensor",
+     "sensor",
+     "electrical",
+     "capacitive sensor",
+     "capacitive sensor explained - different types and applications",
+     "capacitive sensor explained",
+     "different types of capacitive sensor"
+    ],
+    "outliers": [
+     {
+      "title": "The Inductive and Capacitive Sensor | Different types and applications",
+      "channel": "Mechatronic Neheyler in English",
+      "views": 214598,
+      "subs": 13200,
+      "ratio": 16.3,
+      "age_days": 1506,
+      "seconds": 552,
+      "tags": [
+       "Capacitive Sensor Explained - Different Types and Applications",
+       "Capacitive Sensor Explained",
+       "Different Types of Capacitive Sensor",
+       "Capacitive Sensor Applications",
+       "Inductive Sensor Explained - Different Types and Applications",
+       "Inductive Sensor Explained"
+      ]
+     },
+     {
+      "title": "Proximity Sensor working. Inductive proximity sensor, capacitive proximity sensor. proximity switch",
+      "channel": "Instrumentation Academy",
+      "views": 560445,
+      "subs": 100000,
+      "ratio": 5.6,
+      "age_days": 2058,
+      "seconds": 574,
+      "tags": [
+       "proximity sensor",
+       "proximity sensor working",
+       "inductive proximity sensor",
+       "capacitive proximity sensor",
+       "proximity sensor working animation",
+       "proximity sensor working principle"
+      ]
+     },
+     {
+      "title": "What is Hall Effect and How Hall Effect Sensors Work",
+      "channel": "How To Mechatronics",
+      "views": 2218527,
+      "subs": 738000,
+      "ratio": 3.0,
+      "age_days": 3982,
+      "seconds": 231,
+      "tags": [
+       "Hall Effect",
+       "Sensor",
+       "How It Works",
+       "Magnetic Sensor",
+       "Working Principle"
+      ]
+     },
+     {
+      "title": "Capacitive Proximity Sensor Explained | How do they work? | Wiring | Components | Sensing Distance",
+      "channel": "ISCA Engineering",
+      "views": 31910,
+      "subs": 12100,
+      "ratio": 2.6,
+      "age_days": 1117,
+      "seconds": 371,
+      "tags": [
+       "capacitive sensor",
+       "capacitive sensing",
+       "capacitive proximity",
+       "non-contact sensor",
+       "proximity sensor",
+       "industrial sensor"
+      ]
+     },
+     {
+      "title": "How Ultrasonic Sensor Works ?  | 3D Animated 🔥",
+      "channel": "Blue Butterfly",
+      "views": 38066,
+      "subs": 17900,
+      "ratio": 2.1,
+      "age_days": 594,
+      "seconds": 351,
+      "tags": [
+       "HC-SR04",
+       "ultrasonic sensor",
+       "ultrasonic sensor arduino",
+       "how ultrasonic sensor works",
+       "HC-SR04 explained",
+       "distance sensor arduino"
+      ]
+     }
+    ],
+    "top_by_views": [
+     {
+      "title": "What is Hall Effect and How Hall Effect Sensors Work",
+      "channel": "How To Mechatronics",
+      "views": 2218527,
+      "subs": 738000,
+      "ratio": 3.0,
+      "age_days": 3982,
+      "seconds": 231,
+      "tags": [
+       "Hall Effect",
+       "Sensor",
+       "How It Works",
+       "Magnetic Sensor",
+       "Working Principle"
+      ]
+     },
+     {
+      "title": "Proximity Sensor working. Inductive proximity sensor, capacitive proximity sensor. proximity switch",
+      "channel": "Instrumentation Academy",
+      "views": 560445,
+      "subs": 100000,
+      "ratio": 5.6,
+      "age_days": 2058,
+      "seconds": 574,
+      "tags": [
+       "proximity sensor",
+       "proximity sensor working",
+       "inductive proximity sensor",
+       "capacitive proximity sensor",
+       "proximity sensor working animation",
+       "proximity sensor working principle"
+      ]
+     },
+     {
+      "title": "The Inductive and Capacitive Sensor | Different types and applications",
+      "channel": "Mechatronic Neheyler in English",
+      "views": 214598,
+      "subs": 13200,
+      "ratio": 16.3,
+      "age_days": 1506,
+      "seconds": 552,
+      "tags": [
+       "Capacitive Sensor Explained - Different Types and Applications",
+       "Capacitive Sensor Explained",
+       "Different Types of Capacitive Sensor",
+       "Capacitive Sensor Applications",
+       "Inductive Sensor Explained - Different Types and Applications",
+       "Inductive Sensor Explained"
+      ]
+     },
+     {
+      "title": "Capacitive Sensor Explained, How It Works and Setup",
+      "channel": "RealPars",
+      "views": 200491,
+      "subs": 1260000,
+      "ratio": 0.2,
+      "age_days": 1959,
+      "seconds": 465,
+      "tags": [
+       "Capacitive Sensor Explained - Different Types and Applications",
+       "Capacitive Sensor Explained",
+       "Different Types of Capacitive Sensor",
+       "Capacitive Sensor Applications",
+       "Capacitive Sensor",
+       "capacitive proximity sensors"
+      ]
+     },
+     {
+      "title": "What are Proximity Sensors and How Do They Work? - A Galco TV Tech Tip | Galco",
+      "channel": "GalcoTV",
+      "views": 145126,
+      "subs": 148000,
+      "ratio": 1.0,
+      "age_days": 3014,
+      "seconds": 117,
+      "tags": [
+       "Industrial Electronics",
+       "GTV",
+       "G-TV",
+       "Electrical",
+       "Galco",
+       "Galco TV"
+      ]
+     }
+    ]
+   }
+  },
+  "why does my phone screen turn off near my ear": {
+   "suggest": [
+    {
+     "phrase": "why my phone screen gets off during a call",
+     "score": 17.83
+    },
+    {
+     "phrase": "how to fix screen turning off during calls",
+     "score": 6.83
+    },
+    {
+     "phrase": "why does my ear keep popping",
+     "score": 4.33
+    },
+    {
+     "phrase": "why the screen of my phone is blinking",
+     "score": 3.58
+    },
+    {
+     "phrase": "why does my phone screen flicker",
+     "score": 3.08
+    },
+    {
+     "phrase": "why is my phone not working when i touch the screen",
+     "score": 1.75
+    },
+    {
+     "phrase": "what to do if your ear won't stop ringing",
+     "score": 1.5
+    },
+    {
+     "phrase": "why does my phone screen turns on by itself",
+     "score": 1.0
+    },
+    {
+     "phrase": "why does the screen of my phone flicker",
+     "score": 0.83
+    },
+    {
+     "phrase": "when plugged in turn off my screen after",
+     "score": 0.83
+    },
+    {
+     "phrase": "my ear hurts and feels clogged",
+     "score": 0.83
+    },
+    {
+     "phrase": "why does my screen go off during a call",
+     "score": 0.67
+    },
+    {
+     "phrase": "why is my screen flickering on my phone",
+     "score": 0.53
+    },
+    {
+     "phrase": "how to fix your ear when you can't hear",
+     "score": 0.5
+    },
+    {
+     "phrase": "how to stop your phone from blinking",
+     "score": 0.33
+    },
+    {
+     "phrase": "why won't my ear pop",
+     "score": 0.33
+    },
+    {
+     "phrase": "why does my phone screen turns off during a call",
+     "score": 0.33
+    },
+    {
+     "phrase": "why does my iphone screen turn off",
+     "score": 0.33
+    },
+    {
+     "phrase": "why is my phone screen turning yellow",
+     "score": 0.33
+    },
+    {
+     "phrase": "what to do if you can't hear from one ear",
+     "score": 0.25
+    },
+    {
+     "phrase": "how to stop your phone screen from glitching",
+     "score": 0.25
+    }
+   ],
+   "outliers": {
+    "available": true,
+    "videos": 15,
+    "median_seconds": 178,
+    "share_shorts": 0.0,
+    "share_questions": 0.4,
+    "median_title_chars": 54,
+    "recurring_words": [
+     "iphone",
+     "speaker",
+     "turn",
+     "tutorial",
+     "working",
+     "earpiece",
+     "proximity",
+     "sensor"
+    ],
+    "common_tags": [
+     "fix ear speaker on iphone",
+     "ear speaker not working on iphone fixed",
+     "how to iphone ear speaker not working"
+    ],
+    "outliers": [
+     {
+      "title": "How to Turn Off Stuck Headphone Mode On Android",
+      "channel": "Headphonesty",
+      "views": 662985,
+      "subs": 5910,
+      "ratio": 112.2,
+      "age_days": 802,
+      "seconds": 135,
+      "tags": []
+     },
+     {
+      "title": "Green or Orange Dot on iPhone: Are You Hacked?",
+      "channel": "Certo Software",
+      "views": 1058723,
+      "subs": 76800,
+      "ratio": 13.8,
+      "age_days": 663,
+      "seconds": 376,
+      "tags": [
+       "spyware",
+       "hacked",
+       "certo",
+       "phone",
+       "apple",
+       "green"
+      ]
+     },
+     {
+      "title": "iPhone Ear Speaker Not Working? - Fixed Earpiece Here!",
+      "channel": "Tweak Library",
+      "views": 1140974,
+      "subs": 85700,
+      "ratio": 13.3,
+      "age_days": 1562,
+      "seconds": 62,
+      "tags": [
+       "yt:cc=on",
+       "tweak library",
+       "Keep Watching at tweak library",
+       "fix ear speaker on iphone",
+       "ear speaker not working on iphone fixed",
+       "how to iphone ear speaker not working"
+      ]
+     },
+     {
+      "title": "Ear speaker on iPhone not working? – Earpiece Fixed Here!",
+      "channel": "Fix369",
+      "views": 2211717,
+      "subs": 343000,
+      "ratio": 6.4,
+      "age_days": 2028,
+      "seconds": 202,
+      "tags": [
+       "Fix ear speaker on iPhone",
+       "Ear speaker not working on iPhone fixed",
+       "How to iPhone ear speaker not working",
+       "iPhone earpiece not working",
+       "iPhone ear speaker stopped working",
+       "How to fix hearing issues on the iPhone"
+      ]
+     }
+    ],
+    "top_by_views": [
+     {
+      "title": "Ear speaker on iPhone not working? – Earpiece Fixed Here!",
+      "channel": "Fix369",
+      "views": 2211717,
+      "subs": 343000,
+      "ratio": 6.4,
+      "age_days": 2028,
+      "seconds": 202,
+      "tags": [
+       "Fix ear speaker on iPhone",
+       "Ear speaker not working on iPhone fixed",
+       "How to iPhone ear speaker not working",
+       "iPhone earpiece not working",
+       "iPhone ear speaker stopped working",
+       "How to fix hearing issues on the iPhone"
+      ]
+     },
+     {
+      "title": "iPhone Ear Speaker Not Working? - Fixed Earpiece Here!",
+      "channel": "Tweak Library",
+      "views": 1140974,
+      "subs": 85700,
+      "ratio": 13.3,
+      "age_days": 1562,
+      "seconds": 62,
+      "tags": [
+       "yt:cc=on",
+       "tweak library",
+       "Keep Watching at tweak library",
+       "fix ear speaker on iphone",
+       "ear speaker not working on iphone fixed",
+       "how to iphone ear speaker not working"
+      ]
+     },
+     {
+      "title": "Green or Orange Dot on iPhone: Are You Hacked?",
+      "channel": "Certo Software",
+      "views": 1058723,
+      "subs": 76800,
+      "ratio": 13.8,
+      "age_days": 663,
+      "seconds": 376,
+      "tags": [
+       "spyware",
+       "hacked",
+       "certo",
+       "phone",
+       "apple",
+       "green"
+      ]
+     },
+     {
+      "title": "iPhone Can't Hear Calls Unless On Speaker? Here's The Fix!",
+      "channel": "Payette Forward",
+      "views": 1002269,
+      "subs": 1810000,
+      "ratio": 0.6,
+      "age_days": 1299,
+      "seconds": 484,
+      "tags": [
+       "iphone can't hear phone calls unless on speaker",
+       "iPhone can't hear calls unless on speaker",
+       "can’t hear iPhone calls",
+       "can’t hear calls on iPhone",
+       "fix",
+       "iPhone"
+      ]
+     },
+     {
+      "title": "How to Turn Off Stuck Headphone Mode On Android",
+      "channel": "Headphonesty",
+      "views": 662985,
+      "subs": 5910,
+      "ratio": 112.2,
+      "age_days": 802,
+      "seconds": 135,
+      "tags": []
+     }
+    ]
    }
   }
  }
