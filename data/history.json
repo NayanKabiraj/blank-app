@@ -595,7 +595,8 @@
           "output": "output_cinematic/2026-11-22_hi.mp4"
         },
         "contact_sheet": "output_cinematic/2026-11-22_hi_contact-sheet.jpg",
-        "video_id": "9KihZueSvJc"
+        "video_id": "j8sVgBsRXM0",
+        "queued": false
       }
     }
   },
@@ -623,7 +624,8 @@
       "hi": {
         "file": "2026-11-22_hi.mp4",
         "saved_to": "videos/2026-11-22/hi.mp4",
-        "video_id": "8-WYxQviYAw"
+        "video_id": "j8sVgBsRXM0",
+        "queued": false
       }
     }
   },
@@ -651,7 +653,8 @@
       "hi": {
         "file": "2026-11-22_hi.mp4",
         "saved_to": "videos/2026-11-22/hi.mp4",
-        "video_id": "M9SEBDePGtI"
+        "video_id": "j8sVgBsRXM0",
+        "queued": false
       }
     }
   },
@@ -679,8 +682,9 @@
       "hi": {
         "file": "2026-11-22_hi.mp4",
         "saved_to": "videos/2026-11-22/hi.mp4",
-        "queued": "videos/unpublished/2026-11-22_short_hi",
-        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai"
+        "queued": false,
+        "error": "<HttpError 400 when requesting None returned \"The user has exceeded the number of videos they may upload.\". Details: \"[{'message': 'The user has exceeded the number of videos they may upload.', 'domai",
+        "video_id": "j8sVgBsRXM0"
       }
     }
   },
@@ -705,6 +709,10 @@
         "queued": false,
         "error": "daily upload limit already reached in this run",
         "video_id": "zx56v1qrtuI"
+      },
+      "hi": {
+        "video_id": "j8sVgBsRXM0",
+        "queued": false
       }
     }
   },
@@ -729,6 +737,10 @@
         "queued": false,
         "error": "daily upload limit already reached in this run",
         "video_id": "zx56v1qrtuI"
+      },
+      "hi": {
+        "video_id": "j8sVgBsRXM0",
+        "queued": false
       }
     }
   },
@@ -796,8 +808,9 @@
       "en": {
         "file": "2026-11-24_en.mp4",
         "saved_to": "videos/2026-11-24/en.mp4",
-        "queued": "videos/unpublished/2026-11-24_short_en",
-        "error": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
+        "queued": false,
+        "error": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})",
+        "video_id": "ryWe8wxndE0"
       }
     }
   }
