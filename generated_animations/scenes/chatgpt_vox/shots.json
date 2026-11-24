@@ -1,0 +1,8 @@
+{"topic": "How does ChatGPT actually work?",
+ "look": "vox",
+ "shots": [
+  {"module": "scene_001", "scenes": [0, 1]},
+  {"module": "scene_002", "scenes": [2, 3, 4]},
+  {"module": "scene_003", "scenes": [5, 6]},
+  {"module": "scene_004", "scenes": [7]}
+ ]}
