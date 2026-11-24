@@ -15,7 +15,7 @@
  ],
  "privacy": "private",
  "synthetic": null,
- "attempts": 0,
+ "attempts": 1,
  "queued_at": "2026-11-24T03:05:24+00:00",
  "last_error": "('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'})"
 }
