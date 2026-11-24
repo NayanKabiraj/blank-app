@@ -29,6 +29,9 @@ help that goal (or protect it) is not the priority. Each plan's `research_summar
 5. **Consistency**: one look (vox), one voice, a regular schedule so the channel is recognisable.
 6. **Owner-side (not automatable from here)**: a clear channel trailer, banner and about text, playlists per cluster, replying to comments, community posts. Ask the owner when this is the bottleneck.
 
+## Milestones and the weekly report
+Ladders live in `strategy/milestones.json` (subscribers 50 -> 1,000, public watch hours 100 -> 4,000, Shorts views 10 k -> 10 M, best video, subscribers per 1,000 views, Shorts viewed %, upload streak). Every Sunday 21:00 IST `weekly-report.yml` writes `reports/progress-<date>.md` and opens a GitHub issue with it (phone notification); `python -m shorts.progress milestones` prints the status any time.
+
 ## Weekly review (the Sunday run writes one dated line in `learnings.md` Evidence)
 Subscribers gained and per 1,000 views, public watch hours, Shorts views, the best 3 and worst 3 videos and why, and whether the guardrails above were respected. If subscribers per 1,000 views stay under about 2 for two weeks, change the conversion
 levers (not the upload count) before anything else.

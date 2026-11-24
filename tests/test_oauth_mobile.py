@@ -235,3 +235,30 @@ def test_monetization_scoreboard():
     m = ct.monetization(d)
     assert m["to_1000"] == 953 and m["to_500"] == 453 and m["watch_hours_last_28d"] == 5.0 and m["watch_hours_if_pace_holds_12m"] == 65
     assert m["shorts_views_last_28d"] == 1789 and m["videos_not_public"] == 1 and m["subscribers_per_1000_views"] == 1.11
+
+
+def test_progress_report_milestones_and_uploads(tmp_path, monkeypatch):
+    import datetime as dt
+    from shorts import progress as pr
+    today = dt.date(2026, 11, 29)
+    hist = [{"date": "2026-11-28", "videos": {"en": {"video_id": "a"}, "hi": {"video_id": "b"}}},
+            {"date": "2026-11-29", "videos": {"en": {"video_id": "c"}}},
+            {"date": "2026-11-29", "videos": {"en": {"video_id": "c"}}}]                     # a re-run repeats the id: counted once
+    up = pr.upload_stats(hist, [{"date": "2026-11-27", "videos": {"en": {"video_id": "d"}}}], today)
+    assert up["week"] == {"short": 3, "documentary": 1, "en": 3, "hi": 1} and up["streak"] == 3
+    data = {"available": True, "days": 28, "channel": {"subscriberCount": 120, "viewCount": 9000, "videoCount": 30},
+            "split": [{"creatorContentType": "shorts", "views": 5000, "averageViewPercentage": 55.0}],
+            "analytics": [{"views": 1200, "estimatedMinutesWatched": 600, "subscribersGained": 6}],
+            "totals_365d": {"minutes": 9000}, "shorts_90d": {"views": 20000}, "videos": []}
+    snap = pr.snapshot(data, hist, [], today)
+    assert snap["subscribers"] == 120 and snap["watch_hours_365d"] == 150.0 and snap["shorts_views_90d"] == 20000 and snap["best_video_views"] == 1200
+    ladders = pr._load(pr.MILESTONES, {})["ladders"]
+    reached = {"subscribers>=50": "2026-11-20"}
+    st = pr.evaluate(snap, ladders, reached)
+    subs = next(m for m in st if m["key"] == "subscribers")
+    assert [r["step"] for r in subs["reached"]] == [50, 100] and subs["reached"][0]["date"] == "2026-11-20" and subs["reached"][1]["date"] == "2026-11-29"
+    assert subs["next"]["step"] == 250 and 0 < subs["next"]["progress"] < 100
+    na = pr.evaluate({**snap, "watch_hours_365d": None}, ladders, {})
+    assert next(m for m in na if m["key"] == "watch_hours_365d")["reached"] == []                  # n/a never reaches a milestone
+    text = pr.render(snap, {"subscribers": 100, "date": "2026-11-22"}, st, {"available": False, "reason": "x"}, {})
+    assert "Weekly progress report - 2026-11-29" in text and "+20 vs last report" in text and "Reached this week" in text

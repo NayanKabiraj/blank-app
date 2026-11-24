@@ -72,6 +72,13 @@ def fetch(days: int = 28, max_videos: int = 200) -> dict:
         split = an.reports().query(ids="channel==MINE", startDate=start.isoformat(), endDate=end.isoformat(), dimensions="creatorContentType", metrics="views,estimatedMinutesWatched,averageViewPercentage").execute()
         cols = [c["name"] for c in split.get("columnHeaders", [])]
         out["split"] = [dict(zip(cols, row)) for row in split.get("rows", [])]
+        # the Partner Program windows: watch time over 365 days and Shorts views over 90 days (public videos only)
+        tot = an.reports().query(ids="channel==MINE", startDate=(end - dt.timedelta(days=365)).isoformat(), endDate=end.isoformat(), metrics="views,estimatedMinutesWatched,subscribersGained").execute()
+        if tot.get("rows"):
+            out["totals_365d"] = dict(zip([c["name"] for c in tot["columnHeaders"]], tot["rows"][0]))
+            out["totals_365d"]["minutes"] = out["totals_365d"].get("estimatedMinutesWatched")
+        s90 = an.reports().query(ids="channel==MINE", startDate=(end - dt.timedelta(days=90)).isoformat(), endDate=end.isoformat(), dimensions="creatorContentType", metrics="views").execute()
+        out["shorts_90d"] = {"views": next((r[1] for r in s90.get("rows", []) if r[0] == "shorts"), 0)}
     except Exception as exc:  # noqa: BLE001
         out["analytics_reason"] = f"YouTube Analytics API: {str(exc)[:200]} (needs yt-analytics.readonly and the API enabled)"
     return out
