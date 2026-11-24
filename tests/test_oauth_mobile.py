@@ -194,3 +194,18 @@ def test_flush_stops_and_keeps_the_queue_when_authorization_is_needed(env, monke
     assert r["auth_required"] and r["left"] == 2 and len(calls) == 1                  # the second video is not even tried
     assert (q / "unpublished" / "a" / "video.mp4").exists() and ytauth.banner()
     assert json.loads((q / "unpublished" / "a" / "meta.json").read_text())["attempts"] == 0
+
+
+def test_trending_digest_and_hindi_vox_helpers():
+    from shorts import channel_trends as ct
+    from generated_animations.shared import vox
+    rows = [{"id": str(i), "title": t, "channel": "c", "views": 1000 * (i + 1), "seconds": s, "published": "2026-11-20", "tags": []}
+            for i, (t, s) in enumerate([("Why does ice float? Science", 45), ("How planes fly in 3 steps", 600), ("Why does ice float on water", 50), ("Why does ice melt", 55)])]
+    d = ct.trending_digest({"generated": "x", "charts": {"US/Education": rows, "IN/Education": {"error": "no chart"}}})
+    assert d["available"] and d["videos"] == 4 and d["share_questions"] == 0.25 and d["share_under_60s"] == 0.75 and "ice" in d["recurring_words"]
+    assert not ct.trending_digest({"charts": {}})["available"]
+    assert ct._seconds("PT1M5S") == 65 and ct._seconds("PT2H") == 7200
+    ctx = type("C", (), {"lang": "hi"})()
+    assert vox.L(ctx, "JUST GUESSING?", "सिर्फ़ अंदाज़ा?") == "सिर्फ़ अंदाज़ा?" and vox.L(type("C", (), {"lang": "en"})(), "A", "B") == "A"
+    from shorts import plan
+    assert not plan._pack_is_bilingual("chatgpt_vox")

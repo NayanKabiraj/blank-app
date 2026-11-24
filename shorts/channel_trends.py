@@ -1,6 +1,7 @@
 """The channel check that comes BEFORE research each day: how are the videos doing, and what should change?
 
     python -m shorts.channel_trends fetch      # YouTube Data + Analytics API -> data/channel_trends.json (run daily by channel-trends.yml)
+    python -m shorts.channel_trends trending   # what YouTube itself is pushing (most-popular Education / Science charts, data/youtube_trending.json)
     python -m shorts.channel_trends summary    # prints the digest the daily task reads (per niche, Shorts vs long-form, top/bottom videos)
 
 It needs the YouTube sign-in to include the read-only scopes (python -m shorts.ytauth url asks for them) and the YouTube Analytics API
@@ -12,8 +13,9 @@ from __future__ import annotations
 import datetime as dt
 import json
 import logging
+import re
 import sys
-from collections import defaultdict
+from collections import Counter, defaultdict
 from pathlib import Path
 
 from . import config
@@ -29,7 +31,7 @@ def _service(name: str, version: str):
     return build(name, version, credentials=creds, cache_discovery=False)
 
 
-def fetch(days: int = 28, max_videos: int = 50) -> dict:
+def fetch(days: int = 28, max_videos: int = 200) -> dict:
     from . import ytauth
     out = {"available": False, "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "days": days}
     if not (config.YT_CLIENT_ID and config.YT_CLIENT_SECRET and ytauth.candidates("en")):
@@ -40,7 +42,14 @@ def fetch(days: int = 28, max_videos: int = 50) -> dict:
         uploads = yt.channels().list(part="contentDetails,statistics", mine=True).execute()["items"][0]
         out["channel"] = {k: int(v) for k, v in uploads.get("statistics", {}).items() if str(v).isdigit()}
         pl = uploads["contentDetails"]["relatedPlaylists"]["uploads"]
-        ids = [i["contentDetails"]["videoId"] for i in yt.playlistItems().list(part="contentDetails", playlistId=pl, maxResults=max_videos).execute().get("items", [])]
+        ids, token = [], None
+        while len(ids) < max_videos:                       # every upload (50 per page), newest first
+            page = yt.playlistItems().list(part="contentDetails", playlistId=pl, maxResults=50, pageToken=token).execute()
+            ids += [i["contentDetails"]["videoId"] for i in page.get("items", [])]
+            token = page.get("nextPageToken")
+            if not token:
+                break
+        ids = ids[:max_videos]
         vids = []
         for chunk in (ids[i:i + 50] for i in range(0, len(ids), 50)):
             for v in yt.videos().list(part="snippet,statistics,contentDetails,status", id=",".join(chunk)).execute().get("items", []):
@@ -126,6 +135,59 @@ def digest(data: dict, history: list, doc_history: list) -> dict:
             "signals": signals, "analytics_note": data.get("analytics_reason")}
 
 
+TRENDING_FILE = config.DATA_DIR / "youtube_trending.json"
+REGIONS = ("US", "IN", "GB")
+CATEGORIES = {"27": "Education", "28": "Science & Technology"}
+
+
+def _seconds(iso: str) -> int:
+    m = re.fullmatch(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
+    h, mi, se = (int(x or 0) for x in m.groups()) if m else (0, 0, 0)
+    return h * 3600 + mi * 60 + se
+
+
+def fetch_trending(per_chart: int = 25) -> dict:
+    """YouTube's own most-popular charts (Data API, 1 quota unit per call) for Education and Science & Technology in a few regions."""
+    out = {"available": False, "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "charts": {}}
+    try:
+        yt = _service("youtube", "v3")
+    except Exception as exc:  # noqa: BLE001
+        out["reason"] = str(exc)[:200]
+        return out
+    for region in REGIONS:
+        for cat, name in CATEGORIES.items():
+            try:
+                items = yt.videos().list(part="snippet,statistics,contentDetails", chart="mostPopular", regionCode=region, videoCategoryId=cat,
+                                         maxResults=per_chart).execute().get("items", [])
+            except Exception as exc:  # noqa: BLE001  (some region/category charts do not exist)
+                out["charts"][f"{region}/{name}"] = {"error": str(exc)[:120]}
+                continue
+            out["charts"][f"{region}/{name}"] = [{"id": v["id"], "title": v["snippet"]["title"], "channel": v["snippet"]["channelTitle"],
+                                                 "views": int(v.get("statistics", {}).get("viewCount", 0)), "seconds": _seconds(v["contentDetails"]["duration"]),
+                                                 "published": v["snippet"]["publishedAt"][:10], "tags": v["snippet"].get("tags", [])[:6]} for v in items]
+            out["available"] = out["available"] or bool(items)
+    return out
+
+
+def trending_digest(data: dict) -> dict:
+    """Patterns in what YouTube itself is pushing (pure function, tested): title shapes, lengths, recurring words, top titles."""
+    charts = {k: v for k, v in data.get("charts", {}).items() if isinstance(v, list) and v}
+    if not charts:
+        return {"available": False, "reason": data.get("reason", "no trending data yet (channel-trends.yml has not fetched it)")}
+    rows = [dict(r, chart=k) for k, v in charts.items() for r in v]
+    stop = set("the a an of to in and is it how why what this that for on with you your are was be from at as by or not do does".split())
+    words = Counter(w for r in rows for w in re.findall(r"[a-z']{3,}", r["title"].lower()) if w not in stop)
+    n = len(rows)
+    return {"available": True, "generated": data.get("generated"), "videos": n,
+            "share_questions": round(sum("?" in r["title"] for r in rows) / n, 2),
+            "share_numbers": round(sum(bool(re.search(r"\d", r["title"])) for r in rows) / n, 2),
+            "share_under_60s": round(sum(0 < r["seconds"] <= 60 for r in rows) / n, 2),
+            "median_title_chars": sorted(len(r["title"]) for r in rows)[n // 2],
+            "median_minutes": round(sorted(r["seconds"] for r in rows)[n // 2] / 60, 1),
+            "recurring_words": [w for w, c in words.most_common(15) if c >= 3],
+            "top": [{"chart": r["chart"], "title": r["title"][:80], "views": r["views"], "minutes": round(r["seconds"] / 60, 1)} for r in sorted(rows, key=lambda r: -r["views"])[:12]]}
+
+
 def _load(path: Path):
     return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
 
@@ -138,6 +200,13 @@ def main() -> int:
         FILE.parent.mkdir(parents=True, exist_ok=True)
         FILE.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
         log.info("channel trends: available=%s %s", data["available"], data.get("reason", ""))
+        tr = fetch_trending()
+        TRENDING_FILE.write_text(json.dumps(tr, ensure_ascii=False, indent=1), encoding="utf-8")
+        log.info("youtube trending: available=%s %s", tr["available"], tr.get("reason", ""))
+        return 0
+    if cmd == "trending":
+        td = json.loads(TRENDING_FILE.read_text(encoding="utf-8")) if TRENDING_FILE.exists() else {}
+        print(json.dumps(trending_digest(td), ensure_ascii=False, indent=2))
         return 0
     data = json.loads(FILE.read_text(encoding="utf-8")) if FILE.exists() else {"available": False, "reason": "data/channel_trends.json does not exist yet (channel-trends.yml has not run)"}
     print(json.dumps(digest(data, _load(config.HISTORY_FILE), _load(config.DATA_DIR / "documentary_history.json")), ensure_ascii=False, indent=2))

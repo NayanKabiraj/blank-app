@@ -58,6 +58,9 @@ the workflow renders.
    has a waiting request), print the output of `python -m shorts.ytauth banner` prominently in the chat (the 🔐 message with the tappable link) - never the token/secret. The owner taps the link, Allow, then
    "Submit new issue"; `oauth-callback.yml` stores the credentials and uploads the queue. Do not ask for terminal commands; quota/scope/rate/5xx errors are NOT authorization problems.
 
+15. **Learnings loop** (owner instruction, 24 Nov 2026; `strategy/learnings.md`): before every topic decision read `strategy/learnings.md`, run `python -m shorts.channel_trends summary` and `... trending`, apply the Rules, record
+   `Learning applied:` in `research_summary` and keep the file current with dated, honest evidence. Hindi videos (when produced) follow the same vox look: every on-screen string via `vox.L(ctx, en, hi)` / `T[ctx.lang]`.
+
 ## Quick commands
 
 ```bash

@@ -132,8 +132,13 @@ SERIF = "DejaVu Serif"
 NEWSPRINT = "#F3EDDC"
 
 
-def _serif(text: str, size: float, color: str = INK, weight: str = "BOLD", max_width: float = 4.0):
-    t = Text(text, font_size=size, color=color, weight=weight, font=SERIF)
+def L(ctx, en: str, hi: str = "") -> str:
+    """Text for the video's language: use for every on-screen string of a pack that is also rendered in Hindi (`vox.L(ctx, "JUST GUESSING?", "सिर्फ़ अंदाज़ा?")`)."""
+    return hi if getattr(ctx, "lang", "en") == "hi" and hi else en
+
+
+def _serif(text: str, size: float, color: str = INK, weight: str = "BOLD", max_width: float = 4.0, lang: str = "en"):
+    t = Text(text, font_size=size, color=color, weight=weight, font="Noto Sans Devanagari" if lang == "hi" else SERIF)
     if t.width > max_width:
         t.scale_to_fit_width(max_width)
     return t
@@ -145,12 +150,12 @@ def newspaper(ctx, masthead: str, headline: str, date: str = "", w: float = 4.6,
     import textwrap
     g = VGroup(torn_card(w, h, seed=seed, fill=NEWSPRINT, amp=0.05))
     top = h / 2 - 0.45
-    g.add(_serif(masthead.upper(), 26, INK, "BOLD", w - 0.8).move_to(np.array([0, top, 0.0])))
+    g.add(_serif(masthead.upper(), 26, INK, "BOLD", w - 0.8, ctx.lang).move_to(np.array([0, top, 0.0])))
     for dy, sw in ((top - 0.34, 4), (top - 0.42, 2)):
         g.add(Line(np.array([-w / 2 + 0.3, dy, 0.0]), np.array([w / 2 - 0.3, dy, 0.0]), color=INK, stroke_width=sw))
     if date:
-        g.add(_serif(date, 14, SOFT, "NORMAL", w - 0.8).move_to(np.array([0, top - 0.68, 0.0])))
-    hl = _serif("\n".join(textwrap.wrap(headline.upper(), 18)), 30, INK, "BOLD", w - 0.8).move_to(np.array([0, top - 1.35, 0.0]))
+        g.add(_serif(date, 14, SOFT, "NORMAL", w - 0.8, ctx.lang).move_to(np.array([0, top - 0.68, 0.0])))
+    hl = _serif("\n".join(textwrap.wrap(headline.upper(), 18)), 30, INK, "BOLD", w - 0.8, ctx.lang).move_to(np.array([0, top - 1.35, 0.0]))
     g.add(hl)
     y0 = hl.get_bottom()[1] - 0.25
     colw = (w - 0.9) / 2
