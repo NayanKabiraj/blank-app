@@ -299,3 +299,15 @@ def test_report_lists_search_terms():
     text = pr.render(snap, None, [], {"available": True, "search_terms": [{"term": "how gps works", "views": 12, "minutes": 3.5}]}, {})
     assert '"how gps works": 12 views' in text
     assert "no search traffic" in pr.render(snap, None, [], {"available": True}, {})
+
+
+def test_seo_outliers_use_the_data_api_for_numbers(monkeypatch):
+    from shorts import seo
+    vids = [{"id": "a", "snippet": {"title": "How GPS works?", "channelTitle": "A", "channelId": "c1", "publishedAt": "2026-01-01T00:00:00Z", "tags": ["gps"]},
+             "statistics": {"viewCount": "500000"}, "contentDetails": {"duration": "PT45S"}}]
+    e = seo.to_entries(vids, {"c1": 10000})[0]
+    assert e["view_count"] == 500000 and e["channel_follower_count"] == 10000 and e["upload_date"] == "20260101" and e["duration"] == 45
+    d = seo.outlier_digest([e], today_ord=__import__("datetime").date(2026, 6, 1).toordinal())
+    assert d["outliers"][0]["ratio"] == 50.0
+    monkeypatch.setattr(seo, "search_ids", lambda q, n=15: [])
+    assert seo.outliers("x") == {"available": False, "reason": "no search results returned"}
