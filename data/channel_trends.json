@@ -1,6 +1,896 @@
 {
- "available": false,
- "generated": "2026-11-24T12:22:00+00:00",
+ "available": true,
+ "generated": "2026-11-24T12:24:20+00:00",
  "days": 28,
- "reason": "YouTube Data API: ('invalid_grant: Token has been expired or revoked.', {'error': 'invalid_grant', 'error_description': 'Token has been expired or revoked.'}) (the sign-in needs the youtube.readonly scope: python -m shorts.ytauth url)"
+ "channel": {
+  "viewCount": 11285,
+  "subscriberCount": 47,
+  "videoCount": 144
+ },
+ "videos": [
+  {
+   "id": "ryWe8wxndE0",
+   "title": "How Does ChatGPT Actually Work? It Guesses One Word #Shorts",
+   "published": "2026-11-24T12:23:43Z",
+   "duration": "PT56S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "j8sVgBsRXM0",
+   "title": "GPS को कैसे पता चलता है आप कहाँ हैं? (फ़ोन कभी बोलता नहीं) #Shorts",
+   "published": "2026-11-24T12:22:28Z",
+   "duration": "PT56S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "ZKKnfOx5xUQ",
+   "title": "How Does a Black Box Survive a Plane Crash?",
+   "published": "2026-11-24T12:20:08Z",
+   "duration": "PT4M48S",
+   "privacy": "private",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "6PQciVURhqE",
+   "title": "दिन में दो बार ज्वार क्यों आता है? चाँद समुद्र को कैसे हिलाता है",
+   "published": "2026-11-24T12:20:00Z",
+   "duration": "PT4M48S",
+   "privacy": "private",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "kytb1ypPG4s",
+   "title": "How Does the Internet Actually Work? One Tap Around the World",
+   "published": "2026-11-23T08:36:08Z",
+   "duration": "PT4M55S",
+   "privacy": "public",
+   "views": 6,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "Ve6sULeRWUk",
+   "title": "Why Does Time Feel Faster as You Get Older? #Shorts",
+   "published": "2026-11-23T08:27:04Z",
+   "duration": "PT58S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "GOmKtQvKMX8",
+   "title": "What If All the Ice on Earth Melted? The 65 Metre Sea",
+   "published": "2026-11-23T04:50:52Z",
+   "duration": "PT5M27S",
+   "privacy": "public",
+   "views": 8,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "qf-UeA0pKao",
+   "title": "What Really Happens If You Fall Into a Black Hole?",
+   "published": "2026-11-23T03:36:22Z",
+   "duration": "PT4M32S",
+   "privacy": "public",
+   "views": 10,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "oF2anyi3SyM",
+   "title": "What If You Dove to the Deepest Point on Earth? #Shorts #factshorts",
+   "published": "2026-11-23T03:34:03Z",
+   "duration": "PT58S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "zx56v1qrtuI",
+   "title": "What If the Moon Disappeared Tomorrow? #Shorts #whatif #factshorts",
+   "published": "2026-11-23T03:32:22Z",
+   "duration": "PT58S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "QEDE7B2SeBc",
+   "title": "How Does GPS Know Where You Are? (Your Phone Never Calls) #Shorts",
+   "published": "2026-11-22T11:35:11Z",
+   "duration": "PT57S",
+   "privacy": "public",
+   "views": 5,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "vUuPXfpnTEg",
+   "title": "How Does GPS Know Where You Are? (Your Phone Never Calls) #Shorts",
+   "published": "2026-11-22T10:30:32Z",
+   "duration": "PT57S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "AjiwPv09KG0",
+   "title": "भारत वहां कैसे उतरा जहां पहले कोई नहीं पहुंचा",
+   "published": "2026-11-20T03:39:24Z",
+   "duration": "PT4M58S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "tws0YvLu-O4",
+   "title": "How India Landed Where No One Else Had Reached",
+   "published": "2026-11-20T03:39:04Z",
+   "duration": "PT4M32S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "cwb_sHbjxwE",
+   "title": "Why Does a Crowd Start Clapping in Rhythm All on Its Own? #Shorts",
+   "published": "2026-11-19T15:55:16Z",
+   "duration": "PT54S",
+   "privacy": "public",
+   "views": 76,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "u9VBRRNKNQk",
+   "title": "सूरत दुनिया के दस में से नौ हीरे क्यों तराशता है",
+   "published": "2026-11-19T03:31:42Z",
+   "duration": "PT6M4S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "0A6Y4R5qo8Y",
+   "title": "How Surat Cuts Nine Out of Every Ten Diamonds on Earth",
+   "published": "2026-11-19T03:29:47Z",
+   "duration": "PT5M7S",
+   "privacy": "public",
+   "views": 3,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "dkdFdy1FXgQ",
+   "title": "डेजा वू इतना असली क्यों लगता है? #Shorts",
+   "published": "2026-11-19T03:04:55Z",
+   "duration": "PT55S",
+   "privacy": "public",
+   "views": 3,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "B7Lljx8QtMY",
+   "title": "Why Does Déjà Vu Feel So Real? #Shorts",
+   "published": "2026-11-19T03:04:39Z",
+   "duration": "PT44S",
+   "privacy": "public",
+   "views": 103,
+   "likes": 2,
+   "comments": 0
+  },
+  {
+   "id": "c_XT-arbwHg",
+   "title": "अगर पृथ्वी अचानक घूमना बंद कर दे तो क्या होगा? #Shorts",
+   "published": "2026-11-18T11:56:04Z",
+   "duration": "PT1M",
+   "privacy": "public",
+   "views": 3,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "CLJlgbfc1F0",
+   "title": "What If Earth Suddenly Stopped Spinning? #Shorts",
+   "published": "2026-11-18T11:55:48Z",
+   "duration": "PT54S",
+   "privacy": "public",
+   "views": 29,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "N71Pbd1wRCo",
+   "title": "चाँद समुद्र को कैसे हिलाता है? (दिन में दो ज्वार क्यों)",
+   "published": "2026-11-18T09:05:50Z",
+   "duration": "PT5M12S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "WmKvkO7H8gs",
+   "title": "How the Moon Moves the Ocean (and Why There Are Two Tides a Day)",
+   "published": "2026-11-18T09:05:40Z",
+   "duration": "PT4M3S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "ZR_P25-Oo90",
+   "title": "सुपरमून इतना विशाल क्यों दिखता है? (असल में नहीं) #Shorts",
+   "published": "2026-11-18T09:05:20Z",
+   "duration": "PT1M",
+   "privacy": "public",
+   "views": 8,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "jPFOUVta1F0",
+   "title": "Why does the supermoon look huge? (It isn't) #Shorts",
+   "published": "2026-11-18T03:32:42Z",
+   "duration": "PT51S",
+   "privacy": "public",
+   "views": 13,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "q3yz34MDOpI",
+   "title": "अगर सूरज ग़ायब हो जाए? 8 मिनट तक कुछ नहीं होगा #Shorts",
+   "published": "2026-11-17T16:43:23Z",
+   "duration": "PT56S",
+   "privacy": "public",
+   "views": 6,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "blroX9zDT1M",
+   "title": "What If the Sun Vanished? Nothing Happens for 8 Minutes #Shorts",
+   "published": "2026-11-17T16:42:56Z",
+   "duration": "PT38S",
+   "privacy": "public",
+   "views": 5,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "NQ-GnC2OtCQ",
+   "title": "79 टन का विमान हवा में कैसे टिकता है?",
+   "published": "2026-11-17T09:55:20Z",
+   "duration": "PT5M47S",
+   "privacy": "public",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "xXmhxA3xUhQ",
+   "title": "How can a 79-tonne plane stay in the air?",
+   "published": "2026-11-17T09:55:08Z",
+   "duration": "PT4M23S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "KG2RWFHfyi8",
+   "title": "Why do doorknobs zap you in winter? #Shorts",
+   "published": "2026-11-17T09:51:17Z",
+   "duration": "PT47S",
+   "privacy": "public",
+   "views": 5,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "k6BRkrh4lok",
+   "title": "सर्दियों में हैंडल से झटका क्यों लगता है? #Shorts",
+   "published": "2026-11-17T09:50:57Z",
+   "duration": "PT1M",
+   "privacy": "public",
+   "views": 39,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "2G95xWfWLI8",
+   "title": "एआई एजेंट बदल देंगे सॉफ़्टवेयर डेवलपमेंट #Shorts",
+   "published": "2026-11-17T09:49:38Z",
+   "duration": "PT1M",
+   "privacy": "public",
+   "views": 3,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "b7JhsbWiEIA",
+   "title": "AI Agents Will Change Software Development #Shorts",
+   "published": "2026-11-17T09:48:26Z",
+   "duration": "PT43S",
+   "privacy": "public",
+   "views": 10,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "xdpeVI0ZL4E",
+   "title": "यूपीआई भुगतान असल में कैसे काम करता है? (आपके टैप से बैंक तक)",
+   "published": "2026-11-16T11:19:05Z",
+   "duration": "PT5M48S",
+   "privacy": "public",
+   "views": 8,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "J2IDnTxet7M",
+   "title": "How a UPI Payment Really Works (From Your Tap to the Bank)",
+   "published": "2026-11-16T11:18:46Z",
+   "duration": "PT4M17S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "WvEmz4FPQAI",
+   "title": "भारत का मॉनसून असल में कैसे काम करता है? (बारिश की विशाल मशीन)",
+   "published": "2026-11-16T11:17:34Z",
+   "duration": "PT6M12S",
+   "privacy": "public",
+   "views": 14,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "fxEunP-9-3c",
+   "title": "दाम 99 पर ही क्यों ख़त्म होते हैं? (पहले अंक की चाल) #Shorts",
+   "published": "2026-11-16T11:17:11Z",
+   "duration": "PT1M",
+   "privacy": "public",
+   "views": 5,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "bR_gPKXgQ_k",
+   "title": "Why Do Prices End in 99? (The Left-Digit Trick) #Shorts",
+   "published": "2026-11-16T11:16:23Z",
+   "duration": "PT44S",
+   "privacy": "public",
+   "views": 8,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "oLQ-3RA85ek",
+   "title": "ठंड में फ़ोन 30% पर क्यों बंद हो जाता है? (बैटरी खाली नहीं होती) #Shorts",
+   "published": "2026-11-16T10:25:59Z",
+   "duration": "PT55S",
+   "privacy": "public",
+   "views": 3,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "o18KGdxq85w",
+   "title": "Why Your Phone Dies at 30% in the Cold (It's Not Empty) #Shorts",
+   "published": "2026-11-16T10:25:54Z",
+   "duration": "PT55S",
+   "privacy": "public",
+   "views": 9,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "3VeZpL_RQ2U",
+   "title": "How India's Monsoon Really Works (The Giant Rain Machine)",
+   "published": "2026-11-16T10:25:26Z",
+   "duration": "PT5M3S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "_h9M1lqZV1I",
+   "title": "दिल्ली की हवा हर सर्दी में क्यों फँस जाती है? (गरम ढक्कन) #Shorts",
+   "published": "2026-11-16T09:01:58Z",
+   "duration": "PT55S",
+   "privacy": "public",
+   "views": 18,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "e7XO0bJeXH4",
+   "title": "Why Delhi's Air Gets Trapped Every Winter (The Warm Lid) #Shorts",
+   "published": "2026-11-16T08:34:16Z",
+   "duration": "PT49S",
+   "privacy": "public",
+   "views": 6,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "SpIi3vvVObU",
+   "title": "Face unlock kaise kaam karta hai",
+   "published": "2026-11-14T18:15:11Z",
+   "duration": "PT48S",
+   "privacy": "public",
+   "views": 143,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "cohHIAAmUJM",
+   "title": "how noise cancellation works in headphones",
+   "published": "2026-11-14T03:36:13Z",
+   "duration": "PT47S",
+   "privacy": "public",
+   "views": 6,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "0NlGG_N62Ko",
+   "title": "How UPI works",
+   "published": "2026-11-13T18:49:56Z",
+   "duration": "PT51S",
+   "privacy": "public",
+   "views": 25,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "BcB76L5WtFY",
+   "title": "Leoned meteor showerl",
+   "published": "2026-11-13T18:38:54Z",
+   "duration": "PT48S",
+   "privacy": "public",
+   "views": 121,
+   "likes": 1,
+   "comments": 0
+  },
+  {
+   "id": "y0ZnSNebehA",
+   "title": "How AI Agents Work Beyond Chat",
+   "published": "2026-11-12T17:16:35Z",
+   "duration": "PT16S",
+   "privacy": "public",
+   "views": 18,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "RjfAsn-Cqmw",
+   "title": "Suspense short story",
+   "published": "2026-11-10T17:48:08Z",
+   "duration": "PT10S",
+   "privacy": "public",
+   "views": 8,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "sW35FxePNWI",
+   "title": "Six rules to be happy in life",
+   "published": "2026-11-10T17:29:53Z",
+   "duration": "PT25S",
+   "privacy": "public",
+   "views": 6,
+   "likes": 0,
+   "comments": 0
+  }
+ ],
+ "analytics": [
+  {
+   "video": "ERaiKmQcvzE",
+   "views": 505,
+   "estimatedMinutesWatched": 63,
+   "averageViewDuration": 16,
+   "averageViewPercentage": 31.17,
+   "subscribersGained": 1
+  },
+  {
+   "video": "JAk1B-wFG8k",
+   "views": 394,
+   "estimatedMinutesWatched": 62,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 34.68,
+   "subscribersGained": 0
+  },
+  {
+   "video": "SpIi3vvVObU",
+   "views": 143,
+   "estimatedMinutesWatched": 22,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 38,
+   "subscribersGained": 0
+  },
+  {
+   "video": "BcB76L5WtFY",
+   "views": 121,
+   "estimatedMinutesWatched": 27,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 56.34,
+   "subscribersGained": 0
+  },
+  {
+   "video": "B7Lljx8QtMY",
+   "views": 100,
+   "estimatedMinutesWatched": 18,
+   "averageViewDuration": 21,
+   "averageViewPercentage": 49.56,
+   "subscribersGained": 0
+  },
+  {
+   "video": "dgIVuN3ORew",
+   "views": 79,
+   "estimatedMinutesWatched": 15,
+   "averageViewDuration": 29,
+   "averageViewPercentage": 64.99,
+   "subscribersGained": 0
+  },
+  {
+   "video": "cwb_sHbjxwE",
+   "views": 73,
+   "estimatedMinutesWatched": 9,
+   "averageViewDuration": 16,
+   "averageViewPercentage": 30.11,
+   "subscribersGained": 1
+  },
+  {
+   "video": "esHr7i10evM",
+   "views": 72,
+   "estimatedMinutesWatched": 8,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 54.18999999999999,
+   "subscribersGained": 0
+  },
+  {
+   "video": "k6BRkrh4lok",
+   "views": 39,
+   "estimatedMinutesWatched": 5,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 30.53,
+   "subscribersGained": 0
+  },
+  {
+   "video": "CLJlgbfc1F0",
+   "views": 29,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 42.32,
+   "subscribersGained": 0
+  },
+  {
+   "video": "0NlGG_N62Ko",
+   "views": 25,
+   "estimatedMinutesWatched": 6,
+   "averageViewDuration": 24,
+   "averageViewPercentage": 48.67,
+   "subscribersGained": 0
+  },
+  {
+   "video": "y0ZnSNebehA",
+   "views": 17,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 19,
+   "averageViewPercentage": 123.19,
+   "subscribersGained": 0
+  },
+  {
+   "video": "_h9M1lqZV1I",
+   "views": 17,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 49.18,
+   "subscribersGained": 0
+  },
+  {
+   "video": "WvEmz4FPQAI",
+   "views": 14,
+   "estimatedMinutesWatched": 6,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 7.15,
+   "subscribersGained": 0
+  },
+  {
+   "video": "jPFOUVta1F0",
+   "views": 13,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 12,
+   "averageViewPercentage": 24.21,
+   "subscribersGained": 0
+  },
+  {
+   "video": "yn9wXT-4-I4",
+   "views": 10,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 52.78,
+   "subscribersGained": 0
+  },
+  {
+   "video": "b7JhsbWiEIA",
+   "views": 10,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 32,
+   "averageViewPercentage": 75.2,
+   "subscribersGained": 0
+  },
+  {
+   "video": "o18KGdxq85w",
+   "views": 9,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 30,
+   "averageViewPercentage": 55.19,
+   "subscribersGained": 0
+  },
+  {
+   "video": "ZR_P25-Oo90",
+   "views": 8,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 34,
+   "averageViewPercentage": 58.21999999999999,
+   "subscribersGained": 0
+  },
+  {
+   "video": "xdpeVI0ZL4E",
+   "views": 8,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 11,
+   "averageViewPercentage": 3.19,
+   "subscribersGained": 0
+  },
+  {
+   "video": "RjfAsn-Cqmw",
+   "views": 8,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 8,
+   "averageViewPercentage": 89.5,
+   "subscribersGained": 0
+  },
+  {
+   "video": "bR_gPKXgQ_k",
+   "views": 7,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 25,
+   "averageViewPercentage": 57.09000000000001,
+   "subscribersGained": 0
+  },
+  {
+   "video": "5UXCL5F7QKg",
+   "views": 7,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 26,
+   "averageViewPercentage": 50.57000000000001,
+   "subscribersGained": 0
+  },
+  {
+   "video": "cohHIAAmUJM",
+   "views": 6,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 37,
+   "averageViewPercentage": 79.86,
+   "subscribersGained": 0
+  },
+  {
+   "video": "e7XO0bJeXH4",
+   "views": 6,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 95,
+   "averageViewPercentage": 195.31,
+   "subscribersGained": 0
+  },
+  {
+   "video": "q3yz34MDOpI",
+   "views": 6,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 40.95,
+   "subscribersGained": 0
+  },
+  {
+   "video": "7GCONoW8dcM",
+   "views": 6,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 12,
+   "averageViewPercentage": 85.97,
+   "subscribersGained": 0
+  },
+  {
+   "video": "sW35FxePNWI",
+   "views": 6,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 19,
+   "averageViewPercentage": 78.29,
+   "subscribersGained": 0
+  },
+  {
+   "video": "l_FJS639TdU",
+   "views": 5,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 4,
+   "averageViewPercentage": 26.88,
+   "subscribersGained": 0
+  },
+  {
+   "video": "7cBFp9BgU-Y",
+   "views": 5,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 30,
+   "averageViewPercentage": 87.43,
+   "subscribersGained": 0
+  },
+  {
+   "video": "Z9_cGM9Jb9Y",
+   "views": 5,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 6,
+   "averageViewPercentage": 38.13,
+   "subscribersGained": 0
+  },
+  {
+   "video": "blroX9zDT1M",
+   "views": 5,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 81,
+   "averageViewPercentage": 213.68,
+   "subscribersGained": 0
+  },
+  {
+   "video": "KG2RWFHfyi8",
+   "views": 5,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 57.79,
+   "subscribersGained": 0
+  },
+  {
+   "video": "YRaZbw4eI20",
+   "views": 4,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 1,
+   "averageViewPercentage": 4.1,
+   "subscribersGained": 0
+  },
+  {
+   "video": "u9VBRRNKNQk",
+   "views": 4,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 59,
+   "averageViewPercentage": 16.24,
+   "subscribersGained": 0
+  },
+  {
+   "video": "fxEunP-9-3c",
+   "views": 4,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 15,
+   "averageViewPercentage": 25.17,
+   "subscribersGained": 0
+  },
+  {
+   "video": "3VeZpL_RQ2U",
+   "views": 4,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 95,
+   "averageViewPercentage": 31.540000000000003,
+   "subscribersGained": 0
+  },
+  {
+   "video": "oLQ-3RA85ek",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 24,
+   "averageViewPercentage": 43.88,
+   "subscribersGained": 0
+  },
+  {
+   "video": "2G95xWfWLI8",
+   "views": 3,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 31.56,
+   "subscribersGained": 0
+  },
+  {
+   "video": "YIFqi_93ooA",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 21,
+   "averageViewPercentage": 35.7,
+   "subscribersGained": 0
+  },
+  {
+   "video": "0A6Y4R5qo8Y",
+   "views": 3,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 75,
+   "averageViewPercentage": 24.66,
+   "subscribersGained": 0
+  },
+  {
+   "video": "c_XT-arbwHg",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 43,
+   "averageViewPercentage": 72.5,
+   "subscribersGained": 0
+  },
+  {
+   "video": "YNIBJBjTirg",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 17,
+   "averageViewPercentage": 106.44,
+   "subscribersGained": 0
+  },
+  {
+   "video": "AjiwPv09KG0",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 9.36,
+   "subscribersGained": 0
+  },
+  {
+   "video": "xXmhxA3xUhQ",
+   "views": 2,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 146,
+   "averageViewPercentage": 55.7,
+   "subscribersGained": 0
+  },
+  {
+   "video": "dkdFdy1FXgQ",
+   "views": 2,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 25,
+   "averageViewPercentage": 47.18,
+   "subscribersGained": 0
+  }
+ ],
+ "split": [
+  {
+   "creatorContentType": "videoOnDemand",
+   "views": 50,
+   "estimatedMinutesWatched": 25,
+   "averageViewPercentage": 11.38
+  },
+  {
+   "creatorContentType": "shorts",
+   "views": 1789,
+   "estimatedMinutesWatched": 287,
+   "averageViewPercentage": 39.99
+  }
+ ]
 }
