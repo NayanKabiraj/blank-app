@@ -150,6 +150,13 @@ def _intro_problems(scenes, lang: str, max_words: int) -> list[str]:
     return out
 
 
+def _pack_is_bilingual(pack: str) -> bool:
+    """True when the pack's scene modules pick their on-screen text by language (vox.L / ctx.lang)."""
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[1] / "generated_animations" / "scenes" / pack
+    return any(("vox.L(" in t) or ("ctx.lang" in t) for t in (f.read_text(encoding="utf-8") for f in root.glob("scene_*.py")))
+
+
 def _present(plan):
     """[(label, script)] for the languages this plan has (Hindi is optional)."""
     return [(l, x) for l, x in (("english", plan.english), ("hindi", plan.hindi)) if x is not None]
@@ -174,6 +181,8 @@ def _animation_problems(plan) -> list[str]:
             continue
         if config.LOOK == "vox" and packs.look(pack) != "vox":
             out.append(f"{lang}: animation pack {pack!r} must use the vox look: shots.json needs \"look\": \"vox\" and the shots must draw with generated_animations/shared/vox.py (paper cut-outs, ink text; see AUTHORING.md)")
+        if lang == "hindi" and not _pack_is_bilingual(pack):
+            out.append(f"hindi: animation pack {pack!r} has no Hindi text - write every on-screen string with vox.L(ctx, en, hi) or T[ctx.lang] so the Hindi video is vox style too (AUTHORING.md, 'Hindi')")
         missing = [i + 1 for i in range(len(s.scenes)) if i not in have]
         if not have:
             out.append(f"{lang}: animation pack {pack!r} has no shots.json / shots")

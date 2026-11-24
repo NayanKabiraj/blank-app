@@ -157,3 +157,13 @@ or image licences are involved.
 After the workflow run, if an upload is queued because of `invalid_grant` ("Google authorization required"), fetch `main` and print `python -m shorts.ytauth banner` in your final message so the owner can tap the link
 (then Allow, then "Submit new issue"). Never print tokens. See `docs/oauth-mobile.md`.
 
+
+## Learnings loop (owner instruction, 24 Nov 2026) - read BEFORE choosing the topic
+1. Run `python -m shorts.channel_trends summary` AND `python -m shorts.channel_trends trending` (what YouTube itself pushes in Education / Science & Technology: title shapes, lengths, recurring words, top titles).
+2. Read `strategy/learnings.md`. Apply its Rules (38-45 s Shorts = 100-112 words with the payoff by second ~22 and a looping last line; hook about the viewer's own life in the first 2 seconds; timely beats
+   evergreen when free; documentaries only after a Short on the topic got traction; series promise inside the first 20 s) and run its Tests.
+3. Do a quick trend check with WebSearch for THIS WEEK (sky events, launches, news) and look at the trending digest; adapt a trending topic to a personal hook instead of copying a title.
+4. Write `Learning applied:` in `research_summary` (which rule or test, what you changed) and, if the new channel data says something new, add ONE dated evidence line to `strategy/learnings.md` (never invent numbers).
+5. Hindi (when `VIDEO_LANGS` includes `hi`): the Hindi video follows the same vox look - the pack writes every on-screen string with `vox.L(ctx, "EN", "हिन्दी")` or `T[ctx.lang]`
+   (the validator fails a Hindi pack without it); same shots, same sentence indices.
+6. Documentary gate: the learnings file says documentaries are the weak format (11 % viewed). Only produce one when a Short on the same topic got traction, <= 4 min, one a week at most, unless the owner asks otherwise.

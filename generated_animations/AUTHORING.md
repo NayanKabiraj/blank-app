@@ -61,3 +61,9 @@ Decide per scene (do not use it everywhere; at most 1-3 times per Short, 2-6 per
 - **Do not use it** for explanations of how something works, definitions, steps, comparisons, jokes, or anything without a real date or event.
 - **Facts rule:** a clipping is a claim on screen. The headline and date must be supported by the research (Claims table); never invent a quote, an outlet or a statistic. Use a generic masthead (for example "The Curious Loop Times") instead of a real newspaper's name.
 - **Timing:** arrive on the sentence that names the event, hold about 2 seconds, then let it leave before the next visual starts. Model: `scenes/time_flies_vox/scene_003.py` (the 2005 survey).
+
+## Hindi (vox look in both languages)
+A Hindi video uses the SAME vox look and normally the same pack as the English one (`hindi.animation_pack` = the pack id; the plan validator requires the vox look for each language and, for Hindi, that the pack
+chooses its text by language). Write every on-screen string with `vox.L(ctx, "JUST GUESSING?", "सिर्फ़ अंदाज़ा?")` or a `T = {"en": {...}, "hi": {...}}` dict read as `T[ctx.lang]`; `ctx.text`, `vox.tape` and `vox.newspaper`
+switch to the Devanagari font (Noto Sans Devanagari) for `hi`. Sentence indices (`ctx.tt`) stay the same because the Hindi plan has the same scenes; keep text short (Hindi runs ~20 % wider: widths in `ctx.text(..., width)` scale it down).
+

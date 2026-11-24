@@ -255,3 +255,8 @@ by the end (Shorts <= 34 words, documentaries <= 48). It keeps the hook's promis
 Start every day with the channel check (`python -m shorts.channel_trends summary`): what the channel's own numbers say about niche, format and hook style, and the change made because of it (`Channel check:` in `research_summary`).
 Research records `Claims:` (every number, two sources, status) and `Gap:` (the angle competitors miss). SEO: title <= 65 characters with the keyword in the first 40, 5-8 tags, 2-3 hashtags, a Sources line (automatic).
 Short intro <= 22 words. Numeric benchmarks from blogs are hypotheses, not facts.
+
+## Learning loop
+Every RESEARCH / BUILD starts from data, not memory: `python -m shorts.channel_trends summary`, `python -m shorts.channel_trends trending`, then `strategy/learnings.md` (Rules, Tests, dated Evidence). Apply the Rules, say which one you applied
+(`Learning applied:` in `research_summary`), and update the evidence file after each channel check. A rule changes only when two or more videos agree; one video is a hint.
+
