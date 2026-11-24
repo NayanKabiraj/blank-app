@@ -73,10 +73,12 @@ def fetch(days: int = 28, max_videos: int = 200) -> dict:
         cols = [c["name"] for c in split.get("columnHeaders", [])]
         out["split"] = [dict(zip(cols, row)) for row in split.get("rows", [])]
         # the Partner Program windows: watch time over 365 days and Shorts views over 90 days (public videos only)
-        tot = an.reports().query(ids="channel==MINE", startDate=(end - dt.timedelta(days=365)).isoformat(), endDate=end.isoformat(), metrics="views,estimatedMinutesWatched,subscribersGained").execute()
-        if tot.get("rows"):
-            out["totals_365d"] = dict(zip([c["name"] for c in tot["columnHeaders"]], tot["rows"][0]))
-            out["totals_365d"]["minutes"] = out["totals_365d"].get("estimatedMinutesWatched")
+        tot = an.reports().query(ids="channel==MINE", startDate=(end - dt.timedelta(days=365)).isoformat(), endDate=end.isoformat(), dimensions="creatorContentType",
+                                 metrics="views,estimatedMinutesWatched,subscribersGained").execute()
+        by = {r[0]: dict(zip([c["name"] for c in tot["columnHeaders"][1:]], r[1:])) for r in tot.get("rows", [])}
+        # only LONG-FORM watch time counts toward the 4,000 public watch hours (YouTube Help: Shorts-feed watch time does not)
+        out["totals_365d"] = {"minutes": (by.get("videoOnDemand") or {}).get("estimatedMinutesWatched", 0), "shorts_minutes": (by.get("shorts") or {}).get("estimatedMinutesWatched", 0),
+                              "subscribersGained": sum(int(v.get("subscribersGained") or 0) for v in by.values())}
         s90 = an.reports().query(ids="channel==MINE", startDate=(end - dt.timedelta(days=90)).isoformat(), endDate=end.isoformat(), dimensions="creatorContentType", metrics="views").execute()
         out["shorts_90d"] = {"views": next((r[1] for r in s90.get("rows", []) if r[0] == "shorts"), 0)}
     except Exception as exc:  # noqa: BLE001
@@ -111,7 +113,10 @@ def monetization(data: dict) -> dict:
     hours = round(minutes / 60, 1)
     per_year = hours * 365 / days
     not_public = [v["title"][:40] for v in data.get("videos", []) if v.get("privacy") not in (None, "public")]
-    return {"subscribers": subs, "to_500": max(0, YPP["fan_funding_subs"] - subs), "to_1000": max(0, YPP["ads_subs"] - subs),
+    an = {r.get("video"): r for r in data.get("analytics", [])}
+    top_subs = sorted(({"title": v.get("title", "")[:50], "subs": int(an.get(v.get("id"), {}).get("subscribersGained") or 0), "views": v.get("views", 0)} for v in data.get("videos", [])),
+                      key=lambda r: -r["subs"])[:3]
+    return {"subscribers": subs, "top_subscriber_videos": [t for t in top_subs if t["subs"] > 0], "to_500": max(0, YPP["fan_funding_subs"] - subs), "to_1000": max(0, YPP["ads_subs"] - subs),
             "watch_hours_last_%dd" % days: hours, "watch_hours_if_pace_holds_12m": round(per_year), "needed_watch_hours_12m": YPP["ads_watch_hours_12m"],
             "shorts_views_last_%dd" % days: int(shorts.get("views", 0)), "needed_shorts_views_90d": YPP["ads_shorts_views_90d"],
             "subscribers_per_1000_views": round(1000 * float(ch.get("subscribersGained", 0) or sum(int(r.get("subscribersGained") or 0) for r in data.get("analytics", []))) / max(1, views), 2),

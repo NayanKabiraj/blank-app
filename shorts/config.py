@@ -70,6 +70,7 @@ if YT_CLIENT_SECRET and not _TOKEN:
 _repo = os.getenv("GITHUB_REPOSITORY", "NayanKabiraj/blank-app")
 OAUTH_REDIRECT_URI = os.getenv("OAUTH_REDIRECT_URI") or "https://{}.github.io/{}/oauth/callback.html".format(*(_repo.split("/", 1)[0].lower(), _repo.split("/", 1)[1]))
 YT_REFRESH_TOKENS = {"en": _TOKEN, "hi": _TOKEN}
+CHANNEL_HANDLE = os.getenv("CHANNEL_HANDLE", "nayankabiraj").lstrip("@")      # for the one-tap subscribe link in every description
 YT_PRIVACY = os.getenv("YT_PRIVACY", "private")         # private (default) | unlisted | public
 # YouTube's "altered or synthetic content" label. Off by default: the videos are animated explainers with a generic
 # synthetic narrator. Set the repository variable YT_AI_DISCLOSURE=on to flag every upload as containing synthetic media.

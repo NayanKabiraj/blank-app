@@ -7,10 +7,11 @@ help that goal (or protect it) is not the priority. Each plan's `research_summar
 - Fan-funding tier: 500 subscribers (+ 3 public uploads in 90 days and either 3,000 public watch hours in 12 months or 3 M public Shorts views in 90 days - details on the Help page).
 - Ads tier: **1,000 subscribers AND (4,000 public watch hours in 12 months OR 10 M public Shorts views in 90 days)**.
 - Third-party reports (Metricool, Digital Trends, not verified against YouTube's own page) say these rise on **1 Feb 2027 to 8,000 watch hours or 20 M Shorts views**: if true, the window to qualify under the lower bar is short. Treat subscribers as the bottleneck either way.
-- Only public views and watch time count (the channel's uploads are public; `channel_trends` flags any video that is not).
+- Only public views and watch time count (the channel's uploads are public; `channel_trends` flags any video that is not). **Shorts-feed watch time does NOT count toward the 4,000 hours** - only long-form does (YouTube Help); the report shows the qualifying long-form hours separately.
+- The honest assessment, the math and the ranked plan are in `strategy/growth-plan.md`.
 
 ## Where the channel stands (24 Nov 2026, `python -m shorts.channel_trends summary` -> `monetization`)
-- 47 subscribers (953 to 1,000); about 5 watch hours in the last 28 days (12-month pace at that rate: about 65 h vs 4,000); 1,789 Shorts views in 28 days (vs 10 M in 90 days); **about 1.1 subscribers per 1,000 views**.
+- 47 subscribers (953 to 1,000); about 5 watch hours in the last 28 days of which only ~0.4 h is long-form (the qualifying kind); 1,789 Shorts views in 28 days (vs 10 M in 90 days); **about 1.1 subscribers per 1,000 views**.
 - Reading: views are far too few and almost none convert to subscribers. Reach (impressions, retention) and conversion (a reason to subscribe) both have to move; neither is solved by uploading more of the same.
 
 ## Policy guardrails (a channel that breaks them is removed from the Partner Program, however many views it has)

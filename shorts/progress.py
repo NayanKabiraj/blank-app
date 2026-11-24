@@ -67,7 +67,8 @@ def snapshot(data: dict, history: list, doc_history: list, today: dt.date | None
             "total_views": (data.get("channel") or {}).get("viewCount"),
             "videos": (data.get("channel") or {}).get("videoCount"),
             "watch_hours_28d": mon.get("watch_hours_last_28d"),
-            "watch_hours_365d": round(float(tot["minutes"]) / 60, 1) if tot.get("minutes") is not None else None,
+            "watch_hours_365d": round(float(tot["minutes"]) / 60, 1) if tot.get("minutes") is not None else None,   # long-form only: the qualifying hours
+            "shorts_watch_hours_365d": round(float(tot["shorts_minutes"]) / 60, 1) if tot.get("shorts_minutes") is not None else None,
             "shorts_views_28d": int(shorts.get("views", 0)) if shorts else None,
             "shorts_views_90d": int(s90["views"]) if s90.get("views") is not None else None,
             "shorts_avg_view_pct": shorts.get("averageViewPercentage"),
@@ -122,8 +123,8 @@ def render(snap: dict, prev: dict | None, status: list[dict], dig: dict, trend: 
     if not snap["available"]:
         L += ["**Channel data NOT AVAILABLE this week** (" + str(dig.get("reason", "the YouTube APIs returned nothing")) + "). Milestones stay open; nothing is estimated.", ""]
     L += ["## Scoreboard", "", "| Metric | Now | Change |", "|---|---|---|"]
-    for label, key in (("Subscribers", "subscribers"), ("Total views", "total_views"), ("Public watch hours, last 28 days", "watch_hours_28d"),
-                       ("Public watch hours, last 365 days", "watch_hours_365d"), ("Shorts views, last 28 days", "shorts_views_28d"),
+    for label, key in (("Subscribers", "subscribers"), ("Total views", "total_views"), ("Watch hours (Shorts + long-form), last 28 days", "watch_hours_28d"),
+                       ("Qualifying watch hours (LONG-FORM only), last 365 days", "watch_hours_365d"), ("Shorts watch hours, last 365 days (do not count)", "shorts_watch_hours_365d"), ("Shorts views, last 28 days", "shorts_views_28d"),
                        ("Shorts views, last 90 days", "shorts_views_90d"), ("Shorts average viewed %", "shorts_avg_view_pct"),
                        ("Subscribers per 1,000 views", "subs_per_1000_views"), ("Most-viewed video, 28 days", "best_video_views"),
                        ("Uploads in the last 7 days", "uploads_7d"), ("Upload streak (days)", "upload_streak_days")):

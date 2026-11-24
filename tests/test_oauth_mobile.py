@@ -249,7 +249,7 @@ def test_progress_report_milestones_and_uploads(tmp_path, monkeypatch):
     data = {"available": True, "days": 28, "channel": {"subscriberCount": 120, "viewCount": 9000, "videoCount": 30},
             "split": [{"creatorContentType": "shorts", "views": 5000, "averageViewPercentage": 55.0}],
             "analytics": [{"views": 1200, "estimatedMinutesWatched": 600, "subscribersGained": 6}],
-            "totals_365d": {"minutes": 9000}, "shorts_90d": {"views": 20000}, "videos": []}
+            "totals_365d": {"minutes": 9000, "shorts_minutes": 600}, "shorts_90d": {"views": 20000}, "videos": []}
     snap = pr.snapshot(data, hist, [], today)
     assert snap["subscribers"] == 120 and snap["watch_hours_365d"] == 150.0 and snap["shorts_views_90d"] == 20000 and snap["best_video_views"] == 1200
     ladders = pr._load(pr.MILESTONES, {})["ladders"]
@@ -262,3 +262,10 @@ def test_progress_report_milestones_and_uploads(tmp_path, monkeypatch):
     assert next(m for m in na if m["key"] == "watch_hours_365d")["reached"] == []                  # n/a never reaches a milestone
     text = pr.render(snap, {"subscribers": 100, "date": "2026-11-22"}, st, {"available": False, "reason": "x"}, {})
     assert "Weekly progress report - 2026-11-29" in text and "+20 vs last report" in text and "Reached this week" in text
+
+
+def test_every_description_gets_a_one_tap_subscribe_link():
+    from shorts import strategy
+    d = strategy.with_subscribe("A video. #Shorts")
+    assert "https://www.youtube.com/@nayankabiraj?sub_confirmation=1" in d and strategy.with_subscribe(d) == d
+    assert "सब्सक्राइब" in strategy.with_subscribe("वीडियो", "hi")

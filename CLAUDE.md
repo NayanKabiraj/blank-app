@@ -73,6 +73,10 @@ the workflow renders.
    1,000 views, Shorts viewed %, upload streak) are tracked automatically; every Sunday 21:00 IST the workflow refreshes the numbers, writes `reports/progress-<date>.md` + `reports/latest.md` and opens a GitHub issue with the report (phone
    notification). The Sunday daily run reads `reports/latest.md`, shows its Milestones and Next-week sections in the final message and applies "Next week" to the following week's plan. Never estimate a number the APIs did not return (n/a).
 
+19. **Growth plan** (owner request, 24 Nov 2026; `strategy/growth-plan.md`): the channel will not be monetized by volume alone. Explore across formats until 8 Dec, then at least 60 % of topics come from the top-2 series by views and
+   subscribers gained; any Short above 300 views gets a Part 2 within 3 days; every video carries the conversion toolkit (series promise in the first 20 s, series name, pinned comment answering `next_video`, the one-tap subscribe link that the pipeline adds
+   to every description); long-form (the only watch time that counts toward the 4,000 hours) is one search-led video a week built on a winning Short topic.
+
 ## Quick commands
 
 ```bash
