@@ -285,16 +285,16 @@ After the workflow run, if an upload is queued because of `invalid_grant` ("Goog
 5. Hindi (when `VIDEO_LANGS` includes `hi`): the Hindi video follows the same vox look - the pack writes every on-screen string with `vox.L(ctx, "EN", "हिन्दी")` or `T[ctx.lang]`
    (the validator fails a Hindi pack without it); same shots, same sentence indices.
 
-## Daily production plan (owner instruction, 24 Nov 2026) - 10 uploads a day
-Decision and the 14-day review rules: `strategy/learnings.md` ("DECISION"). Per day: **5 Short topics x EN+HI = 10 uploads**; on **Sunday** 4 Short topics x EN+HI + 1 documentary x EN+HI (documentary follows
-`shorts/CLAUDE_DOCUMENTARY_TASK.md`, only when a Short on its topic got traction, else a 5th Short topic).
-1. Do the channel check, trending digest and learnings (above) ONCE, then pick 5 topics in this priority order (a short day still ships the best first): (1) everyday-tech / phone / home explainer with a personal
-   hook, (2) Space & Universe or Earth & Nature explainer, (3) a timely topic from this week, (4) ONE **Horror & Suspense** story (niche "Horror & Suspense": an ORIGINAL fictional story, ~38-45 s, hook + twist,
-   bloodless and not gory, no real people/places/events/brands as victims; the description says it is fiction ("A fictional story.") and Claims says "FICTIONAL ASSUMPTION - original fiction"; the intro scene may use
-   "Tonight: ..." / "In this story ..."), (5) a wildcard from the research queue. Never repeat a topic; check `python -m shorts.niches recent`.
+## Daily production plan (owner instruction, 24 Nov 2026) - 6 uploads a day (10 when the quota is raised)
+The current target and the 14-day review rules are in `strategy/learnings.md` ("DECISION"; change the target there when the owner raises the quota). Per day: **3 Short topics x EN+HI = 6 uploads**; on **Sunday** 2 Short
+topics x EN+HI + 1 documentary x EN+HI (documentary follows `shorts/CLAUDE_DOCUMENTARY_TASK.md`, only when a Short on its topic got traction, else a third Short topic).
+1. Do the channel check, trending digest and learnings (above) ONCE, then pick the topics in this priority order (a short day still ships the best first): (1) everyday-tech / phone / home explainer with a personal
+   hook, (2) a timely topic from this week or a Space & Universe / Earth & Nature explainer, (3) ONE **Horror & Suspense** story (niche "Horror & Suspense": an ORIGINAL fictional story, ~38-45 s, hook + twist, bloodless and not
+   gory, no real people/places/events/brands as victims; the description says it is fiction ("A fictional story.") and Claims says "FICTIONAL ASSUMPTION - original fiction"; the intro scene may use "Tonight: ..." /
+   "In this story ..."). At the 10-a-day target add (4) a second explainer from the research queue and (5) a wildcard. Never repeat a topic; check `python -m shorts.niches recent`.
 2. For each topic in order: research (web search for explainers) -> plan JSON with BOTH `english` and `hindi` blocks (same scenes; Hindi narration in Devanagari, Hindi title <= 90 characters, Hindi
    `thumbnail_question`, the same `animation_pack` in both) -> ONE bilingual vox pack (`vox.L(ctx, en, hi)` / `T[ctx.lang]`; check an English AND a Hindi preview frame set for text that is too wide) -> scan -> preview ->
    validate (`python -m shorts.plan validate`) -> commit only the pack folder (rule 7) -> dispatch `daily-shorts.yml` with `plan_json` and `langs` "en,hi".
 3. **Dispatch rule**: GitHub keeps only ONE pending run per concurrency group, so never queue more than one: dispatch topic k+1 only when run k is `in_progress` or finished and no other run is queued. Author the next topic
    while the previous one renders.
-4. Quality over quota: if time runs short, ship fewer topics rather than rush; never ship a pack that failed frame inspection. Report how many of the 10 uploaded or queued and why any are missing.
+4. Quality over quota: if time runs short, ship fewer topics rather than rush; never ship a pack that failed frame inspection. Report how many of the day's uploads happened or queued and why any are missing.
