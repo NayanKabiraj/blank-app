@@ -68,7 +68,7 @@ def main() -> int:
             shutil.move(video, final)
             thumb = thumbs.for_script(scripts[lang], plan.niche, lang, out / f"{dt.date.today().isoformat()}_{lang}.jpg", short=True)
             # Always keep a copy first, so the video is saved even if the upload fails
-            desc = strategy.with_sources(strategy.up_next(scripts[lang].description, scripts[lang].next_video, lang), plan.research_summary)
+            desc = strategy.with_subscribe(strategy.with_sources(strategy.up_next(scripts[lang].description, scripts[lang].next_video, lang), plan.research_summary), lang)
             entry = {"file": final.name, "saved_to": _store(final, scripts[lang], lang, thumb, desc)}
             if args.dry_run:
                 log.info("Dry run: not uploading %s", final)

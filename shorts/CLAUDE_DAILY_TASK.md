@@ -308,3 +308,7 @@ the first 20 s, series follow-up with `next_video` and the pinned comment, reach
 ## Milestones and the weekend report
 `reports/latest.md` (written by `weekly-report.yml` every Sunday 21:00 IST, also opened as a GitHub issue) holds the scoreboard, the milestones reached and open, and "Next week". On Sunday read it, show its Milestones and Next-week sections in your final
 message, and apply "Next week" to the coming week's topics, hooks and conversion levers. Milestone ladders: `strategy/milestones.json`.
+
+## Growth plan (read `strategy/growth-plan.md`)
+Tag every plan (cluster = the series name, niche, both languages). Until 8 Dec explore; from 9 Dec at least 60 % of topics come from the top-2 series by views and subscribers gained (see the weekly report). A Short above 300 views gets a Part 2 within 3 days (use its
+`follow_ups`). Every Short carries the conversion toolkit: the series promise inside the first 20 s, the series name on screen, `next_video` answered in `pinned_comment`; the pipeline adds the one-tap subscribe link to the description. Reports show the qualifying (long-form only) watch hours.

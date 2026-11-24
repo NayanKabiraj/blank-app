@@ -101,6 +101,16 @@ def up_next(description: str, next_video: str, lang: str = "en") -> str:
     return f"{description.rstrip()}\n\n{label}: {next_video}"
 
 
+def with_subscribe(description: str, lang: str = "en") -> str:
+    """A one-tap subscribe link (the ?sub_confirmation=1 link asks the viewer to confirm the subscription): conversion is the channel's bottleneck."""
+    from . import config
+    url = f"https://www.youtube.com/@{config.CHANNEL_HANDLE}?sub_confirmation=1"
+    if url in description:
+        return description
+    label = "अगला एपिसोड मिस न करें, सब्सक्राइब करें" if lang == "hi" else "Subscribe so you don't miss the next episode"
+    return f"{description.rstrip()}\n\n{label}: {url}"
+
+
 def _cli() -> int:
     if len(sys.argv) > 1 and sys.argv[1] == "queue":
         hist = json.loads(config.HISTORY_FILE.read_text()) if config.HISTORY_FILE.exists() else []

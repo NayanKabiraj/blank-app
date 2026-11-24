@@ -2,7 +2,7 @@
   "note": "Milestone ladders toward the Partner Program (strategy/monetization.md). A milestone is 'reached' the first time the weekly report sees the metric at or above it; the date is stored in data/progress_history.json. Edit the lists to move the goalposts.",
   "ladders": [
     {"key": "subscribers", "label": "Subscribers", "steps": [50, 100, 250, 500, 750, 1000], "marks": {"500": "fan-funding tier", "1000": "ads tier: subscribers requirement"}},
-    {"key": "watch_hours_365d", "label": "Public watch hours (last 365 days)", "steps": [100, 500, 1000, 2000, 3000, 4000], "marks": {"3000": "fan-funding tier: watch hours", "4000": "ads tier: watch hours (may rise to 8,000 on 1 Feb 2027, verify)"}},
+    {"key": "watch_hours_365d", "label": "Qualifying watch hours (long-form only, last 365 days)", "steps": [100, 500, 1000, 2000, 3000, 4000], "marks": {"3000": "fan-funding tier: watch hours", "4000": "ads tier: watch hours (may rise to 8,000 on 1 Feb 2027, verify)"}},
     {"key": "shorts_views_90d", "label": "Shorts views (last 90 days)", "steps": [10000, 100000, 500000, 1000000, 5000000, 10000000], "marks": {"3000000": "fan-funding tier alternative", "10000000": "ads tier alternative (may rise to 20 M, verify)"}},
     {"key": "best_video_views", "label": "Most-viewed video (28 days)", "steps": [1000, 5000, 10000, 50000, 100000]},
     {"key": "subs_per_1000_views", "label": "Subscribers per 1,000 views (28 days)", "steps": [2, 5, 10, 20]},
