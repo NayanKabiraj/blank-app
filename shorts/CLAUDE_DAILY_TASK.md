@@ -304,3 +304,7 @@ topics x EN+HI + 1 documentary x EN+HI (documentary follows `shorts/CLAUDE_DOCUM
 The goal of every video is subscribers and watch time toward the Partner Program, without risking it. Write a `Growth:` line in `research_summary`: which lever this video pulls (hook/retention, subscribe trigger such as a series promise in
 the first 20 s, series follow-up with `next_video` and the pinned comment, reach) and the policy check (its own angle and structure, not a clone of yesterday's video; nothing off-putting; no health/finance/legal advice). Use the
 `monetization` block of the channel check (subscribers to 1,000, watch hours, subscribers per 1,000 views) to decide what to change next.
+
+## Milestones and the weekend report
+`reports/latest.md` (written by `weekly-report.yml` every Sunday 21:00 IST, also opened as a GitHub issue) holds the scoreboard, the milestones reached and open, and "Next week". On Sunday read it, show its Milestones and Next-week sections in your final
+message, and apply "Next week" to the coming week's topics, hooks and conversion levers. Milestone ladders: `strategy/milestones.json`.

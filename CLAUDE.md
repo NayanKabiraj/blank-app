@@ -69,6 +69,10 @@ the workflow renders.
    for the YouTube Partner Program, safely (no template-like mass-produced videos, no off-putting content, no sensitive-topic personas). Every plan's `research_summary` has a `Growth:` line (lever pulled + policy check), the channel
    check includes the `monetization` scoreboard (`python -m shorts.channel_trends summary`), and when a choice trades quantity for quality or policy safety, choose safety.
 
+18. **Milestones and the weekend progress report** (owner instruction, 24 Nov 2026; `strategy/milestones.json`, `shorts/progress.py`, workflow `weekly-report.yml`): the ladders (subscribers, public watch hours, Shorts views, best video, subscribers per
+   1,000 views, Shorts viewed %, upload streak) are tracked automatically; every Sunday 21:00 IST the workflow refreshes the numbers, writes `reports/progress-<date>.md` + `reports/latest.md` and opens a GitHub issue with the report (phone
+   notification). The Sunday daily run reads `reports/latest.md`, shows its Milestones and Next-week sections in the final message and applies "Next week" to the following week's plan. Never estimate a number the APIs did not return (n/a).
+
 ## Quick commands
 
 ```bash

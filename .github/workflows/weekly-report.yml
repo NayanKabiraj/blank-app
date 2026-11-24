@@ -1,0 +1,51 @@
+name: Weekly progress report
+
+# Every Sunday evening (21:00 IST, after the day's uploads): refresh the channel numbers, update the milestones and write reports/progress-<date>.md
+# (+ reports/latest.md), then open a GitHub issue with the report so it arrives as a notification on the phone (GitHub app) with every milestone,
+# the scoreboard and next week's focus. The daily task reads reports/latest.md on Sunday. Nothing is estimated: a number the APIs did not return is n/a.
+on:
+  schedule:
+    - cron: "30 15 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: channel-trends
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+      YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+      YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: shorts/requirements.txt
+      - run: pip install -q -r shorts/requirements.txt
+      - name: Refresh the channel numbers and trending charts
+        run: python -m shorts.channel_trends fetch
+      - name: Milestones and the report
+        run: python -m shorts.progress report > "$RUNNER_TEMP/report.md"
+      - name: Save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/channel_trends.json data/youtube_trending.json data/progress_history.json reports/
+          git commit -m "chore: weekly progress report [skip ci]" || true
+          for i in 1 2 3 4 5 6; do git pull --rebase -q && git push && break; echo "push attempt $i failed"; git rebase --abort 2>/dev/null || true; sleep $((i * 7)); done
+      - name: Open the report as an issue (phone notification)
+        run: |
+          gh issue create --repo "$GITHUB_REPOSITORY" --title "Weekly progress report - $(date -u +%F)" --body-file "$RUNNER_TEMP/report.md"
+      - name: Also in the run summary
+        run: cat "$RUNNER_TEMP/report.md" >> "$GITHUB_STEP_SUMMARY"
