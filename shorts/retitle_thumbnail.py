@@ -46,9 +46,8 @@ def main() -> int:
         if not T.render(spec, out, "short" if short else "long"):
             log.error("Render failed for %s", a.video_id)
             return 1
-        creds = Credentials(None, refresh_token=config.YT_REFRESH_TOKENS[a.lang], token_uri="https://oauth2.googleapis.com/token",
-                            client_id=config.YT_CLIENT_ID, client_secret=config.YT_CLIENT_SECRET, scopes=upload.SCOPES)
-        creds.refresh(Request())
+        from . import ytauth
+        creds = ytauth.credentials(a.lang, upload.SCOPES)
         yt = build("youtube", "v3", credentials=creds)
         ok = upload.set_thumbnail(yt, a.video_id, out)
         return 0 if ok else 1

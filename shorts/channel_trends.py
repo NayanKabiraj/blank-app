@@ -23,16 +23,16 @@ FILE = config.DATA_DIR / "channel_trends.json"
 
 
 def _service(name: str, version: str):
-    from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
-    creds = Credentials(None, refresh_token=config.YT_REFRESH_TOKENS["en"], token_uri="https://oauth2.googleapis.com/token",
-                        client_id=config.YT_CLIENT_ID, client_secret=config.YT_CLIENT_SECRET)   # no scopes: use what the token was granted
+    from . import ytauth
+    creds = ytauth.credentials("en")   # the stored sign-in first, then the secret; no scopes: use what the token was granted
     return build(name, version, credentials=creds, cache_discovery=False)
 
 
 def fetch(days: int = 28, max_videos: int = 50) -> dict:
+    from . import ytauth
     out = {"available": False, "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "days": days}
-    if not (config.YT_CLIENT_ID and config.YT_CLIENT_SECRET and config.YT_REFRESH_TOKENS["en"]):
+    if not (config.YT_CLIENT_ID and config.YT_CLIENT_SECRET and ytauth.candidates("en")):
         out["reason"] = "no YouTube credentials in this environment"
         return out
     try:

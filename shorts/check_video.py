@@ -20,9 +20,8 @@ log = logging.getLogger(__name__)
 
 
 def check(video_ids: list[str], lang: str) -> list[dict]:
-    creds = Credentials(None, refresh_token=config.YT_REFRESH_TOKENS[lang], token_uri="https://oauth2.googleapis.com/token",
-                        client_id=config.YT_CLIENT_ID, client_secret=config.YT_CLIENT_SECRET, scopes=upload.SCOPES)
-    creds.refresh(Request())
+    from . import ytauth
+    creds = ytauth.credentials(lang, upload.SCOPES)
     yt = build("youtube", "v3", credentials=creds)
     resp = yt.videos().list(part="status,snippet,contentDetails", id=",".join(video_ids)).execute()
     found = {v["id"]: v for v in resp.get("items", [])}
