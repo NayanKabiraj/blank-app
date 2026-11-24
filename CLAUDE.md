@@ -77,6 +77,10 @@ the workflow renders.
    subscribers gained; any Short above 300 views gets a Part 2 within 3 days; every video carries the conversion toolkit (series promise in the first 20 s, series name, pinned comment answering `next_video`, the one-tap subscribe link that the pipeline adds
    to every description); long-form (the only watch time that counts toward the 4,000 hours) is one search-led video a week built on a winning Short topic.
 
+20. **Free SEO research** (owner request, 24 Nov 2026; `shorts/seo.py`, workflow `seo-research.yml`): for every candidate topic dispatch `seo-research.yml` with the topic phrased as people would search it (up to 6 queries separated by `|`; use `hl=hi gl=IN` for the Hindi phrasing), then read
+   `data/seo/latest.json` (autocomplete phrases, outlier videos, title/length patterns). Put the best autocomplete phrase in the title and tags, copy what the outliers do in their first seconds, and record the winning phrase in `Gap:`. The channel check also reads `search_terms` (the searches that
+   brought viewers to our videos, from the Analytics API). Public metadata only, low volume; the endpoints are unofficial, so a failure means "SEO data NOT AVAILABLE", never an invented number.
+
 ## Quick commands
 
 ```bash

@@ -1,0 +1,52 @@
+name: SEO research
+
+# Free SEO research for the daily task (shorts/seo.py): YouTube autocomplete expansions + yt-dlp metadata of the top search results (outliers, title/length patterns)
+# for up to 6 queries separated by "|". Writes data/seo/latest.json (committed) and prints it in the run summary. Public metadata only, low volume, nothing downloaded.
+on:
+  workflow_dispatch:
+    inputs:
+      queries:
+        description: 'Queries separated by | (max 6), e.g. "how does gps work|why does my phone get hot"'
+        type: string
+        required: true
+      hl:
+        description: "Interface language: en or hi"
+        type: string
+        default: "en"
+      gl:
+        description: "Country: US, IN ..."
+        type: string
+        default: "US"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-research
+  cancel-in-progress: false
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      IN_QUERIES: ${{ inputs.queries }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: shorts/requirements.txt
+      - run: pip install -q -r shorts/requirements.txt
+      - name: Research
+        run: |
+          python -m shorts.seo run "$IN_QUERIES" --hl "${{ inputs.hl }}" --gl "${{ inputs.gl }}" | tee "$RUNNER_TEMP/seo.txt"
+          { echo '```json'; head -c 60000 data/seo/latest.json; echo; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/seo/latest.json
+          git commit -m "chore: SEO research [skip ci]" || true
+          for i in 1 2 3 4 5 6; do git pull --rebase -q && git push && break; echo "push attempt $i failed"; git rebase --abort 2>/dev/null || true; sleep $((i * 7)); done

@@ -153,6 +153,10 @@ def render(snap: dict, prev: dict | None, status: list[dict], dig: dict, trend: 
         L += [f"- Bottom: {t['title'][:60]} ({t['views']} views)" for t in dig.get("bottom", [])]
         L += [f"- Signal: {s}" for s in dig.get("signals", [])]
         L.append("")
+    terms = dig.get("search_terms") or []
+    L += ["## What people searched to find us (YouTube search, last 90 days)", ""]
+    L += [f"- \"{t['term']}\": {t['views']} views, {t['minutes']} min watched" for t in terms[:10]] if terms else ["- n/a: no search traffic reported yet (it appears once videos rank for a query)."]
+    L.append("")
     if trend.get("available"):
         L += ["## What YouTube is pushing", "", f"- Most-popular Science & Tech charts: {int(trend['share_under_60s'] * 100)} % under 60 s, median {trend['median_title_chars']}-character titles; recurring words: {', '.join(trend['recurring_words'][:8])}.", ""]
     L += ["## Next week", ""] + [f"- {x}" for x in next_week(snap, status)] + [""]
