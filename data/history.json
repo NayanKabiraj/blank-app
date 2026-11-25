@@ -840,5 +840,32 @@
         "video_id": "_GlO5Hn7QnI"
       }
     }
+  },
+  {
+    "date": "2026-11-25",
+    "niche": "Horror & Suspense",
+    "topic": "The Last Train Announcement",
+    "mood": "mysterious",
+    "cluster": "Midnight Platform",
+    "follow_ups": [
+      "The mirror that is one second late",
+      "The voicemail from tomorrow",
+      "The village with no night"
+    ],
+    "next_video": "The mirror that is one second late",
+    "gate_score": 80,
+    "thumbnail_text": "LAST STOP?",
+    "videos": {
+      "en": {
+        "file": "2026-11-25_en.mp4",
+        "saved_to": "videos/2026-11-25/en.mp4",
+        "video_id": "f1SGMLZoMww"
+      },
+      "hi": {
+        "file": "2026-11-25_hi.mp4",
+        "saved_to": "videos/2026-11-25/hi.mp4",
+        "video_id": "Ft6g5O3vggo"
+      }
+    }
   }
 ]

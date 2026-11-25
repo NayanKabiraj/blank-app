@@ -1,57 +1,57 @@
 {
-  "niche": "How Tech Works",
-  "topic": "Why does your phone screen go dark near your ear?",
-  "research_summary": "Channel check: 25 Nov 2026 (channel_trends, YouTube Analytics): 47 subscribers, Shorts 1,789 views / 40 % viewed in 28 days, long-form 50 views / 11 % viewed, 1.1 subscribers per 1,000 views; qualifying long-form watch hours ~0.4 per 28 days; best explainer reach = personal phone/body hooks (Face unlock 143, deja vu 100), best retention = Space (84 %), stories out-reached explainers (505, 394). Changes made: personal phone hook first, 38-45 s length, payoff before second 22, series promise in the first 20 s. Candidates (score /40: curiosity, personal relevance, visual, proof): (1) proximity sensor 33, (2) how does your phone know which way is up 31, (3) why your charger gets warm 30, (4) why does airplane mode exist 29, (5) how a touchscreen feels your finger 28. Winner: (1). Titles (/50): 'Why Your Phone Screen Goes Dark Near Your Ear' 44 (chosen, 46 chars), 'The Invisible Light Inside Your Phone' 41, 'How Your Phone Knows Your Face Is Close' 40. Thumbnails: A phone beside an ear with a '?' and the question (chosen), B a glowing invisible-light beam, C a hand on a dark screen. Hooks: 'Hold your phone to your ear and the screen goes dark by itself. What did it see?' (chosen), 'Your phone is shining a light at your face right now.', 'It never touches you. It still knows.'. SEO (seo-research.yml 25 Nov, en/US): people type 'why my phone screen gets off during a call' and 'how to fix screen turning off during calls'; the top results are repair and ear-speaker fixes (median 3 minutes, none are Shorts) and 'proximity sensor' tutorials about industrial sensors - a 40 s curiosity Short on the phone case is uncontested. Gap: the top videos are repair guides or industrial-sensor lectures; none explains the phone case as a story (invisible light, bounce, threshold, why hair colour fools it) in under a minute. Claims: (1) phones use an infrared LED plus a light receiver and compare the reflected intensity with a threshold to switch the screen (USPTO patents 11443701 and 11159672, Samsung support page) - VERIFIED; (2) the screen goes dark to prevent accidental touches by cheek/ear and to save battery (Samsung support, Analog Devices design note) - VERIFIED; (3) light-coloured hair reflects more signal than dark hair and can fool the sensor (Analog Devices design note) - VERIFIED; (4) 'many times a second' pulsed sampling (patent 11443701 describes LED ON/OFF sampling) - PARTIALLY VERIFIED, rate not stated; some newer phones use other sensing - the narration says 'near the top sits' without brand claims. Sources: https://www.samsung.com/ae/support/mobile-devices/what-is-this-proximity-sensor-on-your-samsung-smartphone/ https://www.analog.com/en/resources/design-notes/designing-a-proximity-sensor-into-a-handheld-touchscreen-application.html Growth: lever = hook/retention (viewer's own phone, payoff by second 22) plus series promise ('Phone Secrets' cluster, next_video answered in the pinned comment); policy check: own angle and structure (a how-it-works mystery), different from today's what-if and story Shorts, no health/finance claims. Quality gate 83/100.",
-  "mood": "upbeat",
-  "cluster": "Phone Secrets",
+  "niche": "Horror & Suspense",
+  "topic": "The Last Train Announcement",
+  "research_summary": "Channel check: 25 Nov 2026 (channel_trends, YouTube Analytics): 47 subscribers, Shorts 1,789 views / 40 % viewed in 28 days, long-form 50 views / 11 % viewed, 1.1 subscribers per 1,000 views; qualifying long-form watch hours ~0.4 per 28 days; best explainer reach = personal phone/body hooks (Face unlock 143, deja vu 100), best retention = Space (84 %), stories out-reached explainers (505, 394). Changes made: personal phone hook first, 38-45 s length, payoff before second 22, series promise in the first 20 s. Candidates (score /40: hook, twist, shareability, safety): (1) The Last Train Announcement 32, (2) The mirror that is one second late 31, (3) The voicemail from tomorrow 30, (4) The village with no night 29, (5) The hotel bell that rings by itself 28 (close to the 8 Nov hit, so avoided). Winner: (1). Titles (/50): 'The Last Train Announcement (A Fictional Story)' 42 (chosen, 46 chars), 'Tonight the Train Announced My Station' 39, 'The Stop That Is On No Map' 38. Thumbnails: A a train window with the question (chosen), B two identical coats, C a station sign 'Moonlight Road'. Hooks: 'The last train home never announces stations. Tonight, it announced mine, twice.' (chosen), 'There is a stop on no map.', 'He was wearing my coat.'. Gap: story Shorts on the channel out-reached explainers (505 and 394 views) but were generic; this one is an original, bloodless premise with a single twist (the swap) and a loop (the last line repeats the hook's question); fiction is labelled in the description. Claims: FICTIONAL ASSUMPTION - original fiction written for this channel; no real people, places, trains, companies or events (the station name 'Moonlight Road' is invented); no factual claims are made. Sources: none (fiction). Growth: lever = reach and conversion through story series ('Midnight Platform' cluster: next_video is another story, answered in the pinned comment) and the comment prompt 'who rides tonight's train'; policy check: original fiction with a different structure and tone from the two explainers of the day, not gory, not manipulative, labelled fiction, no real victims. Quality gate 80/100.",
+  "mood": "mysterious",
+  "cluster": "Midnight Platform",
   "follow_ups": [
-    "How does your phone know which way is up?",
-    "Why does your phone get hot while charging?",
-    "How does a touchscreen feel your finger?"
+    "The mirror that is one second late",
+    "The voicemail from tomorrow",
+    "The village with no night"
   ],
-  "gate_score": 83,
+  "gate_score": 80,
   "english": {
-    "title": "Why Your Phone Screen Goes Dark Near Your Ear",
-    "description": "Hold a phone to your ear and the screen switches off by itself. See the invisible light inside it, how it measures distance, and why hair colour can fool it. #Shorts #Phone #HowItWorks",
+    "title": "The Last Train Announcement (A Fictional Story)",
+    "description": "A fictional story: the last train home, one empty carriage, and a stop that is on no map. A short original suspense story, no gore. #Shorts #HorrorStory #Suspense",
     "tags": [
-      "why phone screen turns off near ear",
-      "proximity sensor phone",
-      "how proximity sensor works",
-      "phone screen off during call",
-      "infrared sensor phone",
-      "phone sensors explained"
+      "the last train announcement",
+      "short horror story",
+      "suspense story",
+      "scary story short",
+      "train horror story",
+      "fictional story"
     ],
-    "hook_text": "What did it see?",
-    "thumbnail_text": "DARK SCREEN?",
-    "thumbnail_question": "Why does your phone screen go dark?",
-    "next_video": "How does your phone know it is in your pocket?",
-    "pinned_comment": "What is another thing your phone senses without telling you? Tell me below!",
+    "hook_text": "Next stop?",
+    "thumbnail_text": "LAST STOP?",
+    "thumbnail_question": "Who gets off at your stop?",
+    "next_video": "The mirror that is one second late",
+    "pinned_comment": "Who do you think rides tonight's train? Tell me below!",
     "scenes": [
       {
-        "text": "Hold your phone to your ear and the screen goes dark. What did it see?",
-        "keyword": "dark",
+        "text": "The last train home never names its stops. Tonight, it named mine. Twice.",
+        "keyword": "Twice",
         "graphic": {
           "kind": "title",
-          "headline": "What did it see?",
+          "headline": "The last train",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "clock"
         }
       },
       {
-        "text": "In this video you'll see the invisible light inside your phone, and how hair can fool it.",
-        "keyword": "you'll see",
+        "text": "Tonight's story: an empty carriage, a calm voice, and a stop on no map. Ready?",
+        "keyword": "Tonight",
         "graphic": {
           "kind": "chat",
-          "headline": "Quick chat",
+          "headline": "Tonight",
           "caption": "",
           "items": [
-            "How does it know?",
-            "Invisible light",
-            "Light?",
-            "Yes, infrared"
+            "Empty carriage",
+            "A voice",
+            "A stop?",
+            "On no map"
           ],
           "values": [],
           "answer": null,
@@ -59,29 +59,29 @@
         }
       },
       {
-        "text": "Near the top, a tiny infrared LED flashes light your eyes can't see.",
-        "keyword": "infrared LED",
+        "text": "I was alone on the 11:40. The voice said, \"Next stop, Moonlight Road.\" There is no such stop.",
+        "keyword": "Moonlight Road",
         "graphic": {
           "kind": "keyword",
-          "headline": "Invisible flashes",
-          "caption": "many times a second",
+          "headline": "Moonlight Road",
+          "caption": "not on any map",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "bulb"
+          "prop": "clock"
         }
       },
       {
-        "text": "It bounces off your cheek into a sensor. A strong bounce means very close.",
-        "keyword": "strong bounce",
+        "text": "The doors opened on my own station, cracked bench and all. And who was under the lamp?",
+        "keyword": "cracked bench",
         "graphic": {
           "kind": "steps",
-          "headline": "The bounce",
+          "headline": "The platform",
           "caption": "",
           "items": [
-            "LED flashes",
-            "Light hits cheek",
-            "Sensor measures"
+            "Doors open",
+            "My station",
+            "Cracked bench"
           ],
           "values": [],
           "answer": null,
@@ -89,34 +89,15 @@
         }
       },
       {
-        "text": "The phone compares it with a preset number. Above it, the screen turns off.",
-        "keyword": "preset number",
-        "graphic": {
-          "kind": "compare",
-          "headline": "Bounce strength",
-          "caption": "",
-          "items": [
-            "Near: screen off",
-            "Far: screen on"
-          ],
-          "values": [
-            9.0,
-            2.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Why bother? Your cheek would press buttons and end the call.",
-        "keyword": "Your cheek",
+        "text": "A man holding my bag, wearing my coat. He smiled like he'd been waiting.",
+        "keyword": "my coat",
         "graphic": {
           "kind": "myth",
-          "headline": "Why switch off?",
+          "headline": "Who is he?",
           "caption": "",
           "items": [
-            "Random feature",
-            "Stops cheek taps"
+            "A stranger",
+            "He is me"
           ],
           "values": [],
           "answer": null,
@@ -124,28 +105,43 @@
         }
       },
       {
-        "text": "Light hair reflects more light than dark hair, so it can fool the sensor.",
-        "keyword": "Light hair",
+        "text": "He stepped in. I stepped out. The voice said, \"Thank you for swapping.\"",
+        "keyword": "swapping",
         "graphic": {
-          "kind": "quiz",
-          "headline": "What can fool it?",
+          "kind": "compare",
+          "headline": "The swap",
           "caption": "",
           "items": [
-            "Light hair",
-            "A cold day",
-            "Wi-Fi"
+            "He gets in",
+            "I get out"
           ],
-          "values": [],
-          "answer": 0,
+          "values": [
+            1.0,
+            1.0
+          ],
+          "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Your phone sees your face with invisible light. What else is it sensing? Tell me below!",
-        "keyword": "invisible light",
+        "text": "Now it's 11:40 and I'm on the platform. Every night, the last train names a stop. Someone gets off.",
+        "keyword": "11:40",
+        "graphic": {
+          "kind": "stat",
+          "headline": "11:40",
+          "caption": "every night",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So who is riding tonight's last train? Tell me below!",
+        "keyword": "tonight's last train",
         "graphic": {
           "kind": "title",
-          "headline": "What else is it sensing?",
+          "headline": "Who rides tonight?",
           "caption": "",
           "items": [],
           "values": [],
@@ -154,47 +150,47 @@
         }
       }
     ],
-    "animation_pack": "phone_prox_vox"
+    "animation_pack": "last_train_vox"
   },
   "hindi": {
-    "title": "फ़ोन कान के पास आते ही स्क्रीन क्यों बंद हो जाती है?",
-    "description": "फ़ोन कान से लगाते ही स्क्रीन अपने आप बंद हो जाती है। देखिए फ़ोन के अंदर की अदृश्य रोशनी, वह दूरी कैसे नापती है, और बालों का रंग उसे क्यों चकमा दे सकता है। #Shorts #Phone #कैसे_काम_करता_है",
+    "title": "आख़िरी ट्रेन की घोषणा (एक काल्पनिक कहानी)",
+    "description": "यह एक काल्पनिक कहानी है: घर की आख़िरी ट्रेन, एक ख़ाली डिब्बा, और एक ऐसा स्टेशन जो किसी नक़्शे में नहीं। छोटी मौलिक सस्पेंस कहानी, कोई ख़ून-ख़राबा नहीं। #Shorts #HorrorStory #सस्पेंस",
     "tags": [
-      "फ़ोन स्क्रीन कान के पास बंद",
-      "प्रॉक्सिमिटी सेंसर",
-      "फ़ोन सेंसर कैसे काम करते हैं"
+      "आख़िरी ट्रेन की घोषणा",
+      "छोटी हॉरर कहानी",
+      "सस्पेंस कहानी"
     ],
-    "hook_text": "उसने क्या देखा?",
-    "thumbnail_text": "स्क्रीन बंद?",
-    "thumbnail_question": "फ़ोन की स्क्रीन क्यों बंद होती है?",
-    "next_video": "फ़ोन को पता कैसे चलता है कि वह जेब में है?",
-    "pinned_comment": "फ़ोन और क्या चुपचाप महसूस करता है? नीचे बताइए!",
+    "hook_text": "अगला स्टेशन?",
+    "thumbnail_text": "आख़िरी स्टेशन?",
+    "thumbnail_question": "आपके स्टेशन पर कौन उतरता है?",
+    "next_video": "वह आईना जो एक सेकंड पीछे है",
+    "pinned_comment": "आज रात की ट्रेन में कौन होगा? नीचे बताइए!",
     "scenes": [
       {
-        "text": "फ़ोन कान से लगाओ तो स्क्रीन बंद हो जाती है। उसने क्या देखा?",
-        "keyword": "बंद",
+        "text": "घर की आख़िरी ट्रेन कभी स्टेशन नहीं बताती। आज रात उसने मेरा बताया। दो बार।",
+        "keyword": "दो बार",
         "graphic": {
           "kind": "title",
-          "headline": "उसने क्या देखा?",
+          "headline": "आख़िरी ट्रेन",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "clock"
         }
       },
       {
-        "text": "इस वीडियो में आप देखेंगे फ़ोन की अदृश्य रोशनी, और बाल उसे कैसे चकमा देते हैं।",
-        "keyword": "आप देखेंगे",
+        "text": "इस कहानी में आज रात: एक ख़ाली डिब्बा, एक शांत आवाज़, और नक़्शे में न होने वाला स्टेशन। तैयार?",
+        "keyword": "इस कहानी में",
         "graphic": {
           "kind": "chat",
-          "headline": "छोटी बातचीत",
+          "headline": "आज रात",
           "caption": "",
           "items": [
-            "कैसे पता चलता है?",
-            "अदृश्य रोशनी",
-            "रोशनी?",
-            "हाँ, इन्फ्रारेड"
+            "ख़ाली डिब्बा",
+            "एक आवाज़",
+            "एक स्टेशन?",
+            "नक़्शे में नहीं"
           ],
           "values": [],
           "answer": null,
@@ -202,29 +198,29 @@
         }
       },
       {
-        "text": "ऊपर एक छोटी इन्फ्रारेड LED है। वह ऐसी रोशनी चमकाती है जो आँखों को नहीं दिखती।",
-        "keyword": "इन्फ्रारेड",
+        "text": "मैं 11:40 की ट्रेन में अकेला था। आवाज़ आई, \"अगला स्टेशन, मूनलाइट रोड।\" ऐसा कोई स्टेशन नहीं है।",
+        "keyword": "मूनलाइट रोड",
         "graphic": {
           "kind": "keyword",
-          "headline": "अदृश्य चमक",
-          "caption": "सेकंड में कई बार",
+          "headline": "मूनलाइट रोड",
+          "caption": "किसी नक़्शे में नहीं",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "bulb"
+          "prop": "clock"
         }
       },
       {
-        "text": "वह गाल से टकराकर सेंसर में लौटती है। टक्कर तेज़ हो, तो कुछ बहुत पास है।",
-        "keyword": "तेज़",
+        "text": "दरवाज़े खुले, सामने मेरा ही स्टेशन, टूटी बेंच समेत। और लैंप के नीचे कौन था?",
+        "keyword": "टूटी बेंच",
         "graphic": {
           "kind": "steps",
-          "headline": "रोशनी का सफ़र",
+          "headline": "प्लेटफ़ॉर्म",
           "caption": "",
           "items": [
-            "LED चमकती है",
-            "गाल से टकराती है",
-            "सेंसर नापता है"
+            "दरवाज़े खुले",
+            "मेरा स्टेशन",
+            "टूटी बेंच"
           ],
           "values": [],
           "answer": null,
@@ -232,34 +228,15 @@
         }
       },
       {
-        "text": "फ़ोन उसे एक तय संख्या से मिलाता है। ज़्यादा हो तो स्क्रीन बंद हो जाती है।",
-        "keyword": "तय संख्या",
-        "graphic": {
-          "kind": "compare",
-          "headline": "टक्कर कितनी तेज़",
-          "caption": "",
-          "items": [
-            "पास: स्क्रीन बंद",
-            "दूर: स्क्रीन चालू"
-          ],
-          "values": [
-            9.0,
-            2.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "ऐसा क्यों? वरना गाल बटन दबा देगा और कॉल कट जाएगी।",
-        "keyword": "गाल",
+        "text": "एक आदमी, मेरा बैग लिए, मेरा कोट पहने। वह ऐसे मुस्कुराया जैसे इंतज़ार कर रहा था।",
+        "keyword": "मेरा कोट",
         "graphic": {
           "kind": "myth",
-          "headline": "बंद क्यों?",
+          "headline": "वह कौन है?",
           "caption": "",
           "items": [
-            "यूँ ही",
-            "गाल से बचाव"
+            "अजनबी",
+            "वह मैं हूँ"
           ],
           "values": [],
           "answer": null,
@@ -267,28 +244,43 @@
         }
       },
       {
-        "text": "हल्के बाल ज़्यादा रोशनी लौटाते हैं, इसलिए सेंसर धोखा खा सकता है।",
-        "keyword": "हल्के बाल",
+        "text": "वह चढ़ा। मैं उतरा। आवाज़ बोली, \"अदला-बदली के लिए शुक्रिया।\"",
+        "keyword": "अदला-बदली",
         "graphic": {
-          "kind": "quiz",
-          "headline": "किससे धोखा खाता है?",
+          "kind": "compare",
+          "headline": "अदला-बदली",
           "caption": "",
           "items": [
-            "हल्के बाल",
-            "ठंडा दिन",
-            "वाई-फ़ाई"
+            "वह चढ़ा",
+            "मैं उतरा"
           ],
-          "values": [],
-          "answer": 0,
+          "values": [
+            1.0,
+            1.0
+          ],
+          "answer": null,
           "prop": null
         }
       },
       {
-        "text": "फ़ोन आपका चेहरा अदृश्य रोशनी से देखता है। वह और क्या महसूस करता है? नीचे बताइए!",
-        "keyword": "अदृश्य रोशनी",
+        "text": "अब 11:40 है और मैं प्लेटफ़ॉर्म पर हूँ। हर रात आख़िरी ट्रेन एक स्टेशन बताती है। कोई उतर जाता है।",
+        "keyword": "11:40",
+        "graphic": {
+          "kind": "stat",
+          "headline": "11:40",
+          "caption": "हर रात",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो आज रात की आख़िरी ट्रेन में कौन होगा? नीचे बताइए!",
+        "keyword": "आख़िरी ट्रेन",
         "graphic": {
           "kind": "title",
-          "headline": "और क्या महसूस करता है?",
+          "headline": "आज रात कौन?",
           "caption": "",
           "items": [],
           "values": [],
@@ -297,6 +289,6 @@
         }
       }
     ],
-    "animation_pack": "phone_prox_vox"
+    "animation_pack": "last_train_vox"
   }
 }
