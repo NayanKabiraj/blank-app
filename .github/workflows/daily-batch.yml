@@ -55,7 +55,11 @@ jobs:
           for i, p in enumerate(plans):
               topic = p.get("topic", f"plan {i + 1}")
               start = dt.datetime.now(dt.timezone.utc) - dt.timedelta(seconds=5)
-              r = gh("workflow", "run", "daily-shorts.yml", "--repo", repo, "--ref", "main", "-f", f"format={os.environ['FORMAT']}", "-f", f"langs={os.environ['LANGS']}", "-f", f"dry_run={os.environ['DRY_RUN']}", "-f", "plan_json=" + json.dumps(p, ensure_ascii=False, separators=(",", ":")))
+              for attempt in range(4):                                   # GitHub answers 502/5xx now and then: retry the dispatch with back-off
+                  r = gh("workflow", "run", "daily-shorts.yml", "--repo", repo, "--ref", "main", "-f", f"format={os.environ['FORMAT']}", "-f", f"langs={os.environ['LANGS']}", "-f", f"dry_run={os.environ['DRY_RUN']}", "-f", "plan_json=" + json.dumps(p, ensure_ascii=False, separators=(",", ":")))
+                  if not r.returncode:
+                      break
+                  time.sleep(15 * (attempt + 1))
               if r.returncode:
                   results.append({"topic": topic, "status": "dispatch failed", "detail": r.stderr[:200]}); continue
               run_id = None
@@ -79,7 +83,10 @@ jobs:
               results.append({"topic": topic, "run": run_id, "conclusion": state.get("conclusion"), "uploaded": ups, "queued": queued})
               print(json.dumps(results[-1], ensure_ascii=False), flush=True)
           print("BATCH_RESULT " + json.dumps(results, ensure_ascii=False))
+          bad = [r for r in results if r.get("conclusion") != "success"]
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
               for r in results:
                   f.write(f"- {r.get('topic')}: {r.get('conclusion') or r.get('status')}; uploaded {r.get('uploaded')}; queued {r.get('queued')}\n")
+          if bad:
+              raise SystemExit(f"{len(bad)} of {len(results)} plans did not render/upload cleanly - see BATCH_RESULT above")
           PY
