@@ -133,7 +133,7 @@ def _scene_problems(sc: "Scene", where: str) -> list[str]:
     return problems
 
 
-INTRO_CUE = re.compile(r"\b(in this video|in this story|tonight|today'?s story|in the next|by the end|you'?ll (see|learn|discover|find out|know|get)|you will|we'?ll|we will)\b", re.I)
+INTRO_CUE = re.compile(r"\b(in this video|in this story|tonight|today'?s story|in the next|by the end|you'?ll (see|learn|discover|find out|know|get)|you will|we'?ll|we will)\b|इस वीडियो में|इस कहानी में|आप देखेंगे|आप जानेंगे|आज रात की कहानी|आज की कहानी", re.I)
 
 
 def _intro_problems(scenes, lang: str, max_words: int) -> list[str]:

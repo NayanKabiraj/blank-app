@@ -311,3 +311,18 @@ def test_seo_outliers_use_the_data_api_for_numbers(monkeypatch):
     assert d["outliers"][0]["ratio"] == 50.0
     monkeypatch.setattr(seo, "search_ids", lambda q, n=15: [])
     assert seo.outliers("x") == {"available": False, "reason": "no search results returned"}
+
+
+def test_preview_contact_sheet_and_run_brief(tmp_path):
+    import subprocess
+    from generated_animations.authoring import preview
+    v = tmp_path / "t.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "testsrc=size=540x960:rate=10:duration=4", "-pix_fmt", "yuv420p", str(v)], check=True)
+    out = preview.contact_sheet(v, tmp_path / "sheet.png", n=6, width=90, cols=3)
+    from PIL import Image
+    assert Image.open(out).size[0] == 270
+    from shorts import runbrief
+    text = runbrief.brief()
+    assert text.startswith("# Run brief") and "Channel check:" in text and "research_summary must contain" in text
+    assert "6 uploads" in runbrief.target(runbrief.ROOT / "strategy" / "learnings.md")
+    assert runbrief.check_line({}, {"available": False, "reason": "x"}, __import__("datetime").date(2026, 11, 25)).startswith("Channel check: NOT AVAILABLE")

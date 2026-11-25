@@ -67,3 +67,7 @@ A Hindi video uses the SAME vox look and normally the same pack as the English o
 chooses its text by language). Write every on-screen string with `vox.L(ctx, "JUST GUESSING?", "सिर्फ़ अंदाज़ा?")` or a `T = {"en": {...}, "hi": {...}}` dict read as `T[ctx.lang]`; `ctx.text`, `vox.tape` and `vox.newspaper`
 switch to the Devanagari font (Noto Sans Devanagari) for `hi`. Sentence indices (`ctx.tt`) stay the same because the Hindi plan has the same scenes; keep text short (Hindi runs ~20 % wider: widths in `ctx.text(..., width)` scale it down).
 
+
+## Pack kit and preview (25 Nov 2026)
+New packs start with `from generated_animations.shared.packkit import *` (Beat helpers, figure/phone/plane/recorder/flame/sea/sub, vox, level/show/window; do not copy `_kit.py` any more). Preview with
+`python3 -m generated_animations.authoring.preview <plan.json> --lang en|hi [--doc]` and open the printed contact sheet once. See `shorts/DAILY_RUN.md` section 4.

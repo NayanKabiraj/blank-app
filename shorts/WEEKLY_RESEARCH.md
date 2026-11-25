@@ -1,0 +1,8 @@
+# Weekly research run (Sunday evening IST; fresh session)
+
+Purpose: do the expensive research ONCE a week so the daily runs only write plans and packs. Output goes into `strategy/research-queue.json` (+ one dossier per topic under `strategy/research/`), merged through ONE pull request (rule 7, weekly exception).
+1. `python3 -m shorts.runbrief` (channel check, learnings rules, recent topics, queue) and `reports/latest.md` (last weekly report: apply its "Next week").
+2. Produce **12 researched topics** for the coming week: 4 everyday-tech/phone/home explainers, 4 Space & Universe / Earth & Nature (or timely evergreen) explainers, 4 original Horror & Suspense story premises (bloodless, labelled fiction; premise + twist + hook, no research needed). Never repeat a topic (see recent topics); vary structure and angle.
+3. For each explainer: web-search, verify every number (two sources, status), write the Gap line; dispatch `seo-research.yml` ONCE with up to 6 queries per run (two runs cover the week) and record the best phrase; score /100 with the quality gate. Facts that can go stale or that sources dispute: mark `recheck`.
+4. Dossier `strategy/research/<slug>.md`: title options, hook options, Claims table, Gap, best search phrase, follow_ups, next_video, `recheck` items, sources. Queue entry in `strategy/research-queue.json`: {kind:"short", status:"researched", topic, niche, cluster, gate_score, title, thumbnail_text, hooks, follow_ups, next_video, dossier}.
+5. One branch + one PR + squash merge touching only those two places. Final message: the 12 topics with scores and the one-line hook of each.

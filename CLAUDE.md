@@ -13,7 +13,7 @@ the workflow renders.
    (topic, impression, click, first 30 seconds, watch time, satisfaction, next video, returning viewer), research before writing, packaging
    (title + thumbnail) before story, retention design, the quality gate, and the audience growth loop (cluster, follow-ups, "Up next", pinned
    question). Commands: `RESEARCH <topic>`, `BUILD <topic>`, `OPTIMIZE <video>`, `VARIANTS <video>`.
-2. **Task files**: `shorts/CLAUDE_DAILY_TASK.md` (whiteboard Short), `shorts/CLAUDE_DOCUMENTARY_TASK.md`, `shorts/CLAUDE_DIRECTOR_TASK.md`
+2. **Task files**: `shorts/DAILY_RUN.md` (the token-lean daily run guide, start here), `shorts/WEEKLY_RESEARCH.md` (weekly research run), `shorts/CLAUDE_DAILY_TASK.md` (whiteboard Short, detail), `shorts/CLAUDE_DOCUMENTARY_TASK.md`, `shorts/CLAUDE_DIRECTOR_TASK.md`
    (director manifests), `shorts/CLAUDE_STOCKREEL_TASK.md` (real stock footage, for topics that read better with real footage than a
    coded scene - a third style, never the default). Each starts with the standing strategy checklist.
 3. **Start from what is researched**: `python -m shorts.niches recent` shows the researched queue (`strategy/research-queue.json`), open follow-ups
@@ -26,7 +26,7 @@ the workflow renders.
 6. **Uploads stay private** unless the owner changes `YT_PRIVACY`. Videos YouTube refuses wait in `videos/unpublished/` and upload first next time.
 7. Scheduled tasks commit nothing, with ONE exception the owner explicitly authorised (22 Nov 2026): each run commits that day's animation pack (rule 10) - only the new folder
    `generated_animations/scenes/<pack>/`, never edits to existing packs or other code - straight to `main` before dispatching the workflow, because the workflow
-   renders from `main`. Interactive work goes on a branch and a pull request.
+   renders from `main`. A second exception (24 Nov 2026): the weekly research run (`shorts/WEEKLY_RESEARCH.md`) may merge ONE pull request that touches only `strategy/research-queue.json` and `strategy/research/`. Interactive work goes on a branch and a pull request.
 
 8. **Every video ends with the closing line** "Thanks for watching the video! Please like, share and subscribe to watch more interesting
    videos like this." (Hindi equivalent in `shorts/outro.py`). It is added automatically to every Short, documentary, stock-footage and
@@ -80,6 +80,9 @@ the workflow renders.
 20. **Free SEO research** (owner request, 24 Nov 2026; `shorts/seo.py`, workflow `seo-research.yml`): for every candidate topic dispatch `seo-research.yml` with the topic phrased as people would search it (up to 6 queries separated by `|`; use `hl=hi gl=IN` for the Hindi phrasing), then read
    `data/seo/latest.json` (autocomplete phrases, outlier videos, title/length patterns). Put the best autocomplete phrase in the title and tags, copy what the outliers do in their first seconds, and record the winning phrase in `Gap:`. The channel check also reads `search_terms` (the searches that
    brought viewers to our videos, from the Analytics API). Public metadata only, low volume; the endpoints are unofficial, so a failure means "SEO data NOT AVAILABLE", never an invented number.
+
+21. **Token-lean runs** (owner request, 25 Nov 2026): each daily run is a fresh session (cost = calls x context size). Start with `python3 -m shorts.runbrief`, follow `shorts/DAILY_RUN.md`, write packs on `generated_animations/shared/packkit.py`, preview with `python3 -m generated_animations.authoring.preview`,
+   dispatch the day's plans ONCE with `daily-batch.yml`, batch commands and filter outputs. Quality steps (research, claim checks, frame inspection, bespoke animation) never shrink.
 
 ## Quick commands
 

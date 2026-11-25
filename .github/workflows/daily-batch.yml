@@ -1,0 +1,85 @@
+name: Daily batch
+
+# Renders and uploads several plans one after the other with NO model polling: for each plan in `plans_json` (a JSON array, each element exactly what daily-shorts.yml takes as plan_json) this
+# dispatches daily-shorts.yml, waits for it, and prints a one-line result per plan (uploaded URLs or why not). One dispatch from the daily run replaces N dispatches + N polling loops, and it
+# respects GitHub's "one pending run per concurrency group" limit. Read the result with the last lines of this job's log.
+on:
+  workflow_dispatch:
+    inputs:
+      plans_json:
+        description: "JSON array of plans (max 6); each element is a full plan object (the same JSON that daily-shorts.yml takes as plan_json)"
+        type: string
+        required: true
+      langs:
+        description: "Languages"
+        type: string
+        default: "en,hi"
+      format:
+        description: "daily-shorts.yml format (shorts or documentary)"
+        type: string
+        default: "shorts"
+      dry_run:
+        description: "Render only, do not upload (test)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: daily-batch
+  cancel-in-progress: false
+
+jobs:
+  batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PLANS: ${{ inputs.plans_json }}
+      LANGS: ${{ inputs.langs }}
+      FORMAT: ${{ inputs.format }}
+      DRY_RUN: ${{ inputs.dry_run }}
+    steps:
+      - name: Dispatch, wait, summarise
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, time, datetime as dt
+          plans = json.loads(os.environ["PLANS"])
+          assert isinstance(plans, list) and 1 <= len(plans) <= 6, "plans_json must be a JSON array of 1-6 plans"
+          repo = os.environ["GITHUB_REPOSITORY"]
+          def gh(*a):
+              return subprocess.run(["gh", *a], capture_output=True, text=True)
+          results = []
+          for i, p in enumerate(plans):
+              topic = p.get("topic", f"plan {i + 1}")
+              start = dt.datetime.now(dt.timezone.utc) - dt.timedelta(seconds=5)
+              r = gh("workflow", "run", "daily-shorts.yml", "--repo", repo, "--ref", "main", "-f", f"format={os.environ['FORMAT']}", "-f", f"langs={os.environ['LANGS']}", "-f", f"dry_run={os.environ['DRY_RUN']}", "-f", "plan_json=" + json.dumps(p, ensure_ascii=False, separators=(",", ":")))
+              if r.returncode:
+                  results.append({"topic": topic, "status": "dispatch failed", "detail": r.stderr[:200]}); continue
+              run_id = None
+              for _ in range(40):
+                  time.sleep(6)
+                  lst = json.loads(gh("run", "list", "--repo", repo, "--workflow", "daily-shorts.yml", "--limit", "10", "--json", "databaseId,createdAt,event").stdout or "[]")
+                  cand = [x for x in lst if x["event"] == "workflow_dispatch" and dt.datetime.fromisoformat(x["createdAt"].replace("Z", "+00:00")) >= start]
+                  if cand:
+                      run_id = max(c["databaseId"] for c in cand); break
+              if not run_id:
+                  results.append({"topic": topic, "status": "run not found"}); continue
+              state = {}
+              for _ in range(240):                                   # up to 2 h per plan
+                  time.sleep(30)
+                  state = json.loads(gh("run", "view", str(run_id), "--repo", repo, "--json", "status,conclusion").stdout or "{}")
+                  if state.get("status") == "completed":
+                      break
+              log = gh("run", "view", str(run_id), "--repo", repo, "--log").stdout
+              ups = re.findall(r"shorts\.upload: Uploaded (\w+): (\S+)", log) + re.findall(r"pending: Uploaded queued (\S+) as (\S+)", log)
+              queued = re.findall(r"Queued (\S+) for the next upload \(([^)]*)\)", log)
+              results.append({"topic": topic, "run": run_id, "conclusion": state.get("conclusion"), "uploaded": ups, "queued": queued})
+              print(json.dumps(results[-1], ensure_ascii=False), flush=True)
+          print("BATCH_RESULT " + json.dumps(results, ensure_ascii=False))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as f:
+              for r in results:
+                  f.write(f"- {r.get('topic')}: {r.get('conclusion') or r.get('status')}; uploaded {r.get('uploaded')}; queued {r.get('queued')}\n")
+          PY
