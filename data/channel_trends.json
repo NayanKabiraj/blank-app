@@ -1,20 +1,80 @@
 {
  "available": true,
- "generated": "2026-11-24T18:04:11+00:00",
+ "generated": "2026-11-25T11:12:49+00:00",
  "days": 28,
  "channel": {
-  "viewCount": 11285,
+  "viewCount": 11663,
   "subscriberCount": 47,
-  "videoCount": 146
+  "videoCount": 152
  },
  "videos": [
+  {
+   "id": "Ft6g5O3vggo",
+   "title": "आख़िरी ट्रेन की घोषणा (एक काल्पनिक कहानी) #Shorts",
+   "published": "2026-11-25T04:14:26Z",
+   "duration": "PT59S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "f1SGMLZoMww",
+   "title": "The Last Train Announcement (A Fictional Story) #Shorts",
+   "published": "2026-11-25T04:14:16Z",
+   "duration": "PT52S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "ZIjzPzBWmuw",
+   "title": "ब्लैक होल में गिरें तो क्या दिखेगा? करीब एक मिनट #Shorts",
+   "published": "2026-11-25T04:14:07Z",
+   "duration": "PT55S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "JHcJ3WpQpvs",
+   "title": "What If You Fell Into a Black Hole? Roughly a Minute #Shorts",
+   "published": "2026-11-25T04:13:56Z",
+   "duration": "PT52S",
+   "privacy": "public",
+   "views": 13,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "_GlO5Hn7QnI",
+   "title": "फ़ोन कान के पास आते ही स्क्रीन क्यों बंद हो जाती है? #Shorts",
+   "published": "2026-11-25T04:13:44Z",
+   "duration": "PT52S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "EvzP8k7wyeo",
+   "title": "Why Your Phone Screen Goes Dark Near Your Ear #Shorts",
+   "published": "2026-11-25T04:13:33Z",
+   "duration": "PT47S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
   {
    "id": "ZKKnfOx5xUQ",
    "title": "How Does a Black Box Survive a Plane Crash?",
    "published": "2026-11-24T12:25:20Z",
    "duration": "PT4M48S",
    "privacy": "public",
-   "views": 3,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -24,7 +84,7 @@
    "published": "2026-11-24T12:24:39Z",
    "duration": "PT4M48S",
    "privacy": "public",
-   "views": 3,
+   "views": 5,
    "likes": 0,
    "comments": 0
   },
@@ -34,7 +94,7 @@
    "published": "2026-11-24T12:23:43Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 4,
+   "views": 6,
    "likes": 0,
    "comments": 0
   },
@@ -44,7 +104,7 @@
    "published": "2026-11-24T12:22:28Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 282,
+   "views": 379,
    "likes": 0,
    "comments": 0
   },
@@ -64,7 +124,7 @@
    "published": "2026-11-23T08:27:04Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 2,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -94,7 +154,7 @@
    "published": "2026-11-23T03:34:03Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 4,
+   "views": 5,
    "likes": 0,
    "comments": 0
   },
@@ -104,7 +164,7 @@
    "published": "2026-11-23T03:32:22Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 4,
+   "views": 7,
    "likes": 0,
    "comments": 0
   },
@@ -1514,10 +1574,10 @@
   },
   {
    "video": "B7Lljx8QtMY",
-   "views": 100,
+   "views": 103,
    "estimatedMinutesWatched": 18,
    "averageViewDuration": 21,
-   "averageViewPercentage": 49.56,
+   "averageViewPercentage": 48.91,
    "subscribersGained": 0
   },
   {
@@ -1530,10 +1590,10 @@
   },
   {
    "video": "cwb_sHbjxwE",
-   "views": 73,
+   "views": 75,
    "estimatedMinutesWatched": 9,
-   "averageViewDuration": 16,
-   "averageViewPercentage": 30.11,
+   "averageViewDuration": 15,
+   "averageViewPercentage": 29.270000000000003,
    "subscribersGained": 1
   },
   {
@@ -1569,19 +1629,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "y0ZnSNebehA",
-   "views": 17,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 19,
-   "averageViewPercentage": 123.19,
-   "subscribersGained": 0
-  },
-  {
    "video": "_h9M1lqZV1I",
    "views": 17,
    "estimatedMinutesWatched": 3,
    "averageViewDuration": 27,
    "averageViewPercentage": 49.18,
+   "subscribersGained": 0
+  },
+  {
+   "video": "y0ZnSNebehA",
+   "views": 17,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 19,
+   "averageViewPercentage": 123.19,
    "subscribersGained": 0
   },
   {
@@ -1601,19 +1661,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "yn9wXT-4-I4",
-   "views": 10,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 22,
-   "averageViewPercentage": 52.78,
-   "subscribersGained": 0
-  },
-  {
    "video": "b7JhsbWiEIA",
    "views": 10,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 32,
    "averageViewPercentage": 75.2,
+   "subscribersGained": 0
+  },
+  {
+   "video": "yn9wXT-4-I4",
+   "views": 10,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 22,
+   "averageViewPercentage": 52.78,
    "subscribersGained": 0
   },
   {
@@ -1625,11 +1685,27 @@
    "subscribersGained": 0
   },
   {
+   "video": "RjfAsn-Cqmw",
+   "views": 8,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 8,
+   "averageViewPercentage": 89.5,
+   "subscribersGained": 0
+  },
+  {
    "video": "ZR_P25-Oo90",
    "views": 8,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 34,
    "averageViewPercentage": 58.21999999999999,
+   "subscribersGained": 0
+  },
+  {
+   "video": "bR_gPKXgQ_k",
+   "views": 8,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 25,
+   "averageViewPercentage": 57.09000000000001,
    "subscribersGained": 0
   },
   {
@@ -1641,27 +1717,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "RjfAsn-Cqmw",
-   "views": 8,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 8,
-   "averageViewPercentage": 89.5,
-   "subscribersGained": 0
-  },
-  {
-   "video": "bR_gPKXgQ_k",
-   "views": 7,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 25,
-   "averageViewPercentage": 57.09000000000001,
-   "subscribersGained": 0
-  },
-  {
    "video": "5UXCL5F7QKg",
    "views": 7,
    "estimatedMinutesWatched": 1,
    "averageViewDuration": 26,
    "averageViewPercentage": 50.57000000000001,
+   "subscribersGained": 0
+  },
+  {
+   "video": "7GCONoW8dcM",
+   "views": 6,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 12,
+   "averageViewPercentage": 85.97,
    "subscribersGained": 0
   },
   {
@@ -1689,14 +1757,6 @@
    "subscribersGained": 0
   },
   {
-   "video": "7GCONoW8dcM",
-   "views": 6,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 12,
-   "averageViewPercentage": 85.97,
-   "subscribersGained": 0
-  },
-  {
    "video": "sW35FxePNWI",
    "views": 6,
    "estimatedMinutesWatched": 1,
@@ -1705,19 +1765,27 @@
    "subscribersGained": 0
   },
   {
-   "video": "l_FJS639TdU",
-   "views": 5,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 4,
-   "averageViewPercentage": 26.88,
-   "subscribersGained": 0
-  },
-  {
    "video": "7cBFp9BgU-Y",
    "views": 5,
    "estimatedMinutesWatched": 1,
    "averageViewDuration": 30,
    "averageViewPercentage": 87.43,
+   "subscribersGained": 0
+  },
+  {
+   "video": "KG2RWFHfyi8",
+   "views": 5,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 57.79,
+   "subscribersGained": 0
+  },
+  {
+   "video": "QEDE7B2SeBc",
+   "views": 5,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 38,
+   "averageViewPercentage": 67.02,
    "subscribersGained": 0
   },
   {
@@ -1737,35 +1805,11 @@
    "subscribersGained": 0
   },
   {
-   "video": "KG2RWFHfyi8",
+   "video": "l_FJS639TdU",
    "views": 5,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 27,
-   "averageViewPercentage": 57.79,
-   "subscribersGained": 0
-  },
-  {
-   "video": "YRaZbw4eI20",
-   "views": 4,
    "estimatedMinutesWatched": 0,
-   "averageViewDuration": 1,
-   "averageViewPercentage": 4.1,
-   "subscribersGained": 0
-  },
-  {
-   "video": "u9VBRRNKNQk",
-   "views": 4,
-   "estimatedMinutesWatched": 3,
-   "averageViewDuration": 59,
-   "averageViewPercentage": 16.24,
-   "subscribersGained": 0
-  },
-  {
-   "video": "fxEunP-9-3c",
-   "views": 4,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 15,
-   "averageViewPercentage": 25.17,
+   "averageViewDuration": 4,
+   "averageViewPercentage": 26.88,
    "subscribersGained": 0
   },
   {
@@ -1777,11 +1821,59 @@
    "subscribersGained": 0
   },
   {
-   "video": "oLQ-3RA85ek",
-   "views": 3,
+   "video": "YRaZbw4eI20",
+   "views": 4,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 1,
+   "averageViewPercentage": 4.1,
+   "subscribersGained": 0
+  },
+  {
+   "video": "fxEunP-9-3c",
+   "views": 4,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 15,
+   "averageViewPercentage": 25.17,
+   "subscribersGained": 0
+  },
+  {
+   "video": "oF2anyi3SyM",
+   "views": 4,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 24,
-   "averageViewPercentage": 43.88,
+   "averageViewDuration": 59,
+   "averageViewPercentage": 102.59,
+   "subscribersGained": 0
+  },
+  {
+   "video": "u9VBRRNKNQk",
+   "views": 4,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 59,
+   "averageViewPercentage": 16.24,
+   "subscribersGained": 0
+  },
+  {
+   "video": "vUuPXfpnTEg",
+   "views": 4,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 33,
+   "averageViewPercentage": 59.56,
+   "subscribersGained": 0
+  },
+  {
+   "video": "xkOnUp4KGfM",
+   "views": 4,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 12,
+   "averageViewPercentage": 8.97,
+   "subscribersGained": 0
+  },
+  {
+   "video": "0A6Y4R5qo8Y",
+   "views": 3,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 75,
+   "averageViewPercentage": 24.66,
    "subscribersGained": 0
   },
   {
@@ -1801,14 +1893,6 @@
    "subscribersGained": 0
   },
   {
-   "video": "0A6Y4R5qo8Y",
-   "views": 3,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 75,
-   "averageViewPercentage": 24.66,
-   "subscribersGained": 0
-  },
-  {
    "video": "c_XT-arbwHg",
    "views": 3,
    "estimatedMinutesWatched": 1,
@@ -1817,59 +1901,185 @@
    "subscribersGained": 0
   },
   {
-   "video": "YNIBJBjTirg",
-   "views": 2,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 17,
-   "averageViewPercentage": 106.44,
-   "subscribersGained": 0
-  },
-  {
-   "video": "AjiwPv09KG0",
-   "views": 2,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 27,
-   "averageViewPercentage": 9.36,
-   "subscribersGained": 0
-  },
-  {
-   "video": "xXmhxA3xUhQ",
-   "views": 2,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 146,
-   "averageViewPercentage": 55.7,
-   "subscribersGained": 0
-  },
-  {
    "video": "dkdFdy1FXgQ",
-   "views": 2,
+   "views": 3,
    "estimatedMinutesWatched": 0,
    "averageViewDuration": 25,
    "averageViewPercentage": 47.18,
+   "subscribersGained": 0
+  },
+  {
+   "video": "oLQ-3RA85ek",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 24,
+   "averageViewPercentage": 43.88,
+   "subscribersGained": 0
+  },
+  {
+   "video": "qf-UeA0pKao",
+   "views": 3,
+   "estimatedMinutesWatched": 4,
+   "averageViewDuration": 91,
+   "averageViewPercentage": 33.49,
+   "subscribersGained": 0
+  },
+  {
+   "video": "zx56v1qrtuI",
+   "views": 3,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 47,
+   "averageViewPercentage": 82.5,
    "subscribersGained": 0
   }
  ],
  "split": [
   {
-   "creatorContentType": "videoOnDemand",
-   "views": 50,
-   "estimatedMinutesWatched": 25,
-   "averageViewPercentage": 11.38
+   "creatorContentType": "shorts",
+   "views": 1815,
+   "estimatedMinutesWatched": 295,
+   "averageViewPercentage": 40.44
   },
   {
-   "creatorContentType": "shorts",
-   "views": 1789,
-   "estimatedMinutesWatched": 287,
-   "averageViewPercentage": 39.99
+   "creatorContentType": "videoOnDemand",
+   "views": 57,
+   "estimatedMinutesWatched": 32,
+   "averageViewPercentage": 12.920000000000002
   }
  ],
  "totals_365d": {
-  "views": 2832,
-  "estimatedMinutesWatched": 489,
-  "subscribersGained": 4,
-  "minutes": 489
+  "minutes": 90,
+  "shorts_minutes": 415,
+  "subscribersGained": 4
  },
  "shorts_90d": {
-  "views": 1986
- }
+  "views": 2009
+ },
+ "search_terms": [
+  {
+   "term": "clapping",
+   "views": 6,
+   "minutes": 0.0
+  },
+  {
+   "term": "real dangerous bhoot",
+   "views": 4,
+   "minutes": 0.0
+  },
+  {
+   "term": "short video short video",
+   "views": 3,
+   "minutes": 0.0
+  },
+  {
+   "term": "ananya wala cartoon",
+   "views": 2,
+   "minutes": 0.0
+  },
+  {
+   "term": "bhoot ka video",
+   "views": 2,
+   "minutes": 0.0
+  },
+  {
+   "term": "bhoot ki",
+   "views": 2,
+   "minutes": 0.0
+  },
+  {
+   "term": "horror video",
+   "views": 2,
+   "minutes": 0.0
+  },
+  {
+   "term": "acche videos",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "any video",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "bhairu baba ka gana",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "capacitor",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "clap noises",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "diwali video",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "how to throw a dodgeball fast and hard",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "iron man cartoon",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "junglee movie",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "miyau miyaun",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "naat",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "phone number",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "rangoli designs kids",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "rhythm veronica family",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "rhythmic hand clapping challenge",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "sheru bhai videos",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "sourav joshi",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "spider-man spider-man",
+   "views": 1,
+   "minutes": 0.0
+  }
+ ]
 }
