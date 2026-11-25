@@ -813,5 +813,32 @@
         "video_id": "ryWe8wxndE0"
       }
     }
+  },
+  {
+    "date": "2026-11-25",
+    "niche": "How Tech Works",
+    "topic": "Why does your phone screen go dark near your ear?",
+    "mood": "upbeat",
+    "cluster": "Phone Secrets",
+    "follow_ups": [
+      "How does your phone know which way is up?",
+      "Why does your phone get hot while charging?",
+      "How does a touchscreen feel your finger?"
+    ],
+    "next_video": "How does your phone know it is in your pocket?",
+    "gate_score": 83,
+    "thumbnail_text": "DARK SCREEN?",
+    "videos": {
+      "en": {
+        "file": "2026-11-25_en.mp4",
+        "saved_to": "videos/2026-11-25/en.mp4",
+        "video_id": "EvzP8k7wyeo"
+      },
+      "hi": {
+        "file": "2026-11-25_hi.mp4",
+        "saved_to": "videos/2026-11-25/hi.mp4",
+        "video_id": "_GlO5Hn7QnI"
+      }
+    }
   }
 ]

@@ -1,0 +1,19 @@
+TITLE:
+फ़ोन कान के पास आते ही स्क्रीन क्यों बंद हो जाती है? #Shorts
+
+DESCRIPTION:
+फ़ोन कान से लगाते ही स्क्रीन अपने आप बंद हो जाती है। देखिए फ़ोन के अंदर की अदृश्य रोशनी, वह दूरी कैसे नापती है, और बालों का रंग उसे क्यों चकमा दे सकता है। #Shorts #Phone #कैसे_काम_करता_है
+
+अगला वीडियो: फ़ोन को पता कैसे चलता है कि वह जेब में है?
+
+Sources:
+https://www.samsung.com/ae/support/mobile-devices/what-is-this-proximity-sensor-on-your-samsung-smartphone/
+https://www.analog.com/en/resources/design-notes/designing-a-proximity-sensor-into-a-handheld-touchscreen-application.html
+
+अगला एपिसोड मिस न करें, सब्सक्राइब करें: https://www.youtube.com/@nayankabiraj?sub_confirmation=1
+
+TAGS:
+फ़ोन स्क्रीन कान के पास बंद, प्रॉक्सिमिटी सेंसर, फ़ोन सेंसर कैसे काम करते हैं
+
+PINNED COMMENT:
+फ़ोन और क्या चुपचाप महसूस करता है? नीचे बताइए!

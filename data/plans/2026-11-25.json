@@ -1,0 +1,302 @@
+{
+  "niche": "How Tech Works",
+  "topic": "Why does your phone screen go dark near your ear?",
+  "research_summary": "Channel check: 25 Nov 2026 (channel_trends, YouTube Analytics): 47 subscribers, Shorts 1,789 views / 40 % viewed in 28 days, long-form 50 views / 11 % viewed, 1.1 subscribers per 1,000 views; qualifying long-form watch hours ~0.4 per 28 days; best explainer reach = personal phone/body hooks (Face unlock 143, deja vu 100), best retention = Space (84 %), stories out-reached explainers (505, 394). Changes made: personal phone hook first, 38-45 s length, payoff before second 22, series promise in the first 20 s. Candidates (score /40: curiosity, personal relevance, visual, proof): (1) proximity sensor 33, (2) how does your phone know which way is up 31, (3) why your charger gets warm 30, (4) why does airplane mode exist 29, (5) how a touchscreen feels your finger 28. Winner: (1). Titles (/50): 'Why Your Phone Screen Goes Dark Near Your Ear' 44 (chosen, 46 chars), 'The Invisible Light Inside Your Phone' 41, 'How Your Phone Knows Your Face Is Close' 40. Thumbnails: A phone beside an ear with a '?' and the question (chosen), B a glowing invisible-light beam, C a hand on a dark screen. Hooks: 'Hold your phone to your ear and the screen goes dark by itself. What did it see?' (chosen), 'Your phone is shining a light at your face right now.', 'It never touches you. It still knows.'. SEO (seo-research.yml 25 Nov, en/US): people type 'why my phone screen gets off during a call' and 'how to fix screen turning off during calls'; the top results are repair and ear-speaker fixes (median 3 minutes, none are Shorts) and 'proximity sensor' tutorials about industrial sensors - a 40 s curiosity Short on the phone case is uncontested. Gap: the top videos are repair guides or industrial-sensor lectures; none explains the phone case as a story (invisible light, bounce, threshold, why hair colour fools it) in under a minute. Claims: (1) phones use an infrared LED plus a light receiver and compare the reflected intensity with a threshold to switch the screen (USPTO patents 11443701 and 11159672, Samsung support page) - VERIFIED; (2) the screen goes dark to prevent accidental touches by cheek/ear and to save battery (Samsung support, Analog Devices design note) - VERIFIED; (3) light-coloured hair reflects more signal than dark hair and can fool the sensor (Analog Devices design note) - VERIFIED; (4) 'many times a second' pulsed sampling (patent 11443701 describes LED ON/OFF sampling) - PARTIALLY VERIFIED, rate not stated; some newer phones use other sensing - the narration says 'near the top sits' without brand claims. Sources: https://www.samsung.com/ae/support/mobile-devices/what-is-this-proximity-sensor-on-your-samsung-smartphone/ https://www.analog.com/en/resources/design-notes/designing-a-proximity-sensor-into-a-handheld-touchscreen-application.html Growth: lever = hook/retention (viewer's own phone, payoff by second 22) plus series promise ('Phone Secrets' cluster, next_video answered in the pinned comment); policy check: own angle and structure (a how-it-works mystery), different from today's what-if and story Shorts, no health/finance claims. Quality gate 83/100.",
+  "mood": "upbeat",
+  "cluster": "Phone Secrets",
+  "follow_ups": [
+    "How does your phone know which way is up?",
+    "Why does your phone get hot while charging?",
+    "How does a touchscreen feel your finger?"
+  ],
+  "gate_score": 83,
+  "english": {
+    "title": "Why Your Phone Screen Goes Dark Near Your Ear",
+    "description": "Hold a phone to your ear and the screen switches off by itself. See the invisible light inside it, how it measures distance, and why hair colour can fool it. #Shorts #Phone #HowItWorks",
+    "tags": [
+      "why phone screen turns off near ear",
+      "proximity sensor phone",
+      "how proximity sensor works",
+      "phone screen off during call",
+      "infrared sensor phone",
+      "phone sensors explained"
+    ],
+    "hook_text": "What did it see?",
+    "thumbnail_text": "DARK SCREEN?",
+    "thumbnail_question": "Why does your phone screen go dark?",
+    "next_video": "How does your phone know it is in your pocket?",
+    "pinned_comment": "What is another thing your phone senses without telling you? Tell me below!",
+    "scenes": [
+      {
+        "text": "Hold your phone to your ear and the screen goes dark. What did it see?",
+        "keyword": "dark",
+        "graphic": {
+          "kind": "title",
+          "headline": "What did it see?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "phone"
+        }
+      },
+      {
+        "text": "In this video you'll see the invisible light inside your phone, and how hair can fool it.",
+        "keyword": "you'll see",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Quick chat",
+          "caption": "",
+          "items": [
+            "How does it know?",
+            "Invisible light",
+            "Light?",
+            "Yes, infrared"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Near the top, a tiny infrared LED flashes light your eyes can't see.",
+        "keyword": "infrared LED",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Invisible flashes",
+          "caption": "many times a second",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "bulb"
+        }
+      },
+      {
+        "text": "It bounces off your cheek into a sensor. A strong bounce means very close.",
+        "keyword": "strong bounce",
+        "graphic": {
+          "kind": "steps",
+          "headline": "The bounce",
+          "caption": "",
+          "items": [
+            "LED flashes",
+            "Light hits cheek",
+            "Sensor measures"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The phone compares it with a preset number. Above it, the screen turns off.",
+        "keyword": "preset number",
+        "graphic": {
+          "kind": "compare",
+          "headline": "Bounce strength",
+          "caption": "",
+          "items": [
+            "Near: screen off",
+            "Far: screen on"
+          ],
+          "values": [
+            9.0,
+            2.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Why bother? Your cheek would press buttons and end the call.",
+        "keyword": "Your cheek",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Why switch off?",
+          "caption": "",
+          "items": [
+            "Random feature",
+            "Stops cheek taps"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Light hair reflects more light than dark hair, so it can fool the sensor.",
+        "keyword": "Light hair",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "What can fool it?",
+          "caption": "",
+          "items": [
+            "Light hair",
+            "A cold day",
+            "Wi-Fi"
+          ],
+          "values": [],
+          "answer": 0,
+          "prop": null
+        }
+      },
+      {
+        "text": "Your phone sees your face with invisible light. What else is it sensing? Tell me below!",
+        "keyword": "invisible light",
+        "graphic": {
+          "kind": "title",
+          "headline": "What else is it sensing?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
+      }
+    ],
+    "animation_pack": "phone_prox_vox"
+  },
+  "hindi": {
+    "title": "फ़ोन कान के पास आते ही स्क्रीन क्यों बंद हो जाती है?",
+    "description": "फ़ोन कान से लगाते ही स्क्रीन अपने आप बंद हो जाती है। देखिए फ़ोन के अंदर की अदृश्य रोशनी, वह दूरी कैसे नापती है, और बालों का रंग उसे क्यों चकमा दे सकता है। #Shorts #Phone #कैसे_काम_करता_है",
+    "tags": [
+      "फ़ोन स्क्रीन कान के पास बंद",
+      "प्रॉक्सिमिटी सेंसर",
+      "फ़ोन सेंसर कैसे काम करते हैं"
+    ],
+    "hook_text": "उसने क्या देखा?",
+    "thumbnail_text": "स्क्रीन बंद?",
+    "thumbnail_question": "फ़ोन की स्क्रीन क्यों बंद होती है?",
+    "next_video": "फ़ोन को पता कैसे चलता है कि वह जेब में है?",
+    "pinned_comment": "फ़ोन और क्या चुपचाप महसूस करता है? नीचे बताइए!",
+    "scenes": [
+      {
+        "text": "फ़ोन कान से लगाओ तो स्क्रीन बंद हो जाती है। उसने क्या देखा?",
+        "keyword": "बंद",
+        "graphic": {
+          "kind": "title",
+          "headline": "उसने क्या देखा?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "phone"
+        }
+      },
+      {
+        "text": "इस वीडियो में आप देखेंगे फ़ोन की अदृश्य रोशनी, और बाल उसे कैसे चकमा देते हैं।",
+        "keyword": "आप देखेंगे",
+        "graphic": {
+          "kind": "chat",
+          "headline": "छोटी बातचीत",
+          "caption": "",
+          "items": [
+            "कैसे पता चलता है?",
+            "अदृश्य रोशनी",
+            "रोशनी?",
+            "हाँ, इन्फ्रारेड"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "ऊपर एक छोटी इन्फ्रारेड LED है। वह ऐसी रोशनी चमकाती है जो आँखों को नहीं दिखती।",
+        "keyword": "इन्फ्रारेड",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "अदृश्य चमक",
+          "caption": "सेकंड में कई बार",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "bulb"
+        }
+      },
+      {
+        "text": "वह गाल से टकराकर सेंसर में लौटती है। टक्कर तेज़ हो, तो कुछ बहुत पास है।",
+        "keyword": "तेज़",
+        "graphic": {
+          "kind": "steps",
+          "headline": "रोशनी का सफ़र",
+          "caption": "",
+          "items": [
+            "LED चमकती है",
+            "गाल से टकराती है",
+            "सेंसर नापता है"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "फ़ोन उसे एक तय संख्या से मिलाता है। ज़्यादा हो तो स्क्रीन बंद हो जाती है।",
+        "keyword": "तय संख्या",
+        "graphic": {
+          "kind": "compare",
+          "headline": "टक्कर कितनी तेज़",
+          "caption": "",
+          "items": [
+            "पास: स्क्रीन बंद",
+            "दूर: स्क्रीन चालू"
+          ],
+          "values": [
+            9.0,
+            2.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "ऐसा क्यों? वरना गाल बटन दबा देगा और कॉल कट जाएगी।",
+        "keyword": "गाल",
+        "graphic": {
+          "kind": "myth",
+          "headline": "बंद क्यों?",
+          "caption": "",
+          "items": [
+            "यूँ ही",
+            "गाल से बचाव"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "हल्के बाल ज़्यादा रोशनी लौटाते हैं, इसलिए सेंसर धोखा खा सकता है।",
+        "keyword": "हल्के बाल",
+        "graphic": {
+          "kind": "quiz",
+          "headline": "किससे धोखा खाता है?",
+          "caption": "",
+          "items": [
+            "हल्के बाल",
+            "ठंडा दिन",
+            "वाई-फ़ाई"
+          ],
+          "values": [],
+          "answer": 0,
+          "prop": null
+        }
+      },
+      {
+        "text": "फ़ोन आपका चेहरा अदृश्य रोशनी से देखता है। वह और क्या महसूस करता है? नीचे बताइए!",
+        "keyword": "अदृश्य रोशनी",
+        "graphic": {
+          "kind": "title",
+          "headline": "और क्या महसूस करता है?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
+      }
+    ],
+    "animation_pack": "phone_prox_vox"
+  }
+}
