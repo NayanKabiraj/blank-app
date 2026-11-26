@@ -1,9 +1,9 @@
 {
  "available": true,
- "generated": "2026-11-26T04:16:32+00:00",
+ "generated": "2026-11-26T10:48:40+00:00",
  "days": 28,
  "channel": {
-  "viewCount": 11728,
+  "viewCount": 12136,
   "subscriberCount": 48,
   "videoCount": 158
  },
@@ -20,8 +20,8 @@
    "published": "2026-11-26T04:04:48Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 0,
-   "likes": 0,
+   "views": 1,
+   "likes": 1,
    "comments": 0
   },
   {
@@ -30,8 +30,8 @@
    "published": "2026-11-26T04:04:38Z",
    "duration": "PT53S",
    "privacy": "public",
-   "views": 0,
-   "likes": 0,
+   "views": 1,
+   "likes": 1,
    "comments": 0
   },
   {
@@ -50,7 +50,7 @@
    "published": "2026-11-26T04:04:07Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 4,
+   "views": 11,
    "likes": 0,
    "comments": 0
   },
@@ -60,7 +60,7 @@
    "published": "2026-11-26T04:03:03Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -80,7 +80,7 @@
    "published": "2026-11-25T04:14:26Z",
    "duration": "PT59S",
    "privacy": "public",
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -90,7 +90,7 @@
    "published": "2026-11-25T04:14:16Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -100,8 +100,8 @@
    "published": "2026-11-25T04:14:07Z",
    "duration": "PT55S",
    "privacy": "public",
-   "views": 3,
-   "likes": 0,
+   "views": 5,
+   "likes": 1,
    "comments": 0
   },
   {
@@ -110,7 +110,7 @@
    "published": "2026-11-25T04:13:56Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 26,
+   "views": 27,
    "likes": 0,
    "comments": 0
   },
@@ -120,7 +120,7 @@
    "published": "2026-11-25T04:13:44Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 2,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -130,7 +130,7 @@
    "published": "2026-11-25T04:13:33Z",
    "duration": "PT47S",
    "privacy": "public",
-   "views": 4,
+   "views": 5,
    "likes": 0,
    "comments": 0
   },
@@ -160,7 +160,7 @@
    "published": "2026-11-24T12:23:43Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 6,
+   "views": 7,
    "likes": 0,
    "comments": 0
   },
@@ -170,7 +170,7 @@
    "published": "2026-11-24T12:22:28Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 798,
+   "views": 840,
    "likes": 2,
    "comments": 0
   },
@@ -190,7 +190,7 @@
    "published": "2026-11-23T08:27:04Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 3,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -220,7 +220,7 @@
    "published": "2026-11-23T03:34:03Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 5,
+   "views": 6,
    "likes": 0,
    "comments": 0
   },
