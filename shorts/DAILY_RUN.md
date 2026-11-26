@@ -46,3 +46,8 @@ Slot 1 (space+nature) is READY: plan `strategy/prepared/2026-11-27-silent-space.
 `generated_animations/scenes/silent_space_vox/` (2D cartoon astronaut from `shared/cartoon.py` in the vox look, previews inspected in EN and HI). Do not rewrite it: re-check the Gap with
 `seo-research.yml` (title phrase 'why is there no sound in space'), update `Channel check:` with the morning numbers, then dispatch it with `daily-batch.yml` first, and research slots 2 and 3 as usual. The
 `cartoon.astro/ear/eye_icon` helpers are available to every new pack (2D cartoon character look, same render time as other vox packs).
+
+## Myth Busters and full-screen art (26 Nov 2026)
+The patterns brief now lists a `myth` family (niche "Myth Busters", examples in `shorts/niches.py`); with no data yet it is the explore slot, so one of the three Shorts each day is a myth buster: hook = the belief
+stated as a fact ("You only use 10% of your brain."), turn in scene 3 ("That's false."), the real mechanism in the middle, the reframe at the end. Two sources per claim, status VERIFIED, never health/finance/legal advice.
+New packs paint the whole screen: `"stage": "full"` in `shots.json` and `b.backdrop(top, bottom)` per beat (see `silent_space_vox`); art zone is local y -4.8..+4.8, x +-4.4 around `b.C`; keep key art above the caption pill.

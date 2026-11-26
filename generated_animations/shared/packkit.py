@@ -8,7 +8,7 @@ from __future__ import annotations
 import math
 
 import numpy as np
-from manim import Circle, Ellipse, Line, Polygon, Rectangle, RoundedRectangle, VGroup, always_redraw
+from manim import Circle, Ellipse, Line, Polygon, Rectangle, RoundedRectangle, VGroup, always_redraw, interpolate_color
 
 from generated_animations.shared import vox
 from generated_animations.shared.vox import BLUE, CREAM, GREEN, INK, ORANGE, PINK, RED, YEL
@@ -42,6 +42,24 @@ class Beat:
     def card(self, w=None, h=None, seed=1, rot=0.0, dx=0.0, dy=0.0, t=None):
         w, h = w or self.W - 0.3, h or self.H - 0.3
         return show(self.ctx, vox.torn_card(w, h, seed=seed, rot=rot).move_to(self.C + v(dx, dy)), self.t0 + 0.05 if t is None else t, t_out=self.t1, pop=0.12, z=2)
+
+    def backdrop(self, top="#0E1A3A", bottom="#3B2A66", stars=True, seed=1, strips=16):
+        """FULL-SCREEN art (shots.json {"stage": "full"}): a full-bleed gradient behind everything (caption and presenter sit on top) plus twinkling stars. Use INSTEAD of card()."""
+        from manim import ManimColor
+        g = VGroup()
+        h = 16.6 / strips
+        for k in range(strips):
+            g.add(Rectangle(width=9.4, height=h + 0.03, stroke_width=0, fill_color=interpolate_color(ManimColor(top), ManimColor(bottom), k / (strips - 1)), fill_opacity=1).move_to(v(0, 8.3 - h * (k + 0.5))))
+        show(self.ctx, g, self.t0 + 0.02, t_out=self.t1, pop=0, z=1)
+        if stars:
+            rng = np.random.default_rng(seed)
+            pts = [(rng.uniform(-4.4, 4.4), rng.uniform(-7.5, 7.5), rng.uniform(0, 6.28), rng.uniform(0.03, 0.07)) for _ in range(34)]
+
+            def mk(a):
+                tm = self.ctx.elapsed()
+                return VGroup(*[Circle(radius=r * (0.7 + 0.5 * math.sin(tm * 2 + ph)), stroke_width=0, fill_color="#FFFFFF", fill_opacity=a * 0.85).move_to(v(x, y)) for x, y, ph, r in pts])
+            self.live(mk, self.t0 + 0.05, z=2)
+        return g
 
     def put(self, mob, t=None, z=5, pop=0.1, dur=0.28):
         return show(self.ctx, mob, self.t0 + 0.3 if t is None else t, dur=dur, t_out=self.t1, pop=pop, z=z)

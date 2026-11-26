@@ -1,7 +1,7 @@
 """Screen layouts for plan-driven rendering (a Short is vertical 9x16 units, a documentary landscape 16x9)."""
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 
 @dataclass(frozen=True)
@@ -33,3 +33,8 @@ VERTICAL = Layout("vertical", 9.0, 16.0, 6.8, 7.4, (0.0, 1.9), 8.0, 7.0, -2.9, 0
                   (-2.6, -8.0), 0.92, (1080, 1920), (540, 960))
 LANDSCAPE = Layout("landscape", 16.0, 9.0, 3.75, 13.0, (1.9, 0.35), 11.0, 5.3, -3.35, 1.9, 11.5, 54, 34,
                    (-6.1, -4.0), 0.62, (1280, 720), (960, 540))
+
+
+# Full-screen art (shots.json {"stage": "full"}): the animation owns the whole frame - a full-bleed backdrop behind everything (see Beat.backdrop) and a taller art zone
+# above the caption (y -2.2 .. +7.5 in frame units); the caption pill and the presenter sticker sit on top of the backdrop.
+VERTICAL_FULL = replace(VERTICAL, name="vertical_full", stage_center=(0.0, 2.65), stage_w=9.0, stage_h=9.7)

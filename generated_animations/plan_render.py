@@ -10,7 +10,7 @@ import shutil
 from pathlib import Path
 
 from . import packs
-from .layout import LANDSCAPE, VERTICAL
+from .layout import LANDSCAPE, VERTICAL, VERTICAL_FULL
 
 log = logging.getLogger("generated_animations")
 LEAD = 0.3
@@ -37,7 +37,7 @@ def render_picture(scenes, timeline, total: float, lang: str, work: Path, voice_
     from .plan_scene import PlanScene
     from shorts import animate
 
-    layout = LANDSCAPE if landscape else VERTICAL
+    layout = LANDSCAPE if landscape else (VERTICAL_FULL if pack and packs.stage(pack) == "full" else VERTICAL)
     plan_scenes = _scene_dicts(scenes)
     narration = audio.Narration(voice_wav, fps=24)
     import os
