@@ -84,6 +84,11 @@ def brief(now: dt.datetime | None = None) -> str:
         L.append("Milestones: " + "; ".join(f"{m['label'][:28]} {progress._fmt(m['value'])}" + (f" -> next {progress._fmt(m['next']['step'])}" if m["next"] else "") for m in st))
     except Exception as exc:  # noqa: BLE001
         L.append(f"Milestones: n/a ({str(exc)[:60]})")
+    try:
+        from . import patterns
+        L += ["", patterns.digest(patterns.analyse(data, hist, doc, today))]
+    except Exception as exc:  # noqa: BLE001
+        L.append(f"Patterns: n/a ({str(exc)[:60]})")
     tr = ct.trending_digest(_load(ct.TRENDING_FILE, {}))
     L.append("Trending (YouTube Science & Tech charts): " + (f"{int(tr['share_under_60s'] * 100)} % under 60 s, median title {tr['median_title_chars']} chars, words {', '.join(tr['recurring_words'][:6])}" if tr.get("available") else "n/a"))
     seo = ROOT / "data" / "seo" / "latest.json"
@@ -93,7 +98,7 @@ def brief(now: dt.datetime | None = None) -> str:
     L.append("Researched queue (prefer these; read the dossier, re-verify only items marked recheck): " + (" | ".join(f"{e['topic'][:44]} [{e.get('niche', '')}, {e.get('kind', '')}, gate {e.get('gate_score', '?')}, {e.get('dossier', '')}]" for e in q[:12]) if q else "empty (use fresh research)"))
     rules = _rules(ROOT / "strategy" / "learnings.md")
     L += ["", "Learnings rules: " + " || ".join(rules)] if rules else []
-    L += ["", "research_summary must contain: Candidates (scored), Titles, Thumbnails, Hooks, 'Claims:', 'Gap:', 'Channel check:' (use the generated line), 'Learning applied:', 'Growth:' (lever + policy check). Scene 1 hook, scene 2 intro (Shorts <= 22 words), thumbnail_question, title <= 65, 5-8 tags, 2-3 hashtags; english + hindi blocks, same scenes, same animation_pack."]
+    L += ["", "Topic slots: follow the RECOMMENDED SLOTS above (they come from what is getting views now); override only with a stated reason in `Growth:`; keep the day's videos different in structure and angle. research_summary must contain: Candidates (scored), Titles, Thumbnails, Hooks, 'Claims:', 'Gap:', 'Channel check:' (use the generated line), 'Learning applied:', 'Growth:' (lever + policy check). Scene 1 hook, scene 2 intro (Shorts <= 22 words), thumbnail_question, title <= 65, 5-8 tags, 2-3 hashtags; english + hindi blocks, same scenes, same animation_pack."]
     return "\n".join(L)
 
 

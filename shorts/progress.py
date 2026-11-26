@@ -238,6 +238,11 @@ def run_report(today: dt.date | None = None, write: bool = True) -> str:
     dig = ct.digest(data, hist, doc)
     trend = ct.trending_digest(_load(ct.TRENDING_FILE, {}))
     text = render(snap, prev, status, dig, trend, elig=eligibility(data, snap, today))
+    try:                                                                  # what the views say right now (shorts.patterns): families, languages, lengths, recommended slots
+        from . import patterns
+        text = text.replace("## Next week", "## Patterns: what the views say (follow them)\n\n```\n" + patterns.digest(patterns.analyse(data, hist, doc, today)) + "\n```\n\n## Next week", 1)
+    except Exception:  # noqa: BLE001
+        pass
     if write:
         state["snapshots"] = [s for s in state["snapshots"] if s["date"] != snap["date"]] + [snap]
         config.DATA_DIR.mkdir(exist_ok=True)

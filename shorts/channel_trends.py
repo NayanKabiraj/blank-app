@@ -103,7 +103,8 @@ def _index(history: list, doc_history: list) -> dict:
             for lang, v in (vs.items() if kind == "short" else [("en", vs.get("en") or {})]):
                 vid = (v or {}).get("video_id")
                 if vid:
-                    idx[vid] = {"niche": e.get("niche"), "topic": e.get("topic"), "cluster": e.get("cluster"), "kind": kind}
+                    idx[vid] = {"niche": e.get("niche"), "topic": e.get("topic"), "cluster": e.get("cluster"), "kind": kind, "lang": lang,
+                                "follow_ups": e.get("follow_ups") or [], "next_video": e.get("next_video") or ""}
     return idx
 
 

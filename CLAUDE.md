@@ -62,8 +62,8 @@ the workflow renders.
    `Learning applied:` in `research_summary` and keep the file current with dated, honest evidence. Hindi videos (when produced) follow the same vox look: every on-screen string via `vox.L(ctx, en, hi)` / `T[ctx.lang]`.
 
 16. **6 uploads a day (quota), 10 when the quota is raised** (owner instruction, 24 Nov 2026; the current target and review rules are in `strategy/learnings.md` "DECISION", daily steps in
-   `shorts/CLAUDE_DAILY_TASK.md` "Daily production plan"): 3 Short topics x EN+HI per day (Sunday: 2 topics + 1 documentary x EN+HI), including one original **Horror & Suspense** story Short (bloodless, no real
-   people/places/events, labelled fiction). Quality over quota: ship fewer rather than rush; leave nothing unmerged or unuploaded (the queue is flushed 3x a day).
+   `shorts/CLAUDE_DAILY_TASK.md` "Daily production plan"): 3 Short topics x EN+HI per day (Sunday: 2 topics + 1 documentary x EN+HI), with the families chosen by the patterns brief (a Horror & Suspense story, bloodless, no real
+   people/places/events and labelled fiction, whenever the patterns recommend it). Quality over quota: ship fewer rather than rush; leave nothing unmerged or unuploaded (the queue is flushed 3x a day).
 
 17. **The goal is growth and monetization** (owner instruction, 24 Nov 2026; `strategy/monetization.md`): everything Claude generates, publishes or changes must serve the goal of subscribers and watch time that qualify the channel
    for the YouTube Partner Program, safely (no template-like mass-produced videos, no off-putting content, no sensitive-topic personas). Every plan's `research_summary` has a `Growth:` line (lever pulled + policy check), the channel
@@ -73,9 +73,9 @@ the workflow renders.
    1,000 views, Shorts viewed %, upload streak) are tracked automatically; every Sunday 21:00 IST the workflow refreshes the numbers, writes `reports/progress-<date>.md` + `reports/latest.md` and opens a GitHub issue with the report (phone
    notification). The Sunday daily run reads `reports/latest.md`, shows its Milestones and Next-week sections in the final message and applies "Next week" to the following week's plan. Never estimate a number the APIs did not return (n/a).
 
-19. **Growth plan** (owner request, 24 Nov 2026; `strategy/growth-plan.md`): the channel will not be monetized by volume alone. Explore across formats until 8 Dec, then at least 60 % of topics come from the top-2 series by views and
-   subscribers gained; any Short above 300 views gets a Part 2 within 3 days; every video carries the conversion toolkit (series promise in the first 20 s, series name, pinned comment answering `next_video`, the one-tap subscribe link that the pipeline adds
-   to every description); long-form (the only watch time that counts toward the 4,000 hours) is one search-led video a week built on a winning Short topic.
+19. **Growth plan + follow the patterns** (owner request, 24-26 Nov 2026; `strategy/growth-plan.md`, `shorts/patterns.py`): the channel will not be monetized by volume alone. Every day, with NO waiting period, the topic slots follow what is getting views: `python3 -m shorts.runbrief` prints the patterns digest and
+   RECOMMENDED SLOTS (family ranking by views per day shrunk by sample size, one explore slot, Part 2 candidates >= 2x the median); the daily run follows them and overrides only with a stated reason. Every video carries the conversion toolkit (series promise in the first 20 s, series name, pinned comment answering `next_video`,
+   the one-tap subscribe link the pipeline adds); long-form (the only watch time toward the hours requirement) is built on winning Short topics. Small samples are labelled; one viral video never decides alone.
 
 20. **Free SEO research** (owner request, 24 Nov 2026; `shorts/seo.py`, workflow `seo-research.yml`): for every candidate topic dispatch `seo-research.yml` with the topic phrased as people would search it (up to 6 queries separated by `|`; use `hl=hi gl=IN` for the Hindi phrasing), then read
    `data/seo/latest.json` (autocomplete phrases, outlier videos, title/length patterns). Put the best autocomplete phrase in the title and tags, copy what the outliers do in their first seconds, and record the winning phrase in `Gap:`. The channel check also reads `search_terms` (the searches that
