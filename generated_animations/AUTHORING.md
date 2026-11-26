@@ -71,3 +71,7 @@ switch to the Devanagari font (Noto Sans Devanagari) for `hi`. Sentence indices 
 ## Pack kit and preview (25 Nov 2026)
 New packs start with `from generated_animations.shared.packkit import *` (Beat helpers, figure/phone/plane/recorder/flame/sea/sub, vox, level/show/window; do not copy `_kit.py` any more). Preview with
 `python3 -m generated_animations.authoring.preview <plan.json> --lang en|hi [--doc]` and open the printed contact sheet once. See `shorts/DAILY_RUN.md` section 4.
+
+## Vox style v2 (26 Nov 2026)
+
+Measured easings, durations, borders, palette and pacing rules for the paper cut-out look: `generated_animations/VOX_STYLE_V2.md` and `shared/vox_style.py` (example pack `vox2_demo`). Use `vs.enter` for entrances, `vs.rim` for the yellow offset echo, one slow push-in per shot, one accent colour. Paid AI-video skills are NOT used (rule 10).
