@@ -36,3 +36,7 @@ Quality never drops: research depth, claim checks, frame inspection and bespoke 
 
 ## 7. Final summary
 Channel check + scoreboard + milestones and what you changed because of them; per topic: niche, score, runner-up, title, pack id, Growth lever, EN/HI uploaded or queued; Sunday: the documentary; how many of the day's uploads happened and why any are missing; any authorization banner.
+
+## Story craft (26 Nov 2026)
+
+Before writing narration read `strategy/story-craft.md` (hook killers, BUT/THEREFORE beats, open loops, specificity, banned AI tells). After writing a plan run `python3 -m shorts.storycheck plan.json` (advisory) and fix what it flags.

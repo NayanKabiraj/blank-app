@@ -394,3 +394,10 @@ def test_explore_slot_goes_to_the_thinnest_remaining_family():
     p = pt.analyse({"available": True, "videos": vs, "analytics": []}, hist, [], today)
     fam = [s["family"] for s in p["recommended_slots"]]
     assert fam[:2] == ["space+nature", "tech"] and fam[2] == "mind+body" and "explore" in p["recommended_slots"][2]["why"]   # 1 video of mind+body: only the explore slot, despite its high score
+
+
+def test_storycheck_flags_ai_tells_and_weak_hooks():
+    from shorts import storycheck
+    assert storycheck.check_text("Let's dive in and delve into the realm of phones.", first=True)
+    assert any("not X" in f for f in storycheck.check_text("It's not a bug. It's a feature."))
+    assert not storycheck.check_text("Why does your phone get warm in your pocket?", first=True)

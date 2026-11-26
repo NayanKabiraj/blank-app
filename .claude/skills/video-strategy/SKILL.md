@@ -264,3 +264,8 @@ Every RESEARCH / BUILD starts from data, not memory: `python -m shorts.channel_t
 ## Goal: growth and monetization
 Every RESEARCH / BUILD serves subscribers and Partner Program eligibility (`strategy/monetization.md`): name the growth lever in `Growth:`, keep every video distinct (YouTube removes template-like mass-produced channels from monetization), and let the scoreboard
 (subscribers, public watch hours, subscribers per 1,000 views) steer the next change.
+
+
+## Story craft
+
+Narration follows `strategy/story-craft.md` (free rules; lint with `python3 -m shorts.storycheck plan.json`).
