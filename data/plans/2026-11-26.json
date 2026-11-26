@@ -1,294 +1,294 @@
 {
-  "niche": "Space & Universe",
-  "topic": "What if the Sun became a black hole?",
-  "research_summary": "Channel check: 26 Nov 2026 (channel_trends, YouTube Analytics 28 d): 47 subscribers, Shorts 1,815 views / 40.4 % viewed, long-form 57 views / 12.9 % viewed, 1.1 subscribers per 1,000 views; top: flute covers 687 and 475, Haunted Hotel story 505; best explainer reach = personal phone hooks, best retention = Space. Changes made because of it: series follow-ups of yesterday's two explainers (Phone Secrets part 2, Black Holes part 2) with the series promise in scene 2; Shorts about 38-45 s with the payoff before second 22; a story with a different structure and twist from yesterday's. Learning applied: rules 1 (short, payoff early), 2 (viewer's own life), 5 (series promise inside 20 s), 6 (everyday-tech first), 7 (Space second). Timely check: Mars passes Regulus today but the Mars-Jupiter peak (16-22 Nov) and the supermoon (24 Nov) have passed, so no strong free timely hook; slot 2 stays a Space series follow-up. Candidates (/40): (1) what if the Sun became a black hole 33 (follow-up of the 25 Nov black-hole fall; follow_up queued in the queue), (2) why do stars twinkle 28, (3) what if Earth had two moons 28, (4) why is space dark if stars are everywhere 30, (5) what if the Moon were twice as close 29. Winner: (1) - best-retention niche plus a series (Black Holes) and a surprising number (eight minutes). Titles (/50): 'What If the Sun Became a Black Hole? Eight Minutes' 45 (chosen, 50 chars), 'Earth Keeps Orbiting a Black Hole Sun' 41, 'Would Earth Survive a Black Hole Sun?' 40. Thumbnails: A a black Sun with Earth still orbiting and the question (chosen), B a timer showing 8:20, C a tiny black dot. Hooks: 'The Sun turns into a black hole. For eight minutes, nothing changes. Why?' (chosen), 'Earth would keep orbiting. In the dark.', 'There would be no way to see it coming.'. SEO: see data/seo/latest.json for 'what if the sun became a black hole'. Gap: most videos either list apocalypse effects or dwell on the swallowed-Earth myth; this Short gives the eight-minute double delay (light and gravity), the unchanged orbit, and why (mass not size) in under 45 seconds. Claims: (1) Earth's orbit would be unchanged if the Sun were replaced by a black hole of the same mass (NASA Imagine the Universe; ESO educational material; Physicsbunn blog) - VERIFIED; (2) the Schwarzschild radius of one solar mass is about 3 km (2.95 km), far smaller than the Sun's ~700,000 km radius (standard GR; ESO page discusses the scale) - PARTIALLY VERIFIED, figure from standard physics, not quoted in the fetched pages; (3) light takes about eight minutes (8 min 20 s) from the Sun to Earth (NASA) - VERIFIED; (4) changes in gravity propagate at the speed of light (LIGO/Virgo GW170817 measurement, standard GR) - PARTIALLY VERIFIED, no source fetched today, narration says 'travel at the same speed'; (5) the Sun is too light to become a black hole and will end as a white dwarf (stellar evolution, standard) - PARTIALLY VERIFIED; theory vs observation: a Sun replaced by a black hole is a thought experiment. Sources: https://imagine.gsfc.nasa.gov/educators/blackholes/imagine/page26.html https://www.eso.org/public/archives/exhibitions/pdf/es1219_educational.pdf https://blog.richmond.edu/physicsbunn/?p=163 Growth: lever = series follow-up (Black Holes part 2 with the promise in scene 2, next_video what is inside a black hole) and retention (the 'nothing changes for eight minutes' hook, countdown visual); policy check: a physics thought experiment with its own countdown structure, different from the phone explainer and the rules story, theory labelled. Quality gate 82/100.",
-  "mood": "dramatic",
-  "cluster": "Black Holes",
+  "niche": "Horror & Suspense",
+  "topic": "The Mirror Rules",
+  "research_summary": "Channel check: 26 Nov 2026 (channel_trends, YouTube Analytics 28 d): 47 subscribers, Shorts 1,815 views / 40.4 % viewed, long-form 57 views / 12.9 % viewed, 1.1 subscribers per 1,000 views; top: flute covers 687 and 475, Haunted Hotel story 505; best explainer reach = personal phone hooks, best retention = Space. Changes made because of it: series follow-ups of yesterday's two explainers (Phone Secrets part 2, Black Holes part 2) with the series promise in scene 2; Shorts about 38-45 s with the payoff before second 22; a story with a different structure and twist from yesterday's. Learning applied: rules 1 (short, payoff early), 2 (viewer's own life), 5 (series promise inside 20 s), 6 (everyday-tech first), 7 (Space second). Timely check: Mars passes Regulus today but the Mars-Jupiter peak (16-22 Nov) and the supermoon (24 Nov) have passed, so no strong free timely hook; slot 2 stays a Space series follow-up. Candidates (/40: hook, twist, shareability, safety): (1) The Mirror Rules 32 (list-of-rules structure and a self-written warning twist, different from yesterday's swap story), (2) The voicemail from tomorrow 31, (3) The village with no night 29, (4) The stairwell that adds a floor 29, (5) The photograph that changes 28. Winner: (1). Titles (/50): 'The Mirror Rules (A Fictional Story)' 40 (chosen, 36 chars), 'Rule Three: Leave' 36, 'My Reflection Moved First' 37. Thumbnails: A a mirror with a note and the question (chosen), B a hand raised in a mirror, C three numbered rules. Hooks: 'The note taped to my new mirror had three rules. Would you laugh at rule one?' (chosen), 'My reflection moved first.', 'The fourth rule was in my handwriting.'. Gap: story Shorts on the channel out-reached explainers but were generic; this one is a rules-list structure (a countdown feel) with a single twist (the fourth rule in the narrator's own hand) - structurally different from the 25 Nov swap story; fiction labelled. Claims: FICTIONAL ASSUMPTION - original fiction written for this channel; no real people, places, buildings, brands or events; no factual claims. Sources: none (fiction). Growth: lever = reach and conversion through story series ('Midnight Stories' cluster, next_video another story, comment prompt 'leave or wave back'); policy check: original fiction, distinct structure and tone from the two explainers and from the previous story, bloodless, not manipulative, labelled fiction. Quality gate 80/100.",
+  "mood": "mysterious",
+  "cluster": "Midnight Stories",
   "follow_ups": [
-    "What is inside a black hole?",
-    "What if the Moon were twice as close?",
-    "Why is space dark if stars are everywhere?"
+    "The voicemail from tomorrow",
+    "The village with no night",
+    "The stairwell that adds a floor"
   ],
-  "gate_score": 82,
+  "gate_score": 80,
   "english": {
-    "title": "What If the Sun Became a Black Hole? Eight Minutes",
-    "description": "The Sun turns into a black hole: for eight minutes nothing changes, then the light goes out, yet Earth keeps its orbit. Black Holes, part 2. #Shorts #BlackHole #Space",
+    "title": "The Mirror Rules (A Fictional Story)",
+    "description": "A fictional story: three rules taped to a mirror, and a reflection that does not wait. A short original suspense story, no gore. #Shorts #HorrorStory #Suspense",
     "tags": [
-      "what if the sun became a black hole",
-      "sun black hole earth orbit",
-      "would earth survive a black hole sun",
-      "black hole same mass as the sun",
-      "black holes explained",
-      "space what if"
+      "the mirror rules",
+      "short horror story",
+      "mirror horror story",
+      "suspense story",
+      "scary story short",
+      "fictional story"
     ],
-    "hook_text": "Eight minutes?",
-    "thumbnail_text": "8 MINUTES",
-    "thumbnail_question": "What if the Sun became a black hole?",
-    "next_video": "What is inside a black hole?",
-    "pinned_comment": "Would you rather see it coming or not? Tell me below!",
+    "hook_text": "Would you laugh?",
+    "thumbnail_text": "3 RULES",
+    "thumbnail_question": "Would you break rule three?",
+    "next_video": "The voicemail from tomorrow",
+    "pinned_comment": "Would you leave, or wave back? Tell me below!",
     "scenes": [
       {
-        "text": "The Sun turns into a black hole. For eight minutes, nothing changes. Why?",
-        "keyword": "Sun turns into a black hole",
+        "text": "The note taped to my new mirror had three rules. Would you laugh at rule one?",
+        "keyword": "three rules",
         "graphic": {
           "kind": "title",
-          "headline": "8 minutes of nothing",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "planet"
-        }
-      },
-      {
-        "text": "Black Holes, part two. In this video you'll see what Earth feels, and when.",
-        "keyword": "you'll see",
-        "graphic": {
-          "kind": "chat",
-          "headline": "Quick chat",
-          "caption": "",
-          "items": [
-            "Do we fall in?",
-            "No",
-            "What changes?",
-            "Light, then warmth"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Light takes about eight minutes to reach us, and gravity's changes travel just as fast.",
-        "keyword": "eight minutes",
-        "graphic": {
-          "kind": "stat",
-          "headline": "8 min",
-          "caption": "light from the Sun to Earth",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Then the lights go out, and Earth begins to cool.",
-        "keyword": "lights go out",
-        "graphic": {
-          "kind": "steps",
-          "headline": "After eight minutes",
-          "caption": "",
-          "items": [
-            "Sky goes dark",
-            "Earth cools",
-            "Ice spreads"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "But Earth's orbit stays the same. Far away, a black hole pulls exactly like the Sun did.",
-        "keyword": "orbit stays the same",
-        "graphic": {
-          "kind": "compare",
-          "headline": "Earth's orbit",
-          "caption": "",
-          "items": [
-            "With the Sun",
-            "With a black hole"
-          ],
-          "values": [
-            5.0,
-            5.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Why? Gravity depends on mass, not size. Squeezed to three kilometres, the Sun pulls the same.",
-        "keyword": "mass, not size",
-        "graphic": {
-          "kind": "myth",
-          "headline": "Does size matter?",
-          "caption": "",
-          "items": [
-            "Smaller pulls less",
-            "Same mass, same pull"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "It can't really happen: the Sun is too light, and will end as a white dwarf.",
-        "keyword": "too light",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "Too light",
-          "caption": "it will end as a white dwarf",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "planet"
-        }
-      },
-      {
-        "text": "So Earth circles in the dark, held by nothing visible. Would you see it coming? Tell me below!",
-        "keyword": "held by nothing",
-        "graphic": {
-          "kind": "title",
-          "headline": "Would you see it coming?",
+          "headline": "Three rules",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
           "prop": "clock"
         }
+      },
+      {
+        "text": "Tonight's story: three rules, one mirror, and a reflection that doesn't wait. Ready?",
+        "keyword": "Tonight's story",
+        "graphic": {
+          "kind": "chat",
+          "headline": "Tonight",
+          "caption": "",
+          "items": [
+            "Three rules",
+            "One mirror",
+            "A reflection",
+            "That won't wait"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Rule one: if your reflection is late, ignore it. Mine was a second late. I ignored it.",
+        "keyword": "Rule one",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Rule one",
+          "caption": "a second late",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "clock"
+        }
+      },
+      {
+        "text": "Rule two: if it's on time, say good morning. Mine always was. So I did.",
+        "keyword": "Rule two",
+        "graphic": {
+          "kind": "steps",
+          "headline": "The rules",
+          "caption": "",
+          "items": [
+            "Late: ignore",
+            "On time: greet",
+            "Early: ?"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Rule three: if it moves first, leave. Tonight, it raised its hand before me.",
+        "keyword": "Rule three",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Who moves first?",
+          "caption": "",
+          "items": [
+            "Me",
+            "The reflection"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "I ran for the door. In the mirror, my reflection stayed where it was, smiling.",
+        "keyword": "stayed where it was",
+        "graphic": {
+          "kind": "compare",
+          "headline": "The mirror",
+          "caption": "",
+          "items": [
+            "I ran",
+            "It stayed"
+          ],
+          "values": [
+            3.0,
+            3.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "I'm outside now, holding the note. On the back, a fourth rule, in my own handwriting: never come back.",
+        "keyword": "fourth rule",
+        "graphic": {
+          "kind": "stat",
+          "headline": "Rule 4",
+          "caption": "in my handwriting",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Would you leave, or wave back? Tell me below!",
+        "keyword": "wave back",
+        "graphic": {
+          "kind": "title",
+          "headline": "Leave or wave back?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
       }
     ],
-    "animation_pack": "sun_bh_vox"
+    "animation_pack": "mirror_rules_vox"
   },
   "hindi": {
-    "title": "सूरज ब्लैक होल बन जाए तो क्या होगा? आठ मिनट",
-    "description": "सूरज ब्लैक होल बन जाए तो आठ मिनट तक कुछ नहीं बदलता, फिर रोशनी बुझ जाती है, पर धरती की कक्षा वही रहती है। ब्लैक होल्स, भाग 2। #Shorts #BlackHole #अंतरिक्ष",
+    "title": "आईने के नियम (एक काल्पनिक कहानी)",
+    "description": "यह एक काल्पनिक कहानी है: आईने पर चिपके तीन नियम, और एक परछाईं जो इंतज़ार नहीं करती। छोटी मौलिक सस्पेंस कहानी, कोई ख़ून-ख़राबा नहीं। #Shorts #HorrorStory #सस्पेंस",
     "tags": [
-      "सूरज ब्लैक होल बन जाए तो",
-      "ब्लैक होल सूरज धरती कक्षा",
-      "ब्लैक होल कैसे काम करता है"
+      "आईने के नियम",
+      "छोटी हॉरर कहानी",
+      "सस्पेंस कहानी"
     ],
-    "hook_text": "आठ मिनट?",
-    "thumbnail_text": "8 मिनट",
-    "thumbnail_question": "सूरज ब्लैक होल बने तो क्या होगा?",
-    "next_video": "ब्लैक होल के अंदर क्या है?",
-    "pinned_comment": "क्या आप उसे आते देखना चाहेंगे? नीचे बताइए!",
+    "hook_text": "क्या आप हँसते?",
+    "thumbnail_text": "3 नियम",
+    "thumbnail_question": "क्या आप तीसरा नियम तोड़ते?",
+    "next_video": "कल से आया वॉइसमेल",
+    "pinned_comment": "आप निकल जाते, या हाथ हिलाते? नीचे बताइए!",
     "scenes": [
       {
-        "text": "सूरज ब्लैक होल बन जाता है। आठ मिनट तक कुछ नहीं बदलता। क्यों?",
-        "keyword": "ब्लैक होल",
+        "text": "मेरे नए आईने पर चिपके नोट में तीन नियम थे। क्या आप पहले नियम पर हँसते?",
+        "keyword": "तीन नियम",
         "graphic": {
           "kind": "title",
-          "headline": "8 मिनट कुछ नहीं",
-          "caption": "",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "planet"
-        }
-      },
-      {
-        "text": "ब्लैक होल्स, भाग दो। इस वीडियो में आप देखेंगे धरती को क्या लगेगा, और कब।",
-        "keyword": "आप देखेंगे",
-        "graphic": {
-          "kind": "chat",
-          "headline": "छोटी बातचीत",
-          "caption": "",
-          "items": [
-            "क्या हम गिरेंगे?",
-            "नहीं",
-            "क्या बदलेगा?",
-            "रोशनी, फिर गर्मी"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "रोशनी को हम तक पहुँचने में करीब आठ मिनट लगते हैं। गुरुत्व का बदलाव भी उतना ही तेज़ है।",
-        "keyword": "आठ मिनट",
-        "graphic": {
-          "kind": "stat",
-          "headline": "8 मिनट",
-          "caption": "सूरज से धरती तक रोशनी",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "फिर रोशनी बुझ जाती है और धरती ठंडी पड़ने लगती है।",
-        "keyword": "रोशनी बुझ",
-        "graphic": {
-          "kind": "steps",
-          "headline": "आठ मिनट के बाद",
-          "caption": "",
-          "items": [
-            "आसमान अँधेरा",
-            "धरती ठंडी",
-            "बर्फ़ फैलती है"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "पर धरती की कक्षा वही रहती है। दूर से ब्लैक होल उतना ही खींचता है जितना सूरज।",
-        "keyword": "कक्षा वही",
-        "graphic": {
-          "kind": "compare",
-          "headline": "धरती की कक्षा",
-          "caption": "",
-          "items": [
-            "सूरज के साथ",
-            "ब्लैक होल के साथ"
-          ],
-          "values": [
-            5.0,
-            5.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "क्यों? खिंचाव द्रव्यमान से होता है, आकार से नहीं। तीन किलोमीटर का सूरज भी वैसे ही खींचता है।",
-        "keyword": "द्रव्यमान",
-        "graphic": {
-          "kind": "myth",
-          "headline": "क्या आकार मायने रखता है?",
-          "caption": "",
-          "items": [
-            "छोटा कम खींचे",
-            "वही द्रव्यमान, वही खिंचाव"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "असल में ऐसा नहीं हो सकता: सूरज बहुत हल्का है और सफ़ेद बौना बनेगा।",
-        "keyword": "बहुत हल्का",
-        "graphic": {
-          "kind": "keyword",
-          "headline": "बहुत हल्का",
-          "caption": "अंत में सफ़ेद बौना",
-          "items": [],
-          "values": [],
-          "answer": null,
-          "prop": "planet"
-        }
-      },
-      {
-        "text": "तो धरती अँधेरे में घूमती रहेगी, किसी अनदेखी चीज़ से बँधी। क्या आप उसे आते देखते? नीचे बताइए!",
-        "keyword": "अनदेखी",
-        "graphic": {
-          "kind": "title",
-          "headline": "क्या आप देखते?",
+          "headline": "तीन नियम",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
           "prop": "clock"
         }
+      },
+      {
+        "text": "आज रात की कहानी: तीन नियम, एक आईना, और एक परछाईं जो इंतज़ार नहीं करती। तैयार?",
+        "keyword": "आज रात की कहानी",
+        "graphic": {
+          "kind": "chat",
+          "headline": "आज रात",
+          "caption": "",
+          "items": [
+            "तीन नियम",
+            "एक आईना",
+            "एक परछाईं",
+            "जो रुकती नहीं"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "नियम एक: परछाईं देर करे तो अनदेखा करो। मेरी एक सेकंड देर करती थी। मैंने अनदेखा किया।",
+        "keyword": "नियम एक",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "नियम एक",
+          "caption": "एक सेकंड देर",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "clock"
+        }
+      },
+      {
+        "text": "नियम दो: वह समय पर हो तो सुप्रभात कहो। मेरी हमेशा समय पर थी। तो मैंने कहा।",
+        "keyword": "नियम दो",
+        "graphic": {
+          "kind": "steps",
+          "headline": "नियम",
+          "caption": "",
+          "items": [
+            "देर: अनदेखा",
+            "समय पर: नमस्ते",
+            "जल्दी: ?"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "नियम तीन: वह पहले हिले तो निकल जाओ। आज रात उसने मुझसे पहले हाथ उठाया।",
+        "keyword": "नियम तीन",
+        "graphic": {
+          "kind": "myth",
+          "headline": "पहले कौन हिला?",
+          "caption": "",
+          "items": [
+            "मैं",
+            "परछाईं"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "मैं दरवाज़े की ओर भागा। आईने में मेरी परछाईं वहीं रही, मुस्कुराती हुई।",
+        "keyword": "वहीं रही",
+        "graphic": {
+          "kind": "compare",
+          "headline": "आईना",
+          "caption": "",
+          "items": [
+            "मैं भागा",
+            "वह रुकी"
+          ],
+          "values": [
+            3.0,
+            3.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "अब मैं बाहर हूँ, हाथ में नोट। पीछे चौथा नियम, मेरी ही लिखावट में: कभी वापस मत आना।",
+        "keyword": "चौथा नियम",
+        "graphic": {
+          "kind": "stat",
+          "headline": "नियम 4",
+          "caption": "मेरी लिखावट में",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "आप निकल जाते, या हाथ हिलाते? नीचे बताइए!",
+        "keyword": "हाथ हिलाते",
+        "graphic": {
+          "kind": "title",
+          "headline": "निकलें या हाथ हिलाएँ?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "star"
+        }
       }
     ],
-    "animation_pack": "sun_bh_vox"
+    "animation_pack": "mirror_rules_vox"
   }
 }

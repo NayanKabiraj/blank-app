@@ -921,5 +921,32 @@
         "video_id": "VEiiL_3W8F0"
       }
     }
+  },
+  {
+    "date": "2026-11-26",
+    "niche": "Horror & Suspense",
+    "topic": "The Mirror Rules",
+    "mood": "mysterious",
+    "cluster": "Midnight Stories",
+    "follow_ups": [
+      "The voicemail from tomorrow",
+      "The village with no night",
+      "The stairwell that adds a floor"
+    ],
+    "next_video": "The voicemail from tomorrow",
+    "gate_score": 80,
+    "thumbnail_text": "3 RULES",
+    "videos": {
+      "en": {
+        "file": "2026-11-26_en.mp4",
+        "saved_to": "videos/2026-11-26/en.mp4",
+        "video_id": "EHIU0MX1tX0"
+      },
+      "hi": {
+        "file": "2026-11-26_hi.mp4",
+        "saved_to": "videos/2026-11-26/hi.mp4",
+        "video_id": "a8xv3kEBwDU"
+      }
+    }
   }
 ]
