@@ -1,0 +1,20 @@
+TITLE:
+How Does Your Phone Know Which Way Is Up? #Shorts
+
+DESCRIPTION:
+Turn your phone sideways and the screen follows. See the tiny sensor that feels gravity, the gyroscope that tracks turning, and why the screen waits before it flips. Phone Secrets, part 2. #Shorts #Phone #HowItWorks
+
+Up next: How does your phone know it is in your pocket?
+
+Sources:
+https://android-developers.googleblog.com/2010/09/one-screen-turn-deserves-another.html
+https://www.digikey.com/en/articles/android-as-a-sensor-platform-in-phones-tablets-and-ereaders
+https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion
+
+Subscribe so you don't miss the next episode: https://www.youtube.com/@nayankabiraj?sub_confirmation=1
+
+TAGS:
+how does my phone know which way is up, phone accelerometer explained, phone gyroscope explained, why does my phone screen rotate, phone sensors explained, phone secrets
+
+PINNED COMMENT:
+What should Phone Secrets part three explain? Tell me below!

@@ -867,5 +867,32 @@
         "video_id": "Ft6g5O3vggo"
       }
     }
+  },
+  {
+    "date": "2026-11-26",
+    "niche": "How Tech Works",
+    "topic": "How does your phone know which way is up?",
+    "mood": "upbeat",
+    "cluster": "Phone Secrets",
+    "follow_ups": [
+      "How does your phone know it is in your pocket?",
+      "Why does your phone get hot while charging?",
+      "How does a touchscreen feel your finger?"
+    ],
+    "next_video": "How does your phone know it is in your pocket?",
+    "gate_score": 83,
+    "thumbnail_text": "WHICH WAY IS UP?",
+    "videos": {
+      "en": {
+        "file": "2026-11-26_en.mp4",
+        "saved_to": "videos/2026-11-26/en.mp4",
+        "video_id": "k9W65iRvzoY"
+      },
+      "hi": {
+        "file": "2026-11-26_hi.mp4",
+        "saved_to": "videos/2026-11-26/hi.mp4",
+        "video_id": "DISZMtsRQGc"
+      }
+    }
   }
 ]
