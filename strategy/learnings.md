@@ -6,6 +6,8 @@ How this file works: the daily task runs `python -m shorts.channel_trends summar
 and writes `Learning applied:` (which rule, what was changed) in `research_summary`. After the channel check, add or revise ONE dated line under "Evidence" if the new data
 says something new (never invent numbers; small samples are labelled as such). Rules move from "Test" to "Rule" only after two or more videos agree.
 
+## Evidence (26 Nov update: the first computed eligibility analysis shows 1.8 qualifying long-form hours in 365 days (not the 8.2 quoted earlier, which included Shorts watch time), 48 subscribers, 2,016 Shorts views in 90 days: see monetization.md "Goal: eligibility".)
+
 ## Evidence (24 Nov 2026, YouTube Analytics, last 28 days; samples are small - hints, not proof)
 - Channel: 11,285 views, 47 subscribers, 144 videos. Only **+2 subscribers** from ~1,840 views.
 - **Shorts carry the channel**: 1,789 views, **40 % average viewed**. **Long-form: 50 views, 11 % average viewed** (a 6 min documentary held 7 %).

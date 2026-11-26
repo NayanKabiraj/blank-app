@@ -67,7 +67,7 @@ the workflow renders.
 
 17. **The goal is growth and monetization** (owner instruction, 24 Nov 2026; `strategy/monetization.md`): everything Claude generates, publishes or changes must serve the goal of subscribers and watch time that qualify the channel
    for the YouTube Partner Program, safely (no template-like mass-produced videos, no off-putting content, no sensitive-topic personas). Every plan's `research_summary` has a `Growth:` line (lever pulled + policy check), the channel
-   check includes the `monetization` scoreboard (`python -m shorts.channel_trends summary`), and when a choice trades quantity for quality or policy safety, choose safety.
+   check includes the `monetization` scoreboard (`python -m shorts.channel_trends summary`) and the computed Partner Program eligibility (fan-funding and ads tier % met, in `python -m shorts.runbrief` and the weekly report; goals in `strategy/monetization.md`), and when a choice trades quantity for quality or policy safety, choose safety.
 
 18. **Milestones and the weekend progress report** (owner instruction, 24 Nov 2026; `strategy/milestones.json`, `shorts/progress.py`, workflow `weekly-report.yml`): the ladders (subscribers, public watch hours, Shorts views, best video, subscribers per
    1,000 views, Shorts viewed %, upload streak) are tracked automatically; every Sunday 21:00 IST the workflow refreshes the numbers, writes `reports/progress-<date>.md` + `reports/latest.md` and opens a GitHub issue with the report (phone

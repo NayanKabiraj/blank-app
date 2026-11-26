@@ -10,8 +10,14 @@ help that goal (or protect it) is not the priority. Each plan's `research_summar
 - Only public views and watch time count (the channel's uploads are public; `channel_trends` flags any video that is not). **Shorts-feed watch time does NOT count toward the 4,000 hours** - only long-form does (YouTube Help); the report shows the qualifying long-form hours separately.
 - The honest assessment, the math and the ranked plan are in `strategy/growth-plan.md`.
 
+## Goal: eligibility (added 26 Nov 2026 from the computed eligibility analysis)
+The weekly report (and `python -m shorts.runbrief`) now carries the **Partner Program eligibility analysis**: each tier's requirements met in %, computed from the Analytics API with YouTube's definitions (Studio's Earn tab has no API), plus YouTube's own
+flags (`isChannelMonetizationEnabled`, `longUploadsStatus`). First reading (26 Nov): 48 subscribers, **1.8 qualifying long-form hours in 365 days** (the earlier "8.2" counted Shorts watch time, which YouTube does not count), 2,016 Shorts views in 90 days -> fan-funding tier about
+0.1 % (hours are the slowest requirement), ads tier about 0.0-4.8 %. **Goals, in order:** (1) the subscribers requirement of the fan-funding tier (500), (2) 3,000 long-form hours OR 3 M Shorts views (the long-form route needs search-led videos that people watch for minutes), (3) then the ads tier.
+Every weekly review states the two percentages and what moved them. Check the Earn tab in YouTube Studio for the official verdict, 2-step verification and strikes (not available from any API).
+
 ## Where the channel stands (24 Nov 2026, `python -m shorts.channel_trends summary` -> `monetization`)
-- 47 subscribers (953 to 1,000); about 5 watch hours in the last 28 days of which only ~0.4 h is long-form (the qualifying kind); 1,789 Shorts views in 28 days (vs 10 M in 90 days); **about 1.1 subscribers per 1,000 views**.
+- 48 subscribers (952 to 1,000); qualifying long-form watch time 1.8 h in 365 days (Shorts watch time does not count); 1,789 Shorts views in 28 days (vs 10 M in 90 days); **about 1.1 subscribers per 1,000 views**.
 - Reading: views are far too few and almost none convert to subscribers. Reach (impressions, retention) and conversion (a reason to subscribe) both have to move; neither is solved by uploading more of the same.
 
 ## Policy guardrails (a channel that breaks them is removed from the Partner Program, however many views it has)

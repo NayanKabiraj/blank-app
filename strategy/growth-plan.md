@@ -36,3 +36,7 @@ If a checkpoint is missed by half, change the strategy (series, format, language
 
 ## SEO toolkit (built 24 Nov 2026, free)
 `python -m shorts.seo` (workflow `seo-research.yml` -> `data/seo/latest.json`): autocomplete expansions in English and Hindi/Hinglish, yt-dlp metadata of the top results for outlier detection and title/length patterns; the weekly report lists the search terms that brought viewers to our videos (Analytics API). Public metadata, low volume.
+
+## Eligibility as the scoreboard (26 Nov 2026)
+`reports/latest.md` and the run brief show the computed Partner Program eligibility: fan-funding tier and ads tier requirements met in %, the slowest requirement decides. Reading on 26 Nov: subscribers 48, qualifying long-form hours 1.8 (365 d), Shorts views 2,016 (90 d);
+fan-funding tier about 0.1 %. The plan's levers map to it directly: series + conversion toolkit -> subscribers; one search-led long-form a week -> hours. A week in which neither percentage moves is a week to change the strategy, not the volume.

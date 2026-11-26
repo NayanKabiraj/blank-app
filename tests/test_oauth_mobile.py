@@ -341,3 +341,12 @@ def test_eligibility_section():
     assert "Eligible by these numbers: YES" in "\n".join(pr.eligibility(data, big, today))
     assert "NOT AVAILABLE" in pr.eligibility({"available": False}, snap, today)[0]
     assert "## Partner Program eligibility" in pr.render({"date": "2026-11-29", "available": True, "uploads_7d_detail": {}}, None, [], {"available": False}, {}, elig=["x"])
+
+
+def test_tier_progress_and_brief_line():
+    from shorts import progress as pr
+    tp = pr.tier_progress({"subscribers": 250, "watch_hours_365d": 1500, "shorts_views_90d": 100})
+    assert tp == {"fan": 50.0, "ads": 25.0}                                     # subs 50 % / 25 %, hours 50 % / 37.5 %: the slowest decides
+    assert pr.tier_progress({"subscribers": None, "watch_hours_365d": 1, "shorts_views_90d": 1})["fan"] is None
+    from shorts import runbrief
+    assert "Partner Program eligibility" in runbrief.brief()

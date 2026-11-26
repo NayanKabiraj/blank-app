@@ -75,7 +75,23 @@ def snapshot(data: dict, history: list, doc_history: list, today: dt.date | None
             "best_video_views": max([int(r.get("views") or 0) for r in analytics], default=None),
             "subs_per_1000_views": mon.get("subscribers_per_1000_views"),
             "uploads_7d": up["week_total"], "uploads_7d_detail": up["week"], "upload_streak_days": up["streak"]}
+    tp = tier_progress(snap)
+    snap["eligibility_fan_pct"], snap["eligibility_ads_pct"] = tp["fan"], tp["ads"]
     return snap
+
+
+def tier_progress(snap: dict) -> dict:
+    """% of each tier's requirements met (the slowest requirement decides; the better of watch hours / Shorts views counts): fan-funding 500 subs + 3,000 h or 3 M Shorts views, ads 1,000 subs + 4,000 h or 10 M."""
+    y = ct.YPP
+
+    def pct(cur, need):
+        return None if cur is None else min(100.0, 100.0 * cur / need)
+    out = {}
+    for name, subs_need, h_need, sv_need in (("fan", y["fan_funding_subs"], 3000, 3_000_000), ("ads", y["ads_subs"], y["ads_watch_hours_12m"], y["ads_shorts_views_90d"])):
+        s_p, h_p, v_p = pct(snap.get("subscribers"), subs_need), pct(snap.get("watch_hours_365d"), h_need), pct(snap.get("shorts_views_90d"), sv_need)
+        usage = [x for x in (h_p, v_p) if x is not None]
+        out[name] = None if s_p is None or not usage else round(min(s_p, max(usage)), 1)
+    return out
 
 
 def eligibility(data: dict, snap: dict, today: dt.date) -> list[str]:
@@ -152,7 +168,7 @@ def render(snap: dict, prev: dict | None, status: list[dict], dig: dict, trend: 
                        ("Qualifying watch hours (LONG-FORM only), last 365 days", "watch_hours_365d"), ("Shorts watch hours, last 365 days (do not count)", "shorts_watch_hours_365d"), ("Shorts views, last 28 days", "shorts_views_28d"),
                        ("Shorts views, last 90 days", "shorts_views_90d"), ("Shorts average viewed %", "shorts_avg_view_pct"),
                        ("Subscribers per 1,000 views", "subs_per_1000_views"), ("Most-viewed video, 28 days", "best_video_views"),
-                       ("Uploads in the last 7 days", "uploads_7d"), ("Upload streak (days)", "upload_streak_days")):
+                       ("Partner Program: fan-funding tier requirements met %", "eligibility_fan_pct"), ("Partner Program: ads tier requirements met %", "eligibility_ads_pct"), ("Uploads in the last 7 days", "uploads_7d"), ("Upload streak (days)", "upload_streak_days")):
         L.append(f"| {label} | {_fmt(snap.get(key))} | {_delta(snap.get(key), p.get(key)).strip(' ()') or '-'} |")
     d7 = snap.get("uploads_7d_detail", {})
     L += ["", f"Uploads this week: {d7.get('short', 0)} Shorts + {d7.get('documentary', 0)} documentaries; {d7.get('en', 0)} English, {d7.get('hi', 0)} Hindi (target 6 a day = 42 a week).", "",

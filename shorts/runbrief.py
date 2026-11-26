@@ -70,6 +70,14 @@ def brief(now: dt.datetime | None = None) -> str:
         L.append(f"Scoreboard: {mon['subscribers']} subscribers ({mon['to_1000']} to 1,000), watch hours 28 d {mon.get('watch_hours_last_28d')} (long-form only counts), Shorts views 28 d {mon.get('shorts_views_last_28d')}; top subscriber videos: {[t['title'][:30] for t in mon.get('top_subscriber_videos', [])]}.")
     L += ["Signals: " + " | ".join(dig.get("signals", [])[:3]) if dig.get("available") else "Signals: n/a", ""]
     try:
+        snap0 = progress.snapshot(data, hist, doc, today)
+        el = progress.tier_progress(snap0)
+        st = (data.get("channel_status") or {})
+        L.append(f"Partner Program eligibility (computed; the slowest requirement decides): fan-funding tier {el['fan']} % , ads tier {el['ads']} % ; subscribers {snap0.get('subscribers')}, long-form hours 365 d {snap0.get('watch_hours_365d')}, Shorts views 90 d {snap0.get('shorts_views_90d')}; "
+                 f"isChannelMonetizationEnabled={st.get('isChannelMonetizationEnabled', 'n/a')}. Goal: move the slowest requirement, i.e. subscribers and long-form hours, not Shorts volume.")
+    except Exception as exc:  # noqa: BLE001
+        L.append(f"Eligibility: n/a ({str(exc)[:60]})")
+    try:
         state = _load(progress.HISTORY, {"snapshots": [], "reached": {}})
         snap = progress.snapshot(data, hist, doc, today)
         st = progress.evaluate(snap, _load(progress.MILESTONES, {"ladders": []})["ladders"], dict(state["reached"]))
