@@ -78,6 +78,31 @@ def snapshot(data: dict, history: list, doc_history: list, today: dt.date | None
     return snap
 
 
+def eligibility(data: dict, snap: dict, today: dt.date) -> list[str]:
+    """Partner Program eligibility computed from the Analytics API with YouTube's own definitions (YouTube Studio's Earn tab is the official source and has no API)."""
+    if not data.get("available"):
+        return ["Eligibility: NOT AVAILABLE (no channel data this week)."]
+    subs, y = snap.get("subscribers"), ct.YPP
+    hours, sv90 = snap.get("watch_hours_365d"), snap.get("shorts_views_90d")
+    recent = sum(1 for v in data.get("videos", []) if v.get("privacy") == "public" and (today - dt.date.fromisoformat(v["published"][:10])).days <= 90)
+
+    def row(label, cur, need, unit=""):
+        if cur is None:
+            return f"- {label}: n/a (needs {need:,}{unit})"
+        return f"- {label}: {cur:,}{unit} of {need:,}{unit} ({round(100 * cur / need, 1)} %) - {'MET' if cur >= need else 'not met'}"
+    fan_ok = subs is not None and subs >= y["fan_funding_subs"] and recent >= 3 and ((hours or 0) >= 3000 or (sv90 or 0) >= 3_000_000)
+    ads_ok = subs is not None and subs >= y["ads_subs"] and ((hours or 0) >= y["ads_watch_hours_12m"] or (sv90 or 0) >= y["ads_shorts_views_90d"])
+    st = data.get("channel_status") or {}
+    L = ["### Fan-funding tier (500 subscribers + 3 public uploads in 90 days + 3,000 long-form hours OR 3 M Shorts views)",
+         row("Subscribers", subs, y["fan_funding_subs"]), f"- Public uploads in the last 90 days: {recent} of 3 - {'MET' if recent >= 3 else 'not met'}",
+         row("Long-form watch hours, 365 d", hours, 3000, " h"), row("Shorts views, 90 d", sv90, 3_000_000), f"- **Eligible by these numbers: {'YES' if fan_ok else 'NO'}**", "",
+         "### Ads tier (1,000 subscribers + 4,000 long-form hours OR 10 M Shorts views)",
+         row("Subscribers", subs, y["ads_subs"]), row("Long-form watch hours, 365 d", hours, y["ads_watch_hours_12m"], " h"), row("Shorts views, 90 d", sv90, y["ads_shorts_views_90d"]),
+         f"- **Eligible by these numbers: {'YES' if ads_ok else 'NO'}**", "",
+         "YouTube's own flags (Data API `status`): " + (", ".join(f"{k}={v}" for k, v in st.items()) if st else "n/a") + ". Not available from any API: the Studio Earn tab's official verdict, 2-step verification and strike status - check them in YouTube Studio -> Earn. Thresholds may rise on 1 Feb 2027 (unverified)."]
+    return L
+
+
 def evaluate(snap: dict, ladders: list, reached: dict) -> list[dict]:
     """For each ladder: current value, milestones reached (with the first-seen date) and the next one with progress. Updates `reached` in place."""
     out = []
@@ -116,7 +141,7 @@ def _bar(pct: float, width: int = 20) -> str:
     return "█" * n + "░" * (width - n)
 
 
-def render(snap: dict, prev: dict | None, status: list[dict], dig: dict, trend: dict, week_note: str = "") -> str:
+def render(snap: dict, prev: dict | None, status: list[dict], dig: dict, trend: dict, week_note: str = "", elig: list[str] | None = None) -> str:
     p = prev or {}
     L = [f"# Weekly progress report - {snap['date']}", "",
          "Goal: grow subscribers and watch time toward YouTube monetization, safely (`strategy/monetization.md`).", ""]
@@ -143,6 +168,8 @@ def render(snap: dict, prev: dict | None, status: list[dict], dig: dict, trend: 
             L.append(f"  - next: {_fmt(n['step'])}" + (f" ({n['mark']})" if n["mark"] else "") + (f"  `{_bar(n['progress'])}` {n['progress']} %" if "progress" in n else ""))
     new = [f"{m['label']} {_fmt(r['step'])}" for m in status for r in m["reached"] if r["date"] == snap["date"]]
     L += ["", "**Reached this week:** " + (", ".join(new) if new else "nothing new."), ""]
+    if elig:
+        L += ["## Partner Program eligibility (computed)", ""] + elig + [""]
     if dig.get("available"):
         L += ["## What worked and what did not (28 days)", ""]
         if dig.get("split"):
@@ -194,7 +221,7 @@ def run_report(today: dt.date | None = None, write: bool = True) -> str:
     status = evaluate(snap, ladders, state["reached"])
     dig = ct.digest(data, hist, doc)
     trend = ct.trending_digest(_load(ct.TRENDING_FILE, {}))
-    text = render(snap, prev, status, dig, trend)
+    text = render(snap, prev, status, dig, trend, elig=eligibility(data, snap, today))
     if write:
         state["snapshots"] = [s for s in state["snapshots"] if s["date"] != snap["date"]] + [snap]
         config.DATA_DIR.mkdir(exist_ok=True)

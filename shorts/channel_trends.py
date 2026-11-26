@@ -39,8 +39,10 @@ def fetch(days: int = 28, max_videos: int = 200) -> dict:
         return out
     try:
         yt = _service("youtube", "v3")
-        uploads = yt.channels().list(part="contentDetails,statistics", mine=True).execute()["items"][0]
+        uploads = yt.channels().list(part="contentDetails,statistics,status", mine=True).execute()["items"][0]
         out["channel"] = {k: int(v) for k, v in uploads.get("statistics", {}).items() if str(v).isdigit()}
+        # YouTube's own channel flags (the Studio "Earn" tab itself has no API; these are the only eligibility-related fields the Data API returns)
+        out["channel_status"] = {k: v for k, v in (uploads.get("status") or {}).items() if k in ("isLinked", "longUploadsStatus", "madeForKids", "privacyStatus", "isChannelMonetizationEnabled")}
         pl = uploads["contentDetails"]["relatedPlaylists"]["uploads"]
         ids, token = [], None
         while len(ids) < max_videos:                       # every upload (50 per page), newest first
