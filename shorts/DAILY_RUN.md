@@ -40,3 +40,9 @@ Channel check + scoreboard + milestones and what you changed because of them; pe
 ## Story craft (26 Nov 2026)
 
 Before writing narration read `strategy/story-craft.md` (hook killers, BUT/THEREFORE beats, open loops, specificity, banned AI tells). After writing a plan run `python3 -m shorts.storycheck plan.json` (advisory) and fix what it flags.
+
+## Prepared topic for 27 Nov 2026 (owner request, 26 Nov)
+Slot 1 (space+nature) is READY: plan `strategy/prepared/2026-11-27-silent-space.json` ("Why Is There No Sound in Space?", validated, claims verified, EN+HI) and the committed pack
+`generated_animations/scenes/silent_space_vox/` (2D cartoon astronaut from `shared/cartoon.py` in the vox look, previews inspected in EN and HI). Do not rewrite it: re-check the Gap with
+`seo-research.yml` (title phrase 'why is there no sound in space'), update `Channel check:` with the morning numbers, then dispatch it with `daily-batch.yml` first, and research slots 2 and 3 as usual. The
+`cartoon.astro/ear/eye_icon` helpers are available to every new pack (2D cartoon character look, same render time as other vox packs).
