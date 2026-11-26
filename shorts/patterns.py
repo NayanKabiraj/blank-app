@@ -26,6 +26,7 @@ from . import channel_trends as ct
 from . import config
 
 FILE = config.DATA_DIR / "patterns.json"
+RETIRED = {"story"}       # owner decision 26 Nov 2026: the horror/story niche was dropped; old story videos are still analysed but never recommended
 PRIOR = 2.0            # shrinkage strength: a group needs about 2 videos to count as much as the channel average
 FAMILY = {"How Tech Works": "tech", "AI Explained": "tech", "Technology": "tech", "Space & Universe": "space+nature", "Earth & Nature": "space+nature", "Science Explained": "space+nature",
           "Brain & Psychology": "mind+body", "Human Body": "mind+body", "Horror & Suspense": "story"}
@@ -109,7 +110,7 @@ def analyse(data: dict, history: list, doc_history: list, today: dt.date | None 
     glob = sum(r["score"] for r in rs) / len(rs)
     med_vpd = st.median(r["vpd"] for r in rs)
     fam = groups(rs, "family", glob)
-    ranked = [f for f in fam if f["name"] not in ("other",)]
+    ranked = [f for f in fam if f["name"] not in ("other",) and f["name"] not in RETIRED]
     sure = [f for f in ranked if f["n"] >= 3]                                          # a family needs 3+ videos to win a main slot; thinner ones can only get the explore slot
     top = sure[:2] if len(sure) >= 2 else ranked[:2]
     rest = [f for f in ranked if f not in top]

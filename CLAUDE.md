@@ -61,9 +61,9 @@ the workflow renders.
 15. **Learnings loop** (owner instruction, 24 Nov 2026; `strategy/learnings.md`): before every topic decision read `strategy/learnings.md`, run `python -m shorts.channel_trends summary` and `... trending`, apply the Rules, record
    `Learning applied:` in `research_summary` and keep the file current with dated, honest evidence. Hindi videos (when produced) follow the same vox look: every on-screen string via `vox.L(ctx, en, hi)` / `T[ctx.lang]`.
 
-16. **6 uploads a day (quota), 10 when the quota is raised** (owner instruction, 24 Nov 2026; the current target and review rules are in `strategy/learnings.md` "DECISION", daily steps in
-   `shorts/CLAUDE_DAILY_TASK.md` "Daily production plan"): 3 Short topics x EN+HI per day (Sunday: 2 topics + 1 documentary x EN+HI), with the families chosen by the patterns brief (a Horror & Suspense story, bloodless, no real
-   people/places/events and labelled fiction, whenever the patterns recommend it). Quality over quota: ship fewer rather than rush; leave nothing unmerged or unuploaded (the queue is flushed 3x a day).
+16. **6 uploads a day (quota), 10 when the quota is raised** (owner instruction, 24 Nov 2026; the current target is in `strategy/learnings.md` "DECISION", daily steps in `shorts/DAILY_RUN.md`): 3 Short topics x EN+HI per day, the families chosen by the patterns brief (rule 19). **Documentary days** (owner request, 26 Nov 2026):
+   Sunday, plus Wednesday from 9 Dec 2026 - each is 2 Short topics + one search-led 6-8 minute long-form (EN+HI) built on a winning Short topic, because only long-form watch time counts toward the hours requirement. **The Horror & Suspense niche was dropped on 26 Nov 2026** (owner decision): no story Shorts;
+   the third family is Mind & Body (Brain & Psychology / Human Body: why your body or mind does X, concepts only, never medical advice). Quality over quantity: ship fewer rather than rush; leave nothing unmerged or unuploaded (the queue is flushed 3x a day).
 
 17. **The goal is growth and monetization** (owner instruction, 24 Nov 2026; `strategy/monetization.md`): everything Claude generates, publishes or changes must serve the goal of subscribers and watch time that qualify the channel
    for the YouTube Partner Program, safely (no template-like mass-produced videos, no off-putting content, no sensitive-topic personas). Every plan's `research_summary` has a `Growth:` line (lever pulled + policy check), the channel

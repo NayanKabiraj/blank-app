@@ -151,17 +151,11 @@ def _intro_problems(scenes, lang: str, max_words: int) -> list[str]:
 
 
 def _lang_and_fiction_problems(plan) -> list[str]:
-    """Hindi is produced when config.LANGS has `hi` (then the plan needs a hindi block); story videos are labelled fiction (rule 4)."""
+    """Hindi is produced when config.LANGS has `hi` (then the plan needs a hindi block). (The Horror & Suspense niche was retired on 26 Nov 2026.)"""
     from . import config
     out = []
     if "hi" in [x.strip() for x in config.LANGS.split(",")] and plan.hindi is None:
         out.append("hindi: this run produces Hindi (VIDEO_LANGS includes hi) - add a `hindi` block (same scenes, same animation_pack, Devanagari narration)")
-    if plan.niche == "Horror & Suspense":
-        for lang, s in _present(plan):
-            if "fiction" not in s.description.lower() and "काल्पनिक" not in s.description:
-                out.append(f"{lang}: a Horror & Suspense story must say it is fiction in the description (e.g. 'A fictional story.' / 'यह एक काल्पनिक कहानी है।')")
-        if "fiction" not in plan.research_summary.lower():
-            out.append("research_summary: label the story FICTIONAL ASSUMPTION / original fiction under Claims (rule 4); any real-world fact in it is verified as usual")
     return out
 
 

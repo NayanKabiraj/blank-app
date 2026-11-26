@@ -216,14 +216,12 @@ def test_hindi_is_back_and_stories_are_labelled_fiction(monkeypatch):
     from pathlib import Path
     from shorts import config as cfg, niches, plan as P
     assert "hi" in cfg.LANGS.split(",")
-    assert "Horror & Suspense" in niches.NAMES
+    assert "Horror & Suspense" not in niches.NAMES
     p = P.Plan.model_validate(json.loads((Path(P.__file__).parent / "sample_plan.json").read_text(encoding="utf-8")))
     en_only = p.model_copy(update={"hindi": None})
     assert any("`hindi` block" in x for x in P._lang_and_fiction_problems(en_only))
     monkeypatch.setattr(cfg, "LANGS", "en")
     assert not P._lang_and_fiction_problems(en_only)
-    story = p.model_copy(update={"niche": "Horror & Suspense", "hindi": None})
-    assert any("fiction" in x for x in P._lang_and_fiction_problems(story))
     assert P.INTRO_CUE.search("Tonight: one hotel, one rule and a bell that rings by itself.")
 
 
@@ -367,9 +365,32 @@ def test_patterns_follow_what_works():
     assert p["available"] and p["videos"] == 6                                   # the 1-day-old and the 90-day-old video are not judged
     fams = {f["name"]: f for f in p["families"]}
     assert fams["story"]["lift"] > fams["space+nature"]["lift"] and fams["story"]["n"] == 2 and fams["story"]["confidence"] == "low (n<3)"
-    assert len(p["recommended_slots"]) == 3 and {x["family"] for x in p["recommended_slots"]} >= {"story"}      # <3 videos each: the best estimate still leads when nobody has 3
-    assert any("explore" in s["why"] for s in p["recommended_slots"])
+    assert "story" not in {x["family"] for x in p["recommended_slots"]} and len(p["recommended_slots"]) >= 2      # the story family is retired: analysed, never recommended
     assert p["part2_candidates"] and p["part2_candidates"][0]["title"].startswith(("Haunted", "The mystery"))
     assert "RECOMMENDED SLOTS TODAY" in pt.digest(p)
     assert not pt.analyse({"available": True, "videos": vs[:2], "analytics": []}, hist, [], today)["available"]               # too little data: no pattern claimed
     assert pt.title_shape("Why does ice float?") == "question/why" and pt.length_bucket(38) == "short <=40s" and pt.family(None, "A haunted tale") == "story"
+
+
+def test_story_family_is_retired_and_doc_days(monkeypatch):
+    import datetime as dt
+    from shorts import patterns as pt, runbrief
+    assert "story" in pt.RETIRED
+    assert "DOCUMENTARY DAY (Sunday)" in runbrief.brief(dt.datetime(2026, 11, 29, 9, 0, tzinfo=runbrief.IST))
+    assert "DOCUMENTARY DAY (Wednesday)" in runbrief.brief(dt.datetime(2026, 12, 9, 9, 0, tzinfo=runbrief.IST))
+    assert "3 Short topics" in runbrief.brief(dt.datetime(2026, 12, 2, 9, 0, tzinfo=runbrief.IST))            # Wednesday before 9 Dec
+
+
+def test_explore_slot_goes_to_the_thinnest_remaining_family():
+    import datetime as dt
+    from shorts import patterns as pt
+    today = dt.date(2026, 11, 30)
+    def vid(i, title, views, age=5):
+        return {"id": f"v{i}", "title": title, "views": views, "published": (today - dt.timedelta(days=age)).isoformat() + "T00:00:00Z", "duration": "PT50S", "privacy": "public"}
+    vs, hist = [], []
+    for i, (niche, views) in enumerate([("How Tech Works", 300), ("How Tech Works", 200), ("How Tech Works", 100), ("Space & Universe", 500), ("Space & Universe", 400), ("Space & Universe", 300), ("Brain & Psychology", 900)]):
+        vs.append(vid(i, f"Why test {i}?", views))
+        hist.append({"date": "x", "niche": niche, "videos": {"en": {"video_id": f"v{i}"}}})
+    p = pt.analyse({"available": True, "videos": vs, "analytics": []}, hist, [], today)
+    fam = [s["family"] for s in p["recommended_slots"]]
+    assert fam[:2] == ["space+nature", "tech"] and fam[2] == "mind+body" and "explore" in p["recommended_slots"][2]["why"]   # 1 video of mind+body: only the explore slot, despite its high score
