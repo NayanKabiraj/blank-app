@@ -1,0 +1,298 @@
+{
+ "niche": "Space & Universe",
+ "topic": "Why Is There No Sound in Space?",
+ "research_summary": "Channel check: 26 Nov 2026 (channel_trends, YouTube Analytics 28 d): 47 subscribers, Shorts 1,815 views / 40.4 % viewed; space+nature is the best-sampled family (1.21x median, n=14) and best for retention; patterns brief 27 Nov recommends slot 1 = space+nature. Learning applied: rules 1 (payoff before 22 s), 2 (viewer's own life: your clap), 5 (series promise 'Part 2: the Moon' inside 20 s), 7 (Space slot). Candidates (/40): (1) Why is there no sound in space 33 (universal question, a personal hook, a visual two-step: pulse dies in the vacuum, radio lives), (2) Why does the Moon always show the same face 31, (3) What if Earth stopped spinning 30. Winner (1). Titles (/50): 'Why Is There No Sound in Space?' 41 (chosen, 31 chars), 'Why Space Is Silent (and How Astronauts Talk)' 38. Thumbnails: A astronaut clapping with a red 'NO SOUND' tape (chosen). Hooks: 'You clap, and you hear it. In space, the same clap is silent. Why?' (chosen), 'In space, no one can hear you clap.'. Gap: SEO research not run in this prepared run (workflow seo-research.yml to be dispatched by the daily run; NOT AVAILABLE here); structure = a two-step demonstration (air pulse versus vacuum) with a cartoon astronaut, different from the list and story structures of the last days. Claims: (1) sound is a mechanical wave that needs a medium (atoms/molecules) to travel - VERIFIED (Scientific American 'Is there any sound in space', The Conversation 'Why isn't there any sound in space'); (2) space is a near-vacuum, so ordinary sound cannot travel through it - VERIFIED (Sky at Night Magazine, Science Notes); (3) astronaut suits have two-way radios; radio waves are electromagnetic waves that travel through vacuum - VERIFIED (the same sources; NASA page not retrieved in this session); (4) inside the suit air carries the voice to the microphone - VERIFIED. Caveat left out of the 40 s: plasma waves exist in some space environments. Sources: Scientific American, The Conversation, Sky at Night Magazine, Science Notes. Growth: lever = hook/retention (a personal clap hook, payoff by second 22) plus series follow-up via next_video 'Why does the Moon always show the same face?' and the 'Part 2: the Moon' promise in scene 2; policy check: own angle and structure, a new 2D cartoon-astronaut character, nothing off-putting, no health/finance/legal advice. Quality gate 82/100.",
+ "mood": "inspiring",
+ "cluster": "Space Basics",
+ "follow_ups": [
+  "Why does the Moon always show the same face?",
+  "What if Earth suddenly stopped spinning?",
+  "Can astronauts cry in space?"
+ ],
+ "gate_score": 82,
+ "english": {
+  "title": "Why Is There No Sound in Space?",
+  "description": "Why is there no sound in space? A cartoon astronaut shows how sound travels through air, why the vacuum stops it, and how radio lets astronauts talk anyway. #Shorts #Space #Science",
+  "tags": [
+   "why is there no sound in space",
+   "why is space silent",
+   "sound in space",
+   "how do astronauts talk",
+   "space facts",
+   "radio waves explained"
+  ],
+  "hook_text": "You clap, and you hear it.",
+  "thumbnail_text": "NO SOUND",
+  "thumbnail_question": "Why does a clap go silent?",
+  "next_video": "Why does the Moon always show the same face?",
+  "pinned_comment": "Would you rather hear space or see it? Tell me below!",
+  "scenes": [
+   {
+    "text": "You clap, and you hear it. In space, the same clap is silent. Why?",
+    "keyword": "same clap",
+    "graphic": {
+     "kind": "title",
+     "headline": "Why so silent?",
+     "caption": "",
+     "items": [],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "In this video you'll see why space is silent and how astronauts still talk. Part two, the Moon, is next.",
+    "keyword": "In this video",
+    "graphic": {
+     "kind": "chat",
+     "headline": "Today",
+     "caption": "",
+     "items": [
+      "Why space is silent",
+      "How astronauts talk",
+      "Part 2: the Moon"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "Sound is air wiggling. Your clap pushes air, and that wiggle reaches your ear.",
+    "keyword": "air wiggling",
+    "graphic": {
+     "kind": "keyword",
+     "headline": "Air wiggling",
+     "caption": "",
+     "items": [],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "Space is almost empty. With no air to push, where does the wiggle go?",
+    "keyword": "almost empty",
+    "graphic": {
+     "kind": "steps",
+     "headline": "No air",
+     "caption": "",
+     "items": [
+      "Clap",
+      "Push air",
+      "Nothing"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "So astronauts use radio. Radio waves are a kind of light, and light crosses empty space.",
+    "keyword": "kind of light",
+    "graphic": {
+     "kind": "myth",
+     "headline": "Radio",
+     "caption": "",
+     "items": [
+      "Radio is sound",
+      "Radio is light"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "Inside the suit, air carries the voice to a microphone. Radio does the rest.",
+    "keyword": "microphone",
+    "graphic": {
+     "kind": "steps",
+     "headline": "The chain",
+     "caption": "",
+     "items": [
+      "Voice",
+      "Air",
+      "Mic",
+      "Radio"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "Space isn't quiet because nothing happens. It's quiet because nothing can carry it.",
+    "keyword": "nothing can carry it",
+    "graphic": {
+     "kind": "compare",
+     "headline": "Quiet why",
+     "caption": "",
+     "items": [
+      "Nothing happens",
+      "Nothing carries it"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "Would you rather hear space, or see it? Tell me below!",
+    "keyword": "hear space",
+    "graphic": {
+     "kind": "title",
+     "headline": "Hear or see?",
+     "caption": "",
+     "items": [],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   }
+  ],
+  "animation_pack": "silent_space_vox"
+ },
+ "hindi": {
+  "title": "अंतरिक्ष में आवाज़ क्यों नहीं सुनाई देती?",
+  "description": "अंतरिक्ष में आवाज़ क्यों नहीं होती? एक कार्टून अंतरिक्ष यात्री दिखाता है कि आवाज़ हवा में कैसे चलती है, खाली जगह उसे क्यों रोकती है, और रेडियो से बात कैसे होती है। #Shorts #Space #विज्ञान",
+  "tags": [
+   "अंतरिक्ष में आवाज़ क्यों नहीं",
+   "अंतरिक्ष में सन्नाटा",
+   "अंतरिक्ष यात्री बात कैसे करते हैं",
+   "रेडियो तरंगें",
+   "space facts hindi"
+  ],
+  "hook_text": "आप ताली बजाते हैं",
+  "thumbnail_text": "कोई आवाज़ नहीं",
+  "thumbnail_question": "ताली चुप क्यों हो जाती है?",
+  "next_video": "चाँद हमेशा एक ही चेहरा क्यों दिखाता है?",
+  "pinned_comment": "आप अंतरिक्ष को सुनना चाहेंगे या देखना? नीचे बताइए!",
+  "scenes": [
+   {
+    "text": "आप ताली बजाते हैं, तो आवाज़ आती है। अंतरिक्ष में वही ताली चुप क्यों है?",
+    "keyword": "वही ताली",
+    "graphic": {
+     "kind": "title",
+     "headline": "क्यों चुप?",
+     "caption": "",
+     "items": [],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "इस वीडियो में: अंतरिक्ष में सन्नाटा क्यों है, और यात्री बात कैसे करते हैं। अगला भाग: चाँद।",
+    "keyword": "इस वीडियो में",
+    "graphic": {
+     "kind": "chat",
+     "headline": "आज",
+     "caption": "",
+     "items": [
+      "अंतरिक्ष चुप क्यों",
+      "यात्री कैसे बोलते",
+      "भाग 2: चाँद"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "आवाज़ हवा का कंपन है। ताली हवा को धक्का देती है, और वह कंपन कान तक पहुँचता है।",
+    "keyword": "हवा का कंपन",
+    "graphic": {
+     "kind": "keyword",
+     "headline": "हवा का कंपन",
+     "caption": "",
+     "items": [],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "अंतरिक्ष लगभग ख़ाली है। धक्का देने को हवा नहीं, तो कंपन कहाँ जाए?",
+    "keyword": "लगभग ख़ाली",
+    "graphic": {
+     "kind": "steps",
+     "headline": "हवा नहीं",
+     "caption": "",
+     "items": [
+      "ताली",
+      "हवा को धक्का",
+      "कुछ नहीं"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "इसलिए यात्री रेडियो से बात करते हैं। रेडियो तरंगें एक तरह की रोशनी हैं, जो ख़ाली जगह में चलती है।",
+    "keyword": "एक तरह की रोशनी",
+    "graphic": {
+     "kind": "myth",
+     "headline": "रेडियो",
+     "caption": "",
+     "items": [
+      "रेडियो आवाज़ है",
+      "रेडियो रोशनी है"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "सूट के अंदर हवा आवाज़ को माइक तक ले जाती है। आगे रेडियो करता है।",
+    "keyword": "माइक",
+    "graphic": {
+     "kind": "steps",
+     "headline": "श्रृंखला",
+     "caption": "",
+     "items": [
+      "आवाज़",
+      "हवा",
+      "माइक",
+      "रेडियो"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "अंतरिक्ष इसलिए चुप नहीं कि वहाँ कुछ होता नहीं, बल्कि इसलिए कि आवाज़ को ले जाने वाला कुछ नहीं।",
+    "keyword": "ले जाने वाला कुछ नहीं",
+    "graphic": {
+     "kind": "compare",
+     "headline": "चुप क्यों",
+     "caption": "",
+     "items": [
+      "कुछ होता नहीं",
+      "कुछ ले जाता नहीं"
+     ],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   },
+   {
+    "text": "आप अंतरिक्ष को सुनना चाहेंगे या देखना? बताइए!",
+    "keyword": "सुनना",
+    "graphic": {
+     "kind": "title",
+     "headline": "सुनें या देखें?",
+     "caption": "",
+     "items": [],
+     "values": [],
+     "answer": null,
+     "prop": null
+    }
+   }
+  ],
+  "animation_pack": "silent_space_vox"
+ }
+}
