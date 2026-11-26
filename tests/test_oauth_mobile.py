@@ -326,3 +326,18 @@ def test_preview_contact_sheet_and_run_brief(tmp_path):
     assert text.startswith("# Run brief") and "Channel check:" in text and "research_summary must contain" in text
     assert "6 uploads" in runbrief.target(runbrief.ROOT / "strategy" / "learnings.md")
     assert runbrief.check_line({}, {"available": False, "reason": "x"}, __import__("datetime").date(2026, 11, 25)).startswith("Channel check: NOT AVAILABLE")
+
+
+def test_eligibility_section():
+    import datetime as dt
+    from shorts import progress as pr
+    today = dt.date(2026, 11, 29)
+    data = {"available": True, "channel_status": {"isLinked": True, "longUploadsStatus": "longUploadsUnspecified"},
+            "videos": [{"privacy": "public", "published": "2026-11-20T00:00:00Z"}, {"privacy": "private", "published": "2026-11-21T00:00:00Z"}, {"privacy": "public", "published": "2026-01-01T00:00:00Z"}]}
+    snap = {"subscribers": 47, "watch_hours_365d": 8.2, "shorts_views_90d": 2000}
+    txt = "\n".join(pr.eligibility(data, snap, today))
+    assert "47 of 500 (9.4 %) - not met" in txt and "Public uploads in the last 90 days: 1 of 3" in txt and "Eligible by these numbers: NO" in txt and "isLinked=True" in txt
+    big = {"subscribers": 1200, "watch_hours_365d": 4100, "shorts_views_90d": 0}
+    assert "Eligible by these numbers: YES" in "\n".join(pr.eligibility(data, big, today))
+    assert "NOT AVAILABLE" in pr.eligibility({"available": False}, snap, today)[0]
+    assert "## Partner Program eligibility" in pr.render({"date": "2026-11-29", "available": True, "uploads_7d_detail": {}}, None, [], {"available": False}, {}, elig=["x"])
