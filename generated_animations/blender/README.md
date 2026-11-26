@@ -10,3 +10,11 @@
     ffmpeg -framerate 24 -i /tmp/out/f_%04d.png -c:v libx264 -pix_fmt yuv420p out.mp4
 
 Not wired into the pipeline (no pack format, no narration timing, no Hindi text/fonts yet). Status: sample only.
+
+## Second sample: astronaut_silent_space.py (26 Nov 2026, "space storytelling" style)
+
+A Pixar-like 3D astronaut (built from primitives, walk cycle, clapping, blinking eyes), a ship inside a dome of "air", expanding sound rings that stop at the dome edge, radio pulses,
+a ringed planet and stars, a tracking camera and 5 captions: 45 s, 540x960-equivalent design, rendered at 12 fps in 398x710 (frames shown on twos, 24 fps) with Cycles 10 samples: ~3 s/frame,
+540 frames = about 45 minutes on 4 CPU cores (silent; the voice would come from the pipeline). Known flaw in the delivered render: caption letters light the ground/ship (fixed in the
+script by hiding captions from diffuse/glossy rays, not re-rendered). Run: `python astronaut_silent_space.py OUT --spp 10`, then
+`ffmpeg -framerate 12 -i OUT/f_%04d.png -vf fps=24 -c:v libx264 -pix_fmt yuv420p out.mp4`.
