@@ -29,7 +29,8 @@ FILE = config.DATA_DIR / "patterns.json"
 RETIRED = {"story"}       # owner decision 26 Nov 2026: the horror/story niche was dropped; old story videos are still analysed but never recommended
 PRIOR = 2.0            # shrinkage strength: a group needs about 2 videos to count as much as the channel average
 FAMILY = {"How Tech Works": "tech", "AI Explained": "tech", "Technology": "tech", "Space & Universe": "space+nature", "Earth & Nature": "space+nature", "Science Explained": "space+nature",
-          "Brain & Psychology": "mind+body", "Human Body": "mind+body", "Horror & Suspense": "story"}
+          "Brain & Psychology": "mind+body", "Human Body": "mind+body", "Horror & Suspense": "story", "Myth Busters": "myth"}
+ALWAYS = ("myth",)        # owner decision 26 Nov 2026: Myth Busters is a standing family; with no data yet it is the explore slot until it has 3 videos
 STORY = re.compile(r"horror|haunted|mystery|suspense|fictional story|hawel|हवेली|हॉरर|सस्पेंस|काल्पनिक", re.I)
 DEV = re.compile("[ऀ-ॿ]")
 
@@ -110,6 +111,9 @@ def analyse(data: dict, history: list, doc_history: list, today: dt.date | None 
     glob = sum(r["score"] for r in rs) / len(rs)
     med_vpd = st.median(r["vpd"] for r in rs)
     fam = groups(rs, "family", glob)
+    for name in ALWAYS:
+        if name not in {f["name"] for f in fam}:                                         # a standing family with no data yet: shown, and picked as the explore slot (n=0)
+            fam.append({"name": name, "n": 0, "views_per_day": None, "estimate": round(glob, 3), "lift": 1.0, "viewed_pct": None, "subs": 0, "confidence": "low (n<3)"})
     ranked = [f for f in fam if f["name"] not in ("other",) and f["name"] not in RETIRED]
     sure = [f for f in ranked if f["n"] >= 3]                                          # a family needs 3+ videos to win a main slot; thinner ones can only get the explore slot
     top = sure[:2] if len(sure) >= 2 else ranked[:2]

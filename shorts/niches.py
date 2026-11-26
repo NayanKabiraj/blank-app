@@ -56,6 +56,11 @@ NICHES: list[Niche] = [
           "Why the mind behaves the way it does, backed by research.",
           ["Why do we procrastinate?", "How are habits formed?", "Why do songs get stuck in our head?",
            "How does memory store a moment?", "Why does time fly when we're having fun?"]),
+    Niche("Myth Busters", "मिथक बनाम सच",
+          "A popular belief that is wrong (or half wrong), shown in the first seconds and busted with the real mechanism. Only myths whose answer is settled science or history (cite two sources); "
+          "never health, medical, finance or legal advice; never a belief tied to a religion, a community or a real person.",
+          ["Do we only use 10% of our brain?", "Can you really see the Great Wall of China from space?", "Does lightning never strike the same place twice?",
+           "Is the Sun really yellow?", "Do bulls get angry at the colour red?", "Does the Moon have a permanent dark side?"]),
     Niche("Money Explained", "पैसे की समझ",
           "How money and the economy work (concepts only, never investment advice).",
           ["What actually causes inflation?", "How do banks create money?",

@@ -43,3 +43,9 @@ def covered(pack_id: str) -> set[int]:
     if not d.exists():
         return set()
     return {i for s in json.loads(d.read_text(encoding="utf-8"))["shots"] for i in s["scenes"]}
+
+
+def stage(pack_id: str) -> str:
+    """"full" = the pack paints the whole screen (full-bleed backdrop, taller art zone); "card" (default) = art inside a paper card. shots.json: {"stage": "full"}"""
+    f = SCENES / pack_id / "shots.json"
+    return (json.loads(f.read_text(encoding="utf-8")).get("stage") or "card") if f.exists() else "card"

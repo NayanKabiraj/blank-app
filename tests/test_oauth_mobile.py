@@ -393,7 +393,7 @@ def test_explore_slot_goes_to_the_thinnest_remaining_family():
         hist.append({"date": "x", "niche": niche, "videos": {"en": {"video_id": f"v{i}"}}})
     p = pt.analyse({"available": True, "videos": vs, "analytics": []}, hist, [], today)
     fam = [s["family"] for s in p["recommended_slots"]]
-    assert fam[:2] == ["space+nature", "tech"] and fam[2] == "mind+body" and "explore" in p["recommended_slots"][2]["why"]   # 1 video of mind+body: only the explore slot, despite its high score
+    assert fam[:2] == ["space+nature", "tech"] and fam[2] == "myth" and "explore" in p["recommended_slots"][2]["why"]   # the standing myth family (no data) takes the explore slot; 1 video of mind+body never wins a main slot
 
 
 def test_storycheck_flags_ai_tells_and_weak_hooks():
@@ -401,3 +401,8 @@ def test_storycheck_flags_ai_tells_and_weak_hooks():
     assert storycheck.check_text("Let's dive in and delve into the realm of phones.", first=True)
     assert any("not X" in f for f in storycheck.check_text("It's not a bug. It's a feature."))
     assert not storycheck.check_text("Why does your phone get warm in your pocket?", first=True)
+
+
+def test_myth_busters_is_a_standing_family_and_explore_slot():
+    from shorts import niches, patterns as pt
+    assert any(n.name == "Myth Busters" for n in niches.NICHES) and pt.family("Myth Busters", "x") == "myth"
