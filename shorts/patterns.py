@@ -110,7 +110,9 @@ def analyse(data: dict, history: list, doc_history: list, today: dt.date | None 
     med_vpd = st.median(r["vpd"] for r in rs)
     fam = groups(rs, "family", glob)
     ranked = [f for f in fam if f["name"] not in ("other",)]
-    top, rest = ranked[:2], ranked[2:]
+    sure = [f for f in ranked if f["n"] >= 3]                                          # a family needs 3+ videos to win a main slot; thinner ones can only get the explore slot
+    top = sure[:2] if len(sure) >= 2 else ranked[:2]
+    rest = [f for f in ranked if f not in top]
     explore = min(rest, key=lambda f: (f["n"], -f["estimate"])) if rest else None       # the least-sampled of the remaining families keeps the channel learning
     slots = top + ([explore] if explore else [])
     winners = sorted((r for r in rs if r["vpd"] >= 2 * med_vpd and r["views"] >= 30), key=lambda r: -r["vpd"])[:5]
