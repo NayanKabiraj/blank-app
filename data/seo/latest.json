@@ -1,580 +1,570 @@
 {
- "generated": "2026-11-25T02:54:56+00:00",
+ "generated": "2026-11-26T02:55:26+00:00",
  "queries": {
-  "what if you fell into a black hole": {
+  "how does my phone know which way is up": {
    "suggest": [
     {
-     "phrase": "what if you fell into a black hole dr binocs",
-     "score": 4.67
+     "phrase": "how to tell if phone is being tracked",
+     "score": 12.5
     },
     {
-     "phrase": "what will happen if you fell into a black hole",
-     "score": 3.0
+     "phrase": "how to tell if my phone is being mirrored",
+     "score": 2.5
     },
     {
-     "phrase": "what if you fell into a black hole aumsum",
-     "score": 2.83
+     "phrase": "how will i know if my phone is being tracked",
+     "score": 1.0
     },
     {
-     "phrase": "what would happen if you fell into a black hole",
-     "score": 2.45
+     "phrase": "how does my phone know what i'm talking about",
+     "score": 1.0
     },
     {
-     "phrase": "what happens if you fell into a black hole",
-     "score": 2.17
+     "phrase": "is my phone bugged",
+     "score": 1.0
     },
     {
-     "phrase": "what happen if you fell into a black hole",
-     "score": 2.01
+     "phrase": "how to test a phone line",
+     "score": 1.0
     },
     {
-     "phrase": "what would happen if you fell into a black hole zack d films",
-     "score": 2.0
+     "phrase": "how to check your phone's ram",
+     "score": 1.0
     },
     {
-     "phrase": "peekaboo kidz what if you fell into a black hole",
-     "score": 1.8
-    },
-    {
-     "phrase": "what if you fall into a black hole dr binocs",
-     "score": 1.72
-    },
-    {
-     "phrase": "what happens if you fall into a black hole nasa simulation",
-     "score": 1.67
-    },
-    {
-     "phrase": "what would happen if you fell into a black hole kurzgesagt",
-     "score": 1.5
-    },
-    {
-     "phrase": "what it would look like if you fell into a black hole",
-     "score": 1.5
-    },
-    {
-     "phrase": "what if you fell into the black hole",
-     "score": 1.33
-    },
-    {
-     "phrase": "cleo abram what if you fell into a black hole",
-     "score": 1.25
-    },
-    {
-     "phrase": "kurzgesagt what if you fell into a black hole",
-     "score": 1.15
-    },
-    {
-     "phrase": "what if i fell into a black hole",
-     "score": 1.13
-    },
-    {
-     "phrase": "what happens if you fall into a black hole in hindi",
-     "score": 1.12
-    },
-    {
-     "phrase": "what if you fell into a supermassive black hole",
-     "score": 1.1
-    },
-    {
-     "phrase": "what if we fell into a black hole",
-     "score": 0.95
-    },
-    {
-     "phrase": "what if you went into a black hole",
-     "score": 0.82
-    },
-    {
-     "phrase": "brian cox what happens if you fall into a black hole",
-     "score": 0.75
-    },
-    {
-     "phrase": "what happens if you fall into a black hole animation",
-     "score": 0.61
-    },
-    {
-     "phrase": "what would you see if you fell into a black hole",
-     "score": 0.53
-    },
-    {
-     "phrase": "what would happen to you if you fell into a black hole",
+     "phrase": "what happens when phone is restarted",
      "score": 0.5
     },
     {
-     "phrase": "what happens if you fall into a black hole dr binocs",
-     "score": 0.48
+     "phrase": "is my phone cloned",
+     "score": 0.5
     },
     {
-     "phrase": "what would actually happen if you fell into a black hole",
-     "score": 0.47
-    },
-    {
-     "phrase": "what if you went in a black hole",
-     "score": 0.44
-    },
-    {
-     "phrase": "what would we see if we fell into a black hole",
-     "score": 0.35
-    },
-    {
-     "phrase": "what if we fall in black hole in hindi",
-     "score": 0.33
-    },
-    {
-     "phrase": "what will happen if you fall in a black hole",
-     "score": 0.31
+     "phrase": "how do i know if my phone is being tracked",
+     "score": 0.5
     }
    ],
    "outliers": {
     "available": true,
     "videos": 15,
-    "median_seconds": 645,
+    "median_seconds": 300,
     "share_shorts": 0.0,
     "share_questions": 0.87,
-    "median_title_chars": 47,
+    "median_title_chars": 41,
     "recurring_words": [
-     "black",
-     "hole",
-     "what",
-     "into",
-     "fell"
+     "phone",
+     "know",
+     "your",
+     "which",
+     "does"
     ],
     "common_tags": [
-     "what if",
-     "black hole",
-     "what happens if",
-     "science",
-     "astronomy",
-     "solar system",
-     "space",
-     "black holes"
+     "accelerometer explained",
+     "gyroscope explained",
+     "mems accelerometer"
     ],
-    "outliers": [
+    "outliers": [],
+    "top_by_views": [
      {
-      "title": "What If You Fell Into the LARGEST Black Hole in the Universe?",
-      "channel": "1Dot",
-      "views": 11311,
-      "subs": 1270,
-      "ratio": 8.9,
-      "age_days": 25,
-      "seconds": 1092,
+      "title": "How a Smartphone Knows Up from Down (accelerometer)",
+      "channel": "engineerguy",
+      "views": 1967416,
+      "subs": 1560000,
+      "ratio": 1.3,
+      "age_days": 5301,
+      "seconds": 265,
       "tags": [
-       "what if you fell into a black hole",
-       "TON 618",
-       "largest black hole",
-       "black hole explained",
-       "event horizon",
-       "spaghettification"
+       "Smartphone",
+       "Bill Hammack",
+       "EngineerGuy"
       ]
      },
      {
-      "title": "What would we see if we fell into a Black Hole?",
-      "channel": "ScienceClic English",
-      "views": 7471565,
-      "subs": 958000,
-      "ratio": 7.8,
-      "age_days": 1897,
-      "seconds": 893,
-      "tags": []
+      "title": "How Does Your Phone Know Its Orientation?",
+      "channel": "History of Simple Things",
+      "views": 5889,
+      "subs": 1050000,
+      "ratio": 0.0,
+      "age_days": 158,
+      "seconds": 490,
+      "tags": [
+       "#HistoryOfEverydayItems",
+       "#HowItsMade",
+       "#BehindTheProduct",
+       "#SimpleThingsExplained",
+       "#EverydayInnovations",
+       "#ManufacturingProcesses"
+      ]
      },
      {
-      "title": "I Fell Into a Black Hole and DIED Instantly",
-      "channel": "Chase Dies in Space",
-      "views": 108069,
-      "subs": 48500,
-      "ratio": 2.2,
-      "age_days": 385,
-      "seconds": 1037,
+      "title": "How Does Your Phone Know Which Way Is Up? (MEMS Sensors Explained)",
+      "channel": "Black Box Lab",
+      "views": 41,
+      "subs": 24,
+      "ratio": 0.0,
+      "age_days": 2,
+      "seconds": 442,
       "tags": [
-       "chase",
-       "space",
-       "solar system",
-       "documentary",
-       "educatuional",
-       "educational and learning"
+       "how does screen rotation work",
+       "accelerometer explained",
+       "how does an accelerometer work",
+       "mems accelerometer",
+       "mems gyroscope",
+       "how does a phone gyroscope work"
+      ]
+     },
+     {
+      "title": "The INSANE Science That Lets Your Phone Know Which Way Is UP",
+      "channel": "CurioCity",
+      "views": 41,
+      "subs": 99,
+      "ratio": 0.0,
+      "age_days": 237,
+      "seconds": 756,
+      "tags": [
+       "smartphone science",
+       "how phones work",
+       "accelerometer explained",
+       "gyroscope explained",
+       "sensor fusion",
+       "phone orientation"
+      ]
+     },
+     {
+      "title": "How Does Your Phone Know Which Way Is Up?",
+      "channel": "Matter Made Clear",
+      "views": 33,
+      "subs": 47,
+      "ratio": 0.0,
+      "age_days": 34,
+      "seconds": 551,
+      "tags": []
+     }
+    ]
+   }
+  },
+  "why does my phone screen rotate": {
+   "suggest": [
+    {
+     "phrase": "why doesn't my phone screen rotate",
+     "score": 11.5
+    },
+    {
+     "phrase": "why does my phone not rotate screen",
+     "score": 2.0
+    },
+    {
+     "phrase": "phone screen will not rotate",
+     "score": 1.83
+    },
+    {
+     "phrase": "why doesn't my screen rotate",
+     "score": 1.67
+    },
+    {
+     "phrase": "why won't my phone screen rotate",
+     "score": 1.67
+    },
+    {
+     "phrase": "how to fix rotate screen on phone",
+     "score": 0.83
+    },
+    {
+     "phrase": "why doesn't my phone rotate anymore",
+     "score": 0.83
+    },
+    {
+     "phrase": "why is my phone screen not rotating",
+     "score": 0.5
+    },
+    {
+     "phrase": "why is my screen rotation not working iphone",
+     "score": 0.5
+    },
+    {
+     "phrase": "screen not rotating android",
+     "score": 0.5
+    },
+    {
+     "phrase": "how to stop phone screen from rotating",
+     "score": 0.33
+    },
+    {
+     "phrase": "why does my ipad screen not rotate",
+     "score": 0.33
+    },
+    {
+     "phrase": "why is my auto rotate not working",
+     "score": 0.25
+    }
+   ],
+   "outliers": {
+    "available": true,
+    "videos": 15,
+    "median_seconds": 103,
+    "share_shorts": 0.2,
+    "share_questions": 0.13,
+    "median_title_chars": 56,
+    "recurring_words": [
+     "rotate",
+     "screen",
+     "iphone",
+     "auto",
+     "android",
+     "phone",
+     "won't",
+     "working",
+     "samsung"
+    ],
+    "common_tags": [
+     "iphone screen not rotating",
+     "samsung",
+     "screen rotation"
+    ],
+    "outliers": [
+     {
+      "title": "How To Rotate The Screen on iPhone",
+      "channel": "Tech Jamie",
+      "views": 758766,
+      "subs": 92400,
+      "ratio": 8.2,
+      "age_days": 1378,
+      "seconds": 56,
+      "tags": [
+       "How To Rotate The Screen on iPhone",
+       "turn iphone screen",
+       "screen rotation iphone",
+       "screen orientation iphone",
+       "how to rotate screen iphone",
+       "how to rotate screen on iphone"
+      ]
+     },
+     {
+      "title": "iOS 17: How to Turn Off Auto Rotate on iPhone",
+      "channel": "Solve Your Tech",
+      "views": 98664,
+      "subs": 42100,
+      "ratio": 2.3,
+      "age_days": 1144,
+      "seconds": 92,
+      "tags": [
+       "how to turn off auto rotate on iphone",
+       "how to stop iphone screen from rotating automatically",
+       "how to stop screen rotation on iphone"
       ]
      }
     ],
     "top_by_views": [
      {
-      "title": "Travel INSIDE a Black Hole",
-      "channel": "Vsauce",
-      "views": 33880823,
-      "subs": 25400000,
-      "ratio": 1.3,
-      "age_days": 5376,
-      "seconds": 645,
+      "title": "Why iPhone Home Screens Don’t Rotate Anymore",
+      "channel": "Apple Explained",
+      "views": 907938,
+      "subs": 1540000,
+      "ratio": 0.6,
+      "age_days": 1555,
+      "seconds": 146,
       "tags": [
-       "(O_O；)"
+       "When did iPhone home screen stop rotating?",
+       "Why does my home screen not rotate?",
+       "How do I get my iPhone screen to rotate again?",
+       "How do I get my home screen to rotate?",
+       "How do I rotate my iPhone screen without the Control Center?",
+       "Does iPhone 8 plus rotate Home screen?"
       ]
      },
      {
-      "title": "What If You Fall into a Black Hole?",
-      "channel": "Kurzgesagt – In a Nutshell",
-      "views": 19342572,
-      "subs": 25800000,
-      "ratio": 0.7,
-      "age_days": 2038,
-      "seconds": 735,
+      "title": "Galaxy Phones: How to Rotate Home Screen & Lock Screen to Landscape/Portrait",
+      "channel": "WorldofTech",
+      "views": 847931,
+      "subs": 930000,
+      "ratio": 0.9,
+      "age_days": 1870,
+      "seconds": 80,
       "tags": []
      },
      {
-      "title": "What If You Fell Into a Black Hole and Time FROZE?",
-      "channel": "What If",
-      "views": 13790120,
-      "subs": 9000000,
-      "ratio": 1.5,
-      "age_days": 2975,
-      "seconds": 295,
+      "title": "My iPhone Screen Won't Rotate! Here's The Fix.",
+      "channel": "Payette Forward",
+      "views": 770496,
+      "subs": 1810000,
+      "ratio": 0.4,
+      "age_days": 2072,
+      "seconds": 137,
       "tags": [
-       "science fiction",
-       "what if",
-       "science",
-       "astronomy",
-       "earth",
-       "solar system"
+       "iPhone screen won't rotate",
+       "iPhone screen not rotating",
+       "can't rotate iPhone screen",
+       "iPhone Orientation Lock",
+       "Portrait Orientation Lock",
+       "iPhone won't turn"
       ]
      },
      {
-      "title": "WHAT IF Earth Were Sucked Into a Black Hole?",
-      "channel": "What If",
-      "views": 8971776,
-      "subs": 9000000,
-      "ratio": 1.0,
-      "age_days": 2037,
-      "seconds": 432,
+      "title": "How To Rotate The Screen on iPhone",
+      "channel": "Tech Jamie",
+      "views": 758766,
+      "subs": 92400,
+      "ratio": 8.2,
+      "age_days": 1378,
+      "seconds": 56,
       "tags": [
-       "what if",
-       "what happens if",
-       "scifi",
-       "science documentary",
-       "what if scenario",
-       "mysteries"
+       "How To Rotate The Screen on iPhone",
+       "turn iphone screen",
+       "screen rotation iphone",
+       "screen orientation iphone",
+       "how to rotate screen iphone",
+       "how to rotate screen on iphone"
       ]
      },
      {
-      "title": "What if You Fell Into A BLACK HOLE? | Space Video | Dr Binocs Show | Peekaboo Kidz",
-      "channel": "Peekaboo Kidz",
-      "views": 7766210,
-      "subs": 7950000,
-      "ratio": 1.0,
-      "age_days": 2126,
-      "seconds": 347,
+      "title": "iPhone Screen Won't Rotate? Here is the REAL Fix! (100% Worked) 2026",
+      "channel": "TenorshareOfficial",
+      "views": 675985,
+      "subs": 488000,
+      "ratio": 1.4,
+      "age_days": 1812,
+      "seconds": 170,
       "tags": [
-       "Black Hole",
-       "best kids videos",
-       "preschool learning",
-       "videos for kids",
-       "preschool",
-       "best educational videos"
+       "iphone screen not rotating",
+       "iphone screen wont rotate",
+       "iphone wont rotate"
       ]
      }
     ]
    }
   },
-  "what happens if you fall into a black hole": {
+  "what if the sun became a black hole": {
    "suggest": [
     {
-     "phrase": "what happens if you fall into a black hole nasa simulation",
-     "score": 3.7
+     "phrase": "what would happen if the sun became a black hole",
+     "score": 4.47
     },
     {
-     "phrase": "what happen if you fall into a black hole",
-     "score": 3.43
+     "phrase": "what if the sun becomes a black hole",
+     "score": 3.5
     },
     {
-     "phrase": "what will happen if you fall into a black hole",
-     "score": 3.2
+     "phrase": "aumsum what if the sun turned into a black hole",
+     "score": 3.08
     },
     {
-     "phrase": "what happens if you fall into a black hole dr binocs",
+     "phrase": "what would happen if the sun becomes a black hole",
+     "score": 2.67
+    },
+    {
+     "phrase": "what is the sun became a black hole",
      "score": 2.5
     },
     {
-     "phrase": "what happens if you fall into a black hole in hindi",
-     "score": 1.68
+     "phrase": "what would it look like if the sun turned into a black hole",
+     "score": 2.0
     },
     {
-     "phrase": "what happens if you fall into the black hole",
-     "score": 1.5
-    },
-    {
-     "phrase": "what would happen if you fell into a black hole zack d films",
-     "score": 1.45
-    },
-    {
-     "phrase": "what happens if you fall into a black hole animation",
-     "score": 1.33
-    },
-    {
-     "phrase": "what if you fell into a black hole dr binocs",
-     "score": 1.33
-    },
-    {
-     "phrase": "what happens if you go into a black hole in no man's sky",
-     "score": 1.25
-    },
-    {
-     "phrase": "what would happen if you fall into a black hole",
-     "score": 1.24
-    },
-    {
-     "phrase": "what will happen if you fall in a black hole",
+     "phrase": "what happens if the sun became a black hole",
      "score": 1.0
     },
     {
-     "phrase": "what will happen if i fall into a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "brian cox what happens if you fall into a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "what happens if you enter in a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "what happens if you got stuck in a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "what would happen if you fell into a black hole kurzgesagt",
-     "score": 1.0
-    },
-    {
-     "phrase": "what happens if you go inside of a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "what happens if you get pulled into a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "what happens if you're in a black hole",
-     "score": 1.0
-    },
-    {
-     "phrase": "no man's sky what happens when you go through a black hole",
-     "score": 0.98
-    },
-    {
-     "phrase": "what happens if you go into a black hole",
-     "score": 0.92
-    },
-    {
-     "phrase": "what happens if you go into the black hole",
-     "score": 0.83
-    },
-    {
-     "phrase": "what will happen if you fell into a black hole",
+     "phrase": "what happens if the sun turned into a black hole",
      "score": 0.75
-    },
-    {
-     "phrase": "what happens if we fall into a black hole",
-     "score": 0.74
-    },
-    {
-     "phrase": "what happens if the earth goes into a black hole",
-     "score": 0.7
-    },
-    {
-     "phrase": "what would happen if the earth fell into a black hole",
-     "score": 0.62
-    },
-    {
-     "phrase": "what happens if u fall in a black hole",
-     "score": 0.62
-    },
-    {
-     "phrase": "what happens if you get close to a black hole",
-     "score": 0.5
-    },
-    {
-     "phrase": "what if you fall into a black hole dr binocs",
-     "score": 0.5
     }
    ],
    "outliers": {
     "available": true,
     "videos": 15,
-    "median_seconds": 716,
+    "median_seconds": 354,
     "share_shorts": 0.0,
-    "share_questions": 0.6,
-    "median_title_chars": 47,
+    "share_questions": 0.93,
+    "median_title_chars": 41,
     "recurring_words": [
-     "hole",
      "black",
-     "into",
+     "hole",
      "what",
-     "falling",
-     "simulation",
-     "fell"
+     "became",
+     "aumsum",
+     "kids",
+     "science"
     ],
     "common_tags": [
      "black hole",
-     "astronomy",
-     "space",
-     "falling into a black hole",
-     "space engine",
+     "aumsum",
+     "aum sum",
      "what if",
-     "solar system"
+     "aum",
+     "it's aumsum time",
+     "smart learning for all",
+     "education"
     ],
     "outliers": [
      {
-      "title": "Falling into a Black Hole in 360° VR",
-      "channel": "Astromagazine",
-      "views": 8541306,
-      "subs": 127000,
-      "ratio": 67.3,
-      "age_days": 1819,
-      "seconds": 147,
+      "title": "What If the Sun Became a Black Hole?",
+      "channel": "1Dot",
+      "views": 56556,
+      "subs": 1680,
+      "ratio": 33.7,
+      "age_days": 28,
+      "seconds": 1053,
       "tags": [
-       "Blackhole",
-       "enter",
-       "VR",
-       "inside"
+       "what if the sun became a black hole",
+       "sun black hole",
+       "TON 618",
+       "black hole size comparison",
+       "what if",
+       "supermassive black hole"
       ]
      },
      {
-      "title": "What If a Black Hole Kept Getting Closer?",
-      "channel": "Scout's Theory",
-      "views": 200522,
-      "subs": 3150,
-      "ratio": 63.7,
-      "age_days": 40,
-      "seconds": 732,
+      "title": "What If the Sun Became a Black Hole? 🌑 The Planets Panic",
+      "channel": "Sketched Cosmos",
+      "views": 17915,
+      "subs": 2530,
+      "ratio": 7.1,
+      "age_days": 12,
+      "seconds": 755,
       "tags": [
+       "what if the sun became a black hole",
+       "sun black hole",
+       "black hole explained",
+       "what is a black hole",
+       "can the sun become a black hole",
+       "solar system cartoon"
+      ]
+     },
+     {
+      "title": "What If the Sun Became a Black Hole? 🌞",
+      "channel": "Gravity Issues",
+      "views": 4389,
+      "subs": 803,
+      "ratio": 4.4,
+      "age_days": 4,
+      "seconds": 889,
+      "tags": [
+       "what if the sun became a black hole",
+       "sun black hole",
+       "what if the sun turned into a black hole",
        "black hole",
        "event horizon",
-       "spaghettification",
-       "tidal forces",
-       "Roche limit",
-       "accretion disk"
+       "schwarzschild radius"
       ]
      },
      {
-      "title": "Could you survive a nanosecond inside a Black Hole?",
-      "channel": "TheBioGuys",
-      "views": 70447,
-      "subs": 6270,
-      "ratio": 11.2,
-      "age_days": 8,
-      "seconds": 1512,
-      "tags": []
-     },
-     {
-      "title": "What would we see if we fell into a Black Hole?",
-      "channel": "ScienceClic English",
-      "views": 7471565,
-      "subs": 958000,
-      "ratio": 7.8,
-      "age_days": 1897,
-      "seconds": 893,
-      "tags": []
-     },
-     {
-      "title": "I Fell Into a Black Hole and DIED Instantly",
-      "channel": "Chase Dies in Space",
-      "views": 108069,
-      "subs": 48500,
-      "ratio": 2.2,
-      "age_days": 385,
-      "seconds": 1037,
+      "title": "What If the Sun Collapsed into a Black Hole? + more videos | #aumsum #kids #science #children",
+      "channel": "It's AumSum Time",
+      "views": 17852935,
+      "subs": 4810000,
+      "ratio": 3.7,
+      "age_days": 2443,
+      "seconds": 329,
       "tags": [
-       "chase",
+       "aum",
+       "aumsum",
+       "aum sum",
+       "it's aumsum time",
+       "smart learning for all",
+       "education"
+      ]
+     },
+     {
+      "title": "What If The Sun Became A Black Hole?",
+      "channel": "Astral Productions",
+      "views": 3998,
+      "subs": 1470,
+      "ratio": 2.7,
+      "age_days": 10,
+      "seconds": 354,
+      "tags": [
+       "sun became black hole",
+       "black hole",
+       "sun",
        "space",
-       "solar system",
-       "documentary",
-       "educatuional",
-       "educational and learning"
-      ]
-     },
-     {
-      "title": "Falling Into a Black Hole (Simulation)",
-      "channel": "Stargaze",
-      "views": 1205781,
-      "subs": 616000,
-      "ratio": 2.0,
-      "age_days": 278,
-      "seconds": 357,
-      "tags": [
-       "falling into a black hole",
-       "space engine",
-       "space engine black hole",
-       "space engine update",
-       "falling into a black hole simulation",
-       "simulation space"
+       "solar balls",
+       "astronomy"
       ]
      }
     ],
     "top_by_views": [
      {
-      "title": "What If You Fall into a Black Hole?",
-      "channel": "Kurzgesagt – In a Nutshell",
-      "views": 19342572,
-      "subs": 25800000,
-      "ratio": 0.7,
-      "age_days": 2038,
-      "seconds": 735,
-      "tags": []
+      "title": "What If the Sun Collapsed into a Black Hole? + more videos | #aumsum #kids #science #children",
+      "channel": "It's AumSum Time",
+      "views": 17852935,
+      "subs": 4810000,
+      "ratio": 3.7,
+      "age_days": 2443,
+      "seconds": 329,
+      "tags": [
+       "aum",
+       "aumsum",
+       "aum sum",
+       "it's aumsum time",
+       "smart learning for all",
+       "education"
+      ]
      },
      {
-      "title": "What If You Fell Into a Black Hole and Time FROZE?",
-      "channel": "What If",
-      "views": 13790120,
-      "subs": 9000000,
+      "title": "What If Our Sun Became A Black Hole? | Black Hole | The Dr Binocs Show | Peekaboo Kidz",
+      "channel": "Peekaboo Kidz",
+      "views": 6079590,
+      "subs": 7960000,
+      "ratio": 0.8,
+      "age_days": 1787,
+      "seconds": 330,
+      "tags": [
+       "what if our sun became a black hole",
+       "black hole in solar system",
+       "gravity of sun",
+       "gravity of solar system",
+       "solar system",
+       "black hole"
+      ]
+     },
+     {
+      "title": "Replacing the Sun for a BLACK HOLE!?",
+      "channel": "SolarBalls",
+      "views": 3364139,
+      "subs": 2300000,
       "ratio": 1.5,
-      "age_days": 2975,
-      "seconds": 295,
+      "age_days": 1181,
+      "seconds": 100,
       "tags": [
-       "science fiction",
-       "what if",
-       "science",
-       "astronomy",
-       "earth",
-       "solar system"
+       "solarballs",
+       "solarball",
+       "planetball",
+       "planetballs",
+       "cosmos",
+       "scifi"
       ]
      },
      {
-      "title": "Falling into a Black Hole in 360° VR",
-      "channel": "Astromagazine",
-      "views": 8541306,
-      "subs": 127000,
-      "ratio": 67.3,
-      "age_days": 1819,
-      "seconds": 147,
+      "title": "What if Sun became a Black Hole? | #aumsum #kids #science",
+      "channel": "It's AumSum Time",
+      "views": 2313898,
+      "subs": 4810000,
+      "ratio": 0.5,
+      "age_days": 67,
+      "seconds": 487,
       "tags": [
-       "Blackhole",
-       "enter",
-       "VR",
-       "inside"
+       "aum",
+       "aumsum",
+       "aum sum",
+       "it's aumsum time",
+       "smart learning for all",
+       "education"
       ]
      },
      {
-      "title": "What would we see if we fell into a Black Hole?",
-      "channel": "ScienceClic English",
-      "views": 7471565,
-      "subs": 958000,
-      "ratio": 7.8,
-      "age_days": 1897,
-      "seconds": 893,
-      "tags": []
-     },
-     {
-      "title": "What If You Spent a Nanosecond in a Black Hole?",
+      "title": "What If Our Sun Became a Black Dwarf?",
       "channel": "What If",
-      "views": 1856788,
+      "views": 1387487,
       "subs": 9000000,
       "ratio": 0.2,
-      "age_days": 732,
-      "seconds": 1037,
+      "age_days": 2827,
+      "seconds": 238,
       "tags": [
        "what if",
-       "what happens if",
-       "scifi",
-       "science documentary",
-       "what if scenario",
-       "mysteries"
+       "hypothetical",
+       "science",
+       "possibilities",
+       "space",
+       "adventure"
       ]
      }
     ]
