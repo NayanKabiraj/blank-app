@@ -35,13 +35,13 @@ says something new (never invent numbers; small samples are labelled as such). R
 - **Quality over quota**: ship fewer rather than rush; never ship a pack that failed frame inspection. Overflow beyond the quota waits in `videos/unpublished/` (flushed 3x a day, oldest first); `quotaExceeded` is never an authorization problem. If it still appears at 6 a day, check Google Cloud -> APIs -> YouTube Data API v3 -> Quotas (not verified from here).
 
 ## Rules (apply to every Short and documentary)
-1. **Shorter Shorts: 38-45 seconds (100-112 words; the validator floor is 100)** - YouTube's own chart median is 30 s. The payoff (the surprising answer) must land by second ~22; everything after it is a bonus. End with a loop: the last line leads back to the first.
+1. **Payoff early, length 40-55 s** (100-125 words). First pattern reading (26 Nov, shorts.patterns, n small): Shorts of 41-60 s scored ABOVE channel average (1.25-1.28x) and <=40 s scored lowest (0.67x, n=5, low confidence), so the earlier "38-45 s" rule is relaxed; YouTube's own chart median is 30 s. The payoff (the surprising answer) must land by second ~22; everything after it is a bonus. End with a loop: the last line leads back to the first.
 2. **Hook = the viewer's own life in the first 2 seconds** ("Your phone knows your face in the dark. How?"). Concrete object, one question, no preamble. Prefer topics about the viewer's body, phone, home, city or sleep.
 3. **Timely beats evergreen when it is free**: check what is happening this week (sky events, launches, news) in the research step; a timely Short can ride the 24-72 h attention.
 4. **Documentaries are the weak format right now (11 % viewed).** Only build one when a Short on the same topic already got traction (>= 100 views or >= 50 % viewed), keep it <= 4 min, make every chapter pay off a question, and cut the plan to what the Short did not cover. Never more than one a week until a documentary beats 25 % viewed.
 5. **Subscribe where viewers still are**: a one-line "Follow for part 2 of this" inside the first 20 s of a Short (series promise) and a pinned comment; the generic outro stays but is not relied on.
 6. **Everyday-tech angle first**: for the next Shorts prefer a phone/gadget/home object the viewer owns with a practical or surprising "how / why / what if" (see the trending list); title <= 55 characters, a number or a concrete object in it.
-7. **Niche mix**: lead with Space & Universe and Earth & Nature (best retention) using Brain/Psychology-style personal hooks (best reach); treat Engineering Marvels and India Explained as tests, one per week.
+7. **Niche mix is now decided daily by `shorts.patterns` (recommended slots); the text below is only the starting hypothesis.** Niche mix: lead with Space & Universe and Earth & Nature (best retention) using Brain/Psychology-style personal hooks (best reach); treat Engineering Marvels and India Explained as tests, one per week.
 8. **Every Short gets a one-line retention check after upload**: after 48 h compare average viewed % with the 40 % channel average; note the result under "Evidence".
 
 ## Tests running (move to Rules after 2 agreeing videos)

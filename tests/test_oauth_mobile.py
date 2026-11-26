@@ -350,3 +350,26 @@ def test_tier_progress_and_brief_line():
     assert pr.tier_progress({"subscribers": None, "watch_hours_365d": 1, "shorts_views_90d": 1})["fan"] is None
     from shorts import runbrief
     assert "Partner Program eligibility" in runbrief.brief()
+
+
+def test_patterns_follow_what_works():
+    import datetime as dt
+    from shorts import patterns as pt
+    today = dt.date(2026, 11, 30)
+    def vid(i, title, views, age, sec=50):
+        d = (today - dt.timedelta(days=age)).isoformat()
+        return {"id": f"v{i}", "title": title, "views": views, "published": d + "T00:00:00Z", "duration": f"PT{sec}S", "privacy": "public"}
+    vs = [vid(1, "Why does a phone get hot?", 400, 4), vid(2, "How does GPS work?", 300, 5), vid(3, "Haunted hotel story #horrorstory", 900, 3), vid(4, "The mystery village #horrorstory", 700, 4),
+          vid(5, "Why do stars twinkle?", 20, 6), vid(6, "What if the Moon vanished?", 30, 7), vid(7, "Brand new video", 5, 1), vid(8, "Old video", 5000, 90)]
+    hist = [{"date": "x", "niche": "How Tech Works", "videos": {"en": {"video_id": "v1"}}, "follow_ups": ["next one"]}, {"date": "x", "niche": "Space & Universe", "videos": {"en": {"video_id": "v5"}}},
+            {"date": "x", "niche": "Space & Universe", "videos": {"en": {"video_id": "v6"}}}, {"date": "x", "niche": "How Tech Works", "videos": {"en": {"video_id": "v2"}}}]
+    p = pt.analyse({"available": True, "videos": vs, "analytics": []}, hist, [], today)
+    assert p["available"] and p["videos"] == 6                                   # the 1-day-old and the 90-day-old video are not judged
+    fams = {f["name"]: f for f in p["families"]}
+    assert fams["story"]["lift"] > fams["space+nature"]["lift"] and fams["story"]["n"] == 2 and fams["story"]["confidence"] == "low (n<3)"
+    assert p["recommended_slots"][0]["family"] == "story" and len(p["recommended_slots"]) == 3
+    assert any("explore" in s["why"] for s in p["recommended_slots"])
+    assert p["part2_candidates"] and p["part2_candidates"][0]["title"].startswith(("Haunted", "The mystery"))
+    assert "RECOMMENDED SLOTS TODAY" in pt.digest(p)
+    assert not pt.analyse({"available": True, "videos": vs[:2], "analytics": []}, hist, [], today)["available"]               # too little data: no pattern claimed
+    assert pt.title_shape("Why does ice float?") == "question/why" and pt.length_bucket(38) == "short <=40s" and pt.family(None, "A haunted tale") == "story"

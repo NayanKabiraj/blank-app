@@ -6,10 +6,11 @@ Goal of everything: subscribers and watch time toward monetization, safely (CLAU
 `python3 -m shorts.runbrief` prints the whole morning brief: today's plan, auth banner (show it if present, rule 14), queue, the generated `Channel check:` line, scoreboard, milestones, trending, SEO data age, recent topics, the researched
 queue and the learnings rules. Do not run the individual channel/progress/niches commands again, and do not read learnings/monetization/growth files in full (the brief carries what you need).
 
-## 1. Topics (priority order; a short day still ships the best first)
-(1) everyday-tech / phone / home explainer with a personal hook; (2) a timely topic this week or a Space & Universe / Earth & Nature explainer; (3) ONE original Horror & Suspense story (bloodless, no real people/places/events, labelled
-fiction). Sunday: 2 topics + 1 documentary (gate: a Short on the topic got traction). Target 6 a day (3 x EN+HI); 10 only if learnings.md says so. The day's videos differ in structure and angle (anti-template). Prefer a **researched queue entry** (the
-brief lists them): read its dossier, re-verify only items marked `recheck`. The timely slot is always fresh research (web search).
+## 1. Topics: follow what the views say (no waiting period)
+The brief's **RECOMMENDED SLOTS TODAY** (from `shorts.patterns`: families tech / space+nature / mind+body / story, ranked by views per day, shrunk by sample size, plus ONE explore slot for the least-sampled family) decide the families of today's three topics. Override one only with a stated
+reason in `Growth:` (a timely hook, a series follow-up). **Part 2 candidates** (>= 2x the channel median) get a follow-up topic from their saved follow_ups before anything else. Respect the guards: the day's videos differ in structure and angle (anti-template); stories stay bloodless, original and labelled
+fiction; Sunday: 2 Short topics + 1 documentary (gate: a Short on the topic got traction), target 6 a day (3 x EN+HI; 10 only if learnings.md says so). Prefer a **researched queue entry** of the chosen family (read its dossier, re-verify only `recheck` items); the timely slot is fresh research. Also read the
+language, length and title-shape lines: write the hook and title in the shapes that score, and keep Hindi/English parity (both languages are always produced).
 
 ## 2. Research (only what the dossier lacks)
 Web-search the facts; Claims table (two sources per number, status VERIFIED / PARTIALLY VERIFIED / FICTIONAL ASSUMPTION / UNVERIFIED), Gap line. SEO: dispatch `seo-research.yml` (queries separated by `|`, phrased as a viewer types; a second run `hl=hi gl=IN`), `git pull`,
