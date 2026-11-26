@@ -1,57 +1,57 @@
 {
-  "niche": "How Tech Works",
-  "topic": "How does your phone know which way is up?",
-  "research_summary": "Channel check: 26 Nov 2026 (channel_trends, YouTube Analytics 28 d): 47 subscribers, Shorts 1,815 views / 40.4 % viewed, long-form 57 views / 12.9 % viewed, 1.1 subscribers per 1,000 views; top: flute covers 687 and 475, Haunted Hotel story 505; best explainer reach = personal phone hooks, best retention = Space. Changes made because of it: series follow-ups of yesterday's two explainers (Phone Secrets part 2, Black Holes part 2) with the series promise in scene 2; Shorts about 38-45 s with the payoff before second 22; a story with a different structure and twist from yesterday's. Learning applied: rules 1 (short, payoff early), 2 (viewer's own life), 5 (series promise inside 20 s), 6 (everyday-tech first), 7 (Space second). Timely check: Mars passes Regulus today but the Mars-Jupiter peak (16-22 Nov) and the supermoon (24 Nov) have passed, so no strong free timely hook; slot 2 stays a Space series follow-up. Candidates (/40: curiosity, personal relevance, visual, proof): (1) how does your phone know which way is up 33 (series follow-up of the 25 Nov proximity video), (2) why does your charger get warm 30, (3) how does a touchscreen feel your finger 29, (4) why does airplane mode exist 28, (5) how does a fingerprint reader work 28. Winner: (1). Titles (/50): 'How Does Your Phone Know Which Way Is Up?' 44 (chosen, 41 chars), 'The Tiny Sensor That Feels Gravity' 40, 'Why Your Phone Screen Rotates (The Secret)' 38. Thumbnails: A tilted phone with arrows and the question (chosen), B a speck on springs, C two phones. Hooks: 'Turn your phone sideways and the screen follows. How does it know which way is up?' (chosen), 'There is a speck of silicon in your phone that leans when you tilt it.', 'Your phone knows up even in the dark.'. SEO (seo-research.yml 26 Nov): see data/seo/latest.json queries 'how does my phone know which way is up' / 'why does my phone screen rotate'; the phrase 'which way is up' is used in the title. Gap: results are mostly developer docs and repair guides; none tells it as a story in under a minute (speck on springs, gravity sensor + gyroscope blend, why the screen waits). Claims: (1) a MEMS accelerometer is a tiny mass on springs in silicon; a phone at rest reads about 1 g on the axis opposing gravity, which tells it which way is down (DigiKey sensor article, maketecheasier) - VERIFIED; (2) the gyroscope measures rotation rate and can drift because it tracks change not absolute direction (Android developer docs, DigiKey) - VERIFIED; (3) phones fuse accelerometer + gyroscope (+ magnetometer) readings; no single filter is universal (DigiKey, escholarship paper) - VERIFIED, narration says 'blends' without naming a filter; (4) filtering with a minimum duration stops the screen flipping on brief wobbles (Android Developers blog 'one screen turn deserves another') - VERIFIED; (5) 'smaller than rice' for the sensing speck/chip - PARTIALLY VERIFIED (MEMS structures are micrometre scale; the chip is millimetres), used in the on-screen chat only; the narration says 'a speck of silicon'. Sources: https://android-developers.googleblog.com/2010/09/one-screen-turn-deserves-another.html https://www.digikey.com/en/articles/android-as-a-sensor-platform-in-phones-tablets-and-ereaders https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion Growth: lever = series follow-up (Phone Secrets part 2 with the promise in scene 2, part three asked for in the pinned comment) and retention (payoff 'speck on springs' by second ~14); policy check: own angle and structure (a how-it-works mystery with a sensor-blend payoff), different from the what-if and the rules story of the day, no health/finance claims. Quality gate 83/100.",
-  "mood": "upbeat",
-  "cluster": "Phone Secrets",
+  "niche": "Space & Universe",
+  "topic": "What if the Sun became a black hole?",
+  "research_summary": "Channel check: 26 Nov 2026 (channel_trends, YouTube Analytics 28 d): 47 subscribers, Shorts 1,815 views / 40.4 % viewed, long-form 57 views / 12.9 % viewed, 1.1 subscribers per 1,000 views; top: flute covers 687 and 475, Haunted Hotel story 505; best explainer reach = personal phone hooks, best retention = Space. Changes made because of it: series follow-ups of yesterday's two explainers (Phone Secrets part 2, Black Holes part 2) with the series promise in scene 2; Shorts about 38-45 s with the payoff before second 22; a story with a different structure and twist from yesterday's. Learning applied: rules 1 (short, payoff early), 2 (viewer's own life), 5 (series promise inside 20 s), 6 (everyday-tech first), 7 (Space second). Timely check: Mars passes Regulus today but the Mars-Jupiter peak (16-22 Nov) and the supermoon (24 Nov) have passed, so no strong free timely hook; slot 2 stays a Space series follow-up. Candidates (/40): (1) what if the Sun became a black hole 33 (follow-up of the 25 Nov black-hole fall; follow_up queued in the queue), (2) why do stars twinkle 28, (3) what if Earth had two moons 28, (4) why is space dark if stars are everywhere 30, (5) what if the Moon were twice as close 29. Winner: (1) - best-retention niche plus a series (Black Holes) and a surprising number (eight minutes). Titles (/50): 'What If the Sun Became a Black Hole? Eight Minutes' 45 (chosen, 50 chars), 'Earth Keeps Orbiting a Black Hole Sun' 41, 'Would Earth Survive a Black Hole Sun?' 40. Thumbnails: A a black Sun with Earth still orbiting and the question (chosen), B a timer showing 8:20, C a tiny black dot. Hooks: 'The Sun turns into a black hole. For eight minutes, nothing changes. Why?' (chosen), 'Earth would keep orbiting. In the dark.', 'There would be no way to see it coming.'. SEO: see data/seo/latest.json for 'what if the sun became a black hole'. Gap: most videos either list apocalypse effects or dwell on the swallowed-Earth myth; this Short gives the eight-minute double delay (light and gravity), the unchanged orbit, and why (mass not size) in under 45 seconds. Claims: (1) Earth's orbit would be unchanged if the Sun were replaced by a black hole of the same mass (NASA Imagine the Universe; ESO educational material; Physicsbunn blog) - VERIFIED; (2) the Schwarzschild radius of one solar mass is about 3 km (2.95 km), far smaller than the Sun's ~700,000 km radius (standard GR; ESO page discusses the scale) - PARTIALLY VERIFIED, figure from standard physics, not quoted in the fetched pages; (3) light takes about eight minutes (8 min 20 s) from the Sun to Earth (NASA) - VERIFIED; (4) changes in gravity propagate at the speed of light (LIGO/Virgo GW170817 measurement, standard GR) - PARTIALLY VERIFIED, no source fetched today, narration says 'travel at the same speed'; (5) the Sun is too light to become a black hole and will end as a white dwarf (stellar evolution, standard) - PARTIALLY VERIFIED; theory vs observation: a Sun replaced by a black hole is a thought experiment. Sources: https://imagine.gsfc.nasa.gov/educators/blackholes/imagine/page26.html https://www.eso.org/public/archives/exhibitions/pdf/es1219_educational.pdf https://blog.richmond.edu/physicsbunn/?p=163 Growth: lever = series follow-up (Black Holes part 2 with the promise in scene 2, next_video what is inside a black hole) and retention (the 'nothing changes for eight minutes' hook, countdown visual); policy check: a physics thought experiment with its own countdown structure, different from the phone explainer and the rules story, theory labelled. Quality gate 82/100.",
+  "mood": "dramatic",
+  "cluster": "Black Holes",
   "follow_ups": [
-    "How does your phone know it is in your pocket?",
-    "Why does your phone get hot while charging?",
-    "How does a touchscreen feel your finger?"
+    "What is inside a black hole?",
+    "What if the Moon were twice as close?",
+    "Why is space dark if stars are everywhere?"
   ],
-  "gate_score": 83,
+  "gate_score": 82,
   "english": {
-    "title": "How Does Your Phone Know Which Way Is Up?",
-    "description": "Turn your phone sideways and the screen follows. See the tiny sensor that feels gravity, the gyroscope that tracks turning, and why the screen waits before it flips. Phone Secrets, part 2. #Shorts #Phone #HowItWorks",
+    "title": "What If the Sun Became a Black Hole? Eight Minutes",
+    "description": "The Sun turns into a black hole: for eight minutes nothing changes, then the light goes out, yet Earth keeps its orbit. Black Holes, part 2. #Shorts #BlackHole #Space",
     "tags": [
-      "how does my phone know which way is up",
-      "phone accelerometer explained",
-      "phone gyroscope explained",
-      "why does my phone screen rotate",
-      "phone sensors explained",
-      "phone secrets"
+      "what if the sun became a black hole",
+      "sun black hole earth orbit",
+      "would earth survive a black hole sun",
+      "black hole same mass as the sun",
+      "black holes explained",
+      "space what if"
     ],
-    "hook_text": "Which way is up?",
-    "thumbnail_text": "WHICH WAY IS UP?",
-    "thumbnail_question": "Which way is up for your phone?",
-    "next_video": "How does your phone know it is in your pocket?",
-    "pinned_comment": "What should Phone Secrets part three explain? Tell me below!",
+    "hook_text": "Eight minutes?",
+    "thumbnail_text": "8 MINUTES",
+    "thumbnail_question": "What if the Sun became a black hole?",
+    "next_video": "What is inside a black hole?",
+    "pinned_comment": "Would you rather see it coming or not? Tell me below!",
     "scenes": [
       {
-        "text": "Turn your phone sideways and the screen follows. How does it know which way is up?",
-        "keyword": "screen follows",
+        "text": "The Sun turns into a black hole. For eight minutes, nothing changes. Why?",
+        "keyword": "Sun turns into a black hole",
         "graphic": {
           "kind": "title",
-          "headline": "Which way is up?",
+          "headline": "8 minutes of nothing",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "planet"
         }
       },
       {
-        "text": "Phone Secrets, part two. In this video you'll see the tiny sensor that feels gravity.",
+        "text": "Black Holes, part two. In this video you'll see what Earth feels, and when.",
         "keyword": "you'll see",
         "graphic": {
           "kind": "chat",
           "headline": "Quick chat",
           "caption": "",
           "items": [
-            "How does it know?",
-            "A tiny sensor",
-            "Tiny?",
-            "Smaller than rice"
+            "Do we fall in?",
+            "No",
+            "What changes?",
+            "Light, then warmth"
           ],
           "values": [],
           "answer": null,
@@ -59,29 +59,29 @@
         }
       },
       {
-        "text": "Inside is a speck of silicon on microscopic springs. Tilt the phone, and it leans.",
-        "keyword": "speck of silicon",
+        "text": "Light takes about eight minutes to reach us, and gravity's changes travel just as fast.",
+        "keyword": "eight minutes",
         "graphic": {
-          "kind": "keyword",
-          "headline": "A speck on springs",
-          "caption": "it leans when you tilt",
+          "kind": "stat",
+          "headline": "8 min",
+          "caption": "light from the Sun to Earth",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "gear"
+          "prop": null
         }
       },
       {
-        "text": "That lean becomes a tiny electrical signal, telling the phone where gravity pulls.",
-        "keyword": "electrical signal",
+        "text": "Then the lights go out, and Earth begins to cool.",
+        "keyword": "lights go out",
         "graphic": {
           "kind": "steps",
-          "headline": "From lean to answer",
+          "headline": "After eight minutes",
           "caption": "",
           "items": [
-            "Speck leans",
-            "Signal changes",
-            "Phone finds down"
+            "Sky goes dark",
+            "Earth cools",
+            "Ice spreads"
           ],
           "values": [],
           "answer": null,
@@ -89,15 +89,15 @@
         }
       },
       {
-        "text": "A gyroscope adds how fast you turn. It's quick, but it slowly drifts.",
-        "keyword": "gyroscope",
+        "text": "But Earth's orbit stays the same. Far away, a black hole pulls exactly like the Sun did.",
+        "keyword": "orbit stays the same",
         "graphic": {
           "kind": "compare",
-          "headline": "Two sensors",
+          "headline": "Earth's orbit",
           "caption": "",
           "items": [
-            "Gravity: honest",
-            "Gyroscope: fast"
+            "With the Sun",
+            "With a black hole"
           ],
           "values": [
             5.0,
@@ -108,32 +108,15 @@
         }
       },
       {
-        "text": "So the phone blends them: gravity keeps it honest, the gyroscope keeps it fast.",
-        "keyword": "blends them",
-        "graphic": {
-          "kind": "flow",
-          "headline": "The blend",
-          "caption": "",
-          "items": [
-            "Gravity sensor",
-            "Gyroscope",
-            "One answer"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Why does the screen wait before flipping? It ignores wobbles, so it won't flip every shake.",
-        "keyword": "ignores wobbles",
+        "text": "Why? Gravity depends on mass, not size. Squeezed to three kilometres, the Sun pulls the same.",
+        "keyword": "mass, not size",
         "graphic": {
           "kind": "myth",
-          "headline": "Why the wait?",
+          "headline": "Does size matter?",
           "caption": "",
           "items": [
-            "It is slow",
-            "It ignores wobbles"
+            "Smaller pulls less",
+            "Same mass, same pull"
           ],
           "values": [],
           "answer": null,
@@ -141,60 +124,73 @@
         }
       },
       {
-        "text": "Your phone knows up, even in the dark. What should part three explain? Tell me below!",
-        "keyword": "even in the dark",
+        "text": "It can't really happen: the Sun is too light, and will end as a white dwarf.",
+        "keyword": "too light",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Too light",
+          "caption": "it will end as a white dwarf",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "planet"
+        }
+      },
+      {
+        "text": "So Earth circles in the dark, held by nothing visible. Would you see it coming? Tell me below!",
+        "keyword": "held by nothing",
         "graphic": {
           "kind": "title",
-          "headline": "What is part three?",
+          "headline": "Would you see it coming?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "star"
+          "prop": "clock"
         }
       }
     ],
-    "animation_pack": "phone_tilt_vox"
+    "animation_pack": "sun_bh_vox"
   },
   "hindi": {
-    "title": "फ़ोन को कैसे पता चलता है कि ऊपर कौन-सा है?",
-    "description": "फ़ोन आड़ा करो तो स्क्रीन घूम जाती है। देखिए गुरुत्व महसूस करने वाला नन्हा सेंसर, जाइरोस्कोप, और स्क्रीन पलटने से पहले क्यों रुकती है। फ़ोन सीक्रेट्स, भाग 2। #Shorts #Phone #कैसे_काम_करता_है",
+    "title": "सूरज ब्लैक होल बन जाए तो क्या होगा? आठ मिनट",
+    "description": "सूरज ब्लैक होल बन जाए तो आठ मिनट तक कुछ नहीं बदलता, फिर रोशनी बुझ जाती है, पर धरती की कक्षा वही रहती है। ब्लैक होल्स, भाग 2। #Shorts #BlackHole #अंतरिक्ष",
     "tags": [
-      "फ़ोन को कैसे पता चलता है ऊपर कौन सा है",
-      "फ़ोन सेंसर",
-      "जाइरोस्कोप क्या है"
+      "सूरज ब्लैक होल बन जाए तो",
+      "ब्लैक होल सूरज धरती कक्षा",
+      "ब्लैक होल कैसे काम करता है"
     ],
-    "hook_text": "ऊपर कौन-सा?",
-    "thumbnail_text": "ऊपर कौन-सा?",
-    "thumbnail_question": "फ़ोन को ऊपर का पता कैसे चलता है?",
-    "next_video": "फ़ोन को पता कैसे चलता है कि वह जेब में है?",
-    "pinned_comment": "फ़ोन सीक्रेट्स भाग तीन में क्या समझाऊँ? नीचे बताइए!",
+    "hook_text": "आठ मिनट?",
+    "thumbnail_text": "8 मिनट",
+    "thumbnail_question": "सूरज ब्लैक होल बने तो क्या होगा?",
+    "next_video": "ब्लैक होल के अंदर क्या है?",
+    "pinned_comment": "क्या आप उसे आते देखना चाहेंगे? नीचे बताइए!",
     "scenes": [
       {
-        "text": "फ़ोन आड़ा करो तो स्क्रीन घूम जाती है। उसे कैसे पता कि ऊपर कौन-सा है?",
-        "keyword": "स्क्रीन",
+        "text": "सूरज ब्लैक होल बन जाता है। आठ मिनट तक कुछ नहीं बदलता। क्यों?",
+        "keyword": "ब्लैक होल",
         "graphic": {
           "kind": "title",
-          "headline": "ऊपर कौन-सा है?",
+          "headline": "8 मिनट कुछ नहीं",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "phone"
+          "prop": "planet"
         }
       },
       {
-        "text": "फ़ोन सीक्रेट्स, भाग दो। इस वीडियो में आप देखेंगे वह सेंसर जो गुरुत्व महसूस करता है।",
+        "text": "ब्लैक होल्स, भाग दो। इस वीडियो में आप देखेंगे धरती को क्या लगेगा, और कब।",
         "keyword": "आप देखेंगे",
         "graphic": {
           "kind": "chat",
           "headline": "छोटी बातचीत",
           "caption": "",
           "items": [
-            "कैसे पता चलता है?",
-            "एक नन्हा सेंसर",
-            "नन्हा?",
-            "चावल से छोटा"
+            "क्या हम गिरेंगे?",
+            "नहीं",
+            "क्या बदलेगा?",
+            "रोशनी, फिर गर्मी"
           ],
           "values": [],
           "answer": null,
@@ -202,29 +198,29 @@
         }
       },
       {
-        "text": "अंदर बारीक स्प्रिंग पर सिलिकॉन का एक कण है। फ़ोन झुकाओ तो वह झुकता है।",
-        "keyword": "सिलिकॉन",
+        "text": "रोशनी को हम तक पहुँचने में करीब आठ मिनट लगते हैं। गुरुत्व का बदलाव भी उतना ही तेज़ है।",
+        "keyword": "आठ मिनट",
         "graphic": {
-          "kind": "keyword",
-          "headline": "स्प्रिंग पर कण",
-          "caption": "झुकाओ तो झुकता है",
+          "kind": "stat",
+          "headline": "8 मिनट",
+          "caption": "सूरज से धरती तक रोशनी",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "gear"
+          "prop": null
         }
       },
       {
-        "text": "वह झुकाव बिजली का नन्हा संकेत बन जाता है, जो बताता है खिंचाव किधर है।",
-        "keyword": "संकेत",
+        "text": "फिर रोशनी बुझ जाती है और धरती ठंडी पड़ने लगती है।",
+        "keyword": "रोशनी बुझ",
         "graphic": {
           "kind": "steps",
-          "headline": "झुकाव से जवाब",
+          "headline": "आठ मिनट के बाद",
           "caption": "",
           "items": [
-            "कण झुकता है",
-            "संकेत बदलता है",
-            "फ़ोन ढूँढता है"
+            "आसमान अँधेरा",
+            "धरती ठंडी",
+            "बर्फ़ फैलती है"
           ],
           "values": [],
           "answer": null,
@@ -232,15 +228,15 @@
         }
       },
       {
-        "text": "जाइरोस्कोप बताता है आप कितनी तेज़ घूमे। वह फुर्तीला है, पर धीरे-धीरे भटकता है।",
-        "keyword": "जाइरोस्कोप",
+        "text": "पर धरती की कक्षा वही रहती है। दूर से ब्लैक होल उतना ही खींचता है जितना सूरज।",
+        "keyword": "कक्षा वही",
         "graphic": {
           "kind": "compare",
-          "headline": "दो सेंसर",
+          "headline": "धरती की कक्षा",
           "caption": "",
           "items": [
-            "गुरुत्व: सच्चा",
-            "जाइरोस्कोप: तेज़"
+            "सूरज के साथ",
+            "ब्लैक होल के साथ"
           ],
           "values": [
             5.0,
@@ -251,32 +247,15 @@
         }
       },
       {
-        "text": "इसलिए फ़ोन दोनों को मिलाता है: गुरुत्व उसे सही रखता है, जाइरोस्कोप तेज़।",
-        "keyword": "मिलाता",
-        "graphic": {
-          "kind": "flow",
-          "headline": "मेल",
-          "caption": "",
-          "items": [
-            "गुरुत्व सेंसर",
-            "जाइरोस्कोप",
-            "एक जवाब"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "स्क्रीन पलटने से पहले रुकती क्यों है? वह हिलावट अनदेखी करती है, ताकि हर झटके पर न पलटे।",
-        "keyword": "रुकती क्यों",
+        "text": "क्यों? खिंचाव द्रव्यमान से होता है, आकार से नहीं। तीन किलोमीटर का सूरज भी वैसे ही खींचता है।",
+        "keyword": "द्रव्यमान",
         "graphic": {
           "kind": "myth",
-          "headline": "रुकती क्यों है?",
+          "headline": "क्या आकार मायने रखता है?",
           "caption": "",
           "items": [
-            "वह धीमी है",
-            "हिलावट अनदेखी"
+            "छोटा कम खींचे",
+            "वही द्रव्यमान, वही खिंचाव"
           ],
           "values": [],
           "answer": null,
@@ -284,19 +263,32 @@
         }
       },
       {
-        "text": "फ़ोन अँधेरे में भी जानता है ऊपर कहाँ है। भाग तीन में क्या समझाऊँ? नीचे बताइए!",
-        "keyword": "अँधेरे में",
+        "text": "असल में ऐसा नहीं हो सकता: सूरज बहुत हल्का है और सफ़ेद बौना बनेगा।",
+        "keyword": "बहुत हल्का",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "बहुत हल्का",
+          "caption": "अंत में सफ़ेद बौना",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": "planet"
+        }
+      },
+      {
+        "text": "तो धरती अँधेरे में घूमती रहेगी, किसी अनदेखी चीज़ से बँधी। क्या आप उसे आते देखते? नीचे बताइए!",
+        "keyword": "अनदेखी",
         "graphic": {
           "kind": "title",
-          "headline": "भाग तीन में क्या?",
+          "headline": "क्या आप देखते?",
           "caption": "",
           "items": [],
           "values": [],
           "answer": null,
-          "prop": "star"
+          "prop": "clock"
         }
       }
     ],
-    "animation_pack": "phone_tilt_vox"
+    "animation_pack": "sun_bh_vox"
   }
 }
