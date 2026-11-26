@@ -60,8 +60,9 @@ def brief(now: dt.datetime | None = None) -> str:
     hist, doc = _load(config.HISTORY_FILE, []), _load(config.DATA_DIR / "documentary_history.json", [])
     dig = ct.digest(data, hist, doc)
     sunday = today.weekday() == 6
+    doc_day = sunday or (today.weekday() == 2 and today >= dt.date(2026, 12, 9))          # long-form test (owner request 26 Nov): Sunday, plus Wednesday from 9 Dec
     L = [f"# Run brief {today.isoformat()} ({today.strftime('%A')} IST)",
-         f"Plan today: {'SUNDAY: 2 Short topics + 1 documentary (only if a Short on its topic got traction), each EN+HI' if sunday else '3 Short topics, each EN+HI'}; target: {target(ROOT / 'strategy' / 'learnings.md')}.",
+         f"Plan today: {'DOCUMENTARY DAY (' + today.strftime('%A') + '): 2 Short topics + 1 search-led long-form of 6-8 min built on a winning Short topic (a Part 2 candidate or a top family topic), each EN+HI' if doc_day else '3 Short topics, each EN+HI'}; target: {target(ROOT / 'strategy' / 'learnings.md')}.",
          "Auth: " + (ytauth.banner() or "OK (no authorization pending)"),
          f"Queue: {len(list((config.VIDEOS_DIR / 'unpublished').glob('*/meta.json'))) if (config.VIDEOS_DIR / 'unpublished').is_dir() else 0} videos waiting in videos/unpublished/.", "",
          check_line(data, dig, today)]

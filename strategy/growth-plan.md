@@ -40,3 +40,9 @@ If a checkpoint is missed by half, change the strategy (series, format, language
 ## Eligibility as the scoreboard (26 Nov 2026)
 `reports/latest.md` and the run brief show the computed Partner Program eligibility: fan-funding tier and ads tier requirements met in %, the slowest requirement decides. Reading on 26 Nov: subscribers 48, qualifying long-form hours 1.8 (365 d), Shorts views 2,016 (90 d);
 fan-funding tier about 0.1 %. The plan's levers map to it directly: series + conversion toolkit -> subscribers; one search-led long-form a week -> hours. A week in which neither percentage moves is a week to change the strategy, not the volume.
+
+## Long-form test and adaptive pivots (owner request, 26 Nov 2026; replaces "wait two weeks")
+* **Long-form** (the only watch time toward the hours requirement): documentary days are Sunday, plus Wednesday from 9 Dec 2026; each is one search-led 6-8 minute video (EN+HI) built on a winning Short topic, with chapters that each pay off a question.
+* **Patterns decide, daily** (`shorts.patterns`, in the run brief): the long-form group's lift and viewed % are compared with the Shorts every day. After 4 long-form videos with a lift under 0.8x, change the long-form format (topic family, length, title shape), not the number of videos.
+* **Pivot rule without a calendar wait:** the daily brief names the best and worst families, languages, lengths and title shapes by views per day; a family with 3+ videos under 0.7x loses its main slot the next day; a family above 1.3x on 3+ videos gets a Part 2 and an extra long-form candidate.
+* **Dropped:** the Horror & Suspense niche (owner decision 26 Nov 2026). Third family: Mind & Body.
