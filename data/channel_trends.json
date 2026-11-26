@@ -1,13 +1,79 @@
 {
  "available": true,
- "generated": "2026-11-25T11:12:49+00:00",
+ "generated": "2026-11-26T04:16:32+00:00",
  "days": 28,
  "channel": {
-  "viewCount": 11663,
-  "subscriberCount": 47,
-  "videoCount": 152
+  "viewCount": 11728,
+  "subscriberCount": 48,
+  "videoCount": 158
+ },
+ "channel_status": {
+  "privacyStatus": "public",
+  "isLinked": true,
+  "longUploadsStatus": "allowed",
+  "isChannelMonetizationEnabled": false
  },
  "videos": [
+  {
+   "id": "VEiiL_3W8F0",
+   "title": "सूरज ब्लैक होल बन जाए तो क्या होगा? आठ मिनट #Shorts",
+   "published": "2026-11-26T04:04:48Z",
+   "duration": "PT56S",
+   "privacy": "public",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "EHIU0MX1tX0",
+   "title": "The Mirror Rules (A Fictional Story) #Shorts",
+   "published": "2026-11-26T04:04:38Z",
+   "duration": "PT53S",
+   "privacy": "public",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "a8xv3kEBwDU",
+   "title": "आईने के नियम (एक काल्पनिक कहानी) #Shorts",
+   "published": "2026-11-26T04:04:29Z",
+   "duration": "PT55S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "dT9CZznRbSg",
+   "title": "What If the Sun Became a Black Hole? Eight Minutes #Shorts",
+   "published": "2026-11-26T04:04:07Z",
+   "duration": "PT52S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "DISZMtsRQGc",
+   "title": "फ़ोन को कैसे पता चलता है कि ऊपर कौन-सा है? #Shorts",
+   "published": "2026-11-26T04:03:03Z",
+   "duration": "PT58S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "k9W65iRvzoY",
+   "title": "How Does Your Phone Know Which Way Is Up? #Shorts",
+   "published": "2026-11-26T04:01:38Z",
+   "duration": "PT51S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
   {
    "id": "Ft6g5O3vggo",
    "title": "आख़िरी ट्रेन की घोषणा (एक काल्पनिक कहानी) #Shorts",
@@ -34,7 +100,7 @@
    "published": "2026-11-25T04:14:07Z",
    "duration": "PT55S",
    "privacy": "public",
-   "views": 1,
+   "views": 3,
    "likes": 0,
    "comments": 0
   },
@@ -44,7 +110,7 @@
    "published": "2026-11-25T04:13:56Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 13,
+   "views": 26,
    "likes": 0,
    "comments": 0
   },
@@ -64,7 +130,7 @@
    "published": "2026-11-25T04:13:33Z",
    "duration": "PT47S",
    "privacy": "public",
-   "views": 2,
+   "views": 4,
    "likes": 0,
    "comments": 0
   },
@@ -84,7 +150,7 @@
    "published": "2026-11-24T12:24:39Z",
    "duration": "PT4M48S",
    "privacy": "public",
-   "views": 5,
+   "views": 6,
    "likes": 0,
    "comments": 0
   },
@@ -104,8 +170,8 @@
    "published": "2026-11-24T12:22:28Z",
    "duration": "PT56S",
    "privacy": "public",
-   "views": 379,
-   "likes": 0,
+   "views": 798,
+   "likes": 2,
    "comments": 0
   },
   {
@@ -124,7 +190,7 @@
    "published": "2026-11-23T08:27:04Z",
    "duration": "PT58S",
    "privacy": "public",
-   "views": 4,
+   "views": 3,
    "likes": 0,
    "comments": 0
   },
@@ -134,7 +200,7 @@
    "published": "2026-11-23T04:50:52Z",
    "duration": "PT5M27S",
    "privacy": "public",
-   "views": 10,
+   "views": 11,
    "likes": 0,
    "comments": 0
   },
@@ -144,7 +210,7 @@
    "published": "2026-11-23T03:36:22Z",
    "duration": "PT4M32S",
    "privacy": "public",
-   "views": 10,
+   "views": 13,
    "likes": 1,
    "comments": 0
   },
@@ -174,7 +240,7 @@
    "published": "2026-11-22T11:35:11Z",
    "duration": "PT57S",
    "privacy": "public",
-   "views": 5,
+   "views": 6,
    "likes": 1,
    "comments": 0
   },
@@ -214,7 +280,7 @@
    "published": "2026-11-19T15:55:16Z",
    "duration": "PT54S",
    "privacy": "public",
-   "views": 76,
+   "views": 78,
    "likes": 0,
    "comments": 0
   },
@@ -294,7 +360,7 @@
    "published": "2026-11-18T09:05:40Z",
    "duration": "PT4M3S",
    "privacy": "public",
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -1590,7 +1656,7 @@
   },
   {
    "video": "cwb_sHbjxwE",
-   "views": 75,
+   "views": 76,
    "estimatedMinutesWatched": 9,
    "averageViewDuration": 15,
    "averageViewPercentage": 29.270000000000003,
@@ -1630,7 +1696,7 @@
   },
   {
    "video": "_h9M1lqZV1I",
-   "views": 17,
+   "views": 18,
    "estimatedMinutesWatched": 3,
    "averageViewDuration": 27,
    "averageViewPercentage": 49.18,
@@ -1638,7 +1704,7 @@
   },
   {
    "video": "y0ZnSNebehA",
-   "views": 17,
+   "views": 18,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 19,
    "averageViewPercentage": 123.19,
@@ -1669,6 +1735,14 @@
    "subscribersGained": 0
   },
   {
+   "video": "qf-UeA0pKao",
+   "views": 10,
+   "estimatedMinutesWatched": 6,
+   "averageViewDuration": 49,
+   "averageViewPercentage": 18.09,
+   "subscribersGained": 0
+  },
+  {
    "video": "yn9wXT-4-I4",
    "views": 10,
    "estimatedMinutesWatched": 1,
@@ -1682,6 +1756,14 @@
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 30,
    "averageViewPercentage": 55.19,
+   "subscribersGained": 0
+  },
+  {
+   "video": "GOmKtQvKMX8",
+   "views": 8,
+   "estimatedMinutesWatched": 15,
+   "averageViewDuration": 157,
+   "averageViewPercentage": 48.3,
    "subscribersGained": 0
   },
   {
@@ -1749,6 +1831,14 @@
    "subscribersGained": 0
   },
   {
+   "video": "kytb1ypPG4s",
+   "views": 6,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 33,
+   "averageViewPercentage": 11.52,
+   "subscribersGained": 0
+  },
+  {
    "video": "q3yz34MDOpI",
    "views": 6,
    "estimatedMinutesWatched": 1,
@@ -1805,6 +1895,14 @@
    "subscribersGained": 0
   },
   {
+   "video": "fxEunP-9-3c",
+   "views": 5,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 10,
+   "averageViewPercentage": 17.58,
+   "subscribersGained": 0
+  },
+  {
    "video": "l_FJS639TdU",
    "views": 5,
    "estimatedMinutesWatched": 0,
@@ -1826,14 +1924,6 @@
    "estimatedMinutesWatched": 0,
    "averageViewDuration": 1,
    "averageViewPercentage": 4.1,
-   "subscribersGained": 0
-  },
-  {
-   "video": "fxEunP-9-3c",
-   "views": 4,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 15,
-   "averageViewPercentage": 25.17,
    "subscribersGained": 0
   },
   {
@@ -1861,11 +1951,11 @@
    "subscribersGained": 0
   },
   {
-   "video": "xkOnUp4KGfM",
+   "video": "zx56v1qrtuI",
    "views": 4,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 12,
-   "averageViewPercentage": 8.97,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 42,
+   "averageViewPercentage": 72.87,
    "subscribersGained": 0
   },
   {
@@ -1915,45 +2005,29 @@
    "averageViewDuration": 24,
    "averageViewPercentage": 43.88,
    "subscribersGained": 0
-  },
-  {
-   "video": "qf-UeA0pKao",
-   "views": 3,
-   "estimatedMinutesWatched": 4,
-   "averageViewDuration": 91,
-   "averageViewPercentage": 33.49,
-   "subscribersGained": 0
-  },
-  {
-   "video": "zx56v1qrtuI",
-   "views": 3,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 47,
-   "averageViewPercentage": 82.5,
-   "subscribersGained": 0
   }
  ],
  "split": [
   {
    "creatorContentType": "shorts",
-   "views": 1815,
-   "estimatedMinutesWatched": 295,
-   "averageViewPercentage": 40.44
+   "views": 1822,
+   "estimatedMinutesWatched": 297,
+   "averageViewPercentage": 40.54
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 57,
-   "estimatedMinutesWatched": 32,
-   "averageViewPercentage": 12.920000000000002
+   "views": 76,
+   "estimatedMinutesWatched": 52,
+   "averageViewPercentage": 15.869999999999997
   }
  ],
  "totals_365d": {
-  "minutes": 90,
-  "shorts_minutes": 415,
+  "minutes": 109,
+  "shorts_minutes": 417,
   "subscribersGained": 4
  },
  "shorts_90d": {
-  "views": 2009
+  "views": 2016
  },
  "search_terms": [
   {
