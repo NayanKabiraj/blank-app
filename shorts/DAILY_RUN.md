@@ -53,3 +53,7 @@ stated as a fact ("You only use 10% of your brain."), turn in scene 3 ("That's f
 New packs paint the whole screen: `"stage": "full"` in `shots.json` and `b.backdrop(top, bottom)` per beat (see `silent_space_vox`); art zone is local y -4.8..+4.8, x +-4.4 around `b.C`; keep key art above the caption pill.
 
 Direct pushes to main are allowed by `.claude/settings.json` (owner request, 27 Nov 2026); scheduled runs still commit only new pack folders (rule 7).
+
+## Videosly horror Short (27 Nov 2026, rule 22)
+Do this FIRST in every daily run (it needs 25-45 minutes to generate and render, so it overlaps with the batch): follow `shorts/VIDEOSLY_HORROR_TASK.md` - a topic-only prompt to Videosly with skill horror-story, then title/description/tags by Claude and `videosly_post_video`.
+It is on top of the day's Shorts (Videosly posts to the channel through its own connection, not our YouTube quota; 2 YouTube posts a day max). Report it in the final summary.

@@ -94,6 +94,11 @@ def brief(now: dt.datetime | None = None) -> str:
     L.append("Trending (YouTube Science & Tech charts): " + (f"{int(tr['share_under_60s'] * 100)} % under 60 s, median title {tr['median_title_chars']} chars, words {', '.join(tr['recurring_words'][:6])}" if tr.get("available") else "n/a"))
     seo = ROOT / "data" / "seo" / "latest.json"
     L.append("SEO data: " + (f"data/seo/latest.json from {_load(seo, {}).get('generated', '?')} (queries: {', '.join(_load(seo, {}).get('queries', {}))[:120]})" if seo.exists() else "none yet (dispatch seo-research.yml per candidate topic)"))
+    try:
+        from . import videosly
+        L += ["", videosly.brief_line()]
+    except Exception:                                                                      # the Videosly line must never break the morning brief
+        pass
     L += ["", "Recent topics (never repeat): " + " | ".join(dict.fromkeys(f"{e['date'][5:]} {e['topic'][:46]}" for e in (hist[-14:] + doc[-4:])))]
     q = [e for e in _load(ROOT / "strategy" / "research-queue.json", []) if e.get("status") in ("researched", "ready")]
     L.append("Researched queue (prefer these; read the dossier, re-verify only items marked recheck): " + (" | ".join(f"{e['topic'][:44]} [{e.get('niche', '')}, {e.get('kind', '')}, gate {e.get('gate_score', '?')}, {e.get('dossier', '')}]" for e in q[:12]) if q else "empty (use fresh research)"))

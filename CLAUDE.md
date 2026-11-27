@@ -26,7 +26,7 @@ the workflow renders.
 6. **Uploads stay private** unless the owner changes `YT_PRIVACY`. Videos YouTube refuses wait in `videos/unpublished/` and upload first next time.
 7. Scheduled tasks commit nothing, with ONE exception the owner explicitly authorised (22 Nov 2026): each run commits that day's animation pack (rule 10) - only the new folder
    `generated_animations/scenes/<pack>/`, never edits to existing packs or other code - straight to `main` before dispatching the workflow, because the workflow
-   renders from `main`. A second exception (24 Nov 2026): the weekly research run (`shorts/WEEKLY_RESEARCH.md`) may merge ONE pull request that touches only `strategy/research-queue.json` and `strategy/research/`. Interactive work goes on a branch and a pull request.
+   renders from `main`. A second exception (24 Nov 2026): the weekly research run (`shorts/WEEKLY_RESEARCH.md`) may merge ONE pull request that touches only `strategy/research-queue.json` and `strategy/research/`. A third exception (27 Nov 2026): the Videosly horror run (rule 22) may commit `data/videosly/history.json` straight to `main`. Interactive work goes on a branch and a pull request (direct pushes to `main` are allowed by `.claude/settings.json`).
 
 8. **Every video ends with the closing line** "Thanks for watching the video! Please like, share and subscribe to watch more interesting
    videos like this." (Hindi equivalent in `shorts/outro.py`). It is added automatically to every Short, documentary, stock-footage and
@@ -62,7 +62,7 @@ the workflow renders.
    `Learning applied:` in `research_summary` and keep the file current with dated, honest evidence. Hindi videos (when produced) follow the same vox look: every on-screen string via `vox.L(ctx, en, hi)` / `T[ctx.lang]`.
 
 16. **6 uploads a day (quota), 10 when the quota is raised** (owner instruction, 24 Nov 2026; the current target is in `strategy/learnings.md` "DECISION", daily steps in `shorts/DAILY_RUN.md`): 3 Short topics x EN+HI per day, the families chosen by the patterns brief (rule 19). **Documentary days** (owner request, 26 Nov 2026):
-   Sunday, plus Wednesday from 9 Dec 2026 - each is 2 Short topics + one search-led 6-8 minute long-form (EN+HI) built on a winning Short topic, because only long-form watch time counts toward the hours requirement. **The Horror & Suspense niche was dropped on 26 Nov 2026** (owner decision): no story Shorts;
+   Sunday, plus Wednesday from 9 Dec 2026 - each is 2 Short topics + one search-led 6-8 minute long-form (EN+HI) built on a winning Short topic, because only long-form watch time counts toward the hours requirement. **The Horror & Suspense niche was dropped on 26 Nov 2026** (owner decision): no code-made story Shorts (the one horror Short a day is Videosly's, rule 22);
    the third family is Mind & Body (Brain & Psychology / Human Body: why your body or mind does X, concepts only, never medical advice). **Myth Busters** (owner request, 26 Nov 2026) is a standing fourth family (`niche: "Myth Busters"`, family `myth`, `shorts/niches.py`): a popular belief that is wrong, stated in the first seconds and busted with the real mechanism, only settled science/history with two sources, never health/medical/finance/legal advice or religion/community beliefs; until it has 3 videos of data the patterns brief gives it the explore slot, so one Short a day is a myth buster. **Full-screen art** (owner request, 26 Nov 2026): new packs set `"stage": "full"` in `shots.json` and use `Beat.backdrop(...)` (a full-bleed scene backdrop behind the caption and presenter) instead of the paper card; `silent_space_vox` is the example. Quality over quantity: ship fewer rather than rush; leave nothing unmerged or unuploaded (the queue is flushed 3x a day).
 
 17. **The goal is growth and monetization** (owner instruction, 24 Nov 2026; `strategy/monetization.md`): everything Claude generates, publishes or changes must serve the goal of subscribers and watch time that qualify the channel
@@ -83,6 +83,10 @@ the workflow renders.
 
 21. **Token-lean runs** (owner request, 25 Nov 2026): each daily run is a fresh session (cost = calls x context size). Start with `python3 -m shorts.runbrief`, follow `shorts/DAILY_RUN.md`, write packs on `generated_animations/shared/packkit.py`, preview with `python3 -m generated_animations.authoring.preview`,
    dispatch the day's plans ONCE with `daily-batch.yml`, batch commands and filter outputs. Quality steps (research, claim checks, frame inspection, bespoke animation) never shrink.
+
+22. **Videosly horror Short, 1 a day** (owner request, 27 Nov 2026; `shorts/VIDEOSLY_HORROR_TASK.md`, `shorts/videosly.py`): the only horror content. Claude sends Videosly (MCP connector `Videously`, skill `horror-story`, 60 s, 9:16) a TOPIC ONLY as a `prompt` - never a script, composition or title -
+   and Videosly writes the story, draws the pictures in its horror look and records the voice. When it is rendered Claude reads the story back, writes the title, description and tags (`python3 -m shorts.videosly check-meta`), and posts it with `videosly_post_video` (privacy `private` by default, rule 6; `VIDEOSLY_PRIVACY` changes it; `aiGenerated` stays true). Topics: invented, bloodless, no child in danger,
+   no real person, brand or place, never repeated (`python3 -m shorts.videosly request` enforces it). History in `data/videosly/history.json`. If the connector is missing or refuses, skip the step and say so; never fake a result. Horror was the weakest niche by views: judge this test on its own numbers after a week.
 
 ## Quick commands
 
