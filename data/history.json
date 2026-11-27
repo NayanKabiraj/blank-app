@@ -1002,5 +1002,32 @@
         "video_id": "NtzIIRTNk5I"
       }
     }
+  },
+  {
+    "date": "2026-11-27",
+    "niche": "Myth Busters",
+    "topic": "Do We Only Use 10% of Our Brain?",
+    "mood": "inspiring",
+    "cluster": "Myth Busters",
+    "follow_ups": [
+      "Can you really see the Great Wall of China from space?",
+      "Does lightning never strike the same place twice?",
+      "Is the Sun really yellow?"
+    ],
+    "next_video": "Can you really see the Great Wall from space?",
+    "gate_score": 80,
+    "thumbnail_text": "10% MYTH",
+    "videos": {
+      "en": {
+        "file": "2026-11-27_en.mp4",
+        "saved_to": "videos/2026-11-27/en.mp4",
+        "video_id": "bROkbG9B7aQ"
+      },
+      "hi": {
+        "file": "2026-11-27_hi.mp4",
+        "saved_to": "videos/2026-11-27/hi.mp4",
+        "video_id": "z66L3gvewpw"
+      }
+    }
   }
 ]

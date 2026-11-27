@@ -1,39 +1,38 @@
 {
-  "niche": "How Tech Works",
-  "topic": "Why Does GPS Go Wrong Between Tall Buildings?",
-  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours, 1.8 h). Patterns brief 27 Nov: slots 1) space+nature (1.21x, n=14), 2) tech (0.95x, n=6), 3) myth (explore slot, n=0). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own phone: the blue dot), 5 (series promise 'Part 2 of GPS' in scene 2), 6 (everyday-tech first). Part 2 rule: the Hindi GPS video is the channel's top performer (840 views), so this is its series follow-up. Candidates (/40): (1) Why GPS goes wrong between tall buildings 34 (personal hook, a visual mechanism: echo path longer), (2) Why does your phone die faster in the cold 31, (3) How does Face Unlock work in the dark 30. Winner (1). Titles (/50): 'Why Does GPS Go Wrong Between Tall Buildings?' 42 (chosen, 49 chars; SEO phrase check below), 'Why Your GPS Dot Jumps in Cities' 38. Thumbnails: A blue dot on the wrong street with an echo arc (chosen). Hooks: 'Your blue dot jumps across the street. You never moved. Why?' (chosen), 'Your GPS lies in cities.'. Gap: SEO run 27 Nov: autocomplete 'gps accuracy problem' / 'gps low accuracy' / 'gps gone wrong' (tags), outlier videos are 3-6 minute how-GPS-works explainers (share_shorts 0), none shows the echo path in 50 s; title keeps the question phrase people search; structure = an echo/path-length diagram with a bar comparison, different from the clap-demo of the Space video and the myth card of the third. Claims: (1) GPS works by measuring signal travel time from satellites (four satellites fix position) - VERIFIED (GPS.gov, NASA); (2) smartphones are typically accurate to about 4.9 m (16 ft) radius under open sky - VERIFIED (GPS.gov accuracy page, citing ION); (3) near tall buildings the direct signal can be blocked and a reflected (multipath) signal, which travels a longer path, is used, inflating the measured range - VERIFIED (NASA ION PLANS 2025 paper, arXiv 2206.04457); (4) urban-canyon errors of about 100 m are typical in the literature and can reach several hundred m - PARTIALLY VERIFIED (narration hedged: 'can reach a hundred metres'). Sources: GPS.gov, NASA NTRS (ION PLANS 2025), arXiv 2206.04457 (urban canyon multipath). Growth: lever = series follow-up of the best-performing video plus a hook on the viewer's own phone; next_video points to the Moon/space series, the pinned comment asks where the dot jumps; policy check: own angle and structure, no medical/finance/legal advice, nothing off-putting. Quality gate 81/100.",
-  "mood": "upbeat",
-  "cluster": "Phone Secrets",
+  "niche": "Myth Busters",
+  "topic": "Do We Only Use 10% of Our Brain?",
+  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours, 1.8 h). Patterns brief 27 Nov: slots 1) space+nature (1.21x, n=14), 2) tech (0.95x, n=6), 3) myth (explore slot, n=0). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own head), 5 (series promise: 'Which myth next?' and the Myth Busters series name), 7 (Myth explore slot). First Myth Busters video: its own data point (n=0). Candidates (/40): (1) Do we only use 10% of our brain 33 (a belief 65 % of people agree with, a clean test, safe science), (2) Can you see the Great Wall from space 31 (space overlap with slot 1), (3) Does lightning never strike twice 30. Winner (1). Titles (/50): 'Do We Use Only 10% of Our Brain? (Myth Busted)' 42 (chosen, 46 chars; the autocomplete wording), 'The 10% Brain Myth, Busted' 36. Thumbnails: A a brain with a red MYTH stamp (chosen). Hooks: 'You only use ten percent of your brain. Everyone says it. Is it true?' (chosen), 'Your brain is 90% idle. Right?'. Gap: SEO run 27 Nov: autocomplete 'do we use only 10 percent of our brain' (title wording); outlier videos are 3-5 minute brain-myth explainers, 7 % are Shorts;  structure = myth card, a test (what damage would show) and an energy-share bar, different from the other two videos of the day; mechanism only, no medical advice. Claims: (1) brain imaging (PET, fMRI) shows activity in all regions, even in sleep, and no inactive area has been found - VERIFIED (MIT McGovern Institute 2024, Association for Psychological Science); (2) the brain is about 2 % of body weight but uses about 20 % of the body's energy - VERIFIED (MIT McGovern Institute, Britannica); (3) damage to almost any brain area causes some loss of ability, which would not happen if 90 % were unused - VERIFIED (Association for Psychological Science, Nature Neuroscience 2003); (4) about 65 % of survey respondents agreed with the 10 % statement - VERIFIED (cited by Britannica; not used in narration). Sources: MIT McGovern Institute, Association for Psychological Science, Britannica, Nature Neuroscience. Growth: lever = a new family test with a strong first-line hook (belief stated as fact) and a series promise (next myth, pinned comment asking for the next myth); policy check: settled science only, mechanism not medical advice, nothing sensitive. Quality gate 80/100.",
+  "mood": "inspiring",
+  "cluster": "Myth Busters",
   "follow_ups": [
-    "Why does your phone die faster in the cold?",
-    "How does your phone find you indoors?",
-    "Why is GPS accurate to a few metres?"
+    "Can you really see the Great Wall of China from space?",
+    "Does lightning never strike the same place twice?",
+    "Is the Sun really yellow?"
   ],
-  "gate_score": 81,
+  "gate_score": 80,
   "english": {
-    "title": "Why Does GPS Go Wrong Between Tall Buildings?",
-    "description": "Why does GPS go wrong between tall buildings? Your phone's blue dot jumps because satellite signals bounce off buildings. A short explainer of how the echo fools GPS. #Shorts #GPS #Tech",
+    "title": "Do We Use Only 10% of Our Brain? (Myth Busted)",
+    "description": "Do we only use 10% of our brain? Brain scans, energy use and damage tell a different story. A short myth-buster. #Shorts #Brain #MythBusters",
     "tags": [
-      "why does gps go wrong between buildings",
-      "gps accuracy problem",
-      "gps low accuracy",
-      "gps not accurate in city",
-      "gps urban canyon",
-      "how gps works",
-      "phone gps explained"
+      "do we only use 10 percent of our brain",
+      "10 percent brain myth",
+      "brain myths",
+      "myth busted",
+      "how the brain works",
+      "brain facts"
     ],
-    "hook_text": "Your blue dot jumps.",
-    "thumbnail_text": "DOT JUMPS",
-    "thumbnail_question": "Why does your blue dot jump?",
-    "next_video": "Why is there no sound in space?",
-    "pinned_comment": "Where does your dot jump the most? Tell me below!",
+    "hook_text": "You use 10% of your brain?",
+    "thumbnail_text": "10% MYTH",
+    "thumbnail_question": "Do you use 10% of your brain?",
+    "next_video": "Can you really see the Great Wall from space?",
+    "pinned_comment": "Which myth should I bust next? Tell me below!",
     "scenes": [
       {
-        "text": "Your blue dot jumps across the street. You never moved. Why?",
-        "keyword": "blue dot",
+        "text": "You only use ten percent of your brain. Everyone says it. Is it true?",
+        "keyword": "ten percent",
         "graphic": {
           "kind": "title",
-          "headline": "Dot jumps",
+          "headline": "10% myth",
           "caption": "",
           "items": [],
           "values": [],
@@ -42,16 +41,16 @@
         }
       },
       {
-        "text": "In this video: how buildings fool GPS. Part two of the GPS series.",
+        "text": "In this video: why that's a myth, and what your brain really does all day.",
         "keyword": "In this video",
         "graphic": {
           "kind": "chat",
           "headline": "This video",
           "caption": "",
           "items": [
-            "How GPS fools",
-            "Echoes",
-            "Part 2 of GPS"
+            "The 10% myth",
+            "Brain scans",
+            "The energy bill"
           ],
           "values": [],
           "answer": null,
@@ -59,11 +58,63 @@
         }
       },
       {
-        "text": "GPS is timing. Satellites send a signal, and your phone measures how long it took.",
-        "keyword": "timing",
+        "text": "It's false. Brain scans show activity in every region, even while you sleep.",
+        "keyword": "It's false",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Myth vs fact",
+          "caption": "",
+          "items": [
+            "Only 10% used",
+            "All of it is used"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "If ninety percent did nothing, damage there would change nothing. Is that what we see?",
+        "keyword": "damage",
+        "graphic": {
+          "kind": "steps",
+          "headline": "The test",
+          "caption": "",
+          "items": [
+            "Idle 90%",
+            "Damage it",
+            "No change?"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Your brain is two percent of your weight, yet it burns about twenty percent of your energy.",
+        "keyword": "twenty percent",
+        "graphic": {
+          "kind": "stat",
+          "headline": "Energy",
+          "caption": "",
+          "items": [
+            "Share of weight %",
+            "Share of energy %"
+          ],
+          "values": [
+            2.0,
+            20.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Nobody pays that energy bill for a brain that's ninety percent idle.",
+        "keyword": "energy bill",
         "graphic": {
           "kind": "keyword",
-          "headline": "Timing",
+          "headline": "Energy bill",
           "caption": "",
           "items": [],
           "values": [],
@@ -72,68 +123,15 @@
         }
       },
       {
-        "text": "Time becomes distance, and four satellites fix your place. So what happens in a city?",
-        "keyword": "four satellites",
-        "graphic": {
-          "kind": "steps",
-          "headline": "Four fixes",
-          "caption": "",
-          "items": [
-            "Signal",
-            "Time",
-            "Distance",
-            "Place"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Between tall buildings, the direct signal is blocked. Your phone hears an echo instead.",
-        "keyword": "echo",
-        "graphic": {
-          "kind": "myth",
-          "headline": "Echo",
-          "caption": "",
-          "items": [
-            "Straight line",
-            "Bounced echo"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "The echo took a longer path, so the satellite looks farther away. Errors can reach a hundred metres.",
-        "keyword": "longer path",
-        "graphic": {
-          "kind": "stat",
-          "headline": "Error",
-          "caption": "",
-          "items": [
-            "Open sky (m)",
-            "City canyon (m)"
-          ],
-          "values": [
-            5.0,
-            100.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "That's why your dot lands on the wrong street. Your phone isn't broken. It's fooled by echoes.",
-        "keyword": "fooled by echoes",
+        "text": "The real story: different parts work at different moments, but all of it has a job.",
+        "keyword": "all of it",
         "graphic": {
           "kind": "compare",
-          "headline": "Fooled",
+          "headline": "Real story",
           "caption": "",
           "items": [
-            "Open sky",
-            "Tall buildings"
+            "Different moments",
+            "All of it works"
           ],
           "values": [],
           "answer": null,
@@ -141,11 +139,11 @@
         }
       },
       {
-        "text": "Where does your dot jump the most? Tell me below!",
-        "keyword": "dot jump",
+        "text": "Which myth should I bust next? Tell me below!",
+        "keyword": "next",
         "graphic": {
           "kind": "title",
-          "headline": "Where?",
+          "headline": "Next myth?",
           "caption": "",
           "items": [],
           "values": [],
@@ -154,30 +152,30 @@
         }
       }
     ],
-    "animation_pack": "gps_echo_vox"
+    "animation_pack": "ten_percent_vox"
   },
   "hindi": {
-    "title": "ऊँची इमारतों के बीच GPS ग़लत क्यों हो जाता है?",
-    "description": "ऊँची इमारतों के बीच GPS ग़लत क्यों हो जाता है? सैटेलाइट सिग्नल इमारतों से टकराकर आता है, इसलिए नीला डॉट कूदता है। छोटा, आसान विज्ञान। #Shorts #GPS #टेक",
+    "title": "क्या हम दिमाग़ का सिर्फ़ 10% इस्तेमाल करते हैं?",
+    "description": "क्या हम दिमाग़ का सिर्फ़ दस प्रतिशत इस्तेमाल करते हैं? ब्रेन स्कैन और ऊर्जा की खपत कुछ और बताती है। एक छोटा मिथक-बस्टर। #Shorts #Brain #मिथक",
     "tags": [
-      "GPS ग़लत क्यों दिखाता है",
-      "GPS शहर में ग़लत",
-      "नीला डॉट कूदता है",
-      "GPS कैसे काम करता है",
-      "फ़ोन GPS"
+      "दिमाग़ का 10 प्रतिशत मिथक",
+      "दिमाग़ के मिथक",
+      "क्या हम 10% दिमाग़ इस्तेमाल करते हैं",
+      "मिथक बनाम सच",
+      "दिमाग़ कैसे काम करता है"
     ],
-    "hook_text": "नीला डॉट कूद गया।",
-    "thumbnail_text": "डॉट कूदा",
-    "thumbnail_question": "नीला डॉट क्यों कूदता है?",
-    "next_video": "अंतरिक्ष में आवाज़ क्यों नहीं होती?",
-    "pinned_comment": "आपका डॉट सबसे ज़्यादा कहाँ कूदता है? बताइए!",
+    "hook_text": "क्या सिर्फ़ 10% दिमाग़?",
+    "thumbnail_text": "10% मिथक",
+    "thumbnail_question": "क्या आप 10% दिमाग़ चलाते हैं?",
+    "next_video": "क्या चीन की दीवार अंतरिक्ष से दिखती है?",
+    "pinned_comment": "अगला कौन-सा मिथक तोड़ूँ? बताइए!",
     "scenes": [
       {
-        "text": "आपका नीला डॉट सड़क के उस पार कूद जाता है। आप तो हिले ही नहीं। क्यों?",
-        "keyword": "नीला डॉट",
+        "text": "आप दिमाग़ का सिर्फ़ दस प्रतिशत इस्तेमाल करते हैं। सब यही कहते हैं। क्या यह सच है?",
+        "keyword": "दस प्रतिशत",
         "graphic": {
           "kind": "title",
-          "headline": "डॉट कूदा",
+          "headline": "10% मिथक",
           "caption": "",
           "items": [],
           "values": [],
@@ -186,16 +184,16 @@
         }
       },
       {
-        "text": "इस वीडियो में: इमारतें GPS को कैसे चकमा देती हैं। GPS सीरीज़ का भाग दो।",
+        "text": "इस वीडियो में: यह मिथक क्यों है, और आपका दिमाग़ सच में दिन भर क्या करता है।",
         "keyword": "इस वीडियो में",
         "graphic": {
           "kind": "chat",
           "headline": "इस वीडियो में",
           "caption": "",
           "items": [
-            "GPS को धोखा",
-            "गूँज",
-            "GPS भाग 2"
+            "10% मिथक",
+            "ब्रेन स्कैन",
+            "ऊर्जा बिल"
           ],
           "values": [],
           "answer": null,
@@ -203,11 +201,63 @@
         }
       },
       {
-        "text": "GPS समय का खेल है। सैटेलाइट सिग्नल भेजता है, और फ़ोन गिनता है कि कितनी देर लगी।",
-        "keyword": "समय का खेल",
+        "text": "यह ग़लत है। ब्रेन स्कैन में हर हिस्से में हलचल दिखती है, नींद में भी।",
+        "keyword": "यह ग़लत है",
+        "graphic": {
+          "kind": "myth",
+          "headline": "मिथक बनाम सच",
+          "caption": "",
+          "items": [
+            "सिर्फ़ 10% इस्तेमाल",
+            "सारा इस्तेमाल"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "अगर नब्बे प्रतिशत कुछ न करता, तो वहाँ नुक़सान से कुछ नहीं बदलता। क्या ऐसा दिखता है?",
+        "keyword": "नुक़सान",
+        "graphic": {
+          "kind": "steps",
+          "headline": "जाँच",
+          "caption": "",
+          "items": [
+            "90% ख़ाली",
+            "नुक़सान",
+            "कुछ नहीं बदला?"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "दिमाग़ आपके वज़न का दो प्रतिशत है, पर लगभग बीस प्रतिशत ऊर्जा ख़र्च करता है।",
+        "keyword": "बीस प्रतिशत",
+        "graphic": {
+          "kind": "stat",
+          "headline": "ऊर्जा",
+          "caption": "",
+          "items": [
+            "वज़न का हिस्सा %",
+            "ऊर्जा का हिस्सा %"
+          ],
+          "values": [
+            2.0,
+            20.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "नब्बे प्रतिशत ख़ाली दिमाग़ के लिए कोई इतना ऊर्जा बिल नहीं भरता।",
+        "keyword": "ऊर्जा बिल",
         "graphic": {
           "kind": "keyword",
-          "headline": "समय",
+          "headline": "ऊर्जा बिल",
           "caption": "",
           "items": [],
           "values": [],
@@ -216,68 +266,15 @@
         }
       },
       {
-        "text": "समय से दूरी निकलती है, और चार सैटेलाइट आपकी जगह तय करते हैं। तो शहर में क्या होता है?",
-        "keyword": "चार सैटेलाइट",
-        "graphic": {
-          "kind": "steps",
-          "headline": "चार फ़िक्स",
-          "caption": "",
-          "items": [
-            "सिग्नल",
-            "समय",
-            "दूरी",
-            "जगह"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "ऊँची इमारतों के बीच सीधा सिग्नल रुक जाता है। फ़ोन को सिर्फ़ गूँज मिलती है।",
-        "keyword": "गूँज",
-        "graphic": {
-          "kind": "myth",
-          "headline": "गूँज",
-          "caption": "",
-          "items": [
-            "सीधी रेखा",
-            "टकराई गूँज"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "गूँज लंबा रास्ता तय करती है, इसलिए सैटेलाइट दूर लगता है। ग़लती सौ मीटर तक हो सकती है।",
-        "keyword": "लंबा रास्ता",
-        "graphic": {
-          "kind": "stat",
-          "headline": "ग़लती",
-          "caption": "",
-          "items": [
-            "खुला आसमान (मी)",
-            "शहर (मी)"
-          ],
-          "values": [
-            5.0,
-            100.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "इसीलिए डॉट ग़लत सड़क पर जाता है। फ़ोन ख़राब नहीं, उसे गूँज धोखा देती है।",
-        "keyword": "गूँज धोखा",
+        "text": "असली बात: अलग-अलग पल में अलग हिस्से काम करते हैं, पर हर हिस्से का काम है।",
+        "keyword": "हर हिस्से",
         "graphic": {
           "kind": "compare",
-          "headline": "धोखा",
+          "headline": "असली बात",
           "caption": "",
           "items": [
-            "खुला आसमान",
-            "ऊँची इमारतें"
+            "अलग पल",
+            "सब काम में"
           ],
           "values": [],
           "answer": null,
@@ -285,11 +282,11 @@
         }
       },
       {
-        "text": "आपका डॉट सबसे ज़्यादा कहाँ कूदता है? बताइए!",
-        "keyword": "कहाँ कूदता",
+        "text": "अगला कौन-सा मिथक तोड़ूँ? बताइए!",
+        "keyword": "अगला",
         "graphic": {
           "kind": "title",
-          "headline": "कहाँ?",
+          "headline": "अगला?",
           "caption": "",
           "items": [],
           "values": [],
@@ -298,6 +295,6 @@
         }
       }
     ],
-    "animation_pack": "gps_echo_vox"
+    "animation_pack": "ten_percent_vox"
   }
 }
