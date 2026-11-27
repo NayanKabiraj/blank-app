@@ -948,5 +948,32 @@
         "video_id": "a8xv3kEBwDU"
       }
     }
+  },
+  {
+    "date": "2026-11-27",
+    "niche": "Space & Universe",
+    "topic": "Why Is There No Sound in Space?",
+    "mood": "inspiring",
+    "cluster": "Space Basics",
+    "follow_ups": [
+      "Why does the Moon always show the same face?",
+      "What if Earth suddenly stopped spinning?",
+      "Can astronauts cry in space?"
+    ],
+    "next_video": "Why does the Moon always show the same face?",
+    "gate_score": 82,
+    "thumbnail_text": "NO SOUND",
+    "videos": {
+      "en": {
+        "file": "2026-11-27_en.mp4",
+        "saved_to": "videos/2026-11-27/en.mp4",
+        "video_id": "Wv7Hv1hdU2w"
+      },
+      "hi": {
+        "file": "2026-11-27_hi.mp4",
+        "saved_to": "videos/2026-11-27/hi.mp4",
+        "video_id": "koSJPyybrQc"
+      }
+    }
   }
 ]
