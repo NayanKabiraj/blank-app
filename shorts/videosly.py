@@ -23,11 +23,10 @@ import sys
 from . import config
 
 SKILL = "horror-story"
-DURATION = "medium"                 # Videosly's 60 s length; the finished video is accepted from 45 to 65 s
+DURATION = "medium"                 # Videosly's 60 s length; the finished length is only recorded, never a reason to stop the post (owner decision 27 Nov 2026)
 ASPECT = "9:16"
 PRIVACY = os.getenv("VIDEOSLY_PRIVACY", "private").strip().lower()   # rule 6: private unless the owner changes it (public | unlisted | private)
 HISTORY = config.DATA_DIR / "videosly" / "history.json"
-MIN_SECONDS, MAX_SECONDS = 45.0, 65.0
 BANNED_IN_TOPIC = re.compile(r"\b(blood|bloody|gore|gory|murder|kill(ed|er|ing)?|corpse|dead bod(y|ies)|suicide|rape|abuse|torture|mutilat\w*|massacre|school shooting|serial killer)\b", re.I)
 REAL_WORLD = re.compile(r"\b(Instagram|TikTok|YouTube|Facebook|WhatsApp|Google|Amazon|Apple|Netflix|Disney|McDonald)\b|\b(President|Prime Minister)\b", re.I)
 
@@ -94,9 +93,6 @@ def meta_problems(meta: dict) -> list[str]:
         p.append("add #Shorts to the description")
     if re.search(r"https?://", desc):
         p.append("no links in the description")
-    sec = meta.get("duration_seconds")
-    if sec is not None and not MIN_SECONDS <= float(sec) <= MAX_SECONDS:
-        p.append(f"video is {float(sec):.1f} s: a Short must be {MIN_SECONDS:.0f}-{MAX_SECONDS:.0f} s (target 50-60)")
     return p
 
 

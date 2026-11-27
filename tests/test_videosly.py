@@ -24,7 +24,7 @@ def test_meta_rules_and_post_args():
     meta = {"title": "The Lift Stopped on Floor 13 (A Fictional Story)", "description": "A fictional AI-made horror story: a night guard and a lift that keeps stopping on a floor that does not exist. Listen to the end. #Shorts #HorrorStory #Fiction",
             "tags": ["horror story", "short horror story", "scary story", "creepy story", "lift horror", "fictional story"], "duration_seconds": 58}
     assert vs.meta_problems(meta) == []
-    assert vs.meta_problems({**meta, "duration_seconds": 80}) and vs.meta_problems({**meta, "tags": ["a"]}) and vs.meta_problems({**meta, "title": "x" * 70})
+    assert vs.meta_problems({**meta, "duration_seconds": 80}) == [] and vs.meta_problems({**meta, "tags": ["a"]}) and vs.meta_problems({**meta, "title": "x" * 70})
     a = vs.post_args(meta, "vid1", "ch1")
     assert a["aiGenerated"] is True and a["privacy"] in ("private", "public", "unlisted") and a["videoId"] == "vid1" and a["title"] == meta["title"]
 
