@@ -51,3 +51,5 @@ Slot 1 (space+nature) is READY: plan `strategy/prepared/2026-11-27-silent-space.
 The patterns brief now lists a `myth` family (niche "Myth Busters", examples in `shorts/niches.py`); with no data yet it is the explore slot, so one of the three Shorts each day is a myth buster: hook = the belief
 stated as a fact ("You only use 10% of your brain."), turn in scene 3 ("That's false."), the real mechanism in the middle, the reframe at the end. Two sources per claim, status VERIFIED, never health/finance/legal advice.
 New packs paint the whole screen: `"stage": "full"` in `shots.json` and `b.backdrop(top, bottom)` per beat (see `silent_space_vox`); art zone is local y -4.8..+4.8, x +-4.4 around `b.C`; keep key art above the caption pill.
+
+Direct pushes to main are allowed by `.claude/settings.json` (owner request, 27 Nov 2026); scheduled runs still commit only new pack folders (rule 7).
