@@ -1029,5 +1029,32 @@
         "video_id": "z66L3gvewpw"
       }
     }
+  },
+  {
+    "date": "2026-11-27",
+    "niche": "Space & Universe",
+    "topic": "Why Does the Moon Always Show the Same Face?",
+    "mood": "inspiring",
+    "cluster": "Space Basics",
+    "follow_ups": [
+      "What if Earth suddenly stopped spinning?",
+      "Why does the Moon look huge near the horizon?",
+      "Why do we have tides?"
+    ],
+    "next_video": "What if Earth suddenly stopped spinning?",
+    "gate_score": 82,
+    "thumbnail_text": "MOON'S OTHER SIDE",
+    "videos": {
+      "en": {
+        "file": "2026-11-27_en.mp4",
+        "saved_to": "videos/2026-11-27/en.mp4",
+        "video_id": "pkp6WfaxdP0"
+      },
+      "hi": {
+        "file": "2026-11-27_hi.mp4",
+        "saved_to": "videos/2026-11-27/hi.mp4",
+        "video_id": "N3L5J8oO1s8"
+      }
+    }
   }
 ]

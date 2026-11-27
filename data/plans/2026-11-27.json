@@ -1,38 +1,39 @@
 {
-  "niche": "Myth Busters",
-  "topic": "Do We Only Use 10% of Our Brain?",
-  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours, 1.8 h). Patterns brief 27 Nov: slots 1) space+nature (1.21x, n=14), 2) tech (0.95x, n=6), 3) myth (explore slot, n=0). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own head), 5 (series promise: 'Which myth next?' and the Myth Busters series name), 7 (Myth explore slot). First Myth Busters video: its own data point (n=0). Candidates (/40): (1) Do we only use 10% of our brain 33 (a belief 65 % of people agree with, a clean test, safe science), (2) Can you see the Great Wall from space 31 (space overlap with slot 1), (3) Does lightning never strike twice 30. Winner (1). Titles (/50): 'Do We Use Only 10% of Our Brain? (Myth Busted)' 42 (chosen, 46 chars; the autocomplete wording), 'The 10% Brain Myth, Busted' 36. Thumbnails: A a brain with a red MYTH stamp (chosen). Hooks: 'You only use ten percent of your brain. Everyone says it. Is it true?' (chosen), 'Your brain is 90% idle. Right?'. Gap: SEO run 27 Nov: autocomplete 'do we use only 10 percent of our brain' (title wording); outlier videos are 3-5 minute brain-myth explainers, 7 % are Shorts;  structure = myth card, a test (what damage would show) and an energy-share bar, different from the other two videos of the day; mechanism only, no medical advice. Claims: (1) brain imaging (PET, fMRI) shows activity in all regions, even in sleep, and no inactive area has been found - VERIFIED (MIT McGovern Institute 2024, Association for Psychological Science); (2) the brain is about 2 % of body weight but uses about 20 % of the body's energy - VERIFIED (MIT McGovern Institute, Britannica); (3) damage to almost any brain area causes some loss of ability, which would not happen if 90 % were unused - VERIFIED (Association for Psychological Science, Nature Neuroscience 2003); (4) about 65 % of survey respondents agreed with the 10 % statement - VERIFIED (cited by Britannica; not used in narration). Sources: MIT McGovern Institute, Association for Psychological Science, Britannica, Nature Neuroscience. Growth: lever = a new family test with a strong first-line hook (belief stated as fact) and a series promise (next myth, pinned comment asking for the next myth); policy check: settled science only, mechanism not medical advice, nothing sensitive. Quality gate 80/100.",
+  "niche": "Space & Universe",
+  "topic": "Why Does the Moon Always Show the Same Face?",
+  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.8 h). Patterns brief 27 Nov: space+nature 1.21x (n=14, viewed 65 %), tech 0.95x (n=6), myth explore (n=0). Today's first batch (6 uploads) is already out: Space (no sound in space), Tech (GPS echoes), Myth (10% brain). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own sky: you have looked at the Moon all your life), 5 (series promise 'Part two of the space series' in scene 2), 7 (Space slot). Part 2 rule: the 'Why is there no sound in space?' Short, uploaded this morning, promised the Moon as Part 2, so this fulfils it. Candidates (/40): (1) Why does the Moon always show the same face 34 (a promised series follow-up, a visual two-moons comparison), (2) What if Earth suddenly stopped spinning 31, (3) Can astronauts cry in space 28. Winner (1). Titles (/50): 'Why Does the Moon Always Show the Same Face?' 44 (chosen, 44 chars, the autocomplete wording 'why the moon always show the same face'), 'The Moon's Hidden Side' 33. Thumbnails: A the Moon with a big question mark behind it (chosen). Hooks: 'You've looked at the Moon your whole life, but never its other side. Why?' (chosen), 'You have never seen the other side of the Moon.'. Gap: SEO run 27 Nov 04:32 UTC: autocomplete 'why the moon always show the same face' (title) plus 'tidal locking of moon', 'tidal lock animation' (tags); outlier videos are 5-6 minute explainers (share_shorts 0 to 0.07), none shows the spin-vs-no-spin orbit comparison in 50 s; structure = a top-view orbit comparison and a spin-versus-orbit bar, different from today's other videos. Claims: (1) the Moon rotates once per orbit (synchronous rotation), so the same side always faces Earth - VERIFIED (NASA Science tidal locking page, Scientific American); (2) Earth's gravity raised tidal bulges on the Moon that slowed its spin until it locked - VERIFIED (NASA Science, Astronomy magazine); (3) libration, a slight apparent wobble, lets observers see a little beyond the usual edge - VERIFIED (NASA eclipse 'what's lunar libration' page); (4) 'about 59 percent of the surface can be seen over time' - PARTIALLY VERIFIED (secondary source only, so left out of the narration). Sources: NASA Science, Scientific American, Astronomy magazine, NASA Goddard. Growth: lever = series follow-up (a promised Part 2) with a hook on the viewer's own sky, next_video points to the next space topic and the pinned comment asks which side to visit; policy check: own angle and structure, no medical/finance/legal advice, nothing off-putting. Quality gate 82/100.",
   "mood": "inspiring",
-  "cluster": "Myth Busters",
+  "cluster": "Space Basics",
   "follow_ups": [
-    "Can you really see the Great Wall of China from space?",
-    "Does lightning never strike the same place twice?",
-    "Is the Sun really yellow?"
+    "What if Earth suddenly stopped spinning?",
+    "Why does the Moon look huge near the horizon?",
+    "Why do we have tides?"
   ],
-  "gate_score": 80,
+  "gate_score": 82,
   "english": {
-    "title": "Do We Use Only 10% of Our Brain? (Myth Busted)",
-    "description": "Do we only use 10% of our brain? Brain scans, energy use and damage tell a different story. A short myth-buster. #Shorts #Brain #MythBusters",
+    "title": "Why Does the Moon Always Show the Same Face?",
+    "description": "Why does the Moon always show the same face? A short animated explainer of tidal locking: how Earth's gravity slowed the Moon's spin until it matched its orbit. #Shorts #Moon #Space",
     "tags": [
-      "do we only use 10 percent of our brain",
-      "10 percent brain myth",
-      "brain myths",
-      "myth busted",
-      "how the brain works",
-      "brain facts"
+      "why the moon always show the same face",
+      "tidal locking of moon",
+      "tidal lock animation",
+      "synchronous rotation",
+      "dark side of the moon",
+      "moon facts",
+      "space facts"
     ],
-    "hook_text": "You use 10% of your brain?",
-    "thumbnail_text": "10% MYTH",
-    "thumbnail_question": "Do you use 10% of your brain?",
-    "next_video": "Can you really see the Great Wall from space?",
-    "pinned_comment": "Which myth should I bust next? Tell me below!",
+    "hook_text": "You never saw the far side.",
+    "thumbnail_text": "MOON'S OTHER SIDE",
+    "thumbnail_question": "Why one side of the Moon?",
+    "next_video": "What if Earth suddenly stopped spinning?",
+    "pinned_comment": "Which side of the Moon would you visit? Tell me below!",
     "scenes": [
       {
-        "text": "You only use ten percent of your brain. Everyone says it. Is it true?",
-        "keyword": "ten percent",
+        "text": "You've looked at the Moon your whole life, but never its other side. Why?",
+        "keyword": "other side",
         "graphic": {
           "kind": "title",
-          "headline": "10% myth",
+          "headline": "One face?",
           "caption": "",
           "items": [],
           "values": [],
@@ -41,16 +42,16 @@
         }
       },
       {
-        "text": "In this video: why that's a myth, and what your brain really does all day.",
+        "text": "In this video: why the Moon shows one face, and how Earth locked it. Part two of the space series.",
         "keyword": "In this video",
         "graphic": {
           "kind": "chat",
           "headline": "This video",
           "caption": "",
           "items": [
-            "The 10% myth",
-            "Brain scans",
-            "The energy bill"
+            "One face",
+            "Locked by Earth",
+            "Space part 2"
           ],
           "values": [],
           "answer": null,
@@ -58,63 +59,11 @@
         }
       },
       {
-        "text": "It's false. Brain scans show activity in every region, even while you sleep.",
-        "keyword": "It's false",
-        "graphic": {
-          "kind": "myth",
-          "headline": "Myth vs fact",
-          "caption": "",
-          "items": [
-            "Only 10% used",
-            "All of it is used"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "If ninety percent did nothing, damage there would change nothing. Is that what we see?",
-        "keyword": "damage",
-        "graphic": {
-          "kind": "steps",
-          "headline": "The test",
-          "caption": "",
-          "items": [
-            "Idle 90%",
-            "Damage it",
-            "No change?"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Your brain is two percent of your weight, yet it burns about twenty percent of your energy.",
-        "keyword": "twenty percent",
-        "graphic": {
-          "kind": "stat",
-          "headline": "Energy",
-          "caption": "",
-          "items": [
-            "Share of weight %",
-            "Share of energy %"
-          ],
-          "values": [
-            2.0,
-            20.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Nobody pays that energy bill for a brain that's ninety percent idle.",
-        "keyword": "energy bill",
+        "text": "Doesn't the Moon spin? It does: exactly once per trip around Earth.",
+        "keyword": "exactly once",
         "graphic": {
           "kind": "keyword",
-          "headline": "Energy bill",
+          "headline": "Once per orbit",
           "caption": "",
           "items": [],
           "values": [],
@@ -123,15 +72,15 @@
         }
       },
       {
-        "text": "The real story: different parts work at different moments, but all of it has a job.",
-        "keyword": "all of it",
+        "text": "So the same side always faces us, like someone circling a friend without looking away.",
+        "keyword": "same side",
         "graphic": {
           "kind": "compare",
-          "headline": "Real story",
+          "headline": "Two moons",
           "caption": "",
           "items": [
-            "Different moments",
-            "All of it works"
+            "Never spins",
+            "Spins once per orbit"
           ],
           "values": [],
           "answer": null,
@@ -139,11 +88,60 @@
         }
       },
       {
-        "text": "Which myth should I bust next? Tell me below!",
-        "keyword": "next",
+        "text": "Long ago, Earth's gravity stretched a bulge into the Moon and slowed its spin.",
+        "keyword": "bulge",
+        "graphic": {
+          "kind": "steps",
+          "headline": "Tidal lock",
+          "caption": "",
+          "items": [
+            "Gravity",
+            "Bulge",
+            "Slower spin"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "That tug acted like a brake, until the spin matched the orbit.",
+        "keyword": "brake",
+        "graphic": {
+          "kind": "stat",
+          "headline": "Spin vs orbit",
+          "caption": "",
+          "items": [
+            "Spin then",
+            "Orbit"
+          ],
+          "values": [
+            100.0,
+            20.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "A small wobble, called libration, lets us peek a little around the edge.",
+        "keyword": "libration",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Libration",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Which side of the Moon would you visit? Tell me below!",
+        "keyword": "visit",
         "graphic": {
           "kind": "title",
-          "headline": "Next myth?",
+          "headline": "Which side?",
           "caption": "",
           "items": [],
           "values": [],
@@ -152,30 +150,30 @@
         }
       }
     ],
-    "animation_pack": "ten_percent_vox"
+    "animation_pack": "moon_lock_vox"
   },
   "hindi": {
-    "title": "क्या हम दिमाग़ का सिर्फ़ 10% इस्तेमाल करते हैं?",
-    "description": "क्या हम दिमाग़ का सिर्फ़ दस प्रतिशत इस्तेमाल करते हैं? ब्रेन स्कैन और ऊर्जा की खपत कुछ और बताती है। एक छोटा मिथक-बस्टर। #Shorts #Brain #मिथक",
+    "title": "चाँद हमेशा एक ही चेहरा क्यों दिखाता है?",
+    "description": "चाँद हमेशा एक ही चेहरा क्यों दिखाता है? ज्वारीय बंधन का छोटा एनिमेटेड समझाव: पृथ्वी के गुरुत्व ने चाँद की घूमाई कैसे धीमी की। #Shorts #चाँद #Space",
     "tags": [
-      "दिमाग़ का 10 प्रतिशत मिथक",
-      "दिमाग़ के मिथक",
-      "क्या हम 10% दिमाग़ इस्तेमाल करते हैं",
-      "मिथक बनाम सच",
-      "दिमाग़ कैसे काम करता है"
+      "चाँद हमेशा एक ही चेहरा क्यों दिखाता है",
+      "चाँद का दूसरा हिस्सा",
+      "tidal locking hindi",
+      "चाँद की घूमाई",
+      "space facts hindi"
     ],
-    "hook_text": "क्या सिर्फ़ 10% दिमाग़?",
-    "thumbnail_text": "10% मिथक",
-    "thumbnail_question": "क्या आप 10% दिमाग़ चलाते हैं?",
-    "next_video": "क्या चीन की दीवार अंतरिक्ष से दिखती है?",
-    "pinned_comment": "अगला कौन-सा मिथक तोड़ूँ? बताइए!",
+    "hook_text": "चाँद का दूसरा हिस्सा?",
+    "thumbnail_text": "दूसरा हिस्सा",
+    "thumbnail_question": "चाँद एक ही तरफ़ क्यों दिखता है?",
+    "next_video": "अगर पृथ्वी घूमना बंद कर दे तो क्या होगा?",
+    "pinned_comment": "आप चाँद का कौन-सा हिस्सा देखना चाहेंगे? बताइए!",
     "scenes": [
       {
-        "text": "आप दिमाग़ का सिर्फ़ दस प्रतिशत इस्तेमाल करते हैं। सब यही कहते हैं। क्या यह सच है?",
-        "keyword": "दस प्रतिशत",
+        "text": "आपने ज़िंदगी भर चाँद देखा है, पर उसका दूसरा हिस्सा कभी नहीं। ऐसा क्यों?",
+        "keyword": "दूसरा हिस्सा",
         "graphic": {
           "kind": "title",
-          "headline": "10% मिथक",
+          "headline": "एक ही चेहरा?",
           "caption": "",
           "items": [],
           "values": [],
@@ -184,16 +182,16 @@
         }
       },
       {
-        "text": "इस वीडियो में: यह मिथक क्यों है, और आपका दिमाग़ सच में दिन भर क्या करता है।",
+        "text": "इस वीडियो में: चाँद एक ही चेहरा क्यों दिखाता है, और पृथ्वी ने उसे कैसे बाँधा। अंतरिक्ष सीरीज़ का भाग दो।",
         "keyword": "इस वीडियो में",
         "graphic": {
           "kind": "chat",
           "headline": "इस वीडियो में",
           "caption": "",
           "items": [
-            "10% मिथक",
-            "ब्रेन स्कैन",
-            "ऊर्जा बिल"
+            "एक चेहरा",
+            "पृथ्वी का बंधन",
+            "अंतरिक्ष भाग 2"
           ],
           "values": [],
           "answer": null,
@@ -201,63 +199,11 @@
         }
       },
       {
-        "text": "यह ग़लत है। ब्रेन स्कैन में हर हिस्से में हलचल दिखती है, नींद में भी।",
-        "keyword": "यह ग़लत है",
-        "graphic": {
-          "kind": "myth",
-          "headline": "मिथक बनाम सच",
-          "caption": "",
-          "items": [
-            "सिर्फ़ 10% इस्तेमाल",
-            "सारा इस्तेमाल"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "अगर नब्बे प्रतिशत कुछ न करता, तो वहाँ नुक़सान से कुछ नहीं बदलता। क्या ऐसा दिखता है?",
-        "keyword": "नुक़सान",
-        "graphic": {
-          "kind": "steps",
-          "headline": "जाँच",
-          "caption": "",
-          "items": [
-            "90% ख़ाली",
-            "नुक़सान",
-            "कुछ नहीं बदला?"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "दिमाग़ आपके वज़न का दो प्रतिशत है, पर लगभग बीस प्रतिशत ऊर्जा ख़र्च करता है।",
-        "keyword": "बीस प्रतिशत",
-        "graphic": {
-          "kind": "stat",
-          "headline": "ऊर्जा",
-          "caption": "",
-          "items": [
-            "वज़न का हिस्सा %",
-            "ऊर्जा का हिस्सा %"
-          ],
-          "values": [
-            2.0,
-            20.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "नब्बे प्रतिशत ख़ाली दिमाग़ के लिए कोई इतना ऊर्जा बिल नहीं भरता।",
-        "keyword": "ऊर्जा बिल",
+        "text": "क्या चाँद घूमता नहीं? घूमता है: पृथ्वी के एक चक्कर में बिल्कुल एक बार।",
+        "keyword": "एक बार",
         "graphic": {
           "kind": "keyword",
-          "headline": "ऊर्जा बिल",
+          "headline": "एक चक्कर, एक घूमाई",
           "caption": "",
           "items": [],
           "values": [],
@@ -266,15 +212,15 @@
         }
       },
       {
-        "text": "असली बात: अलग-अलग पल में अलग हिस्से काम करते हैं, पर हर हिस्से का काम है।",
-        "keyword": "हर हिस्से",
+        "text": "इसलिए एक ही तरफ़ हमेशा हमारी ओर रहती है, जैसे दोस्त के चारों ओर घूमते हुए उसी को देखते रहना।",
+        "keyword": "एक ही तरफ़",
         "graphic": {
           "kind": "compare",
-          "headline": "असली बात",
+          "headline": "दो चाँद",
           "caption": "",
           "items": [
-            "अलग पल",
-            "सब काम में"
+            "कभी नहीं घूमता",
+            "एक चक्कर में एक घूमाई"
           ],
           "values": [],
           "answer": null,
@@ -282,11 +228,60 @@
         }
       },
       {
-        "text": "अगला कौन-सा मिथक तोड़ूँ? बताइए!",
-        "keyword": "अगला",
+        "text": "बहुत पहले पृथ्वी के गुरुत्व ने चाँद में उभार खींचा और उसकी घूमाई धीमी कर दी।",
+        "keyword": "उभार",
+        "graphic": {
+          "kind": "steps",
+          "headline": "ज्वारीय बंधन",
+          "caption": "",
+          "items": [
+            "गुरुत्व",
+            "उभार",
+            "धीमी घूमाई"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "वह खिंचाव ब्रेक जैसा था, जब तक घूमाई और परिक्रमा बराबर नहीं हो गईं।",
+        "keyword": "ब्रेक",
+        "graphic": {
+          "kind": "stat",
+          "headline": "घूमाई बनाम परिक्रमा",
+          "caption": "",
+          "items": [
+            "तब घूमाई",
+            "परिक्रमा"
+          ],
+          "values": [
+            100.0,
+            20.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "हल्की डगमगाहट, यानी लिब्रेशन, से किनारे के थोड़ा पार झलक मिल जाती है।",
+        "keyword": "लिब्रेशन",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "लिब्रेशन",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "आप चाँद का कौन-सा हिस्सा देखना चाहेंगे? बताइए!",
+        "keyword": "कौन-सा हिस्सा",
         "graphic": {
           "kind": "title",
-          "headline": "अगला?",
+          "headline": "कौन-सा हिस्सा?",
           "caption": "",
           "items": [],
           "values": [],
@@ -295,6 +290,6 @@
         }
       }
     ],
-    "animation_pack": "ten_percent_vox"
+    "animation_pack": "moon_lock_vox"
   }
 }
