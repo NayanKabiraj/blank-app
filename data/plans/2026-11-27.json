@@ -1,39 +1,39 @@
 {
-  "niche": "Space & Universe",
-  "topic": "Why Is There No Sound in Space?",
-  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.8 h). Patterns brief 27 Nov: slot 1 = space+nature (1.21x, n=14, viewed 65 %). Changes made because of it: series promise 'Part 2: the Moon' in scene 2, payoff before second 22, a new full-screen cartoon-astronaut look. Learning applied: rules 1 (payoff before 22 s), 2 (viewer's own life: your clap), 5 (series promise 'Part 2: the Moon' inside 20 s), 7 (Space slot). Candidates (/40): (1) Why is there no sound in space 33 (universal question, a personal hook, a visual two-step: pulse dies in the vacuum, radio lives), (2) Why does the Moon always show the same face 31, (3) What if Earth stopped spinning 30. Winner (1). Titles (/50): 'Why Is There No Sound in Space?' 41 (chosen, 31 chars), 'Why Space Is Silent (and How Astronauts Talk)' 38. Thumbnails: A astronaut clapping with a red 'NO SOUND' tape (chosen). Hooks: 'You clap, and you hear it. In space, the same clap is silent. Why?' (chosen), 'In space, no one can hear you clap.'. Gap: SEO run 27 Nov 02:54 UTC: best autocomplete phrases 'why is there no sound in space' (title, as chosen), 'is there any sound in space' and 'why is space completely silent' (tags); the existing top videos are 3-4 minute kids' explainers, none is a Short (share_shorts 0), so a 50 s Short with a payoff before second 22 is a distinct format; structure = a two-step demonstration (air pulse versus vacuum) with a cartoon astronaut, different from the list and story structures of the last days. Claims: (1) sound is a mechanical wave that needs a medium (atoms/molecules) to travel - VERIFIED (Scientific American 'Is there any sound in space', The Conversation 'Why isn't there any sound in space'); (2) space is a near-vacuum, so ordinary sound cannot travel through it - VERIFIED (Sky at Night Magazine, Science Notes); (3) astronaut suits have two-way radios; radio waves are electromagnetic waves that travel through vacuum - VERIFIED (the same sources; NASA page not retrieved in this session); (4) inside the suit air carries the voice to the microphone - VERIFIED. Caveat left out of the 40 s: plasma waves exist in some space environments. Sources: Scientific American, The Conversation, Sky at Night Magazine, Science Notes. Growth: lever = hook/retention (a personal clap hook, payoff by second 22) plus series follow-up via next_video 'Why does the Moon always show the same face?' and the 'Part 2: the Moon' promise in scene 2; policy check: own angle and structure, a new 2D cartoon-astronaut character, nothing off-putting, no health/finance/legal advice. Quality gate 82/100.",
-  "mood": "inspiring",
-  "cluster": "Space Basics",
+  "niche": "How Tech Works",
+  "topic": "Why Does GPS Go Wrong Between Tall Buildings?",
+  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours, 1.8 h). Patterns brief 27 Nov: slots 1) space+nature (1.21x, n=14), 2) tech (0.95x, n=6), 3) myth (explore slot, n=0). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own phone: the blue dot), 5 (series promise 'Part 2 of GPS' in scene 2), 6 (everyday-tech first). Part 2 rule: the Hindi GPS video is the channel's top performer (840 views), so this is its series follow-up. Candidates (/40): (1) Why GPS goes wrong between tall buildings 34 (personal hook, a visual mechanism: echo path longer), (2) Why does your phone die faster in the cold 31, (3) How does Face Unlock work in the dark 30. Winner (1). Titles (/50): 'Why Does GPS Go Wrong Between Tall Buildings?' 42 (chosen, 49 chars; SEO phrase check below), 'Why Your GPS Dot Jumps in Cities' 38. Thumbnails: A blue dot on the wrong street with an echo arc (chosen). Hooks: 'Your blue dot jumps across the street. You never moved. Why?' (chosen), 'Your GPS lies in cities.'. Gap: SEO run 27 Nov: autocomplete 'gps accuracy problem' / 'gps low accuracy' / 'gps gone wrong' (tags), outlier videos are 3-6 minute how-GPS-works explainers (share_shorts 0), none shows the echo path in 50 s; title keeps the question phrase people search; structure = an echo/path-length diagram with a bar comparison, different from the clap-demo of the Space video and the myth card of the third. Claims: (1) GPS works by measuring signal travel time from satellites (four satellites fix position) - VERIFIED (GPS.gov, NASA); (2) smartphones are typically accurate to about 4.9 m (16 ft) radius under open sky - VERIFIED (GPS.gov accuracy page, citing ION); (3) near tall buildings the direct signal can be blocked and a reflected (multipath) signal, which travels a longer path, is used, inflating the measured range - VERIFIED (NASA ION PLANS 2025 paper, arXiv 2206.04457); (4) urban-canyon errors of about 100 m are typical in the literature and can reach several hundred m - PARTIALLY VERIFIED (narration hedged: 'can reach a hundred metres'). Sources: GPS.gov, NASA NTRS (ION PLANS 2025), arXiv 2206.04457 (urban canyon multipath). Growth: lever = series follow-up of the best-performing video plus a hook on the viewer's own phone; next_video points to the Moon/space series, the pinned comment asks where the dot jumps; policy check: own angle and structure, no medical/finance/legal advice, nothing off-putting. Quality gate 81/100.",
+  "mood": "upbeat",
+  "cluster": "Phone Secrets",
   "follow_ups": [
-    "Why does the Moon always show the same face?",
-    "What if Earth suddenly stopped spinning?",
-    "Can astronauts cry in space?"
+    "Why does your phone die faster in the cold?",
+    "How does your phone find you indoors?",
+    "Why is GPS accurate to a few metres?"
   ],
-  "gate_score": 82,
+  "gate_score": 81,
   "english": {
-    "title": "Why Is There No Sound in Space?",
-    "description": "Why is there no sound in space? A cartoon astronaut shows how sound travels through air, why the vacuum stops it, and how radio lets astronauts talk anyway. #Shorts #Space #Science",
+    "title": "Why Does GPS Go Wrong Between Tall Buildings?",
+    "description": "Why does GPS go wrong between tall buildings? Your phone's blue dot jumps because satellite signals bounce off buildings. A short explainer of how the echo fools GPS. #Shorts #GPS #Tech",
     "tags": [
-      "why is there no sound in space",
-      "is there any sound in space",
-      "why is space silent",
-      "sound in space",
-      "how do astronauts talk",
-      "space facts",
-      "radio waves explained"
+      "why does gps go wrong between buildings",
+      "gps accuracy problem",
+      "gps low accuracy",
+      "gps not accurate in city",
+      "gps urban canyon",
+      "how gps works",
+      "phone gps explained"
     ],
-    "hook_text": "You clap, and you hear it.",
-    "thumbnail_text": "NO SOUND",
-    "thumbnail_question": "Why does a clap go silent?",
-    "next_video": "Why does the Moon always show the same face?",
-    "pinned_comment": "Would you rather hear space or see it? Tell me below!",
+    "hook_text": "Your blue dot jumps.",
+    "thumbnail_text": "DOT JUMPS",
+    "thumbnail_question": "Why does your blue dot jump?",
+    "next_video": "Why is there no sound in space?",
+    "pinned_comment": "Where does your dot jump the most? Tell me below!",
     "scenes": [
       {
-        "text": "You clap, and you hear it. In space, the same clap is silent. Why?",
-        "keyword": "same clap",
+        "text": "Your blue dot jumps across the street. You never moved. Why?",
+        "keyword": "blue dot",
         "graphic": {
           "kind": "title",
-          "headline": "Why so silent?",
+          "headline": "Dot jumps",
           "caption": "",
           "items": [],
           "values": [],
@@ -42,16 +42,16 @@
         }
       },
       {
-        "text": "In this video you'll see why space is silent and how astronauts still talk. Part two, the Moon, is next.",
+        "text": "In this video: how buildings fool GPS. Part two of the GPS series.",
         "keyword": "In this video",
         "graphic": {
           "kind": "chat",
-          "headline": "Today",
+          "headline": "This video",
           "caption": "",
           "items": [
-            "Why space is silent",
-            "How astronauts talk",
-            "Part 2: the Moon"
+            "How GPS fools",
+            "Echoes",
+            "Part 2 of GPS"
           ],
           "values": [],
           "answer": null,
@@ -59,11 +59,11 @@
         }
       },
       {
-        "text": "Sound is air wiggling. Your clap pushes air, and that wiggle reaches your ear.",
-        "keyword": "air wiggling",
+        "text": "GPS is timing. Satellites send a signal, and your phone measures how long it took.",
+        "keyword": "timing",
         "graphic": {
           "kind": "keyword",
-          "headline": "Air wiggling",
+          "headline": "Timing",
           "caption": "",
           "items": [],
           "values": [],
@@ -72,16 +72,17 @@
         }
       },
       {
-        "text": "Space is almost empty. With no air to push, where does the wiggle go?",
-        "keyword": "almost empty",
+        "text": "Time becomes distance, and four satellites fix your place. So what happens in a city?",
+        "keyword": "four satellites",
         "graphic": {
           "kind": "steps",
-          "headline": "No air",
+          "headline": "Four fixes",
           "caption": "",
           "items": [
-            "Clap",
-            "Push air",
-            "Nothing"
+            "Signal",
+            "Time",
+            "Distance",
+            "Place"
           ],
           "values": [],
           "answer": null,
@@ -89,15 +90,15 @@
         }
       },
       {
-        "text": "So astronauts use radio. Radio waves are a kind of light, and light crosses empty space.",
-        "keyword": "kind of light",
+        "text": "Between tall buildings, the direct signal is blocked. Your phone hears an echo instead.",
+        "keyword": "echo",
         "graphic": {
           "kind": "myth",
-          "headline": "Radio",
+          "headline": "Echo",
           "caption": "",
           "items": [
-            "Radio is sound",
-            "Radio is light"
+            "Straight line",
+            "Bounced echo"
           ],
           "values": [],
           "answer": null,
@@ -105,33 +106,34 @@
         }
       },
       {
-        "text": "Inside the suit, air carries the voice to a microphone. Radio does the rest.",
-        "keyword": "microphone",
+        "text": "The echo took a longer path, so the satellite looks farther away. Errors can reach a hundred metres.",
+        "keyword": "longer path",
         "graphic": {
-          "kind": "steps",
-          "headline": "The chain",
+          "kind": "stat",
+          "headline": "Error",
           "caption": "",
           "items": [
-            "Voice",
-            "Air",
-            "Mic",
-            "Radio"
+            "Open sky (m)",
+            "City canyon (m)"
           ],
-          "values": [],
+          "values": [
+            5.0,
+            100.0
+          ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Space isn't quiet because nothing happens. It's quiet because nothing can carry it.",
-        "keyword": "nothing can carry it",
+        "text": "That's why your dot lands on the wrong street. Your phone isn't broken. It's fooled by echoes.",
+        "keyword": "fooled by echoes",
         "graphic": {
           "kind": "compare",
-          "headline": "Quiet why",
+          "headline": "Fooled",
           "caption": "",
           "items": [
-            "Nothing happens",
-            "Nothing carries it"
+            "Open sky",
+            "Tall buildings"
           ],
           "values": [],
           "answer": null,
@@ -139,11 +141,11 @@
         }
       },
       {
-        "text": "Would you rather hear space, or see it? Tell me below!",
-        "keyword": "hear space",
+        "text": "Where does your dot jump the most? Tell me below!",
+        "keyword": "dot jump",
         "graphic": {
           "kind": "title",
-          "headline": "Hear or see?",
+          "headline": "Where?",
           "caption": "",
           "items": [],
           "values": [],
@@ -152,30 +154,30 @@
         }
       }
     ],
-    "animation_pack": "silent_space_vox"
+    "animation_pack": "gps_echo_vox"
   },
   "hindi": {
-    "title": "अंतरिक्ष में आवाज़ क्यों नहीं सुनाई देती?",
-    "description": "अंतरिक्ष में आवाज़ क्यों नहीं होती? एक कार्टून अंतरिक्ष यात्री दिखाता है कि आवाज़ हवा में कैसे चलती है, खाली जगह उसे क्यों रोकती है, और रेडियो से बात कैसे होती है। #Shorts #Space #विज्ञान",
+    "title": "ऊँची इमारतों के बीच GPS ग़लत क्यों हो जाता है?",
+    "description": "ऊँची इमारतों के बीच GPS ग़लत क्यों हो जाता है? सैटेलाइट सिग्नल इमारतों से टकराकर आता है, इसलिए नीला डॉट कूदता है। छोटा, आसान विज्ञान। #Shorts #GPS #टेक",
     "tags": [
-      "अंतरिक्ष में आवाज़ क्यों नहीं",
-      "अंतरिक्ष में सन्नाटा",
-      "अंतरिक्ष यात्री बात कैसे करते हैं",
-      "रेडियो तरंगें",
-      "space facts hindi"
+      "GPS ग़लत क्यों दिखाता है",
+      "GPS शहर में ग़लत",
+      "नीला डॉट कूदता है",
+      "GPS कैसे काम करता है",
+      "फ़ोन GPS"
     ],
-    "hook_text": "आप ताली बजाते हैं",
-    "thumbnail_text": "कोई आवाज़ नहीं",
-    "thumbnail_question": "ताली चुप क्यों हो जाती है?",
-    "next_video": "चाँद हमेशा एक ही चेहरा क्यों दिखाता है?",
-    "pinned_comment": "आप अंतरिक्ष को सुनना चाहेंगे या देखना? नीचे बताइए!",
+    "hook_text": "नीला डॉट कूद गया।",
+    "thumbnail_text": "डॉट कूदा",
+    "thumbnail_question": "नीला डॉट क्यों कूदता है?",
+    "next_video": "अंतरिक्ष में आवाज़ क्यों नहीं होती?",
+    "pinned_comment": "आपका डॉट सबसे ज़्यादा कहाँ कूदता है? बताइए!",
     "scenes": [
       {
-        "text": "आप ताली बजाते हैं, तो आवाज़ आती है। अंतरिक्ष में वही ताली चुप क्यों है?",
-        "keyword": "वही ताली",
+        "text": "आपका नीला डॉट सड़क के उस पार कूद जाता है। आप तो हिले ही नहीं। क्यों?",
+        "keyword": "नीला डॉट",
         "graphic": {
           "kind": "title",
-          "headline": "क्यों चुप?",
+          "headline": "डॉट कूदा",
           "caption": "",
           "items": [],
           "values": [],
@@ -184,16 +186,16 @@
         }
       },
       {
-        "text": "इस वीडियो में: अंतरिक्ष में सन्नाटा क्यों है, और यात्री बात कैसे करते हैं। अगला भाग: चाँद।",
+        "text": "इस वीडियो में: इमारतें GPS को कैसे चकमा देती हैं। GPS सीरीज़ का भाग दो।",
         "keyword": "इस वीडियो में",
         "graphic": {
           "kind": "chat",
-          "headline": "आज",
+          "headline": "इस वीडियो में",
           "caption": "",
           "items": [
-            "अंतरिक्ष चुप क्यों",
-            "यात्री कैसे बोलते",
-            "भाग 2: चाँद"
+            "GPS को धोखा",
+            "गूँज",
+            "GPS भाग 2"
           ],
           "values": [],
           "answer": null,
@@ -201,11 +203,11 @@
         }
       },
       {
-        "text": "आवाज़ हवा का कंपन है। ताली हवा को धक्का देती है, और वह कंपन कान तक पहुँचता है।",
-        "keyword": "हवा का कंपन",
+        "text": "GPS समय का खेल है। सैटेलाइट सिग्नल भेजता है, और फ़ोन गिनता है कि कितनी देर लगी।",
+        "keyword": "समय का खेल",
         "graphic": {
           "kind": "keyword",
-          "headline": "हवा का कंपन",
+          "headline": "समय",
           "caption": "",
           "items": [],
           "values": [],
@@ -214,16 +216,17 @@
         }
       },
       {
-        "text": "अंतरिक्ष लगभग ख़ाली है। धक्का देने को हवा नहीं, तो कंपन कहाँ जाए?",
-        "keyword": "लगभग ख़ाली",
+        "text": "समय से दूरी निकलती है, और चार सैटेलाइट आपकी जगह तय करते हैं। तो शहर में क्या होता है?",
+        "keyword": "चार सैटेलाइट",
         "graphic": {
           "kind": "steps",
-          "headline": "हवा नहीं",
+          "headline": "चार फ़िक्स",
           "caption": "",
           "items": [
-            "ताली",
-            "हवा को धक्का",
-            "कुछ नहीं"
+            "सिग्नल",
+            "समय",
+            "दूरी",
+            "जगह"
           ],
           "values": [],
           "answer": null,
@@ -231,15 +234,15 @@
         }
       },
       {
-        "text": "इसलिए यात्री रेडियो से बात करते हैं। रेडियो तरंगें एक तरह की रोशनी हैं, जो ख़ाली जगह में चलती है।",
-        "keyword": "एक तरह की रोशनी",
+        "text": "ऊँची इमारतों के बीच सीधा सिग्नल रुक जाता है। फ़ोन को सिर्फ़ गूँज मिलती है।",
+        "keyword": "गूँज",
         "graphic": {
           "kind": "myth",
-          "headline": "रेडियो",
+          "headline": "गूँज",
           "caption": "",
           "items": [
-            "रेडियो आवाज़ है",
-            "रेडियो रोशनी है"
+            "सीधी रेखा",
+            "टकराई गूँज"
           ],
           "values": [],
           "answer": null,
@@ -247,33 +250,34 @@
         }
       },
       {
-        "text": "सूट के अंदर हवा आवाज़ को माइक तक ले जाती है। आगे रेडियो करता है।",
-        "keyword": "माइक",
+        "text": "गूँज लंबा रास्ता तय करती है, इसलिए सैटेलाइट दूर लगता है। ग़लती सौ मीटर तक हो सकती है।",
+        "keyword": "लंबा रास्ता",
         "graphic": {
-          "kind": "steps",
-          "headline": "श्रृंखला",
+          "kind": "stat",
+          "headline": "ग़लती",
           "caption": "",
           "items": [
-            "आवाज़",
-            "हवा",
-            "माइक",
-            "रेडियो"
+            "खुला आसमान (मी)",
+            "शहर (मी)"
           ],
-          "values": [],
+          "values": [
+            5.0,
+            100.0
+          ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "अंतरिक्ष इसलिए चुप नहीं कि वहाँ कुछ होता नहीं, बल्कि इसलिए कि आवाज़ को ले जाने वाला कुछ नहीं।",
-        "keyword": "ले जाने वाला कुछ नहीं",
+        "text": "इसीलिए डॉट ग़लत सड़क पर जाता है। फ़ोन ख़राब नहीं, उसे गूँज धोखा देती है।",
+        "keyword": "गूँज धोखा",
         "graphic": {
           "kind": "compare",
-          "headline": "चुप क्यों",
+          "headline": "धोखा",
           "caption": "",
           "items": [
-            "कुछ होता नहीं",
-            "कुछ ले जाता नहीं"
+            "खुला आसमान",
+            "ऊँची इमारतें"
           ],
           "values": [],
           "answer": null,
@@ -281,11 +285,11 @@
         }
       },
       {
-        "text": "आप अंतरिक्ष को सुनना चाहेंगे या देखना? बताइए!",
-        "keyword": "सुनना",
+        "text": "आपका डॉट सबसे ज़्यादा कहाँ कूदता है? बताइए!",
+        "keyword": "कहाँ कूदता",
         "graphic": {
           "kind": "title",
-          "headline": "सुनें या देखें?",
+          "headline": "कहाँ?",
           "caption": "",
           "items": [],
           "values": [],
@@ -294,6 +298,6 @@
         }
       }
     ],
-    "animation_pack": "silent_space_vox"
+    "animation_pack": "gps_echo_vox"
   }
 }

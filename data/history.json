@@ -975,5 +975,32 @@
         "video_id": "koSJPyybrQc"
       }
     }
+  },
+  {
+    "date": "2026-11-27",
+    "niche": "How Tech Works",
+    "topic": "Why Does GPS Go Wrong Between Tall Buildings?",
+    "mood": "upbeat",
+    "cluster": "Phone Secrets",
+    "follow_ups": [
+      "Why does your phone die faster in the cold?",
+      "How does your phone find you indoors?",
+      "Why is GPS accurate to a few metres?"
+    ],
+    "next_video": "Why is there no sound in space?",
+    "gate_score": 81,
+    "thumbnail_text": "DOT JUMPS",
+    "videos": {
+      "en": {
+        "file": "2026-11-27_en.mp4",
+        "saved_to": "videos/2026-11-27/en.mp4",
+        "video_id": "VebRF5A94dw"
+      },
+      "hi": {
+        "file": "2026-11-27_hi.mp4",
+        "saved_to": "videos/2026-11-27/hi.mp4",
+        "video_id": "NtzIIRTNk5I"
+      }
+    }
   }
 ]
