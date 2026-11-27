@@ -1056,5 +1056,32 @@
         "video_id": "N3L5J8oO1s8"
       }
     }
+  },
+  {
+    "date": "2026-11-27",
+    "niche": "How Tech Works",
+    "topic": "Why Does Your Phone Die Faster in the Cold?",
+    "mood": "upbeat",
+    "cluster": "Phone Secrets",
+    "follow_ups": [
+      "How does your phone find you indoors?",
+      "Why do wireless chargers get warm?",
+      "How does Face Unlock work in the dark?"
+    ],
+    "next_video": "How does your phone find you indoors?",
+    "gate_score": 80,
+    "thumbnail_text": "DIES AT 30%",
+    "videos": {
+      "en": {
+        "file": "2026-11-27_en.mp4",
+        "saved_to": "videos/2026-11-27/en.mp4",
+        "video_id": "__wknvDbmFE"
+      },
+      "hi": {
+        "file": "2026-11-27_hi.mp4",
+        "saved_to": "videos/2026-11-27/hi.mp4",
+        "video_id": "uUAcaZQa0no"
+      }
+    }
   }
 ]

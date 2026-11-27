@@ -1,39 +1,39 @@
 {
-  "niche": "Space & Universe",
-  "topic": "Why Does the Moon Always Show the Same Face?",
-  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.8 h). Patterns brief 27 Nov: space+nature 1.21x (n=14, viewed 65 %), tech 0.95x (n=6), myth explore (n=0). Today's first batch (6 uploads) is already out: Space (no sound in space), Tech (GPS echoes), Myth (10% brain). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own sky: you have looked at the Moon all your life), 5 (series promise 'Part two of the space series' in scene 2), 7 (Space slot). Part 2 rule: the 'Why is there no sound in space?' Short, uploaded this morning, promised the Moon as Part 2, so this fulfils it. Candidates (/40): (1) Why does the Moon always show the same face 34 (a promised series follow-up, a visual two-moons comparison), (2) What if Earth suddenly stopped spinning 31, (3) Can astronauts cry in space 28. Winner (1). Titles (/50): 'Why Does the Moon Always Show the Same Face?' 44 (chosen, 44 chars, the autocomplete wording 'why the moon always show the same face'), 'The Moon's Hidden Side' 33. Thumbnails: A the Moon with a big question mark behind it (chosen). Hooks: 'You've looked at the Moon your whole life, but never its other side. Why?' (chosen), 'You have never seen the other side of the Moon.'. Gap: SEO run 27 Nov 04:32 UTC: autocomplete 'why the moon always show the same face' (title) plus 'tidal locking of moon', 'tidal lock animation' (tags); outlier videos are 5-6 minute explainers (share_shorts 0 to 0.07), none shows the spin-vs-no-spin orbit comparison in 50 s; structure = a top-view orbit comparison and a spin-versus-orbit bar, different from today's other videos. Claims: (1) the Moon rotates once per orbit (synchronous rotation), so the same side always faces Earth - VERIFIED (NASA Science tidal locking page, Scientific American); (2) Earth's gravity raised tidal bulges on the Moon that slowed its spin until it locked - VERIFIED (NASA Science, Astronomy magazine); (3) libration, a slight apparent wobble, lets observers see a little beyond the usual edge - VERIFIED (NASA eclipse 'what's lunar libration' page); (4) 'about 59 percent of the surface can be seen over time' - PARTIALLY VERIFIED (secondary source only, so left out of the narration). Sources: NASA Science, Scientific American, Astronomy magazine, NASA Goddard. Growth: lever = series follow-up (a promised Part 2) with a hook on the viewer's own sky, next_video points to the next space topic and the pinned comment asks which side to visit; policy check: own angle and structure, no medical/finance/legal advice, nothing off-putting. Quality gate 82/100.",
-  "mood": "inspiring",
-  "cluster": "Space Basics",
+  "niche": "How Tech Works",
+  "topic": "Why Does Your Phone Die Faster in the Cold?",
+  "research_summary": "Channel check: 27 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 1,822 views / 40.5 % viewed, long-form 76 views / 15.9 % viewed, 1.08 subscribers per 1,000 views; top: Hindi GPS video 840 views, flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.8 h). Patterns brief 27 Nov: space+nature 1.21x (n=14, viewed 65 %), tech 0.95x (n=6), myth explore (n=0). Today's first batch (6 uploads) is already out: Space (no sound in space), Tech (GPS echoes), Myth (10% brain). Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own phone, in their pocket), 5 (series promise 'Phone series, part three' in scene 2), 6 (everyday-tech first). Candidate was the runner-up of the morning (phone dies in the cold). Candidates (/40): (1) Why your phone dies faster in the cold 32 (personal hook, a visual particles-slow mechanism, a payoff that fixes it), (2) How Face Unlock works in the dark 30, (3) Why wireless chargers get warm 29. Winner (1). Titles (/50): 'Why Does Your Phone Die Faster in the Cold?' 42 (chosen, 43 chars), 'Why Your Phone Dies at 30% in the Cold' 38. Thumbnails: A a phone showing 30% with snowflakes (chosen). Hooks: 'Your phone says thirty percent, then dies in the cold. Why?' (chosen), 'Cold steals your battery.'. Gap: SEO run 27 Nov 04:32 UTC: autocomplete 'why does phone turn off by itself' (high score) and 'why phone battery dies quickly'; tags in the outliers: 'phone battery cold', 'why phone dies in cold', 'lithium ion battery' (all used); outlier videos are 3-8 minute explainers (share_shorts 0 to 0.08), none shows the slow-particle picture and the warm-up fix in 50 s; structure = a cold-versus-warm particle animation with a voltage gauge. Claims: (1) cold slows the chemical reactions and ion movement in a lithium-ion cell, raising internal resistance - VERIFIED (Live Science, The Weather Network); (2) the higher resistance lowers the voltage the battery can deliver under load, and the phone shuts down when voltage falls below its threshold even with charge left - VERIFIED (The Weather Network, BGR); (3) once warm, the charge level returns - VERIFIED (same sources); (4) charging a frozen lithium-ion battery can harm it (lithium plating below 0 C), so warm it before charging - PARTIALLY VERIFIED (several secondary sources; narration says only 'warm it before charging'). Caveat: Live Science notes the exact mechanisms are still not fully understood. Sources: Live Science, The Weather Network, BGR. Growth: lever = hook on the viewer's own phone plus a series follow-up (Phone Secrets cluster: GPS part 2 this morning, so part 3); next_video continues the phone series, the pinned comment asks where the phone died; policy check: own angle and structure, everyday device explanation, no medical/finance/legal advice. Quality gate 80/100.",
+  "mood": "upbeat",
+  "cluster": "Phone Secrets",
   "follow_ups": [
-    "What if Earth suddenly stopped spinning?",
-    "Why does the Moon look huge near the horizon?",
-    "Why do we have tides?"
+    "How does your phone find you indoors?",
+    "Why do wireless chargers get warm?",
+    "How does Face Unlock work in the dark?"
   ],
-  "gate_score": 82,
+  "gate_score": 80,
   "english": {
-    "title": "Why Does the Moon Always Show the Same Face?",
-    "description": "Why does the Moon always show the same face? A short animated explainer of tidal locking: how Earth's gravity slowed the Moon's spin until it matched its orbit. #Shorts #Moon #Space",
+    "title": "Why Does Your Phone Die Faster in the Cold?",
+    "description": "Why does your phone die faster in the cold? Slow particles inside a lithium-ion battery cannot deliver enough voltage. A short animated explainer, and how to bring the charge back. #Shorts #Phone #Tech",
     "tags": [
-      "why the moon always show the same face",
-      "tidal locking of moon",
-      "tidal lock animation",
-      "synchronous rotation",
-      "dark side of the moon",
-      "moon facts",
-      "space facts"
+      "why does phone turn off in cold",
+      "why phone dies in cold",
+      "phone battery cold",
+      "phone battery cold weather",
+      "why phone battery dies quickly",
+      "lithium ion battery",
+      "phone tips"
     ],
-    "hook_text": "You never saw the far side.",
-    "thumbnail_text": "MOON'S OTHER SIDE",
-    "thumbnail_question": "Why one side of the Moon?",
-    "next_video": "What if Earth suddenly stopped spinning?",
-    "pinned_comment": "Which side of the Moon would you visit? Tell me below!",
+    "hook_text": "Your phone says 30%... then dies.",
+    "thumbnail_text": "DIES AT 30%",
+    "thumbnail_question": "Why does cold kill your phone?",
+    "next_video": "How does your phone find you indoors?",
+    "pinned_comment": "Where has your phone died on you? Tell me below!",
     "scenes": [
       {
-        "text": "You've looked at the Moon your whole life, but never its other side. Why?",
-        "keyword": "other side",
+        "text": "Your phone says thirty percent, then dies in the cold. Why?",
+        "keyword": "thirty percent",
         "graphic": {
           "kind": "title",
-          "headline": "One face?",
+          "headline": "30% then dead",
           "caption": "",
           "items": [],
           "values": [],
@@ -42,16 +42,16 @@
         }
       },
       {
-        "text": "In this video: why the Moon shows one face, and how Earth locked it. Part two of the space series.",
+        "text": "In this video: why cold kills your battery, and how to bring it back. Phone series, part three.",
         "keyword": "In this video",
         "graphic": {
           "kind": "chat",
           "headline": "This video",
           "caption": "",
           "items": [
-            "One face",
-            "Locked by Earth",
-            "Space part 2"
+            "Why cold kills",
+            "Bring it back",
+            "Phone part 3"
           ],
           "values": [],
           "answer": null,
@@ -59,11 +59,11 @@
         }
       },
       {
-        "text": "Doesn't the Moon spin? It does: exactly once per trip around Earth.",
-        "keyword": "exactly once",
+        "text": "Inside the battery, tiny charged particles travel from one side to the other to make power.",
+        "keyword": "tiny charged particles",
         "graphic": {
           "kind": "keyword",
-          "headline": "Once per orbit",
+          "headline": "Particles = power",
           "caption": "",
           "items": [],
           "values": [],
@@ -72,15 +72,15 @@
         }
       },
       {
-        "text": "So the same side always faces us, like someone circling a friend without looking away.",
-        "keyword": "same side",
+        "text": "Cold thickens the fluid they swim through, so they crawl.",
+        "keyword": "thickens",
         "graphic": {
           "kind": "compare",
-          "headline": "Two moons",
+          "headline": "Warm vs cold",
           "caption": "",
           "items": [
-            "Never spins",
-            "Spins once per orbit"
+            "Fast particles",
+            "Slow particles"
           ],
           "values": [],
           "answer": null,
@@ -88,60 +88,63 @@
         }
       },
       {
-        "text": "Long ago, Earth's gravity stretched a bulge into the Moon and slowed its spin.",
-        "keyword": "bulge",
-        "graphic": {
-          "kind": "steps",
-          "headline": "Tidal lock",
-          "caption": "",
-          "items": [
-            "Gravity",
-            "Bulge",
-            "Slower spin"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "That tug acted like a brake, until the spin matched the orbit.",
-        "keyword": "brake",
+        "text": "Slow particles can't deliver enough voltage when the phone asks for power.",
+        "keyword": "voltage",
         "graphic": {
           "kind": "stat",
-          "headline": "Spin vs orbit",
+          "headline": "Voltage",
           "caption": "",
           "items": [
-            "Spin then",
-            "Orbit"
+            "Warm %",
+            "Cold %"
           ],
           "values": [
             100.0,
-            20.0
+            40.0
           ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "A small wobble, called libration, lets us peek a little around the edge.",
-        "keyword": "libration",
+        "text": "So the phone shuts off to stay safe. But is the charge really gone?",
+        "keyword": "shuts off",
         "graphic": {
-          "kind": "keyword",
-          "headline": "Libration",
+          "kind": "steps",
+          "headline": "Shutdown",
           "caption": "",
-          "items": [],
+          "items": [
+            "Cold",
+            "Low voltage",
+            "Phone off"
+          ],
           "values": [],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "Which side of the Moon would you visit? Tell me below!",
-        "keyword": "visit",
+        "text": "No. Warm it up, the particles speed up and the charge returns. Warm it before charging.",
+        "keyword": "speed up",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Is it gone?",
+          "caption": "",
+          "items": [
+            "Charge is gone",
+            "Charge is stuck"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Where has your phone died on you? Tell me below!",
+        "keyword": "died",
         "graphic": {
           "kind": "title",
-          "headline": "Which side?",
+          "headline": "Where?",
           "caption": "",
           "items": [],
           "values": [],
@@ -150,30 +153,30 @@
         }
       }
     ],
-    "animation_pack": "moon_lock_vox"
+    "animation_pack": "cold_battery_vox"
   },
   "hindi": {
-    "title": "चाँद हमेशा एक ही चेहरा क्यों दिखाता है?",
-    "description": "चाँद हमेशा एक ही चेहरा क्यों दिखाता है? ज्वारीय बंधन का छोटा एनिमेटेड समझाव: पृथ्वी के गुरुत्व ने चाँद की घूमाई कैसे धीमी की। #Shorts #चाँद #Space",
+    "title": "ठंड में फ़ोन जल्दी बंद क्यों हो जाता है?",
+    "description": "ठंड में फ़ोन जल्दी बंद क्यों हो जाता है? लिथियम-आयन बैटरी के धीमे कण ज़रूरी वोल्टेज नहीं दे पाते। छोटा एनिमेटेड समझाव, और चार्ज वापस कैसे लाएँ। #Shorts #Phone #टेक",
     "tags": [
-      "चाँद हमेशा एक ही चेहरा क्यों दिखाता है",
-      "चाँद का दूसरा हिस्सा",
-      "tidal locking hindi",
-      "चाँद की घूमाई",
-      "space facts hindi"
+      "ठंड में फ़ोन बंद क्यों",
+      "फ़ोन की बैटरी ठंड में",
+      "बैटरी जल्दी ख़त्म",
+      "lithium ion battery hindi",
+      "फ़ोन टिप्स"
     ],
-    "hook_text": "चाँद का दूसरा हिस्सा?",
-    "thumbnail_text": "दूसरा हिस्सा",
-    "thumbnail_question": "चाँद एक ही तरफ़ क्यों दिखता है?",
-    "next_video": "अगर पृथ्वी घूमना बंद कर दे तो क्या होगा?",
-    "pinned_comment": "आप चाँद का कौन-सा हिस्सा देखना चाहेंगे? बताइए!",
+    "hook_text": "30% पर फ़ोन बंद।",
+    "thumbnail_text": "30% पर बंद",
+    "thumbnail_question": "ठंड फ़ोन को क्यों मारती है?",
+    "next_video": "फ़ोन घर के अंदर आपको कैसे ढूँढता है?",
+    "pinned_comment": "आपका फ़ोन कहाँ बंद हुआ है? बताइए!",
     "scenes": [
       {
-        "text": "आपने ज़िंदगी भर चाँद देखा है, पर उसका दूसरा हिस्सा कभी नहीं। ऐसा क्यों?",
-        "keyword": "दूसरा हिस्सा",
+        "text": "आपका फ़ोन तीस प्रतिशत दिखाता है, फिर ठंड में बंद हो जाता है। क्यों?",
+        "keyword": "तीस प्रतिशत",
         "graphic": {
           "kind": "title",
-          "headline": "एक ही चेहरा?",
+          "headline": "30% फिर बंद",
           "caption": "",
           "items": [],
           "values": [],
@@ -182,16 +185,16 @@
         }
       },
       {
-        "text": "इस वीडियो में: चाँद एक ही चेहरा क्यों दिखाता है, और पृथ्वी ने उसे कैसे बाँधा। अंतरिक्ष सीरीज़ का भाग दो।",
+        "text": "इस वीडियो में: ठंड बैटरी को क्यों मारती है, और उसे वापस कैसे लाएँ। फ़ोन सीरीज़ का भाग तीन।",
         "keyword": "इस वीडियो में",
         "graphic": {
           "kind": "chat",
           "headline": "इस वीडियो में",
           "caption": "",
           "items": [
-            "एक चेहरा",
-            "पृथ्वी का बंधन",
-            "अंतरिक्ष भाग 2"
+            "ठंड क्यों मारती",
+            "वापस लाएँ",
+            "फ़ोन भाग 3"
           ],
           "values": [],
           "answer": null,
@@ -199,11 +202,11 @@
         }
       },
       {
-        "text": "क्या चाँद घूमता नहीं? घूमता है: पृथ्वी के एक चक्कर में बिल्कुल एक बार।",
-        "keyword": "एक बार",
+        "text": "बैटरी के अंदर छोटे आवेशित कण एक तरफ़ से दूसरी तरफ़ चलकर बिजली बनाते हैं।",
+        "keyword": "छोटे आवेशित कण",
         "graphic": {
           "kind": "keyword",
-          "headline": "एक चक्कर, एक घूमाई",
+          "headline": "कण = बिजली",
           "caption": "",
           "items": [],
           "values": [],
@@ -212,15 +215,15 @@
         }
       },
       {
-        "text": "इसलिए एक ही तरफ़ हमेशा हमारी ओर रहती है, जैसे दोस्त के चारों ओर घूमते हुए उसी को देखते रहना।",
-        "keyword": "एक ही तरफ़",
+        "text": "ठंड उस द्रव को गाढ़ा कर देती है जिसमें वे तैरते हैं, इसलिए वे रेंगते हैं।",
+        "keyword": "गाढ़ा",
         "graphic": {
           "kind": "compare",
-          "headline": "दो चाँद",
+          "headline": "गर्म बनाम ठंड",
           "caption": "",
           "items": [
-            "कभी नहीं घूमता",
-            "एक चक्कर में एक घूमाई"
+            "तेज़ कण",
+            "धीमे कण"
           ],
           "values": [],
           "answer": null,
@@ -228,60 +231,63 @@
         }
       },
       {
-        "text": "बहुत पहले पृथ्वी के गुरुत्व ने चाँद में उभार खींचा और उसकी घूमाई धीमी कर दी।",
-        "keyword": "उभार",
-        "graphic": {
-          "kind": "steps",
-          "headline": "ज्वारीय बंधन",
-          "caption": "",
-          "items": [
-            "गुरुत्व",
-            "उभार",
-            "धीमी घूमाई"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "वह खिंचाव ब्रेक जैसा था, जब तक घूमाई और परिक्रमा बराबर नहीं हो गईं।",
-        "keyword": "ब्रेक",
+        "text": "धीमे कण फ़ोन को ज़रूरी वोल्टेज नहीं दे पाते।",
+        "keyword": "वोल्टेज",
         "graphic": {
           "kind": "stat",
-          "headline": "घूमाई बनाम परिक्रमा",
+          "headline": "वोल्टेज",
           "caption": "",
           "items": [
-            "तब घूमाई",
-            "परिक्रमा"
+            "गर्म %",
+            "ठंड %"
           ],
           "values": [
             100.0,
-            20.0
+            40.0
           ],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "हल्की डगमगाहट, यानी लिब्रेशन, से किनारे के थोड़ा पार झलक मिल जाती है।",
-        "keyword": "लिब्रेशन",
+        "text": "इसलिए फ़ोन सुरक्षा के लिए बंद हो जाता है। पर क्या चार्ज सच में ख़त्म है?",
+        "keyword": "बंद हो जाता है",
         "graphic": {
-          "kind": "keyword",
-          "headline": "लिब्रेशन",
+          "kind": "steps",
+          "headline": "बंद होना",
           "caption": "",
-          "items": [],
+          "items": [
+            "ठंड",
+            "कम वोल्टेज",
+            "फ़ोन बंद"
+          ],
           "values": [],
           "answer": null,
           "prop": null
         }
       },
       {
-        "text": "आप चाँद का कौन-सा हिस्सा देखना चाहेंगे? बताइए!",
-        "keyword": "कौन-सा हिस्सा",
+        "text": "नहीं। गर्म करें, कण तेज़ हो जाते हैं और चार्ज लौट आता है। चार्ज से पहले गर्म करें।",
+        "keyword": "तेज़",
+        "graphic": {
+          "kind": "myth",
+          "headline": "क्या ख़त्म?",
+          "caption": "",
+          "items": [
+            "चार्ज ख़त्म",
+            "चार्ज अटका है"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "आपका फ़ोन कहाँ बंद हुआ है? बताइए!",
+        "keyword": "कहाँ",
         "graphic": {
           "kind": "title",
-          "headline": "कौन-सा हिस्सा?",
+          "headline": "कहाँ?",
           "caption": "",
           "items": [],
           "values": [],
@@ -290,6 +296,6 @@
         }
       }
     ],
-    "animation_pack": "moon_lock_vox"
+    "animation_pack": "cold_battery_vox"
   }
 }
