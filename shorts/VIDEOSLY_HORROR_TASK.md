@@ -19,3 +19,6 @@ connector (tools `mcp__Videously__videosly_*`), so Claude runs these steps in th
 ## Honest limits
 - The picture style and voice are Videosly's own defaults for the skill; Claude cannot list or pick them. It is AI-drawn stills (always labelled as altered/synthetic content).
 - Horror was this channel's weakest niche by views (see learnings); this is a one-a-day test, judged on its own numbers after a week.
+
+## Known issue (28 Nov 2026)
+The Videosly connector began rejecting topic-only `videosly_generate_video` calls: it requires `composition` (and `title`, `description`), although its own tool text says they are optional. A composition would mean Claude writes the story, which rule 22 forbids, so the run SKIPS the step and prints, in the final summary, the ready-to-paste request (the prompt from `python3 -m shorts.videosly request`, skill horror-story, 60 s, 9:16) plus the title, description and tags. If the owner creates the video in the Videosly app from that prompt, Claude continues at step 3 (read the story back, `check-meta`, `videosly_post_video`). Retry the topic-only call at the start of every run in case Videosly restores it.
