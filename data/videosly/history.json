@@ -1,1 +1,13 @@
-[]
+[
+ {
+  "date": "2026-11-28",
+  "topic": "A night-shift security guard in an empty office tower notices the lift keeps stopping on a floor that has no button",
+  "videoId": "xf64RSihNgUo",
+  "title": "The Lift Stops on a Floor With No Button (Fiction)",
+  "postId": "3tyny8sKKYWU",
+  "privacy": "private",
+  "duration_seconds": 60,
+  "posted": true,
+  "note": "composition route (Claude wrote the story) because the connector rejected topic-only calls on 28 Nov 2026"
+ }
+]
