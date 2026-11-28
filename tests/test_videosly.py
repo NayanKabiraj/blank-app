@@ -34,3 +34,17 @@ def test_history_roundtrip(tmp_path, monkeypatch):
     assert vs.recent_topics() == []
     vs.record({"topic": "t one two three four five six seven", "videoId": "x"})
     assert vs.recent_topics() == ["t one two three four five six seven"] and "t one" in vs.brief_line()
+
+
+def test_composition_checks_and_generate_args():
+    place = " The place: a self-storage yard at night, rows of grey roller doors, one orange lamp, a small glass office."
+    cap = "Low wide shot from ground level along a row of grey roller doors, door nine open one hand's width, pale mist on the concrete, one orange lamp high on a pole giving hard light from above." + place
+    seg = lambda n: {"narration": n, "images": [cap]}
+    comp = {"language": "en", "segments": [seg(" ".join(["word"] * 30)) for _ in range(5)]}
+    a = {"composition": comp, "title": "Unit Nine Opens One Hand Wider (Fiction)", "description": "A fictional AI-made horror story. #Shorts", "hashtags": ["horror", "scary", "fiction", "short", "story"]}
+    assert vs.composition_problems("horror", a) == []
+    g = vs.generate_args("horror", a, dt.date(2026, 11, 28))
+    assert g["skill"] == "horror-story" and g["aspectRatio"] == "9:16" and g["voiceId"] and "prompt" not in g
+    assert vs.generate_args("mystery", a)["skill"] == "short-mystery" and "visualStyle" in vs.generate_args("mystery", a)["composition"]
+    bad = {**a, "composition": {"language": "en", "segments": [{"narration": "blood on the floor", "images": [cap.replace("The place:", "Place:")]}]}}
+    assert vs.composition_problems("horror", bad)

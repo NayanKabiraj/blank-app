@@ -1,11 +1,12 @@
-"""Videosly horror Shorts (owner decision, 27 Nov 2026): one horror Short a day made by Videosly from a TOPIC ONLY.
+"""Videosly Shorts (owner decisions 27-28 Nov 2026): a horror series and a mystery/crime series, one of each a day, made through the Videosly MCP connector.
 
-Claude picks a new topic and sends it to Videosly as a plain `prompt` with the `horror-story` skill; Videosly writes the story, draws the pictures and records the
-voice. Claude never sends a script or composition. When the video is rendered, Claude writes the title, description and tags (from the story Videosly wrote,
-read back with videosly_open_video) and posts it to the channel with videosly_post_video. The procedure is `shorts/VIDEOSLY_HORROR_TASK.md`; this module only builds
-and checks the data. Videosly is an MCP connector, so it is called by Claude, not by a workflow.
+Since 28 Nov 2026 the connector no longer accepts a topic: Claude WRITES the composition (narration + a caption per picture + title + description) from the Videosly skill
+(`horror-story` / `short-mystery`) and the `dopamine-storyteller` skill; Videosly draws the pictures, records the voice and renders. Claude then posts it with
+videosly_post_video. The procedure is `shorts/VIDEOSLY_HORROR_TASK.md`; this module builds and checks the data. Videosly is an MCP connector, so Claude calls it, not a workflow.
 
-    python3 -m shorts.videosly request "a night-shift guard and a lift that stops on the wrong floor"   # the exact videosly_generate_video arguments
+    python3 -m shorts.videosly series                   # the two series (skill, voice, labels)
+    python3 -m shorts.videosly check-comp series comp.json   # validate a composition file {composition,title,description,hashtags}; prints the generate args
+    python3 -m shorts.videosly request "a night-shift guard and a lift that stops on the wrong floor"   # (legacy) topic checks
     python3 -m shorts.videosly check-meta meta.json       # title / description / tags / duration checks
     python3 -m shorts.videosly post-args meta.json VIDEO_ID CHANNEL_ID   # the exact videosly_post_video arguments
     python3 -m shorts.videosly record entry.json          # append to data/videosly/history.json
@@ -22,6 +23,13 @@ import sys
 
 from . import config
 
+SERIES = {
+    "horror": {"skill": "horror-story", "voice": os.getenv("VIDEOSLY_HORROR_VOICE", "eng-brooklyn-male"), "name": "Quiet Dark",
+               "label": "A fictional AI-made horror story", "hashtags": "#Shorts #HorrorStory #Fiction", "style": ""},
+    "mystery": {"skill": "short-mystery", "voice": os.getenv("VIDEOSLY_MYSTERY_VOICE", ""), "name": "The Fair Clue",
+                "label": "A fictional AI-made mystery", "hashtags": "#Shorts #Mystery #Fiction",
+                "style": "Warm graphic-novel illustration, clean ink outlines, flat muted colours with golden evening light, quiet suspenseful mood"},
+}
 SKILL = "horror-story"
 DURATION = "medium"                 # Videosly's 60 s length; the finished length is only recorded, never a reason to stop the post (owner decision 27 Nov 2026)
 ASPECT = "9:16"
@@ -76,6 +84,64 @@ def request(topic: str, day: dt.date | None = None) -> dict:
     return args
 
 
+BAD_NARRATION = re.compile(r"\b(blood|bloody|gore|gory|corpse|suicide|rape|torture|mutilat\w*|massacre)\b", re.I)
+
+
+def composition_problems(series: str, args: dict) -> list[str]:
+    """Checks a {composition,title,description,hashtags} dict before videosly_generate_video (no gore, no child in danger, fair structure, 9:16 pictures). Length is advisory (about 150-175 words = 60 s)."""
+    p = []
+    if series not in SERIES:
+        return [f"series must be one of {sorted(SERIES)}"]
+    c = args.get("composition") or {}
+    segs = c.get("segments") or []
+    if c.get("language") != "en":
+        p.append("composition.language must be 'en'")
+    if not segs or not segs[0].get("images"):
+        p.append("the first segment needs a picture")
+    words = sum(len(x.get("narration", "").split()) for x in segs)
+    if not 110 <= words <= 190:
+        p.append(f"narration is {words} words (advisory: 140-175 words is about 60 s; Shorts max 3 minutes)")
+    names = set((c.get("references") or {}))
+    for i, sg in enumerate(segs, 1):
+        n = sg.get("narration", "")
+        if not n or len(n) > 2000:
+            p.append(f"segment {i}: narration empty or over 2000 characters")
+        if BAD_NARRATION.search(n) or re.search(r"\b(child|children|kid|baby|toddler)\b", n, re.I):
+            p.append(f"segment {i}: gore or a child in the narration (not allowed)")
+        if re.search(r"https?://|#\w+", n):
+            p.append(f"segment {i}: links or hashtags would be read aloud")
+        for cap in sg.get("images", []):
+            if not 150 <= len(cap) <= 2500:
+                p.append(f"segment {i}: a caption must be 150-2500 characters (60-100 words + the place)")
+            if "The place:" not in cap:
+                p.append(f"segment {i}: end each caption with the same 'The place:' sentence")
+            for m in re.findall(r"@([a-z0-9\-]+)", cap):
+                if m not in names and not m.startswith("shot"):
+                    p.append(f"segment {i}: @{m} is not in references")
+    for k in ("title", "description"):
+        if not args.get(k):
+            p.append(f"{k} is required by videosly_generate_video")
+    if len(args.get("title", "")) > 65:
+        p.append("title over 65 characters")
+    if not 5 <= len(args.get("hashtags", [])) <= 8:
+        p.append("5-8 hashtags (no # sign)")
+    return p
+
+
+def generate_args(series: str, args: dict, day: dt.date | None = None) -> dict:
+    """The exact videosly_generate_video arguments for a series: composition + skill + title + description + hashtags + 9:16 (+ the series voice and visual style)."""
+    day = day or dt.date.today()
+    cfg = SERIES[series]
+    comp = dict(args["composition"])
+    if cfg["style"]:
+        comp.setdefault("visualStyle", cfg["style"])
+    out = {"composition": comp, "skill": cfg["skill"], "title": args["title"], "description": args["description"], "hashtags": args["hashtags"], "aspectRatio": ASPECT,
+           "idempotencyKey": f"{series}-{day.isoformat()}-{hashlib.sha1(_norm(args['title']).encode()).hexdigest()[:8]}"}
+    if cfg["voice"]:
+        out["voiceId"] = cfg["voice"]
+    return out
+
+
 def meta_problems(meta: dict) -> list[str]:
     p = []
     title, desc, tags = meta.get("title", ""), meta.get("description", ""), meta.get("tags", [])
@@ -111,8 +177,9 @@ def record(entry: dict) -> None:
 
 def brief_line() -> str:
     rec = recent_topics(6)
-    return ("VIDEOSLY HORROR (1 video a day, owner decision 27 Nov 2026): follow shorts/VIDEOSLY_HORROR_TASK.md - send ONLY a topic as a prompt with skill horror-story; Videosly writes and makes the video; "
-            "you write the title, description and tags and post it (privacy " + PRIVACY + "). Recent horror topics: " + (" | ".join(t[:60] for t in rec) if rec else "none yet"))
+    return ("VIDEOSLY (2 Shorts a day, owner decisions 27-28 Nov 2026): one HORROR ('Quiet Dark', skill horror-story, mysterious voice) and one MYSTERY/CRIME ('The Fair Clue', skill short-mystery); follow shorts/VIDEOSLY_HORROR_TASK.md - "
+            "the connector needs a COMPOSITION, so you write the story with .claude/skills/dopamine-storyteller, check it with `python3 -m shorts.videosly check-comp`, generate, then post (privacy " + PRIVACY + "). Recent topics: "
+            + (" | ".join(t[:60] for t in rec) if rec else "none yet"))
 
 
 def _cli(argv: list[str]) -> int:
@@ -127,6 +194,15 @@ def _cli(argv: list[str]) -> int:
             print("TOPIC PROBLEMS:\n  " + "\n  ".join(probs))
             return 1
         print(json.dumps(request(topic), ensure_ascii=False, indent=1))
+    elif cmd == "series":
+        print(json.dumps(SERIES, ensure_ascii=False, indent=1))
+    elif cmd == "check-comp" and len(argv) > 2:
+        d = json.load(open(argv[2], encoding="utf-8"))
+        probs = composition_problems(argv[1], d)
+        if probs:
+            print("\n".join(probs))
+            return 1
+        print(json.dumps(generate_args(argv[1], d), ensure_ascii=False))
     elif cmd == "check-meta" and len(argv) > 1:
         probs = meta_problems(json.load(open(argv[1], encoding="utf-8")))
         print("\n".join(probs) if probs else "meta OK")

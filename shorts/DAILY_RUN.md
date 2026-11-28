@@ -55,6 +55,6 @@ New packs paint the whole screen: `"stage": "full"` in `shots.json` and `b.backd
 
 Direct pushes to main are allowed by `.claude/settings.json` (owner request, 27 Nov 2026); scheduled runs still commit only new pack folders (rule 7).
 
-## Videosly horror Short (27 Nov 2026, rule 22)
-Do this FIRST in every daily run (it needs 25-45 minutes to generate and render, so it overlaps with the batch): follow `shorts/VIDEOSLY_HORROR_TASK.md` - a topic-only prompt to Videosly with skill horror-story, then title/description/tags by Claude and `videosly_post_video`.
-It is on top of the day's Shorts (Videosly posts to the channel through its own connection, not our YouTube quota; 2 YouTube posts a day max). Report it in the final summary.
+## Videosly Shorts: horror + mystery (27-28 Nov 2026, rule 22)
+Do this FIRST in every daily run (25-70 minutes to generate and render, so it overlaps with the batch): follow `shorts/VIDEOSLY_HORROR_TASK.md` - write one horror ("Quiet Dark") and one mystery ("The Fair Clue") composition with the dopamine-storyteller skill, `python3 -m shorts.videosly check-comp`, `videosly_generate_video`, then title/description/tags and `videosly_post_video`.
+They are on top of the day's Shorts (Videosly posts through its own connection, not our YouTube quota; 2 YouTube posts a day max on Videosly). Report both in the final summary.
