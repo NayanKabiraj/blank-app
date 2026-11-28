@@ -32,3 +32,13 @@ def test_brief_line_days():
     assert "TODAY" in lineart.brief_line(dt.date(2026, 12, 1))      # Tuesday
     assert "TODAY" in lineart.brief_line(dt.date(2026, 12, 3))      # Thursday
     assert "not today" in lineart.brief_line(dt.date(2026, 12, 2))  # Wednesday
+
+
+def test_library_files_are_not_git_ignored():
+    """A root .gitignore rule once hid lineart/lib/ and the runner could not resolve the imports."""
+    import subprocess
+    root = Path(__file__).resolve().parents[1]
+    files = [f"lineart/lib/{n}.ts" for n in ("ink", "gait", "motion", "daynight")]
+    assert all((root / f).exists() for f in files)
+    r = subprocess.run(["git", "check-ignore", *files], cwd=root, capture_output=True, text=True)
+    assert r.returncode == 1 and not r.stdout.strip(), f"git-ignored: {r.stdout}"

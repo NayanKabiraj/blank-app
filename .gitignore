@@ -179,3 +179,7 @@ cython_debug/
 # YouTube Shorts pipeline
 output/
 .cache/
+
+# the line-art library (lineart/lib) is source, not a Python build folder
+!lineart/lib/
+!lineart/lib/**
