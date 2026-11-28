@@ -40,6 +40,7 @@ Channel check + scoreboard + milestones and what you changed because of them; pe
 ## Story craft (26 Nov 2026)
 
 Before writing narration read `strategy/story-craft.md` (hook killers, BUT/THEREFORE beats, open loops, specificity, banned AI tells). After writing a plan run `python3 -m shorts.storycheck plan.json` (advisory) and fix what it flags.
+Also follow `.claude/skills/dopamine-storyteller/SKILL.md` (28 Nov 2026): 3 hook variations then the pick, a primary open loop, micro-loops every 2-3 scenes, a reversal at the midpoint, an earned payoff; note `Hooks:` and `Loops:` in `research_summary`. Same for the Videosly horror topic and story.
 
 ## Prepared topic for 27 Nov 2026 (owner request, 26 Nov)
 Slot 1 (space+nature) is READY: plan `strategy/prepared/2026-11-27-silent-space.json` ("Why Is There No Sound in Space?", validated, claims verified, EN+HI) and the committed pack

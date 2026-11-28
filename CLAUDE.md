@@ -88,6 +88,8 @@ the workflow renders.
    and Videosly writes the story, draws the pictures in its horror look and records the voice. When it is rendered Claude reads the story back, writes the title, description and tags (`python3 -m shorts.videosly check-meta`), and posts it with `videosly_post_video` (privacy `private` by default, rule 6; `VIDEOSLY_PRIVACY` changes it; `aiGenerated` stays true). Topics: invented, bloodless, no child in danger,
    no real person, brand or place, never repeated (`python3 -m shorts.videosly request` enforces it). History in `data/videosly/history.json`. If the connector is missing or refuses, skip the step and say so; never fake a result. Horror was the weakest niche by views: judge this test on its own numbers after a week.
 
+23. **Dopamine storytelling skill** (owner instruction, 28 Nov 2026; `.claude/skills/dopamine-storyteller/SKILL.md`): every narration (Shorts, documentaries, Myth Busters, Videosly horror topics and stories) is built with its five stages - pattern-interrupt hook, open loop, escalating stakes with micro-loops, reversal, earned payoff - and the plan's `research_summary` records `Hooks:` (3 variations + pick) and `Loops:` (primary loop, reversal, payoff).
+
 ## Quick commands
 
 ```bash
