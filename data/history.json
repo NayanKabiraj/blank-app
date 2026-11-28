@@ -1110,5 +1110,32 @@
         "video_id": "Bhqp7j9tkqk"
       }
     }
+  },
+  {
+    "date": "2026-11-28",
+    "niche": "How Tech Works",
+    "topic": "How Does Your Phone Find You Indoors?",
+    "mood": "upbeat",
+    "cluster": "Phone Secrets",
+    "follow_ups": [
+      "Why do wireless chargers get warm?",
+      "How does your phone know it is raining?",
+      "How does Bluetooth find lost things?"
+    ],
+    "next_video": "Why do wireless chargers get warm?",
+    "gate_score": 81,
+    "thumbnail_text": "FINDS YOU INDOORS",
+    "videos": {
+      "en": {
+        "file": "2026-11-28_en.mp4",
+        "saved_to": "videos/2026-11-28/en.mp4",
+        "video_id": "rskVXhNuT3s"
+      },
+      "hi": {
+        "file": "2026-11-28_hi.mp4",
+        "saved_to": "videos/2026-11-28/hi.mp4",
+        "video_id": "kAmh8FneOhw"
+      }
+    }
   }
 ]
