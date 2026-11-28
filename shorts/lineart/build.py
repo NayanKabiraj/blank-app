@@ -86,8 +86,13 @@ def capture(scene_id: str, cues, durs, total: float, frames_dir: Path) -> int:
     n = math.ceil(total * FPS)
     frames_dir.mkdir(parents=True, exist_ok=True)
     env = {**os.environ, "CHROME": _chrome()}
-    with Server():
-        subprocess.run(["node", "scripts/capture.ts", url_for(scene_id, cues, durs, total), str(frames_dir), str(n), str(FPS), "1080", "1920"], cwd=ROOT, env=env, check=True)
+    with Server() as srv:
+        try:
+            subprocess.run(["node", "scripts/capture.ts", url_for(scene_id, cues, durs, total), str(frames_dir), str(n), str(FPS), "1080", "1920"], cwd=ROOT, env=env, check=True)
+        except subprocess.CalledProcessError:
+            srv._log.flush()
+            log.error("capture failed; chrome=%s; vite log:\n%s", env["CHROME"], srv.log_path.read_text(errors="replace")[-1500:])
+            raise
     return n
 
 

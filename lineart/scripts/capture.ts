@@ -51,17 +51,23 @@ ws.onmessage = (m: MessageEvent<string>) => {
   const d: Reply = JSON.parse(m.data);
   if (d.id && pending.has(d.id)) { pending.get(d.id)!(d); pending.delete(d.id); }
   if (d.method === 'Runtime.exceptionThrown') errors.push(d.params.exceptionDetails.exception?.description || d.params.exceptionDetails.text);
+  if (d.method === 'Log.entryAdded' && d.params.entry.level === 'error') errors.push(`log: ${d.params.entry.text} ${d.params.entry.url ?? ''}`);
+  if (d.method === 'Network.responseReceived' && d.params.response.status >= 400) errors.push(`http ${d.params.response.status}: ${d.params.response.url}`);
+  if (d.method === 'Network.loadingFailed') errors.push(`network failed: ${d.params.errorText}`);
   if (d.method === 'Runtime.consoleAPICalled' && d.params.type === 'error') errors.push(d.params.args.map((a: { value?: unknown; description?: string }) => a.value ?? a.description).join(' '));
 };
 const send = (method: string, params: object = {}): Promise<any> => new Promise((res, rej) => { const i = ++id; pending.set(i, (d) => (d.error ? rej(new Error(`${method}: ${d.error.message}`)) : res(d.result))); ws.send(JSON.stringify({ id: i, method, params })); });
 const evalJs = async (expression: string): Promise<any> => { const r = await send('Runtime.evaluate', { expression, awaitPromise: true, returnByValue: true }); if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description || r.exceptionDetails.text); return r.result.value; };
 
-await send('Page.enable'); await send('Runtime.enable');
+await send('Page.enable'); await send('Runtime.enable'); await send('Log.enable'); await send('Network.enable');
 await send('Emulation.setDeviceMetricsOverride', { width: W, height: H, deviceScaleFactor: 1, mobile: false });
 await send('Page.navigate', { url });
 let ready = false;
 for (let i = 0; i < 100 && !ready; i++) { await sleep(150); try { ready = await evalJs('typeof __step === "function" && document.readyState === "complete"'); } catch {} }
-if (!ready) { console.error('Page never exposed __step — is ?debug in the url, and does the page use run()?', errors.join('\n')); quit(1); }
+if (!ready) {
+  let info = ''; try { info = JSON.stringify(await evalJs('({href: location.href, state: document.readyState, body: document.body ? document.body.innerHTML.length : -1, step: typeof window.__step})')); } catch (e) { info = String(e); }
+  console.error('Page never exposed __step — is ?debug in the url, and does the page use run()?', info, '\n' + [...new Set(errors)].join('\n')); quit(1);
+}
 await evalJs('document.fonts.ready.then(() => true)');
 await sleep(400);
 if (setupJs) await evalJs(setupJs);
