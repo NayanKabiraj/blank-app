@@ -8,6 +8,7 @@ import os
 import shutil
 import subprocess
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -45,25 +46,35 @@ def _chrome() -> str:
 
 
 class Server:
-    """The scene dev server (vite) for the duration of a render."""
+    """The scene dev server (vite) for the duration of a render. ANY HTTP answer (even a 404) means it is up; on failure the server's own log is raised with the error."""
 
-    def __init__(self, probe: str = "/lib/ink.ts"):
+    def __init__(self, probe: str = "/lib/ink.ts", log_path: Path | None = None):
         self.probe = probe
+        self.log_path = log_path or (Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "lineart_vite.log")
 
     def __enter__(self):
         if not (ROOT / "node_modules").exists():
             subprocess.run(["npm", "ci", "--no-audit", "--no-fund"], cwd=ROOT, check=True)
-        self.p = subprocess.Popen(["npx", "vite", "--port", str(PORT), "--host", "127.0.0.1", "--strictPort"], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        for _ in range(60):
+        self._log = open(self.log_path, "w")
+        self.p = subprocess.Popen(["npx", "vite", "--port", str(PORT), "--host", "127.0.0.1", "--strictPort"], cwd=ROOT, stdout=self._log, stderr=subprocess.STDOUT)
+        for _ in range(120):
+            if self.p.poll() is not None:
+                break
             try:
-                urllib.request.urlopen(f"http://127.0.0.1:{PORT}{self.probe}", timeout=1)
+                urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{PORT}{self.probe}"), timeout=2)
                 return self
+            except urllib.error.HTTPError:
+                return self                     # the server answered
             except Exception:  # noqa: BLE001
                 time.sleep(0.5)
-        raise RuntimeError("the line-art dev server did not start")
+        self._log.flush()
+        tail = self.log_path.read_text(errors="replace")[-1500:]
+        self.p.terminate()
+        raise RuntimeError(f"the line-art dev server did not start (exit {self.p.poll()}). vite log:\n{tail}")
 
     def __exit__(self, *a):
         self.p.terminate()
+        self._log.close()
 
 
 def url_for(scene_id: str, cues: list[float], durs: list[float], total: float) -> str:
