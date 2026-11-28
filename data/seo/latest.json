@@ -1,936 +1,1443 @@
 {
- "generated": "2026-11-27T04:32:33+00:00",
+ "generated": "2026-11-28T02:54:42+00:00",
  "queries": {
-  "why does the moon always show the same face": {
+  "what if earth stopped spinning": {
    "suggest": [
     {
-     "phrase": "why the moon always show the same face",
-     "score": 25.0
-    }
-   ],
-   "outliers": {
-    "available": true,
-    "videos": 15,
-    "median_seconds": 330,
-    "share_shorts": 0.0,
-    "share_questions": 0.53,
-    "median_title_chars": 57,
-    "recurring_words": [
-     "moon",
-     "side",
-     "always",
-     "only",
-     "tidal",
-     "locking",
-     "same",
-     "synchronous",
-     "rotation",
-     "does"
-    ],
-    "common_tags": [
-     "moon",
-     "synchronous rotation",
-     "dark side of moon",
-     "moon phases",
-     "science"
-    ],
-    "outliers": [
-     {
-      "title": "Synchronous Rotation of the Moon",
-      "channel": "astrogirlwest",
-      "views": 1703732,
-      "subs": 2470,
-      "ratio": 689.8,
-      "age_days": 6504,
-      "seconds": 139,
-      "tags": [
-       "Moon",
-       "astronomy",
-       "synchronous rotation",
-       "introductory astronomy"
-      ]
-     },
-     {
-      "title": "Moon Phases Demonstration",
-      "channel": "National Science Teaching Association",
-      "views": 6196643,
-      "subs": 43300,
-      "ratio": 143.1,
-      "age_days": 4455,
-      "seconds": 256,
-      "tags": [
-       "Lunar Phase (Literature Subject)",
-       "National Science Teachers Association (Nonprofit Organization)",
-       "NSTA",
-       "science",
-       "teaching",
-       "Children's Literature (Literary Genre)"
-      ]
-     },
-     {
-      "title": "Earth's Moon: Why One Side Always Faces Us",
-      "channel": "Conceptual Academy",
-      "views": 2074952,
-      "subs": 52300,
-      "ratio": 39.7,
-      "age_days": 4256,
-      "seconds": 479,
-      "tags": [
-       "Moon (Celestial Object With Coordinate System)",
-       "Earth (Planet)",
-       "Astronomy (Field Of Study)",
-       "gravity",
-       "ocean tides",
-       "day length"
-      ]
-     },
-     {
-      "title": "Why do we only see one side of the moon? Does the Moon rotate? Big Questions Explained!",
-      "channel": "Tech Fix: Technology and Teaching",
-      "views": 36836,
-      "subs": 3680,
-      "ratio": 10.0,
-      "age_days": 2345,
-      "seconds": 260,
-      "tags": [
-       "space",
-       "planet",
-       "education",
-       "physics",
-       "science",
-       "phase"
-      ]
-     },
-     {
-      "title": "Why We Always See the Same Side of the Moon | Tidal Locking Explained with 3D Animation",
-      "channel": "IRA STUDIOS",
-      "views": 12114,
-      "subs": 2130,
-      "ratio": 5.7,
-      "age_days": 158,
-      "seconds": 383,
-      "tags": [
-       "moon explanation",
-       "why we see same side of moon",
-       "tidal locking explained",
-       "moon rotation animation",
-       "3d moon animation",
-       "space science video"
-      ]
-     },
-     {
-      "title": "SECRETS OF THE FAR SIDE OF THE MOON",
-      "channel": "Astronomer Dale Brennan",
-      "views": 11994,
-      "subs": 2710,
-      "ratio": 4.4,
-      "age_days": 31,
-      "seconds": 1634,
-      "tags": []
-     }
-    ],
-    "top_by_views": [
-     {
-      "title": "Moon Phases Demonstration",
-      "channel": "National Science Teaching Association",
-      "views": 6196643,
-      "subs": 43300,
-      "ratio": 143.1,
-      "age_days": 4455,
-      "seconds": 256,
-      "tags": [
-       "Lunar Phase (Literature Subject)",
-       "National Science Teachers Association (Nonprofit Organization)",
-       "NSTA",
-       "science",
-       "teaching",
-       "Children's Literature (Literary Genre)"
-      ]
-     },
-     {
-      "title": "Tidal Locking | Why Do We Only See One Side of the Moon?",
-      "channel": "MinuteEarth",
-      "views": 4223860,
-      "subs": 3340000,
-      "ratio": 1.3,
-      "age_days": 4290,
-      "seconds": 121,
-      "tags": [
-       "MinuteEarth",
-       "Minute Earth",
-       "MinutePhysics",
-       "Minute Physics",
-       "earth",
-       "history"
-      ]
-     },
-     {
-      "title": "Earth's Moon: Why One Side Always Faces Us",
-      "channel": "Conceptual Academy",
-      "views": 2074952,
-      "subs": 52300,
-      "ratio": 39.7,
-      "age_days": 4256,
-      "seconds": 479,
-      "tags": [
-       "Moon (Celestial Object With Coordinate System)",
-       "Earth (Planet)",
-       "Astronomy (Field Of Study)",
-       "gravity",
-       "ocean tides",
-       "day length"
-      ]
-     },
-     {
-      "title": "Synchronous Rotation of the Moon",
-      "channel": "astrogirlwest",
-      "views": 1703732,
-      "subs": 2470,
-      "ratio": 689.8,
-      "age_days": 6504,
-      "seconds": 139,
-      "tags": [
-       "Moon",
-       "astronomy",
-       "synchronous rotation",
-       "introductory astronomy"
-      ]
-     },
-     {
-      "title": "Why do we see only one side of the moon always?  | Synchronous Rotation | #tidal Locking",
-      "channel": "Let's Grow Up",
-      "views": 583636,
-      "subs": 389000,
-      "ratio": 1.5,
-      "age_days": 2332,
-      "seconds": 209,
-      "tags": [
-       "Synchronous Rotation",
-       "Near side of the Moon",
-       "Dark side of moon",
-       "moon dark side",
-       "moon phases",
-       "lunar calendar"
-      ]
-     }
-    ]
-   }
-  },
-  "tidal locking explained": {
-   "suggest": [
-    {
-     "phrase": "tidal locking of moon",
-     "score": 12.33
+     "phrase": "what if earth stopped rotating",
+     "score": 5.71
     },
     {
-     "phrase": "tidal lock animation",
-     "score": 3.75
+     "phrase": "what if earth stopped spinning hindi",
+     "score": 3.5
     },
     {
-     "phrase": "tidal locking",
-     "score": 3.25
+     "phrase": "what happen if earth stopped spinning",
+     "score": 2.96
     },
     {
-     "phrase": "how does tidal locking work",
+     "phrase": "what if earth stopped spinning tamil",
+     "score": 2.78
+    },
+    {
+     "phrase": "what if earth stopped spinning shorts",
      "score": 2.5
     },
     {
-     "phrase": "what is tidal locking of the moon",
+     "phrase": "what will happen if earth stopped spinning",
      "score": 2.0
     },
     {
-     "phrase": "tidal locking of moon explained",
-     "score": 2.0
+     "phrase": "what if earth stopped spinning for just one second",
+     "score": 1.8
     },
     {
-     "phrase": "what is tidal locking",
+     "phrase": "what if earth stopped spinning for 1 second",
      "score": 1.5
     },
     {
-     "phrase": "how tidal locking works",
+     "phrase": "what if earth stopped spinning for one second",
+     "score": 1.5
+    },
+    {
+     "phrase": "dr binocs what if the earth stopped spinning",
+     "score": 1.5
+    },
+    {
+     "phrase": "peekaboo kidz what if the earth stopped spinning",
+     "score": 1.5
+    },
+    {
+     "phrase": "what would happen if earth stopped spinning",
+     "score": 1.44
+    },
+    {
+     "phrase": "what if the earth stopped spinning documentary",
+     "score": 1.34
+    },
+    {
+     "phrase": "what if earth stopped spinning for just 1 second",
      "score": 1.33
     },
     {
-     "phrase": "tidal lock",
+     "phrase": "what if earth stopped spinning aumsum",
+     "score": 1.32
+    },
+    {
+     "phrase": "what of the earth stopped spinning",
+     "score": 1.16
+    },
+    {
+     "phrase": "what would happen if the earth stopped spinning kurzgesagt",
+     "score": 1.14
+    },
+    {
+     "phrase": "what if earth stopped revolving around the sun",
+     "score": 1.08
+    },
+    {
+     "phrase": "what if earth stopped spinning animation",
      "score": 1.0
+    },
+    {
+     "phrase": "what if earth's core stopped spinning",
+     "score": 1.0
+    },
+    {
+     "phrase": "what if earth stopped spinning in hindi",
+     "score": 1.0
+    },
+    {
+     "phrase": "what would it look like if the earth stopped spinning",
+     "score": 1.0
+    },
+    {
+     "phrase": "what if the earth stopped spinning movie",
+     "score": 1.0
+    },
+    {
+     "phrase": "what would happen if earth stopped spinning for 5 seconds",
+     "score": 0.94
+    },
+    {
+     "phrase": "what if the earth stopped spinning for 1 millisecond",
+     "score": 0.88
+    },
+    {
+     "phrase": "what if earth stopped spinning factoholic",
+     "score": 0.86
+    },
+    {
+     "phrase": "what if earth stopped spinning for 5 seconds",
+     "score": 0.83
+    },
+    {
+     "phrase": "what happens if earth stops rotating in telugu",
+     "score": 0.66
+    },
+    {
+     "phrase": "what happens if earth stops revolving around the sun",
+     "score": 0.59
+    },
+    {
+     "phrase": "what happens if earth stops rotating in tamil",
+     "score": 0.53
     }
    ],
    "outliers": {
     "available": true,
     "videos": 15,
-    "median_seconds": 331,
-    "share_shorts": 0.07,
-    "share_questions": 0.47,
-    "median_title_chars": 44,
+    "median_seconds": 466,
+    "share_shorts": 0.0,
+    "share_questions": 0.73,
+    "median_title_chars": 53,
     "recurring_words": [
-     "tidal",
-     "locking",
-     "moon",
-     "side",
-     "always",
-     "explained"
-    ],
-    "common_tags": [
-     "tidal locking",
-     "synchronous rotation",
-     "moon",
-     "space",
-     "astronomy",
-     "dark side of moon",
      "earth",
-     "tidal locking (orbit type)"
-    ],
-    "outliers": [
-     {
-      "title": "Synchronous Rotation of the Moon",
-      "channel": "astrogirlwest",
-      "views": 1703732,
-      "subs": 2470,
-      "ratio": 689.8,
-      "age_days": 6504,
-      "seconds": 139,
-      "tags": [
-       "Moon",
-       "astronomy",
-       "synchronous rotation",
-       "introductory astronomy"
-      ]
-     },
-     {
-      "title": "A tidally locked moon.",
-      "channel": "Shay Lennox",
-      "views": 31414,
-      "subs": 355,
-      "ratio": 31.4,
-      "age_days": 5415,
-      "seconds": 11,
-      "tags": [
-       "earth",
-       "and",
-       "moon",
-       "rotating",
-       "Rotation",
-       "Moon."
-      ]
-     },
-     {
-      "title": "Why We Always See the Same Side of the Moon | Tidal Locking Explained with 3D Animation",
-      "channel": "IRA STUDIOS",
-      "views": 12121,
-      "subs": 2130,
-      "ratio": 5.7,
-      "age_days": 158,
-      "seconds": 383,
-      "tags": [
-       "moon explanation",
-       "why we see same side of moon",
-       "tidal locking explained",
-       "moon rotation animation",
-       "3d moon animation",
-       "space science video"
-      ]
-     },
-     {
-      "title": "Tidal Locking | Why one side of Moon is facing Earth always",
-      "channel": "Science for Common man",
-      "views": 79168,
-      "subs": 39000,
-      "ratio": 2.0,
-      "age_days": 1784,
-      "seconds": 331,
-      "tags": [
-       "Tidal locking",
-       "moon face",
-       "dark side of moon",
-       "visible side of moon",
-       "faraway side of moon",
-       "synchronous rotation"
-      ]
-     }
-    ],
-    "top_by_views": [
-     {
-      "title": "Tidal Locking | Why Do We Only See One Side of the Moon?",
-      "channel": "MinuteEarth",
-      "views": 4223860,
-      "subs": 3340000,
-      "ratio": 1.3,
-      "age_days": 4290,
-      "seconds": 121,
-      "tags": [
-       "MinuteEarth",
-       "Minute Earth",
-       "MinutePhysics",
-       "Minute Physics",
-       "earth",
-       "history"
-      ]
-     },
-     {
-      "title": "Synchronous Rotation of the Moon",
-      "channel": "astrogirlwest",
-      "views": 1703732,
-      "subs": 2470,
-      "ratio": 689.8,
-      "age_days": 6504,
-      "seconds": 139,
-      "tags": [
-       "Moon",
-       "astronomy",
-       "synchronous rotation",
-       "introductory astronomy"
-      ]
-     },
-     {
-      "title": "Why the Moon is Spiraling Away From Us",
-      "channel": "StarTalk",
-      "views": 1458823,
-      "subs": 6050000,
-      "ratio": 0.2,
-      "age_days": 232,
-      "seconds": 807,
-      "tags": [
-       "startalk",
-       "star talk",
-       "startalk radio",
-       "neil degrasse tyson",
-       "neil tyson",
-       "science"
-      ]
-     },
-     {
-      "title": "Why do we see only one side of the moon always?  | Synchronous Rotation | #tidal Locking",
-      "channel": "Let's Grow Up",
-      "views": 583636,
-      "subs": 389000,
-      "ratio": 1.5,
-      "age_days": 2332,
-      "seconds": 209,
-      "tags": [
-       "Synchronous Rotation",
-       "Near side of the Moon",
-       "Dark side of moon",
-       "moon dark side",
-       "moon phases",
-       "lunar calendar"
-      ]
-     },
-     {
-      "title": "Why Is There A Dark Side of the Moon? | Tidal Locking Explained! | Space Explained by KLT!",
-      "channel": "KLT",
-      "views": 386967,
-      "subs": 2770000,
-      "ratio": 0.1,
-      "age_days": 1532,
-      "seconds": 3921,
-      "tags": [
-       "solar system",
-       "space science",
-       "astronomy",
-       "dark side of the moon",
-       "tidal locking",
-       "astronomy (field of study)"
-      ]
-     }
-    ]
-   }
-  },
-  "why does my phone battery die in the cold": {
-   "suggest": [
-    {
-     "phrase": "why my mobile is heating up and losing battery",
-     "score": 9.92
-    },
-    {
-     "phrase": "my phone is heating up and draining battery",
-     "score": 7.67
-    },
-    {
-     "phrase": "what happens when your phone battery dies",
-     "score": 4.83
-    },
-    {
-     "phrase": "why my iphone is heating up and losing battery",
-     "score": 2.83
-    },
-    {
-     "phrase": "why phone battery dies quickly",
-     "score": 1.83
-    },
-    {
-     "phrase": "why my phone is losing battery fast",
-     "score": 1.08
-    },
-    {
-     "phrase": "what happens if your phone battery dies fast",
-     "score": 0.83
-    },
-    {
-     "phrase": "iphone is heating up and draining battery",
-     "score": 0.58
-    },
-    {
-     "phrase": "when your phone battery dies",
-     "score": 0.5
-    },
-    {
-     "phrase": "my iphone is overheating and draining battery",
-     "score": 0.33
-    }
-   ],
-   "outliers": {
-    "available": true,
-    "videos": 12,
-    "median_seconds": 259,
-    "share_shorts": 0.08,
-    "share_questions": 0.58,
-    "median_title_chars": 58,
-    "recurring_words": [
-     "battery",
-     "your",
-     "phone",
-     "cold",
-     "does",
-     "explained"
+     "spinning",
+     "what",
+     "stopped"
     ],
     "common_tags": [
-     "lithium ion battery"
+     "what if",
+     "earth",
+     "space",
+     "what if earth stopped spinning"
     ],
     "outliers": [
      {
-      "title": "Here's Why Your Car Battery Keeps Draining",
-      "channel": "Everyman Driver",
-      "views": 2884094,
-      "subs": 412000,
-      "ratio": 7.0,
-      "age_days": 2866,
-      "seconds": 228,
+      "title": "Aftermath When The Earth Stops Spinning(full documentary)HD",
+      "channel": "Science & Nature Documentaries HD",
+      "views": 1010581,
+      "subs": 36500,
+      "ratio": 27.7,
+      "age_days": 4287,
+      "seconds": 2700,
       "tags": [
-       "Everyman Driver",
-       "Dave Erickson",
-       "Car Battery",
-       "DIY",
-       "CAR TIPS"
+       "Documentary (TV Genre)",
+       "new documentary 2015",
+       "Television Documentary (TV Genre)",
+       "Earth (Planet)",
+       "Earth Science (Field Of Study)",
+       "Planet (Celestial Object Category)"
       ]
+     },
+     {
+      "title": "What Would Happen If The Earth Stopped Spinning? | Unveiled",
+      "channel": "Unveiled",
+      "views": 14197745,
+      "subs": 972000,
+      "ratio": 14.6,
+      "age_days": 3289,
+      "seconds": 466,
+      "tags": [
+       "What Would Happen If Еhe Earth Stopped Spinning?",
+       "What Would Happen",
+       "The Earth Stopped Spinning",
+       "what if",
+       "spinning",
+       "earth"
+      ]
+     },
+     {
+      "title": "Neil deGrasse Tyson: If Earth Stopped Rotating For a Second",
+      "channel": "Larry King",
+      "views": 6774486,
+      "subs": 591000,
+      "ratio": 11.5,
+      "age_days": 4796,
+      "seconds": 261,
+      "tags": [
+       "neil degrasse tyson",
+       "nasa",
+       "astrophysics",
+       "pbs",
+       "hayden planetarium",
+       "science communicator"
+      ]
+     },
+     {
+      "title": "What If Earth Stopped Spinning and Never Started Again?",
+      "channel": "The Cosmic Witness",
+      "views": 33140,
+      "subs": 3490,
+      "ratio": 9.5,
+      "age_days": 40,
+      "seconds": 491,
+      "tags": [
+       "what if earth stopped spinning",
+       "earth stops spinning",
+       "what if the earth stopped rotating",
+       "earth stopped spinning simulation",
+       "what if",
+       "space"
+      ]
+     },
+     {
+      "title": "What Would Happen If the Earth Stopped Spinning?",
+      "channel": "The Last Day",
+      "views": 185590,
+      "subs": 37600,
+      "ratio": 4.9,
+      "age_days": 29,
+      "seconds": 1278,
+      "tags": [
+       "what if earth stopped spinning",
+       "what would happen if earth stopped spinning",
+       "what if the earth stopped spinning",
+       "earth stops rotating",
+       "why cant we feel the earth spin",
+       "equatorial bulge"
+      ]
+     },
+     {
+      "title": "Comparison: What If Earth Stopped Spinning?",
+      "channel": "WatchData",
+      "views": 4566759,
+      "subs": 1690000,
+      "ratio": 2.7,
+      "age_days": 2012,
+      "seconds": 183,
+      "tags": [
+       "watchdata",
+       "comparison",
+       "probability comparison",
+       "data",
+       "planet earth",
+       "can the earth stop spinning"
+      ]
+     },
+     {
+      "title": "What if Earth suddenly stopped spinning?",
+      "channel": "xkcd's What If?",
+      "views": 3502923,
+      "subs": 1380000,
+      "ratio": 2.5,
+      "age_days": 1054,
+      "seconds": 275,
+      "tags": []
      }
     ],
     "top_by_views": [
      {
-      "title": "Is Charging While Using Your Phone Killing the Battery?",
-      "channel": "HTX Studio",
-      "views": 4975748,
-      "subs": 3300000,
-      "ratio": 1.5,
-      "age_days": 539,
-      "seconds": 370,
-      "tags": []
-     },
-     {
-      "title": "Here's Why Your Car Battery Keeps Draining",
-      "channel": "Everyman Driver",
-      "views": 2884094,
-      "subs": 412000,
-      "ratio": 7.0,
-      "age_days": 2866,
-      "seconds": 228,
-      "tags": [
-       "Everyman Driver",
-       "Dave Erickson",
-       "Car Battery",
-       "DIY",
-       "CAR TIPS"
-      ]
-     },
-     {
-      "title": "How to Fix iPhone Battery Sudden Drops",
-      "channel": "Howfinity",
-      "views": 610591,
-      "subs": 1110000,
-      "ratio": 0.6,
-      "age_days": 1667,
-      "seconds": 314,
-      "tags": [
-       "How to Fix iPhone Battery Sudden Drops",
-       "howfinity",
-       "how to",
-       "tutorial",
-       "Youtube",
-       "iphone battery"
-      ]
-     },
-     {
-      "title": "Battery Life Explained: Are you killing your battery with bad charging habits?",
-      "channel": "Android Central",
-      "views": 392899,
-      "subs": 482000,
+      "title": "What If The Earth Stopped Spinning?",
+      "channel": "Vsauce",
+      "views": 21524809,
+      "subs": 25400000,
       "ratio": 0.8,
-      "age_days": 2179,
-      "seconds": 336,
+      "age_days": 4548,
+      "seconds": 584,
       "tags": [
-       "android central",
-       "best android phone",
-       "best android smartphone",
-       "android",
-       "smartphone",
-       "phone"
+       "earth",
+       "spin",
+       "rotation",
+       "space",
+       "vsauce",
+       "michael stevens"
       ]
      },
      {
-      "title": "How to jump start fully dead Lithium phone or camera battery?",
-      "channel": "Amzeeel",
-      "views": 107306,
-      "subs": 256000,
-      "ratio": 0.4,
-      "age_days": 2386,
-      "seconds": 92,
+      "title": "What Would Happen If The Earth Stopped Spinning? | Unveiled",
+      "channel": "Unveiled",
+      "views": 14197745,
+      "subs": 972000,
+      "ratio": 14.6,
+      "age_days": 3289,
+      "seconds": 466,
       "tags": [
-       "How to jump start a dead battery",
-       "how to revive a dead phone battery",
-       "how to fix a phone battery that won't charge",
-       "how to charge a dead mobile battery without charger",
-       "jump start mobile battery",
-       "power a dead battery"
+       "What Would Happen If Еhe Earth Stopped Spinning?",
+       "What Would Happen",
+       "The Earth Stopped Spinning",
+       "what if",
+       "spinning",
+       "earth"
+      ]
+     },
+     {
+      "title": "Neil deGrasse Tyson: If Earth Stopped Rotating For a Second",
+      "channel": "Larry King",
+      "views": 6774486,
+      "subs": 591000,
+      "ratio": 11.5,
+      "age_days": 4796,
+      "seconds": 261,
+      "tags": [
+       "neil degrasse tyson",
+       "nasa",
+       "astrophysics",
+       "pbs",
+       "hayden planetarium",
+       "science communicator"
+      ]
+     },
+     {
+      "title": "What If the Earth Stopped Spinning for 5 Seconds and Winds RIPPED the Crust?",
+      "channel": "What If",
+      "views": 6725783,
+      "subs": 9000000,
+      "ratio": 0.7,
+      "age_days": 1819,
+      "seconds": 328,
+      "tags": [
+       "what if",
+       "what happens if",
+       "scifi",
+       "science documentary",
+       "what if scenario",
+       "mysteries"
+      ]
+     },
+     {
+      "title": "What if Earth Stopped Spinning? + more videos | #aumsum #kids #science #education #children",
+      "channel": "It's AumSum Time",
+      "views": 6325605,
+      "subs": 4810000,
+      "ratio": 1.3,
+      "age_days": 2697,
+      "seconds": 288,
+      "tags": [
+       "aum",
+       "aumsum",
+       "aum sum",
+       "it's aumsum time",
+       "smart learning for all",
+       "animation"
       ]
      }
     ]
    }
   },
-  "phone battery cold weather": {
+  "what would happen if the earth stopped rotating": {
    "suggest": [
     {
-     "phrase": "phone getting heated and battery draining",
+     "phrase": "what happens if the earth stopped rotating",
+     "score": 6.39
+    },
+    {
+     "phrase": "what would happen if the earth stopped spinning for 5 seconds",
+     "score": 3.83
+    },
+    {
+     "phrase": "what would happen if the earth stopped spinning animation",
      "score": 3.0
     },
     {
-     "phrase": "why is my phone hot and losing battery",
-     "score": 2.25
+     "phrase": "what if the earth stopped rotating",
+     "score": 2.78
     },
     {
-     "phrase": "does playing while charging damage battery",
-     "score": 1.5
+     "phrase": "what would happen if the earth stopped spinning for one second",
+     "score": 2.58
     },
     {
-     "phrase": "phone consuming too much battery",
-     "score": 1.5
+     "phrase": "what would happen if the earth stopped rotating for one second",
+     "score": 2.5
     },
     {
-     "phrase": "phone battery overheating",
-     "score": 1.5
+     "phrase": "what would happen if the earth stopped spinning kurzgesagt",
+     "score": 2.2
     },
     {
-     "phrase": "phone gets hot when charging battery",
-     "score": 1.33
+     "phrase": "what would happen if the earth stopped spinning documentary",
+     "score": 2.0
     },
     {
-     "phrase": "why is my battery overheating",
+     "phrase": "neil degrasse tyson what would happen if the earth stopped spinning",
+     "score": 1.83
+    },
+    {
+     "phrase": "what would happen if the earth stopped spinning simulation",
+     "score": 1.75
+    },
+    {
+     "phrase": "what would happen if the earth stopped revolving around the sun",
+     "score": 1.7
+    },
+    {
+     "phrase": "what would happen if the core of the earth stopped spinning",
+     "score": 1.67
+    },
+    {
+     "phrase": "what will happen if the earth stopped rotating",
+     "score": 1.45
+    },
+    {
+     "phrase": "what would happen if the world stopped spinning for a second",
+     "score": 1.39
+    },
+    {
+     "phrase": "what will happen if the earth doesn't rotate",
+     "score": 1.1
+    },
+    {
+     "phrase": "what happens if earth stops rotating in hindi",
      "score": 1.0
     },
     {
-     "phrase": "car battery getting hot while charging",
+     "phrase": "what if the earth stopped spinning movie",
      "score": 1.0
     },
     {
-     "phrase": "if i charge my phone overnight will it hurt the battery",
-     "score": 1.0
+     "phrase": "what would happen if the earth stopped turning",
+     "score": 0.86
     },
     {
-     "phrase": "phone overheating and battery draining",
-     "score": 1.0
+     "phrase": "what would happen if the earth slowly stopped spinning",
+     "score": 0.67
     },
     {
-     "phrase": "phone too cold to charge samsung",
-     "score": 1.0
-    },
-    {
-     "phrase": "phone heat during charging",
-     "score": 1.0
-    },
-    {
-     "phrase": "phone battery drops from 40 to 0",
-     "score": 1.0
-    },
-    {
-     "phrase": "phone overheat while charging",
-     "score": 1.0
-    },
-    {
-     "phrase": "phone battery last longer",
-     "score": 1.0
-    },
-    {
-     "phrase": "does charging overnight damage battery",
+     "phrase": "what would happen if the earth didn't rotate",
      "score": 0.5
     },
     {
-     "phrase": "why my mobile is heating up and losing battery",
+     "phrase": "what happens if earth stops rotating in telugu",
+     "score": 0.5
+    },
+    {
+     "phrase": "what if the earth stopped spinning meme",
+     "score": 0.5
+    },
+    {
+     "phrase": "what happens if earth stops rotating in tamil",
      "score": 0.33
     },
     {
-     "phrase": "does frequent charging damage phone battery",
-     "score": 0.33
+     "phrase": "what happens if the earth stops spinning for a second",
+     "score": 0.25
+    },
+    {
+     "phrase": "what happens if the earth stops spinning zack d films",
+     "score": 0.25
+    },
+    {
+     "phrase": "what happens if the world stops spinning for one second",
+     "score": 0.2
+    },
+    {
+     "phrase": "what would happen if earth suddenly stopped rotating",
+     "score": 0.12
     }
    ],
    "outliers": {
     "available": true,
-    "videos": 14,
-    "median_seconds": 481,
+    "videos": 15,
+    "median_seconds": 319,
     "share_shorts": 0.0,
-    "share_questions": 0.29,
-    "median_title_chars": 56,
+    "share_questions": 0.87,
+    "median_title_chars": 53,
     "recurring_words": [
-     "battery",
-     "cold",
-     "weather",
-     "test",
-     "lithium",
-     "your"
+     "earth",
+     "what",
+     "stopped",
+     "spinning",
+     "rotating",
+     "would",
+     "happen"
     ],
     "common_tags": [
-     "battery",
-     "lithium ion battery"
+     "what if",
+     "earth",
+     "aum",
+     "aumsum",
+     "aum sum",
+     "it's aumsum time",
+     "smart learning for all"
     ],
     "outliers": [
      {
-      "title": "The Best AA Battery // Cold Tested",
-      "channel": "Tools That Build",
-      "views": 106774,
-      "subs": 11000,
-      "ratio": 9.7,
-      "age_days": 1773,
-      "seconds": 316,
+      "title": "What Would Happen If The Earth Stopped Spinning? | Unveiled",
+      "channel": "Unveiled",
+      "views": 14197745,
+      "subs": 972000,
+      "ratio": 14.6,
+      "age_days": 3289,
+      "seconds": 466,
       "tags": [
-       "AA",
-       "Battery",
-       "Batteries",
-       "Energizer",
-       "Duracell",
-       "Amazon"
+       "What Would Happen If Еhe Earth Stopped Spinning?",
+       "What Would Happen",
+       "The Earth Stopped Spinning",
+       "what if",
+       "spinning",
+       "earth"
       ]
+     },
+     {
+      "title": "Neil deGrasse Tyson: If Earth Stopped Rotating For a Second",
+      "channel": "Larry King",
+      "views": 6774487,
+      "subs": 591000,
+      "ratio": 11.5,
+      "age_days": 4796,
+      "seconds": 261,
+      "tags": [
+       "neil degrasse tyson",
+       "nasa",
+       "astrophysics",
+       "pbs",
+       "hayden planetarium",
+       "science communicator"
+      ]
+     },
+     {
+      "title": "What Happens if the Earth Stops Spinning? | COLOSSAL QUESTIONS",
+      "channel": "Colossal Cranium",
+      "views": 5530813,
+      "subs": 952000,
+      "ratio": 5.8,
+      "age_days": 3560,
+      "seconds": 137,
+      "tags": [
+       "DreamWorksTV",
+       "DreamWorks Animation",
+       "DreamWorks",
+       "夢工場動畫",
+       "Something New",
+       "Family Entertainment"
+      ]
+     },
+     {
+      "title": "What Would Happen If the Earth Stopped Spinning?",
+      "channel": "The Last Day",
+      "views": 185590,
+      "subs": 37600,
+      "ratio": 4.9,
+      "age_days": 29,
+      "seconds": 1278,
+      "tags": [
+       "what if earth stopped spinning",
+       "what would happen if earth stopped spinning",
+       "what if the earth stopped spinning",
+       "earth stops rotating",
+       "why cant we feel the earth spin",
+       "equatorial bulge"
+      ]
+     },
+     {
+      "title": "Comparison: What If Earth Stopped Spinning?",
+      "channel": "WatchData",
+      "views": 4566757,
+      "subs": 1690000,
+      "ratio": 2.7,
+      "age_days": 2012,
+      "seconds": 183,
+      "tags": [
+       "watchdata",
+       "comparison",
+       "probability comparison",
+       "data",
+       "planet earth",
+       "can the earth stop spinning"
+      ]
+     },
+     {
+      "title": "What if Earth suddenly stopped spinning?",
+      "channel": "xkcd's What If?",
+      "views": 3502923,
+      "subs": 1380000,
+      "ratio": 2.5,
+      "age_days": 1054,
+      "seconds": 275,
+      "tags": []
      }
     ],
     "top_by_views": [
      {
-      "title": "The Best AA Battery // Cold Tested",
-      "channel": "Tools That Build",
-      "views": 106774,
-      "subs": 11000,
-      "ratio": 9.7,
-      "age_days": 1773,
-      "seconds": 316,
-      "tags": [
-       "AA",
-       "Battery",
-       "Batteries",
-       "Energizer",
-       "Duracell",
-       "Amazon"
-      ]
-     },
-     {
-      "title": "Best Battery for Trail Cameras: Cold Weather Testing 5 Alkaline and Lithium AA Batteries",
-      "channel": "HuntingFarmer",
-      "views": 42067,
-      "subs": 46300,
-      "ratio": 0.9,
-      "age_days": 1769,
-      "seconds": 797,
-      "tags": []
-     },
-     {
-      "title": "Cold Weather Lithium Battery Charging | EVERYTHING YOU NEED TO KNOW",
-      "channel": "Joel Tremblay",
-      "views": 18298,
-      "subs": 23000,
+      "title": "What If The Earth Stopped Spinning?",
+      "channel": "Vsauce",
+      "views": 21524809,
+      "subs": 25400000,
       "ratio": 0.8,
-      "age_days": 1055,
-      "seconds": 533,
+      "age_days": 4548,
+      "seconds": 584,
       "tags": [
-       "solar",
-       "battery",
-       "lithium battery",
-       "solar battery",
-       "off grid battery",
-       "diesel heater power"
+       "earth",
+       "spin",
+       "rotation",
+       "space",
+       "vsauce",
+       "michael stevens"
       ]
      },
      {
-      "title": "Tesla Battery vs Cold Weather: Real World Test!",
-      "channel": "Andy Slye",
-      "views": 10426,
-      "subs": 299000,
-      "ratio": 0.0,
-      "age_days": 301,
-      "seconds": 558,
-      "tags": []
+      "title": "What Would Happen If The Earth Stopped Spinning? | Unveiled",
+      "channel": "Unveiled",
+      "views": 14197745,
+      "subs": 972000,
+      "ratio": 14.6,
+      "age_days": 3289,
+      "seconds": 466,
+      "tags": [
+       "What Would Happen If Еhe Earth Stopped Spinning?",
+       "What Would Happen",
+       "The Earth Stopped Spinning",
+       "what if",
+       "spinning",
+       "earth"
+      ]
      },
      {
-      "title": "Lithium Battery Cold Weather Starting Tips For Motorcycles, ATV's, & UTV's",
-      "channel": "Rocky Mountain ATV MC",
-      "views": 7315,
+      "title": "Neil deGrasse Tyson: If Earth Stopped Rotating For a Second",
+      "channel": "Larry King",
+      "views": 6774487,
       "subs": 591000,
-      "ratio": 0.0,
-      "age_days": 1659,
-      "seconds": 113,
+      "ratio": 11.5,
+      "age_days": 4796,
+      "seconds": 261,
       "tags": [
-       "Rocky Mountain ATV/MC",
-       "rmatv",
-       "rmatvmc",
-       "motocross",
-       "rockymountainatv",
-       "dirt bike"
+       "neil degrasse tyson",
+       "nasa",
+       "astrophysics",
+       "pbs",
+       "hayden planetarium",
+       "science communicator"
+      ]
+     },
+     {
+      "title": "What If the Earth Stopped Spinning for 5 Seconds and Winds RIPPED the Crust?",
+      "channel": "What If",
+      "views": 6725783,
+      "subs": 9000000,
+      "ratio": 0.7,
+      "age_days": 1819,
+      "seconds": 328,
+      "tags": [
+       "what if",
+       "what happens if",
+       "scifi",
+       "science documentary",
+       "what if scenario",
+       "mysteries"
+      ]
+     },
+     {
+      "title": "What if Earth Stopped Spinning? + more videos | #aumsum #kids #science #education #children",
+      "channel": "It's AumSum Time",
+      "views": 6325606,
+      "subs": 4810000,
+      "ratio": 1.3,
+      "age_days": 2697,
+      "seconds": 288,
+      "tags": [
+       "aum",
+       "aumsum",
+       "aum sum",
+       "it's aumsum time",
+       "smart learning for all",
+       "animation"
       ]
      }
     ]
    }
   },
-  "why does phone turn off in cold": {
+  "how does phone location work indoors": {
    "suggest": [
     {
-     "phrase": "why does phone turn off by itself",
-     "score": 16.0
+     "phrase": "how does phone gps work",
+     "score": 22.5
     },
     {
-     "phrase": "how to fix phone always turning off",
-     "score": 15.67
+     "phrase": "how to track phone without gps",
+     "score": 4.5
     },
     {
-     "phrase": "why does your phone turn off randomly",
-     "score": 4.58
+     "phrase": "how does phone tracking works",
+     "score": 4.33
     },
     {
-     "phrase": "why my phone is suddenly off",
+     "phrase": "how to locate gps of cell phone",
+     "score": 3.0
+    },
+    {
+     "phrase": "how does phone track steps",
+     "score": 2.12
+    },
+    {
+     "phrase": "how to locate gps on phone",
+     "score": 1.58
+    },
+    {
+     "phrase": "how to locate a mobile phone",
+     "score": 1.33
+    },
+    {
+     "phrase": "can you track a phone that is off",
      "score": 1.25
     },
     {
-     "phrase": "phone is turning off by itself",
+     "phrase": "what is phone tracking",
+     "score": 0.83
+    },
+    {
+     "phrase": "how phones are tracked",
+     "score": 0.75
+    },
+    {
+     "phrase": "can a phone be tracked if it's turned off",
+     "score": 0.67
+    },
+    {
+     "phrase": "can you track an android phone",
+     "score": 0.5
+    },
+    {
+     "phrase": "do not track my phone",
+     "score": 0.5
+    },
+    {
+     "phrase": "how locate lost android phone",
+     "score": 0.33
+    },
+    {
+     "phrase": "how phone gps works",
+     "score": 0.33
+    },
+    {
+     "phrase": "how does find my phone work",
+     "score": 0.2
+    }
+   ],
+   "outliers": {
+    "available": true,
+    "videos": 15,
+    "median_seconds": 260,
+    "share_shorts": 0.13,
+    "share_questions": 0.27,
+    "median_title_chars": 54,
+    "recurring_words": [
+     "your",
+     "phone",
+     "indoors",
+     "inside",
+     "knows",
+     "hidden",
+     "finds",
+     "where",
+     "explained",
+     "really"
+    ],
+    "common_tags": [
+     "technology explained",
+     "gps explained",
+     "gps technology",
+     "how gps works",
+     "science explained"
+    ],
+    "outliers": [
+     {
+      "title": "Do You Know What’s Actually Inside Your Phone?",
+      "channel": "Nat and Friends",
+      "views": 1762320,
+      "subs": 193000,
+      "ratio": 9.1,
+      "age_days": 4128,
+      "seconds": 380,
+      "tags": [
+       "google",
+       "behind the scenes",
+       "nat and lo",
+       "nat and lo's 20% project",
+       "nat and lo's 20 percent project",
+       "nat and lo 20 percent"
+      ]
+     }
+    ],
+    "top_by_views": [
+     {
+      "title": "Do You Know What’s Actually Inside Your Phone?",
+      "channel": "Nat and Friends",
+      "views": 1762320,
+      "subs": 193000,
+      "ratio": 9.1,
+      "age_days": 4128,
+      "seconds": 380,
+      "tags": [
+       "google",
+       "behind the scenes",
+       "nat and lo",
+       "nat and lo's 20% project",
+       "nat and lo's 20 percent project",
+       "nat and lo 20 percent"
+      ]
+     },
+     {
+      "title": "UWB Indoor Positioning Demo – 6.7 cm Accuracy on Android Phone",
+      "channel": "Max Bennedich",
+      "views": 630,
+      "subs": 6,
+      "ratio": 0.6,
+      "age_days": 490,
+      "seconds": 27,
+      "tags": []
+     },
+     {
+      "title": "Hidden Technology Inside Your Phone (You Never Notice)",
+      "channel": "The Fact Detour",
+      "views": 283,
+      "subs": 39,
+      "ratio": 0.3,
+      "age_days": 253,
+      "seconds": 212,
+      "tags": [
+       "The Fact Detour",
+       "interesting facts",
+       "science explained",
+       "educational youtube",
+       "curiosity channel",
+       "hidden technology"
+      ]
+     },
+     {
+      "title": "How Your Smartphone Knows Your Location! 📍 Inside GPS & Hidden Phone Sensors Explained",
+      "channel": "StudyBeLike",
+      "views": 168,
+      "subs": 1610,
+      "ratio": 0.1,
+      "age_days": 127,
+      "seconds": 720,
+      "tags": []
+     },
+     {
+      "title": "WHAT REALLY HAPPENS?INSIDE YOUR PHONE!",
+      "channel": "AEDIX",
+      "views": 87,
+      "subs": 72,
+      "ratio": 0.1,
+      "age_days": 66,
+      "seconds": 125,
+      "tags": []
+     }
+    ]
+   }
+  },
+  "why does gps not work indoors": {
+   "suggest": [
+    {
+     "phrase": "why gps signal lost",
+     "score": 17.0
+    },
+    {
+     "phrase": "why gps not working",
+     "score": 14.5
+    },
+    {
+     "phrase": "why gps signal lost android",
+     "score": 3.58
+    },
+    {
+     "phrase": "tomtom no gps signal fix",
+     "score": 1.33
+    },
+    {
+     "phrase": "does gps work without internet",
      "score": 1.0
     },
     {
-     "phrase": "why does my phone turn off randomly",
-     "score": 1.0
+     "phrase": "how to solve gps signal lost problem",
+     "score": 0.92
     },
     {
-     "phrase": "how to stop your phone from randomly turning off",
-     "score": 0.58
+     "phrase": "what does gps mean",
+     "score": 0.83
     },
     {
-     "phrase": "what causes a phone to turn off by itself",
+     "phrase": "how gps signal works",
      "score": 0.5
     },
     {
-     "phrase": "what happens when your phone suddenly turns off",
+     "phrase": "car gps not working",
      "score": 0.5
     },
     {
-     "phrase": "why my phone is always turning off",
+     "phrase": "why gps not working on waze",
      "score": 0.5
     },
     {
-     "phrase": "why my phone turn off suddenly",
-     "score": 0.5
+     "phrase": "gps not accurate android",
+     "score": 0.33
+    },
+    {
+     "phrase": "how to fix gps signal lost",
+     "score": 0.25
+    }
+   ],
+   "outliers": {
+    "available": true,
+    "videos": 15,
+    "median_seconds": 358,
+    "share_shorts": 0.0,
+    "share_questions": 0.53,
+    "median_title_chars": 56,
+    "recurring_words": [
+     "does",
+     "works",
+     "know",
+     "where",
+     "signal",
+     "indoors",
+     "maps",
+     "working"
+    ],
+    "common_tags": [
+     "how does gps work",
+     "how gps works",
+     "gps",
+     "gps explained",
+     "veritasium",
+     "how gps finds you"
+    ],
+    "outliers": [
+     {
+      "title": "How NEO-6M GPS Module works ? | 3D Animated 🔥",
+      "channel": "Blue Butterfly",
+      "views": 183763,
+      "subs": 18000,
+      "ratio": 10.2,
+      "age_days": 511,
+      "seconds": 449,
+      "tags": [
+       "neo-6m gps",
+       "neo-6m gps module",
+       "how gps works",
+       "neo-6m arduino",
+       "gps module explained",
+       "gps with arduino"
+      ]
+     },
+     {
+      "title": "How to get GPS Signals Indoors using a Repeater",
+      "channel": "The Wayfinding Expert",
+      "views": 11349,
+      "subs": 1170,
+      "ratio": 9.7,
+      "age_days": 3207,
+      "seconds": 326,
+      "tags": [
+       "navigation",
+       "wayfinding",
+       "gps indoors",
+       "gps signal indoors",
+       "gps demo indoors",
+       "ibeacon indoor gps"
+      ]
+     },
+     {
+      "title": "How To Fix The GPS Not Working on iPhone | Solve iPhone GPS Issues on iOS 18",
+      "channel": "DeviceCare+",
+      "views": 24640,
+      "subs": 9310,
+      "ratio": 2.6,
+      "age_days": 728,
+      "seconds": 126,
+      "tags": [
+       "How To Fix The GPS Not Working on iPhone",
+       "Solve iPhone GPS Issues on iOS 18",
+       "GPS Not Accurate on iPhone",
+       "troubleshoot iPhone gps",
+       "iPhone gps showing wrong directions",
+       "fix gps accuracy of iPhone"
+      ]
+     }
+    ],
+    "top_by_views": [
+     {
+      "title": "Something is jamming GPS over Europe. Here's what we found",
+      "channel": "Veritasium",
+      "views": 12601130,
+      "subs": 21500000,
+      "ratio": 0.6,
+      "age_days": 176,
+      "seconds": 2057,
+      "tags": [
+       "veritasium",
+       "science",
+       "physics",
+       "Veritasium",
+       "engineering",
+       "gps"
+      ]
+     },
+     {
+      "title": "How NEO-6M GPS Module works ? | 3D Animated 🔥",
+      "channel": "Blue Butterfly",
+      "views": 183763,
+      "subs": 18000,
+      "ratio": 10.2,
+      "age_days": 511,
+      "seconds": 449,
+      "tags": [
+       "neo-6m gps",
+       "neo-6m gps module",
+       "how gps works",
+       "neo-6m arduino",
+       "gps module explained",
+       "gps with arduino"
+      ]
+     },
+     {
+      "title": "Google Maps Not Working | GPS Signal lost on Techno,Infinix and other Android Phones",
+      "channel": "DiyTech",
+      "views": 37948,
+      "subs": 72000,
+      "ratio": 0.5,
+      "age_days": 604,
+      "seconds": 65,
+      "tags": [
+       "Google Maps Not Working",
+       "Fix Google Maps",
+       "Google Maps Issue Android",
+       "Google Maps Not Working Tecno",
+       "Google Maps Not Working Xiaomi",
+       "Android Phone Google Maps Fix"
+      ]
+     },
+     {
+      "title": "How To Fix The GPS Not Working on iPhone | Solve iPhone GPS Issues on iOS 18",
+      "channel": "DeviceCare+",
+      "views": 24640,
+      "subs": 9310,
+      "ratio": 2.6,
+      "age_days": 728,
+      "seconds": 126,
+      "tags": [
+       "How To Fix The GPS Not Working on iPhone",
+       "Solve iPhone GPS Issues on iOS 18",
+       "GPS Not Accurate on iPhone",
+       "troubleshoot iPhone gps",
+       "iPhone gps showing wrong directions",
+       "fix gps accuracy of iPhone"
+      ]
+     },
+     {
+      "title": "How to get GPS Signals Indoors using a Repeater",
+      "channel": "The Wayfinding Expert",
+      "views": 11349,
+      "subs": 1170,
+      "ratio": 9.7,
+      "age_days": 3207,
+      "seconds": 326,
+      "tags": [
+       "navigation",
+       "wayfinding",
+       "gps indoors",
+       "gps signal indoors",
+       "gps demo indoors",
+       "ibeacon indoor gps"
+      ]
+     }
+    ]
+   }
+  },
+  "does lightning never strike the same place twice": {
+   "suggest": [
+    {
+     "phrase": "does lightning strike the same place twice",
+     "score": 18.9
+    },
+    {
+     "phrase": "can lightning strike the same place twice",
+     "score": 10.3
+    },
+    {
+     "phrase": "lightning never strikes the same place twice",
+     "score": 6.0
+    },
+    {
+     "phrase": "lightning never strikes the same place twice sweet home alabama",
+     "score": 6.0
+    },
+    {
+     "phrase": "lightning don't strike the same place twice",
+     "score": 2.0
     }
    ],
    "outliers": {
     "available": true,
     "videos": 14,
-    "median_seconds": 195,
+    "median_seconds": 278,
     "share_shorts": 0.07,
-    "share_questions": 0.64,
-    "median_title_chars": 44,
+    "share_questions": 1.0,
+    "median_title_chars": 60,
     "recurring_words": [
-     "cold",
-     "phone",
-     "your",
+     "lightning",
+     "same",
+     "place",
+     "twice",
+     "strike",
      "does",
-     "dies",
-     "battery"
+     "never",
+     "kids",
+     "really",
+     "myth"
     ],
     "common_tags": [
-     "battery science",
-     "charging phone in cold",
-     "lithium plating",
-     "lithium ion battery",
-     "phone battery cold",
-     "why phone dies in cold"
+     "does lightning strike the same place twice",
+     "empire state building lightning",
+     "can lightning strike the same place twice",
+     "how does lightning work",
+     "lightning never strikes twice",
+     "lightning never strikes the same place twice",
+     "lightning myths",
+     "lightning strikes twice"
     ],
     "outliers": [],
     "top_by_views": [
      {
-      "title": "Why Does Cold Weather Kill Your Phone?",
-      "channel": "SciShow",
-      "views": 344811,
-      "subs": 8420000,
+      "title": "STEMM Mythbusters - Does lightning strike the same place twice?",
+      "channel": "UNSW",
+      "views": 4558,
+      "subs": 120000,
       "ratio": 0.0,
-      "age_days": 2526,
-      "seconds": 225,
+      "age_days": 2459,
+      "seconds": 94,
       "tags": [
-       "SciShow",
-       "science",
-       "Hank",
-       "Green",
-       "education",
-       "learn"
+       "UNSW Sydney",
+       "UNSW Australia",
+       "University of New South Wales",
+       "Sydney",
+       "Australia. University",
+       "unsw"
       ]
      },
      {
-      "title": "What Happens If You Leave Your Phone in the Cold?",
-      "channel": "How-To Authority",
-      "views": 1224,
-      "subs": 67700,
-      "ratio": 0.0,
-      "age_days": 557,
-      "seconds": 133,
-      "tags": []
-     },
-     {
-      "title": "Why Your Phone Dies at 30% in the Cold",
-      "channel": "Science Behind The Why ",
-      "views": 225,
-      "subs": 29,
-      "ratio": 0.2,
-      "age_days": 36,
-      "seconds": 118,
+      "title": "Can Lightning Strike the Same Place Twice? | Lightning Facts for Kids | Tiny Whys",
+      "channel": "Tiny Whys",
+      "views": 739,
+      "subs": 1390,
+      "ratio": 0.5,
+      "age_days": 42,
+      "seconds": 366,
       "tags": [
-       "why phone dies in cold",
-       "phone battery dies at 30%",
-       "phone shuts off in cold weather",
-       "battery percentage wrong",
-       "why battery percentage jumps",
-       "phone battery cold weather"
+       "can lightning strike the same place twice",
+       "does lightning strike the same place twice",
+       "lightning never strikes twice myth",
+       "lightning facts for kids",
+       "how does lightning work",
+       "what causes thunder"
       ]
      },
      {
-      "title": "Why Does My Phone Die in the Cold?",
-      "channel": "Curiosity Explained",
-      "views": 160,
-      "subs": 65,
-      "ratio": 0.2,
-      "age_days": 39,
-      "seconds": 531,
+      "title": "Does Lightning Never Strike the Same Place Twice? ⚡ Full Science Lesson for Kids",
+      "channel": "NowISeeWhy",
+      "views": 25,
+      "subs": 64,
+      "ratio": 0.0,
+      "age_days": 32,
+      "seconds": 419,
       "tags": [
-       "interesting facts",
-       "fun facts",
-       "crazy facts",
-       "amazing facts",
-       "mind blowing facts",
-       "random facts"
+       "does lightning strike the same place twice",
+       "empire state building lightning",
+       "how does lightning work",
+       "lightning for kids",
+       "lightning never strikes twice",
+       "lightning safety for kids"
       ]
      },
      {
-      "title": "WHY does even the NEW IPHONE shut down in the COLD!?🥶",
-      "channel": "I Know Why!",
-      "views": 47,
-      "subs": 10,
+      "title": "Lightning Never Strikes the Same Place Twice… Right?",
+      "channel": "TheLastClue",
+      "views": 13,
+      "subs": 35,
       "ratio": 0.0,
-      "age_days": 23,
-      "seconds": 38,
+      "age_days": 19,
+      "seconds": 590,
       "tags": [
-       "why does my phone turn off in the cold",
-       "phone battery in cold weather",
-       "cold weather battery drain",
-       "smartphone battery",
-       "lithium ion battery",
-       "why phones die in winter"
+       "Lightening",
+       "Myths",
+       "Facts"
+      ]
+     },
+     {
+      "title": "Minute Myth Busters - Does Lightning Really Never Strike the Same Place Twice?",
+      "channel": "Minute Myth Busters",
+      "views": 12,
+      "subs": 12,
+      "ratio": 0.0,
+      "age_days": 745,
+      "seconds": 59,
+      "tags": [
+       "lightning never strikes the same place twice",
+       "does lightning strike the same place twice",
+       "can lightning strike the same place twice",
+       "lightning strike the same place twice",
+       "lightning doesn't strike the same place twice",
+       "lightning don't strike the same place twice"
+      ]
+     }
+    ]
+   }
+  },
+  "can lightning strike twice": {
+   "suggest": [
+    {
+     "phrase": "can lightning strike the same place twice",
+     "score": 10.28
+    },
+    {
+     "phrase": "can lightning strike you",
+     "score": 4.75
+    },
+    {
+     "phrase": "lightning strikes guy twice",
+     "score": 1.5
+    },
+    {
+     "phrase": "can you get struck by lightning",
+     "score": 1.25
+    },
+    {
+     "phrase": "lightning strikes twice ascension",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice bronzebeard",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice fh5",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice iron maiden",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice live",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice meme",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice nhl",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice risk of rain returns",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strike twice song",
+     "score": 1.0
+    },
+    {
+     "phrase": "lightning strikes twice thunder force",
+     "score": 1.0
+    },
+    {
+     "phrase": "how can lightning strike you",
+     "score": 0.5
+    },
+    {
+     "phrase": "lightning strikes twice final fantasy",
+     "score": 0.5
+    },
+    {
+     "phrase": "lightning strikes twice iron maiden live",
+     "score": 0.5
+    },
+    {
+     "phrase": "lightning strikes twice little mix",
+     "score": 0.5
+    },
+    {
+     "phrase": "lightning strikes twice movie 1951",
+     "score": 0.5
+    },
+    {
+     "phrase": "lightning strikes twice nfl",
+     "score": 0.5
+    },
+    {
+     "phrase": "lightning strikes twice the shires",
+     "score": 0.5
+    },
+    {
+     "phrase": "hit by lightning under tree",
+     "score": 0.33
+    }
+   ],
+   "outliers": {
+    "available": true,
+    "videos": 15,
+    "median_seconds": 165,
+    "share_shorts": 0.07,
+    "share_questions": 0.47,
+    "median_title_chars": 54,
+    "recurring_words": [
+     "lightning",
+     "twice",
+     "strike",
+     "same",
+     "place",
+     "strikes",
+     "iron",
+     "maiden"
+    ],
+    "common_tags": [
+     "lightning",
+     "iron maiden",
+     "lightning strikes twice",
+     "weather",
+     "does lightning strike the same place twice",
+     "lyrics"
+    ],
+    "outliers": [
+     {
+      "title": "Lightning Strikes Twice",
+      "channel": "URSOFUNNYdotCOM",
+      "views": 820533,
+      "subs": 43,
+      "ratio": 820.5,
+      "age_days": 7278,
+      "seconds": 124,
+      "tags": [
+       "lightning",
+       "strike",
+       "twice",
+       "storm",
+       "tornado",
+       "thunder"
+      ]
+     },
+     {
+      "title": "Scary video shows man being nearly struck by lightning",
+      "channel": "10 Tampa Bay News",
+      "views": 1581709,
+      "subs": 555000,
+      "ratio": 2.8,
+      "age_days": 2661,
+      "seconds": 17,
+      "tags": [
+       "news",
+       "lightning",
+       "lightning strike",
+       "man struck by lightning",
+       "getting struck by lightning",
+       "lightning strikes"
+      ]
+     }
+    ],
+    "top_by_views": [
+     {
+      "title": "Scary video shows man being nearly struck by lightning",
+      "channel": "10 Tampa Bay News",
+      "views": 1581709,
+      "subs": 555000,
+      "ratio": 2.8,
+      "age_days": 2661,
+      "seconds": 17,
+      "tags": [
+       "news",
+       "lightning",
+       "lightning strike",
+       "man struck by lightning",
+       "getting struck by lightning",
+       "lightning strikes"
+      ]
+     },
+     {
+      "title": "Lightning Strikes Twice",
+      "channel": "URSOFUNNYdotCOM",
+      "views": 820533,
+      "subs": 43,
+      "ratio": 820.5,
+      "age_days": 7278,
+      "seconds": 124,
+      "tags": [
+       "lightning",
+       "strike",
+       "twice",
+       "storm",
+       "tornado",
+       "thunder"
+      ]
+     },
+     {
+      "title": "Lightning Strikes Twice (IRON MAIDEN) Acoustic - Thomas Zwijsen ft. Blaze Bayley",
+      "channel": "Thomas Zwijsen",
+      "views": 87177,
+      "subs": 193000,
+      "ratio": 0.5,
+      "age_days": 3033,
+      "seconds": 270,
+      "tags": [
+       "Lightning Strikes Twice",
+       "Iron Maiden",
+       "Lyrics",
+       "Cover",
+       "Acoustic cover",
+       "Thomas Zwijsen"
+      ]
+     },
+     {
+      "title": "Lightning Strikes Twice (2015 Remaster)",
+      "channel": "Iron Maiden - Topic",
+      "views": 72893,
+      "subs": 68200,
+      "ratio": 1.1,
+      "age_days": 1955,
+      "seconds": 291,
+      "tags": [
+       "Iron Maiden",
+       "Virtual XI",
+       "Lightning Strikes Twice"
+      ]
+     },
+     {
+      "title": "Survived After Being Struck by Lightning Twice | Extraordinary People",
+      "channel": "Extraordinary People",
+      "views": 71377,
+      "subs": 82900,
+      "ratio": 0.9,
+      "age_days": 206,
+      "seconds": 3047,
+      "tags": [
+       "lightning",
+       "struck by lightning",
+       "lightning survivor",
+       "survived lightning strike",
+       "lightning documentary",
+       "true survival stories"
       ]
      }
     ]
