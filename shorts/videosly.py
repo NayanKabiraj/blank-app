@@ -24,7 +24,7 @@ import sys
 from . import config
 
 SERIES = {
-    "horror": {"skill": "horror-story", "voice": os.getenv("VIDEOSLY_HORROR_VOICE", "eng-brooklyn-male"), "name": "Quiet Dark",
+    "horror": {"skill": "horror-story", "voice": os.getenv("VIDEOSLY_HORROR_VOICE", "Mortimer"), "name": "Quiet Dark",
                "label": "A fictional AI-made horror story", "hashtags": "#Shorts #HorrorStory #Fiction", "style": ""},
     "mystery": {"skill": "short-mystery", "voice": os.getenv("VIDEOSLY_MYSTERY_VOICE", ""), "name": "The Fair Clue",
                 "label": "A fictional AI-made mystery", "hashtags": "#Shorts #Mystery #Fiction",
@@ -94,8 +94,8 @@ def composition_problems(series: str, args: dict) -> list[str]:
         return [f"series must be one of {sorted(SERIES)}"]
     c = args.get("composition") or {}
     segs = c.get("segments") or []
-    if c.get("language") != "en":
-        p.append("composition.language must be 'en'")
+    if c.get("language") not in ("en", "hi"):
+        p.append("composition.language must be 'en' or 'hi' (horror is made in both; the Hindi one has Devanagari narration, English captions, the same Mortimer voice)")
     if not segs or not segs[0].get("images"):
         p.append("the first segment needs a picture")
     words = sum(len(x.get("narration", "").split()) for x in segs)

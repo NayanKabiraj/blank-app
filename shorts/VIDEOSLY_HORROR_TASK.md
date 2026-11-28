@@ -7,7 +7,7 @@ The Videosly MCP connector (tools `mcp__Videously__videosly_*`) is called by Cla
 Two series, one video each per day (Videosly allows 2 YouTube posts a day, so keep it to these two):
 | Series | skill | voice | look |
 |---|---|---|---|
-| Quiet Dark (horror, invented, bloodless) | `horror-story` | `VIDEOSLY_HORROR_VOICE` (default `eng-brooklyn-male`: Videosly has no voice list tool, the id format comes from `get_scene`; check what it recorded and change the env var if it does not sound mysterious) | skill's own dark cinematic horror look |
+| Quiet Dark (horror, invented, bloodless) | `horror-story` | voice **Mortimer** (owner choice, 28 Nov 2026) for ALL horror videos, English and Hindi (`VIDEOSLY_HORROR_VOICE`; Videosly has no voice list tool: after generating, `get_scene` shows `voiceId`; if it is not Mortimer, say so) | skill's own dark cinematic horror look |
 | The Fair Clue (invented mystery / crime, one fair clue, bloodless; episode numbered in the description) | `short-mystery` | Videosly default narrator (`VIDEOSLY_MYSTERY_VOICE` to pick one) | warm graphic-novel noir `visualStyle` set by `shorts.videosly` |
 
 Real crimes (`case-file`) are NOT used: real victims and private people are off limits. Everything is invented: no real person, brand, place or event; no gore; no child in danger.
@@ -22,6 +22,8 @@ Real crimes (`case-file`) are NOT used: real victims and private people are off 
 6. `meta.json` as before (title <= 65 characters, label it fiction, description >= 80 characters with 2-3 hashtags incl. #Shorts and "The Fair Clue, episode N" / "Quiet Dark" in the first line or the end, 5-8 tags), `python3 -m shorts.videosly check-meta meta.json`, `videosly_list_channels`, `python3 -m shorts.videosly post-args meta.json <videoId> <channelId>`, post (privacy `private` unless `VIDEOSLY_PRIVACY`, `aiGenerated` true).
 7. `python3 -m shorts.videosly record entry.json` ({"series","topic","videoId","title","postId","privacy","duration_seconds","posted":true}); commit ONLY `data/videosly/history.json` to `main` (rule 7 exception).
 8. Final summary: for each series the topic, title, duration, privacy, post status/URL, or why it was skipped.
+
+Horror is produced in English AND Hindi (same story, `language` "hi", Devanagari narration, English captions, voice Mortimer); mystery stays English unless the owner asks.
 
 ## Honest limits
 - Videosly's picture style and narrators are its own; Claude can set `visualStyle` and `voiceId` but cannot list the voices. AI-drawn stills are always labelled synthetic.
