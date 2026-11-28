@@ -1137,5 +1137,32 @@
         "video_id": "kAmh8FneOhw"
       }
     }
+  },
+  {
+    "date": "2026-11-28",
+    "niche": "Myth Busters",
+    "topic": "Does Lightning Never Strike the Same Place Twice?",
+    "mood": "dramatic",
+    "cluster": "Myth Busters",
+    "follow_ups": [
+      "Can you really see the Great Wall of China from space?",
+      "Is the Sun really yellow?",
+      "Do bulls hate the colour red?"
+    ],
+    "next_video": "Can you really see the Great Wall from space?",
+    "gate_score": 80,
+    "thumbnail_text": "LIGHTNING MYTH",
+    "videos": {
+      "en": {
+        "file": "2026-11-28_en.mp4",
+        "saved_to": "videos/2026-11-28/en.mp4",
+        "video_id": "WkQu6XDqUAc"
+      },
+      "hi": {
+        "file": "2026-11-28_hi.mp4",
+        "saved_to": "videos/2026-11-28/hi.mp4",
+        "video_id": "Od_4UDzXLqQ"
+      }
+    }
   }
 ]

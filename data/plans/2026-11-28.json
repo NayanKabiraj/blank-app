@@ -1,39 +1,39 @@
 {
-  "niche": "How Tech Works",
-  "topic": "How Does Your Phone Find You Indoors?",
-  "research_summary": "Channel check: 28 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 2,220 views / 39.9 % viewed, long-form 88 views / 14.9 % viewed, 0.9 subscribers per 1,000 views; top: Hindi GPS video 912 views (228/day), flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.9 h). Patterns brief 28 Nov: slots 1) space+nature 1.26x (n=15, viewed 60 %), 2) tech 0.91x (n=8, viewed 54 %), 3) myth explore (n=0 at the brief; the first myth video is 1 day old). Videosly horror step: the connector rejected a prompt-only generate call today (it demanded composition, title and description), so it was skipped. Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own phone in a mall), 5 (series promise 'Phone series, part four' in scene 2), 6 (everyday-tech first). Part 2 rule: the Hindi GPS video is the channel's top performer, so this continues its series (GPS part 2 was 27 Nov). Candidates (/40): (1) How does your phone find you indoors 33 (a direct follow-up of the best video, a clear four-clue structure), (2) Why do wireless chargers get warm 30, (3) How does Face Unlock work in the dark 29 (done before). Winner (1). Titles (/50): 'How Does Your Phone Find You Indoors?' 41 (chosen, 38 chars), 'GPS Can't See Inside: How Your Phone Still Finds You' 38. Thumbnails: A a phone in a mall with a blue dot and a floor number (chosen). Hooks: 'GPS can't reach inside a mall. So how does your phone still find you?' (chosen), 'Your phone knows your floor.'. Gap: SEO run 28 Nov 02:54 UTC: autocomplete 'why gps signal lost' (17.0) and 'why gps not working' (14.5) are the strongest phrases (tags), 'how does phone gps work' (22.5) for the topic; outliers are 4-6 minute GPS explainers (share_shorts 0 to 0.13); outliers are 3-8 minute indoor-positioning explainers; none shows the clues-blended-into-one-guess idea in 50 s; structure = a clue-by-clue build into one blue dot, different from today's other two. Claims: (1) satellite signals are weak or blocked indoors, so GPS often gives little or no fix there - VERIFIED (HERE Technologies, Computerworld); (2) phones scan nearby Wi-Fi networks without joining and match signal patterns against maps of known access points - VERIFIED (Computerworld/PCWorld, EFF); (3) Bluetooth beacons indicate proximity and cell towers give a coarse position - VERIFIED (Computerworld, GPS World); (4) a barometer measures air pressure change to estimate height, such as the floor - VERIFIED (Computerworld, PCWorld); (5) the phone fuses GPS, Wi-Fi, towers and sensors into one location - VERIFIED (EFF); the accuracy figures drawn in the bar chart (about 100 m vs about 5 m) are illustrative, PARTIALLY VERIFIED, so they are not spoken. Sources: HERE Technologies, Computerworld, Electronic Frontier Foundation, GPS World. Growth: lever = series follow-up of the top video (Part 2 rule) with a hook on the viewer's own phone; next_video continues the phone series, the pinned comment asks which clue surprised them; policy check: own angle and structure, everyday device explanation, nothing off-putting. Quality gate 81/100.",
-  "mood": "upbeat",
-  "cluster": "Phone Secrets",
+  "niche": "Myth Busters",
+  "topic": "Does Lightning Never Strike the Same Place Twice?",
+  "research_summary": "Channel check: 28 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 2,220 views / 39.9 % viewed, long-form 88 views / 14.9 % viewed, 0.9 subscribers per 1,000 views; top: Hindi GPS video 912 views (228/day), flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.9 h). Patterns brief 28 Nov: slots 1) space+nature 1.26x (n=15, viewed 60 %), 2) tech 0.91x (n=8, viewed 54 %), 3) myth explore (n=0 at the brief; the first myth video is 1 day old). Videosly horror step: the connector rejected a prompt-only generate call today (it demanded composition, title and description), so it was skipped. Learning applied: rules 1 (payoff before 22 s), 5 (series promise 'Myth series, part two' in scene 2 plus the next-myth question), 7 (Myth explore slot). Second Myth Busters video: yesterday's brain myth is 1 day old with 1.0 views, so this tests whether a nature myth with a visual (lightning on a tower) does better. Candidates (/40): (1) Does lightning never strike the same place twice 32 (a famous idiom, a clean visual, settled science), (2) Can you see the Great Wall from space 30 (space overlap with slot 1), (3) Is the Sun yellow 28. Winner (1). Titles (/50): 'Does Lightning Strike the Same Place Twice? (Myth)' 40 (chosen, 50 chars, the autocomplete wording), 'Lightning DOES Strike Twice (Myth Busted)' 39. Thumbnails: A a tower with three bolts and a red MYTH stamp (chosen). Hooks: 'Lightning never strikes the same place twice. Everyone says so. Is it true?' (chosen), 'The Empire State Building is hit 25 times a year.'. Gap: SEO run 28 Nov 02:54 UTC: autocomplete 'does lightning strike the same place twice' (18.9, used in the English title) and 'can lightning strike the same place twice' (10.3); outliers are 3-5 minute explainers (share_shorts 0.07); outliers are 2-5 minute lightning-myth explainers; none pairs the repeated-strike count with the easiest-path idea in 50 s; structure = a myth card, a strike counter and a path diagram, different from the other two videos. Claims: (1) lightning can and does strike the same place more than once - VERIFIED (Britannica, Science Notes); (2) tall, pointed, conductive objects are struck repeatedly because they offer the easiest path to the ground - VERIFIED (HowStuffWorks, Fox Weather); (3) the Empire State Building is struck about 25 times in a typical year (estimates vary, some sources say more) - PARTIALLY VERIFIED (Weather Channel citing the National Weather Service, HowStuffWorks; narration says 'about twenty-five' and 'a typical year'); (4) the 'eight strikes in one storm' report is left out of the narration (secondary source only). No safety advice is given (no health or safety claims). Sources: Britannica, Science Notes, HowStuffWorks, Fox Weather. Growth: lever = a new-family test with an idiom-as-fact hook and a series promise (next myth, pinned comment asking for it); policy check: settled science only, no health or safety advice, nothing sensitive. Quality gate 80/100.",
+  "mood": "dramatic",
+  "cluster": "Myth Busters",
   "follow_ups": [
-    "Why do wireless chargers get warm?",
-    "How does your phone know it is raining?",
-    "How does Bluetooth find lost things?"
+    "Can you really see the Great Wall of China from space?",
+    "Is the Sun really yellow?",
+    "Do bulls hate the colour red?"
   ],
-  "gate_score": 81,
+  "gate_score": 80,
   "english": {
-    "title": "How Does Your Phone Find You Indoors?",
-    "description": "How does your phone find you indoors? GPS can't see through the roof, so Wi-Fi, Bluetooth, cell towers and a barometer fill in. A short animated explainer. #Shorts #Phone #Tech",
+    "title": "Does Lightning Strike the Same Place Twice? (Myth)",
+    "description": "Does lightning never strike the same place twice? A short myth-buster: why tall towers get hit again and again, and the easiest-path idea behind it. #Shorts #Lightning #MythBusters",
     "tags": [
-      "how does phone location work indoors",
-      "why gps not working indoors",
-      "why gps signal lost",
-      "indoor positioning",
-      "how does phone know my floor",
-      "gps explained",
-      "phone location explained"
+      "does lightning strike the same place twice",
+      "can lightning strike the same place twice",
+      "lightning never strikes twice",
+      "lightning myths",
+      "empire state building lightning",
+      "myth busted",
+      "weather science"
     ],
-    "hook_text": "GPS can't see indoors.",
-    "thumbnail_text": "FINDS YOU INDOORS",
-    "thumbnail_question": "How does your phone find you indoors?",
-    "next_video": "Why do wireless chargers get warm?",
-    "pinned_comment": "Which clue surprised you most? Tell me below!",
+    "hook_text": "Lightning never strikes twice?",
+    "thumbnail_text": "LIGHTNING MYTH",
+    "thumbnail_question": "Can lightning strike twice?",
+    "next_video": "Can you really see the Great Wall from space?",
+    "pinned_comment": "Which myth should I bust next? Tell me below!",
     "scenes": [
       {
-        "text": "GPS can't reach inside a mall. So how does your phone still find you?",
-        "keyword": "inside a mall",
+        "text": "Lightning never strikes the same place twice. Everyone says so. Is it true?",
+        "keyword": "twice",
         "graphic": {
           "kind": "title",
-          "headline": "Indoors?",
+          "headline": "Strikes twice?",
           "caption": "",
           "items": [],
           "values": [],
@@ -42,16 +42,16 @@
         }
       },
       {
-        "text": "In this video: the clues your phone uses indoors. Phone series, part four.",
+        "text": "In this video: why that is a myth, and where lightning strikes again and again. Myth series, part two.",
         "keyword": "In this video",
         "graphic": {
           "kind": "chat",
           "headline": "This video",
           "caption": "",
           "items": [
-            "Wi-Fi",
-            "Beacons and towers",
-            "Phone part 4"
+            "The myth",
+            "Tall towers",
+            "Myth part 2"
           ],
           "values": [],
           "answer": null,
@@ -59,11 +59,63 @@
         }
       },
       {
-        "text": "First clue: Wi-Fi. Your phone listens to nearby networks and matches their signal strengths against a map.",
-        "keyword": "Wi-Fi",
+        "text": "It's false. Lightning favours tall, pointed things, so the same spot gets hit again and again.",
+        "keyword": "It's false",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Myth vs fact",
+          "caption": "",
+          "items": [
+            "Never twice",
+            "Again and again"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The Empire State Building is struck about twenty-five times in a typical year.",
+        "keyword": "twenty-five",
+        "graphic": {
+          "kind": "stat",
+          "headline": "Strikes",
+          "caption": "",
+          "items": [
+            "Tower per year",
+            "Quiet field per year"
+          ],
+          "values": [
+            25.0,
+            1.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Why? Lightning takes the easiest path to the ground, and a tall metal tower is the easiest path around.",
+        "keyword": "easiest path",
+        "graphic": {
+          "kind": "steps",
+          "headline": "The path",
+          "caption": "",
+          "items": [
+            "Cloud charge",
+            "Easiest path",
+            "Tall tower"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Lightning doesn't keep track of where it has been. It just takes the easiest path again.",
+        "keyword": "where it has been",
         "graphic": {
           "kind": "keyword",
-          "headline": "Wi-Fi map",
+          "headline": "No memory",
           "caption": "",
           "items": [],
           "values": [],
@@ -72,15 +124,15 @@
         }
       },
       {
-        "text": "Second clue: Bluetooth beacons and cell towers. They say you are near something, not exactly where.",
-        "keyword": "near something",
+        "text": "The truth: lightning can strike the same place twice, and does.",
+        "keyword": "The truth",
         "graphic": {
           "kind": "compare",
-          "headline": "Two clues",
+          "headline": "Truth",
           "caption": "",
           "items": [
-            "Beacons: near",
-            "Towers: roughly"
+            "Rule of luck",
+            "Rule of paths"
           ],
           "values": [],
           "answer": null,
@@ -88,63 +140,11 @@
         }
       },
       {
-        "text": "Third clue: a barometer. How does air pressure know your floor? It falls a little as you climb.",
-        "keyword": "barometer",
-        "graphic": {
-          "kind": "steps",
-          "headline": "Floor",
-          "caption": "",
-          "items": [
-            "Climb",
-            "Pressure falls",
-            "Floor known"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Then the phone blends every clue into one best guess. That is the blue dot you see.",
-        "keyword": "best guess",
-        "graphic": {
-          "kind": "stat",
-          "headline": "Accuracy",
-          "caption": "",
-          "items": [
-            "Indoors, GPS only (m)",
-            "Blended clues (m)"
-          ],
-          "values": [
-            100.0,
-            5.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "So indoors it is not satellites. It is signals and sensors all around you.",
-        "keyword": "signals and sensors",
-        "graphic": {
-          "kind": "myth",
-          "headline": "Indoors",
-          "caption": "",
-          "items": [
-            "Satellites alone",
-            "Signals and sensors"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "Which clue surprised you most? Tell me below!",
-        "keyword": "surprised",
+        "text": "Which myth should I bust next? Tell me below!",
+        "keyword": "next",
         "graphic": {
           "kind": "title",
-          "headline": "Which clue?",
+          "headline": "Next myth?",
           "caption": "",
           "items": [],
           "values": [],
@@ -153,30 +153,30 @@
         }
       }
     ],
-    "animation_pack": "indoor_find_vox"
+    "animation_pack": "lightning_twice_vox"
   },
   "hindi": {
-    "title": "फ़ोन आपको घर या मॉल के अंदर कैसे ढूँढता है?",
-    "description": "फ़ोन आपको अंदर कैसे ढूँढता है? GPS छत के पार नहीं जाता, इसलिए वाई-फ़ाई, ब्लूटूथ, मोबाइल टावर और बैरोमीटर मदद करते हैं। छोटा एनिमेटेड समझाव। #Shorts #Phone #टेक",
+    "title": "क्या बिजली कभी एक ही जगह दो बार नहीं गिरती?",
+    "description": "क्या बिजली कभी एक ही जगह दो बार नहीं गिरती? ऊँचे टॉवर पर बार-बार क्यों गिरती है और आसान रास्ते का नियम क्या है, एक छोटा मिथक-बस्टर। #Shorts #बिजली #मिथक",
     "tags": [
-      "फ़ोन लोकेशन अंदर कैसे",
-      "GPS अंदर काम क्यों नहीं करता",
-      "फ़ोन को मंज़िल कैसे पता",
-      "इनडोर लोकेशन",
-      "फ़ोन टिप्स"
+      "बिजली एक जगह दो बार",
+      "बिजली के मिथक",
+      "क्या बिजली दो बार गिरती है",
+      "मिथक बनाम सच",
+      "मौसम विज्ञान"
     ],
-    "hook_text": "GPS अंदर नहीं चलता।",
-    "thumbnail_text": "अंदर कैसे ढूँढता",
-    "thumbnail_question": "फ़ोन अंदर कैसे ढूँढता है?",
-    "next_video": "वायरलेस चार्जर गर्म क्यों होते हैं?",
-    "pinned_comment": "आपको कौन-सा सुराग़ सबसे अजीब लगा? बताइए!",
+    "hook_text": "बिजली दो बार नहीं गिरती?",
+    "thumbnail_text": "बिजली मिथक",
+    "thumbnail_question": "क्या बिजली दो बार गिर सकती है?",
+    "next_video": "क्या चीन की दीवार अंतरिक्ष से दिखती है?",
+    "pinned_comment": "अगला कौन-सा मिथक तोड़ूँ? बताइए!",
     "scenes": [
       {
-        "text": "GPS छत के अंदर नहीं पहुँचता। फिर फ़ोन आपको मॉल के अंदर कैसे ढूँढता है?",
-        "keyword": "मॉल के अंदर",
+        "text": "बिजली एक ही जगह दो बार नहीं गिरती। सब यही कहते हैं। क्या यह सच है?",
+        "keyword": "दो बार",
         "graphic": {
           "kind": "title",
-          "headline": "अंदर कैसे?",
+          "headline": "दो बार?",
           "caption": "",
           "items": [],
           "values": [],
@@ -185,16 +185,16 @@
         }
       },
       {
-        "text": "इस वीडियो में: अंदर जगह ढूँढने के सुराग़। फ़ोन सीरीज़ का भाग चार।",
+        "text": "इस वीडियो में: यह मिथक क्यों है, और बिजली बार-बार कहाँ गिरती है। मिथक सीरीज़ का भाग दो।",
         "keyword": "इस वीडियो में",
         "graphic": {
           "kind": "chat",
           "headline": "इस वीडियो में",
           "caption": "",
           "items": [
-            "वाई-फ़ाई",
-            "बीकन और टावर",
-            "फ़ोन भाग 4"
+            "मिथक",
+            "ऊँचे टॉवर",
+            "मिथक भाग 2"
           ],
           "values": [],
           "answer": null,
@@ -202,11 +202,63 @@
         }
       },
       {
-        "text": "पहला सुराग़: वाई-फ़ाई। फ़ोन आसपास के नेटवर्क सुनता है और उनकी ताक़त नक्शे से मिलाता है।",
-        "keyword": "वाई-फ़ाई",
+        "text": "यह ग़लत है। बिजली ऊँची नुकीली चीज़ें पसंद करती है, इसलिए एक ही जगह बार-बार गिरती है।",
+        "keyword": "यह ग़लत है",
+        "graphic": {
+          "kind": "myth",
+          "headline": "मिथक बनाम सच",
+          "caption": "",
+          "items": [
+            "कभी दो बार नहीं",
+            "बार-बार"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "एम्पायर स्टेट बिल्डिंग पर आम साल में लगभग पच्चीस बार बिजली गिरती है।",
+        "keyword": "पच्चीस",
+        "graphic": {
+          "kind": "stat",
+          "headline": "बिजली",
+          "caption": "",
+          "items": [
+            "टॉवर पर, साल में",
+            "खुले मैदान पर"
+          ],
+          "values": [
+            25.0,
+            1.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "क्यों? बिजली ज़मीन तक का सबसे आसान रास्ता पकड़ती है, और ऊँचा धातु का टॉवर वही रास्ता है।",
+        "keyword": "आसान रास्ता",
+        "graphic": {
+          "kind": "steps",
+          "headline": "रास्ता",
+          "caption": "",
+          "items": [
+            "बादल का चार्ज",
+            "आसान रास्ता",
+            "ऊँचा टॉवर"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "बिजली को याद नहीं रहता कि वह कहाँ गिरी थी। वह फिर वही आसान रास्ता लेती है।",
+        "keyword": "याद नहीं",
         "graphic": {
           "kind": "keyword",
-          "headline": "वाई-फ़ाई नक्शा",
+          "headline": "याददाश्त नहीं",
           "caption": "",
           "items": [],
           "values": [],
@@ -215,15 +267,15 @@
         }
       },
       {
-        "text": "दूसरा सुराग़: ब्लूटूथ बीकन और मोबाइल टावर। वे बताते हैं कि आप किसी चीज़ के पास हैं, ठीक कहाँ, यह नहीं।",
-        "keyword": "पास हैं",
+        "text": "सच यह है: बिजली एक ही जगह दो बार गिर सकती है, और गिरती है।",
+        "keyword": "सच यह है",
         "graphic": {
           "kind": "compare",
-          "headline": "दो सुराग़",
+          "headline": "सच",
           "caption": "",
           "items": [
-            "बीकन: पास",
-            "टावर: मोटा अंदाज़ा"
+            "क़िस्मत का नियम",
+            "रास्ते का नियम"
           ],
           "values": [],
           "answer": null,
@@ -231,63 +283,11 @@
         }
       },
       {
-        "text": "तीसरा सुराग़: बैरोमीटर। हवा का दबाव मंज़िल कैसे बताता है? ऊपर चढ़ने पर वह थोड़ा घटता है।",
-        "keyword": "बैरोमीटर",
-        "graphic": {
-          "kind": "steps",
-          "headline": "मंज़िल",
-          "caption": "",
-          "items": [
-            "ऊपर चढ़ें",
-            "दबाव घटे",
-            "मंज़िल पता"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "फिर फ़ोन सारे सुराग़ मिलाकर एक सबसे अच्छा अंदाज़ा बनाता है। वही आपका नीला डॉट है।",
-        "keyword": "सबसे अच्छा अंदाज़ा",
-        "graphic": {
-          "kind": "stat",
-          "headline": "सटीकता",
-          "caption": "",
-          "items": [
-            "अंदर सिर्फ़ GPS (मी)",
-            "मिले सुराग़ (मी)"
-          ],
-          "values": [
-            100.0,
-            5.0
-          ],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "यानी अंदर सैटेलाइट नहीं, आसपास के सिग्नल और सेंसर आपको ढूँढते हैं।",
-        "keyword": "सिग्नल और सेंसर",
-        "graphic": {
-          "kind": "myth",
-          "headline": "अंदर",
-          "caption": "",
-          "items": [
-            "सिर्फ़ सैटेलाइट",
-            "सिग्नल और सेंसर"
-          ],
-          "values": [],
-          "answer": null,
-          "prop": null
-        }
-      },
-      {
-        "text": "आपको कौन-सा सुराग़ सबसे अजीब लगा? बताइए!",
-        "keyword": "कौन-सा सुराग़",
+        "text": "अगला कौन-सा मिथक तोड़ूँ? बताइए!",
+        "keyword": "अगला",
         "graphic": {
           "kind": "title",
-          "headline": "कौन-सा सुराग़?",
+          "headline": "अगला मिथक?",
           "caption": "",
           "items": [],
           "values": [],
@@ -296,6 +296,6 @@
         }
       }
     ],
-    "animation_pack": "indoor_find_vox"
+    "animation_pack": "lightning_twice_vox"
   }
 }
