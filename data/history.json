@@ -1083,5 +1083,32 @@
         "video_id": "uUAcaZQa0no"
       }
     }
+  },
+  {
+    "date": "2026-11-28",
+    "niche": "Space & Universe",
+    "topic": "What If Earth Suddenly Stopped Spinning?",
+    "mood": "dramatic",
+    "cluster": "Space Basics",
+    "follow_ups": [
+      "Why do we have tides?",
+      "Why does the Moon look huge near the horizon?",
+      "What if the Sun disappeared?"
+    ],
+    "next_video": "Why do we have tides?",
+    "gate_score": 82,
+    "thumbnail_text": "EARTH STOPS",
+    "videos": {
+      "en": {
+        "file": "2026-11-28_en.mp4",
+        "saved_to": "videos/2026-11-28/en.mp4",
+        "video_id": "w--DwGZCTjY"
+      },
+      "hi": {
+        "file": "2026-11-28_hi.mp4",
+        "saved_to": "videos/2026-11-28/hi.mp4",
+        "video_id": "Bhqp7j9tkqk"
+      }
+    }
   }
 ]

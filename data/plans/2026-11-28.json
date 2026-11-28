@@ -1,0 +1,301 @@
+{
+  "niche": "Space & Universe",
+  "topic": "What If Earth Suddenly Stopped Spinning?",
+  "research_summary": "Channel check: 28 Nov 2026 (channel_trends, YouTube Analytics 28 d): 48 subscribers (952 to 1,000), Shorts 2,220 views / 39.9 % viewed, long-form 88 views / 14.9 % viewed, 0.9 subscribers per 1,000 views; top: Hindi GPS video 912 views (228/day), flute cover 687, Haunted Hotel 505; Partner Program eligibility: fan-funding tier 0.1 %, ads tier 0.0 % (slowest: subscribers and long-form hours 1.9 h). Patterns brief 28 Nov: slots 1) space+nature 1.26x (n=15, viewed 60 %), 2) tech 0.91x (n=8, viewed 54 %), 3) myth explore (n=0 at the brief; the first myth video is 1 day old). Videosly horror step: the connector rejected a prompt-only generate call today (it demanded composition, title and description), so it was skipped. Learning applied: rules 1 (payoff before 22 s), 2 (the viewer's own ground: you are moving right now), 5 (series promise 'Space series, part three' in scene 2), 7 (Space slot). Part 2 rule: the Hindi GPS winner's saved follow-up 'What if Earth suddenly stopped spinning?' (also promised by the Moon Short). Candidates (/40): (1) What if Earth suddenly stopped spinning 34 (a what-if shape, the best title shape 1.5x, a hook on the viewer's own speed), (2) Why do we have tides 29, (3) Why does the Moon look huge near the horizon 28. Winner (1). Titles (/50): 'What If Earth Suddenly Stopped Spinning?' 42 (chosen, 41 chars), 'The Day Earth Stopped Turning' 33. Thumbnails: A Earth with a red STOP and flying oceans (chosen). Hooks: 'At the equator, the ground moves about sixteen hundred kilometres an hour. What if it stopped?' (chosen), 'You are moving at 1,670 km/h.'. Gap: SEO run 28 Nov 02:54 UTC: autocomplete 'what if earth stopped rotating' (5.7) and 'what happens if the earth stopped rotating' (6.4) go into the tags, the title keeps 'what if earth ... spinning'; the outliers are 5-8 minute videos (share_shorts 0); outliers are 3-8 minute what-if videos, none shows inertia (ground stops, air does not) and the year-long day in 50 s; structure = a what-if chain, different from today's other two. Claims: (1) the ground at the equator moves about 1,600-1,670 km/h - VERIFIED (Space.com, Live Science); (2) if Earth stopped suddenly, atmosphere, oceans and unsecured objects would keep moving at their old speed (inertia): violent winds and surging oceans - VERIFIED (Space.com, Live Science, Astronomy magazine); (3) one solar day would last about one orbital year, months of daylight and darkness - VERIFIED (Live Science, Sky at Night Magazine); (4) a sudden stop is essentially impossible without an enormous external event, and Earth's real spin slows only slightly over time - VERIFIED (Space.com, Astronomy magazine). Sources: Space.com, Live Science, Astronomy magazine, Sky at Night Magazine. Growth: lever = series follow-up (Part 2 rule) with a what-if title shape and a hook on the viewer's own speed; next_video continues the space series, the pinned comment asks sunny half or dark half; policy check: own angle and structure, no medical/finance/legal advice, nothing off-putting. Quality gate 82/100.",
+  "mood": "dramatic",
+  "cluster": "Space Basics",
+  "follow_ups": [
+    "Why do we have tides?",
+    "Why does the Moon look huge near the horizon?",
+    "What if the Sun disappeared?"
+  ],
+  "gate_score": 82,
+  "english": {
+    "title": "What If Earth Suddenly Stopped Spinning?",
+    "description": "What if Earth suddenly stopped spinning? A short animated what-if: why the air and oceans would keep moving, and why one day would last a year. #Shorts #Space #WhatIf",
+    "tags": [
+      "what if earth stopped spinning",
+      "what if earth stopped rotating",
+      "what happens if the earth stopped rotating",
+      "earth stops spinning",
+      "earth rotation",
+      "space facts",
+      "inertia"
+    ],
+    "hook_text": "Earth stops. Then what?",
+    "thumbnail_text": "EARTH STOPS",
+    "thumbnail_question": "What if Earth stopped spinning?",
+    "next_video": "Why do we have tides?",
+    "pinned_comment": "Would you live in the sunny half or the dark half? Tell me below!",
+    "scenes": [
+      {
+        "text": "At the equator, the ground moves about sixteen hundred kilometres an hour. What if it stopped?",
+        "keyword": "sixteen hundred",
+        "graphic": {
+          "kind": "title",
+          "headline": "Earth stops",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "In this video: what a stop would do to air, oceans and days. Space series, part three.",
+        "keyword": "In this video",
+        "graphic": {
+          "kind": "chat",
+          "headline": "This video",
+          "caption": "",
+          "items": [
+            "Air and oceans",
+            "Days",
+            "Space part 3"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The ground would stop. Everything else would not. Air and oceans keep moving at the old speed.",
+        "keyword": "Everything else",
+        "graphic": {
+          "kind": "compare",
+          "headline": "Inertia",
+          "caption": "",
+          "items": [
+            "Ground stops",
+            "Air keeps moving"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "So where does all that motion go? Into violent winds and oceans surging over land.",
+        "keyword": "violent winds",
+        "graphic": {
+          "kind": "steps",
+          "headline": "Where it goes",
+          "caption": "",
+          "items": [
+            "Ground stops",
+            "Air rushes on",
+            "Oceans surge"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Then the days change. One sunrise would take about a whole year.",
+        "keyword": "whole year",
+        "graphic": {
+          "kind": "stat",
+          "headline": "Day length",
+          "caption": "",
+          "items": [
+            "Day now (days)",
+            "Day after (days)"
+          ],
+          "values": [
+            1.0,
+            365.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Half the planet would bake in months of daylight, the other half freeze in months of darkness.",
+        "keyword": "months",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "Months of day",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "The good news: a sudden stop is nearly impossible. Earth's spin only slows by a tiny bit over time.",
+        "keyword": "nearly impossible",
+        "graphic": {
+          "kind": "myth",
+          "headline": "Could it happen?",
+          "caption": "",
+          "items": [
+            "Sudden stop",
+            "Tiny slowing"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "Would you rather live in the sunny half or the dark half? Tell me below!",
+        "keyword": "sunny half",
+        "graphic": {
+          "kind": "title",
+          "headline": "Sun or dark?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      }
+    ],
+    "animation_pack": "earth_stop_vox"
+  },
+  "hindi": {
+    "title": "अगर पृथ्वी अचानक घूमना बंद कर दे तो क्या होगा?",
+    "description": "अगर पृथ्वी अचानक घूमना बंद कर दे तो? हवा और समुद्र क्यों चलते रहेंगे और एक दिन पूरा साल क्यों होगा, छोटा एनिमेटेड समझाव। #Shorts #Space #WhatIf",
+    "tags": [
+      "अगर पृथ्वी घूमना बंद कर दे",
+      "पृथ्वी घूमना बंद",
+      "पृथ्वी की घूमाई",
+      "what if earth stopped hindi",
+      "space facts hindi"
+    ],
+    "hook_text": "पृथ्वी रुक गई तो?",
+    "thumbnail_text": "पृथ्वी रुकी",
+    "thumbnail_question": "अगर पृथ्वी रुक जाए तो?",
+    "next_video": "ज्वार-भाटा क्यों आता है?",
+    "pinned_comment": "आप धूप वाला हिस्सा चुनेंगे या अँधेरे वाला? बताइए!",
+    "scenes": [
+      {
+        "text": "भूमध्य रेखा पर ज़मीन सोलह सौ किमी प्रति घंटे घूमती है। रुक जाए तो?",
+        "keyword": "सोलह सौ",
+        "graphic": {
+          "kind": "title",
+          "headline": "पृथ्वी रुकी",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "इस वीडियो में: रुकने से हवा, समुद्र और दिन का क्या होगा। अंतरिक्ष सीरीज़ का भाग तीन।",
+        "keyword": "इस वीडियो में",
+        "graphic": {
+          "kind": "chat",
+          "headline": "इस वीडियो में",
+          "caption": "",
+          "items": [
+            "हवा और समुद्र",
+            "दिन",
+            "अंतरिक्ष भाग 3"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "ज़मीन रुक जाएगी, पर बाक़ी सब नहीं। हवा और समुद्र पुरानी रफ़्तार से चलते रहेंगे।",
+        "keyword": "बाक़ी सब",
+        "graphic": {
+          "kind": "compare",
+          "headline": "जड़त्व",
+          "caption": "",
+          "items": [
+            "ज़मीन रुकी",
+            "हवा चलती रही"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "तो इतनी गति कहाँ जाएगी? भयानक हवाओं में, और ज़मीन पर चढ़ते समुद्र में।",
+        "keyword": "भयानक हवाओं",
+        "graphic": {
+          "kind": "steps",
+          "headline": "गति कहाँ जाती",
+          "caption": "",
+          "items": [
+            "ज़मीन रुकी",
+            "हवा दौड़ी",
+            "समुद्र चढ़ा"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "फिर दिन बदल जाएँगे। एक सूर्योदय में लगभग पूरा एक साल लगेगा।",
+        "keyword": "पूरा एक साल",
+        "graphic": {
+          "kind": "stat",
+          "headline": "दिन की लंबाई",
+          "caption": "",
+          "items": [
+            "अभी (दिन)",
+            "बाद में (दिन)"
+          ],
+          "values": [
+            1.0,
+            365.0
+          ],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "आधी दुनिया महीनों की धूप में तपेगी, और आधी महीनों के अँधेरे में जमेगी।",
+        "keyword": "महीनों",
+        "graphic": {
+          "kind": "keyword",
+          "headline": "महीनों का दिन",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "अच्छी बात: अचानक रुकना लगभग नामुमकिन है। पृथ्वी की घूमाई समय के साथ बस ज़रा-सी धीमी होती है।",
+        "keyword": "नामुमकिन",
+        "graphic": {
+          "kind": "myth",
+          "headline": "क्या होगा?",
+          "caption": "",
+          "items": [
+            "अचानक रुकना",
+            "ज़रा-सी धीमी"
+          ],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      },
+      {
+        "text": "आप धूप वाला हिस्सा चुनेंगे या अँधेरे वाला? बताइए!",
+        "keyword": "धूप वाला",
+        "graphic": {
+          "kind": "title",
+          "headline": "धूप या अँधेरा?",
+          "caption": "",
+          "items": [],
+          "values": [],
+          "answer": null,
+          "prop": null
+        }
+      }
+    ],
+    "animation_pack": "earth_stop_vox"
+  }
+}
