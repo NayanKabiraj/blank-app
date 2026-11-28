@@ -46,14 +46,14 @@ if (!list.length) { console.error('Chrome did not start.'); quit(1); }
 const ws = new WebSocket(list[0].webSocketDebuggerUrl);
 await new Promise((r) => (ws.onopen = r));
 type Reply = { id?: number; method?: string; params?: any; result?: any; error?: { message: string } };
-let id = 0; const pending = new Map<number, (d: Reply) => void>(); const errors: string[] = [];
+let id = 0; const pending = new Map<number, (d: Reply) => void>(); const errors: string[] = []; const diag: string[] = [];
 ws.onmessage = (m: MessageEvent<string>) => {
   const d: Reply = JSON.parse(m.data);
   if (d.id && pending.has(d.id)) { pending.get(d.id)!(d); pending.delete(d.id); }
   if (d.method === 'Runtime.exceptionThrown') errors.push(d.params.exceptionDetails.exception?.description || d.params.exceptionDetails.text);
-  if (d.method === 'Log.entryAdded' && d.params.entry.level === 'error') errors.push(`log: ${d.params.entry.text} ${d.params.entry.url ?? ''}`);
-  if (d.method === 'Network.responseReceived' && d.params.response.status >= 400) errors.push(`http ${d.params.response.status}: ${d.params.response.url}`);
-  if (d.method === 'Network.loadingFailed') errors.push(`network failed: ${d.params.errorText}`);
+  if (d.method === 'Log.entryAdded' && d.params.entry.level === 'error') diag.push(`log: ${d.params.entry.text} ${d.params.entry.url ?? ''}`);
+  if (d.method === 'Network.responseReceived' && d.params.response.status >= 400) diag.push(`http ${d.params.response.status}: ${d.params.response.url}`);
+  if (d.method === 'Network.loadingFailed') diag.push(`network failed: ${d.params.errorText}`);
   if (d.method === 'Runtime.consoleAPICalled' && d.params.type === 'error') errors.push(d.params.args.map((a: { value?: unknown; description?: string }) => a.value ?? a.description).join(' '));
 };
 const send = (method: string, params: object = {}): Promise<any> => new Promise((res, rej) => { const i = ++id; pending.set(i, (d) => (d.error ? rej(new Error(`${method}: ${d.error.message}`)) : res(d.result))); ws.send(JSON.stringify({ id: i, method, params })); });
@@ -66,7 +66,7 @@ let ready = false;
 for (let i = 0; i < 100 && !ready; i++) { await sleep(150); try { ready = await evalJs('typeof __step === "function" && document.readyState === "complete"'); } catch {} }
 if (!ready) {
   let info = ''; try { info = JSON.stringify(await evalJs('({href: location.href, state: document.readyState, body: document.body ? document.body.innerHTML.length : -1, step: typeof window.__step})')); } catch (e) { info = String(e); }
-  console.error('Page never exposed __step — is ?debug in the url, and does the page use run()?', info, '\n' + [...new Set(errors)].join('\n')); quit(1);
+  console.error('Page never exposed __step — is ?debug in the url, and does the page use run()?', info, '\n' + [...new Set([...errors, ...diag])].join('\n')); quit(1);
 }
 await evalJs('document.fonts.ready.then(() => true)');
 await sleep(400);
