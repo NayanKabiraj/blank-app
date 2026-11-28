@@ -1,11 +1,11 @@
 {
  "available": true,
- "generated": "2026-11-27T10:47:52+00:00",
+ "generated": "2026-11-28T10:18:33+00:00",
  "days": 28,
  "channel": {
-  "viewCount": 12314,
+  "viewCount": 12368,
   "subscriberCount": 48,
-  "videoCount": 164
+  "videoCount": 175
  },
  "channel_status": {
   "privacyStatus": "public",
@@ -14,6 +14,76 @@
   "isChannelMonetizationEnabled": false
  },
  "videos": [
+  {
+   "id": "gMZRnU2sIfE",
+   "title": "The Lift Stops on a Floor With No Button (Fiction)",
+   "published": "2026-11-28T05:38:12Z",
+   "duration": "PT1M1S",
+   "privacy": "public",
+   "views": 2,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "Bhqp7j9tkqk",
+   "title": "अगर पृथ्वी अचानक घूमना बंद कर दे तो क्या होगा? #Shorts",
+   "published": "2026-11-28T04:16:22Z",
+   "duration": "PT52S",
+   "privacy": "public",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "rskVXhNuT3s",
+   "title": "How Does Your Phone Find You Indoors? #Shorts",
+   "published": "2026-11-28T04:16:11Z",
+   "duration": "PT51S",
+   "privacy": "public",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "kAmh8FneOhw",
+   "title": "फ़ोन आपको घर या मॉल के अंदर कैसे ढूँढता है? #Shorts",
+   "published": "2026-11-28T04:15:58Z",
+   "duration": "PT58S",
+   "privacy": "public",
+   "views": 0,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "WkQu6XDqUAc",
+   "title": "Does Lightning Strike the Same Place Twice? (Myth) #Shorts",
+   "published": "2026-11-28T04:15:42Z",
+   "duration": "PT51S",
+   "privacy": "public",
+   "views": 4,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "Od_4UDzXLqQ",
+   "title": "क्या बिजली कभी एक ही जगह दो बार नहीं गिरती? #Shorts",
+   "published": "2026-11-28T04:15:33Z",
+   "duration": "PT54S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "w--DwGZCTjY",
+   "title": "What If Earth Suddenly Stopped Spinning? #Shorts",
+   "published": "2026-11-28T04:14:43Z",
+   "duration": "PT52S",
+   "privacy": "public",
+   "views": 1,
+   "likes": 0,
+   "comments": 0
+  },
   {
    "id": "uUAcaZQa0no",
    "title": "ठंड में फ़ोन जल्दी बंद क्यों हो जाता है? #Shorts",
@@ -30,7 +100,7 @@
    "published": "2026-11-27T06:54:06Z",
    "duration": "PT47S",
    "privacy": "public",
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -110,7 +180,7 @@
    "published": "2026-11-27T03:34:25Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 3,
+   "views": 5,
    "likes": 0,
    "comments": 0
   },
@@ -140,7 +210,7 @@
    "published": "2026-11-26T04:04:29Z",
    "duration": "PT55S",
    "privacy": "public",
-   "views": 4,
+   "views": 5,
    "likes": 0,
    "comments": 0
   },
@@ -150,7 +220,7 @@
    "published": "2026-11-26T04:04:07Z",
    "duration": "PT52S",
    "privacy": "public",
-   "views": 11,
+   "views": 14,
    "likes": 0,
    "comments": 0
   },
@@ -250,7 +320,7 @@
    "published": "2026-11-24T12:24:39Z",
    "duration": "PT4M48S",
    "privacy": "public",
-   "views": 6,
+   "views": 7,
    "likes": 0,
    "comments": 0
   },
@@ -450,7 +520,7 @@
    "published": "2026-11-18T09:05:50Z",
    "duration": "PT5M12S",
    "privacy": "public",
-   "views": 1,
+   "views": 2,
    "likes": 0,
    "comments": 0
   },
@@ -515,16 +585,6 @@
    "comments": 0
   },
   {
-   "id": "NQ-GnC2OtCQ",
-   "title": "79 टन का विमान हवा में कैसे टिकता है?",
-   "published": "2026-11-17T09:55:20Z",
-   "duration": "PT5M47S",
-   "privacy": "public",
-   "views": 0,
-   "likes": 0,
-   "comments": 0
-  },
-  {
    "id": "xXmhxA3xUhQ",
    "title": "How can a 79-tonne plane stay in the air?",
    "published": "2026-11-17T09:55:08Z",
@@ -542,6 +602,16 @@
    "privacy": "public",
    "views": 6,
    "likes": 0,
+   "comments": 0
+  },
+  {
+   "id": "k6BRkrh4lok",
+   "title": "सर्दियों में हैंडल से झटका क्यों लगता है? #Shorts",
+   "published": "2026-11-17T09:50:57Z",
+   "duration": "PT1M",
+   "privacy": "public",
+   "views": 40,
+   "likes": 1,
    "comments": 0
   },
   {
@@ -1230,7 +1300,7 @@
    "published": "2022-01-14T15:43:39Z",
    "duration": "PT1M54S",
    "privacy": "public",
-   "views": 54,
+   "views": 55,
    "likes": 5,
    "comments": 3
   },
@@ -1707,6 +1777,14 @@
  ],
  "analytics": [
   {
+   "video": "j8sVgBsRXM0",
+   "views": 845,
+   "estimatedMinutesWatched": 53,
+   "averageViewDuration": 14,
+   "averageViewPercentage": 25.56,
+   "subscribersGained": 1
+  },
+  {
    "video": "ERaiKmQcvzE",
    "views": 505,
    "estimatedMinutesWatched": 63,
@@ -1720,14 +1798,6 @@
    "estimatedMinutesWatched": 62,
    "averageViewDuration": 22,
    "averageViewPercentage": 34.68,
-   "subscribersGained": 0
-  },
-  {
-   "video": "j8sVgBsRXM0",
-   "views": 364,
-   "estimatedMinutesWatched": 21,
-   "averageViewDuration": 14,
-   "averageViewPercentage": 26.51,
    "subscribersGained": 0
   },
   {
@@ -1764,10 +1834,10 @@
   },
   {
    "video": "cwb_sHbjxwE",
-   "views": 76,
-   "estimatedMinutesWatched": 9,
+   "views": 78,
+   "estimatedMinutesWatched": 10,
    "averageViewDuration": 15,
-   "averageViewPercentage": 29.270000000000003,
+   "averageViewPercentage": 28.73,
    "subscribersGained": 1
   },
   {
@@ -1792,6 +1862,14 @@
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 22,
    "averageViewPercentage": 42.32,
+   "subscribersGained": 0
+  },
+  {
+   "video": "JHcJ3WpQpvs",
+   "views": 27,
+   "estimatedMinutesWatched": 4,
+   "averageViewDuration": 27,
+   "averageViewPercentage": 52.14,
    "subscribersGained": 0
   },
   {
@@ -1835,19 +1913,27 @@
    "subscribersGained": 0
   },
   {
-   "video": "JHcJ3WpQpvs",
+   "video": "qf-UeA0pKao",
    "views": 13,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 23,
-   "averageViewPercentage": 44.27,
+   "estimatedMinutesWatched": 6,
+   "averageViewDuration": 35,
+   "averageViewPercentage": 13.03,
    "subscribersGained": 0
   },
   {
    "video": "GOmKtQvKMX8",
-   "views": 10,
+   "views": 11,
    "estimatedMinutesWatched": 15,
-   "averageViewDuration": 157,
-   "averageViewPercentage": 48.3,
+   "averageViewDuration": 135,
+   "averageViewPercentage": 41.45,
+   "subscribersGained": 0
+  },
+  {
+   "video": "dT9CZznRbSg",
+   "views": 11,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 25,
+   "averageViewPercentage": 48.65,
    "subscribersGained": 0
   },
   {
@@ -1856,14 +1942,6 @@
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 32,
    "averageViewPercentage": 75.2,
-   "subscribersGained": 0
-  },
-  {
-   "video": "qf-UeA0pKao",
-   "views": 10,
-   "estimatedMinutesWatched": 6,
-   "averageViewDuration": 49,
-   "averageViewPercentage": 18.09,
    "subscribersGained": 0
   },
   {
@@ -1923,11 +2001,27 @@
    "subscribersGained": 0
   },
   {
+   "video": "ryWe8wxndE0",
+   "views": 7,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 42,
+   "averageViewPercentage": 75.25,
+   "subscribersGained": 0
+  },
+  {
    "video": "zx56v1qrtuI",
    "views": 7,
    "estimatedMinutesWatched": 2,
    "averageViewDuration": 32,
    "averageViewPercentage": 56.49999999999999,
+   "subscribersGained": 0
+  },
+  {
+   "video": "6PQciVURhqE",
+   "views": 6,
+   "estimatedMinutesWatched": 1,
+   "averageViewDuration": 18,
+   "averageViewPercentage": 6.25,
    "subscribersGained": 0
   },
   {
@@ -1939,11 +2033,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "Z9_cGM9Jb9Y",
+   "video": "EvzP8k7wyeo",
    "views": 6,
    "estimatedMinutesWatched": 0,
-   "averageViewDuration": 7,
-   "averageViewPercentage": 45.21,
+   "averageViewDuration": 20,
+   "averageViewPercentage": 44.47,
+   "subscribersGained": 0
+  },
+  {
+   "video": "QEDE7B2SeBc",
+   "views": 6,
+   "estimatedMinutesWatched": 2,
+   "averageViewDuration": 31,
+   "averageViewPercentage": 54.559999999999995,
    "subscribersGained": 0
   },
   {
@@ -1987,27 +2089,11 @@
    "subscribersGained": 0
   },
   {
-   "video": "ryWe8wxndE0",
-   "views": 6,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 42,
-   "averageViewPercentage": 75.25,
-   "subscribersGained": 0
-  },
-  {
    "video": "sW35FxePNWI",
    "views": 6,
    "estimatedMinutesWatched": 1,
    "averageViewDuration": 19,
    "averageViewPercentage": 78.29,
-   "subscribersGained": 0
-  },
-  {
-   "video": "6PQciVURhqE",
-   "views": 5,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 18,
-   "averageViewPercentage": 6.25,
    "subscribersGained": 0
   },
   {
@@ -2027,11 +2113,19 @@
    "subscribersGained": 0
   },
   {
-   "video": "QEDE7B2SeBc",
+   "video": "Z9_cGM9Jb9Y",
    "views": 5,
-   "estimatedMinutesWatched": 1,
-   "averageViewDuration": 38,
-   "averageViewPercentage": 67.02,
+   "estimatedMinutesWatched": 0,
+   "averageViewDuration": 10,
+   "averageViewPercentage": 65,
+   "subscribersGained": 0
+  },
+  {
+   "video": "ZIjzPzBWmuw",
+   "views": 5,
+   "estimatedMinutesWatched": 3,
+   "averageViewDuration": 60,
+   "averageViewPercentage": 110.40999999999998,
    "subscribersGained": 0
   },
   {
@@ -2040,14 +2134,6 @@
    "estimatedMinutesWatched": 1,
    "averageViewDuration": 81,
    "averageViewPercentage": 213.68,
-   "subscribersGained": 0
-  },
-  {
-   "video": "l_FJS639TdU",
-   "views": 5,
-   "estimatedMinutesWatched": 0,
-   "averageViewDuration": 4,
-   "averageViewPercentage": 26.88,
    "subscribersGained": 0
   },
   {
@@ -2083,51 +2169,35 @@
    "subscribersGained": 0
   },
   {
-   "video": "u9VBRRNKNQk",
-   "views": 4,
-   "estimatedMinutesWatched": 3,
-   "averageViewDuration": 59,
-   "averageViewPercentage": 16.24,
-   "subscribersGained": 0
-  },
-  {
-   "video": "vUuPXfpnTEg",
+   "video": "_GlO5Hn7QnI",
    "views": 4,
    "estimatedMinutesWatched": 1,
-   "averageViewDuration": 33,
-   "averageViewPercentage": 59.56,
-   "subscribersGained": 0
-  },
-  {
-   "video": "0A6Y4R5qo8Y",
-   "views": 3,
-   "estimatedMinutesWatched": 2,
-   "averageViewDuration": 75,
-   "averageViewPercentage": 24.66,
+   "averageViewDuration": 55,
+   "averageViewPercentage": 106.15,
    "subscribersGained": 0
   }
  ],
  "split": [
   {
    "creatorContentType": "shorts",
-   "views": 2220,
-   "estimatedMinutesWatched": 329,
-   "averageViewPercentage": 39.89
+   "views": 2747,
+   "estimatedMinutesWatched": 371,
+   "averageViewPercentage": 38.57
   },
   {
    "creatorContentType": "videoOnDemand",
-   "views": 88,
+   "views": 94,
    "estimatedMinutesWatched": 54,
-   "averageViewPercentage": 14.92
+   "averageViewPercentage": 14.08
   }
  ],
  "totals_365d": {
-  "minutes": 111,
-  "shorts_minutes": 449,
-  "subscribersGained": 4
+  "minutes": 112,
+  "shorts_minutes": 490,
+  "subscribersGained": 5
  },
  "shorts_90d": {
-  "views": 2414
+  "views": 2937
  },
  "search_terms": [
   {
@@ -2176,6 +2246,11 @@
    "minutes": 0.0
   },
   {
+   "term": "akshu and abhimanyu",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
    "term": "anant singh",
    "views": 1,
    "minutes": 0.0
@@ -2202,6 +2277,11 @@
   },
   {
    "term": "clap noises",
+   "views": 1,
+   "minutes": 0.0
+  },
+  {
+   "term": "comedy",
    "views": 1,
    "minutes": 0.0
   },
@@ -2241,17 +2321,7 @@
    "minutes": 0.0
   },
   {
-   "term": "phone number",
-   "views": 1,
-   "minutes": 0.0
-  },
-  {
-   "term": "rangoli designs kids",
-   "views": 1,
-   "minutes": 0.0
-  },
-  {
-   "term": "rhythm veronica family",
+   "term": "naruto ki picture kaise banaen",
    "views": 1,
    "minutes": 0.0
   }

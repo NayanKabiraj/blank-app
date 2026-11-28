@@ -1,6 +1,6 @@
 {
  "available": true,
- "generated": "2026-11-27T10:47:55+00:00",
+ "generated": "2026-11-28T10:18:36+00:00",
  "charts": {
   "US/Education": {
    "error": "<HttpError 404 when requesting https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics%2CcontentDetai"
@@ -10,16 +10,27 @@
     "id": "z4xYHEO0u1M",
     "title": "I need to find my PlayStation portal..",
     "channel": "CarterPCs",
-    "views": 5494245,
+    "views": 7256028,
     "seconds": 30,
     "published": "2026-11-25",
     "tags": []
    },
    {
+    "id": "dG6v9xsOrL0",
+    "title": "The Gaming Controller That Switches Between Nintendo and Xbox Layouts",
+    "channel": "Greylin",
+    "views": 4210433,
+    "seconds": 19,
+    "published": "2026-11-25",
+    "tags": [
+     "shorts"
+    ]
+   },
+   {
     "id": "QzKlveG_iZQ",
     "title": "He scribbled on his CPU with a pencil… and it got 50% faster",
     "channel": "Dart Games",
-    "views": 16895344,
+    "views": 17143836,
     "seconds": 39,
     "published": "2026-11-21",
     "tags": [
@@ -29,21 +40,10 @@
     ]
    },
    {
-    "id": "dG6v9xsOrL0",
-    "title": "The Gaming Controller That Switches Between Nintendo and Xbox Layouts",
-    "channel": "Greylin",
-    "views": 3429615,
-    "seconds": 19,
-    "published": "2026-11-25",
-    "tags": [
-     "shorts"
-    ]
-   },
-   {
     "id": "2Cr_jryTFks",
     "title": "Brilliant Mouse Design 🤯",
     "channel": "Buffy",
-    "views": 5617512,
+    "views": 6243448,
     "seconds": 19,
     "published": "2026-11-21",
     "tags": []
@@ -52,7 +52,7 @@
     "id": "UbhdAqyGtcc",
     "title": "How This Device Copies Keys In Seconds",
     "channel": "Clip Rotter",
-    "views": 16852643,
+    "views": 17297705,
     "seconds": 26,
     "published": "2026-11-17",
     "tags": []
@@ -61,27 +61,16 @@
     "id": "CWiJcimMA4Q",
     "title": "Your Flashlight vs. Voyager 1",
     "channel": "Past the Blue",
-    "views": 14037193,
+    "views": 14135802,
     "seconds": 66,
     "published": "2026-11-16",
     "tags": []
    },
    {
-    "id": "5qns_-f7jy0",
-    "title": "L'iPhone 18 Pro et le S26 Ultra CHOQUÉS par le Nokia 3310 ! 😱🔋 #humour #funny #android #comedy #ios",
-    "channel": "NATHAN ",
-    "views": 3718409,
-    "seconds": 38,
-    "published": "2026-11-10",
-    "tags": [
-     "Nokia 3310, Nokia 3310 miracle, iPhone 18 Pro vs Samsung S26 Ultra, comparaison batterie, test de batterie smartphone, iPhone 18 Pro batterie, Samsung S26 Ultra batterie, Nokia sans batterie, animation tech humour, meme Nokia 3310, short tech francais, batterie Nokia indestructible"
-    ]
-   },
-   {
     "id": "01fZjoBOPnY",
     "title": "Stop Buying Disposables — Switch to Mupoer AA Rechargeable Batteries #xbox  #rechargeablebatteries",
     "channel": "Mupoer",
-    "views": 5884430,
+    "views": 6239468,
     "seconds": 13,
     "published": "2026-11-07",
     "tags": [
@@ -94,81 +83,22 @@
     ]
    },
    {
-    "id": "qNKBaKVkTIg",
-    "title": "share with a friend who always loses his shi #ps5 #tips",
-    "channel": "juboo",
-    "views": 1662734,
-    "seconds": 15,
-    "published": "2026-11-25",
-    "tags": []
-   },
-   {
-    "id": "sftjwKSOvt4",
-    "title": "Fire in a Bottle: Working 1923 Sodion S-13 Sodium Tube #tech #engineering #antiqueradio",
-    "channel": "Todd Arnold",
-    "views": 1506391,
-    "seconds": 37,
+    "id": "5qns_-f7jy0",
+    "title": "L'iPhone 18 Pro et le S26 Ultra CHOQUÉS par le Nokia 3310 ! 😱🔋 #humour #funny #android #comedy #ios",
+    "channel": "NATHAN ",
+    "views": 3849512,
+    "seconds": 38,
     "published": "2026-11-10",
-    "tags": []
-   },
-   {
-    "id": "ctANHfb6zjw",
-    "title": "Apparently There's Never Going To Be An iPhone 19",
-    "channel": "ByteTalkYT",
-    "views": 1469368,
-    "seconds": 26,
-    "published": "2026-11-24",
     "tags": [
-     "iphone 20 rumors",
-     "iphone 20 pro max",
-     "apple intelligence",
-     "ios 19 beta",
-     "iphone",
-     "ios 19 release date"
+     "Nokia 3310, Nokia 3310 miracle, iPhone 18 Pro vs Samsung S26 Ultra, comparaison batterie, test de batterie smartphone, iPhone 18 Pro batterie, Samsung S26 Ultra batterie, Nokia sans batterie, animation tech humour, meme Nokia 3310, short tech francais, batterie Nokia indestructible"
     ]
    },
    {
-    "id": "KfLqv_aqybY",
-    "title": "How many times I've been asked for a free phone.",
-    "channel": "Mrwhosetheboss",
-    "views": 2889071,
-    "seconds": 60,
-    "published": "2026-11-26",
-    "tags": []
-   },
-   {
-    "id": "OrEHUvI0jm0",
-    "title": "FASTEST GPU in EACH ERA!",
-    "channel": "Makhir",
-    "views": 1218832,
-    "seconds": 79,
-    "published": "2026-11-16",
-    "tags": []
-   },
-   {
-    "id": "-ylPOVJJvws",
-    "title": "How Spies Listen Through A Light Bulb 😮",
-    "channel": "Zack D. Films",
-    "views": 2695426,
-    "seconds": 33,
-    "published": "2026-11-25",
-    "tags": []
-   },
-   {
-    "id": "96Bpgjd9wwk",
-    "title": "Paging Ticketmaster…",
-    "channel": "ItsBobbyFinn",
-    "views": 1107134,
-    "seconds": 62,
-    "published": "2026-11-24",
-    "tags": []
-   },
-   {
-    "id": "pTqDey6Vg_0",
-    "title": "Top 3 dumbest gifts for a gamer this Christmas #christmas #gaming",
-    "channel": "R4 DECK",
-    "views": 1250180,
-    "seconds": 40,
+    "id": "qNKBaKVkTIg",
+    "title": "share with a friend who always loses his shi #ps5 #tips",
+    "channel": "juboo",
+    "views": 1798491,
+    "seconds": 15,
     "published": "2026-11-25",
     "tags": []
    },
@@ -176,7 +106,7 @@
     "id": "Uj81Qo15wBc",
     "title": "The Hacker Who Hunts Predators: Do These 3 Things Before You Get Hacked! | Ryan \"0day\" Montgomery",
     "channel": "The Diary Of A CEO",
-    "views": 2025765,
+    "views": 3181870,
     "seconds": 6313,
     "published": "2026-11-26",
     "tags": [
@@ -189,63 +119,90 @@
     ]
    },
    {
-    "id": "HXIg5Wxj6HU",
-    "title": "What To Do If Someone Drops Your Phone In WATER?!😱",
-    "channel": "lilBrain",
-    "views": 2713239,
-    "seconds": 14,
-    "published": "2026-11-21",
+    "id": "KfLqv_aqybY",
+    "title": "How many times I've been asked for a free phone.",
+    "channel": "Mrwhosetheboss",
+    "views": 4025611,
+    "seconds": 60,
+    "published": "2026-11-26",
     "tags": []
    },
    {
-    "id": "G8eKL9whd44",
-    "title": "💀 $42,000 is INSANE for all this🤯 the Xiaomi SkyNomad #car #luxury #tech",
-    "channel": "Sergi",
-    "views": 5019329,
-    "seconds": 88,
-    "published": "2026-11-19",
+    "id": "sftjwKSOvt4",
+    "title": "Fire in a Bottle: Working 1923 Sodion S-13 Sodium Tube #tech #engineering #antiqueradio",
+    "channel": "Todd Arnold",
+    "views": 1676017,
+    "seconds": 37,
+    "published": "2026-11-10",
     "tags": []
    },
    {
-    "id": "dl5-khzLTzs",
-    "title": "Samsung Galaxy S27 Ultra Cobalt Violet📱🔥#noads #tiktok #usa Part 5",
-    "channel": "MR Latte Green",
-    "views": 24896638,
-    "seconds": 10,
-    "published": "2026-11-21",
+    "id": "OrEHUvI0jm0",
+    "title": "FASTEST GPU in EACH ERA!",
+    "channel": "Makhir",
+    "views": 1402681,
+    "seconds": 79,
+    "published": "2026-11-16",
     "tags": []
    },
    {
-    "id": "Z-HYbC9sfGQ",
-    "title": "Bro Just Explained the Future of Computing 🤯 #nvidia #shorts",
-    "channel": "VisionX Lab",
-    "views": 5247605,
-    "seconds": 67,
-    "published": "2026-11-17",
+    "id": "ctANHfb6zjw",
+    "title": "Apparently There's Never Going To Be An iPhone 19",
+    "channel": "ByteTalkYT",
+    "views": 1523098,
+    "seconds": 26,
+    "published": "2026-11-24",
     "tags": [
-     "NVIDIA",
-     "Jensen Huang",
-     "NVLink",
-     "NVIDIA NVLink",
-     "AI",
-     "artificial intelligence"
+     "iphone 20 rumors",
+     "iphone 20 pro max",
+     "apple intelligence",
+     "ios 19 beta",
+     "iphone",
+     "ios 19 release date"
     ]
    },
    {
-    "id": "WOCpFoxnDEA",
-    "title": "SSD Prices Might Finally Drop",
-    "channel": "Zach's Tech Turf",
-    "views": 1353544,
-    "seconds": 61,
-    "published": "2026-11-22",
+    "id": "-ylPOVJJvws",
+    "title": "How Spies Listen Through A Light Bulb 😮",
+    "channel": "Zack D. Films",
+    "views": 2946828,
+    "seconds": 33,
+    "published": "2026-11-25",
     "tags": []
    },
    {
-    "id": "WOAfhjlGIps",
-    "title": "Top 50 Best Black Friday Deals 2026 🤑 (Updated Hourly!!)",
+    "id": "DjsGvnEkkJY",
+    "title": "No more console war. 🔨  De PS5, Xbox or Switch 2… grandpa didn't choose. 😭 🔨",
+    "channel": "Arno Nilender Comedy ",
+    "views": 1679197,
+    "seconds": 21,
+    "published": "2026-11-25",
+    "tags": []
+   },
+   {
+    "id": "96Bpgjd9wwk",
+    "title": "Paging Ticketmaster…",
+    "channel": "ItsBobbyFinn",
+    "views": 1196119,
+    "seconds": 62,
+    "published": "2026-11-24",
+    "tags": []
+   },
+   {
+    "id": "pTqDey6Vg_0",
+    "title": "Top 3 dumbest gifts for a gamer this Christmas #christmas #gaming",
+    "channel": "R4 DECK",
+    "views": 1698832,
+    "seconds": 40,
+    "published": "2026-11-25",
+    "tags": []
+   },
+   {
+    "id": "bBmL9TdvqaU",
+    "title": "Top 50 NEW Amazon Black Friday 2026 Deals (Updated Hourly!! 🔥)",
     "channel": "The Deal Guy",
-    "views": 983375,
-    "seconds": 1037,
+    "views": 794639,
+    "seconds": 810,
     "published": "2026-11-27",
     "tags": [
      "the deal guy",
@@ -260,18 +217,49 @@
     "id": "7Kd-j7iG13E",
     "title": "W netbook? Or L loot? 😈💯😳🔥🥵🤯🤔👀😂 #thrift #tech #computer",
     "channel": "computercloset",
-    "views": 734168,
+    "views": 983160,
     "seconds": 160,
     "published": "2026-11-25",
     "tags": []
    },
    {
-    "id": "MHe8Ys1FTpE",
-    "title": "GTA 6 running on a Ti-84 calculator",
-    "channel": "Calculator Playing",
-    "views": 2711395,
-    "seconds": 12,
+    "id": "HXIg5Wxj6HU",
+    "title": "What To Do If Someone Drops Your Phone In WATER?!😱",
+    "channel": "lilBrain",
+    "views": 2850150,
+    "seconds": 14,
+    "published": "2026-11-21",
+    "tags": []
+   },
+   {
+    "id": "G8eKL9whd44",
+    "title": "💀 $42,000 is INSANE for all this🤯 the Xiaomi SkyNomad #car #luxury #tech",
+    "channel": "Sergi",
+    "views": 5307882,
+    "seconds": 88,
     "published": "2026-11-19",
+    "tags": []
+   },
+   {
+    "id": "ZvqYNSnsIDY",
+    "title": "Welcome to MKBHQ! The Ultimate Video Studio Tour",
+    "channel": "Marques Brownlee",
+    "views": 2437326,
+    "seconds": 1822,
+    "published": "2026-11-27",
+    "tags": [
+     "studio tour",
+     "MKBHQ",
+     "MKBHD"
+    ]
+   },
+   {
+    "id": "ePLeqedepb4",
+    "title": "🚨 Grandson MICROWAVED iPhone!! Are you having a tech problem? We accept mail ins! We have a Mail-In",
+    "channel": "Digital Doctor ",
+    "views": 724572,
+    "seconds": 152,
+    "published": "2026-11-27",
     "tags": []
    }
   ],
@@ -283,7 +271,7 @@
     "id": "eDRsAT8tZQc",
     "title": "Small Projector, BIG Screen! #shorts #shortvideo #viral #trending #ytshorts #fyp #projector #yt",
     "channel": "Classy Dash",
-    "views": 24335858,
+    "views": 30691487,
     "seconds": 13,
     "published": "2026-11-25",
     "tags": [
@@ -299,16 +287,32 @@
     "id": "645HdVMU-EE",
     "title": "Can I Build a ₹2,000 Smartphone? ⭐ Best",
     "channel": "DELUXE BHAIYA JI",
-    "views": 10763194,
+    "views": 11666625,
     "seconds": 59,
     "published": "2026-11-23",
     "tags": []
    },
    {
+    "id": "xfUKt2bCUjA",
+    "title": "Amma ki Dorikesindi ! 😄| vivo X500 Pro Max (\"Amma caught her!!\").",
+    "channel": "SimpleGhar Telugu",
+    "views": 1951950,
+    "seconds": 78,
+    "published": "2026-11-26",
+    "tags": [
+     "simpleghar",
+     "kitchen",
+     "amazonfinds",
+     "tech",
+     "viral",
+     "india"
+    ]
+   },
+   {
     "id": "Px9PAc_lm18",
     "title": "Samsung Galaxy S29 Ultra Silver Titanium Game IQ🎮🔥#noads #tiktok #usa",
     "channel": "MrLimboGreen",
-    "views": 11375974,
+    "views": 11667939,
     "seconds": 12,
     "published": "2026-11-24",
     "tags": []
@@ -317,7 +321,7 @@
     "id": "PqxgwGCYaD8",
     "title": "Why Apple needed Face ID! Pure unadulterated chaotic energy. 😭💀",
     "channel": "Foeko",
-    "views": 9467235,
+    "views": 10216483,
     "seconds": 25,
     "published": "2026-11-22",
     "tags": [
@@ -332,41 +336,65 @@
     "id": "dl5-khzLTzs",
     "title": "Samsung Galaxy S27 Ultra Cobalt Violet📱🔥#noads #tiktok #usa Part 5",
     "channel": "MR Latte Green",
-    "views": 24896638,
+    "views": 24898367,
     "seconds": 10,
     "published": "2026-11-21",
     "tags": []
    },
    {
+    "id": "tWoT6XScso0",
+    "title": "Vivo Ne Bheja Mystery Box 🎁 #Shorts #Viral",
+    "channel": "TECHOOB",
+    "views": 2518036,
+    "seconds": 85,
+    "published": "2026-11-26",
+    "tags": [
+     "techoob",
+     "saaquib",
+     "techoob saaquib"
+    ]
+   },
+   {
     "id": "bgHcabzQKbM",
     "title": "🇮🇳⚙️ Precision Assembly of Digital Tally Counters🇮🇳 #factoryprocess  #indianflag #factoryproducts",
     "channel": "SHAAN _E_TIRANGA",
-    "views": 5998712,
+    "views": 6054697,
     "seconds": 10,
     "published": "2026-11-22",
     "tags": []
    },
    {
-    "id": "xfUKt2bCUjA",
-    "title": "Amma ki Dorikesindi ! 😄| vivo X500 Pro Max (\"Amma caught her!!\").",
-    "channel": "SimpleGhar Telugu",
-    "views": 1255684,
-    "seconds": 78,
-    "published": "2026-11-26",
-    "tags": [
-     "simpleghar",
-     "kitchen",
-     "amazonfinds",
-     "tech",
-     "viral",
-     "india"
-    ]
+    "id": "5juwrDf0FH4",
+    "title": "The Smart Cleaning Robot That Does Everything! 🔥#shorts",
+    "channel": "SpinArc",
+    "views": 2747624,
+    "seconds": 16,
+    "published": "2026-11-25",
+    "tags": []
+   },
+   {
+    "id": "YwW23yKRDjs",
+    "title": "She Lost Two Phones in One Charging Machine!😘😍",
+    "channel": "NEETU STORIES ",
+    "views": 1169370,
+    "seconds": 58,
+    "published": "2026-11-27",
+    "tags": []
+   },
+   {
+    "id": "A4zT0EDWaMo",
+    "title": "Daliy JBL Flip6 speaker jumping test bass go4 JBL water 💦 video crazy try",
+    "channel": "Crazy JBL speaker Water jumping",
+    "views": 2610660,
+    "seconds": 24,
+    "published": "2026-11-27",
+    "tags": []
    },
    {
     "id": "eRc63YpZO9Y",
     "title": "This Tiny Smartphone Is Too Cute! 😍📱 Mini Phone Gadget #viral #miniphone #shorts #short #viralshorts",
     "channel": "Classy Girl",
-    "views": 19784395,
+    "views": 20038562,
     "seconds": 11,
     "published": "2026-11-16",
     "tags": [
@@ -379,59 +407,46 @@
     ]
    },
    {
+    "id": "B6KfhQdozEk",
+    "title": "Ps5 Problem ஆயிடுச்சு #diyprojects #reels #shorts #tamil #ps5problem #ps5 #ps5heatissue #ps5onproblm",
+    "channel": "Mad Vise",
+    "views": 564548,
+    "seconds": 80,
+    "published": "2026-11-27",
+    "tags": []
+   },
+   {
     "id": "c-AYgRsyzkc",
     "title": "Samsung Galaxy S27 Ultra Cobalt Violet📱🔥#noads #tiktok #usa",
     "channel": "Mrs Mia Green",
-    "views": 3389843,
+    "views": 3503582,
     "seconds": 12,
     "published": "2026-11-25",
+    "tags": []
+   },
+   {
+    "id": "5FMwh9MRdm4",
+    "title": "₹30,000 மதிப்புள்ள headphones repair பண்ணிடனா?!!🤯😱 #shorts #shortvideo",
+    "channel": "Mr Daya Nithi",
+    "views": 2357668,
+    "seconds": 43,
+    "published": "2026-11-21",
     "tags": []
    },
    {
     "id": "yWsggzfooO8",
     "title": "How Old Antennas Worked? (3D) by Professor of Ai",
     "channel": "Professor Of AI",
-    "views": 3120891,
+    "views": 3212463,
     "seconds": 75,
     "published": "2026-11-22",
-    "tags": []
-   },
-   {
-    "id": "tWoT6XScso0",
-    "title": "Vivo Ne Bheja Mystery Box 🎁 #Shorts #Viral",
-    "channel": "TECHOOB",
-    "views": 1138427,
-    "seconds": 85,
-    "published": "2026-11-26",
-    "tags": [
-     "techoob",
-     "saaquib",
-     "techoob saaquib"
-    ]
-   },
-   {
-    "id": "5FMwh9MRdm4",
-    "title": "₹30,000 மதிப்புள்ள headphones repair பண்ணிடனா?!!🤯😱 #shorts #shortvideo",
-    "channel": "Mr Daya Nithi",
-    "views": 2181742,
-    "seconds": 43,
-    "published": "2026-11-21",
-    "tags": []
-   },
-   {
-    "id": "5juwrDf0FH4",
-    "title": "The Smart Cleaning Robot That Does Everything! 🔥#shorts",
-    "channel": "SpinArc",
-    "views": 1634349,
-    "seconds": 16,
-    "published": "2026-11-25",
     "tags": []
    },
    {
     "id": "NhhIYrDvx84",
     "title": "😎Apple Map vs Google Map 🔥 எது பெருசுன்னு அடிச்சுக் காட்டு #shorts",
     "channel": "Tamil Tech - MrTT",
-    "views": 800767,
+    "views": 843427,
     "seconds": 91,
     "published": "2026-11-25",
     "tags": [
@@ -447,34 +462,52 @@
     "id": "yaNf9mMo-Yo",
     "title": "Which vivo ringtone have you used?",
     "channel": "3DArt",
-    "views": 5924484,
+    "views": 6385258,
     "seconds": 24,
     "published": "2026-11-19",
     "tags": []
    },
    {
-    "id": "XSPW9HWonWY",
-    "title": "Introducingthe \"VitaWear SmartBand,\" a next-generation wearable gadget🎉",
-    "channel": "Rahul Skk ",
-    "views": 826053,
-    "seconds": 26,
-    "published": "2026-11-26",
+    "id": "vWnJ3nXE2Lk",
+    "title": "Change Air Purifier Filter Immediately",
+    "channel": "DEV Ke Shorts",
+    "views": 767933,
+    "seconds": 36,
+    "published": "2026-11-25",
     "tags": []
    },
    {
     "id": "4fLwo2tzMqE",
     "title": "iPhone Duo Case With Magsafe With Best Protection and Premium Looks 😍",
     "channel": "MobiiCare",
-    "views": 1454025,
+    "views": 1640670,
     "seconds": 173,
     "published": "2026-11-23",
+    "tags": []
+   },
+   {
+    "id": "hod6cqwiAic",
+    "title": "Most Futuristic Phone  🤯 #tech",
+    "channel": "Arsi Tech",
+    "views": 745072,
+    "seconds": 43,
+    "published": "2026-11-26",
+    "tags": []
+   },
+   {
+    "id": "XSPW9HWonWY",
+    "title": "Introducingthe \"VitaWear SmartBand,\" a next-generation wearable gadget🎉",
+    "channel": "Rahul Skk ",
+    "views": 943085,
+    "seconds": 26,
+    "published": "2026-11-26",
     "tags": []
    },
    {
     "id": "F-okiK82gq0",
     "title": "#dbsono #bass #headphones #automobile #tech #speaker",
     "channel": "DBsono",
-    "views": 11951257,
+    "views": 12326215,
     "seconds": 13,
     "published": "2026-11-16",
     "tags": []
@@ -483,7 +516,7 @@
     "id": "QzKlveG_iZQ",
     "title": "He scribbled on his CPU with a pencil… and it got 50% faster",
     "channel": "Dart Games",
-    "views": 16895344,
+    "views": 17143836,
     "seconds": 39,
     "published": "2026-11-21",
     "tags": [
@@ -493,70 +526,20 @@
     ]
    },
    {
-    "id": "C1uW8UalRCI",
-    "title": "Aagya GTA VI वाला Wifi 🥹🤩 #viral #trending #gta6 #new #gaming #streaming #gta6gameplay #gta #tech",
-    "channel": "Mahadev Tyagi",
-    "views": 7070125,
-    "seconds": 57,
-    "published": "2026-11-17",
-    "tags": []
-   },
-   {
-    "id": "u0leO0_PmjY",
-    "title": "What a cool battery storage case!",
-    "channel": "Gun Lighter Nikola",
-    "views": 12579197,
-    "seconds": 13,
-    "published": "2026-11-16",
-    "tags": []
-   },
-   {
-    "id": "nZRhGF9ybs0",
-    "title": "JBL GO4 mud throw test",
-    "channel": "Crazy zone ",
-    "views": 9573902,
-    "seconds": 25,
-    "published": "2026-11-21",
-    "tags": []
-   },
-   {
-    "id": "JXGTGGdKchY",
-    "title": "Finding Cheapest PS5 To Play GTA 6",
-    "channel": "LevelGuy Shorts",
-    "views": 1433359,
-    "seconds": 43,
-    "published": "2026-11-24",
+    "id": "VYLSdPm7dwc",
+    "title": "🎮 Gaming Experience Just Got Better! 🔥 #shorts",
+    "channel": "My Choice",
+    "views": 340557,
+    "seconds": 64,
+    "published": "2026-11-27",
     "tags": [
-     "PS5",
-     "GTA 6",
-     "LevelGuy",
-     "Level Guy"
+     "wireless gaming controller",
+     "gaming controller unboxing",
+     "PC gaming controller",
+     "wireless controller review",
+     "gaming setup India",
+     "PC gaming setup"
     ]
-   },
-   {
-    "id": "mIiakCYjKh0",
-    "title": "Unboxing The Ps5🎮😍 #shorts #vlog #minivlog #dailyblog #olidaandimdat",
-    "channel": "IMDAT and OLIDA Vlogs",
-    "views": 1010586,
-    "seconds": 50,
-    "published": "2026-11-24",
-    "tags": [
-     "Olida and Imdat Vlogs",
-     "New vlog",
-     "New funny vlog",
-     "Mini vlog",
-     "Daily vlogs",
-     "New mini vlogs"
-    ]
-   },
-   {
-    "id": "ufaIJka_6_M",
-    "title": "Buying Ps5 For Free😱😈 #ps5 #gaming #shorts",
-    "channel": "Ayush_v_loger",
-    "views": 1879028,
-    "seconds": 35,
-    "published": "2026-11-19",
-    "tags": []
    }
   ],
   "GB/Education": {
@@ -564,32 +547,19 @@
   },
   "GB/Science & Technology": [
    {
-    "id": "Q0N2BBVYVPo",
-    "title": "The IPhone 20 needs these features…",
+    "id": "z4xYHEO0u1M",
+    "title": "I need to find my PlayStation portal..",
     "channel": "CarterPCs",
-    "views": 8550811,
-    "seconds": 27,
-    "published": "2026-11-24",
+    "views": 7256028,
+    "seconds": 30,
+    "published": "2026-11-25",
     "tags": []
-   },
-   {
-    "id": "QzKlveG_iZQ",
-    "title": "He scribbled on his CPU with a pencil… and it got 50% faster",
-    "channel": "Dart Games",
-    "views": 16895344,
-    "seconds": 39,
-    "published": "2026-11-21",
-    "tags": [
-     "gaming",
-     "games",
-     "videogames"
-    ]
    },
    {
     "id": "KfLqv_aqybY",
     "title": "How many times I've been asked for a free phone.",
     "channel": "Mrwhosetheboss",
-    "views": 2889071,
+    "views": 4025611,
     "seconds": 60,
     "published": "2026-11-26",
     "tags": []
@@ -598,7 +568,7 @@
     "id": "dG6v9xsOrL0",
     "title": "The Gaming Controller That Switches Between Nintendo and Xbox Layouts",
     "channel": "Greylin",
-    "views": 3429615,
+    "views": 4210433,
     "seconds": 19,
     "published": "2026-11-25",
     "tags": [
@@ -606,28 +576,23 @@
     ]
    },
    {
-    "id": "2Cr_jryTFks",
-    "title": "Brilliant Mouse Design 🤯",
-    "channel": "Buffy",
-    "views": 5617512,
-    "seconds": 19,
+    "id": "QzKlveG_iZQ",
+    "title": "He scribbled on his CPU with a pencil… and it got 50% faster",
+    "channel": "Dart Games",
+    "views": 17143836,
+    "seconds": 39,
     "published": "2026-11-21",
-    "tags": []
-   },
-   {
-    "id": "qNKBaKVkTIg",
-    "title": "share with a friend who always loses his shi #ps5 #tips",
-    "channel": "juboo",
-    "views": 1662734,
-    "seconds": 15,
-    "published": "2026-11-25",
-    "tags": []
+    "tags": [
+     "gaming",
+     "games",
+     "videogames"
+    ]
    },
    {
     "id": "Uj81Qo15wBc",
     "title": "The Hacker Who Hunts Predators: Do These 3 Things Before You Get Hacked! | Ryan \"0day\" Montgomery",
     "channel": "The Diary Of A CEO",
-    "views": 2025765,
+    "views": 3181870,
     "seconds": 6313,
     "published": "2026-11-26",
     "tags": [
@@ -640,10 +605,28 @@
     ]
    },
    {
+    "id": "2Cr_jryTFks",
+    "title": "Brilliant Mouse Design 🤯",
+    "channel": "Buffy",
+    "views": 6243448,
+    "seconds": 19,
+    "published": "2026-11-21",
+    "tags": []
+   },
+   {
+    "id": "qNKBaKVkTIg",
+    "title": "share with a friend who always loses his shi #ps5 #tips",
+    "channel": "juboo",
+    "views": 1798491,
+    "seconds": 15,
+    "published": "2026-11-25",
+    "tags": []
+   },
+   {
     "id": "UbhdAqyGtcc",
     "title": "How This Device Copies Keys In Seconds",
     "channel": "Clip Rotter",
-    "views": 16852643,
+    "views": 17297705,
     "seconds": 26,
     "published": "2026-11-17",
     "tags": []
@@ -652,16 +635,25 @@
     "id": "CWiJcimMA4Q",
     "title": "Your Flashlight vs. Voyager 1",
     "channel": "Past the Blue",
-    "views": 14037193,
+    "views": 14135802,
     "seconds": 66,
     "published": "2026-11-16",
+    "tags": []
+   },
+   {
+    "id": "pTqDey6Vg_0",
+    "title": "Top 3 dumbest gifts for a gamer this Christmas #christmas #gaming",
+    "channel": "R4 DECK",
+    "views": 1698832,
+    "seconds": 40,
+    "published": "2026-11-25",
     "tags": []
    },
    {
     "id": "ctANHfb6zjw",
     "title": "Apparently There's Never Going To Be An iPhone 19",
     "channel": "ByteTalkYT",
-    "views": 1469368,
+    "views": 1523098,
     "seconds": 26,
     "published": "2026-11-24",
     "tags": [
@@ -674,37 +666,59 @@
     ]
    },
    {
-    "id": "pTqDey6Vg_0",
-    "title": "Top 3 dumbest gifts for a gamer this Christmas #christmas #gaming",
-    "channel": "R4 DECK",
-    "views": 1250180,
-    "seconds": 40,
-    "published": "2026-11-25",
-    "tags": []
-   },
-   {
     "id": "-ylPOVJJvws",
     "title": "How Spies Listen Through A Light Bulb 😮",
     "channel": "Zack D. Films",
-    "views": 2695426,
+    "views": 2946828,
     "seconds": 33,
     "published": "2026-11-25",
     "tags": []
    },
    {
+    "id": "ePLeqedepb4",
+    "title": "🚨 Grandson MICROWAVED iPhone!! Are you having a tech problem? We accept mail ins! We have a Mail-In",
+    "channel": "Digital Doctor ",
+    "views": 724572,
+    "seconds": 152,
+    "published": "2026-11-27",
+    "tags": []
+   },
+   {
+    "id": "ZvqYNSnsIDY",
+    "title": "Welcome to MKBHQ! The Ultimate Video Studio Tour",
+    "channel": "Marques Brownlee",
+    "views": 2437326,
+    "seconds": 1822,
+    "published": "2026-11-27",
+    "tags": [
+     "studio tour",
+     "MKBHQ",
+     "MKBHD"
+    ]
+   },
+   {
     "id": "G8eKL9whd44",
     "title": "💀 $42,000 is INSANE for all this🤯 the Xiaomi SkyNomad #car #luxury #tech",
     "channel": "Sergi",
-    "views": 5019329,
+    "views": 5307882,
     "seconds": 88,
     "published": "2026-11-19",
+    "tags": []
+   },
+   {
+    "id": "DjsGvnEkkJY",
+    "title": "No more console war. 🔨  De PS5, Xbox or Switch 2… grandpa didn't choose. 😭 🔨",
+    "channel": "Arno Nilender Comedy ",
+    "views": 1679197,
+    "seconds": 21,
+    "published": "2026-11-25",
     "tags": []
    },
    {
     "id": "HXIg5Wxj6HU",
     "title": "What To Do If Someone Drops Your Phone In WATER?!😱",
     "channel": "lilBrain",
-    "views": 2713239,
+    "views": 2850150,
     "seconds": 14,
     "published": "2026-11-21",
     "tags": []
@@ -713,31 +727,16 @@
     "id": "grBaH7LMnEY",
     "title": "The iPhone Battery Conspiracy",
     "channel": "fern",
-    "views": 3792672,
+    "views": 3898299,
     "seconds": 2239,
     "published": "2026-11-22",
     "tags": []
    },
    {
-    "id": "PqxgwGCYaD8",
-    "title": "Why Apple needed Face ID! Pure unadulterated chaotic energy. 😭💀",
-    "channel": "Foeko",
-    "views": 9467235,
-    "seconds": 25,
-    "published": "2026-11-22",
-    "tags": [
-     "iphone passcode",
-     "brute force passcode",
-     "face id meme",
-     "phone unlock trick",
-     "Foeko"
-    ]
-   },
-   {
     "id": "Z-HYbC9sfGQ",
     "title": "Bro Just Explained the Future of Computing 🤯 #nvidia #shorts",
     "channel": "VisionX Lab",
-    "views": 5247605,
+    "views": 5736709,
     "seconds": 67,
     "published": "2026-11-17",
     "tags": [
@@ -750,75 +749,63 @@
     ]
    },
    {
-    "id": "FrrxTWrkgIg",
-    "title": "🚨SOMEONE HIT THE CAR 🚗 ‼️Are you having a tech problem? We accept mail ins! We have a Mail-In Link",
-    "channel": "Digital Doctor ",
-    "views": 846010,
-    "seconds": 179,
-    "published": "2026-11-25",
-    "tags": []
+    "id": "PqxgwGCYaD8",
+    "title": "Why Apple needed Face ID! Pure unadulterated chaotic energy. 😭💀",
+    "channel": "Foeko",
+    "views": 10216483,
+    "seconds": 25,
+    "published": "2026-11-22",
+    "tags": [
+     "iphone passcode",
+     "brute force passcode",
+     "face id meme",
+     "phone unlock trick",
+     "Foeko"
+    ]
    },
    {
-    "id": "UJBtWEfHlro",
-    "title": "How to Speed up Your Laptop",
-    "channel": "Gohar Khan",
-    "views": 3269363,
-    "seconds": 35,
-    "published": "2026-11-21",
+    "id": "GgKnupsdFgA",
+    "title": "3 new iPhones #usa",
+    "channel": "TechLine",
+    "views": 617418,
+    "seconds": 29,
+    "published": "2026-11-25",
     "tags": []
    },
    {
     "id": "TP67kEzuUTM",
     "title": "Over-engineered bit holder",
     "channel": "larskarbo",
-    "views": 2758384,
+    "views": 3485972,
     "seconds": 13,
     "published": "2026-11-24",
     "tags": []
    },
    {
-    "id": "G3aGjnh_OKY",
-    "title": "Replacing My Dads Xbox With a PS5",
-    "channel": "Corbin Millet",
-    "views": 2559146,
+    "id": "UJBtWEfHlro",
+    "title": "How to Speed up Your Laptop",
+    "channel": "Gohar Khan",
+    "views": 3337091,
     "seconds": 35,
-    "published": "2026-11-19",
+    "published": "2026-11-21",
     "tags": []
    },
    {
-    "id": "CksoKnj7pnk",
-    "title": "CUSTOMER BUYS £16,000 HEADPHONES 😱  ➡️CBSTORES.COM⬅️",
-    "channel": "CB Store",
-    "views": 174422,
-    "seconds": 78,
-    "published": "2026-11-18",
+    "id": "2j8rdC-ZVIU",
+    "title": "When you finally get how PowerPoint works 😓 #powerpoint #presentation",
+    "channel": "Luis Urrutia",
+    "views": 298029,
+    "seconds": 36,
+    "published": "2026-11-27",
     "tags": []
    },
    {
     "id": "7Kd-j7iG13E",
     "title": "W netbook? Or L loot? 😈💯😳🔥🥵🤯🤔👀😂 #thrift #tech #computer",
     "channel": "computercloset",
-    "views": 734168,
+    "views": 983160,
     "seconds": 160,
     "published": "2026-11-25",
-    "tags": []
-   },
-   {
-    "id": "MHe8Ys1FTpE",
-    "title": "GTA 6 running on a Ti-84 calculator",
-    "channel": "Calculator Playing",
-    "views": 2711395,
-    "seconds": 12,
-    "published": "2026-11-19",
-    "tags": []
-   },
-   {
-    "id": "CJGOQHGFRKU",
-    "title": "How to upgrade your ps5 storage! #ps5 #playstation #gamingsetup",
-    "channel": "Tech Tesseract",
-    "views": 3291442,
-    "seconds": 58,
-    "published": "2026-11-19",
     "tags": []
    }
   ]
