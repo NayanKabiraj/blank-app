@@ -1,0 +1,127 @@
+{
+ "niche": "Line-art Stories",
+ "topic": "The Lamplighter's Last Drop",
+ "research_summary": "Candidates: (1) The Lamplighter's Last Drop (kindness costs the giver, gentle tale) 84; (2) the clockmaker who stops one clock; (3) the ferryman's last coin. Titles: 'The Lamplighter's Last Drop (A Short Story)'. Thumbnails: the lit lane, one dark lamp. Hooks: A) 'Tomas had one flame, and three lamps to light.' (pick) B) 'The third lamp would not catch.' C) 'What do you do with your last drop?'. Loops: primary = will the third lamp light; micro = the oil is gone, his own last drop; reversal = he gives it away and his own light goes out; payoff = he walks home under the three lamps he lit. Self-score 12/14. Claims: none; invented fable, labelled a story (FICTIONAL ASSUMPTION). Gap: no research data on line-art Shorts (vidIQ credits exhausted); web research found only vendor pages and YouTube's own note that minimal-animation storytime is an established format; the channel's own story family scored 1.22x on 12 videos with 58% viewed, so this is a small, labelled test. Channel check: see runbrief on the day. Learning applied: payoff early, 40-55 s, concrete object hook, series promise. Growth: lever = a new visual format on the story family that already holds viewers (58% viewed); policy check = every story has its own hand-written scene code and a unique plot, no template reuse, labelled fiction, no sensitive topic.",
+ "mood": "calm",
+ "cluster": "Ash Lane stories",
+ "follow_ups": [
+  "The Clockmaker Who Stopped One Clock",
+  "The Ferryman's Last Coin",
+  "The Baker Who Left the Light On"
+ ],
+ "gate_score": 84,
+ "english": {
+  "title": "The Lamplighter's Last Drop (A Short Story)",
+  "description": "A lamplighter with one flame and three lamps. The third will not catch, and he has one drop left. A short invented story drawn in line art. #Shorts #ShortStory #LineArt",
+  "tags": [
+   "short story",
+   "line art animation",
+   "animated short story",
+   "lamplighter story",
+   "gentle story",
+   "bedtime story for adults",
+   "story with a twist"
+  ],
+  "hook_text": "Three lamps, one flame",
+  "thumbnail_text": "One drop left",
+  "thumbnail_question": "What would you give away?",
+  "next_video": "Next in Ash Lane: The Clockmaker Who Stopped One Clock",
+  "pinned_comment": "What would you have done with the last drop: keep it, or give it away? Tell me below.",
+  "scenes": [
+   {
+    "text": "Tomas had one flame, and three lamps to light.",
+    "keyword": "flame"
+   },
+   {
+    "text": "Every evening he carried it down Ash Lane.",
+    "keyword": "lane"
+   },
+   {
+    "text": "The first lamp caught at once.",
+    "keyword": "first"
+   },
+   {
+    "text": "The second, too.",
+    "keyword": "second"
+   },
+   {
+    "text": "But the third would not catch. Its oil was gone.",
+    "keyword": "third"
+   },
+   {
+    "text": "His own lantern held one last drop. Without it, he would walk home in the dark.",
+    "keyword": "drop"
+   },
+   {
+    "text": "He tipped it in anyway.",
+    "keyword": "tipped"
+   },
+   {
+    "text": "The third lamp lit. His lantern went out.",
+    "keyword": "lit"
+   },
+   {
+    "text": "And Tomas walked home slowly, beneath the three lamps he had lit.",
+    "keyword": "home"
+   }
+  ],
+  "animation_pack": "ash_lane"
+ },
+ "hindi": {
+  "title": "लैंपवाले की आख़िरी बूँद (एक छोटी कहानी)",
+  "description": "एक लैंपवाला, एक लौ और तीन लैंप। तीसरा जल नहीं रहा, और उसके पास बस एक बूँद बची है। लाइन-आर्ट में बनी एक काल्पनिक कहानी। #Shorts #कहानी #LineArt",
+  "tags": [
+   "छोटी कहानी",
+   "लाइन आर्ट एनिमेशन",
+   "एनिमेटेड कहानी",
+   "लैंपवाले की कहानी",
+   "दिल छूने वाली कहानी",
+   "कहानी हिंदी",
+   "काल्पनिक कहानी"
+  ],
+  "hook_text": "तीन लैंप, एक लौ",
+  "thumbnail_text": "आख़िरी बूँद",
+  "thumbnail_question": "आप क्या देते?",
+  "next_video": "अगली कहानी: वह घड़ीसाज़ जिसने एक घड़ी रोक दी",
+  "pinned_comment": "आप आख़िरी बूँद का क्या करते: रखते या दे देते? नीचे बताइए।",
+  "scenes": [
+   {
+    "text": "टोमास के पास एक लौ थी, और जलाने के लिए तीन लैंप।",
+    "keyword": "लौ"
+   },
+   {
+    "text": "हर शाम वह उसे लिए ऐश लेन से गुज़रता था।",
+    "keyword": "लेन"
+   },
+   {
+    "text": "पहला लैंप तुरंत जल उठा।",
+    "keyword": "पहला"
+   },
+   {
+    "text": "दूसरा भी।",
+    "keyword": "दूसरा"
+   },
+   {
+    "text": "पर तीसरा नहीं जला। उसका तेल ख़त्म हो चुका था।",
+    "keyword": "तीसरा"
+   },
+   {
+    "text": "उसकी अपनी लालटेन में बस आख़िरी बूँद बची थी। उसके बिना, उसे अँधेरे में घर लौटना पड़ता।",
+    "keyword": "बूँद"
+   },
+   {
+    "text": "फिर भी उसने उसे डाल दिया।",
+    "keyword": "डाल"
+   },
+   {
+    "text": "तीसरा लैंप जल उठा। उसकी लालटेन बुझ गई।",
+    "keyword": "जल"
+   },
+   {
+    "text": "और टोमास धीरे-धीरे घर चला, अपने ही जलाए तीन लैंपों के नीचे।",
+    "keyword": "घर"
+   }
+  ],
+  "animation_pack": "ash_lane"
+ }
+}

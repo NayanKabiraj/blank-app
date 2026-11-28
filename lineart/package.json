@@ -1,0 +1,9 @@
+{
+  "name": "lineart",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Line-art story scenes (SVG + TypeScript) rendered to video by shorts/lineart. Library by JDhruv14/line-art-animation (MIT), see LICENSE-line-art-animation.",
+  "scripts": { "dev": "vite", "typecheck": "tsc -p tsconfig.json --noEmit" },
+  "devDependencies": { "@types/node": "^22.18.0", "playwright": "^1.49.0", "typescript": "^5.9.3", "vite": "^7.1.9" }
+}

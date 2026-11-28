@@ -88,6 +88,9 @@ the workflow renders.
    records the voice (horror: mysterious male voice) and renders; Claude then writes the title/description/tags and posts with `videosly_post_video` (privacy `private` by default, rule 6; `VIDEOSLY_PRIVACY` changes it; `aiGenerated` stays true). Everything invented and labelled fiction: bloodless, no child in danger, no real person, brand or place, never repeated, no real crimes (no `case-file`). History in `data/videosly/history.json`. If the connector is missing or refuses, skip the step and say so; never fake a result. Judge both series on their own numbers after a week.
 
 23. **Dopamine storytelling skill** (owner instruction, 28 Nov 2026; `.claude/skills/dopamine-storyteller/SKILL.md`): every narration (Shorts, documentaries, Myth Busters, Videosly horror topics and stories) is built with its five stages - pattern-interrupt hook, open loop, escalating stakes with micro-loops, reversal, earned payoff - and the plan's `research_summary` records `Hooks:` (3 variations + pick) and `Loops:` (primary loop, reversal, payoff).
+24. **Line-art story Shorts** (owner request, 28 Nov 2026; `lineart/AUTHORING.md`, `shorts/lineart/`, `.claude/skills/line-art-animation/`, research `strategy/research/lineart-format.md`): ink-on-paper SVG animation (library by JDhruv14/line-art-animation, MIT) with a scene Claude writes per story in `lineart/scenes/<id>/` (never reuse a scene, rule 10 and YouTube's inauthentic-content rule),
+   invented stories labelled as stories, EN+HI, written with the dopamine-storyteller skill. Tuesday, Thursday and Saturday the explore slot is a line-art story (workflow `daily-shorts.yml` / `daily-batch.yml` with `format` = `lineart`; `python3 -m shorts.runbrief` says when). Commit only the new scene folder (rule 7). Judge the format after 6 videos on its own numbers; the evidence for it is thin (see the research file), so it is a test.
+
 
 ## Quick commands
 

@@ -58,3 +58,8 @@ Direct pushes to main are allowed by `.claude/settings.json` (owner request, 27 
 ## Videosly Shorts: horror + mystery (27-28 Nov 2026, rule 22)
 Do this FIRST in every daily run (25-70 minutes to generate and render, so it overlaps with the batch): follow `shorts/VIDEOSLY_HORROR_TASK.md` - write one horror ("Quiet Dark") and one mystery ("The Fair Clue") composition with the dopamine-storyteller skill, `python3 -m shorts.videosly check-comp`, `videosly_generate_video`, then title/description/tags and `videosly_post_video`.
 They are on top of the day's Shorts (Videosly posts through its own connection, not our YouTube quota; 2 YouTube posts a day max on Videosly). Report both in the final summary.
+
+## Line-art story Shorts (28 Nov 2026, rule 24)
+Tuesday, Thursday and Saturday the explore slot (slot 3) is a line-art story Short instead of a myth buster (the brief prints `LINE-ART STORY TODAY` and a prepared plan if one is waiting). Same upload total: it is one of the day's 3 Short topics, EN+HI.
+Prepared plan ready: dispatch it as it is (re-check the title). Otherwise write a NEW invented story with `.claude/skills/dopamine-storyteller` and a NEW scene `lineart/scenes/<id>/` (copy `scenes/ash_lane/`, rewrite place, character and action; never reuse a finished scene), follow `lineart/AUTHORING.md` (typecheck, `--validate-only`, inspect frames at the key beats), commit ONLY the new scene folder (rule 7), then dispatch `daily-batch.yml` with `format` = `lineart`
+(one plan per dispatch; the other two Shorts go in their own batch with the usual format). Rendering takes about 7 minutes per language. After 6 line-art videos compare views/day and average viewed % with the channel median and record the verdict in `strategy/learnings.md`.

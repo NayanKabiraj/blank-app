@@ -99,6 +99,11 @@ def brief(now: dt.datetime | None = None) -> str:
         L += ["", videosly.brief_line()]
     except Exception:                                                                      # the Videosly line must never break the morning brief
         pass
+    try:
+        from . import lineart
+        L += ["", lineart.brief_line(today)]
+    except Exception:                                                                      # the line-art line must never break the morning brief
+        pass
     L += ["", "Recent topics (never repeat): " + " | ".join(dict.fromkeys(f"{e['date'][5:]} {e['topic'][:46]}" for e in (hist[-14:] + doc[-4:])))]
     q = [e for e in _load(ROOT / "strategy" / "research-queue.json", []) if e.get("status") in ("researched", "ready")]
     L.append("Researched queue (prefer these; read the dossier, re-verify only items marked recheck): " + (" | ".join(f"{e['topic'][:44]} [{e.get('niche', '')}, {e.get('kind', '')}, gate {e.get('gate_score', '?')}, {e.get('dossier', '')}]" for e in q[:12]) if q else "empty (use fresh research)"))
